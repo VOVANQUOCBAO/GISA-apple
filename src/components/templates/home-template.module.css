@@ -1,0 +1,690 @@
+.hero{height:48.375rem;position:relative;overflow:hidden}.heroImage{object-fit:cover;object-position:center}.heroInner,.gatewayInner,.capabilitiesInner,.contentContainer,.featuredProject,.insights{width:min(100% - (2 * var(--gutter)),var(--container));margin-inline:auto}.heroInner{z-index:1;grid-template-columns:47rem 1fr 24rem;align-items:center;height:100%;display:grid;position:relative}.heroCopy{align-self:center;padding-bottom:5rem}.eyebrow{color:#006b75;letter-spacing:.075em;text-transform:uppercase;margin:0 0 1.45rem;font-size:1rem;font-weight:700}.orange{color:#f15b2a}.heroCopy h1{color:#082f50;letter-spacing:-.035em;overflow-wrap:normal;text-wrap:nowrap;margin:0 0 2.25rem;font-size:4.6rem;font-weight:400;line-height:1.085}.heroCopy h1 em{color:#f15b2a;font-style:normal}.heroLead{color:#263b4f;max-width:43rem;margin-bottom:2.65rem;font-size:1.25rem;line-height:1.75}.heroButtons,.capabilityButtons,.tags{flex-wrap:wrap;display:flex}.heroButtons{gap:1.8rem}.primaryButton,.secondaryButton,.tealButton,.downloadButton{text-transform:uppercase;border-radius:.25rem;justify-content:center;align-items:center;min-height:4rem;padding-inline:2rem;font-size:1rem;font-weight:700;text-decoration:none;display:inline-flex}.primaryButton,.tealButton{color:#fff;background:#006b75}.primaryButton:hover,.primaryButton:focus-visible,.tealButton:hover,.tealButton:focus-visible{background:#00545d}.secondaryButton,.downloadButton{color:#00616c;background:#fff;border:1px solid #006b75}.secondaryButton:hover,.secondaryButton:focus-visible,.downloadButton:hover,.downloadButton:focus-visible{background:#f1f7f7}.heroForm{background:#fffffff5;border:1px solid #dce3e7;border-radius:.75rem;grid-column:3;justify-self:end;width:24rem;padding:2.5rem 1.75rem 2.1rem;display:grid;box-shadow:0 1.35rem 3.25rem #082f502e}.heroForm h2{color:#133d62;margin:0 0 .7rem;font-size:2rem;font-weight:500}.heroForm>p{color:#33485b;margin:0 0 1.5rem;font-size:1rem;line-height:1.55}.heroForm input,.heroForm select{color:#536678;background:#fff;border:1px solid #cdd8df;border-radius:.25rem;width:100%;height:3.15rem;margin-bottom:.75rem;padding:0 .9rem;font-size:1rem}.heroForm button{color:#fff;cursor:pointer;text-transform:uppercase;background:#f15b2a;border:0;border-radius:.2rem;height:3.2rem;margin-top:.85rem;font-size:1rem;font-weight:700}.heroForm button:hover,.heroForm button:focus-visible{background:#d8491c}.formSuccess{color:#006b75;text-align:center;flex-direction:column;justify-content:center;align-items:center;min-height:24rem;display:flex}.formSuccess p{color:#40566a}.formSuccess button{padding-inline:1.5rem}.gatewayStrip{z-index:4;position:relative}.gatewayInner{background:#fff;border:1px solid #dbe3e7;border-radius:.65rem;grid-template-columns:repeat(7,1fr);min-height:8.5rem;margin-top:-2.2rem;display:grid;overflow:hidden;box-shadow:0 .75rem 2rem #1439520f}.gatewayInner>a{color:#006b75;grid-template-columns:2.25rem minmax(0,1fr) 1rem;align-items:center;gap:.9rem;min-width:0;padding:1.25rem 1.35rem;text-decoration:none;display:grid}.gatewayInner>a:not(:last-child){border-right:1px solid #dbe3e7}.gatewayInner>a:hover{background:#f4f8f8}.gatewayInner span{display:grid}.gatewayInner strong{color:#0b304f;font-size:.96rem}.gatewayInner small{color:#627181;margin-top:.4rem;font-size:.78rem;line-height:1.3}.aboutSection{padding-block:6.5rem 0}.aboutGrid{grid-template-columns:minmax(0,1.08fr) minmax(28rem,.92fr);gap:8rem;display:grid}.aboutIntro{max-width:51rem}.aboutIntro h2,.knowledgeHeading h2,.partnerHeading h2{color:#0b3455;letter-spacing:-.025em;margin:0 0 2rem;font-size:3.35rem;font-weight:400;line-height:1.12}.aboutIntro>p:not(.eyebrow){color:#405469;margin:0 0 1.1rem;font-size:1.13rem;line-height:1.75}.textLink{color:#006b75;align-items:center;gap:.7rem;margin-top:1.35rem;font-size:1.05rem;font-weight:700;text-decoration:none;display:inline-flex}.textLink:hover{color:#f15b2a}.visionStack{gap:1rem;display:grid}.visionStack article{background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;grid-template-columns:3.5rem 1fr;gap:1.5rem;padding:1.75rem 2rem;display:grid}.visionStack article>span{color:#f15b2a;font-family:var(--font-heading);padding-top:.15rem;font-size:1.35rem}.visionStack h3{color:#0b3455;margin:0 0 .6rem;font-size:1.55rem}.visionStack p{color:#496075;margin:0;font-size:1rem;line-height:1.6}.visionStack blockquote{color:#fff;font-family:var(--font-heading);text-align:center;background:#006b75;border-radius:.65rem;margin:0;padding:1.5rem 2rem;font-size:1.6rem}.impactStats{background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;grid-template-columns:repeat(4,1fr);margin:4.5rem 0 0;display:grid;overflow:hidden}.impactStats>div{align-items:center;gap:1.2rem;min-height:7.5rem;padding:1.2rem 2rem;display:flex}.impactStats>div:not(:last-child){border-right:1px solid #dbe3e7}.impactStats dt{color:#006b75;font-family:var(--font-heading);font-size:2.6rem;font-weight:600}.impactStats dd{color:#405469;margin:0;font-size:.96rem;line-height:1.4}.capabilitiesSection{background:#fff}.capabilitiesInner{grid-template-columns:34rem minmax(0,1fr);gap:4rem;min-height:50rem;padding-block:6.8rem 6.3rem;display:grid}.capabilitiesIntro h2{color:#0b3455;letter-spacing:-.025em;overflow-wrap:normal;text-wrap:pretty;margin:0 0 2.5rem;font-size:3.55rem;font-weight:400;line-height:1.1}.capabilitiesIntro h2 span{color:#f15b2a}.capabilitiesIntro>p:not(.eyebrow){color:#42556a;max-width:32rem;margin-bottom:2.85rem;font-size:1.18rem;line-height:1.85}.capabilityButtons{gap:2.75rem}.tealButton,.downloadButton{min-height:4rem;font-size:.92rem}.downloadButton{gap:.65rem}.capabilityGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.1rem;display:grid}.capabilityCard{border:1px solid #d8e1e5;border-radius:.75rem;flex-direction:column;min-height:36rem;padding:2.9rem 2.05rem 2.1rem;display:flex}.capabilityCard:hover{border-color:#9fc0c5;transform:translateY(-.2rem);box-shadow:0 1rem 2.4rem #14395217}.capabilityIcon{color:#006b75;background:#f0f5f6;border-radius:50%;justify-content:center;align-items:center;width:6rem;height:6rem;margin-bottom:2.2rem;display:inline-flex}.capabilityCard h3{color:#0b304f;font-family:var(--font-body);min-height:3.6rem;margin:0 0 1.35rem;font-size:1.28rem;line-height:1.4}.capabilityCard p{color:#4b5d70;margin:0;font-size:1rem;line-height:2}.capabilityCard>a{color:#f15b2a;width:max-content;margin-top:auto}.architectureSection{padding-block:2.5rem 3rem}.sectionTitle{color:#082f50;margin:0 0 1.4rem;font-size:2.6rem;font-weight:400}.risesGrid{border:1px solid #cfdde2;border-radius:.7rem;grid-template-columns:repeat(5,1fr);display:grid;overflow:hidden}.risesGrid article{text-align:center;flex-direction:column;align-items:center;min-height:17.2rem;padding:1.4rem 2rem 1.75rem;display:flex}.risesGrid article:not(:last-child){border-right:1px solid #d6e0e4}.risesGrid span{color:#006b75;font-family:var(--font-heading);font-size:2.8rem;font-weight:600;line-height:1.2}.risesGrid h3{color:#142f4e;margin:.3rem 0 .9rem;font-size:1.2rem}.risesGrid i,.pillarGrid i{background:var(--accent);border-radius:999px;width:2.25rem;height:.2rem;display:block}.risesGrid p{color:#34485c;max-width:15rem;margin:1.55rem 0 0;font-size:1rem;line-height:1.5}.pillarHeading{margin:2rem 0 1.2rem}.pillarGrid{grid-template-columns:repeat(3,1fr);gap:1.3rem;display:grid}.pillarGrid article{border:1px solid #d5e0e4;border-radius:.65rem;grid-template-columns:6.1rem 1fr;align-items:center;gap:1.8rem;min-height:12.2rem;padding:1.6rem 2rem;display:grid}.pillarIcon{background:color-mix(in srgb, var(--accent) 9%, white);color:var(--accent);border-radius:50%;justify-content:center;align-items:center;width:5.7rem;height:5.7rem;display:inline-flex}.pillarGrid h3{color:var(--accent);margin:0 0 .7rem;font-size:1.26rem}.pillarGrid p{color:#425469;margin:.85rem 0 0;font-size:.98rem;line-height:1.45}.editorialSection{padding-block:2.2rem 2.5rem}.featuredProject{border:1px solid #d7e0e4;border-radius:.45rem;grid-template-columns:1fr 1fr;min-height:25rem;display:grid;overflow:hidden}.featuredImage{min-height:25rem;position:relative}.featuredImage img{object-fit:cover}.featuredCopy{align-self:center;padding:1.8rem 3.75rem}.featuredCopy h2{color:#0d3557;margin:0 0 1.15rem;font-size:3rem}.featuredCopy>p:not(.eyebrow){color:#41556b;max-width:33rem;font-size:1.15rem;line-height:1.55}.tags{gap:.8rem;margin:1.5rem 0 2.4rem}.tags span{color:#183a5b;border:1px solid #ccd8de;border-radius:.28rem;padding:.55rem .9rem;font-size:.95rem;font-weight:700}.featuredCopy>a,.insightsHeading>a{color:#006b75;align-items:center;gap:.7rem;font-weight:700;text-decoration:none;display:inline-flex}.featuredCopy>a{font-size:1.2rem}.insights{padding-top:2.4rem}.insightsHeading{justify-content:space-between;align-items:center;margin-bottom:1.4rem;display:flex}.insightsHeading h2{color:#0b3455;margin:0;font-size:2.3rem;font-weight:400}.insightsHeading>a{font-size:1rem}.insightsGrid{grid-template-columns:1fr 1fr;gap:1.3rem 2rem;min-height:23rem;display:grid}.leadArticle{border-radius:.45rem;grid-row:1/span 2;min-height:23rem;position:relative;overflow:hidden}.articleImage{position:absolute;inset:0}.articleImage img{object-fit:cover}.leadOverlay{color:#fff;background:#031e27ab;padding:1.3rem 2.4rem;position:absolute;bottom:0;left:0;right:0}.leadOverlay p{text-transform:uppercase;margin:0 0 .7rem;font-size:.84rem;font-weight:700}.leadOverlay h3{margin:0 0 .55rem;font-size:1.7rem;line-height:1.3}.leadOverlay span{font-size:.98rem;line-height:1.5}.sideArticle{grid-template-columns:16.8rem 1fr;align-items:center;gap:2rem;display:grid}.sideImage{border-radius:.4rem;height:10.5rem;position:relative;overflow:hidden}.sideImage img{object-fit:cover}.articleMeta{color:#006b75;text-transform:uppercase;margin:0 0 .7rem;font-size:.82rem;font-weight:700}.sideArticle h3{color:#102f50;margin:0 0 .6rem;font-size:1.35rem;line-height:1.24}.sideArticle>div>p:last-child{color:#45586b;margin:0;font-size:.95rem;line-height:1.5}.mediaBannerSection{padding-block:6.25rem}.mediaBannerHeading{grid-template-columns:minmax(0,1.1fr) minmax(26rem,.9fr);align-items:end;gap:5rem;margin-bottom:2.6rem;display:grid}.mediaBannerHeading h2{color:#0b3455;letter-spacing:-.025em;max-width:52rem;margin:0;font-size:3.35rem;font-weight:400;line-height:1.08}.mediaBannerHeading>p{color:#4a5f73;max-width:38rem;margin:0 0 .3rem;font-size:1.08rem;line-height:1.7}.mediaBanner{background:#fff;border:1px solid #cdddea;border-radius:.85rem;max-width:80rem;margin:0 auto;overflow:hidden;box-shadow:0 1.5rem 4rem #0c395b1a}.mediaBanner img{width:100%;height:auto;display:block}.knowledgeSection{padding-block:6.25rem}.knowledgeHeading,.partnerHeading{grid-template-columns:minmax(0,1.1fr) minmax(26rem,.9fr);align-items:end;gap:5rem;margin-bottom:2.6rem;display:grid}.knowledgeHeading h2,.partnerHeading h2{max-width:50rem;margin-bottom:0}.knowledgeHeading>p,.partnerHeading>p{color:#4a5f73;max-width:38rem;margin:0 0 .3rem;font-size:1.08rem;line-height:1.7}.knowledgeTabs{border-bottom:1px solid #cad8de;gap:2.8rem;margin-bottom:2rem;display:flex}.knowledgeTabs button{color:#5b6b7b;cursor:pointer;font-family:var(--font-body);background:0 0;border:0;padding:0 0 1rem;font-size:1rem;font-weight:700;position:relative}.knowledgeTabs button[aria-selected=true]{color:#006b75}.knowledgeTabs button[aria-selected=true]:after{content:"";background:#f15b2a;height:3px;position:absolute;bottom:-1px;left:0;right:0}.knowledgeGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem;display:grid}.knowledgeGrid article{background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;flex-direction:column;min-height:21.5rem;padding:1.75rem 1.8rem;transition:border-color .48s var(--ease-out),box-shadow .48s var(--ease-out),transform .48s var(--ease-out);display:flex}.knowledgeGrid article:hover{border-color:#94bcc2;transform:translateY(-.18rem);box-shadow:0 1rem 2.5rem #082f5014}.knowledgeCardTop{color:#006b75;justify-content:space-between;align-items:center;margin-bottom:3rem;display:flex}.knowledgeCardTop>span{font-family:var(--font-heading);font-size:2.2rem}.knowledgeCardBody{flex-direction:column;flex:1;display:flex}.knowledgeCardBody>p{color:#f15b2a;letter-spacing:.045em;text-transform:uppercase;margin:0 0 .9rem;font-size:.78rem;font-weight:700}.knowledgeGrid h3{color:#123653;margin:0;font-size:1.45rem;line-height:1.35}.knowledgeCardBody>a{color:#006b75;align-items:center;gap:.55rem;margin-top:auto;padding-top:1.4rem;font-size:.94rem;font-weight:700;text-decoration:none;display:inline-flex}.courseGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.knowledgeGrid .courseCard{min-height:0;padding:0;overflow:hidden}.courseImage{aspect-ratio:16/9;background:#eaf2f8;display:block;overflow:hidden}.courseImage img{width:100%;height:auto;display:block}.courseCard .knowledgeCardBody{min-height:12rem;padding:1.35rem 1.5rem 1.5rem}.courseCard h3{font-size:1.28rem}.knowledgeFooter{justify-content:flex-end;margin-top:2rem;display:flex}.knowledgeFooter .secondaryButton{text-transform:none;min-height:3.4rem}.partnerSection{background:#fff;padding-block:6.25rem}.partnerHeading{margin-bottom:3rem}.partnerBanner{margin-bottom:2rem}.partnerList{border:1px solid #d4e0e3;border-radius:.65rem;grid-template-columns:repeat(5,1fr);margin:0;padding:0;list-style:none;display:grid;overflow:hidden}.partnerList li{color:#153954;font-family:var(--font-heading);text-align:center;justify-content:center;align-items:center;min-height:9.75rem;padding:1.4rem;font-size:1.22rem;line-height:1.35;display:flex}.partnerList li:not(:last-child){border-right:1px solid #dbe3e7}.partnerList li:nth-child(2n){background:#f7f9f9}.partnerCta{color:#fff;background:#0b3455;border-radius:.65rem;justify-content:space-between;align-items:center;min-height:6.75rem;margin-top:1.25rem;padding:1.25rem 2rem;display:flex}.partnerCta p{margin:0;font-size:1.05rem}.partnerCta a{color:#fff;align-items:center;gap:.7rem;font-weight:700;text-decoration:none;display:inline-flex}.partnerCta a:hover{color:#ffb293}.processSection{min-height:24.5rem;padding-block:2rem 1rem}.processHeading{text-align:center}.processHeading h2{color:#0b3455;margin:0 0 .65rem;font-size:2.65rem;font-weight:400}.processHeading p{color:#536174;margin:0;font-size:1.05rem}.processGrid{grid-template-columns:repeat(5,1fr);margin:1.6rem 0 0;padding:0;list-style:none;display:grid}.processGrid li{text-align:center;min-width:0;padding-inline:1rem;position:relative}.processGrid li:not(:last-child):after{content:"";border-top:2px dashed #a8b7bf;width:calc(100% - 7.6rem);position:absolute;top:5.45rem;left:calc(50% + 3.8rem)}.stepNumber{color:#fff;background:#006b75;border-radius:50%;justify-content:center;align-items:center;width:2rem;height:2rem;margin:0 auto .75rem;font-size:.95rem;font-weight:700;display:flex}.processIcon{color:#006b75;background:#f0f5f6;border-radius:50%;justify-content:center;align-items:center;width:5.2rem;height:5.2rem;margin:0 auto .75rem;display:flex}.processGrid h3{color:#00616d;font-family:var(--font-body);margin:0 0 .5rem;font-size:1rem}.processGrid p{color:#566273;max-width:15rem;margin:0 auto;font-size:.92rem;line-height:1.45}.visuallyHidden{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}@media (max-width:87.5rem){.heroInner{grid-template-columns:38rem 1fr 22rem}.heroCopy h1{font-size:3.8rem}.heroForm{width:22rem}.capabilitiesInner{grid-template-columns:28rem 1fr;gap:2rem}.capabilitiesIntro h2{font-size:3rem}.capabilityCard{padding-inline:1.4rem}.gatewayInner>a{gap:.5rem;padding-inline:.8rem}.aboutGrid{gap:4rem}.partnerList li{font-size:1.05rem}}@media (max-width:70rem){.hero{height:auto;min-height:48rem}.heroInner{grid-template-columns:1fr 21rem;padding-block:4rem 6rem}.heroCopy{padding-bottom:0;padding-right:2rem}.heroCopy h1{font-size:3.2rem}.heroForm{grid-column:2;width:21rem}.gatewayInner{grid-template-columns:repeat(4,1fr)}.gatewayInner>a{border-bottom:1px solid #dbe3e7}.capabilitiesInner{grid-template-columns:1fr}.capabilitiesIntro{max-width:45rem}.capabilityGrid{grid-template-columns:repeat(2,1fr)}.capabilityCard{min-height:28rem}.aboutGrid{grid-template-columns:1fr}.aboutIntro{max-width:55rem}.impactStats{grid-template-columns:repeat(2,1fr)}.impactStats>div:nth-child(2){border-right:0}.impactStats>div:nth-child(-n+2){border-bottom:1px solid #dbe3e7}.risesGrid{grid-template-columns:repeat(2,1fr)}.risesGrid article{border-bottom:1px solid #d6e0e4}.risesGrid article:last-child{grid-column:1/-1}.pillarGrid{grid-template-columns:repeat(2,1fr)}.featuredProject{grid-template-columns:1fr}.featuredImage{min-height:24rem}.insightsGrid{grid-template-columns:1fr}.leadArticle{grid-row:auto;min-height:28rem}.knowledgeHeading,.partnerHeading,.mediaBannerHeading{grid-template-columns:1fr;align-items:start;gap:1.5rem}.knowledgeGrid,.courseGrid{grid-template-columns:repeat(2,1fr)}.partnerList{grid-template-columns:repeat(3,1fr)}.partnerList li{border-bottom:1px solid #dbe3e7}.partnerList li:nth-child(3){border-right:0}}@media (max-width:48rem){.hero{min-height:56rem}.heroImage{object-position:62% center;opacity:.42}.heroInner{padding-block:3rem 5rem;display:block}.heroCopy{padding-right:0}.heroCopy h1{text-wrap:wrap;font-size:clamp(2.65rem,11vw,3.6rem)}.heroLead{font-size:1.05rem}.heroForm{display:none}.gatewayInner{grid-template-columns:repeat(2,1fr)}.capabilitiesInner{padding-block:4.5rem}.capabilitiesIntro h2{font-size:2.7rem}.aboutSection,.knowledgeSection,.partnerSection,.mediaBannerSection{padding-block:4.25rem}.aboutIntro h2,.knowledgeHeading h2,.partnerHeading h2,.mediaBannerHeading h2{font-size:2.55rem}.visionStack article{grid-template-columns:2.5rem 1fr;gap:.75rem;padding:1.4rem}.impactStats{grid-template-columns:1fr}.impactStats>div{border-bottom:1px solid #dbe3e7;border-right:0!important}.impactStats>div:last-child{border-bottom:0}.capabilityGrid,.risesGrid,.pillarGrid,.knowledgeGrid,.partnerList{grid-template-columns:1fr}.capabilityCard{min-height:25rem}.risesGrid article:last-child{grid-column:auto}.pillarGrid article{grid-template-columns:5rem 1fr;padding-inline:1.25rem}.pillarIcon{width:4.7rem;height:4.7rem}.featuredCopy{padding:2.5rem 1.5rem}.featuredCopy h2{font-size:2.4rem}.insightsHeading{flex-direction:column;align-items:flex-start;gap:.8rem}.sideArticle{grid-template-columns:8.5rem 1fr;align-items:start;gap:1rem}.sideImage{height:8.5rem}.processGrid{grid-template-columns:1fr;gap:2rem}.processGrid li:not(:last-child):after{display:none}.knowledgeTabs{gap:1.25rem;overflow-x:auto}.knowledgeTabs button{flex:none}.knowledgeGrid article{min-height:18rem}.knowledgeGrid .courseCard{min-height:0}.courseCard .knowledgeCardBody{min-height:10.75rem}.partnerList li{border-bottom:1px solid #dbe3e7;min-height:6.5rem;border-right:0!important}.partnerList li:last-child{border-bottom:0}.partnerCta{flex-direction:column;align-items:flex-start;gap:1rem}.heroButtons,.capabilityButtons{gap:.8rem}}
+
+/* Partner logo marquee restored from the confirmed homepage preview. */
+/* Stays on the shared frame instead of running full-bleed (`100vw` + a negative
+   margin), so the logo strip keeps the same left/right edges as every other block
+   and never touches the walls of the page. The mask fades cards out before the
+   frame edge so the loop reads as continuous rather than cut off. */
+.partnerMarquee{overflow:hidden;padding-block:.25rem 1rem;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 3.5rem,#000 calc(100% - 3.5rem),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 3.5rem,#000 calc(100% - 3.5rem),transparent 100%)}
+.partnerTrack{display:flex;width:max-content;animation:partner-marquee 42s linear infinite;will-change:transform}
+.partnerList{border:0;border-radius:0;display:flex;flex:none;gap:1rem;margin:0;padding:0 1rem 0 0;overflow:visible;list-style:none}
+.partnerList li,.partnerList li:not(:last-child){align-items:center;background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;display:flex;flex:0 0 clamp(14rem,16vw,17rem);justify-content:center;min-height:8.25rem;padding:1.15rem 1.4rem}
+.partnerList li:nth-child(2n){background:#fff}
+/* Every tile is the same box and each logo is centred inside it with `contain`,
+   so the 29 source PNGs — which differ in aspect ratio and built-in padding —
+   line up on one optical baseline instead of each finding its own size. */
+.partnerLogo{display:block;height:5.5rem;position:relative;width:100%}
+.partnerLogo img{object-fit:contain;object-position:center}
+.partnerMarquee:hover .partnerTrack{animation-play-state:paused}
+.visuallyHidden{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}
+@keyframes partner-marquee{to{transform:translateX(-50%)}}
+@media (max-width:48rem){.partnerList li,.partnerList li:not(:last-child){flex-basis:13rem;min-height:7.5rem;padding:1rem}.partnerLogo{height:4.9rem}.partnerMarquee{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 1.5rem,#000 calc(100% - 1.5rem),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 1.5rem,#000 calc(100% - 1.5rem),transparent 100%)}}
+@media (prefers-reduced-motion:reduce){.partnerMarquee{overflow-x:auto}.partnerTrack{animation:none}.partnerList[aria-hidden='true']{display:none}}
+
+/* 2026 typography, spacing, and homepage rhythm refinement. */
+.hero::after{content:"";background:linear-gradient(90deg,#fffffff2 0%,#ffffffd9 34%,#ffffff29 66%,transparent 82%);pointer-events:none;position:absolute;inset:0}
+.heroCopy{max-width:44rem;padding-bottom:3rem}
+.heroCopy h1{font-size:clamp(3.9rem,5vw,4.55rem);line-height:1.06}
+.heroLead{background:#ffffffd9;border:1px solid #d8e3e7;border-left:.3rem solid #f15b2a;border-radius:.6rem;max-width:40rem;margin:0 0 2.25rem;padding:1rem 1.2rem;font-size:1.08rem;line-height:1.65;box-shadow:0 .75rem 2rem #0b34550b}
+.sectionEyebrow{background:#eaf3f3;border:1px solid #cfe0e1;border-radius:999px;display:inline-flex;align-items:center;width:max-content;min-height:2rem;margin-bottom:1.15rem;padding:.35rem .8rem;font-size:.78rem;letter-spacing:.09em;line-height:1.2}
+.sectionEyebrow.orange{background:#fff3ed;border-color:#ffd4c2;color:#c84818}
+.aboutIntro h2,.capabilitiesIntro h2,.mediaBannerHeading h2,.sectionTitle,.insightsHeading h2,.knowledgeHeading h2,.partnerHeading h2,.processHeading h2,.researchProjectsHeading h2{letter-spacing:.01em}
+.aboutSection{padding-top:5.75rem}
+.capabilitiesInner{align-items:start;grid-template-columns:minmax(24rem,.8fr) minmax(0,1.35fr);gap:4rem;min-height:0;padding-block:5.75rem}
+.capabilitiesIntro{position:sticky;top:7.25rem}
+.capabilitiesIntro h2{font-size:3.25rem;line-height:1.08}
+.capabilitiesIntro>p:not(.eyebrow){font-size:1.1rem;line-height:1.72}
+.capabilityButtons{gap:1rem}
+.capabilityGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+.capabilityCard{min-height:21.5rem;padding:2rem}
+.capabilityIcon{width:5rem;height:5rem;margin-bottom:1.4rem}
+.capabilityCard h3{min-height:0;margin-bottom:.8rem;font-size:1.2rem;line-height:1.35}
+.capabilityCard p{font-size:.98rem;line-height:1.65}
+.architectureSection{padding-block:4.75rem}
+.editorialSection{padding-block:4.75rem}
+.knowledgeSection,.partnerSection{padding-block:5.75rem}
+.processSection{padding-block:4rem 3rem}
+
+.mediaBannerSection{padding-block:5.75rem 5.25rem;overflow:hidden}
+.mediaBannerHeading{margin-bottom:3rem}
+.commitmentMarquee{width:100%;overflow:hidden;padding-block:.25rem 1rem}
+.commitmentTrack{display:flex;width:max-content;animation:commitment-marquee 34s linear infinite;will-change:transform}
+.commitmentList{display:flex;flex:none;gap:1rem;margin:0;padding:0 1rem 0 0;list-style:none}
+.commitmentList li{background:#fff;border:1px solid #cdddea;border-top:4px solid var(--commitment-color);border-radius:.75rem;display:grid;grid-template-columns:4.25rem minmax(0,1fr);align-items:center;gap:1.15rem;flex:0 0 clamp(19rem,23vw,22rem);min-height:10rem;padding:1.35rem 1.5rem;box-shadow:0 .75rem 2rem #0c395b0d}
+.commitmentIcon{color:#fff;background:var(--commitment-color);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;width:4.25rem;height:4.25rem}
+.commitmentList li>span:last-child{display:grid;gap:.45rem}
+.commitmentList strong{color:#0b3455;font-family:var(--font-heading);font-size:1.28rem;line-height:1.25}
+.commitmentList small{color:#4a5f73;font-size:.94rem;line-height:1.45}
+.commitmentMarquee:hover .commitmentTrack,.commitmentMarquee:focus-within .commitmentTrack{animation-play-state:paused}
+@keyframes commitment-marquee{to{transform:translateX(-50%)}}
+
+@media (max-width:70rem){
+  .capabilitiesInner{grid-template-columns:1fr}
+  .capabilitiesIntro{max-width:52rem;position:static}
+  .capabilityCard{min-height:20rem}
+}
+@media (max-width:48rem){
+  .hero::after{background:linear-gradient(90deg,#ffffffe8 0%,#ffffffb8 100%)}
+  .heroCopy{max-width:none}
+  .heroCopy h1{font-size:clamp(2.6rem,11vw,3.5rem)}
+  .aboutSection,.architectureSection,.editorialSection,.knowledgeSection,.partnerSection,.mediaBannerSection{padding-block:4rem}
+  .capabilitiesInner{padding-block:4rem}
+  .capabilityGrid{grid-template-columns:1fr}
+  .capabilityCard{min-height:0}
+  .commitmentList li{flex-basis:18rem;grid-template-columns:3.75rem minmax(0,1fr);min-height:9rem;padding:1.2rem}
+  .commitmentIcon{width:3.75rem;height:3.75rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .commitmentMarquee{overflow-x:auto}
+  .commitmentTrack{animation:none}
+  .commitmentList[aria-hidden='true']{display:none}
+}
+
+/* Clipping must not become the scroll container that drives view timelines. */
+@supports (overflow:clip){
+  .mediaBannerSection,.commitmentMarquee,.risesGrid,.partnerMarquee{overflow:clip}
+}
+@media (prefers-reduced-motion:reduce){
+  .commitmentMarquee,.partnerMarquee{overflow-x:auto}
+}
+
+/* Brand-led refinements requested from the 100% section review. */
+.aboutIntro{background:#fff;border-top:.3rem solid #006b75;border-radius:.75rem;padding:2.35rem 2.5rem;box-shadow:0 1rem 2.75rem #0b34550d}
+.aboutIntro h2{margin-bottom:1.6rem}
+.visionStack article:first-child{border-top:.3rem solid #f15b2a}
+.visionStack article:nth-child(2){border-top:.3rem solid #69a52b}
+.visionStack article:nth-child(2)>span{color:#69a52b}
+.impactStats>div:nth-child(1) dt{color:#006b75}
+.impactStats>div:nth-child(2) dt{color:#f15b2a}
+.impactStats>div:nth-child(3) dt{color:#1765aa}
+.impactStats>div:nth-child(4) dt{color:#69a52b}
+
+.featureStatement{--statement-color:#006b75;background:#fff;border:1px solid #d8e3e7;border-left:.3rem solid var(--statement-color);border-radius:.6rem;margin:0;padding:1.15rem 1.3rem;box-shadow:0 .75rem 2rem #0b34550b;font-weight:600;line-height:1.6}
+.statementRed{--statement-color:#c5192d}
+.statementOrange{--statement-color:#f15b2a}
+.statementBlue{--statement-color:#1765aa}
+.statementGreen{--statement-color:#69a52b}
+.mediaBannerHeading>.featureStatement,.knowledgeHeading>.featureStatement,.partnerHeading>.featureStatement{margin:0}
+.featuredCopy>.featureStatement{background:#f7faf9;max-width:35rem;margin:0 0 1.5rem;padding:1rem 1.2rem;font-size:1.08rem;line-height:1.6}
+.partnerHeading>.featureStatement{background:#f4f8f8}
+.knowledgeHeading>.featureStatement{background:#fff}
+.processHeading>.featureStatement{max-width:48rem;margin:1.15rem auto 0;text-align:left;font-size:1.02rem}
+
+@media (max-width:48rem){
+  .aboutIntro{padding:1.75rem 1.4rem}
+  .featureStatement{padding:1rem 1.05rem}
+}
+
+/* Rendered as an inset rounded panel instead of a full-bleed dark band: the page
+   stays one continuous white surface, and the accent block keeps the same left
+   and right edges as every other section's content. */
+.researchProjectsSection{padding-block:2.5rem 4.5rem}
+.researchProjectsSection .contentContainer{background:#082f50;border-radius:1.5rem;color:#fff;padding:4.5rem 3.5rem 5rem}
+.researchProjectsHeading{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(26rem,.9fr);align-items:end;gap:5rem;margin-bottom:2.75rem}
+.researchProjectsHeading .eyebrow{color:#77d0d3}
+.researchProjectsHeading .sectionEyebrow{background:#ffffff0d;border-color:#ffffff2b;color:#77d0d3}
+.researchProjectsHeading h2{color:#fff;letter-spacing:-.025em;margin:0;font-size:3.35rem;font-weight:400;line-height:1.08}
+.researchProjectsHeading>p{color:#c8d8e3;max-width:38rem;margin:0 0 .25rem;font-size:1.08rem;line-height:1.7}
+.researchProjectsHeading>.featureStatement{background:#103b5d;border-color:#ffffff24;color:#e8f0f4;box-shadow:none}
+.researchProjectsGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
+.researchProjectsGrid article{background:#103b5d;border:1px solid #ffffff24;border-top:.3rem solid var(--project-accent);border-radius:.75rem;display:flex;flex-direction:column;min-height:22rem;padding:1.6rem;transition:transform .5s var(--ease-out),border-color .5s var(--ease-out),background .5s var(--ease-out)}
+.researchProjectsGrid article:hover{background:#154667;border-color:#ffffff42;transform:translateY(-.25rem)}
+.researchProjectTop{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem}
+.researchProjectIcon{background:var(--project-accent);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;width:3.5rem;height:3.5rem}
+.researchProjectNumber{color:#9eb7c8;font-family:var(--font-heading);font-size:1.25rem}
+.researchProjectsGrid article>p{color:#dce7ee;border-left:.2rem solid var(--project-accent);letter-spacing:.055em;text-transform:uppercase;margin:0 0 .75rem;padding-left:.65rem;font-size:.78rem;font-weight:700}
+.researchProjectsGrid h3{color:#fff;margin:0 0 1rem;font-size:1.65rem;line-height:1.15}
+.researchProjectsGrid article>span:not(.researchProjectNumber){color:#c8d8e3;font-size:.98rem;line-height:1.55}
+.researchProjectsGrid article>a{color:#fff;display:inline-flex;align-items:center;gap:.55rem;margin-top:auto;padding-top:1.5rem;font-weight:700;text-decoration:none}
+.researchProjectsGrid article>a:hover{color:#8edadd}
+
+@media (max-width:70rem){
+  .researchProjectsHeading{grid-template-columns:1fr;align-items:start;gap:1.25rem}
+  .researchProjectsGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:48rem){
+  .researchProjectsSection{padding-block:1.5rem 3rem}
+  .researchProjectsSection .contentContainer{border-radius:1rem;padding:2.5rem 1.5rem 3rem}
+  .researchProjectsHeading h2{font-size:2.55rem}
+  .researchProjectsHeading>p{font-size:1rem}
+  .researchProjectsGrid{grid-template-columns:1fr}
+  .researchProjectsGrid article{min-height:19rem}
+}
+
+/* Hierarchy pass for supporting statements and the introduction slogan. */
+.visionStack blockquote{display:flex;align-items:center;justify-content:center;min-height:7.25rem;font-size:2rem;line-height:1.25}
+.heroConsultationTrigger{color:#fff;background:#f15b2a;border:0;border-radius:.35rem;box-shadow:0 1rem 2.5rem #082f5024;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.65rem;grid-column:3;justify-self:end;min-height:3.65rem;padding:0 1.35rem;font-size:.96rem;font-weight:700}
+.heroConsultationTrigger:hover,.heroConsultationTrigger:focus-visible{background:#d8491c}
+.consultationOverlay{background:#082f50b8;display:grid;place-items:center;position:fixed;inset:0;z-index:1000;padding:1rem}
+.consultationDialog{background:#fff;border-radius:.8rem;max-height:calc(100dvh - 2rem);overflow:auto;position:relative;width:min(100%,28rem);box-shadow:0 2rem 6rem #031b2e66}
+.consultationForm{border:0;box-shadow:none;display:grid;grid-column:auto;justify-self:stretch;width:100%;padding:2.6rem 2rem 2rem}
+.heroForm .dialogClose{background:#eef4f5;border:0;border-radius:50%;color:#0b3455;display:inline-flex;align-items:center;justify-content:center;height:2.5rem;margin:0;padding:0;position:absolute;right:1rem;top:1rem;width:2.5rem}
+.heroForm .dialogClose:hover,.heroForm .dialogClose:focus-visible{background:#dce9eb;color:#006b75}
+.knowledgeHeading h2{font-size:clamp(2.45rem,2.85vw,3.15rem);white-space:nowrap}
+.partnerHeading h2{white-space:nowrap}
+.processHeading>.featureStatement{display:flex;align-items:center;justify-content:center;min-height:4.25rem;text-align:center}
+.partnerCta{align-items:center;flex-direction:column;justify-content:center;gap:.65rem;text-align:center}
+.partnerCta p{max-width:52rem}
+@media (max-width:48rem){
+  .visionStack blockquote{min-height:6.5rem;font-size:1.7rem}
+  .heroConsultationTrigger{grid-column:auto;margin-top:1rem;width:100%}
+  .consultationForm{display:grid;padding:2.6rem 1.25rem 1.4rem}
+  .knowledgeHeading h2{font-size:clamp(1.3rem,5.5vw,2rem)}
+  .partnerHeading h2{font-size:2rem}
+  .processHeading>.featureStatement{text-align:center}
+}
+@media (min-width:48.01rem) and (max-width:70rem){.heroConsultationTrigger{grid-column:2}}
+
+/* Semantic wrapping and balanced split headings. */
+.gatewayInner small,.commitmentList strong{hyphens:none;overflow-wrap:normal;text-wrap:balance;word-break:normal}
+.gatewayInner strong{white-space:nowrap}
+.commitmentList strong{white-space:nowrap}
+.commitmentList small,.featureStatement{text-wrap:pretty}
+
+.heroButtons .heroConsultationTrigger{grid-column:auto;justify-self:auto;margin:0;min-height:4rem}
+
+.mediaBannerHeading,.knowledgeHeading,.partnerHeading,.researchProjectsHeading{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:clamp(2.5rem,4vw,5rem)}
+.mediaBannerHeading>div,.knowledgeHeading>div,.partnerHeading>div,.researchProjectsHeading>div{min-width:0;width:100%}
+.mediaBannerHeading>.featureStatement,.knowledgeHeading>.featureStatement,.partnerHeading>.featureStatement,.researchProjectsHeading>.featureStatement{align-items:center;display:flex;justify-self:stretch;margin-top:0;max-width:none;min-height:100%;width:100%}
+.mediaBannerHeading>.featureStatement{align-self:center;min-height:0}
+
+.gatewayInner>a{gap:.55rem;grid-template-columns:2rem minmax(0,1fr) .875rem;padding:1rem .75rem}
+.gatewayInner>a>svg:first-child{height:2rem;width:2rem}
+.gatewayInner small{font-size:.74rem;letter-spacing:-.01em;white-space:nowrap}
+
+.knowledgeToolbar{align-items:flex-end;border-bottom:1px solid #cad8de;display:flex;gap:2rem;justify-content:space-between;margin-bottom:2rem}
+.knowledgeToolbar .knowledgeTabs{border:0;margin:0}
+.knowledgeAllLink{align-items:center;color:#006b75;display:inline-flex;flex:none;gap:.55rem;margin-bottom:.75rem;font-size:.96rem;font-weight:700;text-decoration:none}
+.knowledgeAllLink:hover,.knowledgeAllLink:focus-visible{color:#f15b2a}
+
+@media (max-width:70rem){
+  .mediaBannerHeading,.knowledgeHeading,.partnerHeading,.researchProjectsHeading{grid-template-columns:1fr;gap:1.35rem}
+  .mediaBannerHeading>.featureStatement,.knowledgeHeading>.featureStatement,.partnerHeading>.featureStatement,.researchProjectsHeading>.featureStatement{min-height:0}
+}
+
+@media (max-width:48rem){
+  .hero{min-height:52rem}
+  .gatewayInner>a{grid-template-columns:2.1rem minmax(0,1fr);padding-inline:.85rem}
+  .gatewayInner>a:last-child{grid-column:1/-1}
+  .gatewayInner>a>svg:last-child{display:none}
+  .gatewayInner small{font-size:.74rem}
+  .heroButtons .heroConsultationTrigger{width:auto}
+  .knowledgeToolbar{align-items:flex-start;flex-direction:column;gap:.25rem}
+  .knowledgeToolbar .knowledgeTabs{width:100%}
+  .knowledgeAllLink{margin-bottom:.9rem}
+}
+
+/* Shared interaction motion: deliberate entrances, restrained lifts, quick press feedback. */
+.consultationOverlay {
+  opacity: 1;
+  transition: opacity 420ms var(--ease-out);
+}
+
+.consultationDialog {
+  transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: center;
+  transition: transform 520ms var(--ease-out);
+}
+
+@starting-style {
+  .consultationOverlay {
+    opacity: 0;
+  }
+
+  .consultationDialog {
+    transform: translate3d(0, 1.5rem, 0) scale(0.97);
+  }
+}
+
+.primaryButton,
+.secondaryButton,
+.tealButton,
+.downloadButton,
+.heroConsultationTrigger,
+.heroForm button:not(.dialogClose),
+.knowledgeAllLink,
+.partnerCta a,
+.researchProjectsGrid article > a {
+  transition:
+    background-color 220ms var(--ease-out),
+    border-color 220ms var(--ease-out),
+    color 220ms var(--ease-out),
+    transform 160ms var(--ease-out);
+}
+
+.primaryButton:active,
+.secondaryButton:active,
+.tealButton:active,
+.downloadButton:active,
+.heroConsultationTrigger:active,
+.heroForm button:not(.dialogClose):active,
+.knowledgeAllLink:active,
+.partnerCta a:active,
+.researchProjectsGrid article > a:active {
+  transform: scale(0.97);
+}
+
+.capabilityCard,
+.knowledgeGrid article,
+.researchProjectsGrid article {
+  transition:
+    background-color 220ms var(--ease-out),
+    border-color 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    transform 220ms var(--ease-out);
+}
+
+.capabilityCard:hover,
+.knowledgeGrid article:hover,
+.researchProjectsGrid article:hover {
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .capabilityCard:hover,
+  .knowledgeGrid article:hover,
+  .researchProjectsGrid article:hover {
+    transform: translateY(-0.25rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consultationOverlay {
+    transition: opacity 380ms var(--ease-out);
+  }
+
+  .consultationDialog,
+  .capabilityCard,
+  .knowledgeGrid article,
+  .researchProjectsGrid article,
+  .primaryButton:active,
+  .secondaryButton:active,
+  .tealButton:active,
+  .downloadButton:active,
+  .heroConsultationTrigger:active,
+  .heroForm button:not(.dialogClose):active,
+  .knowledgeAllLink:active,
+  .partnerCta a:active,
+  .researchProjectsGrid article > a:active {
+    transform: none !important;
+  }
+
+  .consultationDialog,
+  .capabilityCard,
+  .knowledgeGrid article,
+  .researchProjectsGrid article {
+    transition: none;
+  }
+}
+
+/* A visible first-load sequence; scroll-linked motion takes over below the fold.
+   The old version slid every block up 2.75rem at once over 1s, which read as a
+   jump. This one surfaces each element out of a soft blur with a shorter travel
+   and a wider stagger, so the headline resolves line by line. */
+@keyframes hero-copy-arrive {
+  from {
+    filter: blur(0.3rem);
+    opacity: 0;
+    transform: translate3d(0, 1.1rem, 0);
+  }
+  45% {
+    filter: blur(0);
+    opacity: 1;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* The hero photo no longer animates. `scale(1.06) → scale(1)` moved the image
+   underneath `.heroMedia::before`, whose gradient stays put — the fixed edge
+   sliding across the moving picture read as the frame splitting and rejoining.
+   Only the copy animates now. */
+
+@keyframes hero-gateway-arrive {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 2rem, 0) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+
+/* The three headline lines animate individually, not the <h1> as one block. */
+.heroCopy > .eyebrow,
+.heroCopy > h1 > span,
+.heroCopy > .heroLead,
+.heroCopy > .heroButtons {
+  animation: hero-copy-arrive 850ms var(--ease-out) both;
+}
+
+.heroCopy > h1 > span {
+  display: block;
+}
+
+/* Keep the whole sequence inside ~1.5s. Stretching it to 2.5s left the hero
+   visibly empty on first paint, which reads as a page that failed to load. */
+.heroCopy > .eyebrow { animation-delay: 60ms; }
+.heroCopy > h1 > span:nth-child(1) { animation-delay: 180ms; }
+.heroCopy > h1 > span:nth-child(2) { animation-delay: 300ms; }
+.heroCopy > h1 > span:nth-child(3) { animation-delay: 420ms; }
+.heroCopy > .heroLead { animation-delay: 560ms; }
+.heroCopy > .heroButtons { animation-delay: 680ms; }
+
+.gatewayInner {
+  animation: hero-gateway-arrive 850ms var(--ease-out) 800ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroCopy > .eyebrow,
+  .heroCopy > h1 > span,
+  .heroCopy > .heroLead,
+  .heroCopy > .heroButtons,
+  .gatewayInner {
+    animation: none;
+    filter: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   Layout pass — aligns the homepage to the approved mockups in
+   /public/new image (01…10). Rules below intentionally override
+   the earlier passes; keep this block last.
+   ============================================================ */
+
+/* 01 — Hero: copy on the left, photography held to the right half. */
+.hero{background:#fff;height:auto;min-height:min(46rem,88vh);overflow:hidden;position:relative}
+.hero::after{content:none}
+.heroMedia{position:absolute;inset:0 0 0 40%;z-index:0}
+/* The wash hugs the left edge and is gone by 54%, so the right half of the photo
+   is untouched — stretching it to 96% left a thin veil (alpha .19 at 73%) over
+   the people, which read as the picture being washed out. Full strength only
+   across the strip the copy column overlaps (~14% of this box); the many stops
+   after that approximate an ease curve, which is what stops a short alpha ramp
+   from showing a hard vertical edge the way the original three-stop one did. */
+.heroMedia::before{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.96) 8%,rgba(255,255,255,.88) 14%,rgba(255,255,255,.72) 17%,rgba(255,255,255,.52) 20%,rgba(255,255,255,.34) 23%,rgba(255,255,255,.19) 26%,rgba(255,255,255,.09) 29%,rgba(255,255,255,.03) 32%,rgba(255,255,255,0) 35%);content:"";inset:0;position:absolute;z-index:1}
+/* Anchored right, not 58%: the photo is 1.60:1 while this media box is ~1.23:1,
+   so `cover` throws away ~300px of width. The people and the city model sit in
+   the right two-thirds of the frame — centring the crop cut the person on the
+   far right in half. The empty wall it gives up on the left is behind the copy
+   column's white wash anyway. */
+.heroImage{object-fit:cover;object-position:100% 45%}
+.heroInner{align-items:center;display:block;height:auto;padding-block:clamp(4.5rem,8vw,7rem) clamp(6.5rem,10vw,9rem);position:relative;z-index:2}
+.heroCopy{align-self:auto;max-width:44rem;padding:0}
+.hero .eyebrow{background:none;border:0;color:#0b5f66;font-size:.98rem;letter-spacing:.09em;margin:0 0 1.5rem;min-height:0;padding:0}
+.heroCopy h1{color:#0b3455;font-size:clamp(2.9rem,5.4vw,4.6rem);letter-spacing:-.005em;line-height:1.05;margin:0 0 1.9rem;text-wrap:nowrap}
+.heroLead{background:none;border:0;border-radius:0;box-shadow:none;color:#3d5266;font-size:clamp(1.02rem,1.2vw,1.2rem);line-height:1.8;margin:0 0 2.5rem;max-width:38rem;padding:0}
+.heroButtons{gap:1rem}
+.primaryButton,.secondaryButton,.tealButton,.downloadButton{border-radius:.5rem;gap:.8rem;letter-spacing:0;min-height:3.85rem;padding-inline:1.85rem;text-transform:none}
+
+/* 01 — Service gateway card overlapping the hero. */
+.gatewayStrip .gatewayInner{background:#fff;border:1px solid #e2e9ec;border-radius:.9rem;box-shadow:0 1.25rem 3rem rgba(11,52,85,.09);grid-template-columns:repeat(6,minmax(0,1fr));margin-top:-3.25rem;min-height:6.5rem}
+.gatewayInner>a{align-items:center;gap:.9rem;grid-template-columns:auto auto auto;justify-content:center;padding:1.5rem 1rem}
+.gatewayInner>a:not(:last-child){border-right:1px solid #e6ecef}
+.gatewayInner strong{color:#0b3455;font-size:1.06rem;font-weight:600;white-space:nowrap}
+.gatewayInner>a>svg:first-child{color:#0b6a72;height:1.8rem;width:1.8rem}
+.gatewayInner>a>svg:last-child{color:#0b6a72;height:1.05rem;width:1.05rem}
+
+/* 02 — Introduction: story card beside a single vision/mission card + motto panel. */
+.aboutGrid{align-items:start;gap:clamp(1.5rem,2.4vw,2.5rem);grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.aboutIntro{max-width:none}
+.aboutIntro h2{font-size:clamp(2.4rem,3.6vw,3.35rem)}
+.visionStack{align-content:start;gap:1.5rem}
+.visionCard{background:#fff;border:1px solid #d9e3e6;border-top:.3rem solid #f15b2a;border-radius:.75rem;box-shadow:0 1rem 2.75rem rgba(11,52,85,.05);overflow:hidden}
+.visionStack .visionCard article{background:none;border:0;border-radius:0;box-shadow:none;gap:1.75rem;grid-template-columns:3rem minmax(0,1fr);padding:2rem 2.25rem}
+.visionStack .visionCard article+article{border-top:1px solid #e4ebee}
+.visionStack .visionCard article>span{color:#f15b2a;font-size:1.5rem;font-weight:600;padding-top:.2rem}
+.visionStack .visionCard article:nth-child(2)>span{color:#69a52b}
+.aboutMotto{align-items:center;background:#0b5f66;border-radius:.75rem;color:#fff;display:grid;gap:1.75rem;grid-template-columns:auto minmax(0,1fr) auto;min-height:9.75rem;padding:1.75rem 2.25rem;text-decoration:none;transition:background-color 380ms var(--ease-out)}
+.aboutMotto span{font-family:var(--font-heading);font-size:clamp(1.45rem,2vw,1.95rem);line-height:1.3}
+.aboutMotto:hover,.aboutMotto:focus-visible{background:#084f55}
+
+/* 04 — Sustainability commitments as a static 3 × 2 grid. */
+.commitmentGrid{display:grid;gap:1.3rem;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
+.commitmentGrid li{align-items:center;background:#fff;border:1px solid #dbe6ee;border-top:.25rem solid var(--commitment-color);border-radius:.75rem;box-shadow:0 .75rem 2rem rgba(12,57,91,.06);display:grid;gap:1.25rem;grid-template-columns:4rem minmax(0,1fr);min-height:9.75rem;padding:1.5rem 1.6rem}
+.commitmentGrid .commitmentIcon{height:4rem;width:4rem}
+.commitmentGrid li>span:last-child{display:grid;gap:.45rem}
+.commitmentGrid strong{color:#0b3455;font-family:var(--font-heading);font-size:1.3rem;line-height:1.25;white-space:normal}
+.commitmentGrid small{color:#4a5f73;font-size:.95rem;line-height:1.45}
+
+/* 05 — RISES values as five discrete cards. */
+.risesGrid{border:0;border-radius:0;display:grid;gap:1.25rem;grid-template-columns:repeat(5,minmax(0,1fr));overflow:visible}
+.risesGrid article{background:#fff;border:1px solid #e0e8eb;border-radius:.75rem;min-height:16.5rem;padding:2rem 1.5rem}
+.risesGrid article:not(:last-child){border-right:1px solid #e0e8eb}
+.risesGrid p{margin-top:1.35rem}
+
+/* 06 — Editorial grid: every card leads with its image, body underneath. */
+.insightsHeading>a{gap:.9rem}
+.insightsGrid{align-items:stretch;display:grid;gap:1.5rem;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);min-height:0}
+.leadArticle{background:#fff;border:1px solid #e0e8eb;border-radius:.9rem;box-shadow:0 1rem 2.5rem rgba(8,47,80,.06);display:flex;flex-direction:column;grid-row:1/span 2;min-height:0;overflow:hidden;position:static}
+/* The two side cards set the height of the whole row, so they are what keeps the
+   block compact — their images stay short and their bodies stay tight. The lead
+   image then absorbs whatever slack is left in the taller left column: pinning it
+   to a fixed height instead left a large dead gap under the lead headline, and
+   letting it grow unbounded made the picture tower over the pair on the right. */
+.sideArticle .articleImage{aspect-ratio:auto;flex:0 0 auto;height:clamp(8rem,10.5vw,10.75rem);inset:auto;min-height:0;position:relative}
+.leadArticle .articleImage{aspect-ratio:auto;flex:1 1 auto;height:auto;inset:auto;min-height:clamp(8rem,10.5vw,10.75rem);position:relative}
+.leadArticle .articleBody{flex:0 0 auto}
+.sideArticle{align-items:stretch;background:#fff;border:1px solid #e0e8eb;border-radius:.9rem;box-shadow:0 1rem 2.5rem rgba(8,47,80,.06);display:flex;flex-direction:column;gap:0;overflow:hidden}
+.articleImage img{object-fit:cover}
+.articleBody{display:flex;flex:1;flex-direction:column;padding:1.5rem 1.75rem 1.6rem}
+.articleMeta{align-items:center;color:#0b3455;display:flex;flex-wrap:wrap;font-size:.8rem;gap:.9rem;letter-spacing:.055em;margin:0 0 1.05rem}
+.metaBadge{background:#0b3455;border-radius:.3rem;color:#fff;font-weight:700;padding:.45rem .85rem;text-transform:uppercase}
+.metaDate{border-left:1px solid #cfdae1;color:#5c7183;font-size:.9rem;font-weight:600;letter-spacing:0;padding-left:.9rem}
+.leadArticle h3{color:#0b3455;font-size:clamp(1.35rem,1.75vw,1.7rem);line-height:1.3;margin:0 0 1.1rem}
+.articleFoot{align-items:center;color:#4b5f72;display:flex;font-size:.95rem;gap:1.5rem;justify-content:space-between;line-height:1.6;margin:auto 0 0}
+.circleArrow{align-items:center;border:1.5px solid #0b6a72;border-radius:50%;color:#0b6a72;display:inline-flex;flex:none;height:2.6rem;justify-content:center;text-decoration:none;transition:background-color 380ms var(--ease-out),color 380ms var(--ease-out);width:2.6rem}
+.circleArrow:hover,.circleArrow:focus-visible{background:#0b6a72;color:#fff}
+.sideArticle .articleBody{align-items:center;column-gap:1.25rem;display:grid;grid-template-columns:minmax(0,1fr) auto;padding:1.2rem 1.5rem 1.35rem}
+.sideArticle .articleMeta{color:#0b3455;font-weight:700;grid-column:1/-1;margin-bottom:.75rem;text-transform:uppercase}
+.sideArticle h3{color:#0b3455;font-size:clamp(1.15rem,1.5vw,1.4rem);line-height:1.35;margin:0}
+
+/* 07 — Knowledge hub keeps a single, unaccompanied heading. */
+.knowledgeHeading{display:block;margin-bottom:2.25rem}
+.knowledgeHeading h2{font-size:clamp(2.2rem,3.4vw,3.3rem);margin:0;max-width:none;white-space:normal}
+
+/* 08 — Advisory process closes with the consultation trigger. */
+.processCta{display:flex;justify-content:center;margin-top:3rem}
+.consultationTrigger{align-items:center;background:#fff;border:1px solid #0b6a72;border-radius:.6rem;color:#0b5f66;cursor:pointer;display:inline-flex;font-family:var(--font-body);font-size:1.05rem;font-weight:700;gap:.85rem;min-height:4rem;padding-inline:2rem;transition:background-color 380ms var(--ease-out),color 380ms var(--ease-out),transform 320ms var(--ease-out)}
+.consultationTrigger:hover,.consultationTrigger:focus-visible{background:#0b5f66;color:#fff}
+.consultationTrigger:active{transform:scale(.97)}
+
+/* 09 — Featured research: supporting copy reads as plain text. */
+.researchLead{align-self:center;color:#c8d8e3;font-size:1.08rem;line-height:1.7;margin:0;max-width:38rem}
+
+@media (max-width:87.5rem){
+  .gatewayInner>a{gap:.6rem;padding-inline:.6rem}
+  .gatewayInner strong{font-size:.98rem}
+}
+
+@media (max-width:70rem){
+  .heroMedia{inset:0}
+  /* The media box goes full-bleed and tall here, so `cover` crops horizontally
+     instead of vertically. Right-anchoring — correct on desktop — would leave
+     only the far edge of the room; pull back so the group stays in frame. */
+  .heroImage{object-position:78% 45%}
+  .heroMedia::before{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.97) 12%,rgba(255,255,255,.92) 26%,rgba(255,255,255,.84) 40%,rgba(255,255,255,.72) 54%,rgba(255,255,255,.58) 68%,rgba(255,255,255,.45) 82%,rgba(255,255,255,.35) 100%)}
+  .heroCopy h1{text-wrap:balance}
+  .gatewayStrip .gatewayInner{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gatewayInner>a{border-bottom:1px solid #e6ecef}
+  .gatewayInner>a:nth-child(3n){border-right:0}
+  .aboutGrid{grid-template-columns:1fr}
+  .commitmentGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .risesGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .risesGrid article,.risesGrid article:not(:last-child){border:1px solid #e0e8eb;min-height:0}
+  .risesGrid article:last-child{grid-column:auto}
+  .insightsGrid{grid-template-columns:1fr}
+  .leadArticle{grid-row:auto;min-height:0}
+}
+
+@media (max-width:48rem){
+  .hero{min-height:0}
+  .heroMedia::before{background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.8) 60%,rgba(255,255,255,.9) 100%)}
+  .heroImage{opacity:.5}
+  .heroCopy h1{font-size:clamp(2.5rem,10vw,3.4rem)}
+  .heroButtons{gap:.75rem}
+  .primaryButton,.secondaryButton,.tealButton,.downloadButton{width:100%}
+  .gatewayStrip .gatewayInner{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:-2rem}
+  .gatewayInner>a{padding:1.15rem .75rem}
+  .gatewayInner>a:nth-child(2n){border-right:0}
+  .gatewayInner>a>svg:last-child{display:none}
+  .visionStack .visionCard article{gap:1rem;grid-template-columns:2.5rem minmax(0,1fr);padding:1.5rem 1.4rem}
+  .aboutMotto{gap:1.15rem;padding:1.5rem 1.4rem}
+  .commitmentGrid{grid-template-columns:1fr}
+  .commitmentGrid li{grid-template-columns:3.5rem minmax(0,1fr);min-height:0;padding:1.25rem}
+  .commitmentGrid .commitmentIcon{height:3.5rem;width:3.5rem}
+  .risesGrid{grid-template-columns:1fr}
+  .articleBody{padding:1.4rem 1.4rem 1.5rem}
+  .articleFoot{align-items:flex-start;flex-direction:column;gap:1rem}
+  .sideArticle .articleBody{padding:1.2rem 1.4rem 1.35rem}
+  .processCta{margin-top:2.25rem}
+  .consultationTrigger{padding-inline:1.35rem;width:100%}
+}
+
+/* Illustrated icons — the drawings from /public/assets replace the flat glyphs.
+   They already carry their own plate, so the wrapper only sizes and centres them. */
+.gatewayStrip .gatewayInner{min-height:7.5rem}
+.gatewayInner>a>img:first-child{height:auto;max-height:4rem;width:auto}
+.capabilityIcon,.processIcon,.pillarIcon,.commitmentGrid .commitmentIcon{background:none;height:auto;padding:0;width:auto}
+.capabilityIcon{justify-content:flex-start;margin-bottom:1.5rem;min-height:6.5rem}
+.commitmentGrid li{align-items:center;grid-template-columns:5rem minmax(0,1fr)}
+.commitmentGrid .commitmentIcon{justify-content:center}
+.pillarIcon{min-height:4.75rem}
+.processIcon{margin:0 auto .85rem;min-height:6.5rem}
+.consultationTrigger img{height:auto;max-height:1.9rem;width:auto}
+
+@media (max-width:48rem){
+  .gatewayInner>a>img:first-child{max-height:2.75rem}
+}
+
+/* Metrics strip — matches the "GISA qua những con số" board in /public/assets. */
+.impactStatsBlock{margin-top:4.5rem}
+.impactStatsEyebrow{border-bottom:.2rem solid #0d6a75;color:#0d6a75;display:inline-block;font-size:1rem;font-weight:700;letter-spacing:.12em;margin:0 0 1.5rem;padding-bottom:.55rem;text-transform:uppercase}
+.impactStatsBlock .impactStats{background:#fff;border:1px solid #e3e9ed;border-radius:.9rem;box-shadow:0 .75rem 2.25rem rgba(12,57,91,.05);margin:0;overflow:visible}
+.impactStatsBlock .impactStats>div{display:grid;gap:.65rem;justify-items:center;min-height:0;padding:2.5rem 1.5rem;text-align:center}
+.impactStatsBlock .impactStats>div:not(:last-child){border-right:1px solid #e6ebef}
+.impactStatsBlock .impactStats dt{color:var(--stat-color);font-size:clamp(3rem,4.2vw,4.35rem);line-height:1}
+.impactStatsBlock .impactStats dd{color:#2b4257;font-size:1.02rem;letter-spacing:0;text-transform:none}
+
+@media (max-width:48rem){
+  .impactStatsBlock{margin-top:3rem}
+  .impactStatsBlock .impactStats>div{padding:1.9rem 1rem}
+}
+
+/* 09 — Featured research: illustrated project marks + statement plate. */
+/* The drawings were the smallest thing on a 322px card: the icon box only took the
+   width its content asked for, and an 8rem cap flattened the two tall ones. The
+   number is lifted out of the flow to the top-right corner — as in the mockup —
+   so the illustration gets nearly the full card width instead of sharing the row. */
+/* The source PNGs top out at 206–320px wide (they were cropped from a 1683px
+   design board — there is no sharper original), so `width: auto` pinned two of
+   them to their native size no matter how much room the card had. `width: 100%`
+   lets them fill the card; the 13rem ceiling holds the worst upscale to ~1.25x,
+   past which the drawings start to soften visibly. The number moves above the
+   band so a full-width illustration can never run under it. */
+.researchProjectTop{align-items:flex-start;margin-bottom:1.9rem;min-height:16rem;padding-top:2.9rem;position:relative}
+.researchProjectIcon{align-items:center;background:none;border:0;display:flex;justify-content:flex-start;min-height:13rem;padding:0;width:100%}
+/* `width:100%` + `max-height` on its own stretches the drawing (the width wins and
+   the height clamps independently); `contain` keeps each one on its own ratio.
+   The 1254px replacements are square and sharp, so the band can be taller than
+   the 13rem the old low-res crops tolerated. */
+.researchProjectIcon img{height:15rem;max-width:100%;object-fit:contain;object-position:left center;width:100%}
+.researchProjectNumber{font-size:2.6rem;line-height:1;opacity:.45;position:absolute;right:0;top:0}
+/* Card width is what caps the illustration, so the panel and the card both give
+   back padding — every rem here goes straight into the drawing. */
+.researchProjectsSection .contentContainer{padding-inline:2.25rem}
+.researchProjectsGrid article{min-height:28rem;padding:1.1rem 1rem 1.6rem}
+
+@media (max-width:48rem){
+  /* One card per row here, so the panel keeps its narrower gutter — the desktop
+     padding above would otherwise eat 36px off each side of a 390px screen. */
+  .researchProjectsSection .contentContainer{padding-inline:1.25rem}
+  .researchProjectTop{min-height:0;padding-top:2.6rem}
+  .researchProjectIcon,.researchProjectIcon img{height:11rem;min-height:0}
+  .researchProjectsGrid article{min-height:0}
+}
+.researchLead{align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);border-radius:.75rem;display:flex;gap:1.25rem;max-width:none;padding:1.35rem 1.6rem}
+.researchLead img{flex:none;height:auto;max-height:2.9rem;width:auto}
+
+/* Bigger pillar art: the tile was sized for a flat glyph, so the detailed
+   illustrations that replaced them had barely half the card's icon column. */
+.pillarGrid article{grid-template-columns:8.25rem 1fr;gap:1.5rem}
+.pillarIcon{min-height:6.75rem}
+.pillarIcon img{height:auto;max-height:6.75rem;max-width:100%;width:auto}
+
+/* Hover-to-expand for the research and news tabs: the row becomes a flex track
+   so the card under the cursor can borrow width from its neighbours. A grid of
+   four rigid columns cannot do this — `grid-template-columns` is not animatable
+   per-item, and changing it reflows every card at once. The course tab keeps its
+   grid: those cards lead with a 16:9 image that would distort as widths change. */
+.knowledgeGrid:not(.courseGrid){display:flex;gap:1.25rem}
+.knowledgeGrid:not(.courseGrid)>article{
+  flex:1 1 0;
+  min-width:0;
+  transition:flex-grow 700ms var(--ease-out),background-color 700ms var(--ease-out),border-color 700ms var(--ease-out),box-shadow 700ms var(--ease-out),transform 700ms var(--ease-out);
+}
+/* Siblings give way first, so the total width of the row never changes. */
+.knowledgeGrid:not(.courseGrid):hover>article,
+.knowledgeGrid:not(.courseGrid):focus-within>article{flex-grow:.9}
+/* A restrained 1.3 : 0.9 split — the earlier 1.8 : 0.8 threw the row around. */
+.knowledgeGrid:not(.courseGrid)>article:hover,
+.knowledgeGrid:not(.courseGrid)>article:focus-within{
+  background:#f2f8f8;
+  border-color:#0b6a72;
+  box-shadow:0 1.25rem 3rem rgba(8,47,80,.1);
+  flex-grow:1.3;
+  transform:none;
+}
+.knowledgeGrid:not(.courseGrid)>article:hover .knowledgeCardTop>span,
+.knowledgeGrid:not(.courseGrid)>article:focus-within .knowledgeCardTop>span{color:#0b6a72}
+
+@media (max-width:70rem){
+  /* Two per row at this width, and pointer-driven expansion is meaningless on a
+     touch screen, so fall back to the plain grid. */
+  .knowledgeGrid:not(.courseGrid){display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .knowledgeGrid:not(.courseGrid)>article{flex:none}
+  .knowledgeGrid:not(.courseGrid):hover>article,
+  .knowledgeGrid:not(.courseGrid)>article:hover{flex-grow:0}
+}
+
+@media (max-width:48rem){
+  .knowledgeGrid:not(.courseGrid){grid-template-columns:1fr}
+  .pillarGrid article{grid-template-columns:6.25rem 1fr}
+  .pillarIcon,.pillarIcon img{min-height:5.25rem;max-height:5.25rem}
+}
+
+/* Article thumbnails inside the hover-expand row. They must be a FIXED height,
+   not an aspect ratio: the cards change width on hover, and a ratio-driven image
+   would change height with it and shove the whole row up and down mid-animation.
+   `cover` absorbs the width change instead. Only the course tab keeps 16:9. */
+.knowledgeGrid:not(.courseGrid) .courseImage{aspect-ratio:auto;height:15rem}
+.knowledgeGrid:not(.courseGrid) .courseImage img{height:100%;object-fit:cover;width:100%}
+.knowledgeGrid:not(.courseGrid) .courseCard .knowledgeCardBody{min-height:0}
+/* Hold the row at the height it reaches while a card is expanded. Without this
+   the shrinking siblings wrap their titles onto an extra line and the whole row
+   grows ~48px the moment the pointer lands, which shoves the section below. */
+.knowledgeGrid:not(.courseGrid)>article{min-height:28rem}
+
+@media (max-width:48rem){
+  .knowledgeGrid:not(.courseGrid) .courseImage{height:12rem}
+}
+
+/* Vietnamese syllables are bound with NBSP (src/lib/vietnamese-text.ts), so a
+   word can no longer be split across lines — whole words move instead. That makes
+   column width the thing that decides how a heading breaks. "GIẢI PHÁP CHO TÁC
+   ĐỘNG BỀN VỮNG" needs ~530px for its second line and had 518, which pushed it
+   into three ragged lines. Two more rem of column is all it takes. */
+.capabilitiesInner{grid-template-columns:36rem minmax(0,1fr)}
+
+/* Motto: two balanced lines, sized up now that it no longer has to squeeze onto
+   one. Each half is a block so the break is the sense break, never wherever the
+   text happens to run out of room. */
+.aboutMotto > span > span{display:block}
+.aboutMotto span{font-size:clamp(1.75rem,2.5vw,2.45rem);line-height:1.22}

@@ -1,0 +1,445 @@
+:root {
+  color-scheme: light;
+  --color-teal: #005F69;
+  --color-orange: #F26F33;
+  --color-green: #004424;
+  --color-blue: #007BFF;
+  --color-navy: #19486A;
+  --color-ink: #1A1A1A;
+  --color-mist: #F2F5F6;
+  --color-white: #FFFFFF;
+  --font-heading: "Source Serif 4", Cambria, Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", Calibri, "Segoe UI", Arial, sans-serif;
+  /* Single source of truth for the page frame. Every container across the site
+     (header, footer, home sections, inner pages, search) resolves to
+     `min(100% - 2 * var(--gutter), var(--container))`, so left/right edges line
+     up in every section regardless of background colour. --gutter steps down at
+     the two layout breakpoints below; nothing should hardcode its own width. */
+  --container: 112rem;
+  --gutter: 4rem;
+  /* Comfortable reading measure for prose columns nested inside the frame. */
+  --container-text: 78rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-section: clamp(3.5rem, 8vw, 7rem);
+  --radius-control: 0.5rem;
+  --radius-card: 1.25rem;
+  --shadow-card: 0 1rem 2.5rem rgb(0 68 36 / 10%);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --motion-distance: clamp(1.75rem, 4vw, 4rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* `clip` (not `hidden`) keeps stray full-bleed overhang from scrolling the page
+   without turning the root into a scroll container — `hidden` would do that and
+   freeze every `animation-timeline: view()` reveal below. */
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1rem;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  scroll-margin-top: 7rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+
+p,
+li,
+dd {
+  hyphens: none;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+  word-break: normal;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+.container {
+  margin-inline: auto;
+  width: min(100% - (2 * var(--gutter)), var(--container));
+}
+
+.focus-ring:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  background: var(--color-white);
+  left: 0.5rem;
+  padding: 0.75rem 1rem;
+  position: fixed;
+  top: 0.5rem;
+  transform: translateY(calc(-100% - 1.5rem));
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+section[id] {
+  scroll-margin-top: 6.5rem;
+}
+
+@keyframes scroll-reveal {
+  from {
+    opacity: 0.04;
+    transform: translate3d(0, calc(var(--motion-distance) * 1.35), 0) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes scroll-item-reveal {
+  from {
+    opacity: 0.08;
+    transform: translate3d(0, clamp(1.5rem, 3.5vw, 3rem), 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes scroll-media-parallax {
+  from {
+    transform: translate3d(0, -2%, 0) scale(1.06);
+  }
+  to {
+    transform: translate3d(0, 2%, 0) scale(1.01);
+  }
+}
+
+/* Bidirectional editorial motion for the homepage's evidence-led sections. */
+@keyframes academic-section-copy {
+  0% {
+    opacity: 0.06;
+    translate: 0 3.25rem;
+  }
+  26%,
+  74% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0.1;
+    translate: 0 -2.4rem;
+  }
+}
+
+@keyframes academic-statement {
+  0% {
+    opacity: 0.06;
+    translate: 2.75rem 1rem;
+  }
+  28%,
+  72% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0.1;
+    translate: -2.25rem -0.75rem;
+  }
+}
+
+@keyframes academic-commitment-card {
+  0% {
+    opacity: 0.06;
+    scale: 0.985;
+    translate: 0 2.75rem;
+  }
+  27%,
+  75% {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0.1;
+    scale: 0.99;
+    translate: 0 -1.9rem;
+  }
+}
+
+@keyframes academic-rises-card {
+  0% {
+    opacity: 0.04;
+    scale: 0.97;
+    translate: 0 2.2rem;
+  }
+  25%,
+  76% {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0.08;
+    scale: 0.985;
+    translate: 0 -1.5rem;
+  }
+}
+
+@keyframes academic-partner-card {
+  0% {
+    opacity: 0.12;
+    scale: 0.955;
+    translate: 0 1.65rem;
+  }
+  24%,
+  76% {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0.12;
+    scale: 0.97;
+    translate: 0 -1.2rem;
+  }
+}
+
+@keyframes academic-research-card {
+  0% {
+    opacity: 0.04;
+    scale: 0.98;
+    translate: 0 3rem;
+  }
+  28%,
+  72% {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0.08;
+    scale: 0.99;
+    translate: 0 -2rem;
+  }
+}
+
+@keyframes academic-partner-cta {
+  0% {
+    opacity: 0.08;
+    scale: 0.985;
+    translate: 0 2rem;
+  }
+  26%,
+  74% {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0.1;
+    scale: 0.99;
+    translate: 0 -1.4rem;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  /* Every range below starts further into `entry` than it used to. Because these
+     are scroll-linked, a later start is what "more delay" means here: the element
+     holds its resting state longer before the reveal begins, so nothing fires the
+     instant it clips the fold. */
+  [data-scroll-motion='reveal'] {
+    animation: scroll-reveal var(--ease-in-out) both;
+    animation-range: entry 14% cover 58%;
+    animation-timeline: view(block);
+  }
+
+  [data-scroll-motion='item'] {
+    animation: scroll-item-reveal var(--ease-in-out) both;
+    animation-range:
+      entry calc(12% + (var(--motion-index, 0) * 1.2%))
+      cover calc(54% + (var(--motion-index, 0) * 1.2%));
+    animation-timeline: view(block);
+  }
+
+  [data-scroll-motion='media'] > img,
+  [data-scroll-motion='media'] > picture > img {
+    animation: scroll-media-parallax linear both;
+    animation-range: entry 0% exit 100%;
+    animation-timeline: view(block);
+  }
+
+  [data-scroll-motion='section-copy'],
+  [data-scroll-motion='statement'],
+  [data-scroll-motion='commitment-card'],
+  [data-scroll-motion='rises-card'],
+  [data-scroll-motion='partner-card'],
+  [data-scroll-motion='partner-cta'],
+  [data-scroll-motion='research-card'] {
+    animation-fill-mode: both;
+    animation-range:
+      entry calc(14% + var(--motion-step, 0%))
+      exit calc(100% - var(--motion-step, 0%));
+    animation-timeline: view(block);
+    animation-timing-function: linear;
+  }
+
+  [data-scroll-motion='section-copy'] {
+    animation-name: academic-section-copy;
+  }
+
+  [data-scroll-motion='statement'] {
+    animation-name: academic-statement;
+  }
+
+  [data-scroll-motion='commitment-card'] {
+    animation-name: academic-commitment-card;
+  }
+
+  [data-scroll-motion='rises-card'] {
+    animation-name: academic-rises-card;
+  }
+
+  [data-scroll-motion='partner-card'] {
+    animation-name: academic-partner-card;
+  }
+
+  [data-scroll-motion='partner-cta'] {
+    animation-name: academic-partner-cta;
+  }
+
+  [data-scroll-motion='research-card'] {
+    animation-name: academic-research-card;
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  html[data-scroll-fallback='true'] [data-scroll-motion='section-copy'],
+  html[data-scroll-fallback='true'] [data-scroll-motion='statement'],
+  html[data-scroll-fallback='true'] [data-scroll-motion='commitment-card'],
+  html[data-scroll-fallback='true'] [data-scroll-motion='rises-card'],
+  html[data-scroll-fallback='true'] [data-scroll-motion='partner-card'],
+  html[data-scroll-fallback='true'] [data-scroll-motion='partner-cta'],
+  html[data-scroll-fallback='true'] [data-scroll-motion='research-card'] {
+    opacity: 0.08;
+    scale: 0.985;
+    translate: 0 2.25rem;
+    transition:
+      opacity 760ms var(--ease-out),
+      scale 880ms var(--ease-out),
+      translate 880ms var(--ease-out);
+  }
+
+  html[data-scroll-fallback='true'] [data-scroll-motion='statement'] {
+    translate: 2.5rem 0.75rem;
+  }
+
+  html[data-scroll-fallback='true'] [data-scroll-motion='partner-card'] {
+    scale: 0.96;
+    translate: 0 1.5rem;
+  }
+
+  html[data-scroll-fallback='true'] [data-scroll-motion][data-scroll-side='top'] {
+    translate: 0 -1.8rem;
+  }
+
+  html[data-scroll-fallback='true'] [data-scroll-motion='statement'][data-scroll-side='top'] {
+    translate: -2.1rem -0.6rem;
+  }
+
+  /* Matches the extra lead-in the scroll-linked ranges above now have, so browsers
+     without view timelines settle on the same rhythm rather than snapping early. */
+  html[data-scroll-fallback='true'] [data-scroll-motion][data-scroll-visible='true'] {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+    transition-delay: calc(140ms + var(--motion-delay, 0ms));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-scroll-motion] {
+    animation: none !important;
+    opacity: 1 !important;
+    scale: none !important;
+    transform: none !important;
+    transition: none !important;
+    translate: none !important;
+  }
+
+  [data-scroll-motion='media'] > img,
+  [data-scroll-motion='media'] > picture > img {
+    animation: none !important;
+    transform: none;
+  }
+}
+
+/* Frame breakpoints — these drive every container on the site at once. */
+@media (max-width: 87.5rem) {
+  :root {
+    --gutter: 2rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  :root {
+    --gutter: 1rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  :root {
+    --space-section: 3.5rem;
+  }
+}

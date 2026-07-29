@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "selectedConcept": "Option 2 — Knowledge in Motion",
+  "source": {
+    "originalPath": "D:/AI/codex/generated_images/019f7442-ee3e-7f52-ae27-bd77fdd3fbef/exec-50367f87-efbb-4294-937c-aa46757feba7.png",
+    "lockedCopyPath": "docs/design-targets/gisa-option-2-knowledge-in-motion.png",
+    "sha256": "c1d4d04a1ed4d14a2272cfb4c6ae233f4b4b8cf89bc067a994bef341137057fe",
+    "width": 829,
+    "height": 1898,
+    "format": "png"
+  },
+  "desktopInterpretation": {
+    "viewportWidth": 1440,
+    "normalizedPageHeight": 3296,
+    "scale": 1.7370337756,
+    "measurementBasis": "Source-image pixel boundaries scaled proportionally to a 1440px-wide desktop canvas; values are rounded to whole CSS pixels.",
+    "regions": [
+      { "id": "header", "sourceY": 0, "sourceHeight": 57, "desktopY": 0, "desktopHeight": 99 },
+      { "id": "hero", "sourceY": 57, "sourceHeight": 310, "desktopY": 99, "desktopHeight": 538 },
+      { "id": "activity-strip", "sourceY": 367, "sourceHeight": 79, "desktopY": 637, "desktopHeight": 137 },
+      { "id": "impact-journey", "sourceY": 446, "sourceHeight": 262, "desktopY": 774, "desktopHeight": 455 },
+      { "id": "rises", "sourceY": 708, "sourceHeight": 136, "desktopY": 1229, "desktopHeight": 236 },
+      { "id": "six-pillars", "sourceY": 844, "sourceHeight": 239, "desktopY": 1465, "desktopHeight": 415 },
+      { "id": "featured-work", "sourceY": 1083, "sourceHeight": 215, "desktopY": 1880, "desktopHeight": 373 },
+      { "id": "conditional-metrics", "sourceY": 1298, "sourceHeight": 95, "desktopY": 2253, "desktopHeight": 165 },
+      { "id": "insights", "sourceY": 1393, "sourceHeight": 244, "desktopY": 2418, "desktopHeight": 424 },
+      { "id": "consultation-process", "sourceY": 1637, "sourceHeight": 109, "desktopY": 2842, "desktopHeight": 189 },
+      { "id": "cta", "sourceY": 1746, "sourceHeight": 50, "desktopY": 3031, "desktopHeight": 87 },
+      { "id": "footer", "sourceY": 1796, "sourceHeight": 102, "desktopY": 3118, "desktopHeight": 178 }
+    ]
+  }
+}

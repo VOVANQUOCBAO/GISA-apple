@@ -1,0 +1,86 @@
+{
+  "candidates": [
+    {
+      "evidence": "home contact link",
+      "id": "contact-e24b0d224591",
+      "kind": "contact",
+      "reviewStatus": "pending_review",
+      "sourceUrl": "https://gisa.edu.vn/",
+      "value": "mailto:info@gisa.edu.vn"
+    },
+    {
+      "evidence": "home contact link",
+      "id": "contact-cd4cc97d799f",
+      "kind": "contact",
+      "reviewStatus": "pending_review",
+      "sourceUrl": "https://gisa.edu.vn/",
+      "value": "tel:0818.711.799"
+    },
+    {
+      "evidence": "home adjacent metric widgets",
+      "id": "metric-cd4b9992a83b",
+      "kind": "metric",
+      "reviewStatus": "pending_review",
+      "sourceUrl": "https://gisa.edu.vn/",
+      "value": "1000+ Bài nghiên cứu trên khắp thế giới"
+    },
+    {
+      "evidence": "home adjacent metric widgets",
+      "id": "metric-feafc9db1c1d",
+      "kind": "metric",
+      "reviewStatus": "pending_review",
+      "sourceUrl": "https://gisa.edu.vn/",
+      "value": "20+ Đối tác toàn cầu"
+    },
+    {
+      "evidence": "home adjacent metric widgets",
+      "id": "metric-e8f84188f2fa",
+      "kind": "metric",
+      "reviewStatus": "pending_review",
+      "sourceUrl": "https://gisa.edu.vn/",
+      "value": "500+ Dự án đã thực hiện thành công"
+    },
+    {
+      "evidence": "home meta description",
+      "id": "organization_description-fecf794c45e4",
+      "kind": "organization_description",
+      "reviewStatus": "pending_review",
+      "sourceUrl": "https://gisa.edu.vn/",
+      "value": "GISA - Nơi bạn khám phá các giải pháp bền vững và nâng cao năng lực quản lý. Với các dịch vụ nghiên cứu, đào tạo và tư vấn toàn cầu, chúng tôi hỗ trợ bạn phát triển chiến lược phát triển bền vững và quản lý hiệu quả. Khám phá ngay để thúc đẩy sự phát triển toàn diện của bạn!"
+    },
+    {
+      "evidence": "home social link",
+      "id": "social-aa46806f9f24",
+      "kind": "social",
+      "reviewStatus": "pending_review",
+      "sourceUrl": "https://gisa.edu.vn/",
+      "value": "https://www.facebook.com/gisa.edu.vn/"
+    },
+    {
+      "evidence": "home social link",
+      "id": "social-5543cdf3e2c5",
+      "kind": "social",
+      "reviewStatus": "pending_review",
+      "sourceUrl": "https://gisa.edu.vn/",
+      "value": "https://www.linkedin.com/in/gisa-global"
+    },
+    {
+      "evidence": "home social link",
+      "id": "social-feb51d79c052",
+      "kind": "social",
+      "reviewStatus": "pending_review",
+      "sourceUrl": "https://gisa.edu.vn/",
+      "value": "https://www.youtube.com/@GISA-1902"
+    },
+    {
+      "evidence": "home primary heading",
+      "id": "tagline-0fe3180c0371",
+      "kind": "tagline",
+      "reviewStatus": "pending_review",
+      "sourceUrl": "https://gisa.edu.vn/",
+      "value": "GISA"
+    }
+  ],
+  "schemaVersion": 1,
+  "snapshotId": "2026-07-18"
+}

@@ -1,0 +1,155 @@
+.pageContainer {
+  margin-inline: auto;
+  padding-block: 1rem var(--space-section);
+  width: min(100% - (2 * var(--gutter)), var(--container));
+}
+
+.pageHeader {
+  background: linear-gradient(135deg, var(--color-mist), var(--color-white));
+  border-left: 0.35rem solid var(--color-teal);
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.pageHeader h1 {
+  color: var(--color-navy);
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  margin: 0;
+  max-width: 18ch;
+}
+
+.pageHeader > p:not(.eyebrow) {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  margin-bottom: 0;
+  max-width: 65ch;
+}
+
+.eyebrow {
+  color: var(--color-green);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.linkGrid,
+.contentGrid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* The frame is 112rem wide, so three columns stretch on large displays —
+   step up to four, matching the card density of the home page grids. */
+@media (min-width: 100rem) {
+  .linkGrid,
+  .contentGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.linkGrid > *,
+.contentGrid > * {
+  min-width: 0;
+}
+
+.linkCard {
+  background: var(--color-mist);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+}
+
+.linkCard h3 {
+  margin: 0;
+}
+
+.linkCard a {
+  color: var(--color-navy);
+  text-underline-offset: 0.18em;
+}
+
+.prose {
+  max-width: 70ch;
+}
+
+/* `.detailLayout` shares an element with `.pageContainer`, so it must not set a
+   width of its own — a `max-width` here would override the frame and pull the
+   whole article off the site's left edge. Cap the blocks inside instead: they
+   keep a comfortable reading measure while starting exactly where the site
+   header, breadcrumbs and footer start. */
+.detailLayout > * {
+  max-width: 70ch;
+}
+
+.prose {
+  font-size: 1.05rem;
+}
+
+.prose > * + * {
+  margin-top: 1.25em;
+}
+
+.detailDate {
+  display: block;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.archiveNotice,
+.neutralDisclosure {
+  background: var(--color-white);
+  border-left: 0.25rem solid var(--color-orange);
+  font-size: 0.95rem !important;
+  padding: 0.75rem 1rem;
+}
+
+.factList {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.factList div {
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: minmax(7rem, 0.35fr) minmax(0, 0.65fr);
+}
+
+.factList dt {
+  font-weight: 700;
+}
+
+.factList dd {
+  margin: 0;
+}
+
+.detailActions {
+  margin-top: 2rem;
+}
+
+@media (max-width: 64rem) {
+  .linkGrid,
+  .contentGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 42rem) {
+  .linkGrid,
+  .contentGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pageHeader h1 {
+    font-size: clamp(2rem, 12vw, 3.25rem);
+  }
+
+  .factList div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pageHeader {
+    padding-inline: clamp(1.25rem, 6vw, 2rem);
+  }
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "publicPath": "/brand/gisa-logo-temp.png",
+    "sourcePath": "D:/web/image/GISA_full_logo_source_enhanced_2K.png",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "temporary_internal_use",
+    "alt": "GISA",
+    "reviewedAt": "2026-07-18",
+    "notes": "Logo raster tạm; phải thay bằng vector gốc đã duyệt trước production."
+  }
+]

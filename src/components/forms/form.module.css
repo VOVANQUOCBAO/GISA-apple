@@ -1,0 +1,163 @@
+/* Sits on the shared frame so the breadcrumbs, heading and form card start at the
+   same left edge as the site header and footer; the compact 52rem measure is kept
+   on the blocks themselves rather than on the page wrapper. */
+.page {
+  margin-inline: auto;
+  padding-block: 1rem var(--space-section);
+  width: min(100% - (2 * var(--gutter)), var(--container));
+}
+
+.page > * {
+  max-width: 52rem;
+}
+
+.pageHeader {
+  margin-block: 2rem;
+}
+
+.pageHeader > p:first-child {
+  color: var(--color-green);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.pageHeader h1 {
+  color: var(--color-navy);
+  font-size: clamp(2.25rem, 7vw, 4rem);
+  margin-block: 0;
+}
+
+.form {
+  background: var(--color-mist);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: clamp(1.25rem, 5vw, 3rem);
+}
+
+.disclosure {
+  background: var(--color-white);
+  border-left: 0.3rem solid var(--color-orange);
+  margin-top: 0;
+  padding: 1rem;
+}
+
+.errorSummary {
+  background: #fff4f1;
+  border: 2px solid #9b2715;
+  border-radius: var(--radius-control);
+  margin-block: 1.5rem;
+  padding: 1rem 1.25rem;
+}
+
+.errorSummary h2 {
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
+.errorSummary a {
+  color: #751b0d;
+}
+
+.fields {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field label,
+.consentField label {
+  font-weight: 700;
+}
+
+.field input,
+.field textarea {
+  background: var(--color-white);
+  border: 2px solid rgb(25 72 106 / 35%);
+  border-radius: var(--radius-control);
+  min-height: 2.75rem;
+  padding: 0.65rem 0.75rem;
+  width: 100%;
+}
+
+.field textarea {
+  min-height: 10rem;
+  resize: vertical;
+}
+
+.field input[aria-invalid='true'],
+.field textarea[aria-invalid='true'] {
+  border-color: #9b2715;
+}
+
+.fieldError {
+  color: #751b0d;
+  font-weight: 700;
+  margin: 0;
+}
+
+.consentField {
+  display: grid;
+  gap: 0.5rem 0.75rem;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+}
+
+.consentField input {
+  height: 2.75rem;
+  margin: 0;
+  width: 2.75rem;
+}
+
+.consentField .fieldError {
+  grid-column: 2;
+}
+
+.honeypot {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.submitButton {
+  background: var(--color-orange);
+  border: 2px solid transparent;
+  border-radius: var(--radius-control);
+  color: var(--color-ink);
+  cursor: pointer;
+  font-weight: 800;
+  margin-top: 1.5rem;
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+}
+
+.submitButton:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.status {
+  font-weight: 700;
+  margin-top: 1rem;
+  min-height: 1.6em;
+}
+
+@media (max-width: 30rem) {
+  .form {
+    border-radius: var(--radius-control);
+    padding-inline: 1rem;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}

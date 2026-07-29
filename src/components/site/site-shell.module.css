@@ -1,0 +1,751 @@
+.siteHeader {
+  background: rgb(255 255 255 / 96%);
+  border-bottom: 1px solid rgb(25 72 106 / 14%);
+  box-shadow: 0 0.35rem 1.5rem rgb(0 68 36 / 6%);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(0.75rem);
+}
+
+.headerInner,
+.footerInner {
+  margin-inline: auto;
+  width: min(100% - (2 * var(--gutter)), var(--container));
+}
+
+.headerInner {
+  align-items: center;
+  display: flex;
+  gap: clamp(1rem, 1.6vw, 1.5rem);
+  height: 4.75rem;
+  min-height: 4.75rem;
+}
+
+.logoLink {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 3.75rem;
+  justify-content: center;
+  min-height: 0;
+  width: 3.75rem;
+}
+
+.logo {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.desktopNavigation {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.desktopList,
+.megaMenu,
+.mobileList,
+.mobileSubmenu,
+.footerLinks,
+.breadcrumbs ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.desktopList {
+  align-items: stretch;
+  display: flex;
+  gap: 0.15rem;
+  justify-content: flex-start;
+}
+
+.desktopItem {
+  position: relative;
+}
+
+.topLevelLinkRow {
+  align-items: center;
+  display: flex;
+}
+
+.topLevelLinkRow > a,
+.submenuTrigger,
+.searchLink,
+.mobileTrigger,
+.languageControl > * {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 2.75rem;
+}
+
+.topLevelLinkRow > a {
+  color: var(--color-ink);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding-inline: clamp(0.4rem, 0.55vw, 0.62rem);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.topLevelLinkRow > a:hover,
+.topLevelLinkRow > a:focus-visible,
+.searchLink:hover,
+.searchLink:focus-visible {
+  color: var(--color-teal);
+}
+
+.submenuTrigger,
+.mobileTrigger,
+.mobilePanel button {
+  background: transparent;
+  border: 0;
+  color: var(--color-teal);
+  cursor: pointer;
+  min-width: 2.75rem;
+}
+
+.submenuTrigger {
+  margin-left: -0.3rem;
+  min-width: 1.75rem;
+  padding: 0;
+}
+
+.submenuTrigger[aria-expanded='true'] span {
+  transform: rotate(180deg);
+}
+
+.megaMenu {
+  background: var(--color-white);
+  border: 1px solid rgb(25 72 106 / 14%);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-card);
+  display: grid;
+  gap: 0.2rem;
+  left: 0;
+  min-width: 17rem;
+  padding: 0.75rem;
+  position: absolute;
+  top: calc(100% + 0.25rem);
+}
+
+.desktopItem:nth-last-child(-n + 3) .megaMenu {
+  left: auto;
+  right: 0;
+}
+
+.megaMenu a {
+  border-radius: var(--radius-control);
+  color: var(--color-ink);
+  display: block;
+  min-height: 2.75rem;
+  padding: 0.6rem 0.75rem;
+  text-decoration: none;
+}
+
+.megaMenu a:hover,
+.megaMenu a:focus-visible {
+  background: var(--color-mist);
+  color: var(--color-teal);
+}
+
+.headerActions,
+.languageControl {
+  align-items: center;
+  display: flex;
+}
+
+.headerActions {
+  flex: 0 0 auto;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.languageControl {
+  border: 1px solid rgb(25 72 106 / 20%);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.languageControl > * {
+  border: 0;
+  min-height: 2.55rem;
+  min-width: 2.55rem;
+  padding-inline: 0.65rem;
+}
+
+.languageControl span[aria-current='true'] {
+  background: var(--color-teal);
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.languageControl button {
+  background: var(--color-mist);
+  color: rgb(26 26 26 / 58%);
+}
+
+.searchLink {
+  gap: 0.45rem;
+  color: var(--color-ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding-inline: 0.5rem;
+  text-decoration: none;
+}
+
+.mobileTrigger {
+  display: none;
+  font-size: 1.35rem;
+}
+
+.mobileBackdrop {
+  background: rgb(26 26 26 / 58%);
+  inset: 0;
+  position: fixed;
+  z-index: 100;
+}
+
+.mobilePanel {
+  background: var(--color-white);
+  height: 100%;
+  margin-left: auto;
+  max-width: 30rem;
+  overflow-y: auto;
+  padding: 1rem;
+  width: min(100%, 30rem);
+}
+
+.mobilePanelHeader,
+.mobileLinkRow {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobilePanelHeader {
+  border-bottom: 1px solid rgb(25 72 106 / 16%);
+  min-height: 3.5rem;
+}
+
+.mobilePanelHeader strong {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+}
+
+.mobilePanelHeader button,
+.mobileLinkRow button {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+}
+
+.mobileList > li {
+  border-bottom: 1px solid rgb(25 72 106 / 12%);
+}
+
+.mobileLinkRow > a,
+.mobileSubmenu a {
+  color: var(--color-ink);
+  display: flex;
+  min-height: 2.75rem;
+  padding-block: 0.7rem;
+  text-decoration: none;
+}
+
+.mobileLinkRow > a {
+  flex: 1 1 auto;
+  font-weight: 700;
+}
+
+.mobileSubmenu {
+  background: var(--color-mist);
+  border-left: 0.2rem solid var(--color-teal);
+  margin: 0 0 0.75rem 0.5rem;
+  padding: 0.25rem 0.75rem;
+}
+
+/* Deep navy with a light source in the bottom-right corner, per the supplied
+   footer mockup — the flat `--color-navy` fill it replaced read much lighter and
+   had no depth. The arcs are a repeating radial gradient sharing the glow's
+   origin, so they read as rings around the light rather than decoration. */
+.siteFooter {
+  background:
+    radial-gradient(115% 85% at 90% 116%, rgb(70 178 240 / 42%) 0%, rgb(28 104 176 / 20%) 28%, rgb(10 40 72 / 0%) 60%),
+    linear-gradient(140deg, #071729 0%, #0a2138 46%, #0c2a4a 100%);
+  color: var(--color-white);
+  isolation: isolate;
+  margin-top: 0;
+  overflow: hidden;
+  padding-block: 4rem 1.5rem;
+  position: relative;
+}
+
+.siteFooter::before {
+  background: repeating-radial-gradient(
+    circle at 90% 116%,
+    rgb(255 255 255 / 0%) 0 4.9rem,
+    rgb(150 214 250 / 7%) 4.9rem 5rem
+  );
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.footerInner {
+  display:grid;
+  gap:3.25rem;
+}
+
+.footerLead{align-items:center;background:#103b5d;border:1px solid rgb(255 255 255 / 14%);border-left:.3rem solid #f15b2a;border-radius:.75rem;display:grid;grid-template-columns:minmax(15rem,.6fr) minmax(26rem,1.4fr) auto;gap:2.25rem;padding:1.65rem 1.8rem}
+.footerBrand{align-items:center;display:flex;gap:1rem}
+.footerBrand img{background:#fff;border-radius:50%;height:3.75rem;width:3.75rem}
+.footerBrand div{display:grid;gap:.15rem}
+.footerBrand strong{font-family:var(--font-heading);font-size:1.75rem;line-height:1}
+.footerBrand span{color:#a8bfcd;font-size:.78rem;letter-spacing:.035em}
+.footerConclusion{border-left:1px solid rgb(255 255 255 / 18%);padding-left:2.25rem}
+.footerConclusion>span{color:#77d0d3;display:block;font-size:.75rem;font-weight:700;letter-spacing:.09em;margin-bottom:.45rem;text-transform:uppercase}
+.footerConclusion>p{color:#fff;font-family:var(--font-heading);font-size:1.45rem;font-weight:400;line-height:1.42;margin:0;max-width:46rem}
+.footerCta{align-items:center;background:#f15b2a;border-radius:.3rem;color:#fff;display:inline-flex;gap:.65rem;min-height:3.4rem;padding-inline:1.25rem;text-decoration:none;font-weight:700}
+.footerCta:hover{background:#d8491c}
+
+.footerGrid{display:block}
+.footerDirectory{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem}
+.footerGroup{min-width:0}
+.footerGroupHeading{align-items:center;border-bottom:1px solid rgb(255 255 255 / 18%);color:#77d0d3;display:flex;font-family:var(--font-heading);font-size:1.35rem;font-weight:700;justify-content:space-between;margin-bottom:1rem;padding-bottom:.8rem;text-decoration:none}
+.footerGroup ul{display:grid;gap:.25rem;list-style:none;margin:0;padding:0}
+.footerGroup ul.footerGroupColumns{column-gap:1.5rem;grid-auto-flow:column;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(5,auto);row-gap:.25rem}
+.footerGroup li a{color:#c8d8e3;display:block;font-size:.9rem;line-height:1.35;padding:.24rem 0;text-decoration:none}
+.footerGroup li a:hover{color:#fff;transform:translateX(.2rem)}
+.footerBottom{align-items:center;border-top:1px solid rgb(255 255 255 / 16%);color:#8fa9b9;display:flex;font-size:.84rem;justify-content:space-between;padding-top:1.5rem}
+.footerBottom div{display:flex;gap:1.25rem}
+.footerBottom a{color:#c8d8e3;text-decoration:none}
+.footerBottom a:hover{color:#fff}
+
+@media (max-width:76rem){
+  .footerLead{grid-template-columns:1fr 1.5fr}
+  .footerCta{grid-column:1/-1;width:max-content}
+  .footerGrid{grid-template-columns:1fr}
+}
+
+@media (max-width:48rem){
+  .siteFooter{padding-top:3rem}
+  .footerLead,.footerGrid,.footerDirectory{grid-template-columns:1fr}
+  .footerLead{gap:1.5rem}
+  .footerConclusion{border-left:0;border-top:1px solid rgb(255 255 255 / 18%);padding:1.25rem 0 0}
+  .footerConclusion>p{font-size:1.3rem}
+  .footerGrid{gap:2.25rem}
+  .footerDirectory{gap:2rem}
+  .footerBottom{align-items:flex-start;flex-direction:column;gap:1rem}
+}
+
+/* Wider, calmer footer rhythm with compact two-column service directories.
+   Width comes from the shared frame tokens in globals.css — do not restate it. */
+.footerDirectory{grid-template-columns:minmax(10rem,.72fr) minmax(18rem,1.18fr) minmax(20rem,1.35fr);gap:2rem}
+.footerConclusion>p,.footerGroupHeading,.footerGroup li a{text-wrap:pretty}
+
+@media (max-width:64rem){
+  .footerDirectory{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footerGroup:last-child{grid-column:1/-1}
+}
+@media (max-width:48rem){
+  .footerDirectory{grid-template-columns:1fr}
+  .footerGroup:last-child{grid-column:auto}
+  .footerGroup ul.footerGroupColumns{grid-auto-flow:row;grid-template-columns:1fr;grid-template-rows:none}
+}
+
+/* Footer layout pass — four single-column directories, per mockup 10-cta-footer. */
+.footerLead{border-left:1px solid rgb(255 255 255 / 14%);grid-template-columns:minmax(14rem,.55fr) minmax(24rem,1.45fr) auto}
+.footerDirectory{gap:2.5rem;grid-template-columns:repeat(4,minmax(0,1fr))}
+.footerGroup ul.footerGroupColumns{grid-auto-flow:row;grid-template-columns:1fr;grid-template-rows:none}
+.footerGroupHeading{font-size:1.3rem}
+.footerGroup li a{padding-block:.3rem}
+
+@media (max-width:76rem){
+  .footerLead{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)}
+  .footerCta{grid-column:1/-1;width:max-content}
+  .footerDirectory{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footerGroup:last-child{grid-column:auto}
+}
+
+@media (max-width:48rem){
+  .footerLead{grid-template-columns:1fr}
+  .footerDirectory{grid-template-columns:1fr}
+}
+
+/* Footer layout, matched to the supplied mockup.
+   The lead block is an outline-only panel — it used to carry its own `#103b5d`
+   fill, which read as a darker box sitting on the footer rather than a frame
+   around the brand row. */
+.footerLead{background:transparent}
+/* Shortened to a single line, so it can carry more weight — `text-wrap:nowrap`
+   would clip on narrow screens, `balance` keeps it on one line while it fits. */
+.footerConclusion>p{font-size:clamp(1.2rem,2.4vw,1.75rem);line-height:1.35;max-width:none;text-wrap:balance}
+/* "Cùng kiến tạo tác động" now sits under the GISA wordmark as a tagline instead
+   of being an eyebrow over the sentence, so the divider separates brand from
+   statement cleanly. */
+.footerBrand span{color:#a8bfcd;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+/* The heading no longer carries a trailing arrow, so it packs to the left and
+   the rule underneath is the only thing spanning the column. */
+.footerGroupHeading{justify-content:flex-start}
+/* Column widths follow the mockup: "Tư vấn" is the widest because it holds nine
+   links across two sub-columns; the rest are near-equal. */
+.footerDirectory{grid-template-columns:minmax(0,.88fr) minmax(0,1.32fr) minmax(0,.99fr) minmax(0,.85fr)}
+.footerGroup ul.footerGroupColumns{column-gap:1.75rem;grid-auto-flow:column;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(5,auto)}
+/* Sits on the bottom row beside the links, as in the mockup — it used to be a
+   block of its own underneath, which pushed the footer a line taller. */
+.footerCredit{color:#6f8ba0;font-size:.82rem;letter-spacing:.01em;margin:0;padding-left:1.25rem}
+.footerCredit strong{color:#a8bfcd;font-weight:700}
+
+@media (max-width:76rem){
+  .footerDirectory{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* Hairline that brightens where the corner glow is closest, as in the mockup. */
+.footerBottom{background-image:linear-gradient(90deg,rgb(96 194 246 / 75%) 0%,rgb(120 180 220 / 22%) 11%,rgb(255 255 255 / 12%) 55%,rgb(255 255 255 / 6%) 100%);background-position:top left;background-repeat:no-repeat;background-size:100% 1px;border-top:0}
+
+@media (max-width:48rem){
+  .footerDirectory{grid-template-columns:1fr}
+  .footerGroup ul.footerGroupColumns{grid-auto-flow:row;grid-template-columns:1fr;grid-template-rows:none}
+  .footerBottom div{flex-wrap:wrap;gap:.75rem 1.25rem}
+  .footerCredit{padding-left:0;width:100%}
+}
+
+.breadcrumbs {
+  margin-block: 1rem 2rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.6rem;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  color: var(--color-navy);
+  content: '/';
+  margin-left: 0.6rem;
+}
+
+.breadcrumbs a {
+  color: var(--color-teal);
+  text-underline-offset: 0.2em;
+}
+
+.visuallyHidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (max-width: 76rem) {
+  .desktopNavigation {
+    display: none;
+  }
+
+  .logoLink {
+    height: 3.75rem;
+    width: 3.75rem;
+  }
+
+  .headerActions {
+    margin-left: auto;
+  }
+
+  .mobileTrigger {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 34rem) {
+  .headerInner {
+    gap: 0.35rem;
+  }
+
+  .logoLink {
+    height: 3.75rem;
+    width: 3.75rem;
+  }
+
+  .languageControl {
+    display: none;
+  }
+
+  .searchLink {
+    font-size: 0.9rem;
+    min-width: 2.75rem;
+    padding-inline: 0.25rem;
+  }
+
+  .mobilePanel {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* Calm, interruptible motion for navigation surfaces and primary footer actions. */
+.submenuTrigger svg {
+  transition: transform 380ms var(--ease-out);
+}
+
+.submenuTrigger[aria-expanded='true'] svg {
+  transform: rotate(180deg);
+}
+
+.megaMenu {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: top left;
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 200ms var(--ease-out);
+}
+
+.desktopItem:nth-last-child(-n + 3) .megaMenu {
+  transform-origin: top right;
+}
+
+.mobileBackdrop {
+  opacity: 1;
+  transition: opacity 420ms var(--ease-out);
+}
+
+.mobilePanel {
+  transform: translate3d(0, 0, 0);
+  transition: transform 520ms var(--ease-out);
+}
+
+.mobileTrigger,
+.footerCta {
+  transition:
+    background-color 220ms var(--ease-out),
+    color 220ms var(--ease-out),
+    transform 160ms var(--ease-out);
+}
+
+.mobileTrigger:active,
+.footerCta:active {
+  transform: scale(0.97);
+}
+
+@starting-style {
+  .megaMenu {
+    opacity: 0;
+    transform: translate3d(0, -0.5rem, 0) scale(0.97);
+  }
+
+  .mobileBackdrop {
+    opacity: 0;
+  }
+
+  .mobilePanel {
+    transform: translate3d(6%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .megaMenu,
+  .mobileBackdrop {
+    transition: opacity 380ms var(--ease-out);
+  }
+
+  .megaMenu,
+  .mobilePanel,
+  .mobileTrigger,
+  .footerCta,
+  .submenuTrigger svg {
+    transform: none !important;
+  }
+
+  .mobilePanel,
+  .mobileTrigger,
+  .footerCta,
+  .submenuTrigger svg {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Head bar, rebuilt to the supplied mockup: three floating cards — brand, nav,
+   actions — instead of one full-width white bar with a hairline beneath it.
+   The page behind is white, so each card carries its own border and shadow;
+   tinting the header strip instead would put a seam back above the hero.
+   ============================================================ */
+.siteHeader {
+  backdrop-filter: none;
+  background: transparent;
+  border-bottom: 0;
+  box-shadow: none;
+  padding-block: 1rem;
+}
+
+/* `stretch` so the three cards end up the same height — the brand card is the
+   tallest (it sizes to the logo) and the other two match it. */
+.headerInner {
+  align-items: stretch;
+  gap: 1rem;
+  height: auto;
+  min-height: 0;
+}
+
+.headerBrand,
+.desktopNavigation,
+.headerActions {
+  background: var(--color-white);
+  border: 1px solid rgb(25 72 106 / 9%);
+  border-radius: 1.1rem;
+  box-shadow: 0 0.5rem 1.5rem rgb(11 52 85 / 7%);
+}
+
+.headerBrand {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.8rem;
+  padding: 0.6rem 1.5rem 0.6rem 0.85rem;
+  text-decoration: none;
+}
+
+.headerBrand .logoLink {
+  height: 2.9rem;
+  width: 2.9rem;
+}
+
+.headerBrandName {
+  color: #0b3455;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  line-height: 1;
+}
+
+.desktopNavigation {
+  padding: 0.4rem 0.9rem;
+}
+
+.headerActions {
+  gap: 0.5rem;
+  padding: 0.45rem 0.5rem;
+}
+
+/* Icon-only circle in the mockup; the label stays for screen readers. */
+.searchLink {
+  background: #f1f6f7;
+  border-radius: 50%;
+  gap: 0;
+  height: 2.75rem;
+  padding-inline: 0;
+  width: 2.75rem;
+}
+
+.searchLink:hover,
+.searchLink:focus-visible {
+  background: var(--color-teal);
+  color: var(--color-white);
+}
+
+.searchLink > span:last-child {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Orange dot marking the current section. */
+.topLevelLinkRow > a[aria-current='page'] {
+  color: #0b3455;
+}
+
+.topLevelLinkRow > a[aria-current='page']::before {
+  background: var(--color-orange);
+  border-radius: 50%;
+  content: '';
+  flex: none;
+  height: 0.42rem;
+  margin-right: 0.45rem;
+  width: 0.42rem;
+}
+
+@media (max-width: 76rem) {
+  .headerBrandName {
+    display: none;
+  }
+
+  .headerBrand {
+    padding: 0.6rem 0.85rem;
+  }
+}
+
+/* ---- Dropdown panels: open on hover, Apple-style rounded surface ---- */
+
+/* The panel sits below the trigger with a visual gap. That gap is dead space for
+   the pointer, so crossing it would fire pointerleave and close the menu the
+   moment you reached for it — this pseudo-element bridges it invisibly. */
+.megaMenu::before {
+  content: '';
+  height: 0.65rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -0.65rem;
+}
+
+.megaMenu {
+  animation: mega-menu-arrive 340ms var(--ease-out) both;
+  backdrop-filter: blur(1.25rem) saturate(180%);
+  background: rgb(255 255 255 / 92%);
+  border: 1px solid rgb(25 72 106 / 8%);
+  border-radius: 1.15rem;
+  box-shadow:
+    0 1.5rem 3.5rem rgb(11 52 85 / 15%),
+    0 0.35rem 1rem rgb(11 52 85 / 6%);
+  gap: 0.15rem;
+  min-width: 19rem;
+  padding: 0.5rem;
+  top: calc(100% + 0.65rem);
+}
+
+@keyframes mega-menu-arrive {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -0.4rem, 0) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.megaMenu a {
+  border-radius: 0.72rem;
+  font-size: 0.92rem;
+  min-height: 2.6rem;
+  padding: 0.62rem 0.85rem;
+  transition:
+    background-color 320ms var(--ease-out),
+    color 320ms var(--ease-out);
+}
+
+.megaMenu a:hover,
+.megaMenu a:focus-visible {
+  background: #eef5f6;
+  color: var(--color-teal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .megaMenu {
+    animation: none;
+  }
+}

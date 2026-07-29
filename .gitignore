@@ -1,0 +1,19 @@
+.worktrees/
+.tools/
+.pnpm-store/
+.cache/gisa-import/
+node_modules/
+.next/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+.env*
+!.env.example
+pnpm-debug.log*
+
+# Local scratch produced while iterating on the design — screenshots, probe
+# scripts and image experiments. None of it is referenced by the app.
+*.tmp.*
+shot-*.png
+dev-server.cmd
