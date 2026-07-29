@@ -1,4 +1,4 @@
-import { Fragment, type ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 /**
  * Vietnamese writes each syllable as a separate token, so a browser is free to
@@ -25,7 +25,7 @@ const COMPOUNDS = [
   'khóa học', 'kiến tạo', 'kinh doanh', 'kinh tế', 'kết nối', 'lãnh đạo',
   'liên hệ', 'liên ngành', 'mạng lưới', 'minh bạch', 'môi trường', 'năng lực',
   'nguồn nhân lực', 'nhân lực', 'nhân sự', 'nghiên cứu', 'phát triển',
-  'phân tích', 'quản trị', 'quốc tế', 'sản xuất', 'sáng tạo', 'thị trường',
+  'phân tích', 'quản lý nâng cao', 'quản lý', 'nâng cao', 'quản trị', 'quốc tế', 'sản xuất', 'sáng tạo', 'thị trường',
   'thực phẩm', 'thực tiễn', 'tin tức', 'toàn cầu', 'tài chính', 'tác động',
   'tìm kiếm', 'trách nhiệm', 'trang chủ', 'trải nghiệm', 'triển khai',
   'tri thức', 'trung tâm', 'tư vấn', 'ứng dụng', 'xây dựng',
@@ -43,19 +43,48 @@ const PATTERN = new RegExp(
   'giu',
 );
 
+/*
+ * Phrase wrappers must be typographically transparent. Several sections style
+ * structural spans such as numbers, icons, and fixed heading lines. Without
+ * these inherited values, those selectors can accidentally turn a phrase in
+ * body copy into a large display-font fragment.
+ *
+ * One outer inline wrapper also keeps the sentence together as a single flex or
+ * grid item instead of splitting unmatched text and matched phrases apart.
+ */
+const inheritedTypography: CSSProperties = {
+  color: 'inherit',
+  display: 'inline',
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  fontStyle: 'inherit',
+  fontWeight: 'inherit',
+  letterSpacing: 'inherit',
+  lineHeight: 'inherit',
+  textTransform: 'inherit',
+};
+
 /** Keeps the syllables of known Vietnamese words on the same line. */
 export function bindPhrases(text: string): ReactNode {
   const parts = text.split(PATTERN);
   if (parts.length === 1) return text;
 
   // `split` with one capture group alternates: plain, match, plain, match, …
-  return parts.map((part, index) =>
-    index % 2 === 1 ? (
-      <span key={index} style={{ whiteSpace: 'nowrap' }}>
-        {part}
-      </span>
-    ) : (
-      <Fragment key={index}>{part}</Fragment>
-    ),
+  return (
+    <span data-vietnamese-text style={inheritedTypography}>
+      {parts.map((part, index) =>
+        index % 2 === 1 ? (
+          <span
+            data-vietnamese-phrase
+            key={`${part}-${index}`}
+            style={{ ...inheritedTypography, whiteSpace: 'nowrap' }}
+          >
+            {part}
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </span>
   );
 }

@@ -338,10 +338,8 @@
   }
 }
 
-/* The hero photo no longer animates. `scale(1.06) → scale(1)` moved the image
-   underneath `.heroMedia::before`, whose gradient stays put — the fixed edge
-   sliding across the moving picture read as the frame splitting and rejoining.
-   Only the copy animates now. */
+/* The hero photo stays still so the first-load sequence remains calm; only the
+   copy animates. */
 
 @keyframes hero-gateway-arrive {
   from {
@@ -380,6 +378,19 @@
   animation: hero-gateway-arrive 850ms var(--ease-out) 800ms both;
 }
 
+/* The page is already rendered behind the full-screen intro, but its own motion
+   stays parked on frame zero. SiteIntro switches the root attribute only after
+   its 800ms exit fade has finished, so the hero begins as the web is revealed. */
+:global(html:not([data-site-intro='complete'])) .heroCopy > .eyebrow,
+:global(html:not([data-site-intro='complete'])) .heroCopy > h1 > span,
+:global(html:not([data-site-intro='complete'])) .heroCopy > .heroLead,
+:global(html:not([data-site-intro='complete'])) .heroCopy > .heroButtons,
+:global(html:not([data-site-intro='complete'])) .gatewayInner,
+:global(html:not([data-site-intro='complete'])) .partnerTrack,
+:global(html:not([data-site-intro='complete'])) .commitmentTrack {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .heroCopy > .eyebrow,
   .heroCopy > h1 > span,
@@ -402,25 +413,19 @@
 /* 01 — Hero: copy on the left, photography held to the right half. */
 .hero{background:#fff;height:auto;min-height:min(46rem,88vh);overflow:hidden;position:relative}
 .hero::after{content:none}
-.heroMedia{position:absolute;inset:0 0 0 40%;z-index:0}
-/* The wash hugs the left edge and is gone by 54%, so the right half of the photo
-   is untouched — stretching it to 96% left a thin veil (alpha .19 at 73%) over
-   the people, which read as the picture being washed out. Full strength only
-   across the strip the copy column overlaps (~14% of this box); the many stops
-   after that approximate an ease curve, which is what stops a short alpha ramp
-   from showing a hard vertical edge the way the original three-stop one did. */
-.heroMedia::before{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.96) 8%,rgba(255,255,255,.88) 14%,rgba(255,255,255,.72) 17%,rgba(255,255,255,.52) 20%,rgba(255,255,255,.34) 23%,rgba(255,255,255,.19) 26%,rgba(255,255,255,.09) 29%,rgba(255,255,255,.03) 32%,rgba(255,255,255,0) 35%);content:"";inset:0;position:absolute;z-index:1}
+.heroMedia{position:absolute;inset:0;z-index:0}
+/* The photo is intentionally unfiltered; no wash or gradient is placed over it. */
+.heroMedia::before{content:none}
 /* Anchored right, not 58%: the photo is 1.60:1 while this media box is ~1.23:1,
    so `cover` throws away ~300px of width. The people and the city model sit in
    the right two-thirds of the frame — centring the crop cut the person on the
-   far right in half. The empty wall it gives up on the left is behind the copy
-   column's white wash anyway. */
-.heroImage{object-fit:cover;object-position:100% 45%}
+   far right in half. */
+.heroImage{object-fit:cover;object-position:center 50%}
 .heroInner{align-items:center;display:block;height:auto;padding-block:clamp(4.5rem,8vw,7rem) clamp(6.5rem,10vw,9rem);position:relative;z-index:2}
 .heroCopy{align-self:auto;max-width:44rem;padding:0}
-.hero .eyebrow{background:none;border:0;color:#0b5f66;font-size:.98rem;letter-spacing:.09em;margin:0 0 1.5rem;min-height:0;padding:0}
-.heroCopy h1{color:#0b3455;font-size:clamp(2.9rem,5.4vw,4.6rem);letter-spacing:-.005em;line-height:1.05;margin:0 0 1.9rem;text-wrap:nowrap}
-.heroLead{background:none;border:0;border-radius:0;box-shadow:none;color:#3d5266;font-size:clamp(1.02rem,1.2vw,1.2rem);line-height:1.8;margin:0 0 2.5rem;max-width:38rem;padding:0}
+.hero .eyebrow{background:none;border:0;color:#d9eeee;font-size:.84rem;letter-spacing:.09em;margin:0 0 1.25rem;min-height:0;padding:0;text-shadow:0 .1rem .8rem rgba(2,24,32,.3)}
+.heroCopy h1{color:#fff;font-size:clamp(2.5rem,3.85vw,3.6rem);letter-spacing:-.005em;line-height:1.08;margin:0 0 1.55rem;text-shadow:0 .12rem 1.1rem rgba(2,24,32,.28);text-wrap:nowrap}
+.heroLead{background:none;border:0;border-radius:0;box-shadow:none;color:#edf5f5;font-size:clamp(.94rem,1vw,1.04rem);line-height:1.75;margin:0 0 2.15rem;max-width:34rem;padding:0;text-shadow:0 .08rem .65rem rgba(2,24,32,.35)}
 .heroButtons{gap:1rem}
 .primaryButton,.secondaryButton,.tealButton,.downloadButton{border-radius:.5rem;gap:.8rem;letter-spacing:0;min-height:3.85rem;padding-inline:1.85rem;text-transform:none}
 
@@ -510,7 +515,6 @@
      instead of vertically. Right-anchoring — correct on desktop — would leave
      only the far edge of the room; pull back so the group stays in frame. */
   .heroImage{object-position:78% 45%}
-  .heroMedia::before{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.97) 12%,rgba(255,255,255,.92) 26%,rgba(255,255,255,.84) 40%,rgba(255,255,255,.72) 54%,rgba(255,255,255,.58) 68%,rgba(255,255,255,.45) 82%,rgba(255,255,255,.35) 100%)}
   .heroCopy h1{text-wrap:balance}
   .gatewayStrip .gatewayInner{grid-template-columns:repeat(3,minmax(0,1fr))}
   .gatewayInner>a{border-bottom:1px solid #e6ecef}
@@ -526,8 +530,7 @@
 
 @media (max-width:48rem){
   .hero{min-height:0}
-  .heroMedia::before{background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.8) 60%,rgba(255,255,255,.9) 100%)}
-  .heroImage{opacity:.5}
+  .heroImage{opacity:1}
   .heroCopy h1{font-size:clamp(2.5rem,10vw,3.4rem)}
   .heroButtons{gap:.75rem}
   .primaryButton,.secondaryButton,.tealButton,.downloadButton{width:100%}
@@ -682,6 +685,11 @@
    ĐỘNG BỀN VỮNG" needs ~530px for its second line and had 518, which pushed it
    into three ragged lines. Two more rem of column is all it takes. */
 .capabilitiesInner{grid-template-columns:36rem minmax(0,1fr)}
+
+@media (max-width:70rem){
+  .capabilitiesInner{grid-template-columns:minmax(0,1fr)}
+  .capabilitiesIntro,.capabilityGrid{min-width:0}
+}
 
 /* Motto: two balanced lines, sized up now that it no longer has to squeeze onto
    one. Each half is a block so the break is the sense break, never wherever the

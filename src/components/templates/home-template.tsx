@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { type FormEvent, useEffect, useState } from 'react';
 
+import { SiteIntro } from '@/components/motion/site-intro';
 import { Icon } from '@/components/ui/icon';
 import { Illustration, type IllustrationName } from '@/components/ui/illustration';
 import type { HomePageModel } from '@/content/home';
@@ -221,6 +222,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
 
   return (
     <main id="main-content" tabIndex={-1}>
+      <SiteIntro />
       <section className={styles.hero} id="trang-chu">
         <div className={styles.heroMedia}>
           <Image
@@ -228,8 +230,9 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
             className={styles.heroImage}
             fill
             priority
-            sizes="(max-width: 70rem) 100vw, 60vw"
-            src="/images/hero-gisa-strategy-table.png"
+            quality={95}
+            sizes="100vw"
+            src="/new image/gisa-hero-background-4k.png"
           />
         </div>
         <div className={styles.heroInner}>
@@ -324,7 +327,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
                 <span className={styles.capabilityIcon}><Illustration name={item.art} size={104} /></span>
                 <h3>{bindPhrases(item.title)}</h3>
                 <p>{bindPhrases(item.text)}</p>
-                <Link aria-label={`Xem ${bindPhrases(item.title)}`} href="#kien-truc"><Icon name="arrow" size={25} /></Link>
+                <Link aria-label={`Xem ${item.title}`} href="#kien-truc"><Icon name="arrow" size={25} /></Link>
               </article>
             ))}
           </div>
@@ -419,7 +422,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
                 <div className={styles.articleBody}>
                   <p className={styles.articleMeta}><span>{bindPhrases(article.meta)}</span><span className={styles.metaDate}>{article.date}</span></p>
                   <h3>{bindPhrases(article.title)}</h3>
-                  <Link aria-label={`Đọc bài ${bindPhrases(article.title)}`} className={styles.circleArrow} href="#bai-viet"><Icon name="arrow" size={20} /></Link>
+                  <Link aria-label={`Đọc bài ${article.title}`} className={styles.circleArrow} href="#bai-viet"><Icon name="arrow" size={20} /></Link>
                 </div>
               </article>
             ))}
@@ -444,8 +447,8 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
             {knowledge.items.map((item, index) => (
               <article className={item.image ? styles.courseCard : undefined} key={item.title}>
                 {item.image ? (
-                  <Link aria-label={`Xem khóa học ${bindPhrases(item.title)}`} className={styles.courseImage} href={knowledge.href}>
-                    <Image alt={`Banner khóa học ${bindPhrases(item.title)}`} height={1152} sizes="(max-width: 768px) 94vw, (max-width: 1120px) 46vw, 30vw" src={item.image} width={2048} />
+                  <Link aria-label={`Xem khóa học ${item.title}`} className={styles.courseImage} href={knowledge.href}>
+                    <Image alt={`Banner khóa học ${item.title}`} height={1152} sizes="(max-width: 768px) 94vw, (max-width: 1120px) 46vw, 30vw" src={item.image} width={2048} />
                   </Link>
                 ) : (
                   <div className={styles.knowledgeCardTop}><span>{String(index + 1).padStart(2, '0')}</span><Icon name="arrowUp" size={22} /></div>

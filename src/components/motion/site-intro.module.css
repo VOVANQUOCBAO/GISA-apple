@@ -1,0 +1,25 @@
+.introOverlay {
+  background: var(--color-white);
+  inset: 0;
+  opacity: 1;
+  overflow: hidden;
+  position: fixed;
+  transition: opacity 800ms var(--ease-in-out);
+  z-index: 2000;
+}
+
+.introOverlay[data-phase='exiting'] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.player {
+  height: 100%;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .introOverlay {
+    transition-duration: 1ms;
+  }
+}
