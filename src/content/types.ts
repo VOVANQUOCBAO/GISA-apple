@@ -121,6 +121,11 @@ export interface ContentRecord {
   publication?: PublicationMetadata;
 }
 
+/**
+ * `metadata` đi kèm bản tóm tắt vì trang danh sách ấn phẩm hiển thị năm công bố,
+ * tác giả và nơi công bố ngay trên từng dòng — không có nó thì mọi thẻ chỉ còn
+ * tiêu đề và tóm tắt, và danh sách nghiên cứu mất phần thông tin quan trọng nhất.
+ */
 export type ContentSummary = Pick<
   ContentRecord,
   | 'id'
@@ -134,6 +139,7 @@ export type ContentSummary = Pick<
   | 'image'
   | 'tags'
   | 'evidenceStatus'
+  | 'metadata'
 >;
 
 export interface ContentQuery {

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import type { UrlQuery } from '@/components/ui/filter-bar';
 import type { PageDefinition } from '@/content/pages';
+import { selectRelatedContent } from '@/content/related';
 import {
   getContentRepository,
   type ContentRepository,
@@ -78,7 +79,26 @@ export async function TemplateRouter({
   if (definition.template === 'detail') {
     const record = await repository.getByPath(path);
     if (!record) notFound();
-    return <DetailTemplate record={record} />;
+
+    // Ấn phẩm là loại duy nhất có khối "bài gợi ý" dưới trang chi tiết, nên chỉ
+    // truy vấn danh sách cùng collection cho loại này.
+    const related =
+      record.kind === 'publication'
+        ? selectRelatedContent(
+            record,
+            (
+              await repository.list({
+                collection: definition.collection,
+                filters: {},
+                page: 1,
+                pageSize: 24,
+                query: '',
+              })
+            ).items,
+          )
+        : undefined;
+
+    return <DetailTemplate record={record} related={related} />;
   }
 
   return (

@@ -58,7 +58,15 @@ const textPatterns = [
   },
   {
     code: 'encoding-error',
-    expression: /\uFFFD|\u00C3.|\u00C2.|\u00E2(?:\u20AC|\u2122|\u0153)|\u00C4[^\u0000-\u007F]/,
+    /**
+     * Mojibake xuất hiện khi byte UTF-8 bị đọc như Latin-1, nên ký tự dẫn đầu
+     * (Ã, Â, â, Ä, Æ) luôn kèm một ký tự thuộc dải Latin-1 bổ sung. Vế thứ hai
+     * trước đây là `.`, nên nó bắt cả "Âu" trong "châu Âu" — tức báo lỗi mã hóa
+     * cho chữ Việt viết đúng. Dải dưới đây khớp với `mojibakePattern` trong
+     * src/content/schema.ts.
+     */
+    expression:
+      /\uFFFD|\u00C3[\u0080-\u00BF\u0192]|\u00C2[\u0080-\u00BF]|\u00E2(?:\u20AC|\u2122|\u0153)|\u00C4[\u2018\u2019]|\u00C6[\u00B0\u00B1]/,
     message: 'Text contains a replacement or mojibake sequence.',
   },
 ] as const;

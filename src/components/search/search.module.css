@@ -16,8 +16,10 @@
 }
 
 .searchForm {
-  background: var(--color-mist);
+  background: var(--color-white);
+  border: 1px solid rgb(25 72 106 / 13%);
   border-radius: var(--radius-card);
+  box-shadow: 0 0.75rem 2.25rem rgb(11 52 85 / 4%);
   display: grid;
   gap: 0.65rem;
   margin-block: 2rem;

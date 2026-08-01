@@ -4,7 +4,7 @@
   opacity: 1;
   overflow: hidden;
   position: fixed;
-  transition: opacity 800ms var(--ease-in-out);
+  transition: opacity 350ms var(--ease-in-out);
   z-index: 2000;
 }
 

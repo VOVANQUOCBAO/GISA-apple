@@ -1,4 +1,4 @@
-import type { ContentRecord } from '@/content/types';
+import type { ContentRecord, ContentSummary } from '@/content/types';
 
 import { ArticleTemplate } from './article-template';
 import { ContentDetailLayout } from './content-blocks';
@@ -6,12 +6,19 @@ import { CourseTemplate } from './course-template';
 import { ExpertTemplate } from './expert-template';
 import { InitiativeTemplate } from './initiative-template';
 import { ProjectTemplate } from './project-template';
+import { PublicationTemplate } from './publication-template';
 
-export function DetailTemplate({ record }: { record: ContentRecord }) {
+interface DetailTemplateProps {
+  record: ContentRecord;
+  related?: ContentSummary[];
+}
+
+export function DetailTemplate({ record, related }: DetailTemplateProps) {
   switch (record.kind) {
     case 'project':
       return <ProjectTemplate record={record} />;
     case 'publication':
+      return <PublicationTemplate record={record} related={related} />;
     case 'news':
     case 'notice':
       return <ArticleTemplate record={record} />;

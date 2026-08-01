@@ -34,9 +34,11 @@ describe('HomeTemplate', () => {
       }),
     ).toBeVisible();
     expect(screen.getByRole('heading', { name: 'GIÁ TRỊ NỀN TẢNG — RISES' })).toBeVisible();
-    expect(screen.getByRole('heading', { name: 'TRỤ CỘT HÀNH ĐỘNG' })).toBeVisible();
+    expect(screen.getByText(byFullText('Từ cam kết đến hành động'))).toBeVisible();
     expect(screen.getByRole('heading', { name: 'QUY TRÌNH TƯ VẤN 5 BƯỚC' })).toBeVisible();
-    expect(screen.getByText(byFullText('Tri thức kết nối, hành động liền mạch, tác động dài lâu.'))).toBeVisible();
+    expect(screen.getByText(byFullText('GISA kết nối cam kết phát triển bền vững với năng lực nghiên cứu, tư vấn và triển khai thực tiễn.'))).toBeVisible();
+    expect(screen.getByRole('heading', { level: 3, name: 'Nghiên cứu ứng dụng' })).toBeVisible();
+    expect(screen.getByRole('heading', { level: 3, name: 'Cộng đồng & Tác động' })).toBeVisible();
     expect(screen.getByText(byFullText('Đồng hành cùng doanh nghiệp từ phân tích đến triển khai và tối ưu giá trị bền vững.'))).toBeVisible();
     expect(screen.getByRole('heading', { name: 'NGHIÊN CỨU TRỌNG ĐIỂM' })).toBeVisible();
     expect(screen.getByText(byFullText('Những hợp tác nghiên cứu tiêu biểu kết nối tri thức quốc tế với nhu cầu phát triển tại Việt Nam.'))).toBeVisible();

@@ -111,6 +111,7 @@ describe('TemplateRouter', () => {
       evidenceStatus: 'verified',
       id: 'project-last-page',
       kind: 'project',
+      metadata: {},
       path: '/nghien-cuu/du-an/trade4sd',
       slug: 'trade4sd',
       summary: 'Bản ghi ở trang hợp lệ cuối cùng.',

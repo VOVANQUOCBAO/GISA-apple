@@ -29,6 +29,15 @@ export function buildQueryHref(
   return search ? `${path}?${search}` : path;
 }
 
+// Khóa lọc lấy từ `metadata` của bản ghi nên là tiếng Anh; legend hiển thị cho
+// người đọc thì phải là tiếng Việt. Khóa chưa có trong bảng vẫn hiện nguyên văn.
+const FILTER_LABELS: Record<string, string> = {
+  format: 'Hình thức',
+  pillar: 'Trụ cột',
+  topic: 'Chủ đề',
+  type: 'Loại nội dung',
+};
+
 interface FilterBarProps {
   filters: Record<string, string[]>;
   path: string;
@@ -47,7 +56,7 @@ export function FilterBar({ filters, path, query }: FilterBarProps) {
     <section aria-label="Bộ lọc nội dung" className={styles.filterBar}>
       {entries.map(([key, values]) => (
         <fieldset key={key}>
-          <legend>{key}</legend>
+          <legend>{FILTER_LABELS[key] ?? key}</legend>
           <div className={styles.filterOptions}>
             {values.map((value) => {
               const isCurrent = firstValue(safeQuery[key]) === value;

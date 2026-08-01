@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tổng hợp 14 thành quả nghiên cứu GISA</title>
+<style>
+:root {
+  --ink: #17202a;
+  --muted: #5b6573;
+  --line: #dfe5eb;
+  --panel: #ffffff;
+  --accent: #0978b8;
+  --accent-soft: #eaf5fb;
+  --gold: #d9982f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background: #f4f7f9;
+  line-height: 1.58;
+}
+header {
+  background: linear-gradient(135deg, #0d678f, #0b89c8);
+  color: white;
+  padding: 52px 24px 44px;
+}
+header .wrap, main, footer { max-width: 1120px; margin: 0 auto; }
+header h1 { margin: 0 0 12px; font-size: clamp(30px, 5vw, 52px); line-height: 1.1; }
+header p { max-width: 850px; margin: 0; font-size: 17px; opacity: .95; }
+nav {
+  max-width: 1120px;
+  margin: -18px auto 28px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 24px rgba(15, 40, 60, .08);
+}
+nav a { color: var(--accent); text-decoration: none; margin-right: 14px; white-space: nowrap; }
+main { padding: 0 20px 52px; }
+.summary {
+  background: var(--accent-soft);
+  border-left: 5px solid var(--accent);
+  padding: 18px 20px;
+  border-radius: 10px;
+  margin-bottom: 28px;
+}
+.section-title { font-size: 30px; margin: 40px 0 18px; color: #22313f; }
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(260px, 36%) 1fr;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  margin: 0 0 22px;
+  box-shadow: 0 8px 26px rgba(20, 42, 60, .06);
+}
+.card figure { margin: 0; min-height: 280px; background: #edf1f4; display: flex; flex-direction: column; }
+.card img { width: 100%; height: 100%; min-height: 250px; object-fit: cover; flex: 1; }
+.card figcaption { font-size: 12px; color: var(--muted); padding: 8px 10px; background: #f8fafb; }
+.no-image {
+  min-height: 280px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 24px;
+  color: #65717e;
+  background: repeating-linear-gradient(-45deg, #f7f9fa, #f7f9fa 12px, #eef2f4 12px, #eef2f4 24px);
+}
+.no-image span { font-size: 12px; max-width: 250px; }
+.content { padding: 26px 28px 28px; }
+.number {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  color: white;
+  background: rgba(0,0,0,.72);
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+.meta { color: var(--gold); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
+h2 { margin: 7px 0 14px; font-size: 23px; line-height: 1.3; }
+.reference { color: #46515c; font-size: 14px; }
+.source {
+  display: inline-block;
+  text-decoration: none;
+  background: var(--accent);
+  color: white;
+  padding: 9px 13px;
+  border-radius: 8px;
+  font-weight: 650;
+}
+.source:hover { filter: brightness(.92); }
+.resources {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+  background: white;
+}
+.resources code { background: #eef2f5; padding: 2px 6px; border-radius: 5px; }
+footer { padding: 24px 20px 40px; color: var(--muted); font-size: 13px; }
+@media (max-width: 760px) {
+  .card { grid-template-columns: 1fr; }
+  .card figure, .no-image { min-height: 220px; }
+  header { padding-top: 38px; }
+}
+@media print {
+  nav { display: none; }
+  body { background: white; }
+  .card { break-inside: avoid; box-shadow: none; }
+  .source { color: black; background: none; padding: 0; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Tổng hợp 14 thành quả nghiên cứu GISA</h1>
+    <p>Gồm 4 nguồn được cung cấp và 10 bài nghiên cứu khác trong chuyên mục “Bài báo khoa học”. Nội dung đã được rút gọn theo mục tiêu, phương pháp, kết quả chính, tài liệu tham khảo và hình ảnh có thể thu thập.</p>
+  </div>
+</header>
+
+<nav>
+  <a href="#bon-bai">4 nguồn ban đầu</a>
+  <a href="#muoi-bai">10 bài khác</a>
+  <a href="#tep-du-lieu">Tệp dữ liệu</a>
+</nav>
+
+<main>
+  <section class="summary">
+    <strong>Phạm vi:</strong> 14 bài. Có 8 ảnh đại diện/bản chụp trang, 2 sơ đồ COM-B và 1 logo GISA đã lưu cục bộ. Một số ảnh đại diện dùng URL động hoặc bị trang web hạn chế tải trực tiếp, vì vậy báo cáo giữ liên kết nguồn để kiểm tra lại.
+  </section>
+
+  <h2 class="section-title" id="bon-bai">4 nguồn ban đầu</h2>
+  
+    <article class="card" id="bai-1">
+      <div class="number">01</div>
+      
+        <figure>
+          <img src="images/01_benchmarking_page_screenshot.png" alt="Nghiên cứu phát triển mô hình chuẩn đối sánh (Benchmarking) đo lường hiệu suất hoạt động: Phân tích trường hợp các doanh nghiệp Việt Nam">
+          <figcaption>Ảnh chụp trang do người dùng cung cấp; ảnh đại diện gốc của bài không tải trực tiếp được trong phiên thu thập.</figcaption>
+        </figure>
+      <div class="content">
+        <div class="meta">4 nguồn người dùng cung cấp · 2023</div>
+        <h2>Nghiên cứu phát triển mô hình chuẩn đối sánh (Benchmarking) đo lường hiệu suất hoạt động: Phân tích trường hợp các doanh nghiệp Việt Nam</h2>
+        <p><strong>Tác giả/nhóm:</strong> Hoàng Văn Việt; Nguyễn K.-D.; Nguyễn H.-L.</p>
+        <p>Phát triển mô hình chuẩn đối sánh PMS gồm Năng suất, Quản lý và Bền vững cho doanh nghiệp đồ gỗ Việt Nam. Nghiên cứu kết hợp tổng quan tài liệu, phỏng vấn khám phá, lý thuyết nền và phân tích định lượng. Các khoảng cách hiệu suất liên quan đến thiết kế, nguồn nguyên liệu, quy mô, thị trường, hệ thống quản lý và mức độ cởi mở. Rào cản chính gồm khó chọn chỉ số và doanh nghiệp so sánh, thiếu kiến thức, ngại chia sẻ dữ liệu, dữ liệu không sẵn có hoặc không đáng tin cậy và mức độ tham gia thấp.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Hoang, V., Nguyen, K.-D. and Nguyen, H.-L. (2023), &quot;Framework and determinants of benchmarking: a theoretical analysis and case study in Vietnam&quot;, International Journal of Emerging Markets, 18(10), 4651–4668. DOI: 10.1108/IJOEM-04-2021-0553.</p>
+        <a class="source" href="https://gisa.edu.vn/nghien-cuu-phat-trien-mo-hinh-chuan-doi-sanh-benchmarking-do-luong-hieu-suat-hoat-dong-phan-tich-truong-hop-cac-doanh-nghiep-viet-nam" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-2">
+      <div class="number">02</div>
+      
+        <figure>
+          <img src="images/02_food_quality.jpg" alt="Các chương trình chất lượng thực phẩm và phí bảo hiểm giá: rộng có đi cùng nhau không?">
+          <figcaption>Ảnh đại diện được lấy từ trang GISA.</figcaption>
+        </figure>
+      <div class="content">
+        <div class="meta">4 nguồn người dùng cung cấp · 2020</div>
+        <h2>Các chương trình chất lượng thực phẩm và phí bảo hiểm giá: rộng có đi cùng nhau không?</h2>
+        <p><strong>Tác giả/nhóm:</strong> Monier-Dilhan và cộng sự; có Hoàng Văn Việt</p>
+        <p>So sánh sản phẩm có chương trình chất lượng thực phẩm với sản phẩm tương tự không có nhãn ở nhiều khâu chuỗi giá trị, ngành hàng và chương trình PDO, PGI, hữu cơ. Giá sản phẩm có chứng nhận nhìn chung cao hơn. Phần chênh giá khá tương đồng giữa các khâu và ngành, nhưng hữu cơ có mức chênh đáng kể hơn PGI ở khâu đầu và chế biến sau khi tính chi phí trực tiếp. Phần lớn sản phẩm tạo ra địa tô chất lượng dương.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Monier-Dilhan et al. (2020), Journal of Agricultural &amp; Food Industrial Organization, 19(2), 79–94.</p>
+        <a class="source" href="https://gisa.edu.vn/cac-chuong-trinh-chat-luong-thuc-pham-va-phi-bao-hiem-gia-rong-co-di-cung-nhau-khong" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-3">
+      <div class="number">03</div>
+      
+        <figure>
+          <img src="images/03_pomelo_value_chain.jpg" alt="Phân tích chuỗi giá trị và đánh giá năng lực cạnh tranh của ngành bưởi da xanh tại Bến Tre, Việt Nam">
+          <figcaption>Ảnh đại diện được lấy từ trang GISA.</figcaption>
+        </figure>
+      <div class="content">
+        <div class="meta">4 nguồn người dùng cung cấp · 2015</div>
+        <h2>Phân tích chuỗi giá trị và đánh giá năng lực cạnh tranh của ngành bưởi da xanh tại Bến Tre, Việt Nam</h2>
+        <p><strong>Tác giả/nhóm:</strong> Hoàng Văn Việt</p>
+        <p>Lập bản đồ chuỗi giá trị, ước tính đóng góp tài chính và giá trị gia tăng, đồng thời đánh giá năng lực cạnh tranh của ngành bưởi da xanh. Kết quả cho thấy ngành tạo đóng góp kinh tế đáng kể, phân phối lợi ích tương đối hợp lý và có năng lực cạnh tranh cao so với một số ngành khác. Các vấn đề cần xử lý gồm sâu bệnh và nguy cơ dư cung khi diện tích tăng.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Nghiên cứu chuỗi giá trị và năng lực cạnh tranh bưởi da xanh tại Bến Tre, công bố năm 2015 theo trang GISA.</p>
+        <a class="source" href="https://gisa.edu.vn/phan-tich-chuoi-gia-tri-va-danh-gia-nang-luc-canh-tranh-cua-nganh-buoi-da-xanh-tai-ben-tre-viet-nam" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-4">
+      <div class="number">04</div>
+      
+        <figure>
+          <img src="images/04_ai_chatbot.jpg" alt="Nâng cao trải nghiệm khách hàng với chatbot vận hành bởi AI: Vai trò của chất lượng dịch vụ, trí tuệ cảm xúc và sự cá nhân hóa của thuật toán">
+          <figcaption>Ảnh đại diện được lấy từ trang GISA.</figcaption>
+        </figure>
+      <div class="content">
+        <div class="meta">4 nguồn người dùng cung cấp · 2023</div>
+        <h2>Nâng cao trải nghiệm khách hàng với chatbot vận hành bởi AI: Vai trò của chất lượng dịch vụ, trí tuệ cảm xúc và sự cá nhân hóa của thuật toán</h2>
+        <p><strong>Tác giả/nhóm:</strong> Nguyễn Minh Khôi; Lê và cộng sự</p>
+        <p>Phân tích tác động của chất lượng dịch vụ AI, trí tuệ cảm xúc, cá nhân hóa và bảo mật đến sự hài lòng, niềm tin, cam kết quan hệ và trải nghiệm khách hàng. Cam kết quan hệ là yếu tố dự báo mạnh nhất, sau đó là sự hài lòng và niềm tin. Chất lượng dịch vụ và trí tuệ cảm xúc của AI đều cải thiện trải nghiệm; chất lượng dịch vụ có tác động mạnh hơn. Cá nhân hóa ảnh hưởng đến cam kết nhiều hơn bảo mật.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Le et al. (2023), International Journal of Trade and Global Markets. DOI: 10.1504/IJTGM.2023.10058887.</p>
+        <a class="source" href="https://gisa.edu.vn/nang-cao-trai-nghiem-khach-hang-voi-chatbot-van-hanh-boi-tri-tue-nhan-tao-ai-vai-tro-cua-chat-luong-dich-vu-tri-tue-cam-xuc-va-su-ca-nhan-hoa-cua-thuat-toan" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+
+  <h2 class="section-title" id="muoi-bai">10 thành quả nghiên cứu khác</h2>
+  
+    <article class="card" id="bai-5">
+      <div class="number">05</div>
+      
+        <figure>
+          <img src="images/05_sustainable_dairy_com_b.png" alt="Nghiên cứu khám phá động lực và rào cản đối với hành vi tiêu dùng sữa bền vững tại Việt Nam: Ứng dụng mô hình COM-B">
+          <figcaption>Ảnh đại diện và hai sơ đồ nghiên cứu COM-B có trong thư mục images.</figcaption>
+        </figure>
+      <div class="content">
+        <div class="meta">10 thành quả nghiên cứu khác trên GISA · 2023</div>
+        <h2>Nghiên cứu khám phá động lực và rào cản đối với hành vi tiêu dùng sữa bền vững tại Việt Nam: Ứng dụng mô hình COM-B</h2>
+        <p><strong>Tác giả/nhóm:</strong> Hoàng Văn Việt và cộng sự</p>
+        <p>Năm nhóm tập trung với 40 người tham gia xác định 32 động lực và 14 rào cản. Động lực nổi bật gồm sức khỏe, thương hiệu/chất lượng, gia đình và khuyến mãi. Rào cản gồm khẩu vị, giá trị cảm nhận thấp, thói quen, thiếu niềm tin/kiến thức/thông tin, giá cao và khả năng tiếp cận kém. Nghiên cứu đề xuất can thiệp theo ba cấu phần Năng lực, Động lực và Cơ hội của COM-B.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Hoang et al. (2023), Sustainable Production and Consumption, 42, 183–195. DOI: 10.1016/j.spc.2023.09.016.</p>
+        <a class="source" href="https://gisa.edu.vn/nghien-cuu-kham-pha-dong-luc-va-rao-can-doi-voi-hanh-vi-tieu-dung-sua-ben-vung-tai-viet-nam-ung-dung-mo-hinh-quan-tri-com-b" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-6">
+      <div class="number">06</div>
+      
+        <figure>
+          <img src="images/06_animal_welfare.jpg" alt="Nghiên cứu sự sẵn sàng trả tiền đối với nhãn thực phẩm phúc lợi động vật: Ứng dụng phương pháp thí nghiệm lựa chọn">
+          <figcaption>Ảnh đại diện được lấy từ trang GISA.</figcaption>
+        </figure>
+      <div class="content">
+        <div class="meta">10 thành quả nghiên cứu khác trên GISA · 2023</div>
+        <h2>Nghiên cứu sự sẵn sàng trả tiền đối với nhãn thực phẩm phúc lợi động vật: Ứng dụng phương pháp thí nghiệm lựa chọn</h2>
+        <p><strong>Tác giả/nhóm:</strong> Matthew Gorton và cộng sự</p>
+        <p>So sánh nhãn RSPCA Assured và Red Tractor cho thịt ức gà tại Anh bằng phỏng vấn định tính và khảo sát trực tuyến 401 người. Người tiêu dùng sẵn sàng trả thêm cho nhãn có yêu cầu phúc lợi động vật nghiêm ngặt hơn, nhưng tính khả thi thương mại có thể thấp ở nhóm nhạy cảm về giá.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Gorton et al. (2023), Ecological Economics, 209, 107852. DOI: 10.1016/j.ecolecon.2023.107852.</p>
+        <a class="source" href="https://gisa.edu.vn/nghien-cuu-su-san-sang-tra-tien-doi-voi-nhan-thuc-pham-phuc-loi-dong-vat-ung-dung-phuong-phap-thi-nghiem-lua-chon" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-7">
+      <div class="number">07</div>
+      
+        <figure>
+          <img src="images/07_alternative_crops.jpg" alt="Lợi thế so sánh của các loại cây trồng thay thế: Nghiên cứu so sánh ở Bến Tre, Đồng bằng sông Cửu Long, Việt Nam">
+          <figcaption>Ảnh đại diện được lấy từ trang GISA.</figcaption>
+        </figure>
+      <div class="content">
+        <div class="meta">10 thành quả nghiên cứu khác trên GISA · Không ghi rõ năm trên bản tóm tắt</div>
+        <h2>Lợi thế so sánh của các loại cây trồng thay thế: Nghiên cứu so sánh ở Bến Tre, Đồng bằng sông Cửu Long, Việt Nam</h2>
+        <p><strong>Tác giả/nhóm:</strong> Hoàng Văn Việt và cộng sự</p>
+        <p>Dùng DRC, SCB và PAM để so sánh lúa, dừa và bưởi. Bưởi có năng lực cạnh tranh mạnh nhất; dừa ở mức trung bình nhưng ổn định nhất; lúa yếu nhất và nhạy với biến động khí hậu, thị trường. Nghiên cứu gợi ý chuyển một phần đất lúa sang bưởi hoặc dừa nhưng phải tính chi phí chuyển đổi và đầu tư ban đầu.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Bài nghiên cứu lợi thế so sánh cây trồng thay thế, thông tin tóm tắt theo trang GISA.</p>
+        <a class="source" href="https://gisa.edu.vn/loi-the-so-sanh-cua-cac-loai-cay-trong-thay-the-nghien-cuu-so-sanh-o-ben-tre-dong-bang-song-cuu-long-viet-nam" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-8">
+      <div class="number">08</div>
+      <div class="no-image">Chưa lưu được ảnh cục bộ.<br><span>Chưa tải được ảnh đại diện ở lần thu thập này; liên kết nguồn vẫn được giữ.</span></div>
+      <div class="content">
+        <div class="meta">10 thành quả nghiên cứu khác trên GISA · Không ghi rõ năm trên bản tóm tắt</div>
+        <h2>Năng lực cạnh tranh nông nghiệp của Việt Nam theo các chỉ số RCA và NRCA và tính nhất quán của các chỉ số năng lực cạnh tranh</h2>
+        <p><strong>Tác giả/nhóm:</strong> Nhóm nghiên cứu GISA</p>
+        <p>Việt Nam có lợi thế mạnh ở trồng trọt và thủy sản, nhưng yếu hơn ở chăn nuôi và thực phẩm chế biến. Các ngành mạnh/yếu tương đối ổn định, phản ánh chiến lược xuất khẩu dựa nhiều vào sản phẩm truyền thống và tài nguyên tự nhiên. RCA, NRCA và RTA khá nhất quán trong phân loại có/không có lợi thế, nhưng kém nhất quán khi xếp hạng mức độ.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Bài nghiên cứu chỉ số RCA, NRCA và năng lực cạnh tranh nông nghiệp Việt Nam, tóm tắt theo trang GISA.</p>
+        <a class="source" href="https://gisa.edu.vn/nang-luc-canh-tranh-nong-nghiep-cua-viet-nam-theo-cac-chi-so-rca-va-nrca-va-tinh-nhat-quan-cua-cac-chi-so-nang-luc-canh-tranh" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-9">
+      <div class="number">09</div>
+      <div class="no-image">Chưa lưu được ảnh cục bộ.<br><span>Chưa tải được ảnh đại diện ở lần thu thập này; liên kết nguồn vẫn được giữ.</span></div>
+      <div class="content">
+        <div class="meta">10 thành quả nghiên cứu khác trên GISA · Không ghi rõ năm trên bản tóm tắt</div>
+        <h2>Tính bền vững của các chương trình chất lượng thực phẩm châu Âu: Đa hiệu suất, cơ cấu và quản trị các hệ thống PDO, PGI và nông sản hữu cơ</h2>
+        <p><strong>Tác giả/nhóm:</strong> Nhóm tác giả quốc tế</p>
+        <p>Tổng hợp 27 trường hợp PDO, PGI và hữu cơ tại châu Âu và Đông Nam Á. Hiệu quả kinh tế khác nhau đáng kể giữa các trường hợp, trong khi khía cạnh môi trường và xã hội thường chưa được đo lường đầy đủ. Công trình cung cấp dữ liệu về chuỗi giá trị, quản trị và thông số kỹ thuật của từng hệ thống.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Công trình tổng hợp về tính bền vững của các chương trình chất lượng thực phẩm châu Âu, tóm tắt theo trang GISA.</p>
+        <a class="source" href="https://gisa.edu.vn/tinh-ben-vung-cua-cac-chuong-trinh-chat-luong-thuc-pham-chau-au-da-hieu-suat-co-cau-va-quan-tri-cac-he-thong-pdo-pgi-va-nong-san-huu-co" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-10">
+      <div class="number">10</div>
+      <div class="no-image">Chưa lưu được ảnh cục bộ.<br><span>Chưa tải được ảnh đại diện ở lần thu thập này.</span></div>
+      <div class="content">
+        <div class="meta">10 thành quả nghiên cứu khác trên GISA · Không ghi rõ năm trên bản tóm tắt</div>
+        <h2>Đo lường tính bền vững về kinh tế, môi trường và xã hội của chuỗi cung ứng thực phẩm ngắn hạn</h2>
+        <p><strong>Tác giả/nhóm:</strong> Nhóm tác giả quốc tế</p>
+        <p>Dữ liệu gồm 208 nhà sản xuất, 7 quốc gia, 10 kênh và 486 chuỗi. Chuỗi ngắn giúp nhà sản xuất giữ lại tỷ lệ lợi nhuận lớn hơn. Tuy nhiên, các kênh dài hơn đôi khi có tác động môi trường thấp hơn trên mỗi đơn vị sản lượng; kết quả xã hội không đồng nhất giữa các kênh.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Nghiên cứu đo lường tính bền vững của chuỗi cung ứng thực phẩm ngắn, tóm tắt theo trang GISA.</p>
+        <a class="source" href="https://gisa.edu.vn/do-luong-tinh-ben-vung-ve-kinh-te-moi-truong-va-xa-hoi-cua-chuoi-cung-ung-thuc-pham-ngan-han" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-11">
+      <div class="number">11</div>
+      <div class="no-image">Chưa lưu được ảnh cục bộ.<br><span>Chưa tải được ảnh đại diện ở lần thu thập này.</span></div>
+      <div class="content">
+        <div class="meta">10 thành quả nghiên cứu khác trên GISA · Không ghi rõ năm trên bản tóm tắt</div>
+        <h2>Động lực của thương mại nội ngành nông nghiệp: Một nghiên cứu điển hình toàn diện ở Việt Nam</h2>
+        <p><strong>Tác giả/nhóm:</strong> Nhóm nghiên cứu GISA</p>
+        <p>Phân loại 42 ngành có thương mại liên ngành và 19 ngành có thương mại nội ngành; xu hướng thương mại nội ngành tăng. Sự thay đổi mang tính động, liên quan đến chuyển dịch cơ cấu và có quan hệ âm với mức độ chuyên môn hóa thương mại.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Nghiên cứu thương mại nội ngành nông nghiệp Việt Nam, tóm tắt theo trang GISA.</p>
+        <a class="source" href="https://gisa.edu.vn/dong-luc-cua-thuong-mai-noi-nganh-nong-nghiep-mot-nghien-cuu-dien-hinh-toan-dien-o-viet-nam" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-12">
+      <div class="number">12</div>
+      <div class="no-image">Chưa lưu được ảnh cục bộ.<br><span>Chưa tải được ảnh đại diện ở lần thu thập này.</span></div>
+      <div class="content">
+        <div class="meta">10 thành quả nghiên cứu khác trên GISA · 1997–2014</div>
+        <h2>Nghiên cứu sự phát triển của chuyên môn hóa thương mại nông nghiệp ở các nền kinh tế chuyển đổi: Nghiên cứu trường hợp từ Việt Nam</h2>
+        <p><strong>Tác giả/nhóm:</strong> Nhóm nghiên cứu GISA</p>
+        <p>Dùng chỉ số Lafay để phân tích sự thay đổi chuyên môn hóa thương mại nông nghiệp. Các ngành có mức chuyên môn hóa cao có xu hướng giảm, còn một số ngành chưa chuyên môn hóa có xu hướng tăng. Tác động của khủng hoảng năm 2008 và xu hướng tổng thể không hoàn toàn rõ ràng.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Nghiên cứu chuyên môn hóa thương mại nông nghiệp Việt Nam giai đoạn 1997–2014, tóm tắt theo trang GISA.</p>
+        <a class="source" href="https://gisa.edu.vn/nghien-cuu-su-phat-trien-cua-chuyen-mon-hoa-thuong-mai-nong-nghiep-o-cac-nen-kinh-te-chuyen-doi-nghien-cuu-truong-hop-tu-viet-nam" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-13">
+      <div class="number">13</div>
+      
+        <figure>
+          <img src="images/08_pomelo.jpg" alt="Nghiên cứu chuỗi giá trị bưởi da xanh Bến Tre">
+          <figcaption>Ảnh đại diện được lấy từ trang GISA.</figcaption>
+        </figure>
+      <div class="content">
+        <div class="meta">10 thành quả nghiên cứu khác trên GISA · 2016</div>
+        <h2>Nghiên cứu chuỗi giá trị bưởi da xanh Bến Tre</h2>
+        <p><strong>Tác giả/nhóm:</strong> Hoàng Văn Việt và cộng sự</p>
+        <p>Khảo sát chuỗi tại Bến Tre và thị trường Thành phố Hồ Chí Minh, kết hợp khung GTZ, M4P và FAO để tính chi phí, lợi nhuận và giá trị gia tăng. Chuỗi có hiệu quả kinh tế-xã hội cao, phân bổ lợi ích tương đối công bằng, đặc biệt cho nông dân. Rủi ro chính là sâu bệnh và nguồn cung tăng nhanh, do đó cần đa dạng hóa thị trường.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Nghiên cứu chuỗi giá trị bưởi da xanh Bến Tre, công bố năm 2016 theo trang GISA.</p>
+        <a class="source" href="https://gisa.edu.vn/nghien-cuu-chuoi-gia-tri-buoi-da-xanh-ben-tre" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+    <article class="card" id="bai-14">
+      <div class="number">14</div>
+      <div class="no-image">Chưa lưu được ảnh cục bộ.<br><span>Chưa tải được ảnh đại diện ở lần thu thập này.</span></div>
+      <div class="content">
+        <div class="meta">10 thành quả nghiên cứu khác trên GISA · Không ghi rõ năm trên bản tóm tắt</div>
+        <h2>Chuỗi cung ứng thực phẩm ngắn hạn: Động lực bền vững và bình đẳng cho tương lai</h2>
+        <p><strong>Tác giả/nhóm:</strong> Nhóm tác giả quốc tế</p>
+        <p>Đề xuất khung sáu trụ cột và 28 chỉ số để đánh giá chuỗi cung ứng thực phẩm ngắn, áp dụng cho chuỗi rau tại Việt Nam. Lợi ích gồm thu nhập, việc làm, công bằng, sức khỏe, giảm ô nhiễm/chất thải/năng lượng, chất lượng thực phẩm, giáo dục nông trại, du lịch nông nghiệp, văn hóa địa phương và cộng đồng. Công trình cũng xác định rào cản và nhu cầu hỗ trợ từ chính phủ/dự án.</p>
+        <p class="reference"><strong>Tài liệu tham khảo:</strong> Nghiên cứu khung đánh giá chuỗi cung ứng thực phẩm ngắn, tóm tắt theo trang GISA.</p>
+        <a class="source" href="https://gisa.edu.vn/chuoi-cung-ung-thuc-pham-ngan-han-dong-luc-ben-vung-va-binh-dang-cho-tuong-lai" target="_blank" rel="noopener">Mở bài trên GISA ↗</a>
+      </div>
+    </article>
+
+  <section class="resources" id="tep-du-lieu">
+    <h2>Tệp đi kèm</h2>
+    <p><code>danh_sach_14_bai_nghien_cuu.csv</code>: dữ liệu có cấu trúc để lọc, nhập Excel/Google Sheets hoặc dùng cho AI agent.</p>
+    <p><code>images/</code>: ảnh đã thu thập, gồm ảnh chụp bài Benchmarking do người dùng cung cấp và các ảnh từ trang GISA.</p>
+    <p><code>README.md</code>: hướng dẫn nhanh và lưu ý về nguồn ảnh.</p>
+  </section>
+</main>
+
+<footer>
+  Tài liệu tổng hợp phục vụ tra cứu. Nội dung chi tiết và quyền sử dụng hình ảnh thuộc các nguồn gốc được liên kết trong từng bài.
+</footer>
+</body>
+</html>

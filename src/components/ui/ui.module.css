@@ -50,8 +50,119 @@
   font-weight: 700;
 }
 
-.emptyState {
+/* Thẻ bài nghiên cứu trong khối "bài liên quan".
+
+   Không đổ bóng: một viền 1px và khoảng thở là đủ để tách thẻ khỏi nền, còn đổ
+   bóng ở cả ba thẻ sẽ kéo khối này nặng hơn thân bài ngay phía trên nó. */
+.researchCard {
+  background: var(--color-white);
+  border: 1px solid rgb(25 72 106 / 16%);
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  /* Neo cho lớp phủ `::after` của liên kết tiêu đề. */
+  position: relative;
+  transition: border-color 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+
+.researchCard:hover {
+  border-color: var(--color-teal);
+  transform: translateY(-0.2rem);
+}
+
+.researchMedia {
+  aspect-ratio: 16 / 10;
   background: var(--color-mist);
+  overflow: hidden;
+}
+
+.researchMedia img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+  width: 100%;
+}
+
+.researchCard:hover .researchMedia img {
+  transform: scale(1.04);
+}
+
+/* Bìa chữ cho bài chưa có ảnh: chủ đề đặt trên nền navy theo lối bìa ấn phẩm. */
+.researchMediaFallback {
+  align-items: flex-end;
+  background: var(--color-navy);
+  color: var(--color-white);
+  display: flex;
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  height: 100%;
+  line-height: 1.2;
+  padding: clamp(1.1rem, 2.6vw, 1.5rem);
+}
+
+.researchBody {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.55rem;
+  padding: clamp(1.1rem, 2.6vw, 1.6rem);
+}
+
+.researchMeta {
+  color: var(--color-orange);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.researchTitle {
+  color: var(--color-navy);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  margin: 0;
+}
+
+.researchTitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Toàn bộ thẻ là vùng bấm được, nhưng chỉ tiêu đề là liên kết thật, nên trình
+   đọc màn hình vẫn nghe đúng một liên kết cho mỗi bài. */
+.researchTitle a::after {
+  content: '';
+  inset: 0;
+  position: absolute;
+}
+
+.researchTitle a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.researchSummary {
+  color: rgb(26 26 26 / 76%);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.researchArrow {
+  color: var(--color-teal);
+  margin-top: auto;
+  padding-top: 0.9rem;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.researchCard:hover .researchArrow {
+  transform: translateX(0.3rem);
+}
+
+.emptyState {
+  background: var(--color-white);
+  border: 1px solid rgb(25 72 106 / 13%);
   border-left: 0.3rem solid var(--color-teal);
   border-radius: var(--radius-control);
   padding: clamp(1.25rem, 4vw, 2rem);
@@ -63,7 +174,8 @@
 }
 
 .sourceNote {
-  background: var(--color-mist);
+  background: var(--color-white);
+  border: 1px solid rgb(25 72 106 / 13%);
   border-radius: var(--radius-control);
   display: grid;
   gap: 0.25rem;
@@ -81,7 +193,8 @@
 }
 
 .filterBar {
-  background: var(--color-mist);
+  background: var(--color-white);
+  border: 1px solid rgb(25 72 106 / 13%);
   border-radius: var(--radius-card);
   display: grid;
   gap: 1rem;

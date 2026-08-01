@@ -1,9 +1,9 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
-type MotionKind = 'item' | 'media' | 'reveal';
+type MotionKind = 'item' | 'media' | 'reveal' | 'section';
 
 interface MotionRecord {
   element: HTMLElement;
@@ -74,6 +74,10 @@ export function annotateScrollMotion(root: ParentNode = document) {
     });
   }
 
+  getElements(root, 'main section')
+    .filter((element) => !isExcluded(element))
+    .forEach((element) => annotate(element, 'section'));
+
   getElements(root, 'main h1, main section h2')
     .filter(
       (element) =>
@@ -124,31 +128,33 @@ export function annotateScrollMotion(root: ParentNode = document) {
   };
 }
 
-function observeScrollMotionFallback(root: ParentNode = document) {
-  const supportsViewTimeline =
-    typeof CSS !== 'undefined' && CSS.supports?.('animation-timeline: view()');
-
-  if (supportsViewTimeline || typeof IntersectionObserver === 'undefined') {
+function observeScrollMotion(root: ParentNode = document) {
+  if (typeof IntersectionObserver === 'undefined') {
     return () => undefined;
   }
 
   const elements = getElements(root, MOTION_SELECTOR);
   const documentElement = document.documentElement;
-  const previousFallbackValue = documentElement.dataset.scrollFallback;
+  const previousMotionReady = documentElement.dataset.scrollMotionReady;
 
-  documentElement.dataset.scrollFallback = 'true';
+  const updateSide = (element: HTMLElement, rect: DOMRectReadOnly) => {
+    const elementCenter = rect.top + rect.height / 2;
+    element.dataset.scrollSide =
+      elementCenter < window.innerHeight / 2 ? 'top' : 'bottom';
+  };
+
+  elements.forEach((element) => {
+    const rect = element.getBoundingClientRect();
+    updateSide(element, rect);
+  });
+
+  documentElement.dataset.scrollMotionReady = 'true';
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         const element = entry.target as HTMLElement;
-        const viewportCenter = entry.rootBounds
-          ? entry.rootBounds.top + entry.rootBounds.height / 2
-          : window.innerHeight / 2;
-        const elementCenter =
-          entry.boundingClientRect.top + entry.boundingClientRect.height / 2;
-
-        element.dataset.scrollSide = elementCenter < viewportCenter ? 'top' : 'bottom';
+        updateSide(element, entry.boundingClientRect);
         if (entry.isIntersecting) {
           element.dataset.scrollVisible = 'true';
         } else {
@@ -156,21 +162,31 @@ function observeScrollMotionFallback(root: ParentNode = document) {
         }
       });
     },
-    { rootMargin: '-8% 0px -8% 0px', threshold: 0.12 },
+    { rootMargin: '-10% 0px -10% 0px', threshold: 0.04 },
   );
 
-  elements.forEach((element) => observer.observe(element));
+  const revealFrame = window.requestAnimationFrame(() => {
+    elements.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      updateSide(element, rect);
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        element.dataset.scrollVisible = 'true';
+      }
+      observer.observe(element);
+    });
+  });
 
   return () => {
+    window.cancelAnimationFrame(revealFrame);
     observer.disconnect();
     elements.forEach((element) => {
       delete element.dataset.scrollSide;
       delete element.dataset.scrollVisible;
     });
-    if (previousFallbackValue === undefined) {
-      delete documentElement.dataset.scrollFallback;
+    if (previousMotionReady === undefined) {
+      delete documentElement.dataset.scrollMotionReady;
     } else {
-      documentElement.dataset.scrollFallback = previousFallbackValue;
+      documentElement.dataset.scrollMotionReady = previousMotionReady;
     }
   };
 }
@@ -178,12 +194,12 @@ function observeScrollMotionFallback(root: ParentNode = document) {
 export function ScrollMotionDirector() {
   const pathname = usePathname();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const cleanupAnnotations = annotateScrollMotion();
-    const cleanupFallback = observeScrollMotionFallback();
+    const cleanupMotion = observeScrollMotion();
 
     return () => {
-      cleanupFallback();
+      cleanupMotion();
       cleanupAnnotations();
     };
   }, [pathname]);

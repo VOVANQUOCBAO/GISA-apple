@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { type FormEvent, useEffect, useState } from 'react';
 
-import { SiteIntro } from '@/components/motion/site-intro';
 import { Icon } from '@/components/ui/icon';
 import { Illustration, type IllustrationName } from '@/components/ui/illustration';
 import type { HomePageModel } from '@/content/home';
@@ -36,15 +35,22 @@ const rises = [
   { code: 'S', label: 'Sustainability', color: '#32a65a', text: 'Hướng tới phát triển lâu dài, trách nhiệm với cộng đồng và môi trường.' },
 ];
 
-// Shares its six illustrations with the gateway strip above — same six concepts,
-// so the site teaches one picture per idea rather than two.
-const pillars: Array<{ art: IllustrationName; title: string; text: string; color: string }> = [
-  { art: 'applied-research', title: 'Nghiên cứu ứng dụng', text: 'Nghiên cứu chuyên sâu và ứng dụng liên ngành, tạo tri thức đáng tin cậy để giải quyết các vấn đề phát triển bền vững.', color: '#00717b' },
-  { art: 'strategic-consulting', title: 'Tư vấn chiến lược', text: 'Hoạch định chiến lược, triển khai ESG, tối ưu mô hình quản trị và nâng cao hiệu quả dài hạn cho tổ chức.', color: '#639c25' },
-  { art: 'capacity-building', title: 'Đào tạo năng lực', text: 'Phát triển năng lực lãnh đạo, quản trị và chuyên môn, giúp tổ chức thích ứng với chuyển đổi số và kinh tế xanh.', color: '#1765aa' },
-  { art: 'application-transfer', title: 'Ứng dụng & Chuyển giao', text: 'Kết nối khoa học – công nghệ với các giải pháp sáng tạo và mô hình quản trị tiên tiến trong thực tiễn.', color: '#ee5b1b' },
-  { art: 'network-collaboration', title: 'Mạng lưới & Hợp tác', text: 'Kết nối nhà khoa học, chuyên gia, lãnh đạo và doanh nghiệp để chia sẻ tri thức và thúc đẩy hợp tác chiến lược.', color: '#6b3192' },
-  { art: 'community-impact', title: 'Cộng đồng & Tác động', text: 'Thực thi sáng kiến cộng đồng, góp phần nâng cao phúc lợi xã hội, bảo vệ môi trường và phát triển bền vững.', color: '#00717b' },
+const knowledgeToAction: Array<{ art: IllustrationName; commitment: string; title: string; text: string }> = [
+  { art: 'applied-research', commitment: 'Đổi mới có trách nhiệm', title: 'Nghiên cứu ứng dụng', text: 'Tạo bằng chứng đáng tin cậy và tri thức liên ngành cho những quyết định phát triển bền vững.' },
+  { art: 'strategic-consulting', commitment: 'Đo lường tác động', title: 'Tư vấn chiến lược', text: 'Chuyển mục tiêu ESG thành lộ trình, chỉ số và mô hình quản trị có thể triển khai.' },
+  { art: 'capacity-building', commitment: 'Giáo dục chất lượng', title: 'Đào tạo năng lực', text: 'Phát triển năng lực lãnh đạo và chuyên môn để tổ chức chủ động trước thay đổi.' },
+  { art: 'application-transfer', commitment: 'Hành động vì khí hậu', title: 'Ứng dụng & Chuyển giao', text: 'Đưa khoa học và công nghệ vào các giải pháp xanh có khả năng nhân rộng trong thực tiễn.' },
+  { art: 'network-collaboration', commitment: 'Hợp tác toàn cầu', title: 'Mạng lưới & Hợp tác', text: 'Kết nối học giả, chuyên gia và doanh nghiệp để cùng tạo ra giá trị dài hạn.' },
+  { art: 'community-impact', commitment: 'Cộng đồng bao trùm', title: 'Cộng đồng & Tác động', text: 'Đặt con người, phúc lợi xã hội và môi trường ở trung tâm của mọi sáng kiến.' },
+];
+
+const commitmentArts: IllustrationName[] = [
+  'responsible-innovation',
+  'impact-measurement',
+  'quality-education',
+  'climate-action',
+  'global-collaboration',
+  'inclusive-community',
 ];
 
 const process: Array<{ art: IllustrationName; title: string; text: string }> = [
@@ -68,23 +74,27 @@ type KnowledgeKey = 'research' | 'courses' | 'news';
 const knowledgeGroups: Record<KnowledgeKey, {
   eyebrow: string;
   href: string;
+  itemNoun: string;
   label: string;
-  items: Array<{ image?: string; meta: string; title: string }>;
+  items: Array<{ href?: string; image?: string; meta: string; title: string }>;
 }> = {
   research: {
     eyebrow: 'Nghiên cứu nổi bật',
     href: '/nghien-cuu/bai-bao-khoa-hoc',
+    itemNoun: 'bài nghiên cứu',
     label: 'Bài nghiên cứu',
+    // `href` trỏ thẳng tới trang chi tiết trong `src/content/fixtures/publications.ts`.
     items: [
-      { image: '/images/article-performance-benchmarking.png', meta: 'Quản trị hiệu suất', title: 'Nghiên cứu phát triển mô hình chuẩn đối sánh đo lường hiệu suất hoạt động' },
-      { image: '/images/article-food-quality-programs.png', meta: 'Kinh tế thực phẩm', title: 'Các chương trình chất lượng thực phẩm và phí bảo hiểm giá ròng' },
-      { image: '/images/article-da-xanh-pomelo.png', meta: 'Chuỗi giá trị', title: 'Phân tích chuỗi giá trị và năng lực cạnh tranh ngành Bưởi Da Xanh' },
-      { image: '/images/article-ai-chatbot.png', meta: 'Trí tuệ nhân tạo', title: 'Nâng cao trải nghiệm khách hàng với chatbot vận hành bởi AI' },
+      { href: '/nghien-cuu/bai-bao-khoa-hoc/mo-hinh-chuan-doi-sanh-do-luong-hieu-suat', image: '/images/article-performance-benchmarking.png', meta: 'Quản trị hiệu suất', title: 'Nghiên cứu phát triển mô hình chuẩn đối sánh đo lường hiệu suất hoạt động' },
+      { href: '/nghien-cuu/bai-bao-khoa-hoc/chuong-trinh-chat-luong-thuc-pham-va-phi-bao-hiem-gia', image: '/images/article-food-quality-programs.png', meta: 'Kinh tế thực phẩm', title: 'Các chương trình chất lượng thực phẩm và phí bảo hiểm giá ròng' },
+      { href: '/nghien-cuu/bai-bao-khoa-hoc/chuoi-gia-tri-va-nang-luc-canh-tranh-buoi-da-xanh', image: '/images/article-da-xanh-pomelo.png', meta: 'Chuỗi giá trị', title: 'Phân tích chuỗi giá trị và năng lực cạnh tranh ngành Bưởi Da Xanh' },
+      { href: '/nghien-cuu/bai-bao-khoa-hoc/trai-nghiem-khach-hang-voi-chatbot-ai', image: '/images/article-ai-chatbot.png', meta: 'Trí tuệ nhân tạo', title: 'Nâng cao trải nghiệm khách hàng với chatbot vận hành bởi AI' },
     ],
   },
   courses: {
     eyebrow: 'Đào tạo ứng dụng',
     href: '/khoa-hoc',
+    itemNoun: 'khóa học',
     label: 'Khóa học',
     items: [
       { image: '/images/course-multichannel-effective-sales.png', meta: 'Kinh doanh & Bán hàng', title: 'Multi-channel & Effective Sales' },
@@ -98,6 +108,7 @@ const knowledgeGroups: Record<KnowledgeKey, {
   news: {
     eyebrow: 'Tin tức & Góc nhìn',
     href: '/tin-tuc',
+    itemNoun: 'tin',
     label: 'Tin mới',
     items: [
       { meta: 'Giáo dục', title: 'Chuyển đổi mô hình viện nghiên cứu và phát triển đại học đẳng cấp' },
@@ -147,33 +158,25 @@ const partners: Array<{ logo: string; name: string }> = [
   { logo: '/icons/logos/29_barilla.png', name: 'Barilla' },
 ];
 
-// Order mirrors the sustainability grid in the approved mockup (04-tac-dong).
-const sustainabilityCommitments: Array<{
-  color: string;
-  art: IllustrationName;
-  label: string;
-  text: string;
-}> = [
-  { color: '#fd6925', art: 'responsible-innovation', label: 'Đổi mới có trách nhiệm', text: 'Biến bằng chứng khoa học thành hành động.' },
-  { color: '#c5192d', art: 'inclusive-community', label: 'Cộng đồng bao trùm', text: 'Đặt con người và chất lượng sống ở trung tâm.' },
-  { color: '#c99700', art: 'quality-education', label: 'Giáo dục chất lượng', text: 'Chuyển giao tri thức có khả năng ứng dụng.' },
-  { color: '#4c9f38', art: 'climate-action', label: 'Hành động vì khí hậu', text: 'Lồng ghép tăng trưởng xanh trong mọi giải pháp.' },
-  { color: '#26bde2', art: 'network-collaboration', label: 'Hợp tác toàn cầu', text: 'Kết nối chuyên gia và tổ chức cùng tạo tác động.' },
-  { color: '#a21942', art: 'impact-measurement', label: 'Đo lường tác động', text: 'Theo dõi tiến độ và lan tỏa giá trị số rõ ràng.' },
-];
-
 const featuredResearchProjects: Array<{
-  accent: string;
+  alt: string;
   category: string;
   description: string;
   href: string;
-  art: IllustrationName;
+  image: string;
   title: string;
 }> = [
-  { accent: '#f15b2a', category: 'Thương mại bền vững', description: 'Nâng cao năng lực thực hành thương mại bền vững cho doanh nghiệp Việt Nam.', href: '/nghien-cuu/du-an', art: 'gisa-trade4sd-icon', title: 'TRADE4SD' },
-  { accent: '#69a52b', category: 'Hệ thống thực phẩm', description: 'Kết nối dữ liệu và tri thức để hiểu rõ hơn động lực của chuỗi giá trị thực phẩm.', href: '/nghien-cuu/du-an', art: 'gisa-valumics-icon', title: 'VALUMICS' },
-  { accent: '#c5192d', category: 'Chất lượng thực phẩm', description: 'Hợp tác nghiên cứu hướng tới hệ thống thực phẩm minh bạch, bền vững và có trách nhiệm.', href: '/nghien-cuu/du-an', art: 'gisa-strength2food-icon', title: 'STRENGTH2FOOD' },
-  { accent: '#1765aa', category: 'Hợp tác quốc tế', description: 'Mở rộng trao đổi học thuật, nghiên cứu ứng dụng và kết nối chuyên gia toàn cầu.', href: '/nghien-cuu/du-an', art: 'global-collaboration', title: 'BRITISH COUNCIL' },
+  { alt: 'Thành phố xanh với năng lượng tái tạo', category: 'Thương mại bền vững', description: 'Nâng cao năng lực thực hành thương mại bền vững cho doanh nghiệp Việt Nam.', href: '/nghien-cuu/du-an', image: '/images/article-green-city.png', title: 'TRADE4SD' },
+  { alt: 'Báo cáo phân tích hiệu suất và dữ liệu', category: 'Hệ thống thực phẩm', description: 'Kết nối dữ liệu và tri thức để hiểu rõ hơn động lực của chuỗi giá trị thực phẩm.', href: '/nghien-cuu/du-an', image: '/images/article-performance-benchmarking.png', title: 'VALUMICS' },
+  { alt: 'Thực phẩm tươi trong hệ thống phân phối', category: 'Chất lượng thực phẩm', description: 'Hợp tác nghiên cứu hướng tới hệ thống thực phẩm minh bạch, bền vững và có trách nhiệm.', href: '/nghien-cuu/du-an', image: '/images/article-food-quality-programs.png', title: 'STRENGTH2FOOD' },
+  { alt: 'Nhóm chuyên gia quốc tế trao đổi trong cuộc họp', category: 'Hợp tác quốc tế', description: 'Mở rộng trao đổi học thuật, nghiên cứu ứng dụng và kết nối chuyên gia toàn cầu.', href: '/nghien-cuu/du-an', image: '/images/gisa-consulting-hero.png', title: 'BRITISH COUNCIL' },
+];
+
+const featuredResearchArts: IllustrationName[] = [
+  'gisa-trade4sd-icon',
+  'gisa-valumics-icon',
+  'gisa-strength2food-icon',
+  'global-collaboration',
 ];
 
 const sideArticles = [
@@ -222,8 +225,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
 
   return (
     <main id="main-content" tabIndex={-1}>
-      <SiteIntro />
-      <section className={styles.hero} id="trang-chu">
+      <section className={styles.hero} data-scroll-motion-ignore id="trang-chu">
         <div className={styles.heroMedia}>
           <Image
             alt="Nhóm chuyên gia GISA cùng xem mô hình quy hoạch đô thị xanh trên bàn họp"
@@ -334,32 +336,44 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
         </div>
       </section>
 
+      <div className={styles.ancientTreeStory}>
       <section aria-labelledby="sustainability-banner-title" className={styles.mediaBannerSection} id="phat-trien-ben-vung">
         <div className={styles.contentContainer}>
-          <div className={styles.mediaBannerHeading}>
-            <div data-scroll-motion="section-copy" data-scroll-motion-ignore>
-              <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`}>{bindPhrases("Tác động bền vững")}</p>
+          <div className={styles.knowledgeActionLayout}>
+            <div className={styles.knowledgeActionIntro} data-scroll-motion="section-copy" data-scroll-motion-ignore>
+              <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`}>{bindPhrases("Từ cam kết đến hành động")}</p>
               <h2 id="sustainability-banner-title">{bindPhrases("TRI THỨC TẠO CHUYỂN BIẾN")}</h2>
+              <p>{bindPhrases("GISA kết nối cam kết phát triển bền vững với năng lực nghiên cứu, tư vấn và triển khai thực tiễn.")}</p>
             </div>
-            <p className={`${styles.featureStatement} ${styles.statementRed}`} data-scroll-motion="statement">{bindPhrases("Tri thức kết nối, hành động liền mạch, tác động dài lâu.")}</p>
-          </div>
-          <ul aria-label="Các hướng hành động phát triển bền vững của GISA" className={styles.commitmentGrid}>
-            {sustainabilityCommitments.map((item, index) => (
+          <ol
+            aria-label="Từ cam kết phát triển bền vững đến năng lực hành động của GISA"
+            className={styles.knowledgeActionGrid}
+            data-scroll-motion="knowledge-sequence"
+          >
+            {knowledgeToAction.map((item, index) => (
               <li
                 data-scroll-motion="commitment-card"
-                key={item.label}
+                key={item.title}
                 style={{
-                  '--commitment-color': item.color,
+                  '--knowledge-rise': `${index * 0.9}rem`,
                   '--motion-index': index,
-                  '--motion-delay': `${index * 85}ms`,
-                  '--motion-step': `${(index % 3) * 1.8}%`,
+                  '--motion-delay': `${index * 110}ms`,
                 } as React.CSSProperties}
               >
-                <span className={styles.commitmentIcon}><Illustration name={item.art} size={80} /></span>
-                <span><strong>{bindPhrases(item.label)}</strong><small>{bindPhrases(item.text)}</small></span>
+                <span className={styles.knowledgeActionNumber}>{String(index + 1).padStart(2, '0')}</span>
+                <span className={styles.knowledgeActionIcon}><Illustration name={commitmentArts[index] ?? item.art} size={44} /></span>
+                <span className={styles.knowledgeActionBody}>
+                  <small>{bindPhrases(item.commitment)}</small>
+                  <h3>{bindPhrases(item.title)}</h3>
+                  <span>{bindPhrases(item.text)}</span>
+                </span>
+                <span aria-hidden="true" className={styles.knowledgeActionGuide}>
+                  <span className={styles.knowledgeActionDot} />
+                </span>
               </li>
             ))}
-          </ul>
+          </ol>
+          </div>
         </div>
       </section>
 
@@ -383,15 +397,6 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
                 <h3>{bindPhrases(item.label)}</h3>
                 <i aria-hidden="true" />
                 <p>{bindPhrases(item.text)}</p>
-              </article>
-            ))}
-          </div>
-          <h2 className={`${styles.sectionTitle} ${styles.pillarHeading}`}>{bindPhrases("TRỤ CỘT HÀNH ĐỘNG")}</h2>
-          <div className={styles.pillarGrid}>
-            {pillars.map((item) => (
-              <article key={item.title} style={{ '--accent': item.color } as React.CSSProperties}>
-                <span className={styles.pillarIcon}><Illustration name={item.art} size={108} /></span>
-                <div><h3>{bindPhrases(item.title)}</h3><i aria-hidden="true" /><p>{bindPhrases(item.text)}</p></div>
               </article>
             ))}
           </div>
@@ -444,22 +449,27 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
             <Link className={styles.knowledgeAllLink} href={knowledge.href}>Xem tất cả {knowledge.label.toLowerCase()} <Icon name="arrow" size={17} /></Link>
           </div>
           <div aria-labelledby={`knowledge-tab-${activeKnowledge}`} className={`${styles.knowledgeGrid} ${activeKnowledge === 'courses' ? styles.courseGrid : ''}`} id="knowledge-panel" role="tabpanel">
-            {knowledge.items.map((item, index) => (
+            {knowledge.items.map((item, index) => {
+              // Bài nghiên cứu đã có trang chi tiết riêng; khóa học và tin tức
+              // vẫn dẫn về trang danh sách cho tới khi có bản ghi tương ứng.
+              const itemHref = item.href ?? knowledge.href;
+              return (
               <article className={item.image ? styles.courseCard : undefined} key={item.title}>
                 {item.image ? (
-                  <Link aria-label={`Xem khóa học ${item.title}`} className={styles.courseImage} href={knowledge.href}>
-                    <Image alt={`Banner khóa học ${item.title}`} height={1152} sizes="(max-width: 768px) 94vw, (max-width: 1120px) 46vw, 30vw" src={item.image} width={2048} />
+                  <Link aria-label={`Xem ${knowledge.itemNoun} ${item.title}`} className={styles.courseImage} href={itemHref}>
+                    <Image alt={`Ảnh minh họa ${knowledge.itemNoun} ${item.title}`} height={1152} sizes="(max-width: 768px) 94vw, (max-width: 1120px) 46vw, 30vw" src={item.image} width={2048} />
                   </Link>
                 ) : (
                   <div className={styles.knowledgeCardTop}><span>{String(index + 1).padStart(2, '0')}</span><Icon name="arrowUp" size={22} /></div>
                 )}
                 <div className={styles.knowledgeCardBody}>
                   <p>{knowledge.eyebrow} - {bindPhrases(item.meta)}</p>
-                  <h3>{bindPhrases(item.title)}</h3>
-                  <Link href={knowledge.href}>{bindPhrases("Xem chi tiết ")}<Icon name="arrow" size={17} /></Link>
+                  <h3><Link href={itemHref}>{bindPhrases(item.title)}</Link></h3>
+                  <Link aria-hidden="true" href={itemHref} tabIndex={-1}>{bindPhrases("Xem chi tiết ")}<Icon name="arrow" size={17} /></Link>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -503,6 +513,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
         </div>
       </section>
 
+      <div className={styles.storyContinuum}>
       <section className={styles.processSection} id="quy-trinh">
         <div className={styles.contentContainer}>
           <div className={styles.processHeading}><h2>{bindPhrases("QUY TRÌNH TƯ VẤN 5 BƯỚC")}</h2><p className={`${styles.featureStatement} ${styles.statementGreen}`}>{bindPhrases("Đồng hành cùng doanh nghiệp từ phân tích đến triển khai và tối ưu giá trị bền vững.")}</p></div>
@@ -539,35 +550,37 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
               <h2 id="featured-research-title">{bindPhrases("NGHIÊN CỨU TRỌNG ĐIỂM")}</h2>
             </div>
             <p className={styles.researchLead} data-scroll-motion="statement">
-              <Illustration name="research-doc" size={46} />
               <span>{bindPhrases("Những hợp tác nghiên cứu tiêu biểu kết nối tri thức quốc tế với nhu cầu phát triển tại Việt Nam.")}</span>
             </p>
           </div>
           <div className={styles.researchProjectsGrid}>
             {featuredResearchProjects.map((project, index) => (
               <article
+                className={index === 0 ? styles.researchLeadCard : styles.researchSupportCard}
                 data-scroll-motion="research-card"
                 key={project.title}
                 style={{
                   '--motion-index': index,
                   '--motion-delay': `${index * 100}ms`,
                   '--motion-step': `${index * 2.4}%`,
-                  '--project-accent': project.accent,
                 } as React.CSSProperties}
               >
-                <div className={styles.researchProjectTop}>
-                  <span className={styles.researchProjectIcon}><Illustration name={project.art} size={340} /></span>
-                  <span className={styles.researchProjectNumber}>{String(index + 1).padStart(2, '0')}</span>
+                <div className={styles.researchProjectImage}>
+                  <Image alt={project.alt} fill sizes={index === 0 ? '(max-width: 70rem) 100vw, 38vw' : '(max-width: 70rem) 50vw, 20vw'} src={project.image} />
                 </div>
-                <p>{bindPhrases(project.category)}</p>
-                <h3>{bindPhrases(project.title)}</h3>
-                <span>{bindPhrases(project.description)}</span>
-                <Link href={project.href}>{bindPhrases("Khám phá dự án ")}<Icon name="arrowUp" size={18} /></Link>
+                <div className={styles.researchProjectBody}>
+                  <p><span className={styles.researchProjectMark}><Illustration name={featuredResearchArts[index] ?? 'global-collaboration'} size={36} /></span>{bindPhrases(project.category)}</p>
+                  <h3>{bindPhrases(project.title)}</h3>
+                  <span>{bindPhrases(project.description)}</span>
+                  <Link href={project.href}>{bindPhrases("Khám phá dự án ")}<Icon name="arrowUp" size={18} /></Link>
+                </div>
               </article>
             ))}
           </div>
         </div>
       </section>
+      </div>
+      </div>
 
       {consultationOpen && (
         <div className={styles.consultationOverlay}>

@@ -10,6 +10,7 @@ import '@fontsource/source-serif-4/vietnamese-700.css';
 import { SiteFooter } from '@/components/site/site-footer';
 import { SiteHeader } from '@/components/site/site-header';
 import { ScrollMotionDirector } from '@/components/motion/scroll-motion-director';
+import { SiteIntro } from '@/components/motion/site-intro';
 
 import './globals.css';
 
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html data-scroll-behavior="smooth" lang="vi">
       <body>
+        <SiteIntro />
         <a className="skip-link" href="#main-content">
           Bỏ qua đến nội dung chính
         </a>

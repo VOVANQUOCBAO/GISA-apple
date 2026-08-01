@@ -5,8 +5,11 @@
 }
 
 .pageHeader {
-  background: linear-gradient(135deg, var(--color-mist), var(--color-white));
+  background: var(--color-white);
+  border: 1px solid rgb(25 72 106 / 12%);
   border-left: 0.35rem solid var(--color-teal);
+  border-radius: var(--radius-card);
+  box-shadow: 0 1rem 3rem rgb(11 52 85 / 5%);
   margin-bottom: clamp(2rem, 5vw, 4rem);
   padding: clamp(1.5rem, 5vw, 3.5rem);
 }
@@ -55,8 +58,10 @@
 }
 
 .linkCard {
-  background: var(--color-mist);
+  background: var(--color-white);
+  border: 1px solid rgb(25 72 106 / 13%);
   border-radius: var(--radius-card);
+  box-shadow: 0 0.75rem 2.25rem rgb(11 52 85 / 4%);
   padding: 1.5rem;
 }
 
@@ -126,6 +131,453 @@
 
 .detailActions {
   margin-top: 2rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MỤC ẤN PHẨM NGHIÊN CỨU
+
+   Ngôn ngữ hình ảnh của phần này là trang ấn phẩm học thuật, không phải lưới
+   thẻ marketing: chữ dẫn dắt, đường kẻ mảnh thay cho đổ bóng, và một cột thông
+   tin xuất bản luôn nằm cạnh thân bài. Token màu, bo góc và font đều lấy từ hệ
+   sẵn có của site, không thêm hệ mới.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Trang danh sách: đầu trang và mục lục ấn phẩm ──────────────────────────── */
+.listingMasthead {
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  padding-top: clamp(1rem, 3vw, 2rem);
+}
+
+.listingMasthead h1 {
+  color: var(--color-navy);
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  margin: 0;
+  max-width: 16ch;
+}
+
+.listingMasthead > p {
+  font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+  margin: 0.9rem 0 0;
+  max-width: 58ch;
+}
+
+.listingMasthead > p:last-child {
+  color: rgb(26 26 26 / 62%);
+  font-size: 0.92rem;
+}
+
+.publicationIndex {
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Bài dẫn chạy rộng và bất đối xứng để mục lục không mở đầu bằng một hàng đều
+   nhịp — phần còn lại mới là các dòng chỉ mục. */
+.leadEntry {
+  align-items: center;
+  border-top: 2px solid var(--color-navy);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  padding-block: clamp(1.75rem, 4vw, 3rem);
+}
+
+.leadEntry:not(:has(.leadMedia)) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.leadMedia {
+  border-radius: var(--radius-card);
+  display: block;
+  overflow: hidden;
+}
+
+.leadMedia img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+  width: 100%;
+}
+
+.leadEntry:hover .leadMedia img {
+  transform: scale(1.03);
+}
+
+.leadCopy {
+  min-width: 0;
+}
+
+.leadTitle {
+  color: var(--color-navy);
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  margin: 0.6rem 0 0;
+}
+
+.leadTitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.leadTitle a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.leadSummary {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  margin: 0.9rem 0 0;
+  max-width: 52ch;
+}
+
+/* Nhãn chủ đề và năm: cùng một kiểu chữ nhỏ dùng lại ở mọi dòng chỉ mục. */
+.entryMeta {
+  color: var(--color-orange);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.entryAuthors {
+  color: rgb(26 26 26 / 62%);
+  font-size: 0.92rem;
+  margin: 0.55rem 0 0;
+}
+
+.entryList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Chỉ một đường kẻ dưới mỗi dòng. Kẻ cả trên lẫn dưới sẽ biến mục lục thành
+   bảng dữ liệu và làm nặng cả khối. */
+.entryRow {
+  align-items: start;
+  border-top: 1px solid rgb(25 72 106 / 14%);
+  display: grid;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  grid-template-columns: 9.5rem minmax(0, 1fr) 2rem;
+  padding-block: clamp(1.35rem, 3vw, 2rem);
+  position: relative;
+  transition: background-color 0.35s var(--ease-out);
+}
+
+.entryRow:last-child {
+  border-bottom: 1px solid rgb(25 72 106 / 14%);
+}
+
+.entryRow:hover {
+  background-color: var(--color-mist);
+}
+
+.entryRail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.entryYear {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.entryTopic {
+  color: var(--color-orange);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.entryMain {
+  min-width: 0;
+}
+
+.entryTitle {
+  color: var(--color-navy);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  margin: 0;
+}
+
+.entryTitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Toàn bộ dòng là vùng bấm được, nhưng chỉ tiêu đề là liên kết thật. */
+.entryTitle a::after {
+  content: '';
+  inset: 0;
+  position: absolute;
+}
+
+.entryTitle a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.entrySummary {
+  color: rgb(26 26 26 / 78%);
+  margin: 0.5rem 0 0;
+  max-width: 62ch;
+}
+
+.entryArrow {
+  align-self: center;
+  color: var(--color-teal);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+.entryRow:hover .entryArrow,
+.entryRow:focus-within .entryArrow {
+  opacity: 1;
+  transform: translateX(0.25rem);
+}
+
+/* ── Trang chi tiết: đầu bài ────────────────────────────────────────────────── */
+.articleMasthead {
+  border-bottom: 1px solid rgb(25 72 106 / 16%);
+  border-top: 2px solid var(--color-navy);
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+}
+
+.articleMasthead h1 {
+  color: var(--color-navy);
+  font-size: clamp(2rem, 4.6vw, 3.6rem);
+  margin: 0;
+  max-width: 22ch;
+}
+
+.articleLede {
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  margin: 1.1rem 0 0;
+  max-width: 58ch;
+}
+
+.articleFacts {
+  border-top: 1px solid rgb(25 72 106 / 14%);
+  display: grid;
+  gap: 1rem 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  padding-top: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.articleFacts div {
+  min-width: 0;
+}
+
+.articleFacts dt {
+  color: var(--color-green);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.articleFacts dd {
+  margin: 0.3rem 0 0;
+}
+
+.articleCover {
+  border-radius: var(--radius-card);
+  margin: 0 0 clamp(1.75rem, 4vw, 3rem);
+  max-width: 70rem;
+  overflow: hidden;
+}
+
+.articleCover img {
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ── Trang chi tiết: thân bài và cột trích dẫn ──────────────────────────────── */
+.articleColumns {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1fr) 20rem;
+}
+
+.articleBody {
+  max-width: 68ch;
+  min-width: 0;
+}
+
+.articleTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
+}
+
+.articleTags li {
+  border: 1px solid rgb(25 72 106 / 20%);
+  border-radius: 999px;
+  color: var(--color-navy);
+  font-size: 0.88rem;
+  padding: 0.3rem 0.8rem;
+}
+
+.articleAside {
+  min-width: 0;
+}
+
+/* Khối trích dẫn theo người đọc suốt bài: với trang học thuật, thông tin cần
+   lấy đi thường là dòng trích dẫn và DOI chứ không phải phần thân. */
+@media (min-width: 68rem) {
+  .articleAside {
+    align-self: start;
+    position: sticky;
+    top: 7rem;
+  }
+}
+
+.citationCard {
+  background: var(--color-mist);
+  border-left: 3px solid var(--color-teal);
+  border-radius: var(--radius-control);
+  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+
+.citationHeading {
+  color: var(--color-green);
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.citationText {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0.75rem 0 0;
+}
+
+.citationLinks {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+
+.citationPrimary,
+.citationSecondary {
+  align-items: center;
+  border: 2px solid transparent;
+  border-radius: var(--radius-control);
+  display: inline-flex;
+  font-size: 0.95rem;
+  font-weight: 700;
+  gap: 0.45rem;
+  justify-content: space-between;
+  min-height: 2.75rem;
+  padding: 0.6rem 0.9rem;
+  text-decoration: none;
+}
+
+.citationPrimary {
+  background: var(--color-teal);
+  color: var(--color-white);
+}
+
+.citationSecondary {
+  border-color: rgb(0 95 105 / 45%);
+  color: var(--color-teal);
+}
+
+/* ── Khối bài liên quan ─────────────────────────────────────────────────────── */
+.relatedSection {
+  border-top: 1px solid rgb(25 72 106 / 14%);
+  margin-top: var(--space-section);
+  padding-block: var(--space-section);
+}
+
+.relatedHeading {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.relatedHeading h2 {
+  color: var(--color-navy);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  margin: 0;
+}
+
+.relatedAllLink {
+  align-items: center;
+  color: var(--color-teal);
+  display: inline-flex;
+  font-weight: 700;
+  gap: 0.4rem;
+  text-underline-offset: 0.2em;
+}
+
+.relatedGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.relatedGrid > * {
+  min-width: 0;
+}
+
+@media (max-width: 68rem) {
+  .articleColumns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 64rem) {
+  .leadEntry {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .entryRow {
+    grid-template-columns: 7rem minmax(0, 1fr);
+  }
+
+  .entryArrow {
+    display: none;
+  }
+
+  .relatedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 42rem) {
+  .entryRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .entryRail {
+    align-items: baseline;
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .entryYear {
+    font-size: 1.15rem;
+  }
+
+  .relatedGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 64rem) {

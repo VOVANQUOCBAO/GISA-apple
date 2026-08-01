@@ -78,7 +78,7 @@ export const PAGE_REGISTRY: PageDefinition[] = [
   staticPage('/nghien-cuu/linh-vuc', 'Lĩnh vực nghiên cứu', 'Các hướng nghiên cứu được GISA công bố.'),
   listingPage('/nghien-cuu/du-an', 'Dự án nghiên cứu', 'Dự án có nguồn và trạng thái bằng chứng.', 'projects', ['topic']),
   { template: 'detail', pathPattern: '/nghien-cuu/du-an/[slug]', collection: 'projects' },
-  listingPage('/nghien-cuu/bai-bao-khoa-hoc', 'Bài báo khoa học', 'Ấn phẩm khoa học có nguồn.', 'publications', ['type']),
+  listingPage('/nghien-cuu/bai-bao-khoa-hoc', 'Bài báo khoa học', 'Ấn phẩm khoa học có nguồn.', 'publications', ['topic']),
   { template: 'detail', pathPattern: '/nghien-cuu/bai-bao-khoa-hoc/[slug]', collection: 'publications' },
   listingPage('/nghien-cuu/bai-bao-ung-dung', 'Bài báo ứng dụng', 'Ấn phẩm ứng dụng có nguồn.', 'publications', ['type']),
   { template: 'detail', pathPattern: '/nghien-cuu/bai-bao-ung-dung/[slug]', collection: 'publications' },

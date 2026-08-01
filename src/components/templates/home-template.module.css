@@ -696,3 +696,963 @@
    text happens to run out of room. */
 .aboutMotto > span > span{display:block}
 .aboutMotto span{font-size:clamp(1.75rem,2.5vw,2.45rem);line-height:1.22}
+
+/* 2026 editorial refinement — one knowledge-to-action system, one icon language. */
+.mediaBannerSection{background:#f7f9f9;padding-block:4.75rem}
+.mediaBannerSection>.contentContainer{max-width:var(--container)}
+.knowledgeActionLayout{align-items:start;display:grid;gap:clamp(2.5rem,4vw,3.5rem);grid-template-columns:minmax(25rem,.75fr) minmax(0,1.45fr)}
+.knowledgeActionIntro{position:sticky;top:8rem}
+.knowledgeActionIntro h2{color:#0b3455;font-size:clamp(2.8rem,3.65vw,3.8rem);font-weight:400;letter-spacing:-.025em;line-height:1.08;margin:0;max-width:15ch}
+.knowledgeActionIntro>p:last-child{color:#4a5f73;font-size:1.08rem;line-height:1.72;margin:2rem 0 0;max-width:33rem}
+.knowledgeActionGrid{background:#fff;border:1px solid #d6e1e5;border-radius:.8rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));list-style:none;margin:0;overflow:hidden;padding:0}
+.knowledgeActionGrid li{align-items:start;background:#fff;display:grid;gap:1rem;grid-template-columns:2rem 3rem minmax(0,1fr);min-height:11.5rem;padding:1.45rem 1.4rem;position:relative}
+.knowledgeActionGrid li:nth-child(odd){border-right:1px solid #dfe7ea}
+.knowledgeActionGrid li:nth-child(-n+4){border-bottom:1px solid #dfe7ea}
+.knowledgeActionNumber{align-items:center;background:#08717a;border-radius:50%;color:#fff;display:flex;font-family:var(--font-body);font-size:.72rem;font-weight:700;height:2rem;justify-content:center;line-height:1;width:2rem}
+.knowledgeActionIcon{align-items:center;color:#0b4e70;display:flex;height:3rem;justify-content:center;width:3rem}
+.knowledgeActionIcon svg{height:2.35rem;width:2.35rem}
+.knowledgeActionBody{display:flex;min-width:0;flex-direction:column}
+.knowledgeActionBody small{color:#08717a;font-size:.72rem;font-weight:700;letter-spacing:.08em;line-height:1.35;margin:.1rem 0 .55rem;text-transform:uppercase}
+.knowledgeActionBody h3{color:#0b3455;font-family:var(--font-heading);font-size:1.35rem;line-height:1.25;margin:0}
+.knowledgeActionBody>span{color:#536777;font-size:.94rem;line-height:1.58;margin-top:.7rem}
+.architectureSection{padding-block:5.5rem 5rem}
+
+/* Process and research share one atmospheric canvas: measurement resolves into
+   a technical grid, then the glass landscape gradually appears as impact. */
+.storyContinuum{
+  background:#f7f9f9;
+  isolation:isolate;
+  overflow:clip;
+  position:relative;
+}
+.storyContinuum::before{
+  background-image:url('/decor/research-featured-glass-background.png');
+  background-position:center bottom;
+  background-repeat:no-repeat;
+  background-size:125% auto;
+  bottom:0;
+  content:"";
+  height:64%;
+  left:0;
+  opacity:.2;
+  pointer-events:none;
+  position:absolute;
+  right:0;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 28%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 28%);
+  z-index:0;
+}
+.storyContinuum>.processSection,
+.storyContinuum>.researchProjectsSection{
+  background:transparent;
+  position:relative;
+  z-index:1;
+}
+.storyContinuum>.processSection{padding-bottom:2.25rem}
+.storyContinuum>.researchProjectsSection{padding-top:2.25rem}
+
+/* Featured work uses documentary imagery and editorial hierarchy. */
+.researchProjectsSection{
+  background:transparent;
+  padding-block:5.75rem 6.25rem;
+  position:relative;
+}
+.researchProjectsSection::before{
+  content:none;
+}
+.researchProjectsSection .contentContainer{background:transparent;border-radius:0;color:#0b3455;padding:0;position:relative;z-index:1}
+.researchProjectsHeading{display:block;margin-bottom:2.25rem}
+.researchProjectsHeading h2{color:#0b3455;font-size:clamp(2.7rem,4vw,4.2rem);font-weight:400;letter-spacing:-.025em;line-height:1.05;margin:0}
+.researchProjectsHeading .eyebrow,.researchProjectsHeading .sectionEyebrow{background:#eaf3f3;border-color:#cfe0e1;color:#08717a}
+.researchLead{background:transparent;border:0;border-radius:0;color:#506577!important;display:block;font-size:1.02rem;line-height:1.65;margin:.75rem 0 0;max-width:38rem;padding:0}
+.researchLead[data-scroll-motion='statement']{animation:none;opacity:1;translate:none}
+.researchProjectsGrid{display:grid;gap:1.25rem;grid-template-columns:minmax(0,2.4fr) repeat(3,minmax(0,1fr))}
+.researchProjectsGrid article{background:#fff;border:1px solid #d7e2e6;border-radius:.7rem;display:flex;flex-direction:column;min-height:0;overflow:hidden;padding:0;transition:border-color 320ms var(--ease-out),box-shadow 320ms var(--ease-out),transform 320ms var(--ease-out)}
+.researchProjectsGrid article:hover{border-color:#9dbcc1;box-shadow:0 1rem 2.5rem rgba(8,47,80,.08);transform:translateY(-.15rem)}
+.researchProjectImage{aspect-ratio:16/9;background:#dfe8ea;position:relative}
+.researchLeadCard{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(13rem,.75fr)}
+.researchLeadCard .researchProjectImage{aspect-ratio:auto;min-height:20.5rem}
+.researchProjectImage img{object-fit:cover}
+.researchProjectBody{display:flex;flex:1;flex-direction:column;padding:1.45rem 1.35rem 1.55rem}
+.researchProjectBody>p{align-items:center;color:#08717a;display:flex;font-size:.7rem;font-weight:700;gap:.65rem;letter-spacing:.075em;margin:0 0 .8rem;text-transform:uppercase}
+.researchProjectBody>p>span{color:#9aabb4;font-family:var(--font-heading);font-size:.95rem;letter-spacing:0}
+.researchProjectBody h3{color:#0b3455;font-size:1.35rem;line-height:1.2;margin:0 0 .8rem}
+.researchLeadCard .researchProjectBody h3{font-size:1.65rem}
+.researchProjectBody>span{color:#526777;font-size:.9rem;line-height:1.55}
+.researchProjectBody>a{align-items:center;color:#08717a;display:inline-flex;font-size:.86rem;font-weight:700;gap:.5rem;margin-top:auto;padding-top:1.4rem;text-decoration:none}
+
+/* Phosphor icons replace every decorative PNG while partner marks remain brand logos. */
+.gatewayInner>a>svg:first-child{color:#08717a;height:2rem;width:2rem}
+.capabilityIcon,.processIcon{align-items:center;background:#edf4f4;border:1px solid #d3e2e3;border-radius:.55rem;color:#08717a;display:flex;height:3.5rem;justify-content:center;margin-bottom:1.5rem;min-height:0;padding:0;width:3.5rem}
+.capabilityIcon svg,.processIcon svg{height:2rem;width:2rem}
+.processIcon{margin:0 auto .85rem}
+.consultationTrigger>svg:first-child{height:1.5rem;width:1.5rem}
+
+@media (max-width:70rem){
+  .knowledgeActionLayout{grid-template-columns:1fr}
+  .knowledgeActionIntro{position:static}
+  .knowledgeActionIntro h2{max-width:15ch}
+  .researchProjectsGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .researchLeadCard{grid-column:1/-1}
+  .researchLeadCard{grid-template-columns:minmax(0,1.3fr) minmax(16rem,.7fr)}
+  .researchLeadCard .researchProjectImage{aspect-ratio:auto;min-height:19rem}
+}
+
+@media (max-width:48rem){
+  .mediaBannerSection{padding-block:4.5rem}
+  .knowledgeActionGrid{grid-template-columns:1fr}
+  .knowledgeActionGrid li{grid-template-columns:1.75rem 2.75rem minmax(0,1fr);min-height:0;padding:1.4rem 1.1rem}
+  .knowledgeActionGrid li:nth-child(odd){border-right:0}
+  .knowledgeActionGrid li:not(:last-child){border-bottom:1px solid #dfe7ea}
+  .knowledgeActionIcon{height:2.75rem;width:2.75rem}
+  .knowledgeActionIcon svg{height:1.55rem;width:1.55rem}
+  .knowledgeActionNumber{height:1.75rem;width:1.75rem}
+  .researchProjectsSection{padding-block:4.5rem}
+  .researchProjectsSection .contentContainer{padding-inline:0}
+  .researchProjectsGrid{grid-template-columns:1fr}
+  .researchLeadCard{display:flex!important;grid-column:auto}
+  .researchLeadCard .researchProjectImage{aspect-ratio:16/9;min-height:0}
+  .researchProjectImage{aspect-ratio:16/10}
+}
+
+/* Compact academic illustration system. Detailed colour is used as a visual
+   index, while restrained scale keeps headings and evidence at the foreground. */
+.gatewayInner>a>img:first-child{
+  height:2.25rem;
+  object-fit:contain;
+  width:2.25rem;
+}
+.capabilityIcon,.processIcon{
+  background:transparent;
+  border:0;
+  border-radius:0;
+  height:4rem;
+  min-height:0;
+  overflow:visible;
+  padding:0;
+  width:4rem;
+}
+.capabilityIcon img,.processIcon img,.knowledgeActionIcon img,.researchProjectMark img{
+  height:100%;
+  object-fit:contain;
+  width:100%;
+}
+.capabilityIcon{
+  justify-content:flex-start;
+  margin-bottom:1.35rem;
+}
+.processIcon{
+  height:3.35rem;
+  margin:0 auto .85rem;
+  width:3.35rem;
+}
+.processGrid li:not(:last-child):after{top:4.55rem}
+.knowledgeActionIcon{
+  height:2.75rem;
+  width:2.75rem;
+}
+.mediaBannerSection{padding-block:4.75rem 2.25rem}
+.knowledgeActionIntro{
+  align-self:stretch;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:static;
+}
+.knowledgeActionGrid li{grid-template-columns:3rem minmax(0,1fr)}
+.researchProjectBody{position:relative}
+.researchProjectMark{
+  display:block;
+  flex:0 0 auto;
+  height:2.25rem;
+  position:static;
+  width:2.25rem;
+}
+.researchProjectBody>p{padding-right:0}
+.researchProjectBody>p>.researchProjectMark{
+  color:inherit;
+  font-size:0;
+  letter-spacing:0;
+}
+.architectureSection{padding-block:3rem 5rem}
+
+@media (max-width:48rem){
+  .gatewayInner>a>img:first-child{height:2rem;width:2rem}
+  .capabilityIcon{height:3.6rem;width:3.6rem}
+  .processIcon{height:3rem;width:3rem}
+  .knowledgeActionIcon{height:2.5rem;width:2.5rem}
+  .knowledgeActionGrid li{grid-template-columns:2.5rem minmax(0,1fr)}
+  .researchProjectMark{height:2.35rem;width:2.35rem}
+}
+
+/* The hero reads as a single editorial cover: slightly inset from the viewport,
+   but deliberately wider than every content container that follows it. */
+.hero{
+  --hero-edge:clamp(.75rem,1.25vw,1.5rem);
+  border-radius:1.25rem;
+  margin-inline:var(--hero-edge);
+  width:calc(100% - (2 * var(--hero-edge)));
+}
+
+@media (max-width:48rem){
+  .hero{
+    --hero-edge:.5rem;
+    border-radius:.9rem;
+  }
+}
+
+/* Consistent vertical rhythm: every major content band receives the same
+   breathing room above and below, instead of accumulating mismatched overrides. */
+.aboutSection,
+.mediaBannerSection,
+.architectureSection,
+.editorialSection,
+.knowledgeSection,
+.partnerSection,
+.processSection,
+.researchProjectsSection{
+  padding-block:4.25rem;
+}
+.capabilitiesInner{
+  min-height:0;
+  padding-block:4.25rem;
+}
+
+/* Metrics are independent evidence cards, not cells in a spreadsheet row. */
+.impactStatsBlock{margin-top:4.25rem}
+.impactStatsBlock .impactStats{
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  gap:1rem;
+  overflow:visible;
+}
+.impactStatsBlock .impactStats>div{
+  background:#fff;
+  border:1px solid #dce5e9;
+  border-radius:.85rem;
+  box-shadow:0 .65rem 1.8rem rgba(12,57,91,.055);
+}
+.impactStatsBlock .impactStats>div:not(:last-child){border-right:1px solid #dce5e9}
+
+@media (max-width:48rem){
+  .aboutSection,
+  .mediaBannerSection,
+  .architectureSection,
+  .editorialSection,
+  .knowledgeSection,
+  .partnerSection,
+  .processSection,
+  .researchProjectsSection,
+  .capabilitiesInner{
+    padding-block:3.25rem;
+  }
+  .impactStatsBlock{margin-top:3rem}
+  .impactStatsBlock .impactStats{gap:.8rem}
+  .impactStatsBlock .impactStats>div{border:1px solid #dce5e9!important}
+}
+
+/* ── Background detail layer ───────────────────────────────────────────────
+   Five bands carry a background motif, each chosen from what the band says:
+   about = a soft mint bloom for depth, commitments = a line-art globe with an
+   outbound network, partners = a node/link band, process = an abstract
+   measurement chart, featured research = a technical grid. The remaining bands
+   (hero, gateway, capabilities, RISES, editorial, knowledge) stay bare — their
+   empty space is part of the composition, not a gap to fill.
+
+   Every layer here: sits at 5–12%, is anchored to a section edge or corner,
+   fades out with a mask before it can reach readable text, and paints on
+   `z-index:-1` inside an isolated stacking context so it can never rise above
+   content. `--decor-edge` resolves to the same left edge the containers use,
+   so a motif lines up with the copy above it. */
+.aboutSection,
+.mediaBannerSection,
+.partnerSection,
+.processSection,
+.researchProjectsSection>.contentContainer{
+  --decor-edge:max(var(--gutter),calc(50% - (var(--container) / 2)));
+  isolation:isolate;
+  position:relative;
+}
+/* `clip`, never `hidden`: `hidden` would turn these into scroll containers and
+   break the `position:sticky` intros that sit inside them. */
+.mediaBannerSection,
+.partnerSection,
+.processSection,
+.researchProjectsSection>.contentContainer{overflow:clip}
+
+.aboutSection::after,
+.mediaBannerSection::before,
+.mediaBannerSection::after,
+.partnerSection::before,
+.processSection::before,
+.researchProjectsSection>.contentContainer::before{
+  background-repeat:no-repeat;
+  content:"";
+  pointer-events:none;
+  position:absolute;
+  z-index:-1;
+}
+
+/* The line-art layers (not the gradient blooms, already soft) get a faint blur
+   so the thin strokes read as depth rather than crisp technical diagrams. */
+.mediaBannerSection::before,
+.partnerSection::before,
+.processSection::before,
+.researchProjectsSection>.contentContainer::before{
+  filter:blur(.5px);
+}
+
+/* About — no line art in a text-heavy band, only a low bloom that keeps the
+   bottom-left corner from reading as flat white. */
+.aboutSection::after{
+  background:radial-gradient(38% 62% at 10% 88%,rgba(11,143,146,.11),rgba(11,143,146,0) 72%);
+  height:30rem;
+  inset:auto 0 0;
+}
+
+/* Commitments — a wave-and-globe corner illustration sits under the intro
+   column, in the space the copy leaves above the section floor; the card
+   grid on the right stays untouched. This one is a solid-fill piece (pale
+   mint waves, a teal globe, a small sprout), not thin low-opacity line art —
+   it is meant to read as a deliberate illustration, not a texture. */
+.mediaBannerSection::before{
+  background-image:url('/decor/sustainability-corner.svg');
+  background-position:left bottom;
+  background-size:contain;
+  bottom:0;
+  /* Fixed size, not viewport-scaled: the gap the intro copy leaves above the
+     section floor stays ~13rem at every desktop width, so a `vw` height would
+     grow straight into the paragraph on wide screens. */
+  height:19rem;
+  left:var(--decor-edge);
+  opacity:.92;
+  width:22rem;
+  -webkit-mask-image:linear-gradient(to top,#000 55%,transparent);
+  mask-image:linear-gradient(to top,#000 55%,transparent);
+}
+.mediaBannerSection::after{
+  background:radial-gradient(34% 58% at 8% 86%,rgba(11,95,107,.06),rgba(11,95,107,0) 70%);
+  height:26rem;
+  inset:auto 0 0;
+}
+
+/* Partners — a link/node band along the section floor, faded at both ends so
+   it never collides with the marquee or the CTA panel above it. */
+.partnerSection::before{
+  background-image:url('/decor/network-band.svg');
+  background-position:center bottom;
+  background-size:cover;
+  bottom:0;
+  height:clamp(5.5rem,8vw,9.5rem);
+  inset-inline:0;
+  opacity:.11;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent),linear-gradient(to top,#000 45%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent),linear-gradient(to top,#000 45%,transparent);
+  -webkit-mask-composite:source-in;
+  mask-composite:intersect;
+}
+
+/* Process — the five steps end on "đánh giá & tối ưu", so the measurement
+   chart belongs in the corner the flow runs toward. */
+.processSection::before{
+  background-image:url('/decor/research-chart.svg');
+  background-position:right bottom;
+  background-size:contain;
+  bottom:.5rem;
+  height:clamp(7rem,10vw,11rem);
+  opacity:.1;
+  right:var(--decor-edge);
+  width:clamp(11rem,16vw,18rem);
+  -webkit-mask-image:linear-gradient(to top,#000 35%,transparent);
+  mask-image:linear-gradient(to top,#000 35%,transparent);
+}
+
+/* The process ends in measurement; this restrained grid carries that analytical
+   language into the research section before the glass landscape emerges below. */
+.researchProjectsSection>.contentContainer::before{
+  background-image:url('/decor/tech-grid.svg');
+  background-position:right top;
+  background-size:contain;
+  height:clamp(10rem,17vw,18rem);
+  opacity:.07;
+  right:0;
+  top:0;
+  width:clamp(10rem,17vw,18rem);
+  -webkit-mask-image:radial-gradient(120% 120% at 100% 0,#000 25%,transparent 72%);
+  mask-image:radial-gradient(120% 120% at 100% 0,#000 25%,transparent 72%);
+}
+
+/* On phones the bands are short and the copy runs edge to edge, so the line
+   art comes off entirely; only the blooms stay. */
+@media (max-width:48rem){
+  .mediaBannerSection::before,
+  .partnerSection::before,
+  .processSection::before{content:none}
+  .storyContinuum::before{
+    background-position:right bottom;
+    background-size:auto 72%;
+    height:72%;
+    opacity:.15;
+  }
+  .storyContinuum>.processSection{padding-bottom:1.5rem}
+  .storyContinuum>.researchProjectsSection{padding-top:1.5rem}
+  .researchProjectsSection>.contentContainer::before{opacity:.06;height:8rem;width:8rem}
+}
+
+/* Ancient-tree story canvas -------------------------------------------------
+   The middle of the page is intentionally one continuous landscape. The tree
+   is a real raster asset, kept behind every section and allowed to drift very
+   slowly so the canopy feels alive without competing with the reading layer. */
+.ancientTreeStory{
+  background:#f7faf9;
+  isolation:isolate;
+  overflow:clip;
+  position:relative;
+}
+.ancientTreeStory::before{
+  animation:ancient-tree-breeze 16s ease-in-out infinite alternate;
+  background-image:url('/decor/gisa-ancient-tree-story-background.png');
+  background-position:72% top;
+  background-repeat:no-repeat;
+  background-size:auto 100%;
+  content:"";
+  inset:-.35% -.75%;
+  opacity:.2;
+  pointer-events:none;
+  position:absolute;
+  transform-origin:74% 12%;
+  will-change:transform;
+  z-index:0;
+}
+.ancientTreeStory::after{
+  background:
+    linear-gradient(180deg,#f7faf9 0%,rgba(247,250,249,.56) 9%,rgba(247,250,249,.18) 44%,rgba(247,250,249,.5) 88%,#f7faf9 100%),
+    linear-gradient(90deg,rgba(247,250,249,.76) 0%,rgba(247,250,249,.22) 43%,rgba(247,250,249,.06) 100%);
+  content:"";
+  inset:0;
+  pointer-events:none;
+  position:absolute;
+  z-index:0;
+}
+.ancientTreeStory>.mediaBannerSection,
+.ancientTreeStory>.architectureSection,
+.ancientTreeStory>.editorialSection,
+.ancientTreeStory>.knowledgeSection,
+.ancientTreeStory>.partnerSection,
+.ancientTreeStory>.storyContinuum{
+  background:transparent;
+  position:relative;
+  z-index:1;
+}
+.ancientTreeStory>.mediaBannerSection,
+.ancientTreeStory>.partnerSection,
+.ancientTreeStory>.storyContinuum,
+.ancientTreeStory .processSection,
+.ancientTreeStory .researchProjectsSection{overflow:visible}
+
+@keyframes ancient-tree-breeze{
+  0%{transform:translate3d(-.2%,0,0) rotate(-.12deg) scale(1.012)}
+  50%{transform:translate3d(.15%,.08%,0) rotate(.06deg) scale(1.016)}
+  100%{transform:translate3d(.38%,-.05%,0) rotate(.16deg) scale(1.012)}
+}
+
+/* Remove the previous globe/sprout mockup and the section-specific diagrams.
+   One background story now replaces the stack of visibly separate bands. */
+.ancientTreeStory .mediaBannerSection::before,
+.ancientTreeStory .mediaBannerSection::after,
+.ancientTreeStory .partnerSection::before,
+.ancientTreeStory .processSection::before,
+.ancientTreeStory .researchProjectsSection>.contentContainer::before,
+.ancientTreeStory .storyContinuum::before{content:none}
+
+/* Knowledge-to-action becomes a soft editorial constellation instead of a
+   bordered 2x3 table. Rounded glass surfaces borrow colour from the tree layer. */
+.ancientTreeStory .mediaBannerSection{padding-block:clamp(5.5rem,7vw,7.75rem)}
+.ancientTreeStory .knowledgeActionLayout{
+  align-items:center;
+  gap:clamp(3rem,5.5vw,6.25rem);
+  grid-template-columns:minmax(22rem,.72fr) minmax(0,1.35fr);
+}
+.ancientTreeStory .knowledgeActionIntro{
+  align-items:flex-start;
+  justify-content:center;
+  min-height:34rem;
+}
+.ancientTreeStory .knowledgeActionIntro h2{
+  font-size:clamp(3.15rem,4.4vw,4.65rem);
+  line-height:1.01;
+  max-width:13.5ch;
+  text-wrap:balance;
+}
+.ancientTreeStory .knowledgeActionIntro>p:last-of-type{
+  color:#40596a;
+  line-height:1.75;
+  margin:1.65rem 0 0;
+  max-width:31rem;
+}
+.knowledgeActionCta{
+  align-items:center;
+  border:1px solid rgba(8,113,122,.3);
+  border-radius:999px;
+  color:#08717a;
+  display:inline-flex;
+  font-size:.93rem;
+  font-weight:700;
+  gap:.65rem;
+  margin-top:1.8rem;
+  min-height:3rem;
+  padding:.55rem 1.1rem .55rem .65rem;
+  text-decoration:none;
+  transition:background-color 240ms ease,border-color 240ms ease,transform 240ms ease;
+}
+.knowledgeActionCta>span{
+  align-items:center;
+  background:#e2f0ee;
+  border-radius:50%;
+  display:flex;
+  height:2rem;
+  justify-content:center;
+  width:2rem;
+}
+.knowledgeActionCta:hover,
+.knowledgeActionCta:focus-visible{
+  background:rgba(255,255,255,.72);
+  border-color:#08717a;
+  transform:translateY(-2px);
+}
+.ancientTreeStory .knowledgeActionGrid{
+  background:transparent;
+  border:0;
+  border-radius:0;
+  gap:1rem;
+  overflow:visible;
+}
+.ancientTreeStory .knowledgeActionGrid li{
+  -webkit-backdrop-filter:blur(16px) saturate(112%);
+  backdrop-filter:blur(16px) saturate(112%);
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(171,199,198,.5);
+  border-radius:1.5rem;
+  box-shadow:0 .9rem 2.5rem rgba(14,67,74,.07),inset 0 1px rgba(255,255,255,.72);
+  gap:1.1rem;
+  min-height:10.75rem;
+  padding:1.45rem 1.55rem;
+  transition:border-color 280ms ease,box-shadow 280ms ease,background-color 280ms ease;
+}
+.ancientTreeStory .knowledgeActionGrid li:nth-child(odd),
+.ancientTreeStory .knowledgeActionGrid li:nth-child(-n+4){border:1px solid rgba(171,199,198,.5)}
+.ancientTreeStory .knowledgeActionGrid li:nth-child(even){translate:0 1.15rem}
+.ancientTreeStory .knowledgeActionGrid li:hover,
+.ancientTreeStory .knowledgeActionGrid li:focus-within{
+  background:rgba(255,255,255,.86);
+  border-color:rgba(8,113,122,.42);
+  box-shadow:0 1.25rem 3.25rem rgba(14,67,74,.11),inset 0 1px rgba(255,255,255,.85);
+}
+.ancientTreeStory .knowledgeActionIcon{
+  align-items:center;
+  background:rgba(239,247,245,.9);
+  border:1px solid rgba(187,211,208,.55);
+  border-radius:1rem;
+  height:3.25rem;
+  padding:.42rem;
+  width:3.25rem;
+}
+.ancientTreeStory .knowledgeActionBody small{color:#0a737a;font-size:.68rem}
+.ancientTreeStory .knowledgeActionBody h3{font-size:1.42rem}
+.ancientTreeStory .knowledgeActionBody>span{color:#4d6370;line-height:1.55}
+
+/* Keep downstream content readable while allowing the shared landscape to show
+   through at the edges; this removes the visual seam between named sections. */
+.ancientTreeStory .risesGrid,
+.ancientTreeStory .knowledgeGrid article,
+.ancientTreeStory .partnerList,
+.ancientTreeStory .researchProjectsGrid article{
+  -webkit-backdrop-filter:blur(12px) saturate(108%);
+  backdrop-filter:blur(12px) saturate(108%);
+  background:rgba(255,255,255,.76);
+}
+.ancientTreeStory .storyContinuum{isolation:auto}
+
+@media (max-width:70rem){
+  .ancientTreeStory::before{background-position:66% top;opacity:.17}
+  .ancientTreeStory .knowledgeActionIntro{min-height:0}
+  .ancientTreeStory .knowledgeActionLayout{grid-template-columns:1fr}
+  .ancientTreeStory .knowledgeActionIntro h2{max-width:13.5ch}
+}
+
+@media (max-width:48rem){
+  .ancientTreeStory::before{
+    background-position:61% top;
+    opacity:.13;
+  }
+  .ancientTreeStory::after{
+    background:linear-gradient(180deg,rgba(247,250,249,.64),rgba(247,250,249,.34) 50%,rgba(247,250,249,.72));
+  }
+  .ancientTreeStory .mediaBannerSection{padding-block:4.5rem}
+  .ancientTreeStory .knowledgeActionIntro h2{font-size:clamp(2.75rem,12vw,3.65rem)}
+  .ancientTreeStory .knowledgeActionGrid{gap:.85rem}
+  .ancientTreeStory .knowledgeActionGrid li{
+    border:1px solid rgba(171,199,198,.5)!important;
+    border-radius:1.25rem;
+    padding:1.25rem 1.15rem;
+  }
+  .ancientTreeStory .knowledgeActionGrid li:nth-child(even){translate:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ancientTreeStory::before{animation:none;transform:none}
+}
+
+/* Single white page canvas --------------------------------------------------
+   All editorial bands now sit on the same white surface. Cards and real
+   content images keep their own surfaces, while every decorative background
+   layer and section-owned atmosphere is removed. */
+.aboutSection,
+.capabilitiesSection,
+.ancientTreeStory,
+.ancientTreeStory>.mediaBannerSection,
+.ancientTreeStory>.architectureSection,
+.ancientTreeStory>.editorialSection,
+.ancientTreeStory>.knowledgeSection,
+.ancientTreeStory>.partnerSection,
+.ancientTreeStory>.storyContinuum,
+.ancientTreeStory .processSection,
+.ancientTreeStory .researchProjectsSection{
+  background:#fff;
+}
+
+.ancientTreeStory::before,
+.ancientTreeStory::after,
+.storyContinuum::before,
+.aboutSection::after,
+.mediaBannerSection::before,
+.mediaBannerSection::after,
+.partnerSection::before,
+.processSection::before,
+.researchProjectsSection>.contentContainer::before{
+  content:none!important;
+}
+
+.ancientTreeStory .knowledgeActionGrid li,
+.ancientTreeStory .risesGrid,
+.ancientTreeStory .knowledgeGrid article,
+.ancientTreeStory .partnerList,
+.ancientTreeStory .researchProjectsGrid article{
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+  background:#fff;
+}
+
+/* Avoid the double-padding pause that previously amplified the colour seam
+   between capabilities and commitments. */
+.capabilitiesInner{padding-bottom:2.5rem}
+.ancientTreeStory .mediaBannerSection{padding-top:3.25rem}
+
+@media (max-width:48rem){
+  .capabilitiesInner{padding-bottom:2rem}
+  .ancientTreeStory .mediaBannerSection{padding-top:2.5rem}
+}
+
+/* Knowledge-to-action journey ------------------------------------------------
+   Selected direction: six editorial chapters rise along one continuous line.
+   The list stays semantic; the rail and guides are presentation-only. */
+.ancientTreeStory .mediaBannerSection{
+  padding-block:clamp(3.25rem,4.5vw,4.75rem);
+}
+
+.ancientTreeStory .knowledgeActionLayout{
+  display:block;
+}
+
+.ancientTreeStory .knowledgeActionIntro{
+  display:block;
+  min-height:0;
+  max-width:43rem;
+}
+
+.ancientTreeStory .knowledgeActionIntro h2{
+  font-size:clamp(3.15rem,4.2vw,4.55rem);
+  line-height:1.02;
+  max-width:15ch;
+}
+
+.ancientTreeStory .knowledgeActionIntro>p:last-of-type{
+  max-width:37rem;
+}
+
+.ancientTreeStory .knowledgeActionGrid{
+  align-items:end;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  display:grid;
+  gap:clamp(.8rem,1.7vw,1.8rem);
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  list-style:none;
+  margin:clamp(2rem,3.5vw,3.25rem) 0 0;
+  min-height:28rem;
+  overflow:visible;
+  padding:0 0 3rem;
+  position:relative;
+}
+
+.ancientTreeStory .knowledgeActionGrid::before{
+  border-top:1px solid #08717a;
+  bottom:2.55rem;
+  content:"";
+  left:.2rem;
+  position:absolute;
+  right:.2rem;
+  transform:rotate(-3deg) scaleX(0);
+  transform-origin:left center;
+  transition:transform 1450ms var(--ease-out) 120ms;
+}
+
+.ancientTreeStory .knowledgeActionGrid[data-scroll-visible='true']::before{
+  transform:rotate(-3deg) scaleX(1);
+}
+
+.ancientTreeStory .knowledgeActionGrid li,
+.ancientTreeStory .knowledgeActionGrid li:nth-child(odd),
+.ancientTreeStory .knowledgeActionGrid li:nth-child(even),
+.ancientTreeStory .knowledgeActionGrid li:nth-child(-n+4){
+  -webkit-backdrop-filter:none;
+  align-self:end;
+  backdrop-filter:none;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin-bottom:var(--knowledge-rise,0rem);
+  min-height:22rem;
+  padding:0 .2rem;
+  position:relative;
+}
+
+.ancientTreeStory .knowledgeActionGrid li:hover,
+.ancientTreeStory .knowledgeActionGrid li:focus-within{
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+
+.knowledgeActionNumber{
+  background:transparent;
+  border-radius:0;
+  color:#08717a;
+  display:block;
+  font-family:var(--font-heading);
+  font-size:1.55rem;
+  height:auto;
+  justify-content:flex-start;
+  line-height:1;
+  margin:0 0 1.45rem;
+  width:auto;
+}
+
+.knowledgeActionNumber::after{
+  background:#f15b2a;
+  content:"";
+  display:block;
+  height:2px;
+  margin-top:.65rem;
+  width:1.35rem;
+}
+
+.ancientTreeStory .knowledgeActionIcon{
+  align-items:center;
+  background:#fff;
+  border:1px solid #d7e4e6;
+  border-radius:1rem;
+  display:flex;
+  height:4.5rem;
+  justify-content:center;
+  margin:0 0 1.25rem;
+  padding:.6rem;
+  width:4.5rem;
+}
+
+.ancientTreeStory .knowledgeActionBody small{
+  display:none;
+}
+
+.ancientTreeStory .knowledgeActionBody h3{
+  color:#0b3455;
+  font-size:clamp(1.2rem,1.45vw,1.55rem);
+  line-height:1.2;
+}
+
+.ancientTreeStory .knowledgeActionBody>span{
+  color:#506577;
+  font-size:.86rem;
+  line-height:1.55;
+  margin-top:1rem;
+}
+
+.knowledgeActionGuide{
+  align-self:center;
+  border-left:1px dashed #bfd2d6;
+  flex:1 1 auto;
+  margin-top:1rem;
+  min-height:2.5rem;
+  position:relative;
+}
+
+.knowledgeActionDot{
+  background:#f15b2a;
+  border:5px solid #fff;
+  border-radius:50%;
+  bottom:-.62rem;
+  box-shadow:0 0 0 1px #08717a;
+  height:1.15rem;
+  left:-.58rem;
+  position:absolute;
+  width:1.15rem;
+}
+
+:global(html[data-scroll-motion-ready='true']) .ancientTreeStory .knowledgeActionGrid li[data-scroll-motion]{
+  opacity:.04;
+  scale:.975;
+  translate:0 2.25rem;
+}
+
+:global(html[data-scroll-motion-ready='true']) .ancientTreeStory .knowledgeActionGrid li[data-scroll-motion][data-scroll-side='top']{
+  translate:0 -1.5rem;
+}
+
+:global(html[data-scroll-motion-ready='true']) .ancientTreeStory .knowledgeActionGrid li[data-scroll-motion][data-scroll-visible='true']{
+  opacity:1;
+  scale:1;
+  translate:0 0;
+}
+
+@media (max-width:70rem){
+  .ancientTreeStory .knowledgeActionGrid{
+    align-items:stretch;
+    display:grid;
+    gap:0;
+    grid-template-columns:1fr;
+    margin-top:3rem;
+    min-height:0;
+    padding:0 0 0 4rem;
+  }
+
+  .ancientTreeStory .knowledgeActionGrid::before{
+    border-left:1px solid #08717a;
+    border-top:0;
+    bottom:1rem;
+    left:1.3rem;
+    right:auto;
+    top:.8rem;
+    transform:scaleY(0);
+    transform-origin:center top;
+  }
+
+  .ancientTreeStory .knowledgeActionGrid[data-scroll-visible='true']::before{
+    transform:scaleY(1);
+  }
+
+  .ancientTreeStory .knowledgeActionGrid li,
+  .ancientTreeStory .knowledgeActionGrid li:nth-child(even){
+    align-self:stretch;
+    display:grid;
+    gap:.25rem 1.1rem;
+    grid-template-columns:3.6rem minmax(0,1fr);
+    margin-bottom:0;
+    min-height:0;
+    padding:0 0 2.75rem;
+  }
+
+  .knowledgeActionNumber{
+    align-items:center;
+    background:#fff;
+    border:1px solid #9fc4c7;
+    border-radius:50%;
+    display:flex;
+    font-family:var(--font-body);
+    font-size:.78rem;
+    font-weight:700;
+    height:2.6rem;
+    justify-content:center;
+    left:-4rem;
+    margin:0;
+    position:absolute;
+    top:.2rem;
+    width:2.6rem;
+  }
+
+  .knowledgeActionNumber::after{content:none}
+
+  .ancientTreeStory .knowledgeActionIcon{
+    grid-column:1;
+    grid-row:1;
+    height:3.25rem;
+    margin:0;
+    width:3.25rem;
+  }
+
+  .ancientTreeStory .knowledgeActionBody{
+    grid-column:2;
+    grid-row:1;
+  }
+
+  .knowledgeActionGuide{display:none}
+}
+
+@media (max-width:48rem){
+  .ancientTreeStory .knowledgeActionIntro h2{
+    font-size:clamp(2.75rem,12vw,3.65rem);
+  }
+
+  .ancientTreeStory .knowledgeActionGrid{
+    padding-left:3.7rem;
+  }
+
+  .ancientTreeStory .knowledgeActionGrid li,
+  .ancientTreeStory .knowledgeActionGrid li:nth-child(even){
+    background:transparent!important;
+    border:0!important;
+    border-radius:0!important;
+    display:grid!important;
+    grid-template-columns:3rem minmax(0,1fr);
+    min-height:0!important;
+    padding:0 0 2.75rem!important;
+  }
+
+  .knowledgeActionNumber{left:-3.7rem}
+  .ancientTreeStory .knowledgeActionIcon{height:2.8rem;width:2.8rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ancientTreeStory .knowledgeActionGrid::before{
+    transform:none;
+    transition:none;
+  }
+}
+
+/* Cả thẻ tri thức là một vùng bấm được: lớp phủ của liên kết tiêu đề trải kín
+   thẻ, nên bấm vào ảnh, tiêu đề hay khoảng trống đều mở đúng bài đó. Liên kết
+   ảnh và "Xem chi tiết" vẫn giữ nguyên href, chỉ bị ẩn khỏi cây trợ năng để
+   trình đọc màn hình nghe đúng một liên kết cho mỗi thẻ. */
+.knowledgeGrid article{position:relative}
+
+.knowledgeGrid h3 a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.knowledgeGrid h3 a::after{
+  content:'';
+  inset:0;
+  position:absolute;
+}
+
+.knowledgeGrid h3 a:hover{
+  text-decoration:underline;
+  text-underline-offset:.18em;
+}

@@ -31,7 +31,8 @@
 }
 
 .form {
-  background: var(--color-mist);
+  background: var(--color-white);
+  border: 1px solid rgb(25 72 106 / 13%);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   padding: clamp(1.25rem, 5vw, 3rem);

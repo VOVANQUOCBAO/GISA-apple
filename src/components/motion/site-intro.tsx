@@ -16,8 +16,13 @@ import { bindPhrases } from '@/lib/vietnamese-text';
 import styles from './site-intro.module.css';
 
 const FPS = 30;
-const DURATION_IN_FRAMES = 102;
-const EXIT_DURATION_MS = 800;
+const DURATION_IN_FRAMES = 54;
+const EXIT_DURATION_MS = 350;
+const INTRO_SEEN_KEY = 'gisa-site-intro-seen';
+
+// Covers client-side remounts even when browser storage is unavailable. The
+// sessionStorage flag below covers hard reloads and history restoration.
+let introHasStarted = false;
 
 type IntroVariant = 'desktop' | 'mobile';
 type IntroPhase = 'detecting' | 'playing' | 'exiting' | 'done';
@@ -68,17 +73,17 @@ function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
             flex: '0 0 auto',
             height: mobile ? 84 : 200,
             objectFit: 'contain',
-            opacity: interpolate(frame, [4, 30], [0, 1], {
+            opacity: interpolate(frame, [2, 14], [0, 1], {
               easing: entrance,
               extrapolateLeft: 'clamp',
               extrapolateRight: 'clamp',
             }),
-            scale: interpolate(frame, [4, 34], [0.985, 1], {
+            scale: interpolate(frame, [2, 18], [0.985, 1], {
               easing: entrance,
               extrapolateLeft: 'clamp',
               extrapolateRight: 'clamp',
             }),
-            translate: `0 ${interpolate(frame, [4, 34], [8, 0], {
+            translate: `0 ${interpolate(frame, [2, 18], [8, 0], {
               easing: entrance,
               extrapolateLeft: 'clamp',
               extrapolateRight: 'clamp',
@@ -93,12 +98,12 @@ function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
             backgroundColor: '#f26f33',
             flex: '0 0 auto',
             height: mobile ? 190 : 172,
-            opacity: interpolate(frame, [24, 46], [0, 1], {
+            opacity: interpolate(frame, [10, 24], [0, 1], {
               easing: entrance,
               extrapolateLeft: 'clamp',
               extrapolateRight: 'clamp',
             }),
-            scale: `1 ${interpolate(frame, [24, 46], [0, 1], {
+            scale: `1 ${interpolate(frame, [10, 24], [0, 1], {
               easing: entrance,
               extrapolateLeft: 'clamp',
               extrapolateRight: 'clamp',
@@ -129,24 +134,24 @@ function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
             }}
           >
             {vietnameseLines.map((line, index) => {
-              const lineStart = 34 + (index * 7);
+              const lineStart = 18 + (index * 5);
 
               return (
                 <span
                   key={line}
                   style={{
                     display: 'block',
-                    filter: `blur(${interpolate(frame, [lineStart, lineStart + 22], [8, 0], {
+                    filter: `blur(${interpolate(frame, [lineStart, lineStart + 16], [8, 0], {
                       easing: entrance,
                       extrapolateLeft: 'clamp',
                       extrapolateRight: 'clamp',
                     })}px)`,
-                    opacity: interpolate(frame, [lineStart, lineStart + 20], [0, 1], {
+                    opacity: interpolate(frame, [lineStart, lineStart + 14], [0, 1], {
                       easing: entrance,
                       extrapolateLeft: 'clamp',
                       extrapolateRight: 'clamp',
                     }),
-                    translate: `0 ${interpolate(frame, [lineStart, lineStart + 22], [24, 0], {
+                    translate: `0 ${interpolate(frame, [lineStart, lineStart + 16], [24, 0], {
                       easing: entrance,
                       extrapolateLeft: 'clamp',
                       extrapolateRight: 'clamp',
@@ -170,24 +175,24 @@ function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
             }}
           >
             {englishLines.map((line, index) => {
-              const lineStart = 60 + (index * 6);
+              const lineStart = 32 + (index * 4);
 
               return (
                 <span
                   key={line}
                   style={{
                     display: 'block',
-                    filter: `blur(${interpolate(frame, [lineStart, lineStart + 20], [6, 0], {
+                    filter: `blur(${interpolate(frame, [lineStart, lineStart + 14], [6, 0], {
                       easing: entrance,
                       extrapolateLeft: 'clamp',
                       extrapolateRight: 'clamp',
                     })}px)`,
-                    opacity: interpolate(frame, [lineStart, lineStart + 18], [0, 1], {
+                    opacity: interpolate(frame, [lineStart, lineStart + 12], [0, 1], {
                       easing: entrance,
                       extrapolateLeft: 'clamp',
                       extrapolateRight: 'clamp',
                     }),
-                    translate: `0 ${interpolate(frame, [lineStart, lineStart + 20], [16, 0], {
+                    translate: `0 ${interpolate(frame, [lineStart, lineStart + 14], [16, 0], {
                       easing: entrance,
                       extrapolateLeft: 'clamp',
                       extrapolateRight: 'clamp',
@@ -241,9 +246,25 @@ export function SiteIntro() {
     };
 
     const startIntro = window.setTimeout(() => {
-      if (reduceMotion.matches) {
+      let hasPlayed = introHasStarted;
+      try {
+        hasPlayed ||= window.sessionStorage.getItem(INTRO_SEEN_KEY) === 'true';
+      } catch {
+        // The in-memory guard still prevents a repeat during client navigation.
+      }
+
+      if (reduceMotion.matches || hasPlayed) {
         setPhase('done');
         return;
+      }
+
+      // Claim the intro before playback starts. This prevents a fast route
+      // change or Back navigation from remounting it before `ended` fires.
+      introHasStarted = true;
+      try {
+        window.sessionStorage.setItem(INTRO_SEEN_KEY, 'true');
+      } catch {
+        // Storage can be unavailable in strict privacy modes.
       }
 
       syncVariant();

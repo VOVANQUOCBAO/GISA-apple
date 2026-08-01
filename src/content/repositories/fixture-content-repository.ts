@@ -29,6 +29,7 @@ function toSummary(record: ContentRecord): ContentSummary {
     image,
     tags,
     evidenceStatus,
+    metadata,
   } = record;
 
   return {
@@ -43,11 +44,24 @@ function toSummary(record: ContentRecord): ContentSummary {
     image,
     tags,
     evidenceStatus,
+    metadata,
   };
 }
 
+/**
+ * Ấn phẩm khoa học chỉ có năm công bố, không có ngày, nên `publishedAt` để trống
+ * và chúng sẽ rơi hết về nhánh so sánh theo tên. Với một mục lục nghiên cứu thì
+ * thứ tự đó vô nghĩa, vì vậy `metadata.year` được dùng làm khóa thay thế: bài
+ * mới nhất lên đầu, trùng năm mới xét đến tên.
+ */
+function sortKey(record: ContentRecord): string {
+  if (record.publishedAt) return record.publishedAt;
+  const year = record.metadata.year;
+  return (Array.isArray(year) ? year[0] : year) ?? '';
+}
+
 function compareRecords(left: ContentRecord, right: ContentRecord): number {
-  const dateOrder = (right.publishedAt ?? '').localeCompare(left.publishedAt ?? '');
+  const dateOrder = sortKey(right).localeCompare(sortKey(left));
   return dateOrder || left.title.localeCompare(right.title, 'vi');
 }
 

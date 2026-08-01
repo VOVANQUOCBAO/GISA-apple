@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 560" width="620" height="560" fill="none" aria-hidden="true">
+  <defs>
+    <radialGradient id="globeFill" cx="38%" cy="32%" r="78%">
+      <stop offset="0" stop-color="#f2fbfb"/>
+      <stop offset="1" stop-color="#dcf0f1"/>
+    </radialGradient>
+    <clipPath id="globeClip"><circle cx="250" cy="300" r="196"/></clipPath>
+    <linearGradient id="leafDark" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#177c86"/>
+      <stop offset="1" stop-color="#26a3a0"/>
+    </linearGradient>
+    <linearGradient id="leafLight" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#219a99"/>
+      <stop offset="1" stop-color="#43bcb1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sphere body -->
+  <circle cx="250" cy="300" r="196" fill="url(#globeFill)"/>
+
+  <g clip-path="url(#globeClip)">
+    <!-- Simplified land masses, kept abstract rather than cartographic -->
+    <g fill="#bde3e4">
+      <path d="M118 172c22-10 46-4 58 12 10 13 4 30-6 42-14 17-16 34-8 53 9 21 4 40-12 55-13 12-30 10-40-4-13-19-18-42-16-66 3-38 12-72 24-92Z"/>
+      <path d="M150 372c16-6 30 4 34 20 5 20-2 42-14 60-8 12-22 14-30 4-9-11-10-28-6-45 4-19 8-33 16-39Z"/>
+      <path d="M296 168c30-12 66-10 96 4 18 8 24 26 16 42-7 15-24 22-40 26-24 6-40 18-48 38-6 15-20 22-34 17-16-6-22-24-18-42 6-32 14-70 28-85Z"/>
+      <path d="M300 288c24-6 44 8 48 32 4 26-6 56-24 78-14 17-34 14-42-6-9-22-8-52 0-76 5-16 10-26 18-28Z"/>
+      <path d="M392 236c18-4 32 8 34 26 2 16-6 30-18 36-14 7-28 0-32-16-4-19 2-42 16-46Z"/>
+    </g>
+
+    <!-- Halftone texture in the lower-left, the way a printed globe fades -->
+    <g fill="#9ed4d6" opacity=".55">
+      <g>
+        <circle cx="70" cy="330" r="3"/><circle cx="98" cy="330" r="3"/><circle cx="126" cy="330" r="3"/><circle cx="154" cy="330" r="3"/>
+        <circle cx="70" cy="358" r="3"/><circle cx="98" cy="358" r="3"/><circle cx="126" cy="358" r="3"/><circle cx="154" cy="358" r="3"/><circle cx="182" cy="358" r="3"/>
+        <circle cx="70" cy="386" r="3"/><circle cx="98" cy="386" r="3"/><circle cx="126" cy="386" r="3"/><circle cx="154" cy="386" r="3"/><circle cx="182" cy="386" r="3"/>
+        <circle cx="98" cy="414" r="2.6"/><circle cx="126" cy="414" r="2.6"/><circle cx="154" cy="414" r="2.6"/><circle cx="182" cy="414" r="2.6"/>
+        <circle cx="126" cy="442" r="2.2"/><circle cx="154" cy="442" r="2.2"/><circle cx="182" cy="442" r="2.2"/>
+      </g>
+    </g>
+
+    <!-- Graticule -->
+    <g stroke="#7fc6ca" stroke-width="1.5" fill="none">
+      <ellipse cx="250" cy="300" rx="196" ry="34"/>
+      <ellipse cx="250" cy="232" rx="184" ry="30"/>
+      <ellipse cx="250" cy="368" rx="184" ry="30"/>
+      <ellipse cx="250" cy="167" rx="143" ry="24"/>
+      <ellipse cx="250" cy="433" rx="143" ry="24"/>
+      <ellipse cx="250" cy="300" rx="196" ry="196"/>
+      <ellipse cx="250" cy="300" rx="132" ry="196"/>
+      <ellipse cx="250" cy="300" rx="63" ry="196"/>
+      <path d="M250 104v392"/>
+    </g>
+  </g>
+  <circle cx="250" cy="300" r="196" stroke="#63b9bf" stroke-width="2" fill="none"/>
+
+  <!-- Ground the composition sits on -->
+  <ellipse cx="372" cy="516" rx="150" ry="20" fill="#cfeceb" opacity=".7"/>
+
+  <!-- Sprout: the section's subject, so it is the one element drawn at full strength -->
+  <g>
+    <path d="M372 520C370 452 369 396 372 336" stroke="#177c86" stroke-width="8" stroke-linecap="round"/>
+    <g stroke="#177c86" stroke-width="4" stroke-linecap="round">
+      <path d="M372 400 335 372"/>
+      <path d="M372 372 410 344"/>
+    </g>
+    <g>
+      <path d="M0 0C-32-34-46-78 0-132C46-78 32-34 0 0Z" fill="url(#leafDark)" transform="translate(372,338) rotate(-30) scale(1.12)"/>
+      <path d="M0 0C-32-34-46-78 0-132C46-78 32-34 0 0Z" fill="url(#leafLight)" transform="translate(372,340) rotate(26) scale(1.02)"/>
+      <path d="M0 0C-32-34-46-78 0-132C46-78 32-34 0 0Z" fill="url(#leafDark)" transform="translate(370,404) rotate(-74) scale(.95)"/>
+      <path d="M0 0C-32-34-46-78 0-132C46-78 32-34 0 0Z" fill="url(#leafLight)" transform="translate(374,376) rotate(70) scale(.86)"/>
+      <path d="M0 0C-32-34-46-78 0-132C46-78 32-34 0 0Z" fill="#2fb0a8" transform="translate(372,300) rotate(-4) scale(.62)"/>
+    </g>
+  </g>
+</svg>

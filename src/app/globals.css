@@ -59,7 +59,15 @@ body {
 }
 
 main {
+  background: var(--color-white);
   scroll-margin-top: 7rem;
+}
+
+/* Keep the public website on one continuous white canvas. Individual cards,
+   controls and media can still carry their own surfaces, but page-level
+   regions no longer introduce a coloured band between sections. */
+main > section {
+  background-color: var(--color-white);
 }
 
 h1,
@@ -441,5 +449,90 @@ section[id] {
 @media (max-width: 30rem) {
   :root {
     --space-section: 3.5rem;
+  }
+}
+
+/* Unified scroll choreography ------------------------------------------------
+   IntersectionObserver owns every enter/exit state. This deliberately
+   overrides the earlier view-timeline experiments so the same motion runs in
+   every modern browser and elements never remain stranded at low opacity. */
+html[data-scroll-motion-ready='true'] [data-scroll-motion] {
+  animation: none !important;
+  opacity: 0.06;
+  scale: 0.985;
+  translate: 0 clamp(1.4rem, 3vw, 2.6rem);
+  transition:
+    opacity 560ms var(--ease-out),
+    scale 680ms var(--ease-out),
+    translate 680ms var(--ease-out),
+    transform 360ms var(--ease-out),
+    border-color 280ms var(--ease-out),
+    box-shadow 280ms var(--ease-out),
+    background-color 280ms var(--ease-out),
+    color 220ms var(--ease-out) !important;
+  transition-delay: 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms !important;
+}
+
+html[data-scroll-motion-ready='true'] [data-scroll-motion='section'] {
+  opacity: 0.18;
+  scale: 1;
+  translate: none;
+  transition: opacity 720ms var(--ease-out) !important;
+  transition-delay: 0ms !important;
+}
+
+html[data-scroll-motion-ready='true'] [data-scroll-motion='media'] {
+  overflow: clip;
+}
+
+html[data-scroll-motion-ready='true'] [data-scroll-motion='media'] > img,
+html[data-scroll-motion-ready='true'] [data-scroll-motion='media'] > picture > img {
+  transform: scale(1.045);
+  transition: transform 900ms var(--ease-out);
+}
+
+html[data-scroll-motion-ready='true'] [data-scroll-motion][data-scroll-side='top'] {
+  translate: 0 clamp(-2rem, -2.6vw, -1.25rem);
+}
+
+html[data-scroll-motion-ready='true'] [data-scroll-motion][data-scroll-visible='true'] {
+  opacity: 1;
+  scale: 1;
+  translate: 0 0;
+  transition-delay: var(
+    --motion-delay,
+    calc(var(--motion-index, 0) * 65ms)
+  ), var(
+    --motion-delay,
+    calc(var(--motion-index, 0) * 65ms)
+  ), var(
+    --motion-delay,
+    calc(var(--motion-index, 0) * 65ms)
+  ), 0ms, 0ms, 0ms, 0ms, 0ms !important;
+}
+
+html[data-scroll-motion-ready='true'] [data-scroll-motion='section'][data-scroll-visible='true'] {
+  translate: none;
+  transition-delay: 0ms !important;
+}
+
+html[data-scroll-motion-ready='true'] [data-scroll-motion='media'][data-scroll-visible='true'] > img,
+html[data-scroll-motion-ready='true'] [data-scroll-motion='media'][data-scroll-visible='true'] > picture > img {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-scroll-motion-ready='true'] [data-scroll-motion] {
+    animation: none !important;
+    opacity: 1 !important;
+    scale: 1 !important;
+    translate: none !important;
+    transition: none !important;
+  }
+
+  html[data-scroll-motion-ready='true'] [data-scroll-motion='media'] > img,
+  html[data-scroll-motion-ready='true'] [data-scroll-motion='media'] > picture > img {
+    transform: none !important;
+    transition: none !important;
   }
 }

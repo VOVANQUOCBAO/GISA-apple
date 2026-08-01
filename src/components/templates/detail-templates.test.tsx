@@ -45,7 +45,6 @@ function makeFixtureForKind(kind: ContentKind): ContentRecord {
 describe('kind-specific detail templates', () => {
   test.each([
     ['project', 'Dự án'],
-    ['publication', 'Ấn phẩm'],
     ['course', 'Khóa học'],
     ['expert', 'Chuyên gia'],
     ['initiative', 'Sáng kiến'],
@@ -60,6 +59,49 @@ describe('kind-specific detail templates', () => {
     ).toBeVisible();
     expect(screen.getByText(label)).toBeVisible();
     expect(document.body).not.toHaveTextContent('undefined');
+  });
+
+  test('publication detail shows its facts and the suggested-reading block', () => {
+    const record: ContentRecord = {
+      ...makeFixtureForKind('publication'),
+      metadata: { topic: 'Chuỗi giá trị', year: '2015', authors: 'Hoàng Văn Việt' },
+      tags: ['Chuỗi giá trị'],
+    };
+    const related = [
+      {
+        ...makeFixtureForKind('publication'),
+        id: 'publication-related',
+        path: '/nghien-cuu/bai-bao-khoa-hoc/bai-lien-quan',
+        tags: ['Chuỗi giá trị'],
+        title: 'Bài liên quan',
+      },
+    ];
+
+    const { container } = render(
+      <DetailTemplate record={record} related={related} />,
+    );
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: record.title }),
+    ).toBeVisible();
+    expect(container.textContent).toContain('Hoàng Văn Việt');
+    expect(container.textContent).toContain('2015');
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Bài nghiên cứu liên quan' }),
+    ).toBeVisible();
+    expect(screen.getByRole('link', { name: 'Bài liên quan' })).toHaveAttribute(
+      'href',
+      '/nghien-cuu/bai-bao-khoa-hoc/bai-lien-quan',
+    );
+    expect(document.body).not.toHaveTextContent('undefined');
+  });
+
+  test('publication without suggestions omits the block entirely', () => {
+    render(<DetailTemplate record={makeFixtureForKind('publication')} />);
+
+    expect(
+      screen.queryByRole('heading', { name: 'Bài nghiên cứu liên quan' }),
+    ).not.toBeInTheDocument();
   });
 
   test('course CTA carries the slug without inventing optional facts', () => {

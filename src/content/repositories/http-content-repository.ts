@@ -49,6 +49,7 @@ function toSummary(record: ContentRecord): ContentSummary {
     image,
     tags,
     evidenceStatus,
+    metadata,
   } = record;
 
   return {
@@ -63,6 +64,7 @@ function toSummary(record: ContentRecord): ContentSummary {
     image,
     tags,
     evidenceStatus,
+    metadata,
   };
 }
 

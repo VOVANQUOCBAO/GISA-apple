@@ -11,6 +11,13 @@ test-results/
 .env*
 !.env.example
 pnpm-debug.log*
+.codex*.log
+
+# Local editor/agent state and visual QA output.
+.claude/
+.design-references/
+artifacts/
+design-qa.md
 
 # Local scratch produced while iterating on the design — screenshots, probe
 # scripts and image experiments. None of it is referenced by the app.
