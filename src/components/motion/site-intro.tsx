@@ -1,6 +1,7 @@
 'use client';
 
 import { Player, type PlayerRef } from '@remotion/player';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import {
   AbsoluteFill,
@@ -212,6 +213,8 @@ function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
 }
 
 export function SiteIntro() {
+  const pathname = usePathname();
+  const shouldPlay = pathname === '/';
   const playerRef = useRef<PlayerRef>(null);
   const [phase, setPhase] = useState<IntroPhase>('detecting');
   const [variant, setVariant] = useState<IntroVariant>('desktop');
@@ -219,7 +222,7 @@ export function SiteIntro() {
   useEffect(() => {
     const documentElement = document.documentElement;
     const previousIntroState = documentElement.dataset.siteIntro;
-    documentElement.dataset.siteIntro = 'running';
+    documentElement.dataset.siteIntro = shouldPlay ? 'running' : 'complete';
 
     return () => {
       if (previousIntroState === undefined) {
@@ -228,7 +231,7 @@ export function SiteIntro() {
         documentElement.dataset.siteIntro = previousIntroState;
       }
     };
-  }, []);
+  }, [shouldPlay]);
 
   useEffect(() => {
     if (phase === 'done') {
@@ -237,6 +240,8 @@ export function SiteIntro() {
   }, [phase]);
 
   useEffect(() => {
+    if (!shouldPlay) return;
+
     if (typeof window.matchMedia !== 'function') return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -254,6 +259,7 @@ export function SiteIntro() {
       }
 
       if (reduceMotion.matches || hasPlayed) {
+        document.documentElement.dataset.siteIntro = 'complete';
         setPhase('done');
         return;
       }
@@ -277,10 +283,10 @@ export function SiteIntro() {
       window.clearTimeout(startIntro);
       mobileViewport.removeEventListener('change', syncVariant);
     };
-  }, []);
+  }, [shouldPlay]);
 
   useEffect(() => {
-    if (phase === 'done') return;
+    if (!shouldPlay || phase === 'done') return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -288,7 +294,7 @@ export function SiteIntro() {
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, [phase]);
+  }, [phase, shouldPlay]);
 
   useEffect(() => {
     if (phase !== 'playing') return;
@@ -305,11 +311,16 @@ export function SiteIntro() {
   useEffect(() => {
     if (phase !== 'exiting') return;
 
-    const timeout = window.setTimeout(() => setPhase('done'), EXIT_DURATION_MS);
+    const timeout = window.setTimeout(() => {
+      // Arm the hero reveal before removing the opaque overlay. Otherwise the
+      // server-rendered hero flashes before jumping back to its first keyframe.
+      document.documentElement.dataset.siteIntro = 'complete';
+      setPhase('done');
+    }, EXIT_DURATION_MS);
     return () => window.clearTimeout(timeout);
   }, [phase]);
 
-  if (phase === 'done') return null;
+  if (!shouldPlay || phase === 'done') return null;
 
   const mobile = variant === 'mobile';
 

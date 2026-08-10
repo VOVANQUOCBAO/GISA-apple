@@ -54,8 +54,8 @@ export function SearchResults({
             <Link href="/tin-tuc">Tin tức</Link>
           </div>
         }
-        description="Nhập từ khóa ở trên hoặc bắt đầu từ một nhóm nội dung công khai. Kết quả chỉ gồm bản ghi vượt qua cổng bằng chứng."
-        title="Tìm nội dung đã được xác minh"
+        description="Nhập từ khóa ở trên hoặc bắt đầu từ một nhóm nội dung để khám phá nghiên cứu, dự án, khóa học và hoạt động của GISA."
+        title="Bạn muốn tìm hiểu nội dung nào?"
       />
     );
   }

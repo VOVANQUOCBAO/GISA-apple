@@ -13,7 +13,7 @@ async function fillValidForm(user: ReturnType<typeof userEvent.setup>) {
     'Tôi muốn tìm hiểu thêm thông tin từ GISA.',
   );
   await user.click(
-    screen.getByLabelText(/Tôi hiểu đây là biểu mẫu mô phỏng/i),
+    screen.getByLabelText(/Tôi hiểu thông tin chưa được gửi đến GISA/i),
   );
 }
 
@@ -22,7 +22,7 @@ test('empty submit focuses error summary and does not claim real delivery', asyn
   render(<GisaForm kind="tu-van" adapter={new SimulatedFormAdapter(0)} />);
 
   await user.click(
-    screen.getByRole('button', { name: 'Gửi yêu cầu mô phỏng' }),
+    screen.getByRole('button', { name: 'Kiểm tra thông tin' }),
   );
 
   const summary = screen.getByRole('alert');
@@ -36,7 +36,7 @@ test('empty partnership submit includes the required organization error', async 
   render(<GisaForm kind="hop-tac" adapter={new SimulatedFormAdapter(0)} />);
 
   await user.click(
-    screen.getByRole('button', { name: 'Gửi yêu cầu mô phỏng' }),
+    screen.getByRole('button', { name: 'Kiểm tra thông tin' }),
   );
 
   expect(
@@ -53,10 +53,10 @@ test('connects field errors and requires an organization for partnership', async
   await user.type(screen.getByLabelText(/Số điện thoại/), '123');
   await user.type(screen.getByLabelText(/^Nội dung/), 'Nội dung hợp lệ để thử.');
   await user.click(
-    screen.getByLabelText(/Tôi hiểu đây là biểu mẫu mô phỏng/i),
+    screen.getByLabelText(/Tôi hiểu thông tin chưa được gửi đến GISA/i),
   );
   await user.click(
-    screen.getByRole('button', { name: 'Gửi yêu cầu mô phỏng' }),
+    screen.getByRole('button', { name: 'Kiểm tra thông tin' }),
   );
 
   expect(screen.getByLabelText(/^Email/)).toHaveAccessibleDescription(
@@ -86,16 +86,16 @@ test('announces pending and simulated success without a real-delivery claim', as
   await fillValidForm(user);
 
   await user.click(
-    screen.getByRole('button', { name: 'Gửi yêu cầu mô phỏng' }),
+    screen.getByRole('button', { name: 'Kiểm tra thông tin' }),
   );
   expect(
-    screen.getByRole('button', { name: 'Đang mô phỏng gửi…' }),
+    screen.getByRole('button', { name: 'Đang kiểm tra…' }),
   ).toBeDisabled();
 
   resolveSubmission({ status: 'simulated_success' });
   expect(
     await screen.findByText(
-      'Đây là bản mô phỏng giao diện; thông tin chưa được gửi tới GISA.',
+      'Thông tin vẫn ở trong trình duyệt và chưa được gửi tới GISA. Kênh tiếp nhận đang được hoàn thiện.',
     ),
   ).toBeVisible();
 });
@@ -113,15 +113,15 @@ test('shows the simulated error state for the reserved error email', async () =>
     'Tôi muốn kiểm tra trạng thái lỗi mô phỏng.',
   );
   await user.click(
-    screen.getByLabelText(/Tôi hiểu đây là biểu mẫu mô phỏng/i),
+    screen.getByLabelText(/Tôi hiểu thông tin chưa được gửi đến GISA/i),
   );
   await user.click(
-    screen.getByRole('button', { name: 'Gửi yêu cầu mô phỏng' }),
+    screen.getByRole('button', { name: 'Kiểm tra thông tin' }),
   );
 
   expect(
     await screen.findByText(
-      'Mô phỏng lỗi gửi. Dữ liệu chưa rời khỏi trình duyệt; bạn có thể thử lại.',
+      'Không thể hoàn tất thao tác. Thông tin vẫn ở trong trình duyệt; bạn có thể kiểm tra và thử lại.',
     ),
   ).toBeVisible();
 });

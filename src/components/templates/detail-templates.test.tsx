@@ -84,8 +84,16 @@ describe('kind-specific detail templates', () => {
     expect(
       screen.getByRole('heading', { level: 1, name: record.title }),
     ).toBeVisible();
-    expect(container.textContent).toContain('Hoàng Văn Việt');
+    expect(container.textContent).not.toContain('Hoàng Văn Việt');
     expect(container.textContent).toContain('2015');
+    expect(screen.getByRole('link', { name: 'Nghiên cứu' })).toHaveAttribute(
+      'href',
+      '/nghien-cuu',
+    );
+    expect(screen.getByRole('link', { name: 'Bài báo khoa học' })).toHaveAttribute(
+      'href',
+      '/nghien-cuu/bai-bao-khoa-hoc',
+    );
     expect(
       screen.getByRole('heading', { level: 2, name: 'Bài nghiên cứu liên quan' }),
     ).toBeVisible();
@@ -94,6 +102,46 @@ describe('kind-specific detail templates', () => {
       '/nghien-cuu/bai-bao-khoa-hoc/bai-lien-quan',
     );
     expect(document.body).not.toHaveTextContent('undefined');
+  });
+
+  test('applied publication keeps its listing and related-content context', () => {
+    const record: ContentRecord = {
+      ...makeFixtureForKind('publication'),
+      metadata: { type: 'Chuyên khảo' },
+      path: '/nghien-cuu/bai-bao-ung-dung/chuyen-khao',
+    };
+    const related = [
+      {
+        ...makeFixtureForKind('publication'),
+        id: 'applied-related',
+        metadata: { type: 'Chuyên khảo' },
+        path: '/nghien-cuu/bai-bao-ung-dung/bai-ung-dung-lien-quan',
+        title: 'Bài ứng dụng liên quan',
+      },
+      {
+        ...makeFixtureForKind('publication'),
+        id: 'scientific-related',
+        metadata: { type: 'Bài báo khoa học' },
+        path: '/nghien-cuu/bai-bao-khoa-hoc/bai-khoa-hoc-lien-quan',
+        title: 'Bài khoa học khác nhóm',
+      },
+    ];
+
+    render(<DetailTemplate record={record} related={related} />);
+
+    expect(screen.getByRole('link', { name: 'Nghiên cứu' })).toHaveAttribute(
+      'href',
+      '/nghien-cuu',
+    );
+    expect(screen.getByRole('link', { name: 'Bài báo ứng dụng' })).toHaveAttribute(
+      'href',
+      '/nghien-cuu/bai-bao-ung-dung',
+    );
+    expect(
+      screen.getByRole('link', { name: /Xem tất cả bài ứng dụng/ }),
+    ).toHaveAttribute('href', '/nghien-cuu/bai-bao-ung-dung');
+    expect(screen.getByRole('link', { name: 'Bài ứng dụng liên quan' })).toBeVisible();
+    expect(screen.queryByText('Bài khoa học khác nhóm')).not.toBeInTheDocument();
   });
 
   test('publication without suggestions omits the block entirely', () => {

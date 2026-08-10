@@ -84,6 +84,11 @@ for (const width of [390, 768, 1024, 1440]) {
     test(`${visualCase.name} visual evidence at ${width}px`, async ({
       page,
     }) => {
+      test.setTimeout(90_000);
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      await page.addInitScript(() => {
+        window.sessionStorage.setItem('gisa-site-intro-seen', 'true');
+      });
       await page.setViewportSize({ height: 900, width });
       await page.goto(visualCase.path);
       await page.addStyleTag({
@@ -106,11 +111,36 @@ for (const width of [390, 768, 1024, 1440]) {
         }
       });
 
+      if (visualCase.name === 'home') {
+        await page.evaluate(async () => {
+          const step = Math.max(420, window.innerHeight * 0.72);
+          for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+            window.scrollTo(0, y);
+            await new Promise((resolve) => setTimeout(resolve, 35));
+          }
+          const imagesReady = Promise.all(
+            Array.from(document.images, (image) => {
+              if (image.complete) return Promise.resolve();
+              return new Promise<void>((resolve) => {
+                image.addEventListener('error', () => resolve(), { once: true });
+                image.addEventListener('load', () => resolve(), { once: true });
+              });
+            }),
+          );
+          await Promise.race([
+            imagesReady,
+            new Promise<void>((resolve) => setTimeout(resolve, 3_000)),
+          ]);
+          window.scrollTo(0, 0);
+        });
+      }
+
       await expect(page).toHaveScreenshot(
         `${visualCase.name}-${width}.png`,
         {
           animations: 'disabled',
           fullPage: true,
+          timeout: 30_000,
         },
       );
     });

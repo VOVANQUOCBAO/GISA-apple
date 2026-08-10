@@ -147,7 +147,14 @@ export interface ContentQuery {
   query?: string;
   page: number;
   pageSize: number;
+  /** Bộ lọc người xem chọn. Xuất hiện trên URL và trên FilterBar. */
   filters: Record<string, string>;
+  /**
+   * Phạm vi cố định của trang, người xem không đổi được. Tách khỏi `filters` vì
+   * `availableFilters` phải tính SAU khi áp phạm vi này: nếu tính trước, FilterBar
+   * sẽ chào những giá trị không tồn tại trong phạm vi và mọi lựa chọn đều ra rỗng.
+   */
+  scope?: Record<string, string>;
 }
 
 export interface PaginatedResult<T> {

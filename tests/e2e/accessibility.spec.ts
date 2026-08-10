@@ -6,6 +6,7 @@ const representativeRoutes = [
   '/nghien-cuu',
   '/nghien-cuu/du-an',
   '/nghien-cuu/du-an/trade4sd',
+  '/dao-tao/gisa-core',
   '/khoa-hoc',
   '/khoa-hoc/khoa-hoc-dai-dien',
   '/chuyen-gia/chuyen-gia-dai-dien',
@@ -13,9 +14,26 @@ const representativeRoutes = [
   '/tim-kiem?q=GISA'
 ];
 
+test('a direct subpage visit is not blocked by the ceremonial site intro', async ({
+  page,
+}) => {
+  await page.goto('/dao-tao/gisa-core');
+
+  await expect(page.locator('[data-phase]')).toHaveCount(0);
+  expect(await page.locator('body').evaluate((element) => element.style.overflow)).not.toBe(
+    'hidden',
+  );
+});
+
 for (const path of representativeRoutes) {
   test(`${path} has no serious accessibility violations`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(path);
+    if (path === '/') {
+      await expect(page.locator('html')).toHaveAttribute('data-site-intro', 'complete', {
+        timeout: 5_000,
+      });
+    }
 
     const result = await new AxeBuilder({ page }).analyze();
     const blockingViolations = result.violations.filter((item) =>

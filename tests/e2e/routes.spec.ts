@@ -17,6 +17,10 @@ const redirectCases = [
   ['/kinh-te-ben-vung', '/ung-dung/kinh-te-ben-vung'],
   ['/kinh-te-ben-vung-1751264493', '/cong-dong/kinh-te-ben-vung'],
   ['/tin-tuc-1712655344', '/tin-tuc'],
+  ['/dao-tao/edge', '/dao-tao/gisa-edge'],
+  ['/dao-tao/rise', '/dao-tao/gisa-rise'],
+  ['/dao-tao/ascend', '/dao-tao/gisa-ascend'],
+  ['/dao-tao/legacy', '/dao-tao/gisa-legacy'],
 ] as const;
 
 for (const [source, destination] of redirectCases) {

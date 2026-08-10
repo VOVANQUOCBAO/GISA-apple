@@ -1,0 +1,373 @@
+.section {
+  --expert-navy: #082447;
+  --expert-teal: #08788a;
+  --expert-red: #ea3f20;
+  background: transparent;
+  color: var(--expert-navy);
+  overflow: hidden;
+  padding-block: clamp(2rem, 3.5vw, 3.25rem);
+  scroll-margin-top: 7rem;
+}
+
+.srOnly {
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.shell {
+  margin-inline: auto;
+  max-width: var(--container);
+  width: calc(100% - (2 * var(--gutter)));
+}
+
+/* Remove pager markup retained by an older Fast Refresh session. */
+.shell > [role='group'] {
+  display: none !important;
+}
+
+.track {
+  --card-step: clamp(13.5rem, 18vw, 20rem);
+  height: clamp(25rem, 32vw, 31rem);
+  isolation: isolate;
+  position: relative;
+}
+
+.card {
+  --slot-x: 0rem;
+  --slot-y: 1.7rem;
+  --slot-scale: 0.84;
+  --hover-y: 0rem;
+  background: #fff;
+  border: 1px solid rgb(8 36 71 / 10%);
+  border-radius: 1.1rem;
+  bottom: 0;
+  box-shadow: 0 1rem 2.5rem rgb(16 34 55 / 10%);
+  contain: layout paint;
+  height: 100%;
+  left: 50%;
+  min-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  transform: translate3d(calc(-50% + var(--slot-x)), calc(var(--slot-y) + var(--hover-y)), 0) scale(var(--slot-scale));
+  transform-origin: center bottom;
+  transition:
+    opacity 260ms ease-out,
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: clamp(14.5rem, 19vw, 20.5rem);
+  will-change: transform, opacity;
+}
+
+.card::after {
+  background: var(--expert-red);
+  bottom: 0;
+  content: '';
+  height: 0.22rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 4;
+}
+
+.card[data-slot='-3'] {
+  --slot-x: calc(var(--card-step) * -3);
+}
+
+.card[data-slot='3'] {
+  --slot-x: calc(var(--card-step) * 3);
+}
+
+.card[data-slot='-2'],
+.card[data-slot='2'] {
+  --slot-y: 1.35rem;
+  --slot-scale: 0.88;
+  opacity: 0.76;
+  pointer-events: auto;
+}
+
+.card[data-slot='-2'] { --slot-x: calc(var(--card-step) * -2); }
+.card[data-slot='2'] { --slot-x: calc(var(--card-step) * 2); }
+
+.card[data-slot='-1'],
+.card[data-slot='1'] {
+  --slot-y: 0.7rem;
+  --slot-scale: 0.94;
+  opacity: 0.94;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.card[data-slot='-1'] { --slot-x: calc(var(--card-step) * -1); }
+.card[data-slot='1'] { --slot-x: var(--card-step); }
+
+.card[data-slot='0'] {
+  --slot-scale: 1;
+  --slot-y: 0rem;
+  border-color: rgb(8 36 71 / 14%);
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 3;
+}
+
+.card[data-slot='0']::after {
+  transform: scaleX(1);
+}
+
+.cardSelect {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  height: 100%;
+  padding: 0;
+  text-align: left;
+  transform: scale(1);
+  transition: transform 100ms ease-out;
+  width: 100%;
+}
+
+.cardSelect:active {
+  transform: scale(0.993);
+}
+
+.portrait {
+  background: #e9ece9;
+  display: block;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.portrait::after {
+  background: linear-gradient(180deg, transparent 70%, rgb(4 24 46 / 7%));
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.emptyPortrait {
+  background: linear-gradient(145deg, #f3f5f4, #e8eceb);
+  inset: 0;
+  position: absolute;
+}
+
+.mockPortrait {
+  backface-visibility: hidden;
+  background-image: url('/images/experts/mock-experts-sheet.png');
+  background-repeat: no-repeat;
+  background-size: 500% auto;
+  inset: 0;
+  position: absolute;
+  transform: scale(1.001);
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mockPortraitOne { background-position: 0% center; }
+.mockPortraitTwo { background-position: 25% center; }
+.mockPortraitThree { background-position: 50% center; }
+.mockPortraitFour { background-position: 75% center; }
+.mockPortraitFive { background-position: 100% center; }
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+  justify-content: center;
+  min-height: 5.9rem;
+  padding: 0.9rem 1rem 1rem;
+}
+
+.caption strong {
+  font-family: var(--font-heading);
+  font-size: clamp(0.94rem, 1.05vw, 1.08rem);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1.16;
+}
+
+.caption small {
+  color: #68717c;
+  font-size: clamp(0.72rem, 0.78vw, 0.82rem);
+  letter-spacing: 0.005em;
+  line-height: 1.36;
+}
+
+.profileLink {
+  align-items: center;
+  background: var(--expert-teal);
+  border: 1px solid rgb(255 255 255 / 32%);
+  border-radius: 50%;
+  bottom: 1rem;
+  box-shadow: 0 0.45rem 1rem rgb(8 120 138 / 20%);
+  color: #fff;
+  display: flex;
+  height: 2.55rem;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0.95rem;
+  transform: translate3d(0, 0.35rem, 0) scale(0.92);
+  transition:
+    background-color 160ms ease-out,
+    opacity 180ms ease-out,
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: 2.55rem;
+  z-index: 3;
+}
+
+.profileLink svg {
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card[data-active='true'] .caption {
+  padding-right: 4.25rem;
+}
+
+.card[data-active='true'] .profileLink {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition-delay: 120ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    --hover-y: -0.3rem;
+  }
+
+  .card:hover .mockPortrait {
+    transform: scale(1.022);
+  }
+
+  .profileLink:hover {
+    background: #056779;
+    transform: translate3d(0, -0.1rem, 0) scale(1);
+  }
+
+  .profileLink:hover svg {
+    transform: translateX(0.12rem);
+  }
+}
+
+.cardSelect:focus-visible,
+.profileLink:focus-visible {
+  outline: 3px solid rgb(8 120 138 / 30%);
+  outline-offset: -3px;
+}
+
+@media (max-width: 68rem) {
+  .track {
+    --card-step: clamp(11.6rem, 21vw, 14.4rem);
+  }
+
+  .card {
+    width: clamp(13.5rem, 23vw, 15.25rem);
+  }
+
+  .caption {
+    min-height: 5.55rem;
+    padding: 0.78rem 0.85rem 0.9rem;
+  }
+
+  .caption strong {
+    font-size: 0.9rem;
+  }
+
+  .caption small {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .section {
+    padding-block: 1.6rem;
+  }
+
+  .shell {
+    width: calc(100% - 2rem);
+  }
+
+  .track {
+    height: min(33rem, 128vw);
+    min-height: 27rem;
+  }
+
+  .card {
+    height: 100%;
+    max-width: 25rem;
+    width: calc(100% - 0.25rem);
+  }
+
+  .card[data-slot='-3'],
+  .card[data-slot='-2'],
+  .card[data-slot='-1'] {
+    --slot-x: -115vw;
+  }
+
+  .card[data-slot='1'],
+  .card[data-slot='2'],
+  .card[data-slot='3'] {
+    --slot-x: 115vw;
+  }
+
+  .card[data-slot='-2'],
+  .card[data-slot='-1'],
+  .card[data-slot='1'],
+  .card[data-slot='2'] {
+    --slot-scale: 0.98;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .card[data-slot='0'] {
+    --slot-scale: 1;
+    --slot-x: 0rem;
+    opacity: 1;
+  }
+
+  .caption {
+    min-height: 6rem;
+    padding: 0.95rem 4.25rem 1rem 1rem;
+  }
+
+  .caption strong {
+    font-size: 1.02rem;
+  }
+
+  .caption small {
+    font-size: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card::after,
+  .cardSelect,
+  .mockPortrait,
+  .profileLink,
+  .profileLink svg {
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .card {
+    border-color: rgb(8 36 71 / 36%);
+  }
+}

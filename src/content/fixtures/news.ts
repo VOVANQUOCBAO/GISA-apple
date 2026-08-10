@@ -12,20 +12,24 @@ export const newsFixtures = [
     title:
       'Tài chính khí hậu và phát triển: Không thể tách rời nếu muốn tương lai bền vững',
     summary:
-      'Bài viết công khai của GISA về mối liên hệ giữa tài chính khí hậu và tài chính phát triển.',
+      'Trước thềm Hội nghị Liên Hợp Quốc lần thứ tư về Tài trợ Phát triển, Germanwatch cảnh báo việc tách biệt tài chính khí hậu và tài chính phát triển đang làm suy yếu nỗ lực toàn cầu.',
     body: [
       {
         type: 'paragraph',
-        text: 'Đọc nội dung và nguồn tham khảo trên trang bài viết công khai của GISA.',
+        text: 'Seville, Tây Ban Nha — Trước thềm Hội nghị Liên Hợp Quốc lần thứ tư về Tài trợ Phát triển (FfD4), tổ chức Germanwatch đã đưa ra một cảnh báo quan trọng: việc tách biệt giữa tài chính khí hậu và tài chính phát triển đang làm suy yếu những nỗ lực toàn cầu nhằm đạt được phát triển bền vững.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Nội dung này được GISA đăng lại trong mục tin tức như một tham chiếu cho chủ đề tài chính bền vững; toàn văn và các dẫn chứng gốc nằm ở trang bài viết công khai bên dưới.',
       },
     ],
     publishedAt: '2025-06-21',
-    tags: ['tin tức', 'khí hậu', 'phát triển bền vững'],
+    tags: ['tin tức', 'khí hậu', 'tài chính bền vững', 'phát triển bền vững'],
     evidenceStatus: 'verified',
     sourceUrl:
       'https://www.gisa.edu.vn/tai-chinh-khi-hau-va-phat-trien-khong-the-tach-roi-neu-muon-tuong-lai-ben-vung',
     sourceLabel: 'Website công khai GISA — bài tài chính khí hậu',
-    checkedAt: '2026-07-18',
+    checkedAt: '2026-08-05',
     metadata: { topic: 'Phát triển bền vững' },
   },
   {

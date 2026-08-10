@@ -23,7 +23,11 @@ function isExcluded(element: Element) {
 }
 
 function getElements(root: ParentNode, selector: string) {
-  return Array.from(root.querySelectorAll<HTMLElement>(selector));
+  const descendants = Array.from(root.querySelectorAll<HTMLElement>(selector));
+  if (root instanceof HTMLElement && root.matches(selector)) {
+    descendants.unshift(root);
+  }
+  return descendants;
 }
 
 function isClipped(element: HTMLElement) {
@@ -134,6 +138,8 @@ function observeScrollMotion(root: ParentNode = document) {
   }
 
   const elements = getElements(root, MOTION_SELECTOR);
+  const observedElements = new Set<HTMLElement>();
+  const dynamicAnnotationCleanups: Array<() => void> = [];
   const documentElement = document.documentElement;
   const previousMotionReady = documentElement.dataset.scrollMotionReady;
 
@@ -157,32 +163,61 @@ function observeScrollMotion(root: ParentNode = document) {
         updateSide(element, entry.boundingClientRect);
         if (entry.isIntersecting) {
           element.dataset.scrollVisible = 'true';
-        } else {
-          delete element.dataset.scrollVisible;
         }
       });
     },
-    { rootMargin: '-10% 0px -10% 0px', threshold: 0.04 },
+    // Keep the bottom edge open: footer content cannot scroll beyond the viewport,
+    // so a negative bottom margin can strand the final credit at low opacity.
+    { rootMargin: '-8% 0px 0px 0px', threshold: 0.04 },
   );
 
+  const observeElement = (element: HTMLElement) => {
+    if (observedElements.has(element)) return;
+    const rect = element.getBoundingClientRect();
+    updateSide(element, rect);
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+      element.dataset.scrollVisible = 'true';
+    }
+    observedElements.add(element);
+    observer.observe(element);
+  };
+
   const revealFrame = window.requestAnimationFrame(() => {
-    elements.forEach((element) => {
-      const rect = element.getBoundingClientRect();
-      updateSide(element, rect);
-      if (rect.bottom > 0 && rect.top < window.innerHeight) {
-        element.dataset.scrollVisible = 'true';
-      }
-      observer.observe(element);
+    elements.forEach(observeElement);
+  });
+
+  // Tabs, filters, and client-rendered cards can replace nodes after hydration.
+  // Keep them in the same enter/exit choreography instead of leaving them
+  // permanently visible and unobserved.
+  const mutationObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.removedNodes.forEach((node) => {
+        if (!(node instanceof HTMLElement)) return;
+        getElements(node, MOTION_SELECTOR).forEach((element) => {
+          observer.unobserve(element);
+          observedElements.delete(element);
+        });
+      });
+
+      mutation.addedNodes.forEach((node) => {
+        if (!(node instanceof HTMLElement)) return;
+        dynamicAnnotationCleanups.push(annotateScrollMotion(node));
+        getElements(node, MOTION_SELECTOR).forEach(observeElement);
+      });
     });
   });
 
+  mutationObserver.observe(root, { childList: true, subtree: true });
+
   return () => {
     window.cancelAnimationFrame(revealFrame);
+    mutationObserver.disconnect();
     observer.disconnect();
-    elements.forEach((element) => {
+    observedElements.forEach((element) => {
       delete element.dataset.scrollSide;
       delete element.dataset.scrollVisible;
     });
+    dynamicAnnotationCleanups.reverse().forEach((cleanup) => cleanup());
     if (previousMotionReady === undefined) {
       delete documentElement.dataset.scrollMotionReady;
     } else {

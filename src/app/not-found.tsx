@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import styles from './not-found.module.css';
+
 const recoveryLinks = [
   { href: '/', label: 'Trang chủ' },
   { href: '/tim-kiem', label: 'Tìm kiếm' },
@@ -11,16 +13,27 @@ const recoveryLinks = [
 
 export default function NotFoundPage() {
   return (
-    <main className="container" id="main-content" tabIndex={-1}>
-      <h1>Không tìm thấy trang</h1>
-      <p>Đường dẫn này không có trong sitemap GISA hoặc nội dung chưa được phép công bố.</p>
-      <ul>
-        {recoveryLinks.map((link) => (
-          <li key={link.href}>
-            <Link href={link.href}>{link.label}</Link>
-          </li>
-        ))}
-      </ul>
+    <main className={styles.page} id="main-content" tabIndex={-1}>
+      <section className={styles.stage} aria-labelledby="not-found-title">
+        <p aria-hidden="true" className={styles.code}>404</p>
+        <div className={styles.copy}>
+          <p className={styles.eyebrow}>Đường dẫn không khả dụng</p>
+          <h1 id="not-found-title">Không tìm thấy trang</h1>
+          <p className={styles.lede}>
+            Đường dẫn có thể đã thay đổi hoặc nội dung hiện không còn khả dụng.
+            Bạn có thể tiếp tục từ một trong các khu vực chính dưới đây.
+          </p>
+          <nav aria-label="Các đường dẫn thay thế">
+            <ul className={styles.links}>
+              {recoveryLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </section>
     </main>
   );
 }

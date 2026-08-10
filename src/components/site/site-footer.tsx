@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
 
 import { Icon } from '@/components/ui/icon';
+import { FooterAffiliation } from '@/components/site/footer-affiliation';
 
 import styles from './site-shell.module.css';
 import { bindPhrases } from '@/lib/vietnamese-text';
@@ -40,20 +42,41 @@ export function SiteFooter() {
     <footer className={styles.siteFooter}>
       <div className={styles.footerInner}>
         <div className={styles.footerLead}>
-          <div className={styles.footerBrand}>
+          <div
+            className={styles.footerBrand}
+            data-scroll-motion="item"
+            style={{ '--motion-index': 0 } as CSSProperties}
+          >
             <Image alt="GISA" height={72} src="/brand/gisa-logo-temp.png" width={72} />
             <div><strong>GISA</strong><span>{bindPhrases("Cùng kiến tạo tác động")}</span></div>
           </div>
-          <div className={styles.footerConclusion}>
+          <div
+            className={styles.footerConclusion}
+            data-scroll-motion="item"
+            style={{ '--motion-index': 1 } as CSSProperties}
+          >
             <p>{bindPhrases("Kết nối tri thức liên ngành, kiến tạo tác động bền vững.")}</p>
           </div>
-          <Link className={styles.footerCta} href="/lien-he">{bindPhrases("Bắt đầu trao đổi ")}<Icon name="arrow" size={18} /></Link>
+          <Link
+            className={styles.footerCta}
+            data-scroll-motion="item"
+            href="/lien-he"
+            style={{ '--motion-index': 2 } as CSSProperties}
+          >
+            {bindPhrases("Bắt đầu trao đổi ")}<Icon name="arrow" size={18} />
+          </Link>
         </div>
 
         <div className={styles.footerGrid}>
           <div className={styles.footerDirectory}>
-            {footerGroups.map((group) => (
-              <nav aria-label={group.heading} className={styles.footerGroup} key={group.heading}>
+            {footerGroups.map((group, index) => (
+              <nav
+                aria-label={group.heading}
+                className={styles.footerGroup}
+                data-scroll-motion="item"
+                key={group.heading}
+                style={{ '--motion-index': index } as CSSProperties}
+              >
                 <Link className={styles.footerGroupHeading} href={group.href}>{group.heading}</Link>
                 <ul className={group.columns === 2 ? styles.footerGroupColumns : undefined}>
                   {group.links.map((label) => <li key={label}><Link href={group.href}>{bindPhrases(label)}</Link></li>)}
@@ -63,13 +86,9 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className={styles.footerBottom}>
+        <div className={styles.footerBottom} data-scroll-motion="reveal">
           <span>{bindPhrases("© 2026 GISA. Kiến tạo kiến thức, lan tỏa giá trị.")}</span>
-          <div>
-            <Link href="/chinh-sach-quyen-rieng-tu">{bindPhrases("Quyền riêng tư")}</Link>
-            <Link href="/lien-he">{bindPhrases("Liên hệ")}</Link>
-            <span className={styles.footerCredit}>{bindPhrases("Thiết kế & phát triển bởi ")}<strong>{bindPhrases("Võ Văn Quốc Bảo")}</strong></span>
-          </div>
+          <FooterAffiliation />
         </div>
       </div>
     </footer>

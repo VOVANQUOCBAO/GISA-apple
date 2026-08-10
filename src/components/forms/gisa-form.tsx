@@ -14,9 +14,9 @@ interface GisaFormProps {
   kind: FormKind;
 }
 const successMessage =
-  'Đây là bản mô phỏng giao diện; thông tin chưa được gửi tới GISA.';
+  'Thông tin vẫn ở trong trình duyệt và chưa được gửi tới GISA. Kênh tiếp nhận đang được hoàn thiện.';
 const errorMessage =
-  'Mô phỏng lỗi gửi. Dữ liệu chưa rời khỏi trình duyệt; bạn có thể thử lại.';
+  'Không thể hoàn tất thao tác. Thông tin vẫn ở trong trình duyệt; bạn có thể kiểm tra và thử lại.';
 
 function describedBy(id: string, error?: string) {
   return error ? `${id}-error` : undefined;
@@ -78,8 +78,8 @@ export function GisaForm({
   return (
     <form className={styles.form} noValidate onSubmit={handleSubmit}>
       <p className={styles.disclosure}>
-        Biểu mẫu này chỉ mô phỏng trải nghiệm. Dữ liệu không được gửi hoặc lưu
-        trên hệ thống production của GISA.
+        Kênh tiếp nhận trực tuyến đang được hoàn thiện. Thông tin bạn nhập chỉ
+        được xử lý trong trình duyệt và chưa được gửi đến GISA.
       </p>
 
       {Object.keys(errors).length > 0 ? (
@@ -208,8 +208,8 @@ export function GisaForm({
             type="checkbox"
           />
           <label htmlFor="consent">
-            Tôi hiểu đây là biểu mẫu mô phỏng và đồng ý xử lý dữ liệu trong
-            trình duyệt để kiểm thử.
+            Tôi hiểu thông tin chưa được gửi đến GISA và đồng ý để trình duyệt
+            xử lý dữ liệu khi kiểm tra thông tin.
           </label>
           {errors.consent ? (
             <p className={styles.fieldError} id="consent-error">
@@ -220,7 +220,7 @@ export function GisaForm({
       </div>
 
       <button className={styles.submitButton} disabled={isPending} type="submit">
-        {isPending ? 'Đang mô phỏng gửi…' : 'Gửi yêu cầu mô phỏng'}
+        {isPending ? 'Đang kiểm tra…' : 'Kiểm tra thông tin'}
       </button>
 
       <div aria-live="polite" className={styles.status} role="status">

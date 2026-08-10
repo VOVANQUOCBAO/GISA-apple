@@ -1,0 +1,216 @@
+.detailPage {
+  margin-inline: auto;
+  padding-bottom: clamp(5rem, 9vw, 9rem);
+  width: min(100% - (2 * var(--gutter)), var(--container));
+}
+
+.factsStage {
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--section-accent, var(--color-navy)) 6%, white), white 48%),
+    white;
+  border-block: 1px solid color-mix(in srgb, var(--color-navy) 13%, transparent);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: minmax(9rem, .3fr) minmax(0, 1.7fr);
+  margin: clamp(2.75rem, 6vw, 5.5rem) auto 0;
+  max-width: 76rem;
+  padding-block: clamp(1.75rem, 4vw, 3rem);
+}
+
+.factsLabel,
+.readingLabel,
+.endcapLabel {
+  color: var(--section-accent, var(--color-teal));
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.factsLabel span {
+  color: var(--section-secondary, var(--color-orange));
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.04em;
+  line-height: 1;
+  margin-top: .8rem;
+}
+
+.factsContent {
+  background: transparent;
+  border-radius: 0;
+  margin: 0 !important;
+  max-width: none !important;
+  min-width: 0;
+  padding: 0;
+}
+
+.factsContent > :first-child {
+  margin-top: 0;
+}
+
+.factsContent > :last-child {
+  margin-bottom: 0;
+}
+
+.readingStage {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: minmax(12rem, 16rem) minmax(0, 50rem);
+  justify-content: center;
+  margin: clamp(4rem, 9vw, 8rem) auto 0;
+  max-width: 78rem;
+}
+
+.readingStageWithoutIndex {
+  grid-template-columns: minmax(0, 50rem);
+}
+
+.readingAside {
+  align-self: start;
+  position: sticky;
+  top: 7rem;
+}
+
+.readingLabel {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-navy) 16%, transparent);
+  margin-bottom: 1.35rem;
+  padding-bottom: 1rem;
+}
+
+.bodyColumn {
+  min-width: 0;
+}
+
+.bodyColumn > div:first-child {
+  max-width: 50rem;
+}
+
+.endcap {
+  align-items: end;
+  background:
+    radial-gradient(circle at 100% 0, color-mix(in srgb, var(--section-secondary, var(--color-orange)) 26%, transparent), transparent 38%),
+    var(--section-ink, var(--color-navy));
+  border-radius: clamp(1.2rem, 2.5vw, 2rem);
+  color: white;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-top: clamp(3rem, 7vw, 6rem);
+  overflow: hidden;
+  padding: clamp(1.6rem, 4vw, 3rem);
+}
+
+.endcapCopy p:last-child {
+  font-family: var(--font-heading);
+  font-size: clamp(1.45rem, 3vw, 2.3rem);
+  line-height: 1.16;
+  margin: .9rem 0 0;
+  max-width: 24ch;
+  text-wrap: balance;
+}
+
+.endcapLabel {
+  color: color-mix(in srgb, var(--section-secondary, var(--color-orange)) 74%, white);
+}
+
+.endcapActions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  justify-content: flex-end;
+}
+
+.endcapActions > div {
+  margin-top: 0;
+}
+
+.backLink {
+  align-items: center;
+  border: 1px solid rgb(255 255 255 / 38%);
+  border-radius: .75rem;
+  color: white;
+  display: inline-flex;
+  font-size: .9rem;
+  font-weight: 700;
+  min-height: 2.9rem;
+  padding: .65rem 1rem;
+  text-decoration: none;
+  transition: background-color 180ms ease-out, border-color 180ms ease-out, transform 180ms ease-out;
+}
+
+.backLink:hover,
+.backLink:focus-visible {
+  background: rgb(255 255 255 / 12%);
+  border-color: white;
+}
+
+.backLink:active {
+  transform: scale(.98);
+}
+
+.sourceStage {
+  border-top: 1px solid color-mix(in srgb, var(--color-navy) 13%, transparent);
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+}
+
+@media (max-width: 64rem) {
+  .readingStage {
+    grid-template-columns: minmax(10rem, 13rem) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 48rem) {
+  .factsStage,
+  .readingStage {
+    grid-template-columns: 1fr;
+  }
+
+  .factsStage {
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .factsLabel {
+    align-items: end;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .factsLabel span {
+    margin: 0;
+  }
+
+  .readingStage {
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .readingAside {
+    position: static;
+  }
+
+  .readingAside > :not(.readingLabel) {
+    display: none;
+  }
+
+  .endcap {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .endcapActions {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backLink {
+    transition-duration: 1ms;
+  }
+}

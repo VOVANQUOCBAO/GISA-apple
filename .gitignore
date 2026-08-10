@@ -7,11 +7,17 @@ node_modules/
 coverage/
 playwright-report/
 test-results/
+test-results*/
 *.tsbuildinfo
 .env*
 !.env.example
 pnpm-debug.log*
 .codex*.log
+.codex-runtime/
+.audit/
+tmp/
+qa-*.png
+debug.log
 
 # Local editor/agent state and visual QA output.
 .claude/

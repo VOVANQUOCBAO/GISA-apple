@@ -63,4 +63,16 @@ describe('annotateScrollMotion', () => {
     expect(card).toHaveAttribute('data-scroll-motion', 'reveal');
     expect(card).toHaveStyle({ '--motion-index': '9' });
   });
+
+  test('annotates a dynamically inserted root element', () => {
+    document.body.innerHTML = '<main><section><div id="cards"></div></section></main>';
+    const card = document.createElement('article');
+    document.querySelector('#cards')?.append(card);
+
+    const cleanup = annotateScrollMotion(card);
+
+    expect(card).toHaveAttribute('data-scroll-motion', 'item');
+    cleanup();
+    expect(card).not.toHaveAttribute('data-scroll-motion');
+  });
 });

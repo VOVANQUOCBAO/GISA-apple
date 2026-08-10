@@ -67,8 +67,8 @@ export default async function SearchPage({
       <header className={styles.pageHeader}>
         <h1>Tìm kiếm</h1>
         <p>
-          Tìm trong tiêu đề, tóm tắt và thẻ của nội dung công khai đã vượt qua
-          cổng bằng chứng.
+          Tìm nhanh trong các bài viết, chương trình và tài liệu đang được công
+          khai trên website GISA.
         </p>
       </header>
       <SearchForm query={query} selectedCollection={selectedCollection} />

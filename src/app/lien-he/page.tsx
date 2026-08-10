@@ -4,7 +4,7 @@ import { FormPage } from '@/components/forms/form-page';
 import { buildMetadata } from '@/components/seo/build-metadata';
 
 export const metadata: Metadata = buildMetadata({
-  description: 'Kết nối với GISA qua biểu mẫu mô phỏng.',
+  description: 'Trao đổi với GISA về nghiên cứu, tư vấn, đào tạo và hợp tác.',
   indexable: false,
   path: '/lien-he',
   title: 'Liên hệ',

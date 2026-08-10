@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import styles from '../../components/forms/form.module.css';
 
 export const metadata: Metadata = buildMetadata({
-  description: 'Thông tin quyền riêng tư dành cho các biểu mẫu GISA.',
+  description: 'Chính sách mô tả cách các biểu mẫu GISA xử lý dữ liệu ngay trong trình duyệt ở giai đoạn hiện tại.',
   path: '/chinh-sach-quyen-rieng-tu',
   title: 'Chính sách quyền riêng tư',
 });
@@ -21,19 +21,34 @@ export default function PrivacyPolicyPage() {
         ]}
       />
       <header className={styles.pageHeader}>
-        <p>Thông báo prototype</p>
+        <p>Phạm vi hiện tại</p>
         <h1>Chính sách quyền riêng tư</h1>
       </header>
-      <div>
+      <div aria-label="Cách biểu mẫu xử lý dữ liệu hiện tại">
         <p>
-          Các biểu mẫu trong prototype này chỉ mô phỏng giao diện. Thông tin
-          nhập vào không được gửi tới GISA và không được lưu trên hệ thống
-          production.
+          Trang này mô tả đúng phạm vi xử lý dữ liệu của các biểu mẫu đang có trên
+          website GISA. Các biểu mẫu hiện chỉ kiểm tra thông tin ngay trong trình
+          duyệt; dữ liệu không được gửi tới GISA và không được lưu trên máy chủ của GISA.
         </p>
+
+        <h2>Dữ liệu xuất hiện trong biểu mẫu</h2>
         <p>
-          Chính sách quyền riêng tư chính thức, danh tính pháp nhân chịu trách
-          nhiệm và thông tin liên hệ cần được GISA phê duyệt trước khi website
-          tiếp nhận dữ liệu thực tế.
+          Tùy loại biểu mẫu, bạn có thể nhập họ tên, email, số điện thoại, tổ chức,
+          nội dung trao đổi hoặc khóa học quan tâm. Những thông tin này chỉ được dùng
+          để kiểm tra trường bắt buộc và định dạng trong phiên trình duyệt hiện tại.
+        </p>
+
+        <h2>Không có thao tác gửi trực tuyến</h2>
+        <p>
+          Nút kiểm tra thông tin không gửi yêu cầu qua mạng và không tạo hồ sơ tiếp
+          nhận tại GISA. Bạn có thể rời trang mà không thực hiện bước kiểm tra.
+        </p>
+
+        <h2>Khi phạm vi xử lý thay đổi</h2>
+        <p>
+          Nếu website bắt đầu tiếp nhận dữ liệu trực tuyến, chính sách này cần được
+          cập nhật trước khi thu thập để nêu rõ đơn vị chịu trách nhiệm, mục đích xử
+          lý, thời gian lưu trữ và kênh liên hệ liên quan.
         </p>
       </div>
     </main>

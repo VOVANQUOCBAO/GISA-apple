@@ -11,15 +11,15 @@ const formMetadata: Record<
   { description: string; title: string }
 > = {
   'tu-van': {
-    description: 'Gửi yêu cầu tư vấn trong giao diện mô phỏng.',
+    description: 'Chia sẻ nhu cầu để GISA hiểu bối cảnh và chuẩn bị hướng trao đổi phù hợp.',
     title: 'Đăng ký tư vấn',
   },
   'khoa-hoc': {
-    description: 'Gửi quan tâm khóa học trong giao diện mô phỏng.',
+    description: 'Chia sẻ mục tiêu học tập và khóa học bạn đang quan tâm.',
     title: 'Đăng ký khóa học',
   },
   'hop-tac': {
-    description: 'Gửi đề nghị hợp tác trong giao diện mô phỏng.',
+    description: 'Giới thiệu nhu cầu và định hướng hợp tác của tổ chức bạn.',
     title: 'Đề nghị hợp tác',
   },
 };

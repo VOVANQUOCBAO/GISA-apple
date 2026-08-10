@@ -1,0 +1,634 @@
+.pageContainer {
+  --about-radius: 1.125rem;
+  margin-inline: auto;
+  overflow: clip;
+  padding-bottom: clamp(5rem, 9vw, 9rem);
+  width: min(100% - (2 * var(--gutter)), var(--container));
+}
+
+.storyLayout,
+.visionLayout,
+.risesLayout,
+.fieldsLayout {
+  margin: clamp(4rem, 9vw, 8rem) auto 0;
+  max-width: 82rem;
+}
+
+.storyLead {
+  border-block: 1px solid color-mix(in srgb, var(--section-accent) 22%, transparent);
+  margin: 0 0 clamp(5rem, 10vw, 9rem);
+  max-width: none;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+}
+
+.storyLead p {
+  color: var(--color-navy);
+  display: grid;
+  font-family: var(--font-heading);
+  font-size: clamp(1.7rem, 3vw, 3rem);
+  gap: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  margin: 0;
+}
+
+.storyPromiseStep {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2.75rem);
+  min-width: 0;
+  padding: clamp(0.5rem, 1.5vw, 1.25rem) clamp(1.25rem, 3vw, 2.75rem);
+}
+
+.storyPromiseStep:first-child {
+  padding-left: 0;
+}
+
+.storyPromiseStep + .storyPromiseStep {
+  border-left: 1px solid color-mix(in srgb, var(--section-accent) 20%, transparent);
+}
+
+.storyPromiseStep small {
+  color: color-mix(in srgb, var(--section-secondary) 72%, var(--section-ink) 28%);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.storyPromiseStep strong {
+  font: inherit;
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+.storyTimeline {
+  position: relative;
+}
+
+.storyTimeline::before {
+  background: color-mix(in srgb, var(--section-accent) 24%, transparent);
+  content: '';
+  inset: 0 auto 0 clamp(2.9rem, 5vw, 4.5rem);
+  position: absolute;
+  width: 1px;
+}
+
+.storyChapter {
+  display: grid;
+  gap: clamp(2rem, 6vw, 6rem);
+  grid-template-columns: minmax(16rem, 0.82fr) minmax(0, 1.18fr);
+  min-height: 24rem;
+  padding: 0 0 clamp(5rem, 11vw, 10rem) clamp(7rem, 12vw, 11rem);
+  position: relative;
+}
+
+.storyChapter::before {
+  background: var(--section-accent);
+  border: 0.45rem solid var(--section-pale);
+  border-radius: 50%;
+  content: '';
+  height: 1.25rem;
+  left: clamp(2.3rem, calc(5vw - .6rem), 3.9rem);
+  position: absolute;
+  top: 0.35rem;
+  width: 1.25rem;
+}
+
+.storyChapterHeading span {
+  color: color-mix(in srgb, var(--section-secondary) 72%, var(--section-ink) 28%);
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.storyChapterHeading h2,
+.missionPanel > h2,
+.visionPanel > h2,
+.risesIntro h2,
+.pillarsSection > h2,
+.fieldCard h2 {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.storyChapterHeading h2 {
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  margin: 0;
+}
+
+.storyChapterBody {
+  color: rgb(20 49 64 / 78%);
+  font-size: clamp(1.04rem, 1.3vw, 1.16rem);
+  line-height: 1.78;
+  max-width: 46rem;
+}
+
+.storyChapterBody > p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.storyChapterBody > p + p {
+  margin-top: 1.5rem;
+}
+
+.storyChapterBody blockquote {
+  border-left: 0.2rem solid var(--section-secondary);
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  line-height: 1.4;
+  margin: 2.5rem 0 0;
+  padding: 0.25rem 0 0.25rem 1.5rem;
+}
+
+.storyChapterBody blockquote p {
+  margin: 0;
+}
+
+.storyChapterBody cite {
+  color: var(--section-accent);
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-style: normal;
+  font-weight: 700;
+  margin-top: 0.8rem;
+}
+
+.visionLayout {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.missionPanel,
+.visionPanel,
+.sloganPanel {
+  border-radius: var(--about-radius);
+  min-width: 0;
+}
+
+.visionColumn {
+  align-content: start;
+  display: grid;
+  gap: 1.25rem;
+  grid-column: span 4;
+  min-width: 0;
+}
+
+.missionPanel {
+  background: var(--section-pale);
+  border: 1px solid color-mix(in srgb, var(--section-accent) 18%, transparent);
+  grid-column: span 8;
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.missionPanel > h2,
+.visionPanel > h2,
+.risesIntro h2,
+.pillarsSection > h2 {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  margin: 0;
+}
+
+.missionIntro {
+  color: rgb(20 49 64 / 78%);
+  font-size: clamp(1.08rem, 1.6vw, 1.28rem);
+  line-height: 1.7;
+  margin: 1.5rem 0 clamp(2.5rem, 5vw, 4rem);
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+.missionList {
+  counter-reset: mission;
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.missionList li {
+  background: color-mix(in srgb, white 78%, var(--section-accent-soft));
+  min-height: 15rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.missionList li > span {
+  color: color-mix(in srgb, var(--section-secondary) 72%, var(--section-ink) 28%);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.missionList h3 {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  line-height: 1.15;
+  margin: 1.2rem 0 0.75rem;
+  text-wrap: balance;
+}
+
+.missionList p {
+  color: rgb(20 49 64 / 72%);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.visionPanel {
+  background: var(--color-navy);
+  color: white;
+  padding: clamp(2rem, 4vw, 3.25rem);
+}
+
+.visionPanel > h2 {
+  color: white;
+  font-size: clamp(2.35rem, 4vw, 4rem);
+}
+
+.visionPanel blockquote {
+  color: rgb(255 255 255 / 86%);
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2vw, 1.85rem);
+  line-height: 1.5;
+  margin: clamp(4rem, 8vw, 7rem) 0 0;
+  padding: 0;
+  text-wrap: pretty;
+}
+
+.sloganPanel {
+  background: color-mix(in srgb, var(--section-secondary) 12%, white);
+  padding: clamp(1.75rem, 4vw, 3.25rem);
+}
+
+.sloganPanel h2 {
+  color: color-mix(in srgb, var(--section-secondary) 72%, var(--section-ink) 28%);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.sloganPanel p {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(1.55rem, 2.2vw, 2.15rem);
+  line-height: 1.25;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+  text-wrap: balance;
+}
+
+.risesIntro {
+  align-items: start;
+  display: grid;
+  gap: clamp(3rem, 8vw, 8rem);
+  grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.28fr);
+}
+
+.risesIntro > div > p {
+  color: rgb(20 49 64 / 76%);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.75;
+  margin: 1.5rem 0 0;
+  max-width: 46ch;
+  text-wrap: pretty;
+}
+
+.valueSequence {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.valueSequence li {
+  align-items: start;
+  border-top: 1px solid color-mix(in srgb, var(--color-navy) 15%, transparent);
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  grid-template-columns: 4rem minmax(0, 1fr);
+  padding: 1.5rem 0;
+}
+
+.valueSequence li:first-child {
+  border-top-color: var(--section-accent);
+}
+
+.valueSequence strong {
+  color: var(--section-accent);
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  line-height: 0.9;
+}
+
+.valueSequence h3 {
+  color: var(--color-navy);
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.valueSequence p {
+  color: rgb(20 49 64 / 70%);
+  line-height: 1.6;
+  margin: 0.45rem 0 0;
+  text-wrap: pretty;
+}
+
+.pillarsSection {
+  background:
+    radial-gradient(circle at 100% 0, color-mix(in srgb, var(--section-secondary) 20%, transparent), transparent 34%),
+    var(--section-pale);
+  border-radius: var(--about-radius);
+  margin-top: clamp(5rem, 10vw, 10rem);
+  padding: clamp(2rem, 6vw, 5.5rem);
+}
+
+.pillarGrid {
+  display: grid;
+  gap: 1px;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.pillarGrid article {
+  background: rgb(255 255 255 / 72%);
+  min-height: 12rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.pillarGrid h3 {
+  color: var(--section-accent);
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  margin: 0;
+}
+
+.pillarGrid p {
+  color: rgb(20 49 64 / 72%);
+  line-height: 1.65;
+  margin: 0.8rem 0 0;
+  max-width: 44ch;
+  text-wrap: pretty;
+}
+
+.fieldsIntro {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.5vw, 3.25rem);
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  margin: 0 0 clamp(4rem, 8vw, 7rem) clamp(3rem, 10vw, 11rem);
+  max-width: 52rem;
+  text-wrap: balance;
+}
+
+.fieldGrid {
+  display: grid;
+  gap: 1.25rem;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.fieldCard {
+  background: var(--section-pale);
+  border: 1px solid color-mix(in srgb, var(--section-accent) 16%, transparent);
+  border-radius: var(--about-radius);
+  grid-column: span 7;
+  min-width: 0;
+  padding: clamp(1.75rem, 4vw, 3.5rem);
+}
+
+.fieldCard:nth-child(4n + 2),
+.fieldCard:nth-child(4n + 3) {
+  grid-column: span 5;
+}
+
+.fieldCard:nth-child(4n + 4) {
+  grid-column: span 7;
+}
+
+.fieldCard h2 {
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  margin: 0;
+}
+
+.fieldCard > p {
+  color: rgb(20 49 64 / 74%);
+  line-height: 1.7;
+  margin: 1rem 0 2.25rem;
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+
+.fieldCard ul {
+  display: grid;
+  gap: 0.65rem 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fieldCard li {
+  border-top: 1px solid color-mix(in srgb, var(--section-accent) 20%, transparent);
+  color: var(--color-navy);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  padding-top: 0.65rem;
+  text-wrap: pretty;
+}
+
+.nextPage {
+  align-items: end;
+  border-top: 1px solid color-mix(in srgb, var(--color-navy) 18%, transparent);
+  display: flex;
+  justify-content: space-between;
+  margin: clamp(6rem, 12vw, 12rem) auto 0;
+  max-width: 82rem;
+  padding-top: 1.5rem;
+}
+
+.nextPage p {
+  color: var(--section-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.nextPage a {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.75rem);
+  line-height: 1.1;
+  text-align: right;
+  text-decoration-color: color-mix(in srgb, var(--section-accent) 35%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.nextPage a:hover {
+  color: var(--section-accent);
+}
+
+@media (max-width: 64rem) {
+  .storyChapter {
+    grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.3fr);
+    padding-left: 6.5rem;
+  }
+
+  .missionPanel,
+  .visionColumn {
+    grid-column: 1 / -1;
+  }
+
+  .risesIntro {
+    gap: 3rem;
+    grid-template-columns: 1fr;
+  }
+
+  .risesIntro > div {
+    max-width: 46rem;
+  }
+
+  .fieldCard,
+  .fieldCard:nth-child(4n + 2),
+  .fieldCard:nth-child(4n + 3),
+  .fieldCard:nth-child(4n + 4) {
+    grid-column: span 6;
+  }
+
+  .fieldCard ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 48rem) {
+  .pageContainer {
+    --about-radius: 0.9rem;
+  }
+
+  .storyLayout,
+  .visionLayout,
+  .risesLayout,
+  .fieldsLayout {
+    margin-top: 3.5rem;
+  }
+
+  .storyLead,
+  .fieldsIntro {
+    margin: 0 0 4rem;
+  }
+
+  .storyLead {
+    padding-block: 0.75rem;
+  }
+
+  .storyLead p {
+    grid-template-columns: 1fr;
+  }
+
+  .storyPromiseStep,
+  .storyPromiseStep:first-child {
+    gap: 0.75rem;
+    padding: 1.25rem 0;
+  }
+
+  .storyPromiseStep + .storyPromiseStep {
+    border-left: 0;
+    border-top: 1px solid color-mix(in srgb, var(--section-accent) 20%, transparent);
+  }
+
+  .storyTimeline::before {
+    left: 0.5rem;
+  }
+
+  .storyChapter {
+    display: block;
+    min-height: 0;
+    padding: 0 0 4.5rem 2.25rem;
+  }
+
+  .storyChapter::before {
+    border-width: 0.3rem;
+    height: 0.9rem;
+    left: 0.06rem;
+    top: 0.2rem;
+    width: 0.9rem;
+  }
+
+  .storyChapterHeading {
+    margin-bottom: 1.75rem;
+  }
+
+  .missionPanel,
+  .visionPanel,
+  .sloganPanel,
+  .pillarsSection,
+  .fieldCard {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .missionList,
+  .pillarGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .missionList li,
+  .pillarGrid article {
+    min-height: 0;
+  }
+
+  .visionPanel {
+    min-height: 0;
+  }
+
+  .visionPanel blockquote {
+    margin-top: 3rem;
+  }
+
+  .fieldGrid {
+    display: block;
+  }
+
+  .fieldCard + .fieldCard {
+    margin-top: 1rem;
+  }
+
+  .nextPage {
+    align-items: start;
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .nextPage a {
+    text-align: left;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .missionPanel,
+  .fieldCard {
+    border-color: var(--color-navy);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nextPage a {
+    transition: none;
+  }
+}

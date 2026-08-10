@@ -168,8 +168,11 @@ export class HttpContentRepository implements ContentRepository {
     endpoint: '/content' | '/search',
     query: ContentQuery,
   ): Promise<PaginatedResult<ContentSummary>> {
+    // `scope` đi cùng `filter.` chứ không thành tham số riêng: nguồn HTTP không
+    // biết khóa lạ sẽ lờ đi và trả về tập chưa thu hẹp — hiển thị sai nội dung còn
+    // tệ hơn là mất phần thu hẹp `availableFilters`, vốn do phía máy chủ tính.
     const filters = Object.fromEntries(
-      Object.entries(query.filters)
+      Object.entries({ ...query.filters, ...query.scope })
         .sort(([left], [right]) => left.localeCompare(right))
         .map(([key, value]) => [`filter.${key}`, value]),
     );

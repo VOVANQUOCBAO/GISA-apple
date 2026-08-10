@@ -22,6 +22,8 @@
     "test:e2e": "playwright test",
     "test:a11y": "playwright test tests/e2e/accessibility.spec.ts",
     "audit:content": "tsx scripts/audit-content.ts",
+    "audit:vietnamese": "tsx scripts/audit-vietnamese-content.ts",
+    "audit:vietnamese:strict": "tsx scripts/audit-vietnamese-content.ts --strict",
     "verify": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
   },
   "dependencies": {

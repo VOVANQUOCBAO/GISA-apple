@@ -13,7 +13,6 @@ function firstValue(value: string | string[] | undefined): string | undefined {
 
 function meta(item: ContentSummary) {
   return {
-    authors: firstValue(item.metadata?.authors),
     topic: firstValue(item.metadata?.topic) ?? item.tags[0],
     year: firstValue(item.metadata?.year),
   };
@@ -62,15 +61,12 @@ export function PublicationIndex({ items }: { items: ContentSummary[] }) {
             <Link href={lead.path}>{bindPhrases(lead.title)}</Link>
           </h2>
           <p className={styles.leadSummary}>{bindPhrases(lead.summary)}</p>
-          {leadMeta.authors ? (
-            <p className={styles.entryAuthors}>{leadMeta.authors}</p>
-          ) : null}
         </div>
       </article>
 
       <ol className={styles.entryList}>
         {rest.map((item) => {
-          const { authors, topic, year } = meta(item);
+          const { topic, year } = meta(item);
           return (
             <li className={styles.entryRow} key={item.id}>
               <div className={styles.entryRail}>
@@ -85,9 +81,6 @@ export function PublicationIndex({ items }: { items: ContentSummary[] }) {
                 <h2 className={styles.entryTitle}>
                   <Link href={item.path}>{bindPhrases(item.title)}</Link>
                 </h2>
-                {authors ? (
-                  <p className={styles.entryAuthors}>{authors}</p>
-                ) : null}
                 <p className={styles.entrySummary}>{bindPhrases(item.summary)}</p>
               </div>
               <span aria-hidden="true" className={styles.entryArrow}>

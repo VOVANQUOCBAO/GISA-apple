@@ -1,0 +1,227 @@
+.section {
+  background: #fff;
+  color: #0b3455;
+  overflow: clip;
+  padding: clamp(4.5rem, 8vw, 8rem) 0 clamp(5rem, 8vw, 8.5rem);
+}
+
+.head {
+  margin: 0 auto clamp(3.5rem, 6vw, 6rem);
+  max-width: min(100% - 2rem, 80rem);
+  text-align: center;
+}
+
+.head h2 {
+  color: #0b3455;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 4.85rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+  margin: 0;
+}
+
+.headLead {
+  color: #536b7e;
+  font-size: clamp(0.98rem, 1.35vw, 1.15rem);
+  line-height: 1.55;
+  margin: clamp(1rem, 1.6vw, 1.35rem) auto 0;
+  max-width: 52rem;
+}
+
+.headRule {
+  background: #f26f33;
+  display: block;
+  height: 2px;
+  margin: 1rem auto 0;
+  width: 2rem;
+}
+
+.stack {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  list-style: none;
+  margin: 0 auto;
+  max-width: min(calc(100% - 2 * var(--gutter)), 86rem);
+  padding: 0;
+}
+
+.slide {
+  align-items: stretch;
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.55fr);
+  min-width: 0;
+}
+
+.copy {
+  align-self: center;
+  padding: clamp(1rem, 2.6vw, 2.75rem) clamp(0.5rem, 1.4vw, 1.25rem);
+}
+
+.number {
+  color: #08717a;
+  display: grid;
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 700;
+  gap: 0.65rem;
+  line-height: 1;
+  margin-bottom: clamp(1.25rem, 2vw, 1.8rem);
+  width: max-content;
+}
+
+.number::after {
+  background: #f26f33;
+  content: '';
+  height: 2px;
+  width: 1.65rem;
+}
+
+.copy h3 {
+  color: #0b3455;
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 3.6vw, 3.75rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.03;
+  margin: 0;
+  max-width: 13ch;
+  text-wrap: balance;
+}
+
+.copy p {
+  color: #536b7e;
+  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  line-height: 1.65;
+  margin: clamp(1.35rem, 2.4vw, 2rem) 0 0;
+  max-width: 26rem;
+}
+
+.link {
+  align-items: center;
+  color: #0b5366;
+  display: inline-flex;
+  font-size: 0.92rem;
+  font-weight: 700;
+  gap: 0.55rem;
+  margin-top: clamp(1.5rem, 2.6vw, 2.25rem);
+  text-decoration-color: rgb(11 83 102 / 55%);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.link svg {
+  color: #f26f33;
+  transition: translate 240ms var(--ease-out);
+}
+
+.link:hover svg {
+  translate: 0.25rem 0;
+}
+
+.media {
+  aspect-ratio: 1.58 / 1;
+  background: #e9eeee;
+  border-radius: 0.45rem;
+  margin: 0;
+  min-height: clamp(24rem, 37vw, 34rem);
+  overflow: hidden;
+  position: relative;
+}
+
+.media img {
+  object-fit: cover;
+}
+
+.slide[data-reverse='true'] {
+  grid-template-columns: minmax(0, 1.55fr) minmax(15rem, 0.72fr);
+}
+
+.slide[data-reverse='true'] .copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.slide[data-reverse='true'] .media {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+@media (max-width: 64rem) {
+  .slide,
+  .slide[data-reverse='true'] {
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    grid-template-columns: minmax(13rem, 0.75fr) minmax(0, 1.35fr);
+  }
+
+  .slide[data-reverse='true'] {
+    grid-template-columns: minmax(0, 1.35fr) minmax(13rem, 0.75fr);
+  }
+
+  .media {
+    min-height: clamp(21rem, 39vw, 27rem);
+  }
+}
+
+@media (max-width: 48rem) {
+  .section {
+    padding: 4.25rem 0 5rem;
+  }
+
+  .head {
+    margin-bottom: 3.5rem;
+  }
+
+  .stack {
+    gap: 4rem;
+    max-width: min(calc(100% - 2rem), 42rem);
+  }
+
+  .slide,
+  .slide[data-reverse='true'] {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .slide .copy,
+  .slide[data-reverse='true'] .copy {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0;
+  }
+
+  .slide .media,
+  .slide[data-reverse='true'] .media {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .number {
+    margin-bottom: 1rem;
+  }
+
+  .copy h3 {
+    font-size: clamp(2.3rem, 11vw, 3.35rem);
+  }
+
+  .copy p {
+    margin-top: 1rem;
+  }
+
+  .link {
+    margin-top: 1.25rem;
+  }
+
+  .media {
+    aspect-ratio: 1.45 / 1;
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link svg {
+    transition: none;
+  }
+}

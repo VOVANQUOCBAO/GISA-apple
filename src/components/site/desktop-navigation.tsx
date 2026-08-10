@@ -4,10 +4,25 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
 
-import { NAVIGATION } from '@/content/navigation';
+import { NAVIGATION, type NavigationGroup } from '@/content/navigation';
 import { Icon } from '@/components/ui/icon';
 
 import styles from './site-shell.module.css';
+
+export function isNavigationGroupActive(
+  pathname: string | null,
+  group: NavigationGroup,
+) {
+  if (!pathname) return false;
+
+  return (
+    pathname === group.href ||
+    (group.href !== '/' && pathname.startsWith(`${group.href}/`)) ||
+    group.children.some(
+      (item) => pathname === item.href || pathname.startsWith(`${item.href}/`),
+    )
+  );
+}
 
 export function DesktopNavigation() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -80,8 +95,7 @@ export function DesktopNavigation() {
                     so every read of it has to be optional. */}
                 <Link
                   aria-current={
-                    pathname === group.href ||
-                    (group.href !== '/' && pathname?.startsWith(`${group.href}/`))
+                    isNavigationGroupActive(pathname, group)
                       ? 'page'
                       : undefined
                   }

@@ -148,15 +148,21 @@ export class FixtureContentRepository implements ContentRepository {
     const collectionRecords = query.collection
       ? publicRecords.filter((record) => record.collection === query.collection)
       : publicRecords;
+    // Phạm vi cố định của trang áp trước mọi thứ khác, kể cả trước khi liệt kê
+    // `availableFilters` — FilterBar chỉ được chào giá trị thật sự có trong phạm vi.
+    const scope = query.scope;
+    const scopedRecords = scope
+      ? collectionRecords.filter((record) => matchesFilters(record, scope))
+      : collectionRecords;
     const normalizedQuery = normalize(query.query ?? '');
     const searchedRecords =
       includeSearch && normalizedQuery
-        ? collectionRecords.filter((record) =>
+        ? scopedRecords.filter((record) =>
             normalize(
               [record.title, record.summary, ...record.tags].join(' '),
             ).includes(normalizedQuery),
           )
-        : collectionRecords;
+        : scopedRecords;
     const filteredRecords = searchedRecords
       .filter((record) => matchesFilters(record, query.filters))
       .sort(compareRecords);
@@ -171,7 +177,7 @@ export class FixtureContentRepository implements ContentRepository {
       page,
       pageSize,
       pageCount,
-      availableFilters: availableFilters(collectionRecords),
+      availableFilters: availableFilters(scopedRecords),
     };
   }
 }

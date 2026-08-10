@@ -8,7 +8,7 @@ test('desktop navigation opens a submenu and restores focus with Escape', async 
   const trigger = page.getByRole('button', { name: /menu Giới thiệu$/ });
   await trigger.click();
   await expect(trigger).toHaveAttribute('aria-expanded', 'true');
-  await expect(page.getByRole('link', { name: 'Câu chuyện GISA' })).toHaveAttribute(
+  await expect(page.getByRole('link', { name: 'Câu chuyện GISA', exact: true })).toHaveAttribute(
     'href',
     '/gioi-thieu/cau-chuyen-gisa',
   );

@@ -35,14 +35,30 @@ export function PublicationTemplate({
   related = [],
 }: PublicationTemplateProps) {
   const topic = firstValue(record.metadata.topic) ?? record.tags[0];
-  const authors = firstValue(record.metadata.authors);
+  const publicationType = firstValue(record.metadata.type);
+  const isAppliedPublication = publicationType === 'Chuyên khảo';
+  const publicationSection = isAppliedPublication
+    ? {
+        href: '/nghien-cuu/bai-bao-ung-dung',
+        label: 'Bài báo ứng dụng',
+        relatedLabel: 'Xem tất cả bài ứng dụng',
+      }
+    : {
+        href: '/nghien-cuu/bai-bao-khoa-hoc',
+        label: 'Bài báo khoa học',
+        relatedLabel: 'Xem tất cả bài nghiên cứu',
+      };
+  const relatedInSection = publicationType
+    ? related.filter(
+        (item) => firstValue(item.metadata.type) === publicationType,
+      )
+    : related;
   const citation = firstValue(record.metadata.citation);
   const year =
     firstValue(record.metadata.year) ?? record.publication?.year?.toString();
   const journal = record.publication?.journal;
   const doi = record.publication?.doi;
   const facts = [
-    authors ? { label: 'Tác giả', value: authors } : null,
     year ? { label: 'Năm công bố', value: year } : null,
     journal ? { label: 'Công bố tại', value: journal } : null,
   ].filter((fact): fact is { label: string; value: string } => fact !== null);
@@ -53,7 +69,8 @@ export function PublicationTemplate({
         <Breadcrumbs
           items={[
             { href: '/', label: 'Trang chủ' },
-            { href: '/nghien-cuu/bai-bao-khoa-hoc', label: 'Bài báo khoa học' },
+            { href: '/nghien-cuu', label: 'Nghiên cứu' },
+            { href: publicationSection.href, label: publicationSection.label },
             { label: record.title },
           ]}
         />
@@ -140,9 +157,9 @@ export function PublicationTemplate({
       </article>
 
       <RelatedResearch
-        allHref="/nghien-cuu/bai-bao-khoa-hoc"
-        allLabel="Xem tất cả bài nghiên cứu"
-        items={related}
+        allHref={publicationSection.href}
+        allLabel={publicationSection.relatedLabel}
+        items={relatedInSection}
       />
     </main>
   );

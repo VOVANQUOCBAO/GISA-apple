@@ -1,0 +1,297 @@
+.pageContainer {
+  margin-inline: auto;
+  padding-bottom: clamp(5rem, 9vw, 9rem);
+  width: min(100% - (2 * var(--gutter)), var(--container));
+}
+
+.discovery {
+  align-items: end;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-navy) 15%, transparent);
+  display: grid;
+  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-top: clamp(4rem, 8vw, 8rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.discoveryCopy {
+  max-width: 68rem;
+}
+
+.discoveryCopy h2 {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5.5vw, 5.25rem);
+  font-weight: 600;
+  letter-spacing: -.048em;
+  line-height: 1;
+  margin: 0;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+
+.discoveryCopy p {
+  color: var(--color-ink-muted);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+  margin: 1.5rem 0 0;
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+.discoveryAction {
+  padding-bottom: .25rem;
+}
+
+.discoveryAction a {
+  white-space: nowrap;
+}
+
+.filterStage {
+  align-items: center;
+  background: var(--section-pale, #fcf6f1);
+  border-left: 4px solid var(--section-accent, #b94b22);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: minmax(15rem, .45fr) minmax(0, 1.55fr);
+  margin-block: clamp(3rem, 6vw, 5rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.filterStage h2 {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(1.55rem, 2.5vw, 2.25rem);
+  letter-spacing: -.025em;
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.filterStage p {
+  color: var(--color-ink-muted);
+  line-height: 1.55;
+  margin: .75rem 0 0;
+  text-wrap: pretty;
+}
+
+.filterStage > section {
+  margin: 0;
+}
+
+.filterStage a:focus-visible,
+.programGroups a:focus-visible {
+  outline: 3px solid var(--section-secondary, var(--color-teal));
+  outline-offset: 3px;
+}
+
+.programGroups {
+  display: grid;
+  gap: clamp(5rem, 10vw, 10rem);
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.programGroup {
+  min-width: 0;
+}
+
+.programHeader {
+  align-items: end;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+
+.programHeader h2 {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+  font-weight: 600;
+  letter-spacing: -.045em;
+  line-height: 1;
+  margin: 0;
+  max-width: 23ch;
+  text-wrap: balance;
+}
+
+.programHeader p {
+  color: var(--section-accent, #b94b22);
+  flex: 0 0 auto;
+  font-size: .84rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.courseList {
+  border-top: 3px solid var(--section-accent, #b94b22);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.courseList > li {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-navy) 14%, transparent);
+}
+
+.courseEntry {
+  display: grid;
+  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .75fr);
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+  position: relative;
+  transition: background-color .25s ease, padding .25s ease;
+}
+
+.courseEntry:hover,
+.courseEntry:focus-within {
+  background: color-mix(in srgb, var(--section-pale, #fcf6f1) 72%, white);
+  padding-inline: clamp(1rem, 2vw, 1.75rem);
+}
+
+.courseEntryCopy,
+.courseOutcome {
+  min-width: 0;
+}
+
+.courseFormat,
+.courseOutcome > span:first-child {
+  color: var(--section-accent, #b94b22);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .055em;
+  margin: 0 0 .8rem;
+}
+
+.courseEntry h3 {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(1.65rem, 3vw, 2.7rem);
+  font-weight: 600;
+  letter-spacing: -.034em;
+  line-height: 1.08;
+  margin: 0;
+  max-width: 26ch;
+  text-wrap: balance;
+}
+
+.courseEntry h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.courseEntry h3 a::after {
+  content: '';
+  inset: 0;
+  position: absolute;
+}
+
+.courseSummary,
+.courseOutcome p {
+  color: var(--color-ink-muted);
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+
+.courseSummary {
+  margin: 1rem 0 0;
+  max-width: 68ch;
+}
+
+.courseOutcome {
+  border-left: 1px solid color-mix(in srgb, var(--color-navy) 15%, transparent);
+  padding-left: clamp(1.5rem, 3vw, 2.75rem);
+  position: relative;
+}
+
+.courseOutcome p {
+  margin: 0;
+  max-width: 38ch;
+}
+
+.courseArrow {
+  bottom: 0;
+  color: var(--section-secondary, var(--color-teal));
+  position: absolute;
+  right: 0;
+  transition: transform .2s ease;
+}
+
+.courseEntry:hover .courseArrow,
+.courseEntry:focus-within .courseArrow {
+  transform: translateX(.3rem);
+}
+
+@media (max-width: 64rem) {
+  .courseEntry {
+    gap: 3rem;
+    grid-template-columns: minmax(0, 1.15fr) minmax(15rem, .85fr);
+  }
+}
+
+@media (max-width: 50rem) {
+  .discovery,
+  .filterStage,
+  .courseEntry {
+    grid-template-columns: 1fr;
+  }
+
+  .discovery {
+    align-items: start;
+  }
+
+  .filterStage {
+    gap: 1.5rem;
+  }
+
+  .courseEntry {
+    gap: 1.5rem;
+  }
+
+  .courseOutcome {
+    border-left: 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-navy) 15%, transparent);
+    padding-left: 0;
+    padding-top: 1.35rem;
+  }
+}
+
+@media (max-width: 40rem) {
+  .discoveryCopy h2,
+  .programHeader h2,
+  .courseEntry h3 {
+    max-width: 100%;
+  }
+
+  .programHeader {
+    align-items: start;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .courseEntry:hover,
+  .courseEntry:focus-within {
+    padding-inline: .75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .courseEntry,
+  .courseArrow {
+    transition: none;
+  }
+
+  .courseEntry:hover .courseArrow,
+  .courseEntry:focus-within .courseArrow {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .filterStage,
+  .courseList,
+  .courseList > li,
+  .courseOutcome {
+    border-color: var(--color-navy);
+  }
+}

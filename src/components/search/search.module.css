@@ -5,14 +5,30 @@
 }
 
 .pageHeader {
-  margin-block: 2rem;
-  max-width: 70ch;
+  background:
+    radial-gradient(circle at 82% 12%, rgb(255 255 255 / 88%), transparent 28%),
+    linear-gradient(135deg, #f8fbfb, #eaf4f3);
+  border: 1px solid rgb(25 72 106 / 12%);
+  border-radius: var(--radius-card);
+  box-shadow: 0 1.25rem 3.5rem rgb(11 52 85 / 7%);
+  margin-block: clamp(2rem, 5vw, 4rem) 0;
+  max-width: none;
+  padding: clamp(2.5rem, 6vw, 5.5rem) clamp(1.5rem, 7vw, 6.5rem)
+    clamp(5.5rem, 9vw, 8rem);
 }
 
 .pageHeader h1 {
   color: var(--color-navy);
   font-size: clamp(2.25rem, 7vw, 4rem);
   margin-block: 0;
+}
+
+.pageHeader p {
+  color: color-mix(in srgb, var(--color-navy) 72%, var(--color-ink));
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.7;
+  margin: var(--space-5) 0 0;
+  max-width: 52ch;
 }
 
 .searchForm {
@@ -22,8 +38,9 @@
   box-shadow: 0 0.75rem 2.25rem rgb(11 52 85 / 4%);
   display: grid;
   gap: 0.65rem;
-  margin-block: 2rem;
+  margin: clamp(-4.5rem, -5vw, -3rem) clamp(1rem, 5vw, 5rem) clamp(3rem, 6vw, 5rem);
   padding: clamp(1.25rem, 4vw, 2rem);
+  position: relative;
 }
 
 .searchForm label,
@@ -85,6 +102,7 @@
 .results {
   display: grid;
   gap: 2rem;
+  margin-inline: clamp(0rem, 2vw, 2rem);
 }
 
 .resultsHeader h2,
@@ -114,8 +132,13 @@
 }
 
 @media (max-width: 30rem) {
+  .pageHeader {
+    padding-bottom: 3rem;
+  }
+
   .searchForm {
     border-radius: var(--radius-control);
+    margin: 1rem 0 2.5rem;
     padding-inline: 1rem;
   }
 

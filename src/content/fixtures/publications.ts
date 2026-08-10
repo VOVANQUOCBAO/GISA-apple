@@ -487,7 +487,7 @@ export const publicationFixtures = [
     kind: 'publication',
     collection: 'publications',
     slug: 'tinh-ben-vung-cua-chuong-trinh-chat-luong-thuc-pham-chau-au',
-    path: '/nghien-cuu/bai-bao-khoa-hoc/tinh-ben-vung-cua-chuong-trinh-chat-luong-thuc-pham-chau-au',
+    path: '/nghien-cuu/bai-bao-ung-dung/tinh-ben-vung-cua-chuong-trinh-chat-luong-thuc-pham-chau-au',
     locale: 'vi',
     translationKey: 'publication-eu-food-quality-schemes-sustainability',
     title: 'Tính bền vững của các chương trình chất lượng thực phẩm châu Âu',

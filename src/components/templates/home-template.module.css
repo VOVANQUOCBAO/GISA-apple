@@ -1,4 +1,4 @@
-.hero{height:48.375rem;position:relative;overflow:hidden}.heroImage{object-fit:cover;object-position:center}.heroInner,.gatewayInner,.capabilitiesInner,.contentContainer,.featuredProject,.insights{width:min(100% - (2 * var(--gutter)),var(--container));margin-inline:auto}.heroInner{z-index:1;grid-template-columns:47rem 1fr 24rem;align-items:center;height:100%;display:grid;position:relative}.heroCopy{align-self:center;padding-bottom:5rem}.eyebrow{color:#006b75;letter-spacing:.075em;text-transform:uppercase;margin:0 0 1.45rem;font-size:1rem;font-weight:700}.orange{color:#f15b2a}.heroCopy h1{color:#082f50;letter-spacing:-.035em;overflow-wrap:normal;text-wrap:nowrap;margin:0 0 2.25rem;font-size:4.6rem;font-weight:400;line-height:1.085}.heroCopy h1 em{color:#f15b2a;font-style:normal}.heroLead{color:#263b4f;max-width:43rem;margin-bottom:2.65rem;font-size:1.25rem;line-height:1.75}.heroButtons,.capabilityButtons,.tags{flex-wrap:wrap;display:flex}.heroButtons{gap:1.8rem}.primaryButton,.secondaryButton,.tealButton,.downloadButton{text-transform:uppercase;border-radius:.25rem;justify-content:center;align-items:center;min-height:4rem;padding-inline:2rem;font-size:1rem;font-weight:700;text-decoration:none;display:inline-flex}.primaryButton,.tealButton{color:#fff;background:#006b75}.primaryButton:hover,.primaryButton:focus-visible,.tealButton:hover,.tealButton:focus-visible{background:#00545d}.secondaryButton,.downloadButton{color:#00616c;background:#fff;border:1px solid #006b75}.secondaryButton:hover,.secondaryButton:focus-visible,.downloadButton:hover,.downloadButton:focus-visible{background:#f1f7f7}.heroForm{background:#fffffff5;border:1px solid #dce3e7;border-radius:.75rem;grid-column:3;justify-self:end;width:24rem;padding:2.5rem 1.75rem 2.1rem;display:grid;box-shadow:0 1.35rem 3.25rem #082f502e}.heroForm h2{color:#133d62;margin:0 0 .7rem;font-size:2rem;font-weight:500}.heroForm>p{color:#33485b;margin:0 0 1.5rem;font-size:1rem;line-height:1.55}.heroForm input,.heroForm select{color:#536678;background:#fff;border:1px solid #cdd8df;border-radius:.25rem;width:100%;height:3.15rem;margin-bottom:.75rem;padding:0 .9rem;font-size:1rem}.heroForm button{color:#fff;cursor:pointer;text-transform:uppercase;background:#f15b2a;border:0;border-radius:.2rem;height:3.2rem;margin-top:.85rem;font-size:1rem;font-weight:700}.heroForm button:hover,.heroForm button:focus-visible{background:#d8491c}.formSuccess{color:#006b75;text-align:center;flex-direction:column;justify-content:center;align-items:center;min-height:24rem;display:flex}.formSuccess p{color:#40566a}.formSuccess button{padding-inline:1.5rem}.gatewayStrip{z-index:4;position:relative}.gatewayInner{background:#fff;border:1px solid #dbe3e7;border-radius:.65rem;grid-template-columns:repeat(7,1fr);min-height:8.5rem;margin-top:-2.2rem;display:grid;overflow:hidden;box-shadow:0 .75rem 2rem #1439520f}.gatewayInner>a{color:#006b75;grid-template-columns:2.25rem minmax(0,1fr) 1rem;align-items:center;gap:.9rem;min-width:0;padding:1.25rem 1.35rem;text-decoration:none;display:grid}.gatewayInner>a:not(:last-child){border-right:1px solid #dbe3e7}.gatewayInner>a:hover{background:#f4f8f8}.gatewayInner span{display:grid}.gatewayInner strong{color:#0b304f;font-size:.96rem}.gatewayInner small{color:#627181;margin-top:.4rem;font-size:.78rem;line-height:1.3}.aboutSection{padding-block:6.5rem 0}.aboutGrid{grid-template-columns:minmax(0,1.08fr) minmax(28rem,.92fr);gap:8rem;display:grid}.aboutIntro{max-width:51rem}.aboutIntro h2,.knowledgeHeading h2,.partnerHeading h2{color:#0b3455;letter-spacing:-.025em;margin:0 0 2rem;font-size:3.35rem;font-weight:400;line-height:1.12}.aboutIntro>p:not(.eyebrow){color:#405469;margin:0 0 1.1rem;font-size:1.13rem;line-height:1.75}.textLink{color:#006b75;align-items:center;gap:.7rem;margin-top:1.35rem;font-size:1.05rem;font-weight:700;text-decoration:none;display:inline-flex}.textLink:hover{color:#f15b2a}.visionStack{gap:1rem;display:grid}.visionStack article{background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;grid-template-columns:3.5rem 1fr;gap:1.5rem;padding:1.75rem 2rem;display:grid}.visionStack article>span{color:#f15b2a;font-family:var(--font-heading);padding-top:.15rem;font-size:1.35rem}.visionStack h3{color:#0b3455;margin:0 0 .6rem;font-size:1.55rem}.visionStack p{color:#496075;margin:0;font-size:1rem;line-height:1.6}.visionStack blockquote{color:#fff;font-family:var(--font-heading);text-align:center;background:#006b75;border-radius:.65rem;margin:0;padding:1.5rem 2rem;font-size:1.6rem}.impactStats{background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;grid-template-columns:repeat(4,1fr);margin:4.5rem 0 0;display:grid;overflow:hidden}.impactStats>div{align-items:center;gap:1.2rem;min-height:7.5rem;padding:1.2rem 2rem;display:flex}.impactStats>div:not(:last-child){border-right:1px solid #dbe3e7}.impactStats dt{color:#006b75;font-family:var(--font-heading);font-size:2.6rem;font-weight:600}.impactStats dd{color:#405469;margin:0;font-size:.96rem;line-height:1.4}.capabilitiesSection{background:#fff}.capabilitiesInner{grid-template-columns:34rem minmax(0,1fr);gap:4rem;min-height:50rem;padding-block:6.8rem 6.3rem;display:grid}.capabilitiesIntro h2{color:#0b3455;letter-spacing:-.025em;overflow-wrap:normal;text-wrap:pretty;margin:0 0 2.5rem;font-size:3.55rem;font-weight:400;line-height:1.1}.capabilitiesIntro h2 span{color:#f15b2a}.capabilitiesIntro>p:not(.eyebrow){color:#42556a;max-width:32rem;margin-bottom:2.85rem;font-size:1.18rem;line-height:1.85}.capabilityButtons{gap:2.75rem}.tealButton,.downloadButton{min-height:4rem;font-size:.92rem}.downloadButton{gap:.65rem}.capabilityGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.1rem;display:grid}.capabilityCard{border:1px solid #d8e1e5;border-radius:.75rem;flex-direction:column;min-height:36rem;padding:2.9rem 2.05rem 2.1rem;display:flex}.capabilityCard:hover{border-color:#9fc0c5;transform:translateY(-.2rem);box-shadow:0 1rem 2.4rem #14395217}.capabilityIcon{color:#006b75;background:#f0f5f6;border-radius:50%;justify-content:center;align-items:center;width:6rem;height:6rem;margin-bottom:2.2rem;display:inline-flex}.capabilityCard h3{color:#0b304f;font-family:var(--font-body);min-height:3.6rem;margin:0 0 1.35rem;font-size:1.28rem;line-height:1.4}.capabilityCard p{color:#4b5d70;margin:0;font-size:1rem;line-height:2}.capabilityCard>a{color:#f15b2a;width:max-content;margin-top:auto}.architectureSection{padding-block:2.5rem 3rem}.sectionTitle{color:#082f50;margin:0 0 1.4rem;font-size:2.6rem;font-weight:400}.risesGrid{border:1px solid #cfdde2;border-radius:.7rem;grid-template-columns:repeat(5,1fr);display:grid;overflow:hidden}.risesGrid article{text-align:center;flex-direction:column;align-items:center;min-height:17.2rem;padding:1.4rem 2rem 1.75rem;display:flex}.risesGrid article:not(:last-child){border-right:1px solid #d6e0e4}.risesGrid span{color:#006b75;font-family:var(--font-heading);font-size:2.8rem;font-weight:600;line-height:1.2}.risesGrid h3{color:#142f4e;margin:.3rem 0 .9rem;font-size:1.2rem}.risesGrid i,.pillarGrid i{background:var(--accent);border-radius:999px;width:2.25rem;height:.2rem;display:block}.risesGrid p{color:#34485c;max-width:15rem;margin:1.55rem 0 0;font-size:1rem;line-height:1.5}.pillarHeading{margin:2rem 0 1.2rem}.pillarGrid{grid-template-columns:repeat(3,1fr);gap:1.3rem;display:grid}.pillarGrid article{border:1px solid #d5e0e4;border-radius:.65rem;grid-template-columns:6.1rem 1fr;align-items:center;gap:1.8rem;min-height:12.2rem;padding:1.6rem 2rem;display:grid}.pillarIcon{background:color-mix(in srgb, var(--accent) 9%, white);color:var(--accent);border-radius:50%;justify-content:center;align-items:center;width:5.7rem;height:5.7rem;display:inline-flex}.pillarGrid h3{color:var(--accent);margin:0 0 .7rem;font-size:1.26rem}.pillarGrid p{color:#425469;margin:.85rem 0 0;font-size:.98rem;line-height:1.45}.editorialSection{padding-block:2.2rem 2.5rem}.featuredProject{border:1px solid #d7e0e4;border-radius:.45rem;grid-template-columns:1fr 1fr;min-height:25rem;display:grid;overflow:hidden}.featuredImage{min-height:25rem;position:relative}.featuredImage img{object-fit:cover}.featuredCopy{align-self:center;padding:1.8rem 3.75rem}.featuredCopy h2{color:#0d3557;margin:0 0 1.15rem;font-size:3rem}.featuredCopy>p:not(.eyebrow){color:#41556b;max-width:33rem;font-size:1.15rem;line-height:1.55}.tags{gap:.8rem;margin:1.5rem 0 2.4rem}.tags span{color:#183a5b;border:1px solid #ccd8de;border-radius:.28rem;padding:.55rem .9rem;font-size:.95rem;font-weight:700}.featuredCopy>a,.insightsHeading>a{color:#006b75;align-items:center;gap:.7rem;font-weight:700;text-decoration:none;display:inline-flex}.featuredCopy>a{font-size:1.2rem}.insights{padding-top:2.4rem}.insightsHeading{justify-content:space-between;align-items:center;margin-bottom:1.4rem;display:flex}.insightsHeading h2{color:#0b3455;margin:0;font-size:2.3rem;font-weight:400}.insightsHeading>a{font-size:1rem}.insightsGrid{grid-template-columns:1fr 1fr;gap:1.3rem 2rem;min-height:23rem;display:grid}.leadArticle{border-radius:.45rem;grid-row:1/span 2;min-height:23rem;position:relative;overflow:hidden}.articleImage{position:absolute;inset:0}.articleImage img{object-fit:cover}.leadOverlay{color:#fff;background:#031e27ab;padding:1.3rem 2.4rem;position:absolute;bottom:0;left:0;right:0}.leadOverlay p{text-transform:uppercase;margin:0 0 .7rem;font-size:.84rem;font-weight:700}.leadOverlay h3{margin:0 0 .55rem;font-size:1.7rem;line-height:1.3}.leadOverlay span{font-size:.98rem;line-height:1.5}.sideArticle{grid-template-columns:16.8rem 1fr;align-items:center;gap:2rem;display:grid}.sideImage{border-radius:.4rem;height:10.5rem;position:relative;overflow:hidden}.sideImage img{object-fit:cover}.articleMeta{color:#006b75;text-transform:uppercase;margin:0 0 .7rem;font-size:.82rem;font-weight:700}.sideArticle h3{color:#102f50;margin:0 0 .6rem;font-size:1.35rem;line-height:1.24}.sideArticle>div>p:last-child{color:#45586b;margin:0;font-size:.95rem;line-height:1.5}.mediaBannerSection{padding-block:6.25rem}.mediaBannerHeading{grid-template-columns:minmax(0,1.1fr) minmax(26rem,.9fr);align-items:end;gap:5rem;margin-bottom:2.6rem;display:grid}.mediaBannerHeading h2{color:#0b3455;letter-spacing:-.025em;max-width:52rem;margin:0;font-size:3.35rem;font-weight:400;line-height:1.08}.mediaBannerHeading>p{color:#4a5f73;max-width:38rem;margin:0 0 .3rem;font-size:1.08rem;line-height:1.7}.mediaBanner{background:#fff;border:1px solid #cdddea;border-radius:.85rem;max-width:80rem;margin:0 auto;overflow:hidden;box-shadow:0 1.5rem 4rem #0c395b1a}.mediaBanner img{width:100%;height:auto;display:block}.knowledgeSection{padding-block:6.25rem}.knowledgeHeading,.partnerHeading{grid-template-columns:minmax(0,1.1fr) minmax(26rem,.9fr);align-items:end;gap:5rem;margin-bottom:2.6rem;display:grid}.knowledgeHeading h2,.partnerHeading h2{max-width:50rem;margin-bottom:0}.knowledgeHeading>p,.partnerHeading>p{color:#4a5f73;max-width:38rem;margin:0 0 .3rem;font-size:1.08rem;line-height:1.7}.knowledgeTabs{border-bottom:1px solid #cad8de;gap:2.8rem;margin-bottom:2rem;display:flex}.knowledgeTabs button{color:#5b6b7b;cursor:pointer;font-family:var(--font-body);background:0 0;border:0;padding:0 0 1rem;font-size:1rem;font-weight:700;position:relative}.knowledgeTabs button[aria-selected=true]{color:#006b75}.knowledgeTabs button[aria-selected=true]:after{content:"";background:#f15b2a;height:3px;position:absolute;bottom:-1px;left:0;right:0}.knowledgeGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem;display:grid}.knowledgeGrid article{background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;flex-direction:column;min-height:21.5rem;padding:1.75rem 1.8rem;transition:border-color .48s var(--ease-out),box-shadow .48s var(--ease-out),transform .48s var(--ease-out);display:flex}.knowledgeGrid article:hover{border-color:#94bcc2;transform:translateY(-.18rem);box-shadow:0 1rem 2.5rem #082f5014}.knowledgeCardTop{color:#006b75;justify-content:space-between;align-items:center;margin-bottom:3rem;display:flex}.knowledgeCardTop>span{font-family:var(--font-heading);font-size:2.2rem}.knowledgeCardBody{flex-direction:column;flex:1;display:flex}.knowledgeCardBody>p{color:#f15b2a;letter-spacing:.045em;text-transform:uppercase;margin:0 0 .9rem;font-size:.78rem;font-weight:700}.knowledgeGrid h3{color:#123653;margin:0;font-size:1.45rem;line-height:1.35}.knowledgeCardBody>a{color:#006b75;align-items:center;gap:.55rem;margin-top:auto;padding-top:1.4rem;font-size:.94rem;font-weight:700;text-decoration:none;display:inline-flex}.courseGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.knowledgeGrid .courseCard{min-height:0;padding:0;overflow:hidden}.courseImage{aspect-ratio:16/9;background:#eaf2f8;display:block;overflow:hidden}.courseImage img{width:100%;height:auto;display:block}.courseCard .knowledgeCardBody{min-height:12rem;padding:1.35rem 1.5rem 1.5rem}.courseCard h3{font-size:1.28rem}.knowledgeFooter{justify-content:flex-end;margin-top:2rem;display:flex}.knowledgeFooter .secondaryButton{text-transform:none;min-height:3.4rem}.partnerSection{background:#fff;padding-block:6.25rem}.partnerHeading{margin-bottom:3rem}.partnerBanner{margin-bottom:2rem}.partnerList{border:1px solid #d4e0e3;border-radius:.65rem;grid-template-columns:repeat(5,1fr);margin:0;padding:0;list-style:none;display:grid;overflow:hidden}.partnerList li{color:#153954;font-family:var(--font-heading);text-align:center;justify-content:center;align-items:center;min-height:9.75rem;padding:1.4rem;font-size:1.22rem;line-height:1.35;display:flex}.partnerList li:not(:last-child){border-right:1px solid #dbe3e7}.partnerList li:nth-child(2n){background:#f7f9f9}.partnerCta{color:#fff;background:#0b3455;border-radius:.65rem;justify-content:space-between;align-items:center;min-height:6.75rem;margin-top:1.25rem;padding:1.25rem 2rem;display:flex}.partnerCta p{margin:0;font-size:1.05rem}.partnerCta a{color:#fff;align-items:center;gap:.7rem;font-weight:700;text-decoration:none;display:inline-flex}.partnerCta a:hover{color:#ffb293}.processSection{min-height:24.5rem;padding-block:2rem 1rem}.processHeading{text-align:center}.processHeading h2{color:#0b3455;margin:0 0 .65rem;font-size:2.65rem;font-weight:400}.processHeading p{color:#536174;margin:0;font-size:1.05rem}.processGrid{grid-template-columns:repeat(5,1fr);margin:1.6rem 0 0;padding:0;list-style:none;display:grid}.processGrid li{text-align:center;min-width:0;padding-inline:1rem;position:relative}.processGrid li:not(:last-child):after{content:"";border-top:2px dashed #a8b7bf;width:calc(100% - 7.6rem);position:absolute;top:5.45rem;left:calc(50% + 3.8rem)}.stepNumber{color:#fff;background:#006b75;border-radius:50%;justify-content:center;align-items:center;width:2rem;height:2rem;margin:0 auto .75rem;font-size:.95rem;font-weight:700;display:flex}.processIcon{color:#006b75;background:#f0f5f6;border-radius:50%;justify-content:center;align-items:center;width:5.2rem;height:5.2rem;margin:0 auto .75rem;display:flex}.processGrid h3{color:#00616d;font-family:var(--font-body);margin:0 0 .5rem;font-size:1rem}.processGrid p{color:#566273;max-width:15rem;margin:0 auto;font-size:.92rem;line-height:1.45}.visuallyHidden{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}@media (max-width:87.5rem){.heroInner{grid-template-columns:38rem 1fr 22rem}.heroCopy h1{font-size:3.8rem}.heroForm{width:22rem}.capabilitiesInner{grid-template-columns:28rem 1fr;gap:2rem}.capabilitiesIntro h2{font-size:3rem}.capabilityCard{padding-inline:1.4rem}.gatewayInner>a{gap:.5rem;padding-inline:.8rem}.aboutGrid{gap:4rem}.partnerList li{font-size:1.05rem}}@media (max-width:70rem){.hero{height:auto;min-height:48rem}.heroInner{grid-template-columns:1fr 21rem;padding-block:4rem 6rem}.heroCopy{padding-bottom:0;padding-right:2rem}.heroCopy h1{font-size:3.2rem}.heroForm{grid-column:2;width:21rem}.gatewayInner{grid-template-columns:repeat(4,1fr)}.gatewayInner>a{border-bottom:1px solid #dbe3e7}.capabilitiesInner{grid-template-columns:1fr}.capabilitiesIntro{max-width:45rem}.capabilityGrid{grid-template-columns:repeat(2,1fr)}.capabilityCard{min-height:28rem}.aboutGrid{grid-template-columns:1fr}.aboutIntro{max-width:55rem}.impactStats{grid-template-columns:repeat(2,1fr)}.impactStats>div:nth-child(2){border-right:0}.impactStats>div:nth-child(-n+2){border-bottom:1px solid #dbe3e7}.risesGrid{grid-template-columns:repeat(2,1fr)}.risesGrid article{border-bottom:1px solid #d6e0e4}.risesGrid article:last-child{grid-column:1/-1}.pillarGrid{grid-template-columns:repeat(2,1fr)}.featuredProject{grid-template-columns:1fr}.featuredImage{min-height:24rem}.insightsGrid{grid-template-columns:1fr}.leadArticle{grid-row:auto;min-height:28rem}.knowledgeHeading,.partnerHeading,.mediaBannerHeading{grid-template-columns:1fr;align-items:start;gap:1.5rem}.knowledgeGrid,.courseGrid{grid-template-columns:repeat(2,1fr)}.partnerList{grid-template-columns:repeat(3,1fr)}.partnerList li{border-bottom:1px solid #dbe3e7}.partnerList li:nth-child(3){border-right:0}}@media (max-width:48rem){.hero{min-height:56rem}.heroImage{object-position:62% center;opacity:.42}.heroInner{padding-block:3rem 5rem;display:block}.heroCopy{padding-right:0}.heroCopy h1{text-wrap:wrap;font-size:clamp(2.65rem,11vw,3.6rem)}.heroLead{font-size:1.05rem}.heroForm{display:none}.gatewayInner{grid-template-columns:repeat(2,1fr)}.capabilitiesInner{padding-block:4.5rem}.capabilitiesIntro h2{font-size:2.7rem}.aboutSection,.knowledgeSection,.partnerSection,.mediaBannerSection{padding-block:4.25rem}.aboutIntro h2,.knowledgeHeading h2,.partnerHeading h2,.mediaBannerHeading h2{font-size:2.55rem}.visionStack article{grid-template-columns:2.5rem 1fr;gap:.75rem;padding:1.4rem}.impactStats{grid-template-columns:1fr}.impactStats>div{border-bottom:1px solid #dbe3e7;border-right:0!important}.impactStats>div:last-child{border-bottom:0}.capabilityGrid,.risesGrid,.pillarGrid,.knowledgeGrid,.partnerList{grid-template-columns:1fr}.capabilityCard{min-height:25rem}.risesGrid article:last-child{grid-column:auto}.pillarGrid article{grid-template-columns:5rem 1fr;padding-inline:1.25rem}.pillarIcon{width:4.7rem;height:4.7rem}.featuredCopy{padding:2.5rem 1.5rem}.featuredCopy h2{font-size:2.4rem}.insightsHeading{flex-direction:column;align-items:flex-start;gap:.8rem}.sideArticle{grid-template-columns:8.5rem 1fr;align-items:start;gap:1rem}.sideImage{height:8.5rem}.processGrid{grid-template-columns:1fr;gap:2rem}.processGrid li:not(:last-child):after{display:none}.knowledgeTabs{gap:1.25rem;overflow-x:auto}.knowledgeTabs button{flex:none}.knowledgeGrid article{min-height:18rem}.knowledgeGrid .courseCard{min-height:0}.courseCard .knowledgeCardBody{min-height:10.75rem}.partnerList li{border-bottom:1px solid #dbe3e7;min-height:6.5rem;border-right:0!important}.partnerList li:last-child{border-bottom:0}.partnerCta{flex-direction:column;align-items:flex-start;gap:1rem}.heroButtons,.capabilityButtons{gap:.8rem}}
+.hero{height:48.375rem;position:relative;overflow:hidden}.heroImage{object-fit:cover;object-position:center}.heroInner,.gatewayInner,.capabilitiesInner,.contentContainer,.insights{width:min(100% - (2 * var(--gutter)),var(--container));margin-inline:auto}.heroInner{z-index:1;grid-template-columns:47rem 1fr 24rem;align-items:center;height:100%;display:grid;position:relative}.heroCopy{align-self:center;padding-bottom:5rem}.eyebrow{color:#006b75;letter-spacing:.075em;text-transform:uppercase;margin:0 0 1.45rem;font-size:1rem;font-weight:700}.orange{color:#f15b2a}.heroCopy h1{color:#082f50;letter-spacing:-.035em;overflow-wrap:normal;text-wrap:nowrap;margin:0 0 2.25rem;font-size:4.6rem;font-weight:400;line-height:1.085}.heroCopy h1 em{color:#f15b2a;font-style:normal}.heroLead{color:#263b4f;max-width:43rem;margin-bottom:2.65rem;font-size:1.25rem;line-height:1.75}.heroButtons,.capabilityButtons{flex-wrap:wrap;display:flex}.heroButtons{gap:1.8rem}.primaryButton,.secondaryButton,.tealButton,.downloadButton{text-transform:uppercase;border-radius:.25rem;justify-content:center;align-items:center;min-height:4rem;padding-inline:2rem;font-size:1rem;font-weight:700;text-decoration:none;display:inline-flex}.primaryButton,.tealButton{color:#fff;background:#006b75}.primaryButton:hover,.primaryButton:focus-visible,.tealButton:hover,.tealButton:focus-visible{background:#00545d}.secondaryButton,.downloadButton{color:#00616c;background:#fff;border:1px solid #006b75}.secondaryButton:hover,.secondaryButton:focus-visible,.downloadButton:hover,.downloadButton:focus-visible{background:#f1f7f7}.heroForm{background:#fffffff5;border:1px solid #dce3e7;border-radius:.75rem;grid-column:3;justify-self:end;width:24rem;padding:2.5rem 1.75rem 2.1rem;display:grid;box-shadow:0 1.35rem 3.25rem #082f502e}.heroForm h2{color:#133d62;margin:0 0 .7rem;font-size:2rem;font-weight:500}.heroForm>p{color:#33485b;margin:0 0 1.5rem;font-size:1rem;line-height:1.55}.heroForm input,.heroForm select{color:#536678;background:#fff;border:1px solid #cdd8df;border-radius:.25rem;width:100%;height:3.15rem;margin-bottom:.75rem;padding:0 .9rem;font-size:1rem}.heroForm button{color:#fff;cursor:pointer;text-transform:uppercase;background:#f15b2a;border:0;border-radius:.2rem;height:3.2rem;margin-top:.85rem;font-size:1rem;font-weight:700}.heroForm button:hover,.heroForm button:focus-visible{background:#d8491c}.formSuccess{color:#006b75;text-align:center;flex-direction:column;justify-content:center;align-items:center;min-height:24rem;display:flex}.formSuccess p{color:#40566a}.formSuccess button{padding-inline:1.5rem}.gatewayStrip{z-index:4;position:relative}.gatewayInner{background:#fff;border:1px solid #dbe3e7;border-radius:.65rem;grid-template-columns:repeat(7,1fr);min-height:8.5rem;margin-top:-2.2rem;display:grid;overflow:hidden;box-shadow:0 .75rem 2rem #1439520f}.gatewayInner>a{color:#006b75;grid-template-columns:2.25rem minmax(0,1fr) 1rem;align-items:center;gap:.9rem;min-width:0;padding:1.25rem 1.35rem;text-decoration:none;display:grid}.gatewayInner>a:not(:last-child){border-right:1px solid #dbe3e7}.gatewayInner>a:hover{background:#f4f8f8}.gatewayInner span{display:grid}.gatewayInner strong{color:#0b304f;font-size:.96rem}.gatewayInner small{color:#627181;margin-top:.4rem;font-size:.78rem;line-height:1.3}.aboutSection{padding-block:6.5rem 0}.aboutGrid{grid-template-columns:minmax(0,1.08fr) minmax(28rem,.92fr);gap:8rem;display:grid}.aboutIntro{max-width:51rem}.aboutIntro h2,.knowledgeHeading h2,.partnerHeading h2{color:#0b3455;letter-spacing:-.025em;margin:0 0 2rem;font-size:3.35rem;font-weight:400;line-height:1.12}.aboutIntro>p:not(.eyebrow){color:#405469;margin:0 0 1.1rem;font-size:1.13rem;line-height:1.75}.textLink{color:#006b75;align-items:center;gap:.7rem;margin-top:1.35rem;font-size:1.05rem;font-weight:700;text-decoration:none;display:inline-flex}.textLink:hover{color:#f15b2a}.visionStack{gap:1rem;display:grid}.visionStack article{background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;grid-template-columns:3.5rem 1fr;gap:1.5rem;padding:1.75rem 2rem;display:grid}.visionStack article>span{color:#f15b2a;font-family:var(--font-heading);padding-top:.15rem;font-size:1.35rem}.visionStack h3{color:#0b3455;margin:0 0 .6rem;font-size:1.55rem}.visionStack p{color:#496075;margin:0;font-size:1rem;line-height:1.6}.visionStack blockquote{color:#fff;font-family:var(--font-heading);text-align:center;background:#006b75;border-radius:.65rem;margin:0;padding:1.5rem 2rem;font-size:1.6rem}.impactStats{background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;grid-template-columns:repeat(4,1fr);margin:4.5rem 0 0;display:grid;overflow:hidden}.impactStats>div{align-items:center;gap:1.2rem;min-height:7.5rem;padding:1.2rem 2rem;display:flex}.impactStats>div:not(:last-child){border-right:1px solid #dbe3e7}.impactStats dt{color:#006b75;font-family:var(--font-heading);font-size:2.6rem;font-weight:600}.impactStats dd{color:#405469;margin:0;font-size:.96rem;line-height:1.4}.capabilitiesSection{background:#fff}.capabilitiesInner{grid-template-columns:34rem minmax(0,1fr);gap:4rem;min-height:50rem;padding-block:6.8rem 6.3rem;display:grid}.capabilitiesIntro h2{color:#0b3455;letter-spacing:-.025em;overflow-wrap:normal;text-wrap:pretty;margin:0 0 2.5rem;font-size:3.55rem;font-weight:400;line-height:1.1}.capabilitiesIntro h2 span{color:#f15b2a}.capabilitiesIntro>p:not(.eyebrow){color:#42556a;max-width:32rem;margin-bottom:2.85rem;font-size:1.18rem;line-height:1.85}.capabilityButtons{gap:2.75rem}.tealButton,.downloadButton{min-height:4rem;font-size:.92rem}.downloadButton{gap:.65rem}.capabilityGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.1rem;display:grid}.capabilityCard{border:1px solid #d8e1e5;border-radius:.75rem;flex-direction:column;min-height:36rem;padding:2.9rem 2.05rem 2.1rem;display:flex}.capabilityCard:hover{border-color:#9fc0c5;transform:translateY(-.2rem);box-shadow:0 1rem 2.4rem #14395217}.capabilityIcon{color:#006b75;background:#f0f5f6;border-radius:50%;justify-content:center;align-items:center;width:6rem;height:6rem;margin-bottom:2.2rem;display:inline-flex}.capabilityCard h3{color:#0b304f;font-family:var(--font-body);min-height:3.6rem;margin:0 0 1.35rem;font-size:1.28rem;line-height:1.4}.capabilityCard p{color:#4b5d70;margin:0;font-size:1rem;line-height:2}.capabilityCard>a{color:#f15b2a;width:max-content;margin-top:auto}.architectureSection{padding-block:2.5rem 3rem}.sectionTitle{color:#082f50;margin:0 0 1.4rem;font-size:2.6rem;font-weight:400}.risesGrid{border:1px solid #cfdde2;border-radius:.7rem;grid-template-columns:repeat(5,1fr);display:grid;overflow:hidden}.risesGrid article{text-align:center;flex-direction:column;align-items:center;min-height:17.2rem;padding:1.4rem 2rem 1.75rem;display:flex}.risesGrid article:not(:last-child){border-right:1px solid #d6e0e4}.risesGrid span{color:#006b75;font-family:var(--font-heading);font-size:2.8rem;font-weight:600;line-height:1.2}.risesGrid h3{color:#142f4e;margin:.3rem 0 .9rem;font-size:1.2rem}.risesGrid i{background:var(--accent);border-radius:999px;width:2.25rem;height:.2rem;display:block}.risesGrid p{color:#34485c;max-width:15rem;margin:1.55rem 0 0;font-size:1rem;line-height:1.5}.editorialSection{padding-block:2.2rem 2.5rem}.insightsHeading>a{color:#006b75;align-items:center;gap:.7rem;font-weight:700;text-decoration:none;display:inline-flex}.insights{padding-top:2.4rem}.insightsHeading{justify-content:space-between;align-items:center;margin-bottom:1.4rem;display:flex}.insightsHeading h2{color:#0b3455;margin:0;font-size:2.3rem;font-weight:400}.insightsHeading>a{font-size:1rem}.insightsGrid{grid-template-columns:1fr 1fr;gap:1.3rem 2rem;min-height:23rem;display:grid}.leadArticle{border-radius:.45rem;grid-row:1/span 2;min-height:23rem;position:relative;overflow:hidden}.articleImage{position:absolute;inset:0}.articleImage img{object-fit:cover}.sideArticle{grid-template-columns:16.8rem 1fr;align-items:center;gap:2rem;display:grid}.articleMeta{color:#006b75;text-transform:uppercase;margin:0 0 .7rem;font-size:.82rem;font-weight:700}.sideArticle h3{color:#102f50;margin:0 0 .6rem;font-size:1.35rem;line-height:1.24}.sideArticle>div>p:last-child{color:#45586b;margin:0;font-size:.95rem;line-height:1.5}.knowledgeSection{padding-block:6.25rem}.knowledgeHeading,.partnerHeading{grid-template-columns:minmax(0,1.1fr) minmax(26rem,.9fr);align-items:end;gap:5rem;margin-bottom:2.6rem;display:grid}.knowledgeHeading h2,.partnerHeading h2{max-width:50rem;margin-bottom:0}.knowledgeHeading>p,.partnerHeading>p{color:#4a5f73;max-width:38rem;margin:0 0 .3rem;font-size:1.08rem;line-height:1.7}.knowledgeTabs{border-bottom:1px solid #cad8de;gap:2.8rem;margin-bottom:2rem;display:flex}.knowledgeTabs button{color:#5b6b7b;cursor:pointer;font-family:var(--font-body);background:0 0;border:0;padding:0 0 1rem;font-size:1rem;font-weight:700;position:relative}.knowledgeTabs button[aria-selected=true]{color:#006b75}.knowledgeTabs button[aria-selected=true]:after{content:"";background:#f15b2a;height:3px;position:absolute;bottom:-1px;left:0;right:0}.knowledgeGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem;display:grid}.knowledgeGrid article{background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;flex-direction:column;min-height:21.5rem;padding:1.75rem 1.8rem;transition:border-color .48s var(--ease-out),box-shadow .48s var(--ease-out),transform .48s var(--ease-out);display:flex}.knowledgeGrid article:hover{border-color:#94bcc2;transform:translateY(-.18rem);box-shadow:0 1rem 2.5rem #082f5014}.knowledgeCardTop{color:#006b75;justify-content:space-between;align-items:center;margin-bottom:3rem;display:flex}.knowledgeCardTop>span{font-family:var(--font-heading);font-size:2.2rem}.knowledgeCardBody{flex-direction:column;flex:1;display:flex}.knowledgeCardBody>p{color:#f15b2a;letter-spacing:.045em;text-transform:uppercase;margin:0 0 .9rem;font-size:.78rem;font-weight:700}.knowledgeGrid h3{color:#123653;margin:0;font-size:1.45rem;line-height:1.35}.knowledgeCardBody>a{color:#006b75;align-items:center;gap:.55rem;margin-top:auto;padding-top:1.4rem;font-size:.94rem;font-weight:700;text-decoration:none;display:inline-flex}.courseGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.knowledgeGrid .courseCard{min-height:0;padding:0;overflow:hidden}.courseImage{aspect-ratio:16/9;background:#eaf2f8;display:block;overflow:hidden}.courseImage img{width:100%;height:auto;display:block}.courseCard .knowledgeCardBody{min-height:12rem;padding:1.35rem 1.5rem 1.5rem}.courseCard h3{font-size:1.28rem}.partnerSection{background:#fff;padding-block:6.25rem}.partnerHeading{margin-bottom:3rem}.partnerList{border:1px solid #d4e0e3;border-radius:.65rem;grid-template-columns:repeat(5,1fr);margin:0;padding:0;list-style:none;display:grid;overflow:hidden}.partnerList li{color:#153954;font-family:var(--font-heading);text-align:center;justify-content:center;align-items:center;min-height:9.75rem;padding:1.4rem;font-size:1.22rem;line-height:1.35;display:flex}.partnerList li:not(:last-child){border-right:1px solid #dbe3e7}.partnerList li:nth-child(2n){background:#f7f9f9}.partnerCta{color:#fff;background:#0b3455;border-radius:.65rem;justify-content:space-between;align-items:center;min-height:6.75rem;margin-top:1.25rem;padding:1.25rem 2rem;display:flex}.partnerCta p{margin:0;font-size:1.05rem}.partnerCta a,.partnerCta button{color:#fff;align-items:center;gap:.7rem;font-weight:700;text-decoration:none;display:inline-flex}.partnerCta button{background:0 0;border:0;cursor:pointer;font-family:var(--font-body);font-size:1.05rem;padding:0}.partnerCta a:hover,.partnerCta button:hover,.partnerCta button:focus-visible{color:#ffb293}.visuallyHidden{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}@media (max-width:87.5rem){.heroInner{grid-template-columns:38rem 1fr 22rem}.heroCopy h1{font-size:3.8rem}.heroForm{width:22rem}.capabilitiesInner{grid-template-columns:28rem 1fr;gap:2rem}.capabilitiesIntro h2{font-size:3rem}.capabilityCard{padding-inline:1.4rem}.gatewayInner>a{gap:.5rem;padding-inline:.8rem}.aboutGrid{gap:4rem}.partnerList li{font-size:1.05rem}}@media (max-width:70rem){.hero{height:auto;min-height:48rem}.heroInner{grid-template-columns:1fr 21rem;padding-block:4rem 6rem}.heroCopy{padding-bottom:0;padding-right:2rem}.heroCopy h1{font-size:3.2rem}.heroForm{grid-column:2;width:21rem}.gatewayInner{grid-template-columns:repeat(4,1fr)}.gatewayInner>a{border-bottom:1px solid #dbe3e7}.capabilitiesInner{grid-template-columns:1fr}.capabilitiesIntro{max-width:45rem}.capabilityGrid{grid-template-columns:repeat(2,1fr)}.capabilityCard{min-height:28rem}.aboutGrid{grid-template-columns:1fr}.aboutIntro{max-width:55rem}.impactStats{grid-template-columns:repeat(2,1fr)}.impactStats>div:nth-child(2){border-right:0}.impactStats>div:nth-child(-n+2){border-bottom:1px solid #dbe3e7}.risesGrid{grid-template-columns:repeat(2,1fr)}.risesGrid article{border-bottom:1px solid #d6e0e4}.risesGrid article:last-child{grid-column:1/-1}.insightsGrid{grid-template-columns:1fr}.leadArticle{grid-row:auto;min-height:28rem}.knowledgeHeading,.partnerHeading{grid-template-columns:1fr;align-items:start;gap:1.5rem}.knowledgeGrid,.courseGrid{grid-template-columns:repeat(2,1fr)}.partnerList{grid-template-columns:repeat(3,1fr)}.partnerList li{border-bottom:1px solid #dbe3e7}.partnerList li:nth-child(3){border-right:0}}@media (max-width:48rem){.hero{min-height:56rem}.heroImage{object-position:62% center;opacity:.42}.heroInner{padding-block:3rem 5rem;display:block}.heroCopy{padding-right:0}.heroCopy h1{text-wrap:wrap;font-size:clamp(2.65rem,11vw,3.6rem)}.heroLead{font-size:1.05rem}.heroForm{display:none}.gatewayInner{grid-template-columns:repeat(2,1fr)}.capabilitiesInner{padding-block:4.5rem}.capabilitiesIntro h2{font-size:2.7rem}.aboutSection,.knowledgeSection,.partnerSection{padding-block:4.25rem}.aboutIntro h2,.knowledgeHeading h2,.partnerHeading h2{font-size:2.55rem}.visionStack article{grid-template-columns:2.5rem 1fr;gap:.75rem;padding:1.4rem}.impactStats{grid-template-columns:1fr}.impactStats>div{border-bottom:1px solid #dbe3e7;border-right:0!important}.impactStats>div:last-child{border-bottom:0}.capabilityGrid,.risesGrid,.knowledgeGrid,.partnerList{grid-template-columns:1fr}.capabilityCard{min-height:25rem}.risesGrid article:last-child{grid-column:auto}.insightsHeading{flex-direction:column;align-items:flex-start;gap:.8rem}.sideArticle{grid-template-columns:8.5rem 1fr;align-items:start;gap:1rem}.knowledgeTabs{gap:1.25rem;overflow-x:auto}.knowledgeTabs button{flex:none}.knowledgeGrid article{min-height:18rem}.knowledgeGrid .courseCard{min-height:0}.courseCard .knowledgeCardBody{min-height:10.75rem}.partnerList li{border-bottom:1px solid #dbe3e7;min-height:6.5rem;border-right:0!important}.partnerList li:last-child{border-bottom:0}.partnerCta{flex-direction:column;align-items:flex-start;gap:1rem}.heroButtons,.capabilityButtons{gap:.8rem}}
 
 /* Partner logo marquee restored from the confirmed homepage preview. */
 /* Stays on the shared frame instead of running full-bleed (`100vw` + a negative
@@ -11,11 +11,17 @@
 .partnerList li,.partnerList li:not(:last-child){align-items:center;background:#fff;border:1px solid #d4e0e3;border-radius:.65rem;display:flex;flex:0 0 clamp(14rem,16vw,17rem);justify-content:center;min-height:8.25rem;padding:1.15rem 1.4rem}
 .partnerList li:nth-child(2n){background:#fff}
 /* Every tile is the same box and each logo is centred inside it with `contain`,
-   so the 29 source PNGs — which differ in aspect ratio and built-in padding —
+   so the 48 source files — which differ in aspect ratio and built-in padding —
    line up on one optical baseline instead of each finding its own size. */
 .partnerLogo{display:block;height:5.5rem;position:relative;width:100%}
 .partnerLogo img{object-fit:contain;object-position:center}
 .partnerMarquee:hover .partnerTrack{animation-play-state:paused}
+/* Hàng thứ hai chạy ngược chiều hàng đầu. Dùng `animation-direction` thay vì một
+   keyframe riêng vì track đã chứa hai bản sao giống hệt nhau, nên chạy ngược vẫn
+   khép vòng liền mạch. Thời lượng lệch 6 giây để hai hàng không bao giờ trùng
+   nhịp và dải logo không đọc thành một khối cứng. */
+.partnerTrackReverse{animation-direction:reverse;animation-duration:48s}
+.partnerMarquee + .partnerMarquee{padding-block:0 1rem}
 .visuallyHidden{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}
 @keyframes partner-marquee{to{transform:translateX(-50%)}}
 @media (max-width:48rem){.partnerList li,.partnerList li:not(:last-child){flex-basis:13rem;min-height:7.5rem;padding:1rem}.partnerLogo{height:4.9rem}.partnerMarquee{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 1.5rem,#000 calc(100% - 1.5rem),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 1.5rem,#000 calc(100% - 1.5rem),transparent 100%)}}
@@ -27,8 +33,8 @@
 .heroCopy h1{font-size:clamp(3.9rem,5vw,4.55rem);line-height:1.06}
 .heroLead{background:#ffffffd9;border:1px solid #d8e3e7;border-left:.3rem solid #f15b2a;border-radius:.6rem;max-width:40rem;margin:0 0 2.25rem;padding:1rem 1.2rem;font-size:1.08rem;line-height:1.65;box-shadow:0 .75rem 2rem #0b34550b}
 .sectionEyebrow{background:#eaf3f3;border:1px solid #cfe0e1;border-radius:999px;display:inline-flex;align-items:center;width:max-content;min-height:2rem;margin-bottom:1.15rem;padding:.35rem .8rem;font-size:.78rem;letter-spacing:.09em;line-height:1.2}
-.sectionEyebrow.orange{background:#fff3ed;border-color:#ffd4c2;color:#c84818}
-.aboutIntro h2,.capabilitiesIntro h2,.mediaBannerHeading h2,.sectionTitle,.insightsHeading h2,.knowledgeHeading h2,.partnerHeading h2,.processHeading h2,.researchProjectsHeading h2{letter-spacing:.01em}
+.sectionEyebrow.orange{background:#fff3ed;border-color:#ffd4c2;color:#ad3e16}
+.aboutIntro h2,.capabilitiesIntro h2,.sectionTitle,.knowledgeHeading h2,.partnerHeading h2,.researchProjectsHeading h2{letter-spacing:.01em}
 .aboutSection{padding-top:5.75rem}
 .capabilitiesInner{align-items:start;grid-template-columns:minmax(24rem,.8fr) minmax(0,1.35fr);gap:4rem;min-height:0;padding-block:5.75rem}
 .capabilitiesIntro{position:sticky;top:7.25rem}
@@ -41,79 +47,47 @@
 .capabilityCard h3{min-height:0;margin-bottom:.8rem;font-size:1.2rem;line-height:1.35}
 .capabilityCard p{font-size:.98rem;line-height:1.65}
 .architectureSection{padding-block:4.75rem}
-.editorialSection{padding-block:4.75rem}
 .knowledgeSection,.partnerSection{padding-block:5.75rem}
-.processSection{padding-block:4rem 3rem}
-
-.mediaBannerSection{padding-block:5.75rem 5.25rem;overflow:hidden}
-.mediaBannerHeading{margin-bottom:3rem}
-.commitmentMarquee{width:100%;overflow:hidden;padding-block:.25rem 1rem}
-.commitmentTrack{display:flex;width:max-content;animation:commitment-marquee 34s linear infinite;will-change:transform}
-.commitmentList{display:flex;flex:none;gap:1rem;margin:0;padding:0 1rem 0 0;list-style:none}
-.commitmentList li{background:#fff;border:1px solid #cdddea;border-top:4px solid var(--commitment-color);border-radius:.75rem;display:grid;grid-template-columns:4.25rem minmax(0,1fr);align-items:center;gap:1.15rem;flex:0 0 clamp(19rem,23vw,22rem);min-height:10rem;padding:1.35rem 1.5rem;box-shadow:0 .75rem 2rem #0c395b0d}
-.commitmentIcon{color:#fff;background:var(--commitment-color);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;width:4.25rem;height:4.25rem}
-.commitmentList li>span:last-child{display:grid;gap:.45rem}
-.commitmentList strong{color:#0b3455;font-family:var(--font-heading);font-size:1.28rem;line-height:1.25}
-.commitmentList small{color:#4a5f73;font-size:.94rem;line-height:1.45}
-.commitmentMarquee:hover .commitmentTrack,.commitmentMarquee:focus-within .commitmentTrack{animation-play-state:paused}
-@keyframes commitment-marquee{to{transform:translateX(-50%)}}
 
 @media (max-width:70rem){
   .capabilitiesInner{grid-template-columns:1fr}
   .capabilitiesIntro{max-width:52rem;position:static}
-  .capabilityCard{min-height:20rem}
-}
+  .capabilityCard{min-height:20rem}}
 @media (max-width:48rem){
   .hero::after{background:linear-gradient(90deg,#ffffffe8 0%,#ffffffb8 100%)}
   .heroCopy{max-width:none}
   .heroCopy h1{font-size:clamp(2.6rem,11vw,3.5rem)}
-  .aboutSection,.architectureSection,.editorialSection,.knowledgeSection,.partnerSection,.mediaBannerSection{padding-block:4rem}
+  .aboutSection,.architectureSection,.knowledgeSection,.partnerSection{padding-block:4rem}
   .capabilitiesInner{padding-block:4rem}
   .capabilityGrid{grid-template-columns:1fr}
-  .capabilityCard{min-height:0}
-  .commitmentList li{flex-basis:18rem;grid-template-columns:3.75rem minmax(0,1fr);min-height:9rem;padding:1.2rem}
-  .commitmentIcon{width:3.75rem;height:3.75rem}
-}
-@media (prefers-reduced-motion:reduce){
-  .commitmentMarquee{overflow-x:auto}
-  .commitmentTrack{animation:none}
-  .commitmentList[aria-hidden='true']{display:none}
-}
+  .capabilityCard{min-height:0}}
 
 /* Clipping must not become the scroll container that drives view timelines. */
 @supports (overflow:clip){
-  .mediaBannerSection,.commitmentMarquee,.risesGrid,.partnerMarquee{overflow:clip}
-}
+  .risesGrid,.partnerMarquee{overflow:clip}}
 @media (prefers-reduced-motion:reduce){
-  .commitmentMarquee,.partnerMarquee{overflow-x:auto}
-}
+  .partnerMarquee{overflow-x:auto}}
 
 /* Brand-led refinements requested from the 100% section review. */
 .aboutIntro{background:#fff;border-top:.3rem solid #006b75;border-radius:.75rem;padding:2.35rem 2.5rem;box-shadow:0 1rem 2.75rem #0b34550d}
 .aboutIntro h2{margin-bottom:1.6rem}
 .visionStack article:first-child{border-top:.3rem solid #f15b2a}
-.visionStack article:nth-child(2){border-top:.3rem solid #69a52b}
-.visionStack article:nth-child(2)>span{color:#69a52b}
+.visionStack article:nth-child(2){border-top:.3rem solid #5f8f27}
+.visionStack article:nth-child(2)>span{color:#5f8f27}
 .impactStats>div:nth-child(1) dt{color:#006b75}
 .impactStats>div:nth-child(2) dt{color:#f15b2a}
 .impactStats>div:nth-child(3) dt{color:#1765aa}
-.impactStats>div:nth-child(4) dt{color:#69a52b}
+.impactStats>div:nth-child(4) dt{color:#5f8f27}
 
 .featureStatement{--statement-color:#006b75;background:#fff;border:1px solid #d8e3e7;border-left:.3rem solid var(--statement-color);border-radius:.6rem;margin:0;padding:1.15rem 1.3rem;box-shadow:0 .75rem 2rem #0b34550b;font-weight:600;line-height:1.6}
-.statementRed{--statement-color:#c5192d}
-.statementOrange{--statement-color:#f15b2a}
 .statementBlue{--statement-color:#1765aa}
-.statementGreen{--statement-color:#69a52b}
-.mediaBannerHeading>.featureStatement,.knowledgeHeading>.featureStatement,.partnerHeading>.featureStatement{margin:0}
-.featuredCopy>.featureStatement{background:#f7faf9;max-width:35rem;margin:0 0 1.5rem;padding:1rem 1.2rem;font-size:1.08rem;line-height:1.6}
+.knowledgeHeading>.featureStatement,.partnerHeading>.featureStatement{margin:0}
 .partnerHeading>.featureStatement{background:#f4f8f8}
 .knowledgeHeading>.featureStatement{background:#fff}
-.processHeading>.featureStatement{max-width:48rem;margin:1.15rem auto 0;text-align:left;font-size:1.02rem}
 
 @media (max-width:48rem){
   .aboutIntro{padding:1.75rem 1.4rem}
-  .featureStatement{padding:1rem 1.05rem}
-}
+  .featureStatement{padding:1rem 1.05rem}}
 
 /* Rendered as an inset rounded panel instead of a full-bleed dark band: the page
    stays one continuous white surface, and the accent block keeps the same left
@@ -129,32 +103,25 @@
 .researchProjectsGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
 .researchProjectsGrid article{background:#103b5d;border:1px solid #ffffff24;border-top:.3rem solid var(--project-accent);border-radius:.75rem;display:flex;flex-direction:column;min-height:22rem;padding:1.6rem;transition:transform .5s var(--ease-out),border-color .5s var(--ease-out),background .5s var(--ease-out)}
 .researchProjectsGrid article:hover{background:#154667;border-color:#ffffff42;transform:translateY(-.25rem)}
-.researchProjectTop{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem}
-.researchProjectIcon{background:var(--project-accent);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;width:3.5rem;height:3.5rem}
-.researchProjectNumber{color:#9eb7c8;font-family:var(--font-heading);font-size:1.25rem}
 .researchProjectsGrid article>p{color:#dce7ee;border-left:.2rem solid var(--project-accent);letter-spacing:.055em;text-transform:uppercase;margin:0 0 .75rem;padding-left:.65rem;font-size:.78rem;font-weight:700}
 .researchProjectsGrid h3{color:#fff;margin:0 0 1rem;font-size:1.65rem;line-height:1.15}
-.researchProjectsGrid article>span:not(.researchProjectNumber){color:#c8d8e3;font-size:.98rem;line-height:1.55}
+.researchProjectsGrid article>span{color:#c8d8e3;font-size:.98rem;line-height:1.55}
 .researchProjectsGrid article>a{color:#fff;display:inline-flex;align-items:center;gap:.55rem;margin-top:auto;padding-top:1.5rem;font-weight:700;text-decoration:none}
 .researchProjectsGrid article>a:hover{color:#8edadd}
 
 @media (max-width:70rem){
   .researchProjectsHeading{grid-template-columns:1fr;align-items:start;gap:1.25rem}
-  .researchProjectsGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
+  .researchProjectsGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:48rem){
   .researchProjectsSection{padding-block:1.5rem 3rem}
   .researchProjectsSection .contentContainer{border-radius:1rem;padding:2.5rem 1.5rem 3rem}
   .researchProjectsHeading h2{font-size:2.55rem}
   .researchProjectsHeading>p{font-size:1rem}
   .researchProjectsGrid{grid-template-columns:1fr}
-  .researchProjectsGrid article{min-height:19rem}
-}
+  .researchProjectsGrid article{min-height:19rem}}
 
 /* Hierarchy pass for supporting statements and the introduction slogan. */
 .visionStack blockquote{display:flex;align-items:center;justify-content:center;min-height:7.25rem;font-size:2rem;line-height:1.25}
-.heroConsultationTrigger{color:#fff;background:#f15b2a;border:0;border-radius:.35rem;box-shadow:0 1rem 2.5rem #082f5024;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.65rem;grid-column:3;justify-self:end;min-height:3.65rem;padding:0 1.35rem;font-size:.96rem;font-weight:700}
-.heroConsultationTrigger:hover,.heroConsultationTrigger:focus-visible{background:#d8491c}
 .consultationOverlay{background:#082f50b8;display:grid;place-items:center;position:fixed;inset:0;z-index:1000;padding:1rem}
 .consultationDialog{background:#fff;border-radius:.8rem;max-height:calc(100dvh - 2rem);overflow:auto;position:relative;width:min(100%,28rem);box-shadow:0 2rem 6rem #031b2e66}
 .consultationForm{border:0;box-shadow:none;display:grid;grid-column:auto;justify-self:stretch;width:100%;padding:2.6rem 2rem 2rem}
@@ -162,31 +129,23 @@
 .heroForm .dialogClose:hover,.heroForm .dialogClose:focus-visible{background:#dce9eb;color:#006b75}
 .knowledgeHeading h2{font-size:clamp(2.45rem,2.85vw,3.15rem);white-space:nowrap}
 .partnerHeading h2{white-space:nowrap}
-.processHeading>.featureStatement{display:flex;align-items:center;justify-content:center;min-height:4.25rem;text-align:center}
 .partnerCta{align-items:center;flex-direction:column;justify-content:center;gap:.65rem;text-align:center}
 .partnerCta p{max-width:52rem}
 @media (max-width:48rem){
   .visionStack blockquote{min-height:6.5rem;font-size:1.7rem}
-  .heroConsultationTrigger{grid-column:auto;margin-top:1rem;width:100%}
   .consultationForm{display:grid;padding:2.6rem 1.25rem 1.4rem}
   .knowledgeHeading h2{font-size:clamp(1.3rem,5.5vw,2rem)}
   .partnerHeading h2{font-size:2rem}
-  .processHeading>.featureStatement{text-align:center}
 }
-@media (min-width:48.01rem) and (max-width:70rem){.heroConsultationTrigger{grid-column:2}}
 
 /* Semantic wrapping and balanced split headings. */
-.gatewayInner small,.commitmentList strong{hyphens:none;overflow-wrap:normal;text-wrap:balance;word-break:normal}
+.gatewayInner small{hyphens:none;overflow-wrap:normal;text-wrap:balance;word-break:normal}
 .gatewayInner strong{white-space:nowrap}
-.commitmentList strong{white-space:nowrap}
-.commitmentList small,.featureStatement{text-wrap:pretty}
+.featureStatement{text-wrap:pretty}
 
-.heroButtons .heroConsultationTrigger{grid-column:auto;justify-self:auto;margin:0;min-height:4rem}
-
-.mediaBannerHeading,.knowledgeHeading,.partnerHeading,.researchProjectsHeading{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:clamp(2.5rem,4vw,5rem)}
-.mediaBannerHeading>div,.knowledgeHeading>div,.partnerHeading>div,.researchProjectsHeading>div{min-width:0;width:100%}
-.mediaBannerHeading>.featureStatement,.knowledgeHeading>.featureStatement,.partnerHeading>.featureStatement,.researchProjectsHeading>.featureStatement{align-items:center;display:flex;justify-self:stretch;margin-top:0;max-width:none;min-height:100%;width:100%}
-.mediaBannerHeading>.featureStatement{align-self:center;min-height:0}
+.knowledgeHeading,.partnerHeading,.researchProjectsHeading{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:clamp(2.5rem,4vw,5rem)}
+.knowledgeHeading>div,.partnerHeading>div,.researchProjectsHeading>div{min-width:0;width:100%}
+.knowledgeHeading>.featureStatement,.partnerHeading>.featureStatement,.researchProjectsHeading>.featureStatement{align-items:center;display:flex;justify-self:stretch;margin-top:0;max-width:none;min-height:100%;width:100%}
 
 .gatewayInner>a{gap:.55rem;grid-template-columns:2rem minmax(0,1fr) .875rem;padding:1rem .75rem}
 .gatewayInner>a>svg:first-child{height:2rem;width:2rem}
@@ -198,9 +157,8 @@
 .knowledgeAllLink:hover,.knowledgeAllLink:focus-visible{color:#f15b2a}
 
 @media (max-width:70rem){
-  .mediaBannerHeading,.knowledgeHeading,.partnerHeading,.researchProjectsHeading{grid-template-columns:1fr;gap:1.35rem}
-  .mediaBannerHeading>.featureStatement,.knowledgeHeading>.featureStatement,.partnerHeading>.featureStatement,.researchProjectsHeading>.featureStatement{min-height:0}
-}
+  .knowledgeHeading,.partnerHeading,.researchProjectsHeading{grid-template-columns:1fr;gap:1.35rem}
+  .knowledgeHeading>.featureStatement,.partnerHeading>.featureStatement,.researchProjectsHeading>.featureStatement{min-height:0}}
 
 @media (max-width:48rem){
   .hero{min-height:52rem}
@@ -208,19 +166,17 @@
   .gatewayInner>a:last-child{grid-column:1/-1}
   .gatewayInner>a>svg:last-child{display:none}
   .gatewayInner small{font-size:.74rem}
-  .heroButtons .heroConsultationTrigger{width:auto}
   .knowledgeToolbar{align-items:flex-start;flex-direction:column;gap:.25rem}
   .knowledgeToolbar .knowledgeTabs{width:100%}
-  .knowledgeAllLink{margin-bottom:.9rem}
-}
+  .knowledgeAllLink{margin-bottom:.9rem}}
 
 /* Shared interaction motion: deliberate entrances, restrained lifts, quick press feedback. */
-.consultationOverlay {
+.consultationOverlay{
   opacity: 1;
   transition: opacity 420ms var(--ease-out);
 }
 
-.consultationDialog {
+.consultationDialog{
   transform: translate3d(0, 0, 0) scale(1);
   transform-origin: center;
   transition: transform 520ms var(--ease-out);
@@ -236,15 +192,69 @@
   }
 }
 
-.primaryButton,
-.secondaryButton,
-.tealButton,
-.downloadButton,
-.heroConsultationTrigger,
-.heroForm button:not(.dialogClose),
-.knowledgeAllLink,
-.partnerCta a,
-.researchProjectsGrid article > a {
+/* Capability routing ------------------------------------------------------
+   The full card is the destination, not a decorative article with a tiny
+   arrow link. This keeps mouse, touch and keyboard interaction equivalent. */
+.capabilityCard{
+  color:inherit;
+  text-decoration:none;
+}
+
+.capabilityArrow{
+  color:#f15b2a;
+  display:inline-flex;
+  margin-top:auto;
+  transition:transform 180ms var(--ease-out);
+  width:max-content;
+}
+
+@media (hover:hover) and (pointer:fine){
+  .capabilityCard:hover .capabilityArrow{
+    transform:translate3d(.3rem,0,0);
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .capabilityArrow{
+    transition:none;
+  }
+}
+
+/* RISES Folded Panorama ----------------------------------------------------
+   The values are one continuous, touchable object. The centered heading stays
+   calm while the selected face expands and its neighbours fold away. */
+.architectureSection{
+  background:#fff;
+  overflow:clip;
+  padding-block:clamp(4.5rem,7vw,7.25rem);
+}
+.architectureSection .contentContainer{
+  max-width:calc(var(--container) + 8rem);
+}
+.risesHeading{
+  align-items:center;
+  display:flex;
+  flex-direction:column;
+  margin:0 auto clamp(1.25rem,2.5vw,2.5rem);
+  text-align:center;
+}
+.risesHeading .sectionEyebrow{margin:0 0 1.4rem}
+.risesHeading .sectionTitle{
+  font-size:clamp(2.75rem,4.25vw,4.15rem);
+  letter-spacing:-.035em;
+  line-height:1.02;
+  margin:0;
+  max-width:none;
+  text-wrap:balance;
+}
+
+@media (max-width:48rem){
+  .architectureSection{padding-block:4rem}
+  .risesHeading{margin-bottom:.5rem}
+  .risesHeading .sectionTitle{font-size:clamp(2.35rem,10.5vw,3.2rem)}
+}
+
+.primaryButton,.secondaryButton,.tealButton,.downloadButton,.heroForm button:not(.dialogClose),.knowledgeAllLink,.partnerCta a,.partnerCta button,.researchProjectsGrid article > a{
   transition:
     background-color 220ms var(--ease-out),
     border-color 220ms var(--ease-out),
@@ -252,21 +262,11 @@
     transform 160ms var(--ease-out);
 }
 
-.primaryButton:active,
-.secondaryButton:active,
-.tealButton:active,
-.downloadButton:active,
-.heroConsultationTrigger:active,
-.heroForm button:not(.dialogClose):active,
-.knowledgeAllLink:active,
-.partnerCta a:active,
-.researchProjectsGrid article > a:active {
+.primaryButton:active,.secondaryButton:active,.tealButton:active,.downloadButton:active,.heroForm button:not(.dialogClose):active,.knowledgeAllLink:active,.partnerCta a:active,.partnerCta button:active,.researchProjectsGrid article > a:active{
   transform: scale(0.97);
 }
 
-.capabilityCard,
-.knowledgeGrid article,
-.researchProjectsGrid article {
+.capabilityCard,.knowledgeGrid article,.researchProjectsGrid article{
   transition:
     background-color 220ms var(--ease-out),
     border-color 220ms var(--ease-out),
@@ -274,48 +274,27 @@
     transform 220ms var(--ease-out);
 }
 
-.capabilityCard:hover,
-.knowledgeGrid article:hover,
-.researchProjectsGrid article:hover {
+.capabilityCard:hover,.knowledgeGrid article:hover,.researchProjectsGrid article:hover{
   transform: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .capabilityCard:hover,
-  .knowledgeGrid article:hover,
-  .researchProjectsGrid article:hover {
+  .capabilityCard:hover,.knowledgeGrid article:hover,.researchProjectsGrid article:hover{
     transform: translateY(-0.25rem);
-  }
-}
+  }}
 
 @media (prefers-reduced-motion: reduce) {
-  .consultationOverlay {
+  .consultationOverlay{
     transition: opacity 380ms var(--ease-out);
   }
 
-  .consultationDialog,
-  .capabilityCard,
-  .knowledgeGrid article,
-  .researchProjectsGrid article,
-  .primaryButton:active,
-  .secondaryButton:active,
-  .tealButton:active,
-  .downloadButton:active,
-  .heroConsultationTrigger:active,
-  .heroForm button:not(.dialogClose):active,
-  .knowledgeAllLink:active,
-  .partnerCta a:active,
-  .researchProjectsGrid article > a:active {
+  .consultationDialog,.capabilityCard,.knowledgeGrid article,.researchProjectsGrid article,.primaryButton:active,.secondaryButton:active,.tealButton:active,.downloadButton:active,.heroForm button:not(.dialogClose):active,.knowledgeAllLink:active,.partnerCta a:active,.partnerCta button:active,.researchProjectsGrid article > a:active{
     transform: none !important;
   }
 
-  .consultationDialog,
-  .capabilityCard,
-  .knowledgeGrid article,
-  .researchProjectsGrid article {
+  .consultationDialog,.capabilityCard,.knowledgeGrid article,.researchProjectsGrid article{
     transition: none;
-  }
-}
+  }}
 
 /* A visible first-load sequence; scroll-linked motion takes over below the fold.
    The old version slid every block up 2.75rem at once over 1s, which read as a
@@ -352,57 +331,42 @@
   }
 }
 
-
 /* The three headline lines animate individually, not the <h1> as one block. */
-.heroCopy > .eyebrow,
-.heroCopy > h1 > span,
-.heroCopy > .heroLead,
-.heroCopy > .heroButtons {
+.heroCopy > .eyebrow,.heroCopy > h1 > span,.heroCopy > .heroLead,.heroCopy > .heroButtons{
   animation: hero-copy-arrive 850ms var(--ease-out) both;
 }
 
-.heroCopy > h1 > span {
+.heroCopy > h1 > span{
   display: block;
 }
 
 /* Keep the whole sequence inside ~1.5s. Stretching it to 2.5s left the hero
    visibly empty on first paint, which reads as a page that failed to load. */
-.heroCopy > .eyebrow { animation-delay: 60ms; }
-.heroCopy > h1 > span:nth-child(1) { animation-delay: 180ms; }
-.heroCopy > h1 > span:nth-child(2) { animation-delay: 300ms; }
-.heroCopy > h1 > span:nth-child(3) { animation-delay: 420ms; }
-.heroCopy > .heroLead { animation-delay: 560ms; }
-.heroCopy > .heroButtons { animation-delay: 680ms; }
+.heroCopy > .eyebrow{ animation-delay: 60ms; }
+.heroCopy > h1 > span:nth-child(1){ animation-delay: 180ms; }
+.heroCopy > h1 > span:nth-child(2){ animation-delay: 300ms; }
+.heroCopy > h1 > span:nth-child(3){ animation-delay: 420ms; }
+.heroCopy > .heroLead{ animation-delay: 560ms; }
+.heroCopy > .heroButtons{ animation-delay: 680ms; }
 
-.gatewayInner {
+.gatewayInner{
   animation: hero-gateway-arrive 850ms var(--ease-out) 800ms both;
 }
 
 /* The page is already rendered behind the full-screen intro, but its own motion
    stays parked on frame zero. SiteIntro switches the root attribute only after
    its 800ms exit fade has finished, so the hero begins as the web is revealed. */
-:global(html:not([data-site-intro='complete'])) .heroCopy > .eyebrow,
-:global(html:not([data-site-intro='complete'])) .heroCopy > h1 > span,
-:global(html:not([data-site-intro='complete'])) .heroCopy > .heroLead,
-:global(html:not([data-site-intro='complete'])) .heroCopy > .heroButtons,
-:global(html:not([data-site-intro='complete'])) .gatewayInner,
-:global(html:not([data-site-intro='complete'])) .partnerTrack,
-:global(html:not([data-site-intro='complete'])) .commitmentTrack {
+:global(html:not([data-site-intro='complete'])) .heroCopy > .eyebrow,:global(html:not([data-site-intro='complete'])) .heroCopy > h1 > span,:global(html:not([data-site-intro='complete'])) .heroCopy > .heroLead,:global(html:not([data-site-intro='complete'])) .heroCopy > .heroButtons,:global(html:not([data-site-intro='complete'])) .gatewayInner,:global(html:not([data-site-intro='complete'])) .partnerTrack{
   animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .heroCopy > .eyebrow,
-  .heroCopy > h1 > span,
-  .heroCopy > .heroLead,
-  .heroCopy > .heroButtons,
-  .gatewayInner {
+  .heroCopy > .eyebrow,.heroCopy > h1 > span,.heroCopy > .heroLead,.heroCopy > .heroButtons,.gatewayInner{
     animation: none;
     filter: none;
     opacity: 1;
     transform: none;
-  }
-}
+  }}
 
 /* ============================================================
    Layout pass — aligns the homepage to the approved mockups in
@@ -446,18 +410,11 @@
 .visionStack .visionCard article{background:none;border:0;border-radius:0;box-shadow:none;gap:1.75rem;grid-template-columns:3rem minmax(0,1fr);padding:2rem 2.25rem}
 .visionStack .visionCard article+article{border-top:1px solid #e4ebee}
 .visionStack .visionCard article>span{color:#f15b2a;font-size:1.5rem;font-weight:600;padding-top:.2rem}
-.visionStack .visionCard article:nth-child(2)>span{color:#69a52b}
+.visionStack .visionCard article:nth-child(2)>span{color:#5f8f27}
 .aboutMotto{align-items:center;background:#0b5f66;border-radius:.75rem;color:#fff;display:grid;gap:1.75rem;grid-template-columns:auto minmax(0,1fr) auto;min-height:9.75rem;padding:1.75rem 2.25rem;text-decoration:none;transition:background-color 380ms var(--ease-out)}
 .aboutMotto span{font-family:var(--font-heading);font-size:clamp(1.45rem,2vw,1.95rem);line-height:1.3}
 .aboutMotto:hover,.aboutMotto:focus-visible{background:#084f55}
 
-/* 04 — Sustainability commitments as a static 3 × 2 grid. */
-.commitmentGrid{display:grid;gap:1.3rem;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
-.commitmentGrid li{align-items:center;background:#fff;border:1px solid #dbe6ee;border-top:.25rem solid var(--commitment-color);border-radius:.75rem;box-shadow:0 .75rem 2rem rgba(12,57,91,.06);display:grid;gap:1.25rem;grid-template-columns:4rem minmax(0,1fr);min-height:9.75rem;padding:1.5rem 1.6rem}
-.commitmentGrid .commitmentIcon{height:4rem;width:4rem}
-.commitmentGrid li>span:last-child{display:grid;gap:.45rem}
-.commitmentGrid strong{color:#0b3455;font-family:var(--font-heading);font-size:1.3rem;line-height:1.25;white-space:normal}
-.commitmentGrid small{color:#4a5f73;font-size:.95rem;line-height:1.45}
 
 /* 05 — RISES values as five discrete cards. */
 .risesGrid{border:0;border-radius:0;display:grid;gap:1.25rem;grid-template-columns:repeat(5,minmax(0,1fr));overflow:visible}
@@ -465,49 +422,18 @@
 .risesGrid article:not(:last-child){border-right:1px solid #e0e8eb}
 .risesGrid p{margin-top:1.35rem}
 
-/* 06 — Editorial grid: every card leads with its image, body underneath. */
-.insightsHeading>a{gap:.9rem}
-.insightsGrid{align-items:stretch;display:grid;gap:1.5rem;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);min-height:0}
-.leadArticle{background:#fff;border:1px solid #e0e8eb;border-radius:.9rem;box-shadow:0 1rem 2.5rem rgba(8,47,80,.06);display:flex;flex-direction:column;grid-row:1/span 2;min-height:0;overflow:hidden;position:static}
-/* The two side cards set the height of the whole row, so they are what keeps the
-   block compact — their images stay short and their bodies stay tight. The lead
-   image then absorbs whatever slack is left in the taller left column: pinning it
-   to a fixed height instead left a large dead gap under the lead headline, and
-   letting it grow unbounded made the picture tower over the pair on the right. */
-.sideArticle .articleImage{aspect-ratio:auto;flex:0 0 auto;height:clamp(8rem,10.5vw,10.75rem);inset:auto;min-height:0;position:relative}
-.leadArticle .articleImage{aspect-ratio:auto;flex:1 1 auto;height:auto;inset:auto;min-height:clamp(8rem,10.5vw,10.75rem);position:relative}
-.leadArticle .articleBody{flex:0 0 auto}
-.sideArticle{align-items:stretch;background:#fff;border:1px solid #e0e8eb;border-radius:.9rem;box-shadow:0 1rem 2.5rem rgba(8,47,80,.06);display:flex;flex-direction:column;gap:0;overflow:hidden}
-.articleImage img{object-fit:cover}
-.articleBody{display:flex;flex:1;flex-direction:column;padding:1.5rem 1.75rem 1.6rem}
-.articleMeta{align-items:center;color:#0b3455;display:flex;flex-wrap:wrap;font-size:.8rem;gap:.9rem;letter-spacing:.055em;margin:0 0 1.05rem}
-.metaBadge{background:#0b3455;border-radius:.3rem;color:#fff;font-weight:700;padding:.45rem .85rem;text-transform:uppercase}
-.metaDate{border-left:1px solid #cfdae1;color:#5c7183;font-size:.9rem;font-weight:600;letter-spacing:0;padding-left:.9rem}
-.leadArticle h3{color:#0b3455;font-size:clamp(1.35rem,1.75vw,1.7rem);line-height:1.3;margin:0 0 1.1rem}
-.articleFoot{align-items:center;color:#4b5f72;display:flex;font-size:.95rem;gap:1.5rem;justify-content:space-between;line-height:1.6;margin:auto 0 0}
-.circleArrow{align-items:center;border:1.5px solid #0b6a72;border-radius:50%;color:#0b6a72;display:inline-flex;flex:none;height:2.6rem;justify-content:center;text-decoration:none;transition:background-color 380ms var(--ease-out),color 380ms var(--ease-out);width:2.6rem}
-.circleArrow:hover,.circleArrow:focus-visible{background:#0b6a72;color:#fff}
-.sideArticle .articleBody{align-items:center;column-gap:1.25rem;display:grid;grid-template-columns:minmax(0,1fr) auto;padding:1.2rem 1.5rem 1.35rem}
-.sideArticle .articleMeta{color:#0b3455;font-weight:700;grid-column:1/-1;margin-bottom:.75rem;text-transform:uppercase}
-.sideArticle h3{color:#0b3455;font-size:clamp(1.15rem,1.5vw,1.4rem);line-height:1.35;margin:0}
-
-/* 07 — Knowledge hub keeps a single, unaccompanied heading. */
+/* 06 — Knowledge hub keeps a single, unaccompanied heading. */
 .knowledgeHeading{display:block;margin-bottom:2.25rem}
 .knowledgeHeading h2{font-size:clamp(2.2rem,3.4vw,3.3rem);margin:0;max-width:none;white-space:normal}
 
-/* 08 — Advisory process closes with the consultation trigger. */
-.processCta{display:flex;justify-content:center;margin-top:3rem}
-.consultationTrigger{align-items:center;background:#fff;border:1px solid #0b6a72;border-radius:.6rem;color:#0b5f66;cursor:pointer;display:inline-flex;font-family:var(--font-body);font-size:1.05rem;font-weight:700;gap:.85rem;min-height:4rem;padding-inline:2rem;transition:background-color 380ms var(--ease-out),color 380ms var(--ease-out),transform 320ms var(--ease-out)}
-.consultationTrigger:hover,.consultationTrigger:focus-visible{background:#0b5f66;color:#fff}
-.consultationTrigger:active{transform:scale(.97)}
+/* 07 — Advisory process closes with the consultation trigger. */
 
-/* 09 — Featured research: supporting copy reads as plain text. */
+/* 08 — Featured research: supporting copy reads as plain text. */
 .researchLead{align-self:center;color:#c8d8e3;font-size:1.08rem;line-height:1.7;margin:0;max-width:38rem}
 
 @media (max-width:87.5rem){
   .gatewayInner>a{gap:.6rem;padding-inline:.6rem}
-  .gatewayInner strong{font-size:.98rem}
-}
+  .gatewayInner strong{font-size:.98rem}}
 
 @media (max-width:70rem){
   .heroMedia{inset:0}
@@ -520,13 +446,9 @@
   .gatewayInner>a{border-bottom:1px solid #e6ecef}
   .gatewayInner>a:nth-child(3n){border-right:0}
   .aboutGrid{grid-template-columns:1fr}
-  .commitmentGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .risesGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .risesGrid article,.risesGrid article:not(:last-child){border:1px solid #e0e8eb;min-height:0}
-  .risesGrid article:last-child{grid-column:auto}
-  .insightsGrid{grid-template-columns:1fr}
-  .leadArticle{grid-row:auto;min-height:0}
-}
+  .risesGrid article:last-child{grid-column:auto}}
 
 @media (max-width:48rem){
   .hero{min-height:0}
@@ -540,36 +462,21 @@
   .gatewayInner>a>svg:last-child{display:none}
   .visionStack .visionCard article{gap:1rem;grid-template-columns:2.5rem minmax(0,1fr);padding:1.5rem 1.4rem}
   .aboutMotto{gap:1.15rem;padding:1.5rem 1.4rem}
-  .commitmentGrid{grid-template-columns:1fr}
-  .commitmentGrid li{grid-template-columns:3.5rem minmax(0,1fr);min-height:0;padding:1.25rem}
-  .commitmentGrid .commitmentIcon{height:3.5rem;width:3.5rem}
   .risesGrid{grid-template-columns:1fr}
-  .articleBody{padding:1.4rem 1.4rem 1.5rem}
-  .articleFoot{align-items:flex-start;flex-direction:column;gap:1rem}
-  .sideArticle .articleBody{padding:1.2rem 1.4rem 1.35rem}
-  .processCta{margin-top:2.25rem}
-  .consultationTrigger{padding-inline:1.35rem;width:100%}
 }
 
 /* Illustrated icons — the drawings from /public/assets replace the flat glyphs.
    They already carry their own plate, so the wrapper only sizes and centres them. */
 .gatewayStrip .gatewayInner{min-height:7.5rem}
 .gatewayInner>a>img:first-child{height:auto;max-height:4rem;width:auto}
-.capabilityIcon,.processIcon,.pillarIcon,.commitmentGrid .commitmentIcon{background:none;height:auto;padding:0;width:auto}
+.capabilityIcon{background:none;height:auto;padding:0;width:auto}
 .capabilityIcon{justify-content:flex-start;margin-bottom:1.5rem;min-height:6.5rem}
-.commitmentGrid li{align-items:center;grid-template-columns:5rem minmax(0,1fr)}
-.commitmentGrid .commitmentIcon{justify-content:center}
-.pillarIcon{min-height:4.75rem}
-.processIcon{margin:0 auto .85rem;min-height:6.5rem}
-.consultationTrigger img{height:auto;max-height:1.9rem;width:auto}
 
 @media (max-width:48rem){
-  .gatewayInner>a>img:first-child{max-height:2.75rem}
-}
+  .gatewayInner>a>img:first-child{max-height:2.75rem}}
 
-/* Metrics strip — matches the "GISA qua những con số" board in /public/assets. */
+/* Metrics strip. */
 .impactStatsBlock{margin-top:4.5rem}
-.impactStatsEyebrow{border-bottom:.2rem solid #0d6a75;color:#0d6a75;display:inline-block;font-size:1rem;font-weight:700;letter-spacing:.12em;margin:0 0 1.5rem;padding-bottom:.55rem;text-transform:uppercase}
 .impactStatsBlock .impactStats{background:#fff;border:1px solid #e3e9ed;border-radius:.9rem;box-shadow:0 .75rem 2.25rem rgba(12,57,91,.05);margin:0;overflow:visible}
 .impactStatsBlock .impactStats>div{display:grid;gap:.65rem;justify-items:center;min-height:0;padding:2.5rem 1.5rem;text-align:center}
 .impactStatsBlock .impactStats>div:not(:last-child){border-right:1px solid #e6ebef}
@@ -578,8 +485,7 @@
 
 @media (max-width:48rem){
   .impactStatsBlock{margin-top:3rem}
-  .impactStatsBlock .impactStats>div{padding:1.9rem 1rem}
-}
+  .impactStatsBlock .impactStats>div{padding:1.9rem 1rem}}
 
 /* 09 — Featured research: illustrated project marks + statement plate. */
 /* The drawings were the smallest thing on a 322px card: the icon box only took the
@@ -592,14 +498,10 @@
    lets them fill the card; the 13rem ceiling holds the worst upscale to ~1.25x,
    past which the drawings start to soften visibly. The number moves above the
    band so a full-width illustration can never run under it. */
-.researchProjectTop{align-items:flex-start;margin-bottom:1.9rem;min-height:16rem;padding-top:2.9rem;position:relative}
-.researchProjectIcon{align-items:center;background:none;border:0;display:flex;justify-content:flex-start;min-height:13rem;padding:0;width:100%}
 /* `width:100%` + `max-height` on its own stretches the drawing (the width wins and
    the height clamps independently); `contain` keeps each one on its own ratio.
    The 1254px replacements are square and sharp, so the band can be taller than
    the 13rem the old low-res crops tolerated. */
-.researchProjectIcon img{height:15rem;max-width:100%;object-fit:contain;object-position:left center;width:100%}
-.researchProjectNumber{font-size:2.6rem;line-height:1;opacity:.45;position:absolute;right:0;top:0}
 /* Card width is what caps the illustration, so the panel and the card both give
    back padding — every rem here goes straight into the drawing. */
 .researchProjectsSection .contentContainer{padding-inline:2.25rem}
@@ -609,18 +511,12 @@
   /* One card per row here, so the panel keeps its narrower gutter — the desktop
      padding above would otherwise eat 36px off each side of a 390px screen. */
   .researchProjectsSection .contentContainer{padding-inline:1.25rem}
-  .researchProjectTop{min-height:0;padding-top:2.6rem}
-  .researchProjectIcon,.researchProjectIcon img{height:11rem;min-height:0}
-  .researchProjectsGrid article{min-height:0}
-}
+  .researchProjectsGrid article{min-height:0}}
 .researchLead{align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);border-radius:.75rem;display:flex;gap:1.25rem;max-width:none;padding:1.35rem 1.6rem}
 .researchLead img{flex:none;height:auto;max-height:2.9rem;width:auto}
 
 /* Bigger pillar art: the tile was sized for a flat glyph, so the detailed
    illustrations that replaced them had barely half the card's icon column. */
-.pillarGrid article{grid-template-columns:8.25rem 1fr;gap:1.5rem}
-.pillarIcon{min-height:6.75rem}
-.pillarIcon img{height:auto;max-height:6.75rem;max-width:100%;width:auto}
 
 /* Hover-to-expand for the research and news tabs: the row becomes a flex track
    so the card under the cursor can borrow width from its neighbours. A grid of
@@ -634,34 +530,26 @@
   transition:flex-grow 700ms var(--ease-out),background-color 700ms var(--ease-out),border-color 700ms var(--ease-out),box-shadow 700ms var(--ease-out),transform 700ms var(--ease-out);
 }
 /* Siblings give way first, so the total width of the row never changes. */
-.knowledgeGrid:not(.courseGrid):hover>article,
-.knowledgeGrid:not(.courseGrid):focus-within>article{flex-grow:.9}
+.knowledgeGrid:not(.courseGrid):hover>article,.knowledgeGrid:not(.courseGrid):focus-within>article{flex-grow:.9}
 /* A restrained 1.3 : 0.9 split — the earlier 1.8 : 0.8 threw the row around. */
-.knowledgeGrid:not(.courseGrid)>article:hover,
-.knowledgeGrid:not(.courseGrid)>article:focus-within{
+.knowledgeGrid:not(.courseGrid)>article:hover,.knowledgeGrid:not(.courseGrid)>article:focus-within{
   background:#f2f8f8;
   border-color:#0b6a72;
   box-shadow:0 1.25rem 3rem rgba(8,47,80,.1);
   flex-grow:1.3;
   transform:none;
 }
-.knowledgeGrid:not(.courseGrid)>article:hover .knowledgeCardTop>span,
-.knowledgeGrid:not(.courseGrid)>article:focus-within .knowledgeCardTop>span{color:#0b6a72}
+.knowledgeGrid:not(.courseGrid)>article:hover .knowledgeCardTop>span,.knowledgeGrid:not(.courseGrid)>article:focus-within .knowledgeCardTop>span{color:#0b6a72}
 
 @media (max-width:70rem){
   /* Two per row at this width, and pointer-driven expansion is meaningless on a
      touch screen, so fall back to the plain grid. */
   .knowledgeGrid:not(.courseGrid){display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
   .knowledgeGrid:not(.courseGrid)>article{flex:none}
-  .knowledgeGrid:not(.courseGrid):hover>article,
-  .knowledgeGrid:not(.courseGrid)>article:hover{flex-grow:0}
-}
+  .knowledgeGrid:not(.courseGrid):hover>article,.knowledgeGrid:not(.courseGrid)>article:hover{flex-grow:0}}
 
 @media (max-width:48rem){
-  .knowledgeGrid:not(.courseGrid){grid-template-columns:1fr}
-  .pillarGrid article{grid-template-columns:6.25rem 1fr}
-  .pillarIcon,.pillarIcon img{min-height:5.25rem;max-height:5.25rem}
-}
+  .knowledgeGrid:not(.courseGrid){grid-template-columns:1fr}}
 
 /* Article thumbnails inside the hover-expand row. They must be a FIXED height,
    not an aspect ratio: the cards change width on hover, and a ratio-driven image
@@ -676,8 +564,7 @@
 .knowledgeGrid:not(.courseGrid)>article{min-height:28rem}
 
 @media (max-width:48rem){
-  .knowledgeGrid:not(.courseGrid) .courseImage{height:12rem}
-}
+  .knowledgeGrid:not(.courseGrid) .courseImage{height:12rem}}
 
 /* Vietnamese syllables are bound with NBSP (src/lib/vietnamese-text.ts), so a
    word can no longer be split across lines — whole words move instead. That makes
@@ -688,33 +575,13 @@
 
 @media (max-width:70rem){
   .capabilitiesInner{grid-template-columns:minmax(0,1fr)}
-  .capabilitiesIntro,.capabilityGrid{min-width:0}
-}
+  .capabilitiesIntro,.capabilityGrid{min-width:0}}
 
 /* Motto: two balanced lines, sized up now that it no longer has to squeeze onto
    one. Each half is a block so the break is the sense break, never wherever the
    text happens to run out of room. */
 .aboutMotto > span > span{display:block}
 .aboutMotto span{font-size:clamp(1.75rem,2.5vw,2.45rem);line-height:1.22}
-
-/* 2026 editorial refinement — one knowledge-to-action system, one icon language. */
-.mediaBannerSection{background:#f7f9f9;padding-block:4.75rem}
-.mediaBannerSection>.contentContainer{max-width:var(--container)}
-.knowledgeActionLayout{align-items:start;display:grid;gap:clamp(2.5rem,4vw,3.5rem);grid-template-columns:minmax(25rem,.75fr) minmax(0,1.45fr)}
-.knowledgeActionIntro{position:sticky;top:8rem}
-.knowledgeActionIntro h2{color:#0b3455;font-size:clamp(2.8rem,3.65vw,3.8rem);font-weight:400;letter-spacing:-.025em;line-height:1.08;margin:0;max-width:15ch}
-.knowledgeActionIntro>p:last-child{color:#4a5f73;font-size:1.08rem;line-height:1.72;margin:2rem 0 0;max-width:33rem}
-.knowledgeActionGrid{background:#fff;border:1px solid #d6e1e5;border-radius:.8rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));list-style:none;margin:0;overflow:hidden;padding:0}
-.knowledgeActionGrid li{align-items:start;background:#fff;display:grid;gap:1rem;grid-template-columns:2rem 3rem minmax(0,1fr);min-height:11.5rem;padding:1.45rem 1.4rem;position:relative}
-.knowledgeActionGrid li:nth-child(odd){border-right:1px solid #dfe7ea}
-.knowledgeActionGrid li:nth-child(-n+4){border-bottom:1px solid #dfe7ea}
-.knowledgeActionNumber{align-items:center;background:#08717a;border-radius:50%;color:#fff;display:flex;font-family:var(--font-body);font-size:.72rem;font-weight:700;height:2rem;justify-content:center;line-height:1;width:2rem}
-.knowledgeActionIcon{align-items:center;color:#0b4e70;display:flex;height:3rem;justify-content:center;width:3rem}
-.knowledgeActionIcon svg{height:2.35rem;width:2.35rem}
-.knowledgeActionBody{display:flex;min-width:0;flex-direction:column}
-.knowledgeActionBody small{color:#08717a;font-size:.72rem;font-weight:700;letter-spacing:.08em;line-height:1.35;margin:.1rem 0 .55rem;text-transform:uppercase}
-.knowledgeActionBody h3{color:#0b3455;font-family:var(--font-heading);font-size:1.35rem;line-height:1.25;margin:0}
-.knowledgeActionBody>span{color:#536777;font-size:.94rem;line-height:1.58;margin-top:.7rem}
 .architectureSection{padding-block:5.5rem 5rem}
 
 /* Process and research share one atmospheric canvas: measurement resolves into
@@ -742,13 +609,11 @@
   mask-image:linear-gradient(to bottom,transparent 0,#000 28%);
   z-index:0;
 }
-.storyContinuum>.processSection,
 .storyContinuum>.researchProjectsSection{
   background:transparent;
   position:relative;
   z-index:1;
 }
-.storyContinuum>.processSection{padding-bottom:2.25rem}
 .storyContinuum>.researchProjectsSection{padding-top:2.25rem}
 
 /* Featured work uses documentary imagery and editorial hierarchy. */
@@ -783,37 +648,22 @@
 
 /* Phosphor icons replace every decorative PNG while partner marks remain brand logos. */
 .gatewayInner>a>svg:first-child{color:#08717a;height:2rem;width:2rem}
-.capabilityIcon,.processIcon{align-items:center;background:#edf4f4;border:1px solid #d3e2e3;border-radius:.55rem;color:#08717a;display:flex;height:3.5rem;justify-content:center;margin-bottom:1.5rem;min-height:0;padding:0;width:3.5rem}
-.capabilityIcon svg,.processIcon svg{height:2rem;width:2rem}
-.processIcon{margin:0 auto .85rem}
-.consultationTrigger>svg:first-child{height:1.5rem;width:1.5rem}
+.capabilityIcon{align-items:center;background:#edf4f4;border:1px solid #d3e2e3;border-radius:.55rem;color:#08717a;display:flex;height:3.5rem;justify-content:center;margin-bottom:1.5rem;min-height:0;padding:0;width:3.5rem}
+.capabilityIcon svg{height:2rem;width:2rem}
 
 @media (max-width:70rem){
-  .knowledgeActionLayout{grid-template-columns:1fr}
-  .knowledgeActionIntro{position:static}
-  .knowledgeActionIntro h2{max-width:15ch}
   .researchProjectsGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .researchLeadCard{grid-column:1/-1}
   .researchLeadCard{grid-template-columns:minmax(0,1.3fr) minmax(16rem,.7fr)}
-  .researchLeadCard .researchProjectImage{aspect-ratio:auto;min-height:19rem}
-}
+  .researchLeadCard .researchProjectImage{aspect-ratio:auto;min-height:19rem}}
 
 @media (max-width:48rem){
-  .mediaBannerSection{padding-block:4.5rem}
-  .knowledgeActionGrid{grid-template-columns:1fr}
-  .knowledgeActionGrid li{grid-template-columns:1.75rem 2.75rem minmax(0,1fr);min-height:0;padding:1.4rem 1.1rem}
-  .knowledgeActionGrid li:nth-child(odd){border-right:0}
-  .knowledgeActionGrid li:not(:last-child){border-bottom:1px solid #dfe7ea}
-  .knowledgeActionIcon{height:2.75rem;width:2.75rem}
-  .knowledgeActionIcon svg{height:1.55rem;width:1.55rem}
-  .knowledgeActionNumber{height:1.75rem;width:1.75rem}
   .researchProjectsSection{padding-block:4.5rem}
   .researchProjectsSection .contentContainer{padding-inline:0}
   .researchProjectsGrid{grid-template-columns:1fr}
   .researchLeadCard{display:flex!important;grid-column:auto}
   .researchLeadCard .researchProjectImage{aspect-ratio:16/9;min-height:0}
-  .researchProjectImage{aspect-ratio:16/10}
-}
+  .researchProjectImage{aspect-ratio:16/10}}
 
 /* Compact academic illustration system. Detailed colour is used as a visual
    index, while restrained scale keeps headings and evidence at the foreground. */
@@ -822,7 +672,7 @@
   object-fit:contain;
   width:2.25rem;
 }
-.capabilityIcon,.processIcon{
+.capabilityIcon{
   background:transparent;
   border:0;
   border-radius:0;
@@ -832,7 +682,7 @@
   padding:0;
   width:4rem;
 }
-.capabilityIcon img,.processIcon img,.knowledgeActionIcon img,.researchProjectMark img{
+.capabilityIcon img,.researchProjectMark img{
   height:100%;
   object-fit:contain;
   width:100%;
@@ -841,25 +691,6 @@
   justify-content:flex-start;
   margin-bottom:1.35rem;
 }
-.processIcon{
-  height:3.35rem;
-  margin:0 auto .85rem;
-  width:3.35rem;
-}
-.processGrid li:not(:last-child):after{top:4.55rem}
-.knowledgeActionIcon{
-  height:2.75rem;
-  width:2.75rem;
-}
-.mediaBannerSection{padding-block:4.75rem 2.25rem}
-.knowledgeActionIntro{
-  align-self:stretch;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  position:static;
-}
-.knowledgeActionGrid li{grid-template-columns:3rem minmax(0,1fr)}
 .researchProjectBody{position:relative}
 .researchProjectMark{
   display:block;
@@ -879,11 +710,7 @@
 @media (max-width:48rem){
   .gatewayInner>a>img:first-child{height:2rem;width:2rem}
   .capabilityIcon{height:3.6rem;width:3.6rem}
-  .processIcon{height:3rem;width:3rem}
-  .knowledgeActionIcon{height:2.5rem;width:2.5rem}
-  .knowledgeActionGrid li{grid-template-columns:2.5rem minmax(0,1fr)}
-  .researchProjectMark{height:2.35rem;width:2.35rem}
-}
+  .researchProjectMark{height:2.35rem;width:2.35rem}}
 
 /* The hero reads as a single editorial cover: slightly inset from the viewport,
    but deliberately wider than every content container that follows it. */
@@ -898,19 +725,11 @@
   .hero{
     --hero-edge:.5rem;
     border-radius:.9rem;
-  }
-}
+  }}
 
 /* Consistent vertical rhythm: every major content band receives the same
    breathing room above and below, instead of accumulating mismatched overrides. */
-.aboutSection,
-.mediaBannerSection,
-.architectureSection,
-.editorialSection,
-.knowledgeSection,
-.partnerSection,
-.processSection,
-.researchProjectsSection{
+.aboutSection,.architectureSection,.knowledgeSection,.partnerSection,.researchProjectsSection{
   padding-block:4.25rem;
 }
 .capabilitiesInner{
@@ -937,21 +756,12 @@
 .impactStatsBlock .impactStats>div:not(:last-child){border-right:1px solid #dce5e9}
 
 @media (max-width:48rem){
-  .aboutSection,
-  .mediaBannerSection,
-  .architectureSection,
-  .editorialSection,
-  .knowledgeSection,
-  .partnerSection,
-  .processSection,
-  .researchProjectsSection,
-  .capabilitiesInner{
+  .aboutSection,.architectureSection,.knowledgeSection,.partnerSection,.researchProjectsSection,.capabilitiesInner{
     padding-block:3.25rem;
   }
   .impactStatsBlock{margin-top:3rem}
   .impactStatsBlock .impactStats{gap:.8rem}
-  .impactStatsBlock .impactStats>div{border:1px solid #dce5e9!important}
-}
+  .impactStatsBlock .impactStats>div{border:1px solid #dce5e9!important}}
 
 /* ── Background detail layer ───────────────────────────────────────────────
    Five bands carry a background motif, each chosen from what the band says:
@@ -966,28 +776,16 @@
    `z-index:-1` inside an isolated stacking context so it can never rise above
    content. `--decor-edge` resolves to the same left edge the containers use,
    so a motif lines up with the copy above it. */
-.aboutSection,
-.mediaBannerSection,
-.partnerSection,
-.processSection,
-.researchProjectsSection>.contentContainer{
+.aboutSection,.partnerSection,.researchProjectsSection>.contentContainer{
   --decor-edge:max(var(--gutter),calc(50% - (var(--container) / 2)));
   isolation:isolate;
   position:relative;
 }
 /* `clip`, never `hidden`: `hidden` would turn these into scroll containers and
    break the `position:sticky` intros that sit inside them. */
-.mediaBannerSection,
-.partnerSection,
-.processSection,
-.researchProjectsSection>.contentContainer{overflow:clip}
+.partnerSection,.researchProjectsSection>.contentContainer{overflow:clip}
 
-.aboutSection::after,
-.mediaBannerSection::before,
-.mediaBannerSection::after,
-.partnerSection::before,
-.processSection::before,
-.researchProjectsSection>.contentContainer::before{
+.aboutSection::after,.partnerSection::before,.researchProjectsSection>.contentContainer::before{
   background-repeat:no-repeat;
   content:"";
   pointer-events:none;
@@ -997,10 +795,7 @@
 
 /* The line-art layers (not the gradient blooms, already soft) get a faint blur
    so the thin strokes read as depth rather than crisp technical diagrams. */
-.mediaBannerSection::before,
-.partnerSection::before,
-.processSection::before,
-.researchProjectsSection>.contentContainer::before{
+.partnerSection::before,.researchProjectsSection>.contentContainer::before{
   filter:blur(.5px);
 }
 
@@ -1009,32 +804,6 @@
 .aboutSection::after{
   background:radial-gradient(38% 62% at 10% 88%,rgba(11,143,146,.11),rgba(11,143,146,0) 72%);
   height:30rem;
-  inset:auto 0 0;
-}
-
-/* Commitments — a wave-and-globe corner illustration sits under the intro
-   column, in the space the copy leaves above the section floor; the card
-   grid on the right stays untouched. This one is a solid-fill piece (pale
-   mint waves, a teal globe, a small sprout), not thin low-opacity line art —
-   it is meant to read as a deliberate illustration, not a texture. */
-.mediaBannerSection::before{
-  background-image:url('/decor/sustainability-corner.svg');
-  background-position:left bottom;
-  background-size:contain;
-  bottom:0;
-  /* Fixed size, not viewport-scaled: the gap the intro copy leaves above the
-     section floor stays ~13rem at every desktop width, so a `vw` height would
-     grow straight into the paragraph on wide screens. */
-  height:19rem;
-  left:var(--decor-edge);
-  opacity:.92;
-  width:22rem;
-  -webkit-mask-image:linear-gradient(to top,#000 55%,transparent);
-  mask-image:linear-gradient(to top,#000 55%,transparent);
-}
-.mediaBannerSection::after{
-  background:radial-gradient(34% 58% at 8% 86%,rgba(11,95,107,.06),rgba(11,95,107,0) 70%);
-  height:26rem;
   inset:auto 0 0;
 }
 
@@ -1056,18 +825,6 @@
 
 /* Process — the five steps end on "đánh giá & tối ưu", so the measurement
    chart belongs in the corner the flow runs toward. */
-.processSection::before{
-  background-image:url('/decor/research-chart.svg');
-  background-position:right bottom;
-  background-size:contain;
-  bottom:.5rem;
-  height:clamp(7rem,10vw,11rem);
-  opacity:.1;
-  right:var(--decor-edge);
-  width:clamp(11rem,16vw,18rem);
-  -webkit-mask-image:linear-gradient(to top,#000 35%,transparent);
-  mask-image:linear-gradient(to top,#000 35%,transparent);
-}
 
 /* The process ends in measurement; this restrained grid carries that analytical
    language into the research section before the glass landscape emerges below. */
@@ -1087,19 +844,15 @@
 /* On phones the bands are short and the copy runs edge to edge, so the line
    art comes off entirely; only the blooms stay. */
 @media (max-width:48rem){
-  .mediaBannerSection::before,
-  .partnerSection::before,
-  .processSection::before{content:none}
+  .partnerSection::before{content:none}
   .storyContinuum::before{
     background-position:right bottom;
     background-size:auto 72%;
     height:72%;
     opacity:.15;
   }
-  .storyContinuum>.processSection{padding-bottom:1.5rem}
   .storyContinuum>.researchProjectsSection{padding-top:1.5rem}
-  .researchProjectsSection>.contentContainer::before{opacity:.06;height:8rem;width:8rem}
-}
+  .researchProjectsSection>.contentContainer::before{opacity:.06;height:8rem;width:8rem}}
 
 /* Ancient-tree story canvas -------------------------------------------------
    The middle of the page is intentionally one continuous landscape. The tree
@@ -1136,21 +889,12 @@
   position:absolute;
   z-index:0;
 }
-.ancientTreeStory>.mediaBannerSection,
-.ancientTreeStory>.architectureSection,
-.ancientTreeStory>.editorialSection,
-.ancientTreeStory>.knowledgeSection,
-.ancientTreeStory>.partnerSection,
-.ancientTreeStory>.storyContinuum{
+.ancientTreeStory>.architectureSection,.ancientTreeStory>.knowledgeSection,.ancientTreeStory>.partnerSection,.ancientTreeStory>.storyContinuum{
   background:transparent;
   position:relative;
   z-index:1;
 }
-.ancientTreeStory>.mediaBannerSection,
-.ancientTreeStory>.partnerSection,
-.ancientTreeStory>.storyContinuum,
-.ancientTreeStory .processSection,
-.ancientTreeStory .researchProjectsSection{overflow:visible}
+.ancientTreeStory>.partnerSection,.ancientTreeStory>.storyContinuum,.ancientTreeStory .researchProjectsSection{overflow:visible}
 
 @keyframes ancient-tree-breeze{
   0%{transform:translate3d(-.2%,0,0) rotate(-.12deg) scale(1.012)}
@@ -1160,115 +904,11 @@
 
 /* Remove the previous globe/sprout mockup and the section-specific diagrams.
    One background story now replaces the stack of visibly separate bands. */
-.ancientTreeStory .mediaBannerSection::before,
-.ancientTreeStory .mediaBannerSection::after,
-.ancientTreeStory .partnerSection::before,
-.ancientTreeStory .processSection::before,
-.ancientTreeStory .researchProjectsSection>.contentContainer::before,
-.ancientTreeStory .storyContinuum::before{content:none}
-
-/* Knowledge-to-action becomes a soft editorial constellation instead of a
-   bordered 2x3 table. Rounded glass surfaces borrow colour from the tree layer. */
-.ancientTreeStory .mediaBannerSection{padding-block:clamp(5.5rem,7vw,7.75rem)}
-.ancientTreeStory .knowledgeActionLayout{
-  align-items:center;
-  gap:clamp(3rem,5.5vw,6.25rem);
-  grid-template-columns:minmax(22rem,.72fr) minmax(0,1.35fr);
-}
-.ancientTreeStory .knowledgeActionIntro{
-  align-items:flex-start;
-  justify-content:center;
-  min-height:34rem;
-}
-.ancientTreeStory .knowledgeActionIntro h2{
-  font-size:clamp(3.15rem,4.4vw,4.65rem);
-  line-height:1.01;
-  max-width:13.5ch;
-  text-wrap:balance;
-}
-.ancientTreeStory .knowledgeActionIntro>p:last-of-type{
-  color:#40596a;
-  line-height:1.75;
-  margin:1.65rem 0 0;
-  max-width:31rem;
-}
-.knowledgeActionCta{
-  align-items:center;
-  border:1px solid rgba(8,113,122,.3);
-  border-radius:999px;
-  color:#08717a;
-  display:inline-flex;
-  font-size:.93rem;
-  font-weight:700;
-  gap:.65rem;
-  margin-top:1.8rem;
-  min-height:3rem;
-  padding:.55rem 1.1rem .55rem .65rem;
-  text-decoration:none;
-  transition:background-color 240ms ease,border-color 240ms ease,transform 240ms ease;
-}
-.knowledgeActionCta>span{
-  align-items:center;
-  background:#e2f0ee;
-  border-radius:50%;
-  display:flex;
-  height:2rem;
-  justify-content:center;
-  width:2rem;
-}
-.knowledgeActionCta:hover,
-.knowledgeActionCta:focus-visible{
-  background:rgba(255,255,255,.72);
-  border-color:#08717a;
-  transform:translateY(-2px);
-}
-.ancientTreeStory .knowledgeActionGrid{
-  background:transparent;
-  border:0;
-  border-radius:0;
-  gap:1rem;
-  overflow:visible;
-}
-.ancientTreeStory .knowledgeActionGrid li{
-  -webkit-backdrop-filter:blur(16px) saturate(112%);
-  backdrop-filter:blur(16px) saturate(112%);
-  background:rgba(255,255,255,.7);
-  border:1px solid rgba(171,199,198,.5);
-  border-radius:1.5rem;
-  box-shadow:0 .9rem 2.5rem rgba(14,67,74,.07),inset 0 1px rgba(255,255,255,.72);
-  gap:1.1rem;
-  min-height:10.75rem;
-  padding:1.45rem 1.55rem;
-  transition:border-color 280ms ease,box-shadow 280ms ease,background-color 280ms ease;
-}
-.ancientTreeStory .knowledgeActionGrid li:nth-child(odd),
-.ancientTreeStory .knowledgeActionGrid li:nth-child(-n+4){border:1px solid rgba(171,199,198,.5)}
-.ancientTreeStory .knowledgeActionGrid li:nth-child(even){translate:0 1.15rem}
-.ancientTreeStory .knowledgeActionGrid li:hover,
-.ancientTreeStory .knowledgeActionGrid li:focus-within{
-  background:rgba(255,255,255,.86);
-  border-color:rgba(8,113,122,.42);
-  box-shadow:0 1.25rem 3.25rem rgba(14,67,74,.11),inset 0 1px rgba(255,255,255,.85);
-}
-.ancientTreeStory .knowledgeActionIcon{
-  align-items:center;
-  background:rgba(239,247,245,.9);
-  border:1px solid rgba(187,211,208,.55);
-  border-radius:1rem;
-  height:3.25rem;
-  padding:.42rem;
-  width:3.25rem;
-}
-.ancientTreeStory .knowledgeActionBody small{color:#0a737a;font-size:.68rem}
-.ancientTreeStory .knowledgeActionBody h3{font-size:1.42rem}
-.ancientTreeStory .knowledgeActionBody>span{color:#4d6370;line-height:1.55}
+.ancientTreeStory .partnerSection::before,.ancientTreeStory .researchProjectsSection>.contentContainer::before,.ancientTreeStory .storyContinuum::before{content:none}
 
 /* Keep downstream content readable while allowing the shared landscape to show
    through at the edges; this removes the visual seam between named sections. */
-.ancientTreeStory .risesGrid,
-.ancientTreeStory .knowledgeGrid article,
-.ancientTreeStory .partnerList,
-.ancientTreeStory .researchProjectsGrid article{
+.ancientTreeStory .risesGrid,.ancientTreeStory .knowledgeGrid article,.ancientTreeStory .partnerList,.ancientTreeStory .researchProjectsGrid article{
   -webkit-backdrop-filter:blur(12px) saturate(108%);
   backdrop-filter:blur(12px) saturate(108%);
   background:rgba(255,255,255,.76);
@@ -1276,11 +916,7 @@
 .ancientTreeStory .storyContinuum{isolation:auto}
 
 @media (max-width:70rem){
-  .ancientTreeStory::before{background-position:66% top;opacity:.17}
-  .ancientTreeStory .knowledgeActionIntro{min-height:0}
-  .ancientTreeStory .knowledgeActionLayout{grid-template-columns:1fr}
-  .ancientTreeStory .knowledgeActionIntro h2{max-width:13.5ch}
-}
+  .ancientTreeStory::before{background-position:66% top;opacity:.17}}
 
 @media (max-width:48rem){
   .ancientTreeStory::before{
@@ -1289,57 +925,24 @@
   }
   .ancientTreeStory::after{
     background:linear-gradient(180deg,rgba(247,250,249,.64),rgba(247,250,249,.34) 50%,rgba(247,250,249,.72));
-  }
-  .ancientTreeStory .mediaBannerSection{padding-block:4.5rem}
-  .ancientTreeStory .knowledgeActionIntro h2{font-size:clamp(2.75rem,12vw,3.65rem)}
-  .ancientTreeStory .knowledgeActionGrid{gap:.85rem}
-  .ancientTreeStory .knowledgeActionGrid li{
-    border:1px solid rgba(171,199,198,.5)!important;
-    border-radius:1.25rem;
-    padding:1.25rem 1.15rem;
-  }
-  .ancientTreeStory .knowledgeActionGrid li:nth-child(even){translate:none}
-}
+  }}
 
 @media (prefers-reduced-motion:reduce){
-  .ancientTreeStory::before{animation:none;transform:none}
-}
+  .ancientTreeStory::before{animation:none;transform:none}}
 
 /* Single white page canvas --------------------------------------------------
    All editorial bands now sit on the same white surface. Cards and real
    content images keep their own surfaces, while every decorative background
    layer and section-owned atmosphere is removed. */
-.aboutSection,
-.capabilitiesSection,
-.ancientTreeStory,
-.ancientTreeStory>.mediaBannerSection,
-.ancientTreeStory>.architectureSection,
-.ancientTreeStory>.editorialSection,
-.ancientTreeStory>.knowledgeSection,
-.ancientTreeStory>.partnerSection,
-.ancientTreeStory>.storyContinuum,
-.ancientTreeStory .processSection,
-.ancientTreeStory .researchProjectsSection{
+.aboutSection,.capabilitiesSection,.ancientTreeStory,.ancientTreeStory>.architectureSection,.ancientTreeStory>.knowledgeSection,.ancientTreeStory>.partnerSection,.ancientTreeStory>.storyContinuum,.ancientTreeStory .researchProjectsSection{
   background:#fff;
 }
 
-.ancientTreeStory::before,
-.ancientTreeStory::after,
-.storyContinuum::before,
-.aboutSection::after,
-.mediaBannerSection::before,
-.mediaBannerSection::after,
-.partnerSection::before,
-.processSection::before,
-.researchProjectsSection>.contentContainer::before{
+.ancientTreeStory::before,.ancientTreeStory::after,.storyContinuum::before,.aboutSection::after,.partnerSection::before,.researchProjectsSection>.contentContainer::before{
   content:none!important;
 }
 
-.ancientTreeStory .knowledgeActionGrid li,
-.ancientTreeStory .risesGrid,
-.ancientTreeStory .knowledgeGrid article,
-.ancientTreeStory .partnerList,
-.ancientTreeStory .researchProjectsGrid article{
+.ancientTreeStory .risesGrid,.ancientTreeStory .knowledgeGrid article,.ancientTreeStory .partnerList,.ancientTreeStory .researchProjectsGrid article{
   -webkit-backdrop-filter:none;
   backdrop-filter:none;
   background:#fff;
@@ -1348,292 +951,13 @@
 /* Avoid the double-padding pause that previously amplified the colour seam
    between capabilities and commitments. */
 .capabilitiesInner{padding-bottom:2.5rem}
-.ancientTreeStory .mediaBannerSection{padding-top:3.25rem}
 
 @media (max-width:48rem){
-  .capabilitiesInner{padding-bottom:2rem}
-  .ancientTreeStory .mediaBannerSection{padding-top:2.5rem}
-}
+  .capabilitiesInner{padding-bottom:2rem}}
 
 /* Knowledge-to-action journey ------------------------------------------------
    Selected direction: six editorial chapters rise along one continuous line.
-   The list stays semantic; the rail and guides are presentation-only. */
-.ancientTreeStory .mediaBannerSection{
-  padding-block:clamp(3.25rem,4.5vw,4.75rem);
-}
-
-.ancientTreeStory .knowledgeActionLayout{
-  display:block;
-}
-
-.ancientTreeStory .knowledgeActionIntro{
-  display:block;
-  min-height:0;
-  max-width:43rem;
-}
-
-.ancientTreeStory .knowledgeActionIntro h2{
-  font-size:clamp(3.15rem,4.2vw,4.55rem);
-  line-height:1.02;
-  max-width:15ch;
-}
-
-.ancientTreeStory .knowledgeActionIntro>p:last-of-type{
-  max-width:37rem;
-}
-
-.ancientTreeStory .knowledgeActionGrid{
-  align-items:end;
-  background:transparent;
-  border:0;
-  border-radius:0;
-  display:grid;
-  gap:clamp(.8rem,1.7vw,1.8rem);
-  grid-template-columns:repeat(6,minmax(0,1fr));
-  list-style:none;
-  margin:clamp(2rem,3.5vw,3.25rem) 0 0;
-  min-height:28rem;
-  overflow:visible;
-  padding:0 0 3rem;
-  position:relative;
-}
-
-.ancientTreeStory .knowledgeActionGrid::before{
-  border-top:1px solid #08717a;
-  bottom:2.55rem;
-  content:"";
-  left:.2rem;
-  position:absolute;
-  right:.2rem;
-  transform:rotate(-3deg) scaleX(0);
-  transform-origin:left center;
-  transition:transform 1450ms var(--ease-out) 120ms;
-}
-
-.ancientTreeStory .knowledgeActionGrid[data-scroll-visible='true']::before{
-  transform:rotate(-3deg) scaleX(1);
-}
-
-.ancientTreeStory .knowledgeActionGrid li,
-.ancientTreeStory .knowledgeActionGrid li:nth-child(odd),
-.ancientTreeStory .knowledgeActionGrid li:nth-child(even),
-.ancientTreeStory .knowledgeActionGrid li:nth-child(-n+4){
-  -webkit-backdrop-filter:none;
-  align-self:end;
-  backdrop-filter:none;
-  background:transparent;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
-  display:flex;
-  flex-direction:column;
-  gap:0;
-  margin-bottom:var(--knowledge-rise,0rem);
-  min-height:22rem;
-  padding:0 .2rem;
-  position:relative;
-}
-
-.ancientTreeStory .knowledgeActionGrid li:hover,
-.ancientTreeStory .knowledgeActionGrid li:focus-within{
-  background:transparent;
-  border:0;
-  box-shadow:none;
-}
-
-.knowledgeActionNumber{
-  background:transparent;
-  border-radius:0;
-  color:#08717a;
-  display:block;
-  font-family:var(--font-heading);
-  font-size:1.55rem;
-  height:auto;
-  justify-content:flex-start;
-  line-height:1;
-  margin:0 0 1.45rem;
-  width:auto;
-}
-
-.knowledgeActionNumber::after{
-  background:#f15b2a;
-  content:"";
-  display:block;
-  height:2px;
-  margin-top:.65rem;
-  width:1.35rem;
-}
-
-.ancientTreeStory .knowledgeActionIcon{
-  align-items:center;
-  background:#fff;
-  border:1px solid #d7e4e6;
-  border-radius:1rem;
-  display:flex;
-  height:4.5rem;
-  justify-content:center;
-  margin:0 0 1.25rem;
-  padding:.6rem;
-  width:4.5rem;
-}
-
-.ancientTreeStory .knowledgeActionBody small{
-  display:none;
-}
-
-.ancientTreeStory .knowledgeActionBody h3{
-  color:#0b3455;
-  font-size:clamp(1.2rem,1.45vw,1.55rem);
-  line-height:1.2;
-}
-
-.ancientTreeStory .knowledgeActionBody>span{
-  color:#506577;
-  font-size:.86rem;
-  line-height:1.55;
-  margin-top:1rem;
-}
-
-.knowledgeActionGuide{
-  align-self:center;
-  border-left:1px dashed #bfd2d6;
-  flex:1 1 auto;
-  margin-top:1rem;
-  min-height:2.5rem;
-  position:relative;
-}
-
-.knowledgeActionDot{
-  background:#f15b2a;
-  border:5px solid #fff;
-  border-radius:50%;
-  bottom:-.62rem;
-  box-shadow:0 0 0 1px #08717a;
-  height:1.15rem;
-  left:-.58rem;
-  position:absolute;
-  width:1.15rem;
-}
-
-:global(html[data-scroll-motion-ready='true']) .ancientTreeStory .knowledgeActionGrid li[data-scroll-motion]{
-  opacity:.04;
-  scale:.975;
-  translate:0 2.25rem;
-}
-
-:global(html[data-scroll-motion-ready='true']) .ancientTreeStory .knowledgeActionGrid li[data-scroll-motion][data-scroll-side='top']{
-  translate:0 -1.5rem;
-}
-
-:global(html[data-scroll-motion-ready='true']) .ancientTreeStory .knowledgeActionGrid li[data-scroll-motion][data-scroll-visible='true']{
-  opacity:1;
-  scale:1;
-  translate:0 0;
-}
-
-@media (max-width:70rem){
-  .ancientTreeStory .knowledgeActionGrid{
-    align-items:stretch;
-    display:grid;
-    gap:0;
-    grid-template-columns:1fr;
-    margin-top:3rem;
-    min-height:0;
-    padding:0 0 0 4rem;
-  }
-
-  .ancientTreeStory .knowledgeActionGrid::before{
-    border-left:1px solid #08717a;
-    border-top:0;
-    bottom:1rem;
-    left:1.3rem;
-    right:auto;
-    top:.8rem;
-    transform:scaleY(0);
-    transform-origin:center top;
-  }
-
-  .ancientTreeStory .knowledgeActionGrid[data-scroll-visible='true']::before{
-    transform:scaleY(1);
-  }
-
-  .ancientTreeStory .knowledgeActionGrid li,
-  .ancientTreeStory .knowledgeActionGrid li:nth-child(even){
-    align-self:stretch;
-    display:grid;
-    gap:.25rem 1.1rem;
-    grid-template-columns:3.6rem minmax(0,1fr);
-    margin-bottom:0;
-    min-height:0;
-    padding:0 0 2.75rem;
-  }
-
-  .knowledgeActionNumber{
-    align-items:center;
-    background:#fff;
-    border:1px solid #9fc4c7;
-    border-radius:50%;
-    display:flex;
-    font-family:var(--font-body);
-    font-size:.78rem;
-    font-weight:700;
-    height:2.6rem;
-    justify-content:center;
-    left:-4rem;
-    margin:0;
-    position:absolute;
-    top:.2rem;
-    width:2.6rem;
-  }
-
-  .knowledgeActionNumber::after{content:none}
-
-  .ancientTreeStory .knowledgeActionIcon{
-    grid-column:1;
-    grid-row:1;
-    height:3.25rem;
-    margin:0;
-    width:3.25rem;
-  }
-
-  .ancientTreeStory .knowledgeActionBody{
-    grid-column:2;
-    grid-row:1;
-  }
-
-  .knowledgeActionGuide{display:none}
-}
-
-@media (max-width:48rem){
-  .ancientTreeStory .knowledgeActionIntro h2{
-    font-size:clamp(2.75rem,12vw,3.65rem);
-  }
-
-  .ancientTreeStory .knowledgeActionGrid{
-    padding-left:3.7rem;
-  }
-
-  .ancientTreeStory .knowledgeActionGrid li,
-  .ancientTreeStory .knowledgeActionGrid li:nth-child(even){
-    background:transparent!important;
-    border:0!important;
-    border-radius:0!important;
-    display:grid!important;
-    grid-template-columns:3rem minmax(0,1fr);
-    min-height:0!important;
-    padding:0 0 2.75rem!important;
-  }
-
-  .knowledgeActionNumber{left:-3.7rem}
-  .ancientTreeStory .knowledgeActionIcon{height:2.8rem;width:2.8rem}
-}
-
-@media (prefers-reduced-motion:reduce){
-  .ancientTreeStory .knowledgeActionGrid::before{
-    transform:none;
-    transition:none;
-  }
-}
+   The list stays semantic;
 
 /* Cả thẻ tri thức là một vùng bấm được: lớp phủ của liên kết tiêu đề trải kín
    thẻ, nên bấm vào ảnh, tiêu đề hay khoảng trống đều mở đúng bài đó. Liên kết
@@ -1655,4 +979,800 @@
 .knowledgeGrid h3 a:hover{
   text-decoration:underline;
   text-underline-offset:.18em;
+}
+
+/* 2026 selected visual target: knowledge horizon hero + evidence journey. */
+.hero{
+  border-radius:0;
+  height:clamp(46rem,41.4vw,50.5rem);
+  margin-inline:0;
+  min-height:46rem;
+  width:100%;
+}
+.heroImage{object-position:center center}
+.heroInner{
+  align-items:flex-start;
+  display:flex;
+  justify-content:center;
+  padding:clamp(4.25rem,6vw,6.75rem) 1.5rem 10rem;
+  text-align:center;
+  width:min(100% - 3rem,76rem);
+}
+.heroCopy{align-items:center;display:flex;flex-direction:column;max-width:60rem;width:100%}
+.heroCopy>.eyebrow,.heroCopy>h1>span,.heroCopy>.heroLead,.heroCopy>.heroButtons,.gatewayInner{
+  animation:none;
+  filter:none;
+  opacity:1;
+  transform:none;
+}
+.hero .eyebrow{
+  color:#0b4653;
+  font-size:clamp(.78rem,.9vw,.95rem);
+  letter-spacing:.075em;
+  margin-bottom:.9rem;
+  text-shadow:none;
+}
+/* Hairline flourish between the eyebrow and the headline: two rules with a leaf
+   held in the middle. Drawn here rather than in markup so it stays decorative. */
+.heroOrnament{
+  align-items:center;
+  color:#3f8a86;
+  display:flex;
+  gap:.6rem;
+  justify-content:center;
+  margin-bottom:1.15rem;
+  opacity:.72;
+}
+.heroOrnament::before,.heroOrnament::after{
+  background:linear-gradient(90deg,transparent,#5d8f99);
+  content:"";
+  height:1px;
+  width:clamp(3rem,5vw,4.5rem);
+}
+.heroOrnament::after{background:linear-gradient(90deg,#5d8f99,transparent)}
+.heroCopy h1{
+  color:#063e4c;
+  font-size:clamp(3.2rem,3.75vw,4.55rem);
+  letter-spacing:-.025em;
+  line-height:1.02;
+  margin-bottom:1.35rem;
+  text-shadow:none;
+  text-wrap:balance;
+}
+.heroCopy h1>span{display:block}
+.heroCopy h1 em{color:#f26f33}
+.heroLead{
+  color:#153f4b;
+  font-size:clamp(1rem,1.08vw,1.22rem);
+  line-height:1.55;
+  margin-bottom:1.85rem;
+  max-width:46rem;
+  text-shadow:none;
+}
+.heroButtons{justify-content:center}
+.primaryButton,.secondaryButton{min-width:15.75rem}
+.primaryButton{background:#00717b}
+.secondaryButton{background:rgba(255,255,255,.7)}
+.gatewayStrip{z-index:5}
+.gatewayStrip .gatewayInner{
+  border-radius:1rem 1rem 0 0;
+  box-shadow:0 -1.25rem 3.5rem rgba(8,47,80,.08);
+  margin-top:-6.25rem;
+  min-height:6.25rem;
+  width:min(calc(100% - 7.5rem),114rem);
+}
+.gatewayInner>a{gap:1rem;grid-template-columns:auto auto;padding:1.35rem 1rem}
+.gatewayInner>a>svg:first-child{color:#0b6a72;height:2.45rem;width:2.45rem}
+.gatewayInner>a>svg:last-child{display:none}
+
+@media (max-width:70rem){
+  .hero{height:44rem;min-height:44rem}
+  .heroInner{padding-top:4.5rem}
+  .gatewayStrip .gatewayInner{width:min(calc(100% - 3rem),70rem)}}
+
+@media (max-width:48rem){
+  .hero{height:44rem;min-height:44rem}
+  .heroInner{padding:3.5rem 1rem 9rem;width:100%}
+  .heroCopy h1{font-size:clamp(2.5rem,11.5vw,3.3rem)}
+  .heroLead{font-size:.95rem;line-height:1.55}
+  .primaryButton,.secondaryButton{min-width:0;width:100%}
+  .gatewayStrip .gatewayInner{border-radius:.9rem .9rem 0 0;margin-top:-5.5rem;width:calc(100% - 1rem)}
+  .gatewayInner>a{gap:.55rem;padding:.95rem .55rem}
+  .gatewayInner>a>svg:first-child{height:1.8rem;width:1.8rem}
+  .gatewayInner strong{font-size:.84rem;white-space:normal}}
+
+/* Final refinement — inset photographic frame, detached service cards and
+   code-native scientific diagrams. This block intentionally owns these three
+   regions so future motion work has one predictable layout surface. */
+.homeMain:focus{outline:none}
+
+.hero{
+  border-radius:clamp(1rem,1.6vw,1.75rem);
+  height:clamp(42rem,39vw,47rem);
+  margin:0 clamp(.75rem,1.6vw,1.75rem);
+  min-height:42rem;
+  width:auto;
+}
+.heroInner{
+  padding-bottom:9rem;
+  padding-top:clamp(3.75rem,5.4vw,5.75rem);
+}
+.heroCopy h1{font-size:clamp(3rem,3.45vw,4.15rem)}
+.heroLead{font-size:clamp(.96rem,1vw,1.12rem);max-width:44rem}
+
+.gatewayStrip .gatewayInner{
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  gap:clamp(.55rem,.9vw,1rem);
+  margin-top:-3.7rem;
+  min-height:7.4rem;
+  overflow:visible;
+  width:min(calc(100% - 7rem),110rem);
+}
+.gatewayInner>a{
+  background:rgba(255,255,255,.97);
+  border:1px solid #dce6e8!important;
+  border-radius:1rem;
+  box-shadow:0 1.15rem 2.6rem rgba(11,52,85,.12);
+  gap:.75rem;
+  grid-template-columns:auto auto;
+  justify-content:center;
+  min-height:6.35rem;
+  padding:1.2rem .85rem;
+  transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),border-color .35s var(--ease-out);
+}
+.gatewayInner>a:hover,.gatewayInner>a:focus-visible{
+  background:#fff;
+  border-color:#8db9bd!important;
+  box-shadow:0 1.45rem 3.3rem rgba(11,52,85,.17);
+  transform:translateY(-.28rem);
+}
+.gatewayInner>a>svg:first-child{height:2.2rem;width:2.2rem}
+.gatewayInner strong{font-size:.98rem}
+
+@media (max-width:70rem){
+  .hero{height:42rem;min-height:42rem}
+  .gatewayStrip .gatewayInner{width:min(calc(100% - 3rem),68rem)}}
+
+@media (max-width:48rem){
+  .hero{
+    border-radius:1rem;
+    height:43rem;
+    margin-inline:.5rem;
+    min-height:43rem;
+  }
+  .heroInner{padding:3rem 1rem 8.5rem}
+  .gatewayStrip .gatewayInner{
+    gap:.55rem;
+    margin-top:-5rem;
+    min-height:0;
+    width:calc(100% - 1.5rem);
+  }
+  .gatewayInner>a{border-radius:.8rem;min-height:4.6rem;padding:.8rem .6rem}
+  .gatewayInner>a>svg:first-child{height:1.65rem;width:1.65rem}
+  .gatewayInner strong{font-size:.78rem}}
+
+/* Reference-faithful evidence map. The complete composition remains visible;
+   scroll only changes emphasis and vector motion, so the final state still
+   reads exactly as one connected scientific diagram. */
+.ancientTreeStory{overflow:visible}
+
+/* Global partner network ---------------------------------------------------
+   Approved composition: centered editorial heading over two uninterrupted,
+   always-on logo lanes. The marquee owns its motion; it must never inherit the
+   page's scroll-linked reveal timeline. */
+.ancientTreeStory>.partnerSection{
+  background:#fff;
+  overflow:clip;
+}
+.partnerHeading{
+  align-items:center;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin:0 auto clamp(3rem,5vw,4.5rem);
+  text-align:center;
+}
+.partnerHeading .sectionEyebrow{margin:0 0 1.25rem}
+.partnerHeading h2{
+  font-size:clamp(3.25rem,5vw,5rem);
+  letter-spacing:-.025em;
+  line-height:1;
+  margin:0;
+  max-width:none;
+  white-space:nowrap;
+}
+.partnerLead{
+  color:#40566a;
+  font-size:clamp(1rem,1.25vw,1.15rem);
+  line-height:1.65;
+  margin:1.5rem auto 0;
+  max-width:48rem;
+  text-wrap:balance;
+}
+.partnerMarquee{
+  background:#eef5f6;
+  border:1px solid #d9e5e7;
+  border-radius:.45rem .45rem 0 0;
+  inline-size:100%;
+  margin-inline:0;
+  padding-block:0;
+}
+.partnerMarquee + .partnerMarquee{
+  border-top:0;
+  border-radius:0 0 .45rem .45rem;
+  padding-block:0;
+}
+.partnerTrack{
+  animation-duration:56s;
+  animation-play-state:running;
+}
+.partnerTrackReverse{animation-duration:64s}
+.partnerMarquee:hover .partnerTrack,
+:global(html:not([data-site-intro='complete'])) .partnerTrack{
+  animation-play-state:running;
+}
+.partnerList{
+  gap:clamp(1.75rem,3.5vw,4rem);
+  padding:0 clamp(1.75rem,3.5vw,4rem) 0 0;
+}
+.partnerList li,
+.partnerList li:not(:last-child){
+  background:transparent;
+  border:0;
+  border-radius:0;
+  flex-basis:clamp(14rem,17vw,19rem);
+  min-height:10rem;
+  padding:1.5rem 1rem;
+}
+.partnerList li:nth-child(2n){background:transparent}
+.partnerLogo{height:5.75rem}
+.partnerCta{
+  border-radius:.7rem;
+  flex-direction:row;
+  gap:1.5rem;
+  margin:1.75rem auto 0;
+  min-height:4.8rem;
+  padding:.85rem 1.25rem;
+  text-align:left;
+  width:min(100%,62rem);
+}
+.partnerCta p{font-size:.96rem;max-width:43rem}
+.partnerCta button{flex:none;font-size:.96rem}
+
+@media (max-width:48rem){
+  .partnerHeading{margin-bottom:2.5rem}
+  .partnerHeading h2{
+    font-size:clamp(2.15rem,10vw,3.1rem);
+    line-height:1.05;
+    white-space:normal;
+  }
+  .partnerLead{font-size:.98rem;margin-top:1.1rem;max-width:31rem}
+  .partnerList{gap:1rem;padding-right:1rem}
+  .partnerList li,
+  .partnerList li:not(:last-child){
+    flex-basis:12.5rem;
+    min-height:7.5rem;
+    padding:1rem;
+  }
+  .partnerLogo{height:4.75rem}
+  .partnerCta{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:.7rem;
+    min-height:0;
+    padding:1rem 1.1rem;
+    text-align:left;
+  }
+}
+
+/* Knowledge poster deck ---------------------------------------------------
+   One shared composition powers Khóa học, Bài nghiên cứu and Tin mới. The
+   cards overlap like a restrained editorial archive; there is deliberately no
+   baseline below them. */
+.knowledgeSection{
+  background:#fff;
+  overflow:clip;
+}
+.knowledgeShowcase{
+  align-items:center;
+  display:grid;
+  gap:clamp(3rem,4vw,5rem);
+  grid-template-columns:minmax(19rem,22rem) minmax(0,62rem);
+  justify-content:space-between;
+  min-height:35rem;
+}
+.knowledgeIntro{position:relative;z-index:2}
+.knowledgeIntro .sectionEyebrow{margin-bottom:1.75rem}
+.knowledgeIntro h2{
+  color:#0b3455;
+  font-size:clamp(3rem,4.1vw,4.35rem);
+  font-weight:400;
+  letter-spacing:-.025em;
+  line-height:1.02;
+  margin:0;
+  max-width:21rem;
+}
+.knowledgeIntro h2>span{display:block;white-space:nowrap}
+.knowledgeLead{
+  color:#52697e;
+  font-size:1.08rem;
+  line-height:1.65;
+  margin:1.45rem 0 0;
+  max-width:20rem;
+}
+.knowledgeDeckTabs{
+  align-items:center;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.8rem 1.55rem;
+  margin-top:3.25rem;
+}
+.knowledgeDeckTabs button{
+  background:transparent;
+  border:0;
+  color:#526b7e;
+  cursor:pointer;
+  font-family:var(--font-body);
+  font-size:.98rem;
+  padding:0 0 .8rem;
+  position:relative;
+  transition:color 180ms ease;
+}
+.knowledgeDeckTabs button:not(:last-child)::before{
+  background:#c9d2d8;
+  content:"";
+  height:1.35rem;
+  position:absolute;
+  right:-.8rem;
+  top:0;
+  width:1px;
+}
+.knowledgeDeckTabs button[aria-selected='true']{
+  color:#0b3455;
+  font-weight:700;
+}
+.knowledgeDeckTabs button::after{
+  background:#f15b2a;
+  bottom:0;
+  content:"";
+  height:2px;
+  left:0;
+  position:absolute;
+  right:0;
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 250ms var(--ease-in-out);
+}
+.knowledgeDeckTabs button[aria-selected='true']::after{transform:scaleX(1)}
+.knowledgeDeckTabs button:focus-visible{color:#0b3455;outline:0}
+.knowledgeDeckTabs button:focus-visible::after{background:#08717a;transform:scaleX(1)}
+.knowledgeDeckTabs button[aria-selected='true']:focus-visible::after{background:#f15b2a}
+.knowledgeDeckAllLink{
+  align-items:center;
+  color:#08717a;
+  display:inline-flex;
+  font-size:1rem;
+  font-weight:600;
+  gap:.55rem;
+  margin-top:1.7rem;
+  padding-bottom:.3rem;
+  position:relative;
+  text-decoration:none;
+}
+.knowledgeDeckAllLink::after{
+  background:currentColor;
+  bottom:0;
+  content:"";
+  height:1px;
+  left:0;
+  position:absolute;
+  width:calc(100% - 2rem);
+}
+.knowledgeDeckAllLink:hover,.knowledgeDeckAllLink:focus-visible{color:#f15b2a}
+.knowledgeDeck{
+  align-items:flex-end;
+  border:0;
+  display:flex;
+  isolation:isolate;
+  min-width:0;
+  padding:1rem 1rem 1.75rem 0;
+  position:relative;
+  scrollbar-width:none;
+}
+.knowledgeDeck::-webkit-scrollbar{display:none}
+.knowledgePoster{
+  --poster-rotate:0deg;
+  --poster-y:0rem;
+  flex:1 1 0;
+  margin-left:-1.25rem;
+  min-width:0;
+  position:relative;
+  transform:translateY(var(--poster-y)) rotate(var(--poster-rotate));
+  transform-origin:50% 100%;
+  transition:transform 180ms ease,opacity 180ms ease;
+  z-index:calc(12 - var(--poster-index));
+}
+.knowledgePoster:first-child{flex-grow:1.22;margin-left:0}
+.knowledgePoster:nth-child(2){--poster-rotate:1deg;--poster-y:.45rem}
+.knowledgePoster:nth-child(3){--poster-rotate:2deg;--poster-y:.9rem}
+.knowledgePoster:nth-child(4){--poster-rotate:3deg;--poster-y:1.35rem}
+.knowledgePoster>a{
+  background:#fff;
+  border:1px solid #214b70;
+  box-shadow:0 .9rem 1.8rem rgba(8,47,80,.12);
+  color:#0b3455;
+  display:flex;
+  flex-direction:column;
+  opacity:1;
+  overflow:hidden;
+  text-decoration:none;
+  transform:translateY(0);
+  transition:opacity 360ms var(--ease-out),transform 360ms var(--ease-out);
+  transition-delay:calc(var(--poster-index) * 60ms);
+}
+@starting-style{
+  .knowledgePoster>a{opacity:0;transform:translateY(.65rem)}
+}
+.knowledgePosterImage{
+  background:#e5ecef;
+  display:block;
+  height:clamp(17.5rem,21vw,23rem);
+  margin:.65rem .65rem 0;
+  overflow:hidden;
+  position:relative;
+}
+.knowledgePosterImage::after{
+  background:linear-gradient(to bottom,transparent 70%,rgba(8,47,80,.08));
+  content:"";
+  inset:0;
+  pointer-events:none;
+  position:absolute;
+}
+.knowledgePosterImage img{
+  object-fit:cover;
+  object-position:center;
+  transition:transform 180ms ease;
+}
+.knowledgePosterCaption{
+  align-items:start;
+  display:grid;
+  gap:.85rem;
+  grid-template-columns:auto 1fr;
+  min-height:6.6rem;
+  padding:1.25rem 1.05rem 1.15rem;
+}
+.knowledgePosterCaption>span{
+  color:#f15b2a;
+  font-family:var(--font-heading);
+  font-size:1.15rem;
+  line-height:1.2;
+}
+.knowledgePosterCaption strong{
+  border-left:1px solid #aebcc8;
+  font-family:var(--font-heading);
+  font-size:clamp(.98rem,1.2vw,1.28rem);
+  font-weight:600;
+  line-height:1.16;
+  min-height:2rem;
+  padding-left:.85rem;
+}
+.knowledgePosterCaption strong>span{display:block;white-space:nowrap}
+
+@media (hover:hover) and (pointer:fine){
+  .knowledgePoster:hover{
+    transform:translateY(calc(var(--poster-y) - .25rem)) rotate(var(--poster-rotate));
+    z-index:20;
+  }
+  .knowledgePoster:hover .knowledgePosterImage img{transform:scale(1.012)}
+}
+.knowledgePoster:focus-within{z-index:20}
+.knowledgePoster>a:focus-visible{outline:2px solid #08717a;outline-offset:4px}
+
+/* Featured research gallery ---------------------------------------------- */
+.storyContinuum{background:#fff}
+.storyContinuum::before{content:none}
+.storyContinuum>.researchProjectsSection{padding-block:5.25rem 6rem}
+.researchShowcaseHeading{
+  align-items:center;
+  display:flex;
+  flex-direction:column;
+  margin:0 auto clamp(3rem,4.5vw,4.5rem);
+  text-align:center;
+}
+.researchShowcaseHeading .sectionEyebrow{margin:0 0 1.65rem}
+.researchShowcaseHeading h2{
+  color:#0b3455;
+  font-size:clamp(3.25rem,5vw,5.1rem);
+  font-weight:400;
+  letter-spacing:-.03em;
+  line-height:1;
+  margin:0;
+  text-wrap:balance;
+}
+.researchShowcaseHeading>p:last-child{
+  color:#587087;
+  font-family:var(--font-heading);
+  font-size:clamp(1.15rem,1.65vw,1.45rem);
+  line-height:1.5;
+  margin:1.45rem 0 0;
+}
+.researchGallery{
+  border-radius:.7rem;
+  display:grid;
+  grid-template-columns:1.08fr repeat(3,1fr);
+  min-height:22rem;
+  overflow:hidden;
+  scrollbar-width:none;
+}
+.researchGallery::-webkit-scrollbar{display:none}
+.researchGalleryItem{
+  color:#fff;
+  min-height:22rem;
+  overflow:hidden;
+  position:relative;
+  text-decoration:none;
+}
+.researchGalleryItem:not(:last-child){border-right:1px solid rgba(255,255,255,.8)}
+.researchGalleryItem::after{
+  background:linear-gradient(to bottom,transparent 38%,rgba(4,27,48,.12) 57%,rgba(4,27,48,.92) 100%);
+  content:"";
+  inset:0;
+  pointer-events:none;
+  position:absolute;
+  z-index:1;
+}
+.researchGalleryItem img{
+  object-fit:cover;
+  transition:transform .7s var(--ease-out),filter .7s var(--ease-out);
+}
+.researchGalleryItem>span{
+  bottom:1.55rem;
+  font-family:var(--font-heading);
+  font-size:clamp(1.25rem,1.75vw,1.7rem);
+  font-weight:600;
+  left:1rem;
+  line-height:1.1;
+  position:absolute;
+  right:1rem;
+  text-align:center;
+  text-shadow:0 2px 12px rgba(0,0,0,.24);
+  z-index:2;
+}
+.researchGalleryItem:focus-visible img{filter:saturate(1.06);transform:scale(1.035)}
+@media (hover:hover) and (pointer:fine){
+  .researchGalleryItem:hover img{filter:saturate(1.06);transform:scale(1.035)}
+}
+.researchGalleryAllLink{
+  align-items:center;
+  color:#08717a;
+  display:flex;
+  font-size:1.08rem;
+  font-weight:700;
+  gap:.65rem;
+  margin:2.5rem auto 0;
+  padding-bottom:.35rem;
+  position:relative;
+  text-decoration:none;
+  width:max-content;
+}
+.researchGalleryAllLink::after{
+  background:#08717a;
+  bottom:0;
+  content:"";
+  height:1px;
+  left:0;
+  position:absolute;
+  width:100%;
+}
+.researchGalleryAllLink svg{color:#f15b2a}
+
+@media (max-width:70rem){
+  .knowledgeShowcase{grid-template-columns:1fr;min-height:0}
+  .knowledgeIntro{align-items:center;display:flex;flex-direction:column;text-align:center}
+  .knowledgeIntro h2,.knowledgeLead{max-width:42rem}
+  .knowledgeDeckTabs{margin-top:2.25rem}
+  .knowledgeDeck{margin-inline:auto;max-width:62rem;width:100%}
+  .researchGallery{grid-template-columns:repeat(2,1fr)}
+  .researchGalleryItem{min-height:20rem}
+  .researchGalleryItem:nth-child(2){border-right:0}
+  .researchGalleryItem:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.8)}
+}
+
+@media (max-width:48rem){
+  .knowledgeShowcase{gap:2rem}
+  .knowledgeIntro h2{font-size:clamp(2.55rem,12vw,3.5rem);max-width:20rem}
+  .knowledgeLead{font-size:1rem;margin-top:1.15rem}
+  .knowledgeDeckTabs{gap:.7rem 1.25rem;justify-content:center;margin-top:2rem}
+  .knowledgeDeckTabs button:not(:last-child)::before{right:-.65rem}
+  .knowledgeDeck{
+    align-items:stretch;
+    margin-inline:calc(-1 * var(--gutter));
+    max-width:none;
+    overflow-x:auto;
+    padding:1rem var(--gutter) 2rem;
+    scroll-padding-inline:var(--gutter);
+    scroll-snap-type:x proximity;
+    width:auto;
+  }
+  .knowledgePoster{
+    flex:0 0 min(78vw,20rem);
+    margin-left:-1.1rem;
+    scroll-snap-align:center;
+    transform:translateY(var(--poster-y)) rotate(var(--poster-rotate));
+  }
+  .knowledgePoster:first-child{margin-left:0}
+  .knowledgePosterImage{height:19rem;margin:.55rem .55rem 0}
+  .knowledgePosterCaption{min-height:6.6rem}
+  .researchShowcaseHeading{margin-bottom:2.5rem}
+  .researchShowcaseHeading h2{font-size:clamp(2.65rem,12vw,3.6rem)}
+  .researchShowcaseHeading>p:last-child{font-size:1.05rem;margin-top:1rem}
+  .researchGallery{
+    display:flex;
+    margin-inline:calc(-1 * var(--gutter));
+    overflow-x:auto;
+    padding-inline:var(--gutter);
+    scroll-padding-inline:var(--gutter);
+    scroll-snap-type:x mandatory;
+  }
+  .researchGalleryItem{
+    border:0!important;
+    flex:0 0 min(82vw,21rem);
+    min-height:23rem;
+    scroll-snap-align:center;
+  }
+  .researchGalleryItem:first-child{border-radius:.7rem 0 0 .7rem!important}
+  .researchGalleryItem:last-child{border-radius:0 .7rem .7rem 0!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .knowledgePoster,.knowledgePosterImage img,.researchGalleryItem img{transition:none}
+  .knowledgePoster>a{transition:opacity 160ms ease;transition-delay:0ms}
+  @starting-style{
+    .knowledgePoster>a{opacity:0;transform:none}
+  }
+}
+
+/* A deliberately quiet hand-off after the Journey. The former network
+   infographic no longer appears in the scrollytelling sequence; only the
+   requested expert count remains here as a compact destination link. */
+.expertCountSection{
+  background:#fff;
+  position:relative;
+  z-index:1;
+}
+.expertCountInner{
+  align-items:center;
+  border-bottom:1px solid #dce5e8;
+  border-top:1px solid #dce5e8;
+  display:flex;
+  justify-content:space-between;
+  margin-inline:auto;
+  padding:clamp(1.75rem,3.5vw,3rem) 0;
+  width:min(100% - (2 * var(--gutter)),var(--container));
+}
+.expertCountInner h2{
+  align-items:baseline;
+  color:#123a5e;
+  display:flex;
+  font-family:var(--font-body);
+  font-size:clamp(1rem,1.25vw,1.2rem);
+  font-weight:700;
+  gap:clamp(1rem,2.2vw,2rem);
+  letter-spacing:.08em;
+  margin:0;
+  text-transform:uppercase;
+}
+.expertCountInner h2>span{
+  color:#0b6570;
+  font-family:var(--font-heading);
+  font-size:clamp(3.5rem,6vw,5.5rem);
+  font-variant-numeric:tabular-nums;
+  font-weight:500;
+  letter-spacing:-.045em;
+  line-height:.8;
+}
+.expertCountLink{
+  align-items:center;
+  color:#0b6570;
+  display:inline-flex;
+  font-weight:700;
+  gap:.65rem;
+  padding:.65rem 0;
+  text-decoration:none;
+  transition:color 220ms ease,transform 220ms ease;
+}
+.expertCountLink:hover,.expertCountLink:focus-visible{
+  color:#e55727;
+  transform:translateX(.2rem);
+}
+.expertCountLink:active{transform:translateX(.2rem) scale(.98)}
+
+@media (max-width:48rem){
+  .expertCountInner{padding-block:1.75rem}
+  .expertCountInner h2{gap:.8rem}
+  .expertCountLink{font-size:.9rem}
+}
+
+/* Hero hand-off -----------------------------------------------------------
+   SiteIntro owns the opening. Once it marks the document complete, the five
+   promise fragments and the two headline/lead lines resolve in a calm cascade.
+   Keeping this override last avoids older homepage passes cancelling motion. */
+.heroKickerPhrase{
+  display:inline-block;
+}
+
+.heroLead>span{
+  display:block;
+}
+
+/* Hold animated fragments at their first keyframe while intro covers page. */
+:global(html:not([data-site-intro='complete'])) .heroKickerPhrase,
+:global(html:not([data-site-intro='complete'])) .heroCopy>h1>span,
+:global(html:not([data-site-intro='complete'])) .heroLead>span,
+:global(html:not([data-site-intro='complete'])) .heroButtons{
+  filter:blur(.24rem);
+  opacity:0;
+  transform:translate3d(0,.7rem,0);
+}
+
+@keyframes hero-promise-reveal{
+  from{
+    filter:blur(.24rem);
+    opacity:0;
+    transform:translate3d(0,.7rem,0);
+  }
+  to{
+    filter:blur(0);
+    opacity:1;
+    transform:translate3d(0,0,0);
+  }
+}
+
+@keyframes hero-background-advance{
+  from{transform:scale(1.004)}
+  to{transform:scale(1.075)}
+}
+
+:global(html[data-site-intro='complete']) .heroKickerPhrase,
+:global(html[data-site-intro='complete']) .heroCopy>h1>span,
+:global(html[data-site-intro='complete']) .heroLead>span,
+:global(html[data-site-intro='complete']) .heroButtons{
+  animation:hero-promise-reveal 900ms var(--ease-out) both;
+}
+
+:global(html[data-site-intro='complete']) .heroKickerPhrase:nth-child(1){animation-delay:80ms}
+:global(html[data-site-intro='complete']) .heroKickerPhrase:nth-child(2){animation-delay:150ms}
+:global(html[data-site-intro='complete']) .heroKickerPhrase:nth-child(3){animation-delay:220ms}
+:global(html[data-site-intro='complete']) .heroKickerPhrase:nth-child(4){animation-delay:290ms}
+:global(html[data-site-intro='complete']) .heroKickerPhrase:nth-child(5){animation-delay:360ms}
+:global(html[data-site-intro='complete']) .heroCopy>h1>span:nth-child(1){animation-delay:470ms}
+:global(html[data-site-intro='complete']) .heroCopy>h1>span:nth-child(2){animation-delay:610ms}
+:global(html[data-site-intro='complete']) .heroLead>span:nth-child(1){animation-delay:770ms}
+:global(html[data-site-intro='complete']) .heroLead>span:nth-child(2){animation-delay:890ms}
+:global(html[data-site-intro='complete']) .heroButtons{animation-delay:1040ms}
+
+:global(html[data-site-intro='complete']) .heroImage{
+  animation:hero-background-advance 14s cubic-bezier(.2,.58,.22,1) both;
+  transform-origin:center;
+  will-change:transform;
+}
+
+@media (prefers-reduced-motion:reduce){
+  :global(html:not([data-site-intro='complete'])) .heroKickerPhrase,
+  :global(html:not([data-site-intro='complete'])) .heroCopy>h1>span,
+  :global(html:not([data-site-intro='complete'])) .heroLead>span,
+  :global(html:not([data-site-intro='complete'])) .heroButtons,
+  :global(html[data-site-intro='complete']) .heroKickerPhrase,
+  :global(html[data-site-intro='complete']) .heroCopy>h1>span,
+  :global(html[data-site-intro='complete']) .heroLead>span,
+  :global(html[data-site-intro='complete']) .heroButtons,
+  :global(html[data-site-intro='complete']) .heroImage{
+    animation:none;
+    filter:none;
+    opacity:1;
+    transform:none;
+  }
 }

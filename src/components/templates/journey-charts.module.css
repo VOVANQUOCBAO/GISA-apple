@@ -1,0 +1,2786 @@
+/**
+ * Plate styling for "TRI THỨC TẠO CHUYỂN BIẾN".
+ *
+ * Every animated rule reads `--phase` (0 → 1, written by the pinned viewport)
+ * and optionally `--i` / `--n` to stagger siblings inside the same phase.
+ * `--item` is the resolved 0 → 1 value for one element; nothing here uses
+ * keyframes, so the drawing is a pure function of scroll position — no loop, no
+ * bounce, no replay.
+ *
+ * Figures are set in `--font-body`, not `--font-heading`. The reference plates
+ * carry heavy sans numerals; the site's heading face is a serif, and setting the
+ * big counts in it was the single largest visual drift from the references.
+ */
+
+.plate {
+  --paper: #f9f4ec;
+  --ink: #123a5e;
+  --ink-soft: #4d6b83;
+
+  background: #fff;
+  display: block;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+.plate text {
+  user-select: none;
+}
+
+/* Links are deliberately visually neutral: interaction must never alter the
+   reference composition. The transparent shapes only enlarge small targets. */
+.entityLink {
+  cursor: pointer;
+}
+
+.entityHit {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.transferBandHit {
+  fill: none;
+  pointer-events: stroke;
+  stroke: transparent;
+  stroke-width: 86;
+}
+
+.entityLink:focus-visible {
+  outline: none;
+}
+
+.entityLink:focus-visible .entityHit,
+.entityLink:focus-visible .transferBandHit {
+  stroke: #e7a62d;
+  stroke-dasharray: 7 5;
+  stroke-width: 3;
+}
+
+.journeyMorphRoot {
+  --morph-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --morph-ease-move: cubic-bezier(0.77, 0, 0.175, 1);
+
+  height: 100%;
+  isolation: isolate;
+  min-height: 0;
+  min-width: 0;
+  position: relative;
+  width: 100%;
+}
+
+/* HTML information rail ---------------------------------------------------
+   The plates may scale to fit a 1600-2380px SVG artboard; reading copy should
+   not. These overlays preserve real CSS-pixel type while the artwork remains
+   responsive. */
+.researchStage,
+.strategyStage,
+.trainingStageShell,
+.transferStageShell {
+  height: 100%;
+  overflow: visible;
+  position: relative;
+  width: 100%;
+}
+
+.researchStage > svg,
+.strategyStage > svg,
+.trainingStageShell > svg,
+.transferStageShell > svg {
+  background: #fff;
+  display: block;
+  height: 100%;
+}
+
+.researchStage > svg {
+  margin-inline: auto;
+  width: 92%;
+}
+
+.strategyStage > svg {
+  margin-inline: auto;
+  width: 82%;
+}
+
+.trainingStageShell > svg {
+  margin-inline: auto;
+  width: 100%;
+}
+
+.transferStageShell > svg {
+  margin-right: auto;
+  width: 94%;
+}
+
+.researchHtmlPopoverLayer,
+.strategyHtmlPopoverLayer,
+.trainingHtmlPopoverLayer,
+.transferHtmlPopoverLayer {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 30;
+}
+
+/* Shared inline node-morph surface ---------------------------------------
+   The shell expands first; copy follows after the shape has visually landed.
+   Keeping the two layers separate prevents stretched type during the morph. */
+.journeyMorphPanel {
+  --morph-enter-x: 0;
+  --morph-origin-x: left;
+
+  box-sizing: border-box;
+  color: #123f61;
+  height: auto;
+  isolation: isolate;
+  max-width: calc(100% - 1rem);
+  min-height: 9.25rem;
+  opacity: 0;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  transform: translate3d(var(--morph-enter-x), -50%, 0) scale(.985);
+  transform-origin: var(--morph-origin-x) center;
+  transition:
+    opacity 220ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    transform 220ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    visibility 0s linear 220ms;
+  visibility: hidden;
+  will-change: opacity, transform;
+  z-index: 40;
+}
+
+.journeyMorphPanel[data-anchor='left'] {
+  --morph-enter-x: 1rem;
+  --morph-origin-x: right;
+}
+
+.journeyMorphPanel[data-anchor='right'] {
+  --morph-enter-x: -1rem;
+  --morph-origin-x: left;
+}
+
+.journeyMorphPanel::after {
+  background: color-mix(in srgb, var(--morph-tone, #147c93) 90%, #123f61);
+  border-radius: 2rem;
+  box-shadow: 0 .85rem 1.5rem color-mix(in srgb, var(--morph-tone, #147c93) 18%, transparent);
+  content: '';
+  inset: .72rem -.28rem -.7rem .68rem;
+  position: absolute;
+  transform: scaleX(.2);
+  transform-origin: var(--morph-origin-x) center;
+  transition: transform 220ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+  z-index: -1;
+}
+
+.journeyMorphPanelShell {
+  background: #fffdf8;
+  border: 1.5px solid color-mix(in srgb, var(--morph-tone, #147c93) 38%, #e7dfd1);
+  border-radius: 2rem;
+  box-shadow:
+    0 .24rem .65rem rgb(18 63 97 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 96%);
+  inset: 0;
+  position: absolute;
+  transform: scaleX(.2);
+  transform-origin: var(--morph-origin-x) center;
+  transition: transform 220ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+  z-index: 0;
+}
+
+.journeyMorphPanelContent {
+  align-items: center;
+  display: grid;
+  gap: clamp(.85rem, 1.2vw, 1.25rem);
+  grid-template-columns: clamp(4.7rem, 6vw, 6.1rem) minmax(0, 1fr);
+  min-height: inherit;
+  opacity: 0;
+  padding: clamp(.9rem, 1.35vw, 1.25rem) clamp(1rem, 1.5vw, 1.45rem);
+  position: relative;
+  transform: translate3d(var(--morph-enter-x), 0, 0);
+  transition:
+    opacity 100ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    transform 100ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+  z-index: 1;
+}
+
+.journeyMorphPanelImage {
+  align-items: center;
+  background: #fffaf0;
+  border: 3px solid #fffdf8;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1.5px color-mix(in srgb, var(--morph-tone, #147c93) 36%, #d8b86f),
+    0 .55rem 1rem rgb(18 63 97 / 13%);
+  display: flex;
+  height: clamp(4.7rem, 6vw, 6.1rem);
+  justify-content: center;
+  overflow: hidden;
+  width: clamp(4.7rem, 6vw, 6.1rem);
+}
+
+.journeyMorphPanelImage img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.journeyMorphPanelCopy {
+  align-self: center;
+  min-width: 0;
+}
+
+.journeyMorphPanelEyebrow {
+  color: var(--morph-tone);
+  display: block;
+  font-family: var(--font-body);
+  font-size: clamp(.64rem, .68vw, .75rem);
+  font-weight: 800;
+  letter-spacing: .115em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.journeyMorphPanelTitle {
+  display: block;
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.18vw, 1.4rem);
+  font-weight: 800;
+  letter-spacing: -.022em;
+  line-height: 1.15;
+  margin-top: .25rem;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.journeyMorphPanelList {
+  border-left: 1px solid color-mix(in srgb, var(--morph-tone) 28%, #d7e0e5);
+  display: grid;
+  gap: .28rem;
+  list-style: none;
+  margin: .65rem 0 0;
+  padding: .05rem 0 .05rem .85rem;
+}
+
+.journeyMorphPanelList li {
+  color: #466479;
+  font-family: var(--font-body);
+  font-size: clamp(.77rem, .75vw, .9rem);
+  line-height: 1.36;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.journeyMorphPanelList li::before {
+  color: var(--morph-tone);
+  content: '\2022';
+  font-weight: 900;
+  margin-right: .45rem;
+}
+
+.journeyMorphPanelCta {
+  color: color-mix(in srgb, var(--morph-tone, #147c93) 88%, #123f61);
+  display: inline-flex;
+  font-family: var(--font-body);
+  font-size: clamp(.73rem, .7vw, .84rem);
+  font-weight: 780;
+  margin-top: .65rem;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .22em;
+}
+
+.journeyMorphPanelCta:focus-visible {
+  border-radius: .25rem;
+  outline: 3px solid #e7a62d;
+  outline-offset: 3px;
+}
+
+.journeyMorphPanel[data-open='true'] {
+  --morph-enter-x: 0;
+
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, -50%, 0) scale(1);
+  transition:
+    opacity 180ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    transform 320ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    visibility 0s linear 0s;
+  visibility: visible;
+}
+
+.journeyMorphPanel[data-open='true']::after,
+.journeyMorphPanel[data-open='true'] .journeyMorphPanelShell {
+  transform: scaleX(1);
+  transition-duration: 320ms;
+}
+
+.journeyMorphPanel[data-open='true'] .journeyMorphPanelContent {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 160ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1)) 120ms,
+    transform 160ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1)) 120ms;
+}
+
+.journeyMorphRoot [data-morph-trigger] {
+  --node-yield-x: 0;
+
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    filter 220ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    opacity 220ms var(--morph-ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    transform 320ms var(--morph-ease-move, cubic-bezier(0.77, 0, 0.175, 1));
+  will-change: opacity, transform;
+}
+
+.journeyMorphRoot [data-morph-trigger]:focus-visible {
+  filter: drop-shadow(0 0 5px rgb(231 166 45 / 78%));
+  outline: 3px solid #e7a62d;
+  outline-offset: 4px;
+}
+
+.journeyMorphRoot:not([data-open-key='']) [data-morph-trigger] {
+  opacity: .82;
+  transform: translate3d(var(--node-yield-x), 0, 0) scale(.985);
+}
+
+.journeyMorphRoot:not([data-open-key='']) [data-morph-trigger][aria-expanded='true'] {
+  opacity: 0;
+  transform: translate3d(0, 0, 0) scale(.96);
+}
+
+.journeyMorphRoot:not([data-open-key='']) [data-morph-trigger][aria-expanded='true']:focus-visible {
+  opacity: .18;
+}
+
+.journeyMorphRoot[data-journey-chart='research']:is(
+  [data-open-key='0'],
+  [data-open-key='1'],
+  [data-open-key='2'],
+  [data-open-key='3'],
+  [data-open-key='4'],
+  [data-open-key='5'],
+  [data-open-key='6'],
+  [data-open-key='7']
+) [data-morph-trigger]:not([aria-expanded='true']) {
+  --node-yield-x: 2.75rem;
+}
+
+.journeyMorphRoot[data-journey-chart='research']:is(
+  [data-open-key='8'],
+  [data-open-key='9'],
+  [data-open-key='10'],
+  [data-open-key='11'],
+  [data-open-key='12'],
+  [data-open-key='13']
+) [data-morph-trigger]:not([aria-expanded='true']) {
+  --node-yield-x: -2.75rem;
+}
+
+.journeyMorphRoot[data-journey-chart='training']:is(
+  [data-open-key='0'],
+  [data-open-key='1'],
+  [data-open-key='2']
+) [data-morph-trigger]:not([aria-expanded='true']) {
+  --node-yield-x: 2.5rem;
+}
+
+.journeyMorphRoot[data-journey-chart='training']:is([data-open-key='3'], [data-open-key='4']) [data-morph-trigger]:not([aria-expanded='true']) {
+  --node-yield-x: -2.5rem;
+}
+
+.journeyMorphRoot[data-journey-chart='transfer']:not([data-open-key='']) [data-morph-trigger]:not([aria-expanded='true']) {
+  --node-yield-x: -2.25rem;
+}
+
+.journeyMorphRoot[data-journey-chart='impact']:is(
+  [data-open-key='pillar-0'],
+  [data-open-key='pillar-2'],
+  [data-open-key='core'],
+  [data-open-key='node-0'],
+  [data-open-key='node-1']
+) [data-morph-trigger]:not([aria-expanded='true']) {
+  --node-yield-x: 2.25rem;
+}
+
+.journeyMorphRoot[data-journey-chart='impact']:is(
+  [data-open-key='pillar-1'],
+  [data-open-key='node-2'],
+  [data-open-key='node-3']
+) [data-morph-trigger]:not([aria-expanded='true']) {
+  --node-yield-x: -2.25rem;
+}
+
+.strategyStage > svg {
+  transition: transform 320ms var(--morph-ease-move, cubic-bezier(0.77, 0, 0.175, 1));
+  will-change: transform;
+}
+
+.journeyMorphRoot[data-journey-chart='strategy']:is(
+  [data-open-key='0'],
+  [data-open-key='4'],
+  [data-open-key='5']
+) .strategyStage > svg {
+  transform: translate3d(2%, 0, 0);
+}
+
+.journeyMorphRoot[data-journey-chart='strategy']:is(
+  [data-open-key='1'],
+  [data-open-key='2'],
+  [data-open-key='3']
+) .strategyStage > svg {
+  transform: translate3d(-2%, 0, 0);
+}
+
+.researchCardLeft {
+  left: 0;
+  transform: translate3d(0, -50%, 0);
+  transform-origin: right center;
+}
+
+.researchCardRight {
+  right: 0;
+  transform: translate3d(0, -50%, 0);
+  transform-origin: left center;
+}
+
+.strategyCardLeft {
+  left: 0;
+  transform-origin: right center;
+}
+
+.strategyCardRight {
+  right: 0;
+  transform-origin: left center;
+}
+
+.trainingMorphPanel {
+  --morph-tone: var(--tone, #1668c4);
+  --morph-content-opacity: 0;
+  --morph-content-y: 8px;
+
+  align-items: center;
+  background: #fffdf8;
+  border: 1px solid color-mix(in srgb, var(--tone, #1668c4) 24%, #dfe9ef);
+  border-radius: clamp(1.5rem, 2vw, 2.35rem);
+  box-shadow:
+    0 1.15rem 2.7rem rgb(17 57 86 / 18%),
+    0 .22rem .65rem rgb(26 67 95 / 9%),
+    inset 0 1px 0 rgb(255 255 255 / 98%);
+  color: #123a5e;
+  display: grid;
+  gap: clamp(.85rem, 1.25vw, 1.35rem);
+  grid-template-columns: minmax(10.75rem, .9fr) 1px minmax(13rem, 1.2fr);
+  isolation: isolate;
+  left: var(--morph-left);
+  min-height: clamp(10.8rem, 16vw, 13.75rem);
+  opacity: 0;
+  overflow: visible;
+  padding: clamp(1rem, 1.45vw, 1.55rem);
+  pointer-events: none;
+  position: absolute;
+  text-decoration: none;
+  top: var(--morph-top);
+  transform: translate3d(0, 8px, 0) scale(.78, .62);
+  transform-origin: var(--morph-origin);
+  transition:
+    opacity 220ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 220ms cubic-bezier(0.23, 1, 0.32, 1);
+  visibility: hidden;
+  width: clamp(29rem, 34%, 38rem);
+  will-change: clip-path, opacity, transform;
+  z-index: 40;
+}
+
+.trainingMorphPanel:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--tone, #1668c4) 78%, #ffffff);
+  outline-offset: 4px;
+}
+
+.trainingMorphPanel::after {
+  background: color-mix(in srgb, var(--tone, #1668c4) 90%, #123f61);
+  border-radius: inherit;
+  bottom: -.72rem;
+  box-shadow: 0 .8rem 1.4rem color-mix(in srgb, var(--tone, #1668c4) 18%, transparent);
+  content: '';
+  height: calc(100% - .5rem);
+  left: .65rem;
+  opacity: .96;
+  position: absolute;
+  right: -.25rem;
+  z-index: -1;
+}
+
+.trainingMorphPanel::before {
+  background: #fffdf8;
+  border-radius: inherit;
+  content: '';
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.trainingMorphPanel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.trainingMorphIdentity {
+  align-items: center;
+  display: grid;
+  gap: clamp(.7rem, 1vw, 1rem);
+  grid-template-columns: clamp(4.7rem, 6vw, 6.3rem) minmax(0, 1fr);
+  min-width: 0;
+}
+
+.trainingMorphIdentity,
+.trainingMorphDivider,
+.trainingMorphFacts,
+.trainingMorphPanel > .journeyMorphPanelCta {
+  opacity: var(--morph-content-opacity);
+  transform: translate3d(0, var(--morph-content-y), 0);
+  transition:
+    opacity 150ms cubic-bezier(0.23, 1, 0.32, 1) 45ms,
+    transform 180ms cubic-bezier(0.23, 1, 0.32, 1) 45ms;
+}
+
+.trainingMorphMedallion {
+  aspect-ratio: 1;
+  background: #fffdf8;
+  border: 2px solid color-mix(in srgb, var(--tone, #1668c4) 28%, #eadab9);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 .4rem rgb(255 250 241 / 90%),
+    0 .45rem 1rem rgb(20 57 83 / 14%);
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+}
+
+.trainingMorphMedallion img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.trainingMorphHeading {
+  display: grid;
+  gap: .35rem;
+  min-width: 0;
+}
+
+.trainingMorphHeading small {
+  color: var(--tone, #1668c4);
+  font-size: clamp(.65rem, .72vw, .78rem);
+  font-weight: 800;
+  letter-spacing: .13em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.trainingMorphHeading strong {
+  color: #113a5c;
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 1.6vw, 1.72rem);
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1.12;
+}
+
+.trainingMorphDivider {
+  align-self: stretch;
+  background: color-mix(in srgb, var(--tone, #1668c4) 24%, #d9e4ea);
+  display: block;
+  min-height: 7.2rem;
+  width: 1px;
+}
+
+.trainingMorphFacts {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.trainingMorphFacts > li {
+  align-items: center;
+  border-bottom: 1px solid color-mix(in srgb, var(--tone, #1668c4) 15%, #dfe7eb);
+  display: grid;
+  gap: .72rem;
+  grid-template-columns: 1.8rem minmax(0, 1fr);
+  padding: .54rem 0;
+}
+
+.trainingMorphFacts > li:last-child {
+  border-bottom: 0;
+}
+
+.trainingMorphFacts b {
+  color: var(--tone, #1668c4);
+  font-size: .7rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .04em;
+}
+
+.trainingMorphFacts li span {
+  color: #31556f;
+  font-size: clamp(.79rem, .86vw, .94rem);
+  font-weight: 620;
+  line-height: 1.3;
+}
+
+.trainingMorphPanel > .journeyMorphPanelCta {
+  align-self: end;
+  grid-column: 3;
+  justify-self: start;
+  margin-top: -.2rem;
+}
+
+.trainingMorphPanel[data-open='true'] {
+  --morph-content-opacity: 1;
+  --morph-content-y: 0;
+
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition:
+    opacity 180ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 320ms cubic-bezier(0.23, 1, 0.32, 1),
+    visibility 0s linear 0s;
+  visibility: visible;
+}
+
+.trainingMorphPanel[data-open='true'] :is(.trainingMorphIdentity, .trainingMorphDivider, .trainingMorphFacts, .journeyMorphPanelCta) {
+  transition-delay: 120ms;
+}
+
+.transferMorphPanel {
+  min-height: clamp(8.6rem, 18%, 10rem);
+  right: 2.2%;
+  top: var(--morph-y);
+  width: min(52%, 46rem);
+}
+
+.transferMorphPanel .journeyMorphPanelContent {
+  grid-template-columns: 4.8rem minmax(0, 1fr);
+  padding-block: .75rem;
+}
+
+.transferMorphPanel .journeyMorphPanelImage {
+  height: 4.45rem;
+  width: 4.45rem;
+}
+
+.transferEntityLink {
+  touch-action: manipulation;
+}
+
+/* Research node morph ----------------------------------------------------
+   The selected thumbnail becomes the capsule edge. The shell settles first;
+   concise copy follows, so this reads as one object changing shape. */
+.researchMorphPanel {
+  left: var(--morph-x);
+  min-height: clamp(9rem, 26%, 11.5rem);
+  top: var(--morph-y);
+  width: min(38%, 42rem);
+}
+
+.researchMorphPanel .journeyMorphPanelShell {
+  border-radius: 2.25rem;
+  box-shadow: 0 .24rem .65rem rgb(18 63 97 / 9%), inset 0 1px 0 #fff;
+}
+
+.researchMorphPanel .journeyMorphPanelContent {
+  gap: 1.1rem;
+  grid-template-columns: 5.85rem minmax(0, 1fr);
+  padding: .9rem 1.25rem;
+}
+
+.researchMorphPanel .journeyMorphPanelImage {
+  border: 4px solid #fffdf8;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--morph-tone) 30%, #d9bd7f),
+    0 .6rem 1.1rem rgb(18 63 97 / 15%);
+  height: 5.6rem;
+  width: 5.6rem;
+}
+
+.researchMorphPanel .journeyMorphPanelTitle {
+  font-size: clamp(1rem, 1.1vw, 1.28rem);
+  line-height: 1.12;
+}
+
+.researchMorphPanel .journeyMorphPanelList {
+  gap: .25rem;
+  margin-top: .58rem;
+  padding-left: .75rem;
+}
+
+.researchMorphPanel .journeyMorphPanelList li {
+  font-size: clamp(.72rem, .68vw, .82rem);
+  line-height: 1.28;
+}
+
+/* Staggered fade-and-rise for a whole element group. */
+.researchCard,
+.researchChip,
+.researchTotalCard,
+.strategyCoreGroup,
+.consultingPetal,
+.trainingStage,
+.transferTarget,
+.transferSource,
+.networkHeading,
+.networkProject,
+.networkFund,
+.impactNode {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  opacity: var(--item);
+  transform: translateY(calc((1 - var(--item)) * 14px));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Stroke-drawn geometry: reveal along the path, never dash-cycle. */
+.researchStreamShadow,
+.researchStream,
+.researchStreamRim,
+.researchStreamLight,
+.trainingRibbonShadow,
+.trainingRibbonEdge,
+.trainingRibbonRim,
+.trainingRibbon,
+.trainingRibbonLine,
+.transferBandShadow,
+.transferBand,
+.transferBandLine {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  fill: none;
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--item));
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.decorRing {
+  fill: none;
+  opacity: 0.16;
+  stroke: #9db3c4;
+  stroke-width: 1.1;
+}
+
+/* 01 — Nghiên cứu -------------------------------------------------------- */
+
+.researchAvatar {
+  filter: drop-shadow(0 8px 10px rgb(18 58 94 / 15%));
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    filter 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.researchAvatarHalo {
+  fill: rgb(65 146 193 / 10%);
+  filter: blur(9px);
+  transition: fill 220ms ease-out;
+}
+
+.researchAvatarHit {
+  pointer-events: all;
+}
+
+.researchAvatarShadow {
+  fill: rgb(20 54 81 / 15%);
+  filter: blur(6px);
+}
+
+.researchAvatarFallback {
+  stroke: rgb(255 255 255 / 86%);
+  stroke-width: 3;
+}
+
+.researchAvatarIndex {
+  fill: #ffffff;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 24px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 720;
+  letter-spacing: 0.04em;
+}
+
+.researchThumbRing {
+  fill: none;
+  stroke: #efe0b2;
+  stroke-width: 4;
+}
+
+.researchThumbPhoto {
+  filter: url('#research-media-depth') saturate(0.92) contrast(1.03);
+}
+
+.researchEntityLink:hover .researchAvatar,
+.researchEntityLink:focus-visible .researchAvatar {
+  filter: drop-shadow(0 13px 16px rgb(18 58 94 / 20%));
+  transform: scale(1.06);
+}
+
+.researchEntityLink:hover .researchAvatarHalo,
+.researchEntityLink:focus-visible .researchAvatarHalo {
+  fill: rgb(65 146 193 / 17%);
+}
+
+.researchEntityLink:active .researchAvatar {
+  transform: scale(0.98);
+  transition-duration: 90ms;
+}
+
+.researchStreamGroup {
+  transform-box: view-box;
+  transform-origin: center;
+}
+
+.researchStreamShadow {
+  filter: blur(10px);
+  opacity: calc(var(--item) * 0.19);
+  stroke: #0b3355;
+  stroke-width: 104;
+  transform: translateY(13px);
+}
+
+.researchStream {
+  filter: drop-shadow(0 5px 7px rgb(18 58 94 / 13%));
+  opacity: var(--item);
+  stroke-width: 88;
+}
+
+.researchStreamDark {
+  stroke: url('#research-stream-dark');
+}
+
+.researchStreamBlue {
+  stroke: url('#research-stream-blue');
+}
+
+.researchStreamRim {
+  opacity: calc(var(--item) * 0.74);
+  stroke: #d7b45f;
+  stroke-width: 92;
+}
+
+.researchStreamLight {
+  opacity: calc(var(--item) * 0.24);
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  transform: translateY(-23px);
+}
+
+.researchChipShadow {
+  fill: rgb(25 60 92 / 22%);
+  filter: blur(9px);
+}
+
+.researchChipFaceDark {
+  fill: url('#research-chip-dark');
+  filter: drop-shadow(0 2px 0 rgb(255 255 255 / 8%));
+}
+
+.researchChipFaceBlue {
+  fill: url('#research-chip-blue');
+  filter: drop-shadow(0 2px 0 rgb(255 255 255 / 9%));
+}
+
+.researchChipMedallionShadow {
+  fill: rgb(4 28 48 / 34%);
+  filter: blur(5px);
+}
+
+.researchChipMedallionOuter {
+  fill: url('#research-medallion-gold');
+  filter:
+    drop-shadow(0 4px 4px rgb(5 31 51 / 24%))
+    drop-shadow(0 -1px 0 rgb(255 246 207 / 74%));
+  stroke: rgb(255 245 207 / 86%);
+  stroke-width: 1.4;
+}
+
+.researchChipMedallionFace {
+  fill: url('#research-medallion-face');
+  stroke: rgb(169 110 32 / 78%);
+  stroke-width: 1.15;
+}
+
+.researchChipMedallionRim {
+  fill: none;
+  stroke: url('#research-medallion-gold');
+  stroke-width: 1.4;
+}
+
+.researchChipDivider {
+  fill: none;
+  stroke: rgb(255 255 255 / 43%);
+  stroke-linecap: round;
+  stroke-width: 1.5;
+}
+
+.researchChipGlyph {
+  fill: none;
+  filter: drop-shadow(0 1.5px 1px rgb(97 56 12 / 30%));
+  stroke: #b67b25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+}
+
+.researchChipValue {
+  fill: #ffffff;
+  font-family: var(--font-body);
+  font-size: 46px;
+  font-weight: 750;
+}
+
+.researchChipLabel {
+  fill: rgb(255 255 255 / 94%);
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+}
+
+.researchChipNote {
+  fill: rgb(255 255 255 / 68%);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.085em;
+}
+
+.researchStack {
+  fill: #fffaf2;
+  filter: drop-shadow(0 5px 5px rgb(35 55 70 / 7%));
+  stroke: rgb(25 60 92 / 11%);
+  stroke-width: 1.4;
+}
+
+.researchAccent {
+  fill: #e0a029;
+  filter: drop-shadow(0 8px 8px rgb(120 77 18 / 16%));
+}
+
+.researchTotalShadow {
+  fill: rgb(25 60 92 / 18%);
+  filter: blur(12px);
+}
+
+.researchTotalFace {
+  fill: #fffdf8;
+  stroke: rgb(25 60 92 / 12%);
+  stroke-width: 1.4;
+}
+
+.researchTotalRim {
+  fill: none;
+  opacity: 0.76;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+}
+
+.researchTotalValue {
+  fill: #123a5e;
+  font-family: var(--font-body);
+  font-size: 118px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.researchTotalLabel {
+  fill: #123a5e;
+  font-family: var(--font-body);
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+/* 02 — Tư vấn ------------------------------------------------------------ */
+
+.strategyPlateShadow {
+  fill: rgb(38 64 53 / 18%);
+  filter: blur(15px);
+}
+
+.strategyPlateDisc {
+  fill: url('#strategy-plate-face');
+  filter: drop-shadow(0 10px 10px rgb(38 64 53 / 12%));
+  stroke: #fffdf8;
+  stroke-width: 4;
+}
+
+.strategyPlateRim {
+  fill: none;
+  opacity: 0.78;
+  stroke: #ffffff;
+  stroke-width: 3;
+}
+
+.strategyDish {
+  fill: url('#strategy-dish-face');
+  filter: drop-shadow(0 10px 13px rgb(38 64 53 / 15%));
+  stroke: #fffdf8;
+  stroke-width: 4;
+}
+
+.strategyCoreHalo {
+  fill: #eef4f1;
+  filter: drop-shadow(0 8px 13px rgb(18 48 55 / 12%));
+  stroke: rgb(255 255 255 / 94%);
+  stroke-width: 3;
+}
+
+.strategyCore {
+  fill: url('#strategy-core-face');
+  stroke: rgb(18 111 102 / 32%);
+  stroke-width: 1.5;
+}
+
+.strategyCoreInnerRing {
+  fill: none;
+  stroke: rgb(21 86 91 / 10%);
+  stroke-width: 1;
+}
+
+.strategyCoreDivider {
+  fill: none;
+  stroke: #d6a842;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.strategyTotal {
+  fill: #123f57;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 70px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.strategyCoreLabel {
+  fill: #285b66;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 760;
+  letter-spacing: 0.11em;
+}
+
+.strategyCoreSublabel {
+  fill: #16756b;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 760;
+  letter-spacing: 0.16em;
+}
+
+.consultingPetal {
+  --item: clamp(0, var(--phase, 1), 1);
+
+  opacity: var(--item);
+  transform: rotate(calc((1 - var(--item)) * -7deg)) scale(calc(0.985 + var(--item) * 0.015));
+  transform-box: view-box;
+  transform-origin: 800px 452px;
+}
+
+/* Each bead starts earlier on its own circular rail, then settles into place.
+   Rotation around the shared hub produces a true arc using compositor-only
+   transform and opacity; no cartesian left-to-right tween is involved. */
+.strategySectorFrame {
+  fill: #f8f2e9;
+  filter: drop-shadow(0 11px 9px rgb(38 64 53 / 19%));
+  stroke: #f8f2e9;
+  stroke-linejoin: round;
+  stroke-width: 50;
+}
+
+/* The petal path is inset by its corner radius; the same-colour round-join
+   stroke puts the true edge back and fillets all four corners. */
+.strategySectorShadow {
+  fill: rgb(27 53 37 / 19%);
+  filter: blur(8px);
+  stroke: rgb(27 53 37 / 19%);
+  stroke-linejoin: round;
+  stroke-width: 34;
+  transform: translateY(11px);
+}
+
+.strategySector {
+  fill: var(--tone, #4f9b45);
+  filter: saturate(1.13) contrast(1.02);
+  stroke: var(--tone, #4f9b45);
+  stroke-linejoin: round;
+  stroke-width: 34;
+  transition: filter 160ms cubic-bezier(.23, 1, .32, 1);
+}
+
+.strategySectorGloss {
+  fill: url('#strategy-gloss');
+  opacity: 0.62;
+  pointer-events: none;
+  stroke: none;
+  transition: filter 160ms cubic-bezier(.23, 1, .32, 1);
+}
+
+.strategySectorHighlight {
+  fill: none;
+  opacity: 0.5;
+  pointer-events: none;
+  stroke: rgb(255 255 255 / 46%);
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.strategyIconAsset {
+  filter: drop-shadow(0 5px 7px rgb(35 51 34 / 20%));
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    filter 180ms ease-out,
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.strategyIconFrame {
+  fill: rgb(255 251 242 / 96%);
+  filter: drop-shadow(0 10px 13px rgb(31 55 39 / 22%));
+  pointer-events: none;
+  stroke: rgb(255 255 255 / 96%);
+  stroke-width: 4;
+}
+
+.strategyIconBevel {
+  fill: rgb(250 245 235 / 88%);
+  pointer-events: none;
+  stroke: rgb(213 194 157 / 58%);
+  stroke-width: 1.5;
+}
+
+.strategyIconRim {
+  fill: none;
+  pointer-events: none;
+  stroke: rgb(221 182 96 / 78%);
+  stroke-width: 2;
+}
+
+.entityLink:hover .strategyIconAsset,
+.entityLink:focus-visible .strategyIconAsset {
+  filter: drop-shadow(0 8px 10px rgb(35 51 34 / 25%)) saturate(1.04);
+  transform: translateY(-2px) scale(1.025);
+}
+
+/* The consulting wheel uses an image-first, intentionally quiet information
+   surface. It keeps the medallion as the visual anchor and limits copy to one
+   short line so the plate remains visible while the user explores it. */
+/* Inline consulting morph -------------------------------------------------
+   A selected petal becomes the information surface: the colored bridge and
+   ivory shell grow directly away from the wheel, then the three-level copy
+   settles in. No leader, wire or floating annotation competes with the data. */
+.strategyMorphPanel {
+  --strategy-morph-progress: .18;
+  --strategy-copy-opacity: 0;
+
+  min-height: clamp(10.75rem, 24%, 13rem);
+  isolation: isolate;
+  top: var(--morph-y);
+  width: clamp(31rem, 35%, 42rem);
+}
+
+.strategyMorphPanel[data-anchor='left'] {
+  left: 1.25%;
+}
+
+.strategyMorphPanel[data-anchor='right'] {
+  right: 1.25%;
+}
+
+.strategyMorphPanel::after {
+  background: color-mix(in srgb, var(--morph-tone) 88%, #123f61);
+  box-shadow: 0 .6rem 1.25rem color-mix(in srgb, var(--morph-tone) 20%, transparent);
+  content: '';
+  height: 44%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scaleX(var(--strategy-morph-progress));
+  transition: transform 220ms cubic-bezier(.23, 1, .32, 1);
+  width: 3.8rem;
+  z-index: -1;
+}
+
+.strategyMorphPanel[data-anchor='left']::after {
+  border-radius: 0 999px 999px 0;
+  right: -3.15rem;
+  transform-origin: right center;
+}
+
+.strategyMorphPanel[data-anchor='right']::after {
+  border-radius: 999px 0 0 999px;
+  left: -3.15rem;
+  transform-origin: left center;
+}
+
+.strategyMorphPanel .journeyMorphPanelShell {
+  border-color: color-mix(in srgb, var(--morph-tone) 34%, #e7dfd1);
+  border-radius: 2.15rem;
+  box-shadow:
+    0 .72rem 0 color-mix(in srgb, var(--morph-tone) 88%, #123f61),
+    0 1.2rem 2.25rem rgb(18 63 97 / 15%),
+    inset 0 1px 0 rgb(255 255 255 / 96%);
+  transform: scaleX(var(--strategy-morph-progress));
+  transition: transform 220ms cubic-bezier(.23, 1, .32, 1);
+  z-index: 1;
+}
+
+.strategyMorphPanel .journeyMorphPanelContent {
+  gap: .95rem;
+  grid-template-columns: 4.8rem minmax(0, 1fr);
+  opacity: var(--strategy-copy-opacity);
+  padding: 1.05rem 1.2rem;
+  transition:
+    opacity 100ms cubic-bezier(.23, 1, .32, 1),
+    transform 100ms cubic-bezier(.23, 1, .32, 1);
+  z-index: 2;
+}
+
+.strategyMorphPanel .journeyMorphPanelImage {
+  border-radius: 50%;
+  height: 4.8rem;
+  width: 4.8rem;
+}
+
+.strategyMorphPanel .journeyMorphPanelCopy {
+  align-items: center;
+  display: grid;
+  gap: .15rem .95rem;
+  grid-template-columns: minmax(8.8rem, .9fr) minmax(12.5rem, 1.35fr);
+  grid-template-rows: auto 1fr;
+}
+
+.strategyMorphPanel .journeyMorphPanelEyebrow {
+  font-size: .66rem;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.strategyMorphPanel .journeyMorphPanelTitle {
+  align-self: start;
+  font-size: clamp(1.02rem, 1.12vw, 1.34rem);
+  grid-column: 1;
+  grid-row: 2;
+  line-height: 1.12;
+}
+
+.strategyMorphPanel .journeyMorphPanelList {
+  align-self: stretch;
+  gap: .46rem;
+  grid-column: 2;
+  grid-row: 1 / 3;
+  justify-content: center;
+  margin: 0;
+  padding-left: .95rem;
+}
+
+.strategyMorphPanel .journeyMorphPanelList li {
+  font-size: clamp(.74rem, .69vw, .84rem);
+  line-height: 1.28;
+}
+
+.strategyMorphPanel .journeyMorphPanelList li::before {
+  content: none;
+}
+
+.strategyMorphPanel .journeyMorphPanelCta {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.strategyMorphPanel[data-open='true']::after {
+  transform: translateY(-50%) scaleX(1);
+  transition-duration: 320ms;
+}
+
+.strategyPopoverTrigger:focus-visible .strategySector,
+.strategyPopoverTrigger:focus-visible .strategySectorGloss {
+  filter: brightness(1.05) saturate(1.08);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .strategyPopoverTrigger:hover .strategySector,
+  .strategyPopoverTrigger:hover .strategySectorGloss {
+    filter: brightness(1.05) saturate(1.08);
+  }
+}
+
+@media (max-width: 1120px) {
+  .strategyMorphPanel {
+    min-height: clamp(10.5rem, 28%, 12rem);
+    width: 45%;
+  }
+
+  .strategyMorphPanel .journeyMorphPanelContent {
+    grid-template-columns: 4rem minmax(0, 1fr);
+    padding: .9rem 1rem;
+  }
+
+  .strategyMorphPanel .journeyMorphPanelImage {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .strategyMorphPanel .journeyMorphPanelCopy {
+    display: block;
+  }
+
+  .strategyMorphPanel .journeyMorphPanelList {
+    gap: .22rem;
+    margin-top: .5rem;
+  }
+}
+
+/* 03 — Đào tạo ----------------------------------------------------------- */
+
+.trainingPlate {
+  overflow: visible;
+}
+
+.trainingRibbonShadow {
+  filter: blur(14px);
+  opacity: calc(var(--item) * 0.14);
+  stroke: #123a5e;
+  stroke-width: 150;
+  transform: translateY(32px);
+}
+
+.trainingRibbonEdge {
+  opacity: var(--item);
+  stroke: #fdfaf4;
+  stroke-width: 136;
+}
+
+.trainingRibbonRim {
+  filter: brightness(0.84) saturate(1.08);
+  opacity: var(--item);
+  stroke: url('#training-ribbon');
+  stroke-width: 120;
+  transform: translateY(18px);
+}
+
+.trainingRibbon {
+  opacity: var(--item);
+  stroke: url('#training-ribbon');
+  stroke-width: 100;
+}
+
+.trainingRibbonLine {
+  opacity: calc(var(--item) * 0.54);
+  stroke: #ffffff;
+  stroke-width: 1.6;
+  transform: translateY(-16px);
+}
+
+.trainingPlatformShadow {
+  fill: rgb(25 60 92 / 15%);
+  filter: blur(14px);
+}
+
+.trainingPlatformBase {
+  fill: var(--tone, #1668c4);
+  filter: brightness(0.84) saturate(1.08) drop-shadow(0 11px 12px rgb(25 60 92 / 16%));
+  stroke: rgb(255 255 255 / 48%);
+  stroke-width: 2;
+}
+
+.trainingPlatformFace {
+  fill: url('#training-platform-face');
+  filter: drop-shadow(0 4px 0 rgb(229 222 209 / 84%));
+  stroke: rgb(25 60 92 / 10%);
+  stroke-width: 1.35;
+}
+
+.trainingPlatformLabel {
+  fill: var(--tone, #1668c4);
+  font-family: var(--font-body);
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.trainingMedallionShadow {
+  fill: rgb(25 60 92 / 15%);
+  filter: blur(10px);
+}
+
+.trainingMedallionRing {
+  fill: #fffdf8;
+  filter: drop-shadow(0 4px 0 rgb(225 217 204 / 84%));
+  stroke: rgb(25 60 92 / 10%);
+  stroke-width: 1.4;
+}
+
+.trainingMedallion {
+  filter: drop-shadow(0 1px 1px rgb(255 255 255 / 34%));
+  stroke: rgb(255 255 255 / 36%);
+  stroke-width: 1.25;
+}
+
+.trainingIconAsset {
+  filter: drop-shadow(0 7px 9px rgb(27 53 72 / 20%));
+  pointer-events: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.trainingProgramLink .trainingPlatformFace,
+.trainingProgramLink .trainingMedallionRing,
+.trainingProgramLink .trainingMedallion {
+  transition: filter 180ms ease-out, transform 180ms ease-out;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.trainingProgramLink:hover .trainingPlatformFace,
+.trainingProgramLink:focus-visible .trainingPlatformFace {
+  filter: drop-shadow(0 7px 3px rgb(25 60 92 / 16%));
+  transform: translateY(-2px);
+}
+
+.trainingProgramLink:hover .trainingMedallionRing,
+.trainingProgramLink:hover .trainingMedallion,
+.trainingProgramLink:hover .trainingIconAsset,
+.trainingProgramLink:focus-visible .trainingMedallionRing,
+.trainingProgramLink:focus-visible .trainingMedallion,
+.trainingProgramLink:focus-visible .trainingIconAsset {
+  transform: translateY(-3px);
+}
+
+.trainingDropDot {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  display: none;
+  fill: var(--tone, #1668c4);
+  opacity: calc(var(--item) * 0.9);
+}
+
+.trainingDropEnd {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  display: none;
+  fill: none;
+  opacity: calc(var(--item) * 0.85);
+  stroke: var(--tone, #1668c4);
+  stroke-width: 2.4;
+}
+
+/* The 49 is present for the whole chapter — no phase, no entrance. */
+.trainingTotalCard {
+  opacity: 1;
+}
+
+.trainingTotalShadow {
+  fill: rgb(25 60 92 / 14%);
+  filter: blur(9px);
+}
+
+.trainingTotalStack {
+  fill: #f2ede4;
+  stroke: rgb(25 60 92 / 9%);
+  stroke-width: 1.2;
+}
+
+.trainingTotalFace {
+  fill: url('#training-total-face');
+  stroke: rgb(25 60 92 / 11%);
+  stroke-width: 1.4;
+}
+
+.trainingTotalValue {
+  fill: #1565c0;
+  font-family: var(--font-body);
+  font-size: 142px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.trainingTotalLabel {
+  fill: #12457d;
+  font-family: var(--font-body);
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* 04 — Chuyển giao ------------------------------------------------------- */
+
+.transferPlate {
+  overflow: visible;
+}
+
+.transferRing {
+  opacity: 0.2;
+  stroke: #91aabd;
+}
+
+.transferBandShadow {
+  filter: blur(10px);
+  opacity: calc(var(--item) * 0.24);
+  stroke: #123a5e;
+  stroke-width: 122;
+  transform: translateY(15px);
+}
+
+.transferBandRim {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  fill: none;
+  opacity: calc(var(--item) * 0.54);
+  stroke: #f7fcfd;
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--item));
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 118;
+}
+
+.transferBand {
+  opacity: var(--item);
+  filter: saturate(1.04) drop-shadow(0 2px 2px rgb(20 66 88 / 12%));
+  stroke-width: 112;
+}
+
+.transferBandLine {
+  opacity: calc(var(--item) * 0.56);
+  stroke: #ffffff;
+  stroke-width: 2.2;
+}
+
+.transferArrow {
+  --item: var(--phase, 1);
+
+  fill: none;
+  opacity: calc(var(--item) * 0.96);
+  stroke: #ffffff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.8;
+}
+
+.transferTarget {
+  transform-origin: right center;
+}
+
+.transferTargetSurface {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 180ms ease-out, transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.transferAccent {
+  fill: var(--transfer-accent, #f26f33);
+  filter: drop-shadow(0 9px 9px rgb(25 60 92 / 15%));
+}
+
+.transferCardShadow {
+  fill: rgb(25 60 92 / 26%);
+  filter: blur(13px);
+}
+
+.transferCard {
+  stroke: rgb(255 255 255 / 78%);
+  stroke-width: 2;
+}
+
+.transferIconDisc {
+  fill: rgb(255 255 255 / 12%);
+  stroke: rgb(255 255 255 / 34%);
+  stroke-width: 1.4;
+}
+
+.transferIconRing {
+  fill: rgb(255 255 255 / 4%);
+  stroke: var(--transfer-accent-soft, rgb(255 255 255 / 52%));
+  stroke-width: 1.2;
+}
+
+.transferIconAsset {
+  filter: drop-shadow(0 5px 7px rgb(11 48 54 / 22%));
+  pointer-events: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.transferPlate .entityLink:hover .transferIconAsset,
+.transferPlate .entityLink:focus-visible .transferIconAsset {
+  transform: scale(1.055);
+}
+
+.transferDivider {
+  fill: none;
+  opacity: 0.58;
+  stroke: #fdfaf4;
+  stroke-width: 1.25;
+}
+
+.transferLabel {
+  fill: #fdfaf4;
+  font-family: var(--font-body);
+  font-size: 25px;
+  font-weight: 720;
+  letter-spacing: 0.005em;
+}
+
+.transferSourceShadow {
+  fill: rgb(25 60 92 / 26%);
+  filter: blur(13px);
+}
+
+.transferSourceStack {
+  fill: #dce5e4;
+  opacity: 0.72;
+  stroke: rgb(25 60 92 / 10%);
+  stroke-width: 1.4;
+}
+
+.transferSourceFace {
+  fill: url('#transfer-source');
+  stroke: rgb(221 247 250 / 70%);
+  stroke-width: 1.8;
+}
+
+.transferSourceLabel {
+  fill: #fdfaf4;
+  font-family: var(--font-body);
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.transferSourceSpectrum {
+  fill: none;
+  opacity: 0.92;
+  stroke: url('#transfer-spectrum');
+  stroke-linecap: round;
+  stroke-width: 5;
+}
+
+.transferPlate .entityLink:hover .transferTargetSurface,
+.transferPlate .entityLink:focus-visible .transferTargetSurface {
+  opacity: 0.98;
+  transform: translate3d(-8px, -2px, 0) scale(1.015);
+}
+
+.transferPlate .entityLink:active .transferTargetSurface {
+  transform: translate3d(-3px, 0, 0) scale(0.995);
+  transition-duration: 100ms;
+}
+
+.transferPlate .entityLink:hover .transferArrow,
+.transferPlate .entityLink:focus-visible .transferArrow {
+  transform: translateX(6px);
+}
+
+.transferPlate .entityLink:focus-visible .entityHit {
+  stroke: var(--transfer-accent, #f26f33);
+  stroke-dasharray: none;
+  stroke-width: 3;
+}
+
+.transferPlate .transferArrow {
+  transition: opacity 180ms ease-out, transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 05 — Mạng lưới --------------------------------------------------------- */
+
+.networkPlate {
+  overflow: visible;
+}
+
+.networkHeading,
+.networkExpertPod,
+.networkOrgCluster,
+.networkCompass,
+.networkFlowGroup,
+.networkProject,
+.networkFund {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  opacity: var(--item);
+  transform: translateY(calc((1 - var(--item)) * 12px)) scale(calc(0.97 + var(--item) * 0.03));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.networkValue {
+  fill: #103b5d;
+  font-family: var(--font-body);
+  font-size: 52px;
+  font-weight: 760;
+  letter-spacing: -0.035em;
+}
+
+.networkLabel {
+  fill: #244d6d;
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 720;
+  letter-spacing: 0.12em;
+}
+
+.networkMetricRule {
+  fill: none;
+  opacity: 0.42;
+  stroke: #7f9aaa;
+  stroke-linecap: round;
+  stroke-width: 1;
+}
+
+.networkMetricSpark,
+.networkFlowSpark {
+  fill: #ef7622;
+  filter: drop-shadow(0 2px 2px rgb(239 118 34 / 24%));
+}
+
+.networkSidePanelShadow {
+  fill: rgb(17 56 85 / 13%);
+  filter: blur(12px);
+  transform: translateY(10px);
+}
+
+.networkSidePanel {
+  fill: url('#network-panel-face');
+  stroke: rgb(255 255 255 / 82%);
+  stroke-width: 1.5;
+}
+
+.networkOrbitShadow {
+  fill: none;
+  opacity: 0.14;
+  stroke: #163f61;
+  stroke-linecap: round;
+  stroke-width: 10;
+  transform: translateY(8px);
+  filter: blur(7px);
+}
+
+.networkOrbitRail {
+  fill: none;
+  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 95%));
+  opacity: 0.82;
+  stroke: #d9d4ca;
+  stroke-linecap: round;
+  stroke-width: 7;
+  vector-effect: non-scaling-stroke;
+}
+
+.networkFlowBandShadow,
+.networkFlowBand,
+.networkFlowStrand,
+.networkFineLink {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.networkFlowBandShadow,
+.networkFlowBand,
+.networkFlowStrand {
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--item));
+}
+
+.networkFlowBandShadow {
+  opacity: calc(var(--item) * 0.12);
+  stroke: #173d5d;
+  stroke-width: 22;
+  transform: translateY(6px);
+  filter: blur(6px);
+}
+
+.networkFlowBand {
+  opacity: calc(var(--item) * 0.82);
+  stroke: var(--tone, #7a68af);
+  stroke-width: 12;
+}
+
+.networkFlowStrand {
+  opacity: calc(var(--item) * 0.62);
+  stroke: rgb(255 255 255 / 90%);
+  stroke-width: 1.15;
+}
+
+.networkFineLink {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  opacity: calc(var(--item) * 0.09);
+  pointer-events: none;
+  stroke: var(--tone, #6f7fc4);
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--item));
+  stroke-width: 0.9;
+  transition: opacity 240ms cubic-bezier(0.2, 0.8, 0.2, 1), stroke-width 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.networkEntity:hover .networkFineLink,
+.networkEntity:focus-visible .networkFineLink {
+  opacity: 0.86;
+  stroke-width: 1.5;
+}
+
+.networkPodShadow {
+  fill: rgb(20 56 83 / 12%);
+  filter: blur(8px);
+}
+
+.networkPodDish {
+  fill: url('#network-panel-face');
+  filter: drop-shadow(0 3px 3px rgb(26 53 77 / 10%));
+  stroke: var(--tone, #0b3b67);
+  stroke-opacity: 0.28;
+  stroke-width: 1.5;
+}
+
+.networkPodInset {
+  fill: rgb(250 247 241 / 58%);
+  stroke: rgb(255 255 255 / 78%);
+  stroke-width: 1;
+}
+
+.networkExpert {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  fill: url('#network-slot-face');
+  filter:
+    drop-shadow(0 1px 0 rgb(255 255 255 / 90%))
+    drop-shadow(0 3px 4px rgb(25 50 82 / 16%));
+  opacity: var(--item);
+  stroke: var(--tone, #0b3b67);
+  stroke-opacity: 0.68;
+  stroke-width: 1.7;
+  transform: scale(calc(0.82 + var(--item) * 0.18));
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: filter 260ms cubic-bezier(0.2, 0.8, 0.2, 1), stroke-width 260ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.networkExpertInset {
+  fill: rgb(255 255 255 / 42%);
+  pointer-events: none;
+  stroke: rgb(255 255 255 / 78%);
+  stroke-width: 1;
+}
+
+.networkOrgClusterShadow {
+  fill: rgb(26 53 77 / 10%);
+  filter: blur(8px);
+}
+
+.networkOrgClusterDish {
+  fill: rgb(255 253 249 / 70%);
+  filter: drop-shadow(0 2px 0 rgb(255 255 255 / 80%));
+  stroke: var(--tone, #007c83);
+  stroke-opacity: 0.18;
+  stroke-width: 1.3;
+}
+
+.networkConstellationLine {
+  fill: none;
+  opacity: 0.22;
+  stroke: var(--tone, #007c83);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.1;
+}
+
+.networkConstellationCore {
+  fill: var(--tone, #007c83);
+  opacity: 0.84;
+}
+
+.networkOrg {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  fill: url('#network-slot-face');
+  filter:
+    drop-shadow(0 1px 0 rgb(255 255 255 / 90%))
+    drop-shadow(0 2px 3px rgb(25 50 82 / 14%));
+  opacity: var(--item);
+  stroke: var(--tone, #007c83);
+  stroke-opacity: 0.52;
+  stroke-width: 1.3;
+  transform: scale(calc(0.78 + var(--item) * 0.22));
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: filter 260ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.networkOrgSlot {
+  fill: #fff;
+  pointer-events: none;
+  stroke: rgb(22 58 86 / 8%);
+  stroke-width: 0.8;
+}
+
+.networkBeadGlint {
+  fill: rgb(255 255 255 / 86%);
+  pointer-events: none;
+}
+
+.networkCompassShadow,
+.networkCompassFrame,
+.networkCompassWire {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.networkCompassShadow {
+  opacity: 0.15;
+  stroke: #1f3e62;
+  stroke-width: 20;
+  transform: translateY(10px);
+  filter: blur(10px);
+}
+
+.networkCompassFrame {
+  filter: drop-shadow(0 2px 0 rgb(255 255 255 / 88%));
+  stroke: url('#network-compass-frame');
+  stroke-width: 16;
+}
+
+.networkCompassWire {
+  opacity: 0.36;
+  stroke: #6a5aa2;
+  stroke-width: 1.4;
+}
+
+.networkCompassCoreShadow {
+  fill: rgb(27 48 75 / 17%);
+  filter: blur(5px);
+}
+
+.networkCompassCore {
+  fill: url('#network-project-face');
+  filter: drop-shadow(0 2px 0 rgb(255 255 255 / 92%));
+  stroke: #dfd5c7;
+  stroke-width: 1.8;
+}
+
+.networkCompassValue {
+  fill: #17375f;
+  font-family: var(--font-body);
+  font-size: 31px;
+  font-weight: 760;
+}
+
+.networkCompassLabel {
+  fill: #526d86;
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+}
+
+.networkProjectGround {
+  fill: rgb(22 48 80 / 12%);
+  filter: blur(10px);
+}
+
+.networkProjectStack {
+  fill: url('#network-project-face');
+  filter: drop-shadow(0 7px 9px rgb(25 60 92 / 14%));
+  stroke: rgb(25 60 92 / 10%);
+  stroke-width: 1.2;
+}
+
+.networkProjectRing {
+  fill: url('#network-project-face');
+  filter: drop-shadow(0 3px 0 rgb(230 223 212 / 90%));
+  stroke: var(--tone, #6b4fa0);
+  stroke-width: 2.6;
+  transition: stroke-width 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.networkProjectCore {
+  fill: #fbf8f2;
+  stroke: rgb(255 255 255 / 88%);
+  stroke-width: 1.2;
+}
+
+.networkProjectImage {
+  pointer-events: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.networkProjectInset {
+  fill: none;
+  pointer-events: none;
+  stroke: rgb(255 255 255 / 92%);
+  stroke-width: 1.2;
+}
+
+.networkProjectName {
+  fill: #244d6d;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 720;
+  letter-spacing: 0.035em;
+  paint-order: stroke;
+  stroke: #f9f4ec;
+  stroke-linejoin: round;
+  stroke-width: 5px;
+}
+
+.networkFundShadow {
+  fill: rgb(25 60 92 / 13%);
+  filter: blur(7px);
+}
+
+.networkFundFace {
+  fill: url('#network-fund-face');
+  filter: drop-shadow(0 2px 0 rgb(227 220 211 / 80%));
+  stroke: var(--tone, #2c3f74);
+  stroke-opacity: 0.32;
+  stroke-width: 1.4;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: filter 260ms cubic-bezier(0.2, 0.8, 0.2, 1), stroke-width 260ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.networkFundSheen {
+  fill: rgb(255 255 255 / 24%);
+  opacity: 0.9;
+  pointer-events: none;
+  stroke: rgb(255 255 255 / 92%);
+  stroke-width: 1;
+}
+
+.networkFundBadge {
+  fill: rgb(255 255 255 / 20%);
+  pointer-events: none;
+  stroke: var(--tone, #2c3f74);
+  stroke-opacity: 0.18;
+  stroke-width: 1;
+  transition: stroke-opacity 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.networkEntity:hover .networkExpert,
+.networkEntity:hover .networkOrg,
+.networkEntity:focus-visible .networkExpert,
+.networkEntity:focus-visible .networkOrg {
+  filter: drop-shadow(0 7px 8px rgb(25 50 82 / 22%));
+  transform: scale(1.08);
+}
+
+.networkEntity:hover .networkProjectImage,
+.networkEntity:focus-visible .networkProjectImage {
+  transform: scale(1.06);
+}
+
+.networkEntity:hover .networkProjectRing,
+.networkEntity:focus-visible .networkProjectRing {
+  stroke-width: 4;
+}
+
+.networkEntity:hover .networkFundFace,
+.networkEntity:focus-visible .networkFundFace {
+  filter: drop-shadow(0 7px 8px rgb(25 50 82 / 20%));
+  stroke-width: 2.4;
+  transform: scale(1.07);
+}
+
+.networkEntity:hover .networkFundBadge,
+.networkEntity:focus-visible .networkFundBadge {
+  stroke-opacity: 0.54;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .networkHeading,
+  .networkExpertPod,
+  .networkOrgCluster,
+  .networkCompass,
+  .networkFlowGroup,
+  .networkProject,
+  .networkFund,
+  .networkExpert,
+  .networkOrg {
+    opacity: 1;
+    transform: none;
+  }
+
+  .networkFlowBandShadow,
+  .networkFlowBand,
+  .networkFlowStrand {
+    stroke-dashoffset: 0;
+  }
+
+  .networkFineLink {
+    opacity: 0.09;
+    stroke-dashoffset: 0;
+  }
+
+  .networkExpert,
+  .networkOrg,
+  .networkProjectImage,
+  .networkProjectRing,
+  .networkFundFace,
+  .networkFundBadge,
+  .networkFineLink {
+    transition-duration: 1ms;
+  }
+}
+
+/* 06 — Tác động ---------------------------------------------------------- */
+
+.impactPlate {
+  background: #fff;
+  overflow: visible;
+}
+
+.impactCoreWordmarkG {
+  fill: #006c73;
+}
+
+.impactCoreWordmarkI {
+  fill: #f26f33;
+}
+
+.impactCoreWordmarkS {
+  fill: #00562f;
+}
+
+.impactCoreWordmarkA {
+  fill: #1683df;
+}
+
+.impactIconAsset {
+  filter: drop-shadow(0 6px 8px rgb(26 55 67 / 18%));
+  pointer-events: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 210ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.impactEntityLink:hover .impactIconAsset,
+.impactEntityLink:focus-visible .impactIconAsset {
+  transform: scale(1.045);
+}
+
+.impactPillar,
+.impactCore,
+.impactNode {
+  transition:
+    filter 320ms cubic-bezier(0.22, 0.74, 0.2, 1),
+    transform 320ms cubic-bezier(0.22, 0.74, 0.2, 1);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.impactEntityLink:hover .impactPillar,
+.impactEntityLink:hover .impactCore,
+.impactEntityLink:hover .impactNode,
+.impactEntityLink:focus-visible .impactPillar,
+.impactEntityLink:focus-visible .impactCore,
+.impactEntityLink:focus-visible .impactNode {
+  filter: drop-shadow(0 12px 12px rgb(18 58 94 / 18%));
+  transform: translateY(-4px) scale(1.035);
+}
+
+.impactEntityLink:active .impactPillar,
+.impactEntityLink:active .impactCore,
+.impactEntityLink:active .impactNode {
+  filter: drop-shadow(0 5px 6px rgb(18 58 94 / 12%));
+  transform: scale(0.988);
+  transition-duration: 90ms;
+}
+
+/* Approved impact-flow direction ----------------------------------------- */
+.impactStageShell {
+  height: 100%;
+  overflow: visible;
+  position: relative;
+  width: 100%;
+}
+
+.impactStageShell > svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.impactMorphLayer {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 45;
+}
+
+.impactMorphPanel {
+  min-height: clamp(9rem, 22%, 10.6rem);
+  width: min(39%, 40rem);
+}
+
+.impactMorphPillar0 {
+  left: 30.5%;
+  top: 22%;
+}
+
+.impactMorphPillar1 {
+  left: 3%;
+  top: 68%;
+}
+
+.impactMorphPillar2 {
+  right: 3%;
+  top: 68%;
+}
+
+.impactMorphCore {
+  left: 30.5%;
+  top: 54%;
+}
+
+.impactMorphCore .journeyMorphPanelContent {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.impactMorphNode0 {
+  left: 1%;
+  top: 50%;
+  width: min(35%, 36rem);
+}
+
+.impactMorphNode1 {
+  left: 11%;
+  top: 50%;
+}
+
+.impactMorphNode2 {
+  right: 11%;
+  top: 50%;
+}
+
+.impactMorphNode3 {
+  right: 1%;
+  top: 50%;
+  width: min(35%, 36rem);
+}
+
+.approvedImpactPlate {
+  background:
+    radial-gradient(circle at 50% 48%, rgb(58 153 116 / 7%), transparent 34%),
+    #fff;
+}
+
+.approvedImpactFlow {
+  pointer-events: none;
+}
+
+.approvedImpactBackbone,
+.approvedImpactBackboneColor {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.approvedImpactBackbone {
+  filter: drop-shadow(0 8px 9px rgb(21 60 87 / 15%));
+  stroke: #f4f0e8;
+  stroke-width: 48;
+}
+
+.approvedImpactBackboneColor {
+  --item: clamp(0, var(--phase, 1), 1);
+
+  opacity: .82;
+  stroke: #8ecfc5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--item));
+  stroke-width: 15;
+}
+
+.approvedImpactArrow {
+  --item: clamp(0, var(--phase, 1), 1);
+
+  opacity: var(--item);
+  transform: scale(calc(.86 + var(--item) * .14));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.approvedImpactArrow circle {
+  fill: #fffdf8;
+  filter: drop-shadow(0 3px 4px rgb(21 60 87 / 18%));
+  stroke: var(--tone);
+  stroke-width: 2.5;
+}
+
+.approvedImpactArrow path {
+  fill: none;
+  stroke: var(--tone);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+.approvedImpactPetal {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  fill: color-mix(in srgb, var(--tone) 88%, #fff);
+  filter: drop-shadow(0 13px 14px color-mix(in srgb, var(--tone) 21%, transparent));
+  opacity: calc(var(--item) * .96);
+  stroke: color-mix(in srgb, var(--tone) 58%, #fff);
+  stroke-width: 5;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.approvedImpactPetalTop {
+  transform: translateY(calc((1 - var(--item)) * 22px)) scale(calc(.96 + var(--item) * .04));
+}
+
+.approvedImpactPetalLeft {
+  transform: translate(calc((1 - var(--item)) * 18px), calc((1 - var(--item)) * -10px)) scale(calc(.96 + var(--item) * .04));
+}
+
+.approvedImpactPetalRight {
+  transform: translate(calc((1 - var(--item)) * -18px), calc((1 - var(--item)) * -10px)) scale(calc(.96 + var(--item) * .04));
+}
+
+.approvedImpactHubLink {
+  --item: clamp(0, var(--phase, 1), 1);
+
+  fill: none;
+  opacity: calc(var(--item) * .62);
+  stroke: #fff;
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--item));
+  stroke-linecap: round;
+  stroke-width: 8;
+}
+
+.approvedImpactPillar {
+  --item: clamp(0, calc(var(--phase, 1) * var(--n, 1) - var(--i, 0)), 1);
+
+  opacity: var(--item);
+  transform: translateY(calc((1 - var(--item)) * 16px)) scale(calc(.96 + var(--item) * .04));
+}
+
+.approvedImpactPillarField {
+  fill: color-mix(in srgb, var(--tone) 8%, #fffdf8);
+  filter: url('#impact-soft-shadow');
+  stroke: #fff;
+  stroke-width: 8;
+}
+
+.approvedImpactIconField {
+  fill: #fffdf8;
+  filter: drop-shadow(0 6px 8px rgb(21 60 87 / 12%));
+  stroke: color-mix(in srgb, var(--tone) 54%, #e7d1a4);
+  stroke-width: 3;
+}
+
+.approvedImpactPillarLabel,
+.approvedImpactNodeLabel {
+  fill: var(--tone);
+  font-family: var(--font-body);
+  font-size: 25px;
+  font-weight: 780;
+  letter-spacing: .055em;
+}
+
+.approvedImpactCoreShadow {
+  fill: rgb(21 60 87 / 17%);
+  filter: blur(9px);
+}
+
+.approvedImpactCore {
+  --item: clamp(0, var(--phase, 1), 1);
+
+  opacity: var(--item);
+  transform: scale(calc(.96 + var(--item) * .04));
+}
+
+.approvedImpactCoreFace {
+  fill: #fffdf8;
+  filter: drop-shadow(0 12px 13px rgb(21 60 87 / 16%));
+  stroke: #e2bb67;
+  stroke-width: 3;
+}
+
+.approvedImpactWordmark {
+  font-family: var(--font-body);
+  font-size: 73px;
+  font-weight: 860;
+  letter-spacing: -.075em;
+}
+
+.approvedImpactCoreLabel {
+  fill: #173f61;
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 760;
+  letter-spacing: .17em;
+}
+
+.approvedImpactNodeShadow {
+  fill: rgb(21 60 87 / 14%);
+  filter: blur(7px);
+}
+
+.approvedImpactNodeFace {
+  fill: color-mix(in srgb, var(--tone) 6%, #fffdf8);
+  filter: drop-shadow(0 12px 14px color-mix(in srgb, var(--tone) 16%, transparent));
+  stroke: color-mix(in srgb, var(--tone) 78%, #fff);
+  stroke-width: 9;
+}
+
+.approvedImpactNode {
+  --item: clamp(0, var(--phase, 1), 1);
+
+  opacity: var(--item);
+  transform: translateX(var(--impact-node-enter)) scale(calc(.97 + var(--item) * .03));
+}
+
+.approvedImpactNodeStart {
+  --impact-node-enter: calc((1 - var(--item)) * -24px);
+}
+
+.approvedImpactNodeEnd {
+  --impact-node-enter: calc((1 - var(--item)) * 24px);
+}
+
+.approvedImpactNodeLabel {
+  font-size: 23px;
+}
+
+@media (max-width: 70rem) {
+  .journeyMorphPanelContent {
+    gap: .8rem;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    padding: .85rem 1rem;
+  }
+
+  .journeyMorphPanelImage {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+
+  .researchMorphPanel {
+    width: 46%;
+  }
+
+  .transferMorphPanel {
+    right: 1%;
+    width: 58%;
+  }
+
+  .impactMorphPanel {
+    width: 46%;
+  }
+
+  .trainingMorphPanel {
+    left: 4%;
+    width: 56%;
+  }
+
+  .trainingMorphPanel[data-morph-key='1'] {
+    left: 14%;
+  }
+
+  .trainingMorphPanel[data-morph-key='2'] {
+    left: 22%;
+  }
+
+  .trainingMorphPanel[data-morph-key='3'] {
+    left: 32%;
+  }
+
+  .trainingMorphPanel[data-morph-key='4'] {
+    left: 42%;
+  }
+}
+
+@media (max-width: 48rem) {
+  .journeyMorphPanel {
+    min-height: 9rem;
+  }
+
+  .journeyMorphPanel[data-open='true'] {
+    pointer-events: none;
+  }
+
+  .journeyMorphPanelCta {
+    pointer-events: auto;
+  }
+
+  .journeyMorphPanelContent {
+    grid-template-columns: 4.25rem minmax(0, 1fr);
+    padding: .78rem .9rem;
+  }
+
+  .journeyMorphPanelImage {
+    height: 4.25rem;
+    width: 4.25rem;
+  }
+
+  .journeyMorphPanelTitle {
+    font-size: 1rem;
+  }
+
+  .journeyMorphPanelList li {
+    font-size: .75rem;
+  }
+
+  .researchMorphPanel {
+    left: clamp(2rem, var(--morph-x), calc(100% - min(22rem, calc(100vw - 2rem)) - 2rem));
+    min-height: 9rem;
+    width: 54%;
+  }
+
+  .strategyMorphPanel {
+    min-height: 10.5rem;
+    width: 62%;
+  }
+
+  .transferMorphPanel {
+    min-height: 9.2rem;
+    width: 62%;
+  }
+
+  .impactMorphPanel,
+  .impactMorphNode0,
+  .impactMorphNode3 {
+    min-height: 9.25rem;
+    width: 58%;
+  }
+
+  .trainingMorphPanel {
+    grid-template-columns: minmax(9rem, .9fr) 1px minmax(11rem, 1.2fr);
+    left: 2%;
+    width: 68%;
+  }
+
+  .trainingMorphPanel[data-morph-key='1'] {
+    left: 9%;
+  }
+
+  .trainingMorphPanel[data-morph-key='2'] {
+    left: 16%;
+  }
+
+  .trainingMorphPanel[data-morph-key='3'] {
+    left: 23%;
+  }
+
+  .trainingMorphPanel[data-morph-key='4'] {
+    left: 30%;
+  }
+
+  :is(
+    .researchMorphPanel,
+    .strategyMorphPanel,
+    .trainingMorphPanel,
+    .transferMorphPanel,
+    .impactMorphPanel,
+    .impactMorphNode0,
+    .impactMorphNode3
+  ) {
+    --morph-origin-x: center;
+
+    left: 50%;
+    max-width: calc(100vw - 2rem);
+    right: auto;
+    transform: translate3d(-50%, -50%, 0) scale(.985);
+    width: min(22rem, calc(100vw - 2rem));
+  }
+
+  :is(
+    .researchMorphPanel,
+    .strategyMorphPanel,
+    .trainingMorphPanel,
+    .transferMorphPanel,
+    .impactMorphPanel,
+    .impactMorphNode0,
+    .impactMorphNode3
+  )[data-open='true'] {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+
+  .trainingMorphPanel {
+    grid-template-columns: minmax(7.25rem, .8fr) 1px minmax(0, 1.2fr);
+  }
+
+  .transferMorphPanel {
+    top: 50% !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  :is(
+    .researchAvatar,
+    .strategyIconAsset,
+    .trainingPlatformFace,
+    .trainingMedallionRing,
+    .trainingMedallion,
+    .trainingIconAsset,
+    .transferIconAsset,
+    .transferTargetSurface,
+    .transferArrow,
+    .impactIconAsset,
+    .impactPillar,
+    .impactCore,
+    .impactNode
+  ) {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journeyMorphPanel {
+    transform: translate3d(0, -50%, 0);
+    transition: opacity 120ms cubic-bezier(.23, 1, .32, 1), visibility 0s linear 120ms;
+  }
+
+  .journeyMorphPanel::after,
+  .journeyMorphPanelShell {
+    transform: scaleX(1);
+    transition: none;
+  }
+
+  .strategyMorphPanel::after {
+    transform: translateY(-50%) scaleX(1);
+  }
+
+  .journeyMorphPanelContent {
+    transform: none;
+    transition: opacity 120ms cubic-bezier(.23, 1, .32, 1);
+  }
+
+  .journeyMorphRoot [data-morph-trigger],
+  .strategyStage > svg {
+    transform: none !important;
+    transition: opacity 120ms cubic-bezier(.23, 1, .32, 1), filter 120ms cubic-bezier(.23, 1, .32, 1);
+  }
+
+  :is(
+    .researchAvatar,
+    .strategyIconAsset,
+    .trainingPlatformFace,
+    .trainingMedallionRing,
+    .trainingMedallion,
+    .trainingIconAsset,
+    .transferIconAsset,
+    .transferTargetSurface,
+    .transferArrow,
+    .impactIconAsset,
+    .impactPillar,
+    .impactCore,
+    .impactNode
+  ) {
+    transform: none !important;
+    transition: opacity 120ms cubic-bezier(.23, 1, .32, 1), filter 120ms cubic-bezier(.23, 1, .32, 1);
+  }
+
+  .strategyMorphPanel::after,
+  .strategyMorphPanel .journeyMorphPanelShell,
+  .strategyMorphPanel .journeyMorphPanelContent,
+  .strategySector,
+  .strategySectorGloss {
+    transition: none;
+  }
+
+  .researchCard,
+  .researchChip,
+  .researchTotalCard,
+  .strategyCoreGroup,
+  .consultingPetal,
+  .trainingStage,
+  .transferTarget,
+  .transferSource,
+  .networkHeading,
+  .networkExpertPod,
+  .networkOrgCluster,
+  .networkCompass,
+  .networkFlowGroup,
+  .networkExpert,
+  .networkOrg,
+  .networkProject,
+  .networkFund,
+  .impactNode,
+  .impactPillar,
+  .impactCore {
+    transform: none;
+  }
+
+  .approvedImpactBackboneColor,
+  .approvedImpactHubLink {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+
+  .approvedImpactArrow,
+  .approvedImpactPetal,
+  .approvedImpactPillar,
+  .approvedImpactCore,
+  .approvedImpactNode {
+    transform: none;
+    transition: none;
+  }
+
+  .impactPillar,
+  .impactCore,
+  .impactNode {
+    transition: opacity 120ms ease-out;
+  }
+
+  .trainingProgramLink .trainingPlatformFace,
+  .trainingProgramLink .trainingMedallionRing,
+  .trainingProgramLink .trainingMedallion {
+    transition: none;
+    transform: none;
+  }
+
+  .trainingMorphPanel {
+    clip-path: inset(0 round clamp(1.5rem, 2vw, 2.35rem));
+    transform: none;
+    transition: opacity 120ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .trainingMorphIdentity,
+  .trainingMorphDivider,
+  .trainingMorphFacts,
+  .trainingMorphPanel > .journeyMorphPanelCta {
+    transform: none;
+    transition: opacity 120ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .researchAvatar {
+    transition-duration: 1ms;
+  }
+
+  .transferPlate .transferTargetSurface,
+  .transferPlate .entityLink:hover .transferTargetSurface,
+  .transferPlate .entityLink:focus-visible .transferTargetSurface,
+  .transferPlate .entityLink:active .transferTargetSurface,
+  .transferPlate .transferArrow,
+  .transferPlate .entityLink:hover .transferArrow,
+  .transferPlate .entityLink:focus-visible .transferArrow {
+    transform: none;
+    transition: opacity 120ms ease-out;
+  }
+}

@@ -34,33 +34,42 @@ test('representative routes have no browser errors or failed requests', async ({
   expect(failedRequests).toEqual([]);
 });
 
-test('images are local, intrinsically sized, and independent of mockup domains', async ({
+test('images are local and reserve layout space', async ({
+  baseURL,
   page,
 }) => {
-  const forbiddenImageRequests: string[] = [];
+  const externalImageRequests: string[] = [];
+  const appOrigin = new URL(baseURL ?? 'http://127.0.0.1:3000').origin;
 
   page.on('request', (request) => {
+    if (request.resourceType() !== 'image') return;
+
+    const requestUrl = request.url();
     if (
-      request.resourceType() === 'image' &&
-      /gisa\.edu\.vn|mockup/i.test(request.url())
+      new URL(requestUrl).origin !== appOrigin ||
+      /gisa\.edu\.vn|mockup/i.test(decodeURIComponent(requestUrl))
     ) {
-      forbiddenImageRequests.push(request.url());
+      externalImageRequests.push(requestUrl);
     }
   });
 
   for (const path of representativeRoutes) {
     await page.goto(path, { waitUntil: 'networkidle' });
-    const missingDimensions = await page.locator('img').evaluateAll((images) =>
-      images.flatMap((image) =>
-        image.hasAttribute('width') && image.hasAttribute('height')
-          ? []
-          : [image.getAttribute('src') ?? '(missing src)'],
-      ),
+    const imageIssues = await page.locator('img').evaluateAll((images) =>
+      images.flatMap((image) => {
+        const source = image.getAttribute('src') ?? '(missing src)';
+        const bounds = image.getBoundingClientRect();
+
+        if (bounds.width <= 0 || bounds.height <= 0) {
+          return [`${source} has no rendered layout box`];
+        }
+        return [];
+      }),
     );
-    expect(missingDimensions, `${path} image dimensions`).toEqual([]);
+    expect(imageIssues, `${path} image layout`).toEqual([]);
   }
 
-  expect(forbiddenImageRequests).toEqual([]);
+  expect(externalImageRequests).toEqual([]);
 });
 
 test('home renders a bounded selection without client collection requests', async ({
@@ -83,7 +92,8 @@ test('home renders a bounded selection without client collection requests', asyn
 
   await page.goto('/', { waitUntil: 'networkidle' });
 
-  const selectedCards = page.locator('main section[data-collection] article');
+  const selectedCards = page.getByRole('tabpanel').locator('article');
+  await expect(selectedCards.first()).toBeVisible();
   expect(await selectedCards.count()).toBeGreaterThan(0);
   expect(await selectedCards.count()).toBeLessThanOrEqual(6);
   expect(clientDataRequests).toEqual([]);

@@ -9,9 +9,9 @@ export const noticeFixtures = [
     path: '/tin-tuc/thong-bao-lich/tuyen-dung-vi-tri-tro-ly-nghien-cuu',
     locale: 'vi',
     translationKey: 'notice-research-assistant-recruitment-2024',
-    title: 'Tuyển Dụng Vị Trí Trợ Lý Nghiên Cứu',
+    title: 'Tuyển dụng vị trí trợ lý nghiên cứu',
     summary:
-      'Thông báo được GISA công khai ngày 08/05/2024; fixture chỉ chứng minh template và không xác nhận đợt tuyển dụng còn hiệu lực.',
+      'Thông báo được GISA công khai ngày 08/05/2024. Ứng viên nên liên hệ trực tiếp với GISA để xác nhận tình trạng tuyển dụng hiện tại.',
     body: [
       {
         type: 'paragraph',

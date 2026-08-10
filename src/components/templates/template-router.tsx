@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 
-import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import type { UrlQuery } from '@/components/ui/filter-bar';
 import type { PageDefinition } from '@/content/pages';
 import { selectRelatedContent } from '@/content/related';
@@ -9,11 +8,26 @@ import {
   type ContentRepository,
 } from '@/content/repositories';
 
+import { AboutStaticTemplate, isAboutStaticPath } from './about-static-template';
+import { CapabilityStaticTemplate } from './capability-static-template';
+import { CourseListingTemplate } from './course-listing-template';
 import { DetailTemplate } from './detail-template';
-import { ContentBlocks } from './content-blocks';
+import {
+  EcosystemListingTemplate,
+  supportsEcosystemListingTemplate,
+} from './ecosystem-listing-template';
+import {
+  EcosystemStaticTemplate,
+  supportsEcosystemStaticTemplate,
+} from './ecosystem-static-template';
+import { ExpertListingTemplate } from './expert-listing-template';
 import { HubTemplate } from './hub-template';
+import {
+  KnowledgePracticeListingTemplate,
+  supportsKnowledgePracticeListing,
+} from './knowledge-practice-listing-template';
 import { ListingTemplate } from './listing-template';
-import styles from './templates.module.css';
+import { StaticPageTemplate } from './static-page-template';
 
 interface TemplateRouterProps {
   definition: PageDefinition;
@@ -50,12 +64,17 @@ export async function TemplateRouter({
         return value ? [[key, value] as const] : [];
       }),
     );
+    // Phạm vi cố định đi riêng qua `scope`, không trộn vào `filters`: repository
+    // áp `scope` trước rồi mới liệt kê `availableFilters`, nên FilterBar chỉ chào
+    // giá trị có thật trong phạm vi. Tham số URL cũng không ghi đè được nó —
+    // `/tu-van/du-an?projectType=Nghiên cứu` vẫn chỉ ra dự án tư vấn.
     const contentQuery = {
       collection: definition.collection,
       filters,
       page: positiveInteger(searchParams.page),
       pageSize: 12,
       query,
+      scope: definition.fixedFilters,
     };
     const result = query
       ? await repository.search(contentQuery)
@@ -65,6 +84,50 @@ export async function TemplateRouter({
       ...(result.page > 1 ? { page: String(result.page) } : {}),
       ...filters,
     };
+
+    if (definition.collection === 'courses') {
+      return (
+        <CourseListingTemplate
+          definition={definition}
+          path={path}
+          result={result}
+          searchParams={normalizedSearchParams}
+        />
+      );
+    }
+
+    if (path === '/chuyen-gia') {
+      return (
+        <ExpertListingTemplate
+          definition={definition}
+          path={path}
+          result={result}
+          searchParams={normalizedSearchParams}
+        />
+      );
+    }
+
+    if (supportsEcosystemListingTemplate(path)) {
+      return (
+        <EcosystemListingTemplate
+          definition={definition}
+          path={path}
+          result={result}
+          searchParams={normalizedSearchParams}
+        />
+      );
+    }
+
+    if (supportsKnowledgePracticeListing(path)) {
+      return (
+        <KnowledgePracticeListingTemplate
+          definition={definition}
+          path={path}
+          result={result}
+          searchParams={normalizedSearchParams}
+        />
+      );
+    }
 
     return (
       <ListingTemplate
@@ -101,22 +164,17 @@ export async function TemplateRouter({
     return <DetailTemplate record={record} related={related} />;
   }
 
-  return (
-    <main id="main-content" tabIndex={-1}>
-      <div className={styles.pageContainer}>
-        <Breadcrumbs
-          items={[
-            { href: '/', label: 'Trang chủ' },
-            { label: definition.title },
-          ]}
-        />
-        <header className={styles.pageHeader}>
-          <p className={styles.eyebrow}>Thông tin GISA</p>
-          <h1>{definition.title}</h1>
-          <p>{definition.description}</p>
-        </header>
-        <ContentBlocks blocks={definition.blocks} />
-      </div>
-    </main>
-  );
+  if (isAboutStaticPath(path)) {
+    return <AboutStaticTemplate definition={definition} path={path} />;
+  }
+
+  if (path.startsWith('/dao-tao/') || path.startsWith('/ung-dung/')) {
+    return <CapabilityStaticTemplate definition={definition} path={path} />;
+  }
+
+  if (supportsEcosystemStaticTemplate(path)) {
+    return <EcosystemStaticTemplate definition={definition} path={path} />;
+  }
+
+  return <StaticPageTemplate definition={definition} path={path} />;
 }

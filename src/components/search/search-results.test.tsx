@@ -24,11 +24,11 @@ test('search excludes unverified records and renders an injection query as text'
   expect(screen.getByText(query, { exact: false })).toBeVisible();
 });
 
-test('an empty query offers verified content destinations without loading results', () => {
+test('an empty query offers public content destinations without loading results', () => {
   render(<SearchResults query="" result={null} />);
 
   expect(
-    screen.getByRole('heading', { name: 'Tìm nội dung đã được xác minh' }),
+    screen.getByRole('heading', { name: 'Bạn muốn tìm hiểu nội dung nào?' }),
   ).toBeVisible();
   expect(screen.getByRole('link', { name: 'Nghiên cứu' })).toHaveAttribute(
     'href',
