@@ -2,7 +2,7 @@
   --practice-accent: var(--color-teal);
   --practice-pale: #eef7f5;
   margin-inline: auto;
-  padding-bottom: clamp(5rem, 9vw, 9rem);
+  padding-bottom: clamp(4rem, 6vw, 6rem);
   width: min(100% - (2 * var(--gutter)), var(--container));
 }
 
@@ -20,9 +20,9 @@
   align-items: end;
   border-bottom: 1px solid color-mix(in srgb, var(--practice-accent) 18%, transparent);
   display: grid;
-  gap: clamp(2rem, 7vw, 8rem);
+  gap: clamp(2rem, 5vw, 5rem);
   grid-template-columns: minmax(0, 1.18fr) minmax(20rem, .82fr);
-  padding-block: clamp(4.5rem, 9vw, 8rem);
+  padding-block: clamp(3.5rem, 5vw, 5rem);
 }
 
 .editorialLead > div:first-child > p,
@@ -43,7 +43,7 @@
   letter-spacing: -.045em;
   line-height: 1.02;
   margin: 1rem 0 0;
-  max-width: 19ch;
+  max-width: 24ch;
   text-wrap: balance;
 }
 
@@ -52,7 +52,10 @@
   font-size: clamp(1.06rem, 1.35vw, 1.2rem);
   line-height: 1.7;
   margin: 0;
-  max-width: 60ch;
+  hyphens: none;
+  max-width: 66ch;
+  overflow-wrap: normal;
+  text-align: start;
   text-wrap: pretty;
 }
 
@@ -72,7 +75,7 @@
   display: grid;
   gap: 2rem;
   grid-template-columns: minmax(16rem, .55fr) minmax(0, 1.45fr);
-  margin-block: clamp(3rem, 6vw, 5rem);
+  margin-block: clamp(2.5rem, 4vw, 4rem);
   padding: clamp(1.5rem, 3vw, 2.5rem);
 }
 
@@ -91,7 +94,7 @@
 .projectList,
 .toolGrid {
   list-style: none;
-  margin: clamp(3.5rem, 7vw, 7rem) 0 0;
+  margin: clamp(2.75rem, 4.5vw, 4.5rem) 0 0;
   padding: 0;
 }
 
@@ -102,7 +105,7 @@
 
 .projectList > li {
   border-top: 1px solid color-mix(in srgb, var(--practice-accent) 18%, transparent);
-  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+  padding-block: clamp(2rem, 3.5vw, 3.5rem);
 }
 
 .projectEntry {
@@ -179,7 +182,7 @@
 
 .projectCopy h3 {
   font-size: clamp(2rem, 3.7vw, 4rem);
-  max-width: 18ch;
+  max-width: 24ch;
 }
 
 .projectCopy h3 a,
@@ -192,7 +195,8 @@
 .toolEntry > div > p:last-child {
   color: rgb(20 49 64 / 72%);
   line-height: 1.72;
-  max-width: 64ch;
+  max-width: 66ch;
+  text-align: start;
   text-wrap: pretty;
 }
 
@@ -207,7 +211,7 @@
   background: #f9fbfb;
   display: flex;
   flex-direction: column;
-  min-height: 28rem;
+  min-height: 22rem;
   padding: clamp(1.6rem, 3.5vw, 3rem);
   transition: background-color 220ms ease-out, transform 220ms ease-out;
 }
@@ -221,7 +225,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: clamp(3rem, 7vw, 6rem);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
 .toolEntry header > span {
@@ -238,7 +242,7 @@
 
 .toolEntry h3 {
   font-size: clamp(1.8rem, 2.8vw, 3rem);
-  max-width: 19ch;
+  max-width: 24ch;
 }
 
 .toolEntry .textLink {
@@ -288,6 +292,12 @@
 
   .toolEntry {
     min-height: 24rem;
+  }
+
+  .editorialLead > div:last-child > p,
+  .projectSummary,
+  .toolEntry > div > p:last-child {
+    text-align: start;
   }
 }
 

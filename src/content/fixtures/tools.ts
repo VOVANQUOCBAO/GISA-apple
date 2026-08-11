@@ -63,7 +63,7 @@ export const toolFixtures = [
     body: [
       {
         type: 'paragraph',
-        text: 'Nhóm công cụ này phục vụ việc thu thập bằng chứng và kiểm chứng giả định: khảo sát hiện trạng, phân tích dữ liệu, đo lường tác động và đối chiếu khoảng trống chính sách trước khi đề xuất giải pháp.',
+        text: 'Nhóm công cụ này phục vụ việc thu thập bằng chứng và kiểm chứng giả định thông qua khảo sát hiện trạng, phân tích dữ liệu, đo lường tác động và đối chiếu khoảng trống chính sách trước khi đề xuất giải pháp.',
       },
       {
         type: 'heading',
@@ -193,7 +193,7 @@ export const toolFixtures = [
     body: [
       {
         type: 'paragraph',
-        text: 'Nhóm công cụ này dùng cho phần đồng hành sau tư vấn: huấn luyện cá nhân và đội ngũ theo các mô hình coaching, mentoring có cấu trúc, kèm cơ chế theo dõi tiến độ phát triển.',
+        text: 'Nhóm công cụ này dùng cho phần đồng hành sau tư vấn, bao gồm huấn luyện cá nhân và đội ngũ theo các mô hình coaching, mentoring có cấu trúc, kèm cơ chế theo dõi tiến độ phát triển.',
       },
       {
         type: 'heading',
@@ -204,8 +204,8 @@ export const toolFixtures = [
         type: 'list',
         ordered: false,
         items: [
-          'Coaching models: GROW, CLEAR, OSKAR',
-          'Mentoring Frameworks: 70-20-10, Developmental Mentoring',
+          'Coaching models gồm GROW, CLEAR và OSKAR',
+          'Mentoring Frameworks gồm 70-20-10 và Developmental Mentoring',
           'Coaching cards, hỏi mở (powerful questions), phản hồi 2 chiều',
           'Hệ thống theo dõi tiến độ phát triển cá nhân và đội ngũ',
         ],
@@ -235,7 +235,7 @@ export const toolFixtures = [
     body: [
       {
         type: 'paragraph',
-        text: 'Nhóm công cụ này dùng khi cần thiết kế giải pháp mới: đặt con người ở trung tâm, dựng lý thuyết thay đổi cho chương trình và thử nghiệm nhanh ý tưởng trước khi triển khai diện rộng.',
+        text: 'Nhóm công cụ này dùng khi cần thiết kế giải pháp mới, đặt con người ở trung tâm, dựng lý thuyết thay đổi cho chương trình và thử nghiệm nhanh ý tưởng trước khi triển khai diện rộng.',
       },
       {
         type: 'heading',

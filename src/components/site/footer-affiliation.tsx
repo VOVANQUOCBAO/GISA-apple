@@ -19,9 +19,9 @@ export function FooterAffiliation() {
         <span className={styles.engonowWordmark}>
           <Image
             alt="ENGONOW"
-            height={768}
-            src="/brand/engonow-wordmark-transparent.png"
-            width={2048}
+            height={500}
+            src="/brand/engonow-wordmark-white.webp"
+            width={500}
           />
         </span>
       </a>

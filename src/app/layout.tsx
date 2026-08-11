@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import * as React from 'react';
 
 import '@fontsource/source-sans-3/vietnamese-400.css';
 import '@fontsource/source-sans-3/vietnamese-600.css';
@@ -13,6 +14,15 @@ import { ScrollMotionDirector } from '@/components/motion/scroll-motion-director
 import { SiteIntro } from '@/components/motion/site-intro';
 
 import './globals.css';
+
+const PageViewTransition = (
+  React as typeof React & {
+    ViewTransition?: React.ComponentType<{
+      children: React.ReactNode;
+      name: string;
+    }>;
+  }
+).ViewTransition;
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://gisa.edu.vn'),
@@ -38,7 +48,9 @@ export default function RootLayout({
         </a>
         <SiteHeader />
         <ScrollMotionDirector />
-        {children}
+        {PageViewTransition ? (
+          <PageViewTransition name="page-content">{children}</PageViewTransition>
+        ) : children}
         <SiteFooter />
       </body>
     </html>

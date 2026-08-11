@@ -78,7 +78,7 @@ const programs = {
     ],
     objectives: [
       'Trang bị kỹ năng nền tảng và tư duy làm việc chuyên nghiệp để hội nhập hiệu quả vào doanh nghiệp.',
-      'Rút ngắn khoảng cách giữa học thuật và thực tiễn qua dự án thực hành, tình huống mô phỏng và huấn luyện 1:1.',
+      'Rút ngắn khoảng cách giữa học thuật và thực tiễn qua dự án thực hành, tình huống mô phỏng và huấn luyện cá nhân.',
       'Hỗ trợ xác định định hướng nghề nghiệp phù hợp, nhận diện điểm mạnh và điểm yếu để phát triển cá nhân.',
       'Xây dựng hồ sơ nghề nghiệp và kết nối với hệ sinh thái chuyên gia, doanh nghiệp sau tốt nghiệp.',
     ],
@@ -87,7 +87,7 @@ const programs = {
       'Rèn luyện kỹ năng làm việc, giao tiếp, xử lý tình huống và làm việc nhóm.',
       'Tư duy phản biện, giải quyết vấn đề và thích ứng với sự thay đổi.',
       'Hiểu rõ bản thân để xác định đúng định hướng nghề nghiệp.',
-      'Hồ sơ nghề nghiệp nổi bật: CV, LinkedIn và kỹ năng phỏng vấn.',
+      'Hồ sơ nghề nghiệp nổi bật gồm CV, LinkedIn và kỹ năng phỏng vấn.',
       'Kết nối với mentor, chuyên gia và cộng đồng nghề nghiệp thực tế.',
       'Huấn luyện cá nhân hóa qua phản hồi trực tiếp và hướng dẫn thực chiến.',
       'Tư duy phát triển bền vững trong sự nghiệp ngay từ giai đoạn khởi đầu.',
@@ -100,7 +100,7 @@ const programs = {
     summaryPrefix: 'Khóa học thuộc chương trình Bứt phá sự nghiệp GISA Rise',
     intro: [
       'GISA Rise là chương trình đào tạo chuyên sâu nhằm trang bị tư duy lãnh đạo, năng lực quản trị và khả năng thích ứng chiến lược cho những cá nhân đang ở ngưỡng phát triển vượt bậc trong sự nghiệp.',
-      'Chương trình giúp học viên nhận diện trần phát triển, xác lập tầm nhìn mới và xây dựng năng lực lõi để chuyển mình từ người giỏi chuyên môn sang người có ảnh hưởng, thông qua huấn luyện thực chiến, mentoring 1:1 và kết nối chuyên gia. Khóa học được thiết kế linh hoạt theo mô hình hybrid hoặc retreat ngắn ngày, phù hợp với người đi làm.',
+      'Chương trình giúp học viên nhận diện trần phát triển, xác lập tầm nhìn mới và xây dựng năng lực lõi để chuyển mình từ người giỏi chuyên môn sang người có ảnh hưởng, thông qua huấn luyện thực chiến, mentoring cá nhân và kết nối chuyên gia. Khóa học được thiết kế linh hoạt theo mô hình hybrid hoặc retreat ngắn ngày, phù hợp với người đi làm.',
     ],
     audience: [
       'Trưởng nhóm, giám sát, trưởng phòng, chuyên viên kỳ cựu hoặc quản lý cấp trung đang chuẩn bị thăng tiến.',
@@ -109,7 +109,7 @@ const programs = {
       'Cá nhân muốn trở thành người dẫn dắt, có ảnh hưởng và tạo giá trị thực cho tổ chức và đội ngũ.',
     ],
     objectives: [
-      'Vượt qua điểm nghẽn nghề nghiệp để bước vào cấp độ mới: từ thực hiện sang định hướng, từ chuyên môn sang lãnh đạo.',
+      'Vượt qua điểm nghẽn nghề nghiệp để bước vào cấp độ mới, từ thực hiện sang định hướng và từ chuyên môn sang lãnh đạo.',
       'Xây dựng tư duy chiến lược, tư duy hệ thống và khả năng ra quyết định trong môi trường bất định.',
       'Phát triển kỹ năng quản lý đội nhóm, điều hành hiệu suất và tạo động lực dài hạn cho tổ chức.',
       'Kích hoạt tinh thần lãnh đạo, sự tự tin và khả năng truyền cảm hứng để tạo dấu ấn cá nhân.',
@@ -153,7 +153,7 @@ const programs = {
       'Kỹ năng quản trị sự thay đổi, điều phối xung đột và ra quyết định cấp cao.',
       'Tái tạo năng lượng lãnh đạo, làm chủ sức mạnh nội tâm và khả năng ảnh hưởng.',
       'Mạng lưới kết nối với lãnh đạo đa lĩnh vực.',
-      'Mentoring 1:1 với các nhà lãnh đạo cấp cao nhiều kinh nghiệm.',
+      'Mentoring cá nhân với các nhà lãnh đạo cấp cao nhiều kinh nghiệm.',
       'Hành trình học tập sâu, kết hợp trải nghiệm thực tế và tư vấn cá nhân hóa.',
     ],
   },
@@ -175,10 +175,10 @@ const programs = {
       'Khám phá lại bản thân, sứ mệnh sống và triết lý lãnh đạo cá nhân ở giai đoạn viên mãn.',
       'Xây dựng kế hoạch kế thừa, phát triển tổ chức bền vững và gắn kết các thế hệ tiếp nối.',
       'Kết nối với cộng đồng lãnh đạo cùng chí hướng để lan tỏa giá trị vượt thời gian.',
-      'Tạo ra sự thịnh vượng toàn diện: trí tuệ, tâm hồn, cộng đồng và di sản.',
+      'Tạo ra sự thịnh vượng toàn diện trên các phương diện trí tuệ, tâm hồn, cộng đồng và di sản.',
     ],
     values: [
-      'Tư duy lãnh đạo chuyển hóa: từ điều hành sang truyền cảm hứng và dẫn dắt thế hệ kế thừa.',
+      'Tư duy lãnh đạo chuyển hóa, từ điều hành sang truyền cảm hứng và dẫn dắt thế hệ kế thừa.',
       'Nền tảng phát triển bền vững cá nhân và tổ chức ở cấp độ chiến lược.',
       'Cơ hội xây dựng cộng đồng tinh hoa để chia sẻ, đồng hành và tạo ảnh hưởng sâu rộng.',
       'Khả năng thiết kế di sản cá nhân từ giá trị sống, kinh nghiệm và trí tuệ.',
@@ -207,7 +207,7 @@ const seeds: CourseSeed[] = [
     slug: 'ke-toan-thuc-hanh-va-toi-uu-hoa-thue',
     title: 'Kế toán thực hành và tối ưu hóa thuế',
     description:
-      'Trang bị kỹ năng kế toán doanh nghiệp thực tiễn: xử lý chứng từ, lập báo cáo tài chính và quyết toán thuế. Hướng dẫn các nguyên tắc tối ưu thuế đúng luật và phòng tránh rủi ro kiểm toán – thanh tra.',
+      'Trang bị kỹ năng kế toán doanh nghiệp thực tiễn gồm xử lý chứng từ, lập báo cáo tài chính và quyết toán thuế. Hướng dẫn các nguyên tắc tối ưu thuế đúng luật và phòng tránh rủi ro kiểm toán – thanh tra.',
     objective: 'Chuẩn hóa nghiệp vụ kế toán, lập báo cáo tài chính và tối ưu thuế đúng luật',
     tags: ['kế toán', 'thuế'],
   },
@@ -225,7 +225,7 @@ const seeds: CourseSeed[] = [
     id: 'course-digital-ai-marketing',
     program: 'core',
     slug: 'digital-va-ai-marketing-toi-uu-hoa-chien-luoc-so',
-    title: 'Digital & AI Marketing: Tối ưu hóa chiến lược số',
+    title: 'Digital & AI Marketing — Tối ưu hóa chiến lược số',
     description:
       'Kết hợp marketing kỹ thuật số với các công cụ AI để phân tích hành vi khách hàng, tối ưu hóa nội dung và tự động hóa chiến dịch đa kênh. Dành cho marketer muốn nâng cấp năng lực công nghệ.',
     objective: 'Ứng dụng AI vào phân tích hành vi khách hàng và tự động hóa chiến dịch đa kênh',
@@ -386,10 +386,10 @@ const seeds: CourseSeed[] = [
     id: 'course-understanding-business-from-inside',
     program: 'edge',
     slug: 'hieu-doanh-nghiep-tu-ben-trong-cau-truc-van-hanh-chien-luoc',
-    title: 'Hiểu doanh nghiệp từ bên trong: cấu trúc – vận hành – chiến lược',
+    title: 'Hiểu doanh nghiệp từ bên trong — cấu trúc, vận hành và chiến lược',
     description:
       'Khóa học mở góc nhìn hệ thống về tổ chức, cách các phòng ban liên kết và vai trò của từng cá nhân trong vận hành tổng thể.',
-    objective: 'Nhìn tổ chức theo hệ thống: cấu trúc, liên kết phòng ban và vai trò cá nhân',
+    objective: 'Nhìn tổ chức theo hệ thống gồm cấu trúc, liên kết phòng ban và vai trò cá nhân',
     tags: ['vận hành doanh nghiệp', 'tư duy hệ thống'],
   },
   {
@@ -406,7 +406,7 @@ const seeds: CourseSeed[] = [
     id: 'course-first-90-days-at-work',
     program: 'edge',
     slug: '90-ngay-dau-di-lam-hoi-nhap-nhanh-tao-dau-an',
-    title: '90 ngày đầu đi làm: hội nhập nhanh – tạo dấu ấn',
+    title: '90 ngày đầu đi làm — hội nhập nhanh, tạo dấu ấn',
     description:
       'Hướng dẫn cách xây dựng uy tín, thiết lập mối quan hệ và thích nghi nhanh chóng trong giai đoạn then chốt của người mới đi làm.',
     objective: 'Xây dựng uy tín và thích nghi nhanh trong giai đoạn đầu đi làm',
@@ -416,7 +416,7 @@ const seeds: CourseSeed[] = [
     id: 'course-real-project-practice-with-mentor',
     program: 'edge',
     slug: 'thuc-hanh-du-an-thuc-te-lam-viec-voi-mentor-va-doanh-nghiep',
-    title: 'Thực hành dự án thực tế: làm việc với mentor và doanh nghiệp',
+    title: 'Thực hành dự án thực tế — làm việc với mentor và doanh nghiệp',
     description:
       'Học viên tham gia dự án thực tế hoặc mô phỏng, cùng giải quyết vấn đề doanh nghiệp, được mentor hướng dẫn sát sao.',
     objective: 'Giải quyết vấn đề doanh nghiệp trong dự án thực tế dưới hướng dẫn của mentor',
@@ -437,7 +437,7 @@ const seeds: CourseSeed[] = [
     id: 'course-career-repositioning',
     program: 'rise',
     slug: 'tai-dinh-vi-su-nghiep-nhin-lai-but-pha-tai-tao',
-    title: 'Tái định vị sự nghiệp: Nhìn lại – Bứt phá – Tái tạo',
+    title: 'Tái định vị sự nghiệp — Nhìn lại, Bứt phá, Tái tạo',
     description:
       'Khóa học giúp học viên phân tích hành trình nghề nghiệp hiện tại, nhận diện điểm giới hạn và xây dựng kế hoạch phát triển sự nghiệp có chủ đích cho giai đoạn mới.',
     objective: 'Nhận diện điểm giới hạn và lập kế hoạch phát triển sự nghiệp có chủ đích',
@@ -447,7 +447,7 @@ const seeds: CourseSeed[] = [
     id: 'course-effective-team-management',
     program: 'rise',
     slug: 'quan-ly-doi-ngu-hieu-qua-tu-ca-nhan-manh-den-tap-the-vung',
-    title: 'Quản lý đội ngũ hiệu quả: Từ cá nhân mạnh đến tập thể vững',
+    title: 'Quản lý đội ngũ hiệu quả — Từ cá nhân mạnh đến tập thể vững',
     description:
       'Trang bị năng lực quản trị con người, xây dựng tinh thần đội nhóm, phân công công việc hợp lý và phát triển năng lực nội tại cho nhân sự.',
     objective: 'Quản trị con người, phân công hợp lý và phát triển năng lực nhân sự',
@@ -599,7 +599,7 @@ const seeds: CourseSeed[] = [
     id: 'course-transformational-leadership-legacy-thinking',
     program: 'legacy',
     slug: 'lanh-dao-chuyen-hoa-tu-dieu-hanh-den-dan-dat-bang-tu-duy-di-san',
-    title: 'Lãnh đạo chuyển hóa: Từ điều hành đến dẫn dắt bằng tư duy di sản',
+    title: 'Lãnh đạo chuyển hóa — Từ điều hành đến dẫn dắt bằng tư duy di sản',
     description:
       'Khám phá hành trình lãnh đạo ở cấp độ cao nhất, nơi nhà lãnh đạo truyền cảm hứng bằng chính giá trị sống và di sản cá nhân, tái định hình vai trò lãnh đạo để lan tỏa ảnh hưởng bền vững.',
     objective: 'Tái định hình vai trò lãnh đạo quanh giá trị sống và di sản cá nhân',
@@ -629,7 +629,7 @@ const seeds: CourseSeed[] = [
     id: 'course-personal-legacy-design',
     program: 'legacy',
     slug: 'thiet-ke-di-san-ca-nhan-tam-nhin-gia-tri-va-dau-an-de-lai',
-    title: 'Thiết kế di sản cá nhân: Tầm nhìn, giá trị và dấu ấn để lại',
+    title: 'Thiết kế di sản cá nhân — Tầm nhìn, giá trị và dấu ấn để lại',
     description:
       'Dẫn dắt học viên hệ thống hóa giá trị sống, kinh nghiệm và triết lý lãnh đạo thành di sản truyền đời — một hành trình nội tâm sâu sắc và đầy cảm hứng.',
     objective: 'Hệ thống hóa giá trị sống và triết lý lãnh đạo thành di sản truyền đời',
@@ -679,7 +679,7 @@ const seeds: CourseSeed[] = [
     id: 'course-organisational-transformation-collective-legacy',
     program: 'legacy',
     slug: 'chuyen-hoa-to-chuc-tu-hieu-suat-den-di-san-tap-the',
-    title: 'Chuyển hóa tổ chức: Từ hiệu suất đến di sản tập thể',
+    title: 'Chuyển hóa tổ chức — Từ hiệu suất đến di sản tập thể',
     description:
       'Tái cấu trúc tổ chức theo hướng nhân văn và bền vững, xây dựng văn hóa tổ chức lan tỏa giá trị lãnh đạo và tạo ảnh hưởng dài lâu.',
     objective: 'Tái cấu trúc tổ chức theo hướng nhân văn và bền vững',

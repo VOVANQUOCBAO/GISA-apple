@@ -59,7 +59,7 @@ const LISTING_DIRECTIONS: Record<string, ListingDirection> = {
     action: { href: '/tin-tuc', label: 'Xem tin tức' },
     actionTitle: 'Tiếp tục với những góc nhìn mới từ GISA',
     description:
-      'Tra cứu thông báo và lịch hoạt động đã được GISA công bố; trạng thái hiện hành cần được xác nhận trực tiếp.',
+      'Tra cứu thông báo và lịch hoạt động đã được GISA công bố. Trạng thái hiện hành cần được xác nhận trực tiếp.',
     mode: 'notices',
     topic: 'Thông báo và lịch',
   },

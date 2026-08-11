@@ -13,7 +13,7 @@ async function fillValidForm(user: ReturnType<typeof userEvent.setup>) {
     'Tôi muốn tìm hiểu thêm thông tin từ GISA.',
   );
   await user.click(
-    screen.getByLabelText(/Tôi hiểu thông tin chưa được gửi đến GISA/i),
+    screen.getByLabelText(/Tôi xác nhận thông tin đã cung cấp là chính xác/i),
   );
 }
 
@@ -53,7 +53,7 @@ test('connects field errors and requires an organization for partnership', async
   await user.type(screen.getByLabelText(/Số điện thoại/), '123');
   await user.type(screen.getByLabelText(/^Nội dung/), 'Nội dung hợp lệ để thử.');
   await user.click(
-    screen.getByLabelText(/Tôi hiểu thông tin chưa được gửi đến GISA/i),
+    screen.getByLabelText(/Tôi xác nhận thông tin đã cung cấp là chính xác/i),
   );
   await user.click(
     screen.getByRole('button', { name: 'Kiểm tra thông tin' }),
@@ -95,7 +95,7 @@ test('announces pending and simulated success without a real-delivery claim', as
   resolveSubmission({ status: 'simulated_success' });
   expect(
     await screen.findByText(
-      'Thông tin vẫn ở trong trình duyệt và chưa được gửi tới GISA. Kênh tiếp nhận đang được hoàn thiện.',
+      'Đã kiểm tra thông tin. Bạn có thể rà soát lại các trường trước khi rời trang.',
     ),
   ).toBeVisible();
 });
@@ -113,7 +113,7 @@ test('shows the simulated error state for the reserved error email', async () =>
     'Tôi muốn kiểm tra trạng thái lỗi mô phỏng.',
   );
   await user.click(
-    screen.getByLabelText(/Tôi hiểu thông tin chưa được gửi đến GISA/i),
+    screen.getByLabelText(/Tôi xác nhận thông tin đã cung cấp là chính xác/i),
   );
   await user.click(
     screen.getByRole('button', { name: 'Kiểm tra thông tin' }),
@@ -121,7 +121,7 @@ test('shows the simulated error state for the reserved error email', async () =>
 
   expect(
     await screen.findByText(
-      'Không thể hoàn tất thao tác. Thông tin vẫn ở trong trình duyệt; bạn có thể kiểm tra và thử lại.',
+      'Không thể hoàn tất thao tác. Vui lòng kiểm tra thông tin và thử lại.',
     ),
   ).toBeVisible();
 });

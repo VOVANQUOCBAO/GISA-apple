@@ -132,7 +132,7 @@
 }
 
 .prose {
-  max-width: 70ch;
+  max-width: 68ch;
 }
 
 /* `.detailLayout` shares an element with `.pageContainer`, so it must not set a
@@ -141,7 +141,7 @@
    keep a comfortable reading measure while starting exactly where the site
    header, breadcrumbs and footer start. */
 .detailLayout > * {
-  max-width: 70ch;
+  max-width: 68ch;
 }
 
 .prose {
@@ -152,7 +152,7 @@
   margin-top: 1.25em;
 }
 
-/* Ảnh chèn giữa bài. `.detailLayout > *` giới hạn 70ch cho dễ đọc chữ, nhưng ảnh
+/* Ảnh chèn giữa bài. `.detailLayout > *` giới hạn 68ch cho dễ đọc chữ, nhưng ảnh
    thì cần rộng hơn cột chữ mới xem được, nên figure tự nới ra và ảnh co theo khung. */
 .blockFigure {
   margin-inline: 0;
@@ -312,6 +312,7 @@
   font-size: clamp(1rem, 1.5vw, 1.15rem);
   margin: 0.9rem 0 0;
   max-width: 52ch;
+  text-align: start;
 }
 
 /* Nhãn chủ đề và năm: cùng một kiểu chữ nhỏ dùng lại ở mọi dòng chỉ mục. */
@@ -404,6 +405,7 @@
   color: rgb(26 26 26 / 78%);
   margin: 0.5rem 0 0;
   max-width: 62ch;
+  text-align: start;
 }
 
 .entryArrow {
@@ -432,12 +434,18 @@
   font-size: clamp(2rem, 4.6vw, 3.6rem);
   margin: 0;
   max-width: 22ch;
+  overflow-wrap: normal;
+  text-wrap: balance;
+  word-break: normal;
 }
 
 .articleLede {
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  line-height: 1.65;
   margin: 1.1rem 0 0;
-  max-width: 58ch;
+  max-width: 68ch;
+  text-align: start;
+  text-wrap: pretty;
 }
 
 .articleFacts {
@@ -488,6 +496,11 @@
 .articleBody {
   max-width: 68ch;
   min-width: 0;
+}
+
+.articleBody .proseParagraph {
+  max-width: 68ch;
+  text-align: start;
 }
 
 .articleTags {
@@ -578,8 +591,8 @@
 /* ── Khối bài liên quan ─────────────────────────────────────────────────────── */
 .relatedSection {
   border-top: 1px solid rgb(25 72 106 / 14%);
-  margin-top: var(--space-section);
-  padding-block: var(--space-section);
+  margin-top: clamp(3.5rem, 4.5vw, 4.5rem);
+  padding-block: clamp(3.5rem, 4.5vw, 4.5rem);
 }
 
 .relatedHeading {
@@ -891,9 +904,27 @@
   overscroll-behavior-inline: contain;
   overflow-x: auto;
   padding: 0.4rem;
+  position: relative;
   scroll-padding-inline: 0.4rem;
   scroll-snap-type: inline proximity;
+  scroll-behavior: smooth;
   scrollbar-width: none;
+  view-transition-name: var(--section-subnav-transition-name);
+}
+
+.sectionSubnavIndicator {
+  background: var(--section-ink, #123f5d);
+  border-radius: 0.7rem;
+  box-shadow: 0 0.5rem 1.2rem rgb(18 63 93 / 16%);
+  inset-block: 0.4rem;
+  left: 0;
+  opacity: 1;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: left center;
+  width: 0;
+  will-change: transform;
+  z-index: 0;
 }
 
 .sectionSubnav::-webkit-scrollbar {
@@ -901,21 +932,39 @@
 }
 
 .sectionSubnav a {
+  align-items: center;
   border-radius: 0.7rem;
   color: rgb(20 49 64 / 70%);
+  display: inline-flex;
   flex: 0 0 auto;
   font-size: 0.9rem;
   font-weight: 700;
   min-height: 2.75rem;
   padding: 0.65rem 0.9rem;
+  position: relative;
   scroll-snap-align: center;
   text-decoration: none;
-  transition: background-color 180ms ease-out, color 180ms ease-out, transform 100ms ease-out;
+  transition:
+    background-color 180ms var(--ease-out),
+    box-shadow 180ms var(--ease-out),
+    color 180ms var(--ease-out),
+    opacity 180ms var(--ease-out),
+    transform 140ms var(--ease-out);
+  z-index: 1;
 }
 
-.sectionSubnav a:hover {
+.sectionSubnav a > span {
+  display: block;
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 180ms var(--ease-out);
+}
+
+.sectionSubnav a:focus-visible {
   background: var(--section-accent-soft, #eef4f4);
   color: var(--section-accent, var(--color-teal));
+  outline: 2px solid var(--section-accent, var(--color-teal));
+  outline-offset: 2px;
 }
 
 .sectionSubnav a:active {
@@ -923,9 +972,26 @@
 }
 
 .sectionSubnav a[aria-current='page'] {
-  background: var(--section-ink, #123f5d);
-  box-shadow: 0 0.5rem 1.2rem rgb(18 63 93 / 16%);
+  background: transparent;
+  box-shadow: none;
   color: white;
+}
+
+.sectionSubnav a:has([data-navigation-pending='true']) {
+  background: var(--section-accent-soft, #eef4f4);
+  color: var(--section-accent, var(--color-teal));
+}
+
+.sectionSubnav a:has([data-navigation-pending='true']) > span {
+  opacity: 0.72;
+  transform: translateY(0.12rem);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sectionSubnav a:hover {
+    background: var(--section-accent-soft, #eef4f4);
+    color: var(--section-accent, var(--color-teal));
+  }
 }
 
 .hubDirectory {
@@ -1164,7 +1230,7 @@
 }
 
 .readingLayout .prose {
-  max-width: 48rem;
+  max-width: 68ch;
 }
 
 .proseHeading {
@@ -1194,7 +1260,20 @@
 .proseParagraph {
   color: rgb(22 42 51 / 82%);
   font-size: clamp(1.04rem, 1.25vw, 1.14rem);
+  hyphens: none;
   line-height: 1.78;
+  max-width: 68ch;
+  overflow-wrap: normal;
+  text-align: start;
+  text-wrap: pretty;
+}
+
+.sectionTheme[data-section='research'] .prose {
+  max-width: 68ch;
+}
+
+.sectionTheme[data-section='research'] .proseParagraph {
+  line-height: 1.75;
 }
 
 .prose > .proseParagraph:first-child {
@@ -1498,6 +1577,13 @@ ol.proseList li::before {
   .detailFactsPanel {
     margin-top: -2rem;
   }
+
+  .articleLede,
+  .leadSummary,
+  .entrySummary,
+  .proseParagraph {
+    text-align: left;
+  }
 }
 
 @media (prefers-reduced-transparency: reduce) {
@@ -1505,6 +1591,30 @@ ol.proseList li::before {
   .sectionSubnav {
     backdrop-filter: none;
     background: white;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sectionSubnav {
+    scroll-behavior: auto;
+  }
+
+  .sectionSubnav a,
+  .sectionSubnav a > span {
+    transition:
+      background-color 120ms var(--ease-out),
+      box-shadow 120ms var(--ease-out),
+      color 120ms var(--ease-out),
+      opacity 120ms var(--ease-out);
+  }
+
+  .sectionSubnavIndicator {
+    will-change: auto;
+  }
+
+  .sectionSubnav a:active,
+  .sectionSubnav a:has([data-navigation-pending='true']) > span {
+    transform: none;
   }
 }
 

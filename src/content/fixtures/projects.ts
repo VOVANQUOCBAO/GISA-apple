@@ -191,11 +191,11 @@ export const projectFixtures = [
         type: 'list',
         ordered: false,
         items: [
-          'Thúc đẩy đổi mới nông nghiệp: hỗ trợ nông dân tiếp cận và áp dụng công nghệ chính xác, nâng cao hiệu quả sản xuất.',
-          'Nâng cao phân tích chuỗi giá trị: giúp xác định vị trí và cơ hội nâng cấp nông sản Việt Nam trong chuỗi giá trị toàn cầu.',
-          'Ra quyết định dựa trên dữ liệu: phân tích chi phí – lợi ích và hành vi tiêu dùng để định hướng chiến lược sản xuất – tiêu thụ.',
-          'Kết nối nghiên cứu và thực tiễn: gắn kết nhà khoa học, nông dân và nhà hoạch định chính sách để thúc đẩy hợp tác liên ngành.',
-          'Hướng tới phát triển bền vững: nâng cao chất lượng, giá trị xuất khẩu và khuyến khích sản xuất nông nghiệp thân thiện môi trường.',
+          'Thúc đẩy đổi mới nông nghiệp. Dự án hỗ trợ nông dân tiếp cận và áp dụng công nghệ chính xác, nâng cao hiệu quả sản xuất.',
+          'Nâng cao phân tích chuỗi giá trị. Dự án giúp xác định vị trí và cơ hội nâng cấp nông sản Việt Nam trong chuỗi giá trị toàn cầu.',
+          'Ra quyết định dựa trên dữ liệu. Dự án phân tích chi phí – lợi ích và hành vi tiêu dùng để định hướng chiến lược sản xuất – tiêu thụ.',
+          'Kết nối nghiên cứu và thực tiễn. Dự án gắn kết nhà khoa học, nông dân và nhà hoạch định chính sách để thúc đẩy hợp tác liên ngành.',
+          'Hướng tới phát triển bền vững. Dự án nâng cao chất lượng, giá trị xuất khẩu và khuyến khích sản xuất nông nghiệp thân thiện môi trường.',
         ],
       },
       {

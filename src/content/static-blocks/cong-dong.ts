@@ -40,7 +40,7 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
     { type: 'heading', level: 2, text: 'Các chương trình và sáng kiến tiêu biểu' },
     {
       type: 'paragraph',
-      text: 'Các sáng kiến được tổ chức theo ba hướng tác động: mở rộng cơ hội tiếp cận, củng cố năng lực công dân và thử nghiệm cách đo lường giá trị xã hội.',
+      text: 'Các sáng kiến được tổ chức theo ba hướng tác động. Đó là mở rộng cơ hội tiếp cận, củng cố năng lực công dân và thử nghiệm cách đo lường giá trị xã hội.',
     },
     { type: 'heading', level: 3, text: 'Bình đẳng, giáo dục và sức khỏe' },
     {
@@ -51,9 +51,9 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: false,
       items: [
-        'GISA EqualLife — bình đẳng và hòa nhập: thúc đẩy hòa nhập xã hội, công bằng giới và trao quyền cho các nhóm yếu thế thông qua truyền thông, tập huấn kỹ năng và kết nối cộng đồng hành động.',
-        'GISA EDU+ — giáo dục cho sự phát triển bền vững: hỗ trợ phát triển chương trình giáo dục khai phóng trong trường học, tập trung vào kỹ năng sống, trách nhiệm công dân và tư duy phản biện.',
-        'GISA Wellbeing4All — sức khỏe và hạnh phúc cộng đồng: cải thiện sức khỏe tinh thần và thể chất cho cộng đồng, đặc biệt là các nhóm dễ bị tổn thương.',
+        'GISA EqualLife — bình đẳng và hòa nhập. Sáng kiến thúc đẩy hòa nhập xã hội, công bằng giới và trao quyền cho các nhóm yếu thế thông qua truyền thông, tập huấn kỹ năng và kết nối cộng đồng hành động.',
+        'GISA EDU+ — giáo dục cho sự phát triển bền vững. Sáng kiến hỗ trợ phát triển chương trình giáo dục khai phóng trong trường học, tập trung vào kỹ năng sống, trách nhiệm công dân và tư duy phản biện.',
+        'GISA Wellbeing4All — sức khỏe và hạnh phúc cộng đồng. Sáng kiến cải thiện sức khỏe tinh thần và thể chất cho cộng đồng, đặc biệt là các nhóm dễ bị tổn thương.',
       ],
     },
     { type: 'heading', level: 3, text: 'Công dân và hỗ trợ cộng đồng' },
@@ -65,10 +65,10 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: false,
       items: [
-        'GISA CivicLab — công dân tích cực: thúc đẩy vai trò chủ động của người dân trong phát triển cộng đồng và giám sát chính sách qua đào tạo, diễn đàn và nền tảng phản hồi xã hội.',
-        'GISA Youth Social Action — thanh niên hành động xã hội: hỗ trợ các sáng kiến xã hội do thanh niên lãnh đạo bằng huấn luyện, cố vấn, kết nối chuyên gia và tài trợ nhỏ.',
-        'GISA CareConnect — kết nối vì cộng đồng: hệ thống tình nguyện và hỗ trợ xã hội tại các địa bàn khó khăn, vùng chuyển đổi hoặc gặp khủng hoảng.',
-        'GISA HomeCulture — văn hóa và cộng đồng: bảo tồn và phát huy các giá trị văn hóa cộng đồng gắn với phát triển xã hội bền vững.',
+        'GISA CivicLab — công dân tích cực. Sáng kiến thúc đẩy vai trò chủ động của người dân trong phát triển cộng đồng và giám sát chính sách qua đào tạo, diễn đàn và nền tảng phản hồi xã hội.',
+        'GISA Youth Social Action — thanh niên hành động xã hội. Sáng kiến hỗ trợ các hoạt động xã hội do thanh niên lãnh đạo bằng huấn luyện, cố vấn, kết nối chuyên gia và tài trợ nhỏ.',
+        'GISA CareConnect — kết nối vì cộng đồng. Đây là hệ thống tình nguyện và hỗ trợ xã hội tại các địa bàn khó khăn, vùng chuyển đổi hoặc gặp khủng hoảng.',
+        'GISA HomeCulture — văn hóa và cộng đồng. Sáng kiến bảo tồn và phát huy các giá trị văn hóa cộng đồng gắn với phát triển xã hội bền vững.',
       ],
     },
     { type: 'heading', level: 3, text: 'Thử nghiệm và đo lường tác động' },
@@ -80,9 +80,9 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: false,
       items: [
-        'GISA Social Lab — thử nghiệm sáng kiến xã hội: không gian nghiên cứu, thử nghiệm và nhân rộng các mô hình đổi mới xã hội có căn cứ khoa học.',
+        'GISA Social Lab — thử nghiệm sáng kiến xã hội. Đây là không gian nghiên cứu, thử nghiệm và nhân rộng các mô hình đổi mới xã hội có căn cứ khoa học.',
         'GISA SDG Impact Tracker — nền tảng số theo dõi, đo lường và báo cáo đóng góp của tổ chức và cộng đồng vào các mục tiêu phát triển bền vững.',
-        'GISA Work+Well — công việc nhân văn và môi trường làm việc bền vững: bộ công cụ đánh giá, đào tạo nội bộ và sáng kiến nhân sự vì phát triển con người.',
+        'GISA Work+Well — công việc nhân văn và môi trường làm việc bền vững. Chương trình cung cấp bộ công cụ đánh giá, đào tạo nội bộ và sáng kiến nhân sự vì phát triển con người.',
       ],
     },
     { type: 'heading', level: 3, text: 'Kết nối địa phương và chính sách' },
@@ -94,8 +94,8 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: false,
       items: [
-        'GISA Local Heroes — tôn vinh và kết nối người kiến tạo cộng đồng: tìm kiếm, tôn vinh và hỗ trợ các cá nhân, nhóm nhỏ đang tạo thay đổi tích cực ở địa phương.',
-        'GISA Social Policy Hack — đối thoại và đổi mới chính sách xã hội: diễn đàn, trại sáng tạo và cuộc thi mô phỏng nhằm đề xuất cải tiến chính sách dựa trên dữ liệu và tiếng nói người dân.',
+        'GISA Local Heroes — tôn vinh và kết nối người kiến tạo cộng đồng. Chương trình tìm kiếm, tôn vinh và hỗ trợ các cá nhân, nhóm nhỏ đang tạo thay đổi tích cực ở địa phương.',
+        'GISA Social Policy Hack — đối thoại và đổi mới chính sách xã hội. Chương trình tổ chức diễn đàn, trại sáng tạo và cuộc thi mô phỏng nhằm đề xuất cải tiến chính sách dựa trên dữ liệu và tiếng nói người dân.',
       ],
     },
   ],
@@ -118,7 +118,7 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
         'Thúc đẩy chuyển đổi sang mô hình phát triển kinh tế ít phát thải và sử dụng hiệu quả tài nguyên.',
         'Xây dựng các giải pháp thích ứng với biến đổi khí hậu tại địa phương, cộng đồng và doanh nghiệp.',
         'Bảo tồn đa dạng sinh học và phục hồi hệ sinh thái đất, nước, rừng và biển.',
-        'Phòng ngừa và giảm thiểu ô nhiễm môi trường: không khí, nước, rác thải, nhựa.',
+        'Phòng ngừa và giảm thiểu ô nhiễm không khí, nước, rác thải và nhựa.',
         'Thay đổi hành vi và lối sống theo hướng thân thiện với môi trường.',
         'Kết nối khoa học, chính sách và cộng đồng trong các sáng kiến môi trường.',
       ],
@@ -139,7 +139,7 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
       items: [
         'GISA Green Futures Lab — không gian nghiên cứu, thiết kế và thử nghiệm các mô hình phát triển thân thiện với môi trường, từ kiến trúc xanh, quy hoạch đô thị sinh thái đến sản xuất sạch hơn.',
         'Climate Resilience+ — xây dựng năng lực thích ứng với biến đổi khí hậu cho cộng đồng, doanh nghiệp nhỏ và vùng dễ bị tổn thương.',
-        'GISA EcoAction — chuỗi sáng kiến môi trường do cộng đồng khởi xướng: quản lý chất thải, làm sạch không gian công cộng, vườn sinh thái đô thị và truyền thông nâng cao nhận thức.',
+        'GISA EcoAction — chuỗi sáng kiến môi trường do cộng đồng khởi xướng. Hoạt động gồm quản lý chất thải, làm sạch không gian công cộng, vườn sinh thái đô thị và truyền thông nâng cao nhận thức.',
         'GISA Biodiversity+ — bảo tồn đa dạng sinh học gắn với phát triển sinh kế và văn hóa bản địa, phục hồi sinh cảnh rừng, biển và hệ sinh thái ngập mặn.',
       ],
     },
@@ -168,7 +168,7 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
       items: [
         'GISA Environmental Policy Dialogue — diễn đàn đối thoại chính sách và chia sẻ sáng kiến giữa giới nghiên cứu, hoạch định, doanh nghiệp và xã hội dân sự.',
         'Green Citizen — hành trình truyền thông, đào tạo và khơi dậy lối sống xanh thông qua thử thách, tài liệu hướng dẫn và sự kiện cộng đồng.',
-        'GISA Urban Greening Project — phủ xanh và phục hồi không gian xanh đô thị: vườn cộng đồng, tường cây xanh, mái nhà xanh và cây xanh công cộng.',
+        'GISA Urban Greening Project — phủ xanh và phục hồi không gian xanh đô thị. Hoạt động gồm vườn cộng đồng, tường cây xanh, mái nhà xanh và cây xanh công cộng.',
       ],
     },
   ],
@@ -181,7 +181,7 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
     { type: 'heading', level: 2, text: 'Tư duy và định hướng' },
     {
       type: 'paragraph',
-      text: 'GISA tiếp cận quản trị từ mô hình hệ thống và hướng đến quản trị chuyển đổi: tổ chức phải có khả năng thích nghi, minh bạch, đồng kiến tạo và hướng đến giá trị bền vững cho đa bên liên quan. Quản trị xanh không chỉ gắn với giảm thiểu tác động môi trường, mà còn lồng ghép nguyên tắc ESG vào cơ chế vận hành, ra quyết định và đánh giá tác động.',
+      text: 'GISA tiếp cận quản trị từ mô hình hệ thống và hướng đến quản trị chuyển đổi. Tổ chức phải có khả năng thích nghi, minh bạch, đồng kiến tạo và hướng đến giá trị bền vững cho đa bên liên quan. Quản trị xanh không chỉ gắn với giảm thiểu tác động môi trường, mà còn lồng ghép nguyên tắc ESG vào cơ chế vận hành, ra quyết định và đánh giá tác động.',
     },
     { type: 'heading', level: 2, text: 'Các nội dung trọng tâm' },
     {
@@ -199,7 +199,7 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
     { type: 'heading', level: 2, text: 'Các chương trình và sáng kiến tiêu biểu' },
     {
       type: 'paragraph',
-      text: 'Các sáng kiến tập trung vào ba lớp năng lực: khung quản trị, hạ tầng dữ liệu và khả năng lãnh đạo quá trình chuyển đổi.',
+      text: 'Các sáng kiến tập trung vào ba lớp năng lực gồm khung quản trị, hạ tầng dữ liệu và khả năng lãnh đạo quá trình chuyển đổi.',
     },
     { type: 'heading', level: 3, text: 'Khung quản trị và thực hành ESG' },
     {
@@ -238,7 +238,7 @@ export const congDongBlocks: Record<string, ContentBlock[]> = {
       ordered: false,
       items: [
         'GISA Future Leadership for Sustainability — phát triển năng lực lãnh đạo xanh và bền vững cho nhà quản lý doanh nghiệp, cán bộ chính quyền, tổ chức xã hội và thanh niên.',
-        'GISA Green Office Toolkit — hướng dẫn xây dựng văn phòng làm việc xanh: sử dụng năng lượng hiệu quả, giảm chất thải, quản lý tài nguyên số và tổ chức sự kiện thân thiện môi trường.',
+        'GISA Green Office Toolkit — hướng dẫn xây dựng văn phòng làm việc xanh. Nội dung gồm sử dụng năng lượng hiệu quả, giảm chất thải, quản lý tài nguyên số và tổ chức sự kiện thân thiện môi trường.',
         'GISA Ethical Governance Dialogues — chuỗi đối thoại, nghiên cứu và xuất bản nhằm thúc đẩy thực hành quản trị đạo đức trong doanh nghiệp, tổ chức xã hội và khu vực công.',
       ],
     },

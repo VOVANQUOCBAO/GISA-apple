@@ -67,7 +67,7 @@ export const publicationFixtures = [
       },
       {
         type: 'paragraph',
-        text: 'Phương pháp kết hợp định tính và định lượng: tổng quan tài liệu, phỏng vấn khám phá và xây dựng lý thuyết nền từ dữ liệu thực địa.',
+        text: 'Phương pháp kết hợp định tính và định lượng gồm tổng quan tài liệu, phỏng vấn khám phá và xây dựng lý thuyết nền từ dữ liệu thực địa.',
       },
       { type: 'heading', level: 2, text: 'Kết quả chính' },
       {
@@ -76,8 +76,8 @@ export const publicationFixtures = [
         items: [
           'Đề xuất khung chuẩn đối sánh PMS cho đo lường hiệu suất hoạt động.',
           'Chênh lệch hiệu suất bắt nguồn từ thiết kế, nguồn cung nguyên liệu, lợi thế quy mô, thị trường, hệ thống quản lý và mức độ cởi mở của tổ chức.',
-          'Rào cản triển khai: khó chọn chỉ số đo, khó tìm tổ chức so sánh phù hợp, thiếu chuyên môn, ngại chia sẻ thông tin và dữ liệu kém tin cậy.',
-          'Điều kiện thành công: vai trò dẫn dắt của lãnh đạo cùng các yếu tố hệ thống, sự tham gia của nhân viên, sự gắn kết với chiến lược, văn hóa tổ chức và kết nối với bên liên quan bên ngoài.',
+          'Các rào cản triển khai gồm khó chọn chỉ số đo, khó tìm tổ chức so sánh phù hợp, thiếu chuyên môn, ngại chia sẻ thông tin và dữ liệu kém tin cậy.',
+          'Các điều kiện thành công gồm vai trò dẫn dắt của lãnh đạo cùng các yếu tố hệ thống, sự tham gia của nhân viên, sự gắn kết với chiến lược, văn hóa tổ chức và kết nối với bên liên quan bên ngoài.',
         ],
       },
     ],
@@ -86,7 +86,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/nghien-cuu-phat-trien-mo-hinh-chuan-doi-sanh-benchmarking-do-luong-hieu-suat-hoat-dong-phan-tich-truong-hop-cac-doanh-nghiep-viet-nam',
-    sourceLabel: 'Website công khai GISA: bài nghiên cứu chuẩn đối sánh',
+    sourceLabel: 'Website công khai GISA — bài nghiên cứu chuẩn đối sánh',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -137,7 +137,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/cac-chuong-trinh-chat-luong-thuc-pham-va-phi-bao-hiem-gia-rong-co-di-cung-nhau-khong',
-    sourceLabel: 'Website công khai GISA: chương trình chất lượng thực phẩm',
+    sourceLabel: 'Website công khai GISA — chương trình chất lượng thực phẩm',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -193,7 +193,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/phan-tich-chuoi-gia-tri-va-danh-gia-nang-luc-canh-tranh-cua-nganh-buoi-da-xanh-tai-ben-tre-viet-nam',
-    sourceLabel: 'Website công khai GISA: chuỗi giá trị bưởi da xanh',
+    sourceLabel: 'Website công khai GISA — chuỗi giá trị bưởi da xanh',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -246,7 +246,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/nang-cao-trai-nghiem-khach-hang-voi-chatbot-van-hanh-boi-tri-tue-nhan-tao-ai-vai-tro-cua-chat-luong-dich-vu-tri-tue-cam-xuc-va-su-ca-nhan-hoa-cua-thuat-toan',
-    sourceLabel: 'Website công khai GISA: chatbot vận hành bởi AI',
+    sourceLabel: 'Website công khai GISA — chatbot vận hành bởi AI',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -290,8 +290,8 @@ export const publicationFixtures = [
         type: 'list',
         ordered: false,
         items: [
-          'Động lực nổi bật: sức khỏe, thương hiệu và chất lượng, yếu tố gia đình, chương trình khuyến mãi.',
-          'Rào cản nổi bật: khẩu vị, giá trị cảm nhận thấp, thói quen, thiếu niềm tin và thông tin, giá cao, khả năng tiếp cận hạn chế.',
+          'Các động lực nổi bật gồm sức khỏe, thương hiệu và chất lượng, yếu tố gia đình, chương trình khuyến mãi.',
+          'Các rào cản nổi bật gồm khẩu vị, giá trị cảm nhận thấp, thói quen, thiếu niềm tin và thông tin, giá cao, khả năng tiếp cận hạn chế.',
           'Đề xuất can thiệp theo cả ba cấu phần Năng lực, Cơ hội và Động lực của mô hình COM-B.',
         ],
       },
@@ -300,7 +300,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/nghien-cuu-kham-pha-dong-luc-va-rao-can-doi-voi-hanh-vi-tieu-dung-sua-ben-vung-tai-viet-nam-ung-dung-mo-hinh-quan-tri-com-b',
-    sourceLabel: 'Website công khai GISA: tiêu dùng sữa bền vững',
+    sourceLabel: 'Website công khai GISA — tiêu dùng sữa bền vững',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -358,7 +358,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/nghien-cuu-su-san-sang-tra-tien-doi-voi-nhan-thuc-pham-phuc-loi-dong-vat-ung-dung-phuong-phap-thi-nghiem-lua-chon',
-    sourceLabel: 'Website công khai GISA: nhãn phúc lợi động vật',
+    sourceLabel: 'Website công khai GISA — nhãn phúc lợi động vật',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -398,7 +398,7 @@ export const publicationFixtures = [
         ordered: false,
         items: [
           'Bưởi có năng lực cạnh tranh mạnh nhất, dừa ở mức trung bình, lúa yếu nhất.',
-          'Dừa là cây ổn định nhất trước biến động; lúa nhạy cảm nhất với thay đổi khí hậu và thị trường.',
+          'Dừa là cây ổn định nhất trước biến động. Lúa nhạy cảm nhất với thay đổi khí hậu và thị trường.',
           'Nghiên cứu gợi ý chuyển một phần diện tích lúa sang bưởi hoặc dừa để cải thiện hiệu quả kinh tế và tính bền vững.',
         ],
       },
@@ -412,7 +412,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/loi-the-so-sanh-cua-cac-loai-cay-trong-thay-the-nghien-cuu-so-sanh-o-ben-tre-dong-bang-song-cuu-long-viet-nam',
-    sourceLabel: 'Website công khai GISA: lợi thế so sánh cây trồng thay thế',
+    sourceLabel: 'Website công khai GISA — lợi thế so sánh cây trồng thay thế',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -444,7 +444,7 @@ export const publicationFixtures = [
       { type: 'heading', level: 2, text: 'Bối cảnh và mục tiêu' },
       {
         type: 'paragraph',
-        text: 'Nghiên cứu đo năng lực cạnh tranh tĩnh và động của nông nghiệp Việt Nam bằng chỉ số RCA và NRCA. Động thái của các chỉ số được đánh giá qua ba cách tiếp cận: hồi quy OLS, ma trận Markov và phân tích xu hướng.',
+        text: 'Nghiên cứu đo năng lực cạnh tranh tĩnh và động của nông nghiệp Việt Nam bằng chỉ số RCA và NRCA. Động thái của các chỉ số được đánh giá qua ba cách tiếp cận gồm hồi quy OLS, ma trận Markov và phân tích xu hướng.',
       },
       {
         type: 'paragraph',
@@ -466,7 +466,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/nang-luc-canh-tranh-nong-nghiep-cua-viet-nam-theo-cac-chi-so-rca-va-nrca-va-tinh-nhat-quan-cua-cac-chi-so-nang-luc-canh-tranh',
-    sourceLabel: 'Website công khai GISA: chỉ số RCA và NRCA',
+    sourceLabel: 'Website công khai GISA — chỉ số RCA và NRCA',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -508,7 +508,7 @@ export const publicationFixtures = [
         type: 'list',
         ordered: false,
         items: [
-          'Hiệu quả kinh tế biến thiên mạnh giữa các trường hợp: một số sản phẩm tạo giá trị gia tăng đáng kể, nhiều trường hợp khác chưa đạt tính bền vững kinh tế.',
+          'Hiệu quả kinh tế biến thiên mạnh giữa các trường hợp. Một số sản phẩm tạo giá trị gia tăng đáng kể, trong khi nhiều trường hợp khác chưa đạt tính bền vững kinh tế.',
           'Hiệu quả môi trường và xã hội phần lớn chưa được kiểm chứng đầy đủ, trừ nhóm sản phẩm hữu cơ.',
           'Công trình cung cấp mô tả 27 chương trình cùng dữ liệu thô cho phép phân tích lại.',
         ],
@@ -525,7 +525,7 @@ export const publicationFixtures = [
     sourceUrl:
       'https://gisa.edu.vn/tinh-ben-vung-cua-cac-chuong-trinh-chat-luong-thuc-pham-chau-au-da-hieu-suat-co-cau-va-quan-tri-cac-he-thong-pdo-pgi-va-nong-san-huu-co',
     sourceLabel:
-      'Website công khai GISA: chương trình chất lượng thực phẩm châu Âu',
+      'Website công khai GISA — chương trình chất lượng thực phẩm châu Âu',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Chuyên khảo',
@@ -578,7 +578,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/do-luong-tinh-ben-vung-ve-kinh-te-moi-truong-va-xa-hoi-cua-chuoi-cung-ung-thuc-pham-ngan-han',
-    sourceLabel: 'Website công khai GISA: chuỗi cung ứng thực phẩm ngắn',
+    sourceLabel: 'Website công khai GISA — chuỗi cung ứng thực phẩm ngắn',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -626,7 +626,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/dong-luc-cua-thuong-mai-noi-nganh-nong-nghiep-mot-nghien-cuu-dien-hinh-toan-dien-o-viet-nam',
-    sourceLabel: 'Website công khai GISA: thương mại nội ngành nông nghiệp',
+    sourceLabel: 'Website công khai GISA — thương mại nội ngành nông nghiệp',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -658,7 +658,7 @@ export const publicationFixtures = [
       { type: 'heading', level: 2, text: 'Bối cảnh và mục tiêu' },
       {
         type: 'paragraph',
-        text: 'Bài báo nghiên cứu chuyên môn hóa thương mại nông sản của Việt Nam trên thị trường thế giới bằng chỉ số Lafay. Biến động của chỉ số trong giai đoạn 1997-2014 được phân tích theo ba cách: hồi quy OLS, ma trận Markov và phân tích xu hướng.',
+        text: 'Bài báo nghiên cứu chuyên môn hóa thương mại nông sản của Việt Nam trên thị trường thế giới bằng chỉ số Lafay. Biến động của chỉ số trong giai đoạn 1997-2014 được phân tích theo ba cách gồm hồi quy OLS, ma trận Markov và phân tích xu hướng.',
       },
       { type: 'heading', level: 2, text: 'Kết quả chính' },
       {
@@ -677,7 +677,7 @@ export const publicationFixtures = [
     sourceUrl:
       'https://gisa.edu.vn/nghien-cuu-su-phat-trien-cua-chuyen-mon-hoa-thuong-mai-nong-nghiep-o-cac-nen-kinh-te-chuyen-doi-nghien-cuu-truong-hop-tu-viet-nam',
     sourceLabel:
-      'Website công khai GISA: chuyên môn hóa thương mại nông nghiệp',
+      'Website công khai GISA — chuyên môn hóa thương mại nông nghiệp',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -730,7 +730,7 @@ export const publicationFixtures = [
     tags: ['Chuỗi giá trị', 'bưởi da xanh', 'Bến Tre', 'nông nghiệp'],
     evidenceStatus: 'provided_by_gisa',
     sourceUrl: 'https://gisa.edu.vn/nghien-cuu-chuoi-gia-tri-buoi-da-xanh-ben-tre',
-    sourceLabel: 'Website công khai GISA: chuỗi giá trị bưởi da xanh Bến Tre',
+    sourceLabel: 'Website công khai GISA — chuỗi giá trị bưởi da xanh Bến Tre',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -754,7 +754,7 @@ export const publicationFixtures = [
     locale: 'vi',
     translationKey: 'publication-short-food-supply-chain-framework',
     title:
-      'Chuỗi cung ứng thực phẩm ngắn: Động lực bền vững và bình đẳng cho tương lai',
+      'Chuỗi cung ứng thực phẩm ngắn — Động lực bền vững và bình đẳng cho tương lai',
     summary:
       'Khung khái niệm sáu trụ cột với 28 chỉ số cho chuỗi cung ứng thực phẩm ngắn, áp dụng cho chuỗi rau tại Việt Nam.',
     body: [
@@ -785,7 +785,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/chuoi-cung-ung-thuc-pham-ngan-han-dong-luc-ben-vung-va-binh-dang-cho-tuong-lai',
-    sourceLabel: 'Website công khai GISA: chuỗi cung ứng thực phẩm ngắn',
+    sourceLabel: 'Website công khai GISA — chuỗi cung ứng thực phẩm ngắn',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',

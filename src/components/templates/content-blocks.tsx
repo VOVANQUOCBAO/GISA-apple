@@ -58,7 +58,7 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
           return (
             <List className={styles.proseList} data-scroll-motion="reveal" key={`${block.type}-${index}`}>
               {block.items.map((item) => (
-                <li id={activeHeadingId ? `${activeHeadingId}-${toAnchorId(item)}` : undefined} key={item}>{item}</li>
+                <li id={activeHeadingId ? `${activeHeadingId}-${toAnchorId(item)}` : undefined} key={item}>{bindPhrases(item)}</li>
               ))}
             </List>
           );
@@ -71,7 +71,7 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
           return (
             <blockquote className={styles.proseQuote} data-scroll-motion="reveal" key={`${block.type}-${index}`}>
               <p>{bindPhrases(block.text)}</p>
-              {block.attribution ? <cite>{block.attribution}</cite> : null}
+              {block.attribution ? <cite>{bindPhrases(block.attribution)}</cite> : null}
             </blockquote>
           );
         }
@@ -80,9 +80,9 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
             <div className={styles.proseTableFrame} data-scroll-motion="reveal" key={`${block.type}-${index}`}>
             <table className={styles.proseTable}>
               {block.headers.length ? (
-                <thead><tr>{block.headers.map((header) => <th key={header}>{header}</th>)}</tr></thead>
+                <thead><tr>{block.headers.map((header) => <th key={header}>{bindPhrases(header)}</th>)}</tr></thead>
               ) : null}
-              <tbody>{block.rows.map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => <td key={cellIndex}>{cell}</td>)}</tr>)}</tbody>
+              <tbody>{block.rows.map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => <td key={cellIndex}>{bindPhrases(cell)}</td>)}</tr>)}</tbody>
             </table>
             </div>
           );
@@ -95,7 +95,7 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
           );
         }
         if (block.type === 'video') {
-          return <p className={styles.proseVideoLink} key={`${block.type}-${index}`}><a href={block.externalUrl}>{block.title}</a></p>;
+          return <p className={styles.proseVideoLink} key={`${block.type}-${index}`}><a href={block.externalUrl}>{bindPhrases(block.title)}</a></p>;
         }
         if (block.type === 'image') {
           const asset = resolvePublishableAsset(block.assetId);
@@ -103,7 +103,7 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
           // hiển thị chú thích. Không dựng khung ảnh trống vì trang sẽ có một ô xám
           // không bao giờ được lấp.
           if (!asset) {
-            return block.caption ? <p key={`${block.type}-${index}`}>{block.caption}</p> : null;
+            return block.caption ? <p key={`${block.type}-${index}`}>{bindPhrases(block.caption)}</p> : null;
           }
           return (
             <figure className={styles.blockFigure} data-scroll-motion="media" key={`${block.type}-${index}`}>

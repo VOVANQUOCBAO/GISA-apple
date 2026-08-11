@@ -39,9 +39,6 @@
 .directoryHeader {
   align-items: end;
   border-bottom: 1px solid color-mix(in srgb, var(--color-navy) 16%, transparent);
-  display: flex;
-  gap: 2rem;
-  justify-content: space-between;
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
   padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
 }
@@ -57,36 +54,19 @@
 
 .directoryHeader h2 {
   color: var(--color-navy);
-  font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 4.8vw, 4.8rem);
-  letter-spacing: -0.04em;
-  line-height: 1.02;
-  margin: 0.6rem 0 0;
-  max-width: 17ch;
-  text-wrap: balance;
-}
-
-.resultCount {
-  align-items: end;
-  color: rgb(20 49 64 / 64%);
+  column-gap: 0.22em;
   display: flex;
-  flex: 0 0 auto;
-  gap: 0.75rem;
-  margin: 0;
-}
-
-.resultCount strong {
-  color: var(--section-secondary);
+  flex-wrap: wrap;
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 4vw, 3.6rem);
-  font-variant-numeric: tabular-nums;
-  line-height: 0.8;
+  font-size: clamp(2.2rem, 3.9vw, 4rem);
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  margin: 0.6rem 0 0;
+  max-width: none;
 }
 
-.resultCount span {
-  font-size: 0.82rem;
-  font-weight: 700;
-  max-width: 8rem;
+.directoryHeader h2 > span {
+  white-space: nowrap;
 }
 
 .expertGrid {
@@ -238,6 +218,8 @@
   color: rgb(20 49 64 / 72%);
   line-height: 1.6;
   margin: 1rem 0 0;
+  max-width: 64ch;
+  text-align: start;
   text-wrap: pretty;
 }
 
@@ -290,10 +272,6 @@
     display: grid;
   }
 
-  .resultCount {
-    align-items: center;
-  }
-
   .expertGrid {
     display: block;
   }
@@ -309,6 +287,10 @@
   .portrait {
     aspect-ratio: 4 / 3;
     min-height: 0;
+  }
+
+  .cardCopy > p {
+    text-align: start;
   }
 }
 

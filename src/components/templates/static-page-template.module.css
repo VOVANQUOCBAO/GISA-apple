@@ -87,6 +87,45 @@
   text-wrap: pretty;
 }
 
+/* The research introduction carries two long source paragraphs. Keep them on
+   one shared reading measure and a calmer type scale so lines stay even rather
+   than breaking into short fragments at intermediate viewport widths. */
+.pageContainer[data-section='research'] .opening > div {
+  max-width: 50rem;
+}
+
+.pageContainer[data-section='research'] .opening > div > p {
+  hyphens: none;
+  max-width: 66ch;
+  overflow-wrap: normal;
+  text-align: start;
+  text-wrap: pretty;
+}
+
+.pageContainer[data-section='research'] .opening > div > p:first-child {
+  font-family: var(--font-body);
+  font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+  letter-spacing: -0.012em;
+  line-height: 1.58;
+}
+
+.pageContainer[data-section='research'] .opening > div > p + p {
+  margin-top: 1.35rem;
+}
+
+.pageContainer[data-section='research'] .chapterContent > div {
+  max-width: 68ch;
+}
+
+.pageContainer[data-section='research'] .chapterContent p {
+  hyphens: none;
+  line-height: 1.75;
+  max-width: 68ch;
+  overflow-wrap: normal;
+  text-align: start;
+  text-wrap: pretty;
+}
+
 .chapterList {
   counter-reset: chapter;
 }
@@ -191,6 +230,16 @@
     border-radius: 1.25rem;
     margin-bottom: 3.5rem;
     padding: 2rem 1.35rem;
+  }
+
+  .pageContainer[data-section='research'] .opening > div > p:first-child {
+    font-size: clamp(1.18rem, 5.6vw, 1.4rem);
+    line-height: 1.62;
+  }
+
+  .pageContainer[data-section='research'] .opening > div > p,
+  .pageContainer[data-section='research'] .chapterContent p {
+    text-align: start;
   }
 
   .chapter,

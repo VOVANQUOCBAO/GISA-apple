@@ -32,6 +32,7 @@
   --shadow-card: 0 1rem 2.5rem rgb(0 68 36 / 10%);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --section-subnav-transition-name: section-subnav;
   --motion-distance: clamp(1.75rem, 4vw, 4rem);
 }
 
@@ -56,6 +57,81 @@ body {
   font-size: 1rem;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
+
+/* Route changes initiated by the shared section tabs use one short,
+   interruptible fade-through. The sticky header and footer remain live and
+   stable instead of being captured in the page snapshot. */
+@keyframes route-page-out {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -0.3rem, 0);
+  }
+}
+
+@keyframes route-page-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.45rem, 0);
+  }
+}
+
+@keyframes route-subnav-out {
+  to { opacity: 0; }
+}
+
+@keyframes route-subnav-in {
+  from { opacity: 0; }
+}
+
+@keyframes route-page-fallback-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.35rem, 0);
+  }
+}
+
+html[data-section-navigation='leaving'] main {
+  opacity: 0;
+  transform: translate3d(0, -0.25rem, 0);
+  transition:
+    opacity 100ms var(--ease-out),
+    transform 100ms var(--ease-out);
+}
+
+html[data-section-navigation='entering'] main {
+  animation: route-page-fallback-in 200ms var(--ease-out) both;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-group(page-content) {
+  animation-duration: 220ms;
+  animation-timing-function: var(--ease-out);
+}
+
+::view-transition-old(page-content) {
+  animation: route-page-out 150ms var(--ease-out) both;
+}
+
+::view-transition-new(page-content) {
+  animation: route-page-in 220ms var(--ease-out) both;
+}
+
+::view-transition-group(section-subnav) {
+  animation-duration: 220ms;
+  animation-timing-function: var(--ease-in-out);
+}
+
+::view-transition-old(section-subnav) {
+  animation: route-subnav-out 120ms var(--ease-out) both;
+}
+
+::view-transition-new(section-subnav) {
+  animation: route-subnav-in 180ms var(--ease-out) both;
 }
 
 main {
@@ -415,6 +491,21 @@ section[id] {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
+  }
+
+  ::view-transition-old(page-content),
+  ::view-transition-new(page-content),
+  ::view-transition-old(section-subnav),
+  ::view-transition-new(section-subnav) {
+    animation: none !important;
+  }
+
+  html[data-section-navigation='leaving'] main,
+  html[data-section-navigation='entering'] main {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 
   [data-scroll-motion] {

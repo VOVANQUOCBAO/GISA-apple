@@ -21,8 +21,9 @@ const records = [
 describe('EcosystemDetailTemplate', () => {
   test.each(records)('renders verified content for $kind', (record) => {
     const { container } = render(<EcosystemDetailTemplate record={record} />);
+    const displayTitle = record.title.replace(/\s*[—–]\s*/g, ' - ').replace(/\s{2,}/g, ' ').trim();
 
-    expect(screen.getByRole('heading', { level: 1, name: record.title })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: displayTitle })).toBeInTheDocument();
     expect(container.querySelector('br')).toBeNull();
     expect(container.textContent).not.toMatch(/[—–]/);
   });

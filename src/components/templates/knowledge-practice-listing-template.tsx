@@ -37,7 +37,7 @@ const DIRECTIONS: Record<string, Direction> = {
     action: { href: '/nghien-cuu/linh-vuc', label: 'Xem lĩnh vực nghiên cứu' },
     eyebrow: 'Danh mục nghiên cứu',
     introduction:
-      'Mỗi dự án bắt đầu từ một câu hỏi có ý nghĩa đối với chính sách, thị trường hoặc cộng đồng; kết quả hướng đến bằng chứng có thể tiếp tục được sử dụng.',
+      'Mỗi dự án bắt đầu từ một câu hỏi có ý nghĩa đối với chính sách, thị trường hoặc cộng đồng. Kết quả hướng đến bằng chứng có thể tiếp tục được sử dụng.',
     sectionTitle: 'Từ câu hỏi nghiên cứu đến bằng chứng ứng dụng',
     tone: 'research',
   },

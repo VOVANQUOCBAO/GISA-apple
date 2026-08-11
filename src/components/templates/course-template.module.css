@@ -6,9 +6,9 @@
 
 .decisionStage {
   display: grid;
-  gap: clamp(2.5rem, 6vw, 7rem);
+  gap: clamp(2.5rem, 4vw, 4.5rem);
   grid-template-columns: minmax(0, 1.35fr) minmax(20rem, .65fr);
-  margin-top: clamp(3.5rem, 7vw, 7rem);
+  margin-top: clamp(2rem, 4vw, 4rem);
 }
 
 .courseFacts {
@@ -88,10 +88,10 @@
 
 .courseReading {
   display: grid;
-  gap: clamp(4rem, 8vw, 8rem);
+  gap: clamp(3rem, 5vw, 5rem);
   grid-template-columns: minmax(11rem, 14rem) minmax(0, 1fr);
-  margin: clamp(5rem, 10vw, 10rem) auto 0;
-  max-width: 84rem;
+  margin: clamp(3.5rem, 6vw, 6rem) auto 0;
+  max-width: 92rem;
 }
 
 .readingRail {
@@ -153,31 +153,39 @@
   font-size: clamp(1.45rem, 2.5vw, 2.25rem);
   letter-spacing: -.023em;
   line-height: 1.38;
-  margin-bottom: clamp(4rem, 8vw, 7rem);
-  max-width: 70ch;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  max-width: none;
   text-wrap: pretty;
+}
+
+.courseOpening > div > p {
+  max-width: 68ch;
+  text-align: start;
 }
 
 .courseChapter {
   border-top: 1px solid color-mix(in srgb, var(--color-navy) 15%, transparent);
-  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+  padding-block: clamp(2.25rem, 4.5vw, 4rem);
   scroll-margin-top: 8rem;
 }
 
 .courseChapter h2 {
   color: var(--color-navy);
   font-family: var(--font-heading);
-  font-size: clamp(2.15rem, 4.5vw, 4.2rem);
+  font-size: clamp(2.15rem, 3.2vw, 3.4rem);
   font-weight: 600;
   letter-spacing: -.043em;
   line-height: 1.02;
-  margin: 0 0 clamp(2rem, 4vw, 3.25rem);
-  max-width: 22ch;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.35rem);
+  max-width: 100%;
+  overflow-wrap: normal;
   text-wrap: balance;
+  word-break: normal;
 }
 
 .courseChapter > div {
-  max-width: 72ch;
+  max-width: none;
+  width: 100%;
 }
 
 .courseChapter p,
@@ -185,15 +193,28 @@
   text-wrap: pretty;
 }
 
+.courseChapter li [data-vietnamese-phrase='true'] {
+  display: inline-block !important;
+  max-width: 100%;
+}
+
+.courseChapter > div > p {
+  max-width: 68ch;
+  text-align: start;
+}
+
 .courseChapter ul,
 .courseChapter ol {
   display: grid;
   gap: .85rem 1.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.courseChapter ul:has(li:nth-child(5)),
-.courseChapter ol:has(li:nth-child(5)) {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.courseChapter ul:has(> li:nth-child(3):last-child),
+.courseChapter ol:has(> li:nth-child(3):last-child),
+.courseChapter ul:has(> li:nth-child(5)),
+.courseChapter ol:has(> li:nth-child(5)) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .sourceStage {
@@ -235,6 +256,10 @@
 
 @media (max-width: 40rem) {
   .courseFacts,
+  .courseChapter ul,
+  .courseChapter ol,
+  .courseChapter ul:has(> li:nth-child(3):last-child),
+  .courseChapter ol:has(> li:nth-child(3):last-child),
   .courseChapter ul:has(li:nth-child(5)),
   .courseChapter ol:has(li:nth-child(5)) {
     grid-template-columns: 1fr;
@@ -251,6 +276,13 @@
 
   .registrationActions a {
     white-space: normal;
+  }
+}
+
+@media (max-width: 48rem) {
+  .courseOpening > div > p,
+  .courseChapter > div > p {
+    text-align: left;
   }
 }
 

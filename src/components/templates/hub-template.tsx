@@ -63,11 +63,6 @@ export function HubTemplate({ definition }: { definition: HubDefinition }) {
                   {bindPhrases(`Khám phá ${definition.title}`)}
                 </h2>
               </div>
-              <p className={hubStyles.introductionText}>
-                {bindPhrases(
-                  'Bắt đầu với nội dung được giới thiệu dưới đây, hoặc chọn một hướng phù hợp trong mục lục chuyên đề.',
-                )}
-              </p>
             </header>
 
             <div className={hubStyles.editorialLayout}>

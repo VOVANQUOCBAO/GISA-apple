@@ -8,10 +8,10 @@
   align-items: end;
   border-bottom: 1px solid color-mix(in srgb, var(--color-navy) 15%, transparent);
   display: grid;
-  gap: clamp(2rem, 6vw, 7rem);
+  gap: clamp(2rem, 4vw, 4.5rem);
   grid-template-columns: minmax(0, 1fr) auto;
-  margin-top: clamp(4rem, 8vw, 8rem);
-  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  margin-top: clamp(2rem, 4vw, 4rem);
+  padding-bottom: clamp(2rem, 3.5vw, 3rem);
 }
 
 .discoveryCopy {
@@ -36,6 +36,7 @@
   line-height: 1.65;
   margin: 1.5rem 0 0;
   max-width: 68ch;
+  text-align: start;
   text-wrap: pretty;
 }
 
@@ -54,7 +55,7 @@
   display: grid;
   gap: clamp(1.5rem, 4vw, 4rem);
   grid-template-columns: minmax(15rem, .45fr) minmax(0, 1.55fr);
-  margin-block: clamp(3rem, 6vw, 5rem);
+  margin-block: clamp(2rem, 4vw, 3.5rem);
   padding: clamp(1.5rem, 3vw, 2.5rem);
 }
 
@@ -87,8 +88,8 @@
 
 .programGroups {
   display: grid;
-  gap: clamp(5rem, 10vw, 10rem);
-  margin-top: clamp(4rem, 8vw, 7rem);
+  gap: clamp(3rem, 6vw, 5rem);
+  margin-top: clamp(2.5rem, 4vw, 4rem);
 }
 
 .programGroup {
@@ -100,7 +101,7 @@
   display: flex;
   gap: 2rem;
   justify-content: space-between;
-  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .programHeader h2 {
@@ -138,7 +139,7 @@
   display: grid;
   gap: clamp(2rem, 6vw, 7rem);
   grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .75fr);
-  padding-block: clamp(2rem, 4vw, 3.5rem);
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
   position: relative;
   transition: background-color .25s ease, padding .25s ease;
 }
@@ -196,6 +197,7 @@
 .courseSummary {
   margin: 1rem 0 0;
   max-width: 68ch;
+  text-align: start;
 }
 
 .courseOutcome {
@@ -206,7 +208,7 @@
 
 .courseOutcome p {
   margin: 0;
-  max-width: 38ch;
+  max-width: 60ch;
 }
 
 .courseArrow {
@@ -272,6 +274,11 @@
   .courseEntry:hover,
   .courseEntry:focus-within {
     padding-inline: .75rem;
+  }
+
+  .discoveryCopy p,
+  .courseSummary {
+    text-align: start;
   }
 }
 

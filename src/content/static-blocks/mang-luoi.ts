@@ -25,12 +25,12 @@ export const mangLuoiBlocks: Record<string, ContentBlock[]> = {
     { type: 'heading', level: 3, text: 'Nền tảng kết nối tri thức – thị trường – chính sách' },
     {
       type: 'paragraph',
-      text: 'GISA phát triển nền tảng dữ liệu động và hệ thống kết nối giúp liên thông giữa nhà nghiên cứu, doanh nghiệp và cơ quan hoạch định chính sách; tích hợp thông tin nghiên cứu, sáng kiến thị trường và vấn đề chính sách trọng tâm để rút ngắn khoảng cách giữa nghiên cứu và triển khai thực tế.',
+      text: 'GISA phát triển nền tảng dữ liệu động và hệ thống kết nối giúp liên thông giữa nhà nghiên cứu, doanh nghiệp và cơ quan hoạch định chính sách. Hệ thống tích hợp thông tin nghiên cứu, sáng kiến thị trường và các vấn đề chính sách trọng tâm để rút ngắn khoảng cách giữa nghiên cứu và triển khai thực tế.',
     },
     { type: 'heading', level: 3, text: 'Diễn đàn học thuật – chính sách – thị trường' },
     {
       type: 'paragraph',
-      text: 'GISA tổ chức các diễn đàn chiến lược kết nối ba trụ cột tác động: học thuật, chính sách và thị trường. Diễn đàn là không gian đối thoại, phân tích, phản biện và đồng kiến tạo nhằm định hình giải pháp, định hướng chính sách và xác định ưu tiên nghiên cứu.',
+      text: 'GISA tổ chức các diễn đàn chiến lược kết nối ba trụ cột tác động gồm học thuật, chính sách và thị trường. Diễn đàn là không gian đối thoại, phân tích, phản biện và đồng kiến tạo nhằm định hình giải pháp, định hướng chính sách và xác định ưu tiên nghiên cứu.',
     },
     { type: 'heading', level: 3, text: 'Chương trình đồng hành khởi nghiệp và đổi mới sáng tạo' },
     {
@@ -69,7 +69,7 @@ export const mangLuoiBlocks: Record<string, ContentBlock[]> = {
       ordered: false,
       items: [
         'Đối thoại chính sách và tư vấn đa bên — diễn đàn, hội thảo và nhóm tư vấn đa bên quy tụ nhà nghiên cứu, doanh nghiệp, cộng đồng và nhà quản lý cùng thảo luận các vấn đề chính sách cụ thể.',
-        'Mạng lưới chuyên gia liên lĩnh vực — tập hợp chuyên gia trong kinh tế, công nghệ, môi trường, giáo dục, sức khỏe tinh thần; GISA điều phối và kết nối với các dự án, chính sách và tổ chức có nhu cầu.',
+        'Mạng lưới chuyên gia liên lĩnh vực — tập hợp chuyên gia trong kinh tế, công nghệ, môi trường, giáo dục và sức khỏe tinh thần. GISA điều phối mạng lưới và kết nối chuyên gia với các dự án, chính sách và tổ chức có nhu cầu.',
         'Bản đồ nghiên cứu và dự án hợp tác mở — nền tảng số cập nhật, theo dõi và công bố các dự án nghiên cứu, đổi mới, chuyển giao công nghệ và sáng kiến cộng đồng đang triển khai.',
         'Chương trình đồng tài trợ sáng kiến cộng đồng — quỹ đồng tài trợ cùng doanh nghiệp, tổ chức xã hội hoặc chính quyền để hỗ trợ các sáng kiến địa phương có tiềm năng lan tỏa.',
       ],

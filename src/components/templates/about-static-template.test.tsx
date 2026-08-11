@@ -33,4 +33,19 @@ describe('AboutStaticTemplate', () => {
     expect(isAboutStaticPath('/gioi-thieu')).toBe(false);
     expect(isAboutStaticPath('/')).toBe(false);
   });
+
+  test('renders the bilingual slogan as two semantic lines without language labels', () => {
+    const definition = resolvePage('/gioi-thieu/tam-nhin-su-menh');
+    if (!definition || definition.template !== 'static') throw new Error('Missing vision page');
+
+    render(<AboutStaticTemplate definition={definition} path={definition.path} />);
+
+    const slogan = screen.getByRole('heading', { level: 2, name: 'Khẩu hiệu' }).parentElement;
+    const lines = slogan?.querySelectorAll('p > span');
+
+    expect(lines).toHaveLength(2);
+    expect(lines?.[0]).toHaveTextContent('Kiến tạo tri thức, lan tỏa giá trị');
+    expect(lines?.[1]).toHaveTextContent('Advancing Knowledge, Sharing Values');
+    expect(slogan).not.toHaveTextContent(/Tiếng Việt:|Tiếng Anh:/);
+  });
 });

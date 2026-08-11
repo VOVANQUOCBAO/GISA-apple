@@ -17,7 +17,7 @@
 
 .container {
   margin-inline: auto;
-  padding-block: 1rem clamp(5rem, 9vw, 9rem);
+  padding-block: 1rem clamp(4rem, 6vw, 6rem);
   width: min(100% - (2 * var(--gutter)), var(--container));
 }
 
@@ -52,7 +52,9 @@
   line-height: .98;
   margin: 0;
   max-width: 19ch;
+  overflow-wrap: normal;
   text-wrap: balance;
+  word-break: normal;
 }
 
 .masthead[data-title-length='long'] h1 {
@@ -65,7 +67,8 @@
   font-size: clamp(1.08rem, 1.45vw, 1.28rem);
   line-height: 1.7;
   margin: 2rem 0 0;
-  max-width: 66ch;
+  max-width: 68ch;
+  text-align: start;
   text-wrap: pretty;
 }
 
@@ -127,7 +130,7 @@
   border-bottom: 1px solid color-mix(in srgb, var(--detail-accent) 18%, transparent);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: clamp(4rem, 8vw, 7rem);
+  margin-top: clamp(3rem, 4.5vw, 4.5rem);
 }
 
 .factLedger > div {
@@ -175,9 +178,9 @@
 .readingStage {
   align-items: start;
   display: grid;
-  gap: clamp(3rem, 8vw, 8rem);
+  gap: clamp(3rem, 5vw, 5rem);
   grid-template-columns: minmax(0, 1fr) minmax(18rem, 23rem);
-  margin-top: clamp(4rem, 9vw, 8rem);
+  margin-top: clamp(3rem, 5vw, 5rem);
 }
 
 .bodyColumn {
@@ -185,7 +188,11 @@
 }
 
 .bodyColumn > div {
-  max-width: 72ch;
+  max-width: 68ch;
+}
+
+.bodyColumn > div > p {
+  text-align: start;
 }
 
 .contextAside {
@@ -297,5 +304,10 @@
 
   .actionCard {
     padding: 1.75rem 1.35rem;
+  }
+
+  .lede,
+  .bodyColumn > div > p {
+    text-align: left;
   }
 }

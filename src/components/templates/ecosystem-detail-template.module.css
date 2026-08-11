@@ -14,7 +14,7 @@
   --section-ink: var(--detail-ink);
   --section-pale: var(--detail-pale);
   margin-inline: auto;
-  padding-block: 1rem clamp(5rem, 9vw, 9rem);
+  padding-block: 1rem clamp(4rem, 6vw, 6rem);
   width: min(100% - (2 * var(--gutter)), var(--container));
 }
 
@@ -78,7 +78,8 @@
   font-size: clamp(1.05rem, 1.35vw, 1.22rem);
   line-height: 1.65;
   margin: clamp(1.25rem, 2.5vw, 1.8rem) 0 0;
-  max-width: 78ch;
+  max-width: 68ch;
+  text-align: start;
   text-wrap: pretty;
 }
 
@@ -117,14 +118,15 @@
 .archiveNotice {
   border-left: .3rem solid var(--detail-accent);
   color: rgb(21 52 67 / 78%);
-  margin: 0 0 clamp(3rem, 6vw, 5rem);
-  max-width: 80ch;
+  margin: 0 0 clamp(2.5rem, 4vw, 4rem);
+  max-width: 68ch;
   padding: .5rem 0 .5rem 1.25rem;
+  text-align: start;
 }
 
 .container[data-kind='partner'] .readingStage {
-  gap: clamp(2rem, 4vw, 4.5rem);
-  margin-top: clamp(3rem, 5vw, 5rem);
+  gap: clamp(2rem, 3.5vw, 3.5rem);
+  margin-top: clamp(2.75rem, 4.5vw, 4.5rem);
 }
 
 .partnerEvidence {
@@ -158,15 +160,16 @@
   line-height: 1.7;
   margin-block: .75rem 0;
   max-width: 68ch;
+  text-align: start;
 }
 
 .readingStage {
   align-items: start;
   display: grid;
-  gap: clamp(2.5rem, 6vw, 7rem);
+  gap: clamp(2.5rem, 5vw, 5rem);
   grid-template-columns: minmax(13rem, 18rem) minmax(0, 1fr);
   margin-inline: auto;
-  margin-top: clamp(4rem, 8vw, 8rem);
+  margin-top: clamp(3rem, 4.5vw, 4.5rem);
   max-width: 88rem;
 }
 
@@ -202,13 +205,14 @@
 }
 
 .body > div:first-child {
-  max-width: 78ch;
+  max-width: 68ch;
 }
 
 .body > div:first-child > p {
   color: rgb(21 52 67 / 80%);
   font-size: clamp(1.05rem, 1.2vw, 1.15rem);
   line-height: 1.78;
+  text-align: start;
   text-wrap: pretty;
 }
 
@@ -233,7 +237,7 @@
   display: grid;
   gap: 2rem;
   grid-template-columns: minmax(0, 1fr) auto;
-  margin-top: clamp(4rem, 8vw, 8rem);
+  margin-top: clamp(3.5rem, 5vw, 5rem);
   padding: clamp(2rem, 4vw, 3.5rem);
 }
 
@@ -326,6 +330,13 @@
 
   .actionClosure a {
     justify-self: start;
+  }
+
+  .heroDescription,
+  .archiveNotice,
+  .partnerEvidence p:not(:first-child),
+  .body > div:first-child > p {
+    text-align: left;
   }
 }
 

@@ -17,18 +17,26 @@ import type { CSSProperties, ReactNode } from 'react';
  * never wraps costs nothing, but a phrase missing here can still split.
  */
 const COMPOUNDS = [
-  'ấn phẩm', 'bao trùm', 'bền vững', 'chất lượng', 'chiến lược', 'chính sách',
-  'chuyên gia', 'chuyển đổi', 'chuyển giao', 'công nghệ', 'cộng đồng',
-  'doanh nghiệp', 'dự án', 'đánh giá', 'đào tạo', 'đo lường', 'đổi mới',
-  'giá trị', 'giải pháp', 'giáo dục', 'giới thiệu', 'hệ thống', 'hiệu quả',
+  'ấn phẩm', 'bao trùm', 'bằng chứng', 'bảo vệ', 'bảo vệ môi trường', 'bền vững',
+  'cá nhân', 'cảm xúc', 'cạnh tranh', 'chất lượng', 'chiến lược', 'chính sách', 'chương trình',
+  'chuyên gia', 'chuyên môn', 'chuyển đổi', 'chuyển đổi số', 'chuyển giao', 'con người',
+  'công cụ', 'công dân', 'công nghệ', 'cộng đồng', 'dữ liệu', 'địa phương',
+  'doanh nghiệp', 'dự án', 'đánh giá', 'đào tạo', 'đo lường', 'đối tác', 'đồng hành',
+  'đổi mới', 'đổi mới sáng tạo', 'giá trị', 'giải pháp', 'giáo dục', 'giới thiệu',
+  'hành động', 'hạnh phúc', 'hệ sinh thái', 'hệ thống', 'hiệu quả', 'hoạt động',
   'hiệu suất', 'học thuật', 'hợp tác', 'khách hàng', 'khí hậu', 'khoa học',
-  'khóa học', 'kiến tạo', 'kinh doanh', 'kinh tế', 'kết nối', 'lãnh đạo',
-  'liên hệ', 'liên ngành', 'mạng lưới', 'minh bạch', 'môi trường', 'năng lực',
-  'nguồn nhân lực', 'nhân lực', 'nhân sự', 'nghiên cứu', 'phát triển',
-  'phân tích', 'quản lý nâng cao', 'quản lý', 'nâng cao', 'quản trị', 'quốc tế', 'sản xuất', 'sáng tạo', 'thị trường',
-  'thực phẩm', 'thực tiễn', 'tin tức', 'toàn cầu', 'tài chính', 'tác động',
+  'khoa học công nghệ', 'khóa học', 'khởi nghiệp', 'kỹ năng', 'kiến tạo', 'kinh doanh',
+  'kinh tế bền vững', 'kinh tế thực phẩm', 'kinh tế', 'kết nối', 'lãnh đạo', 'liên hệ',
+  'liên ngành', 'mạng lưới', 'minh bạch', 'mô hình', 'môi trường', 'mục tiêu', 'năng lực',
+  'nguồn nhân lực', 'nhân lực', 'nhân sự', 'nghiên cứu', 'nông nghiệp', 'nông thôn', 'phát triển',
+  'phát triển bền vững', 'phát triển con người', 'phân tích', 'phương pháp', 'quản lý',
+  'quản lý kinh doanh', 'quản lý nâng cao', 'nâng cao', 'quản trị', 'quản trị hiệu quả',
+  'quy trình', 'quyết định', 'quốc tế', 'ra quyết định', 'sản xuất', 'sáng kiến', 'sáng tạo',
+  'sức khỏe', 'sức khỏe tinh thần', 'tài nguyên', 'tâm lý', 'thành quả', 'thay đổi', 'thị trường',
+  'thiên nhiên', 'thông tin', 'thực phẩm', 'thực tiễn', 'tiếp cận', 'tin tức', 'toàn cầu', 'tài chính', 'tác động',
   'tìm kiếm', 'trách nhiệm', 'trang chủ', 'trải nghiệm', 'triển khai',
-  'tri thức', 'trung tâm', 'tư vấn', 'ứng dụng', 'xây dựng',
+  'trách nhiệm xã hội', 'tri thức', 'trung tâm', 'tổ chức', 'tư vấn', 'ứng dụng',
+  'vai trò', 'vấn đề', 'xã hội', 'xây dựng',
 ];
 
 /**

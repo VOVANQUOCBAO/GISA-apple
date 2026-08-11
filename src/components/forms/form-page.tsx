@@ -74,7 +74,7 @@ const pageCopy: Record<FormKind, FormPageCopy> = {
     ],
     formTitle: 'Nội dung liên hệ',
     formDescription:
-      'Điền thông tin liên hệ và trình bày câu hỏi hoặc đề xuất để kiểm tra ngay trong trình duyệt.',
+      'Điền thông tin liên hệ và trình bày câu hỏi hoặc đề xuất một cách ngắn gọn, cụ thể.',
   },
 };
 

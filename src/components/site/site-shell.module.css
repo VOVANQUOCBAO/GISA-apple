@@ -1616,63 +1616,77 @@
 .affiliationLockup {
   display: block;
   flex: none;
-  width: min(14.75rem, 100%);
+  width: min(19.5rem, 100%);
 }
 
 .affiliationCredit {
   align-items: center;
-  color: #b9cbd6;
-  display: flex;
-  gap: .7rem;
-  min-height: 3.25rem;
-  padding-block: .25rem;
+  background: #fff;
+  border: 1px solid rgb(255 255 255 / 72%);
+  border-radius: 999px;
+  box-shadow: 0 .7rem 2rem rgb(1 25 38 / 18%);
+  color: #19486a;
+  display: grid;
+  gap: .8rem;
+  grid-template-columns: max-content minmax(0, 1fr);
+  min-height: 4.1rem;
+  padding: .42rem .65rem .42rem 1rem;
   text-decoration: none;
 }
 
 .affiliationCreditLabel {
+  color: #36536a;
   flex: none;
   font-size: .7rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: .055em;
   line-height: 1.2;
-  padding-right: .7rem;
+  padding-right: .8rem;
   position: relative;
-  transform: translateY(.22rem);
   white-space: nowrap;
 }
 
 .affiliationCreditLabel::after {
-  background: linear-gradient(180deg, transparent, rgb(255 255 255 / 32%), transparent);
+  background: linear-gradient(180deg, transparent, rgb(25 72 106 / 24%), transparent);
   content: '';
   height: 1.8rem;
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translateY(calc(-50% - .22rem));
+  transform: translateY(-50%);
   width: 1px;
 }
 
 .affiliationCredit .engonowWordmark {
-  flex: 0 1 8.75rem;
+  border-radius: 999px;
+  height: 3.2rem;
   min-width: 0;
+  width: 100%;
+}
+
+.affiliationCredit .engonowWordmark img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .affiliationCredit:hover .engonowWordmark img {
-    filter: brightness(1.08);
-    transform: translate3d(0, -.1rem, 0);
+    filter: saturate(1.05);
+    transform: translate3d(.12rem, 0, 0);
   }
 }
 
 .affiliationCredit:focus-visible {
-  border-radius: .35rem;
+  border-radius: 999px;
   outline: 2px solid #f0c84b;
   outline-offset: .35rem;
 }
 
 @media (max-width: 48rem) {
   .affiliationLockup {
-    width: min(14rem, 100%);
+    width: min(18.5rem, 100%);
   }
 
   .affiliationCreditLabel { font-size: .66rem; }

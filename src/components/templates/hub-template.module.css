@@ -1,6 +1,6 @@
 .directory {
-  margin-top: var(--space-section);
-  padding-bottom: var(--space-section);
+  margin-top: clamp(3rem, 4.5vw, 4.5rem);
+  padding-bottom: clamp(4rem, 6vw, 6rem);
 }
 
 .introduction {
@@ -31,14 +31,18 @@
   font-size: clamp(2.25rem, 4vw, 3.75rem);
   letter-spacing: -0.025em;
   margin-top: var(--space-2);
-  max-width: 18ch;
+  max-width: none;
+  text-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .introductionText {
   color: color-mix(in srgb, var(--color-ink) 72%, transparent);
   font-size: clamp(1rem, 1.35vw, 1.15rem);
   line-height: 1.65;
-  max-width: 44ch;
+  max-width: 64ch;
+  text-align: start;
+  text-wrap: pretty;
 }
 
 .editorialLayout {
@@ -136,7 +140,8 @@
   letter-spacing: -0.035em;
   line-height: 0.98;
   margin: 0;
-  max-width: 10ch;
+  max-width: 16ch;
+  text-wrap: balance;
 }
 
 .featuredLink:focus-visible {
@@ -148,7 +153,9 @@
   font-size: clamp(1rem, 1.5vw, 1.18rem);
   line-height: 1.6;
   margin: var(--space-6) 0 0;
-  max-width: 42ch;
+  max-width: 60ch;
+  text-align: start;
+  text-wrap: pretty;
 }
 
 .featuredAction {
@@ -269,7 +276,9 @@
   color: color-mix(in srgb, var(--color-ink) 68%, transparent);
   line-height: 1.5;
   margin: var(--space-2) 0 0;
-  max-width: 48ch;
+  max-width: 64ch;
+  text-align: start;
+  text-wrap: pretty;
 }
 
 .indexArrow {
@@ -320,6 +329,18 @@
 
   .featuredCopy h3 {
     font-size: clamp(2.2rem, 12vw, 3.5rem);
+    max-width: 100%;
+  }
+
+  .introductionText,
+  .featuredCopy p,
+  .indexCopy p {
+    text-align: start;
+  }
+
+  .introduction h2 {
+    text-wrap: balance;
+    white-space: normal;
   }
 
   .pathIndex {

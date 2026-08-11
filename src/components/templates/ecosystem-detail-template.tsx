@@ -178,7 +178,7 @@ export function EcosystemDetailTemplate({ record }: { record: ContentRecord }) {
 
         {record.kind === 'notice' ? (
           <p className={styles.archiveNotice}>
-            Thông báo này thuộc kho lưu trữ; vui lòng xác nhận trực tiếp với GISA nếu cần kiểm tra hiệu lực hiện tại.
+            Thông báo này thuộc kho lưu trữ. Vui lòng xác nhận trực tiếp với GISA nếu cần kiểm tra hiệu lực hiện tại.
           </p>
         ) : null}
         <div className={styles.readingStage}>

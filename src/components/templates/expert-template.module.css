@@ -38,7 +38,9 @@
   line-height: 0.98;
   margin: 0;
   max-width: 16ch;
+  overflow-wrap: normal;
   text-wrap: balance;
+  word-break: normal;
 }
 
 .affiliation {
@@ -136,7 +138,9 @@
   letter-spacing: -0.04em;
   line-height: 1.05;
   margin: 0;
+  overflow-wrap: normal;
   text-wrap: balance;
+  word-break: normal;
 }
 
 .expertiseSection ul {
@@ -174,7 +178,8 @@
   font-size: clamp(1.02rem, 1.4vw, 1.14rem);
   line-height: 1.75;
   margin: 1.25rem 0 0;
-  max-width: 65ch;
+  max-width: 68ch;
+  text-align: start;
   text-wrap: pretty;
 }
 
@@ -262,6 +267,10 @@
   .backStage {
     align-items: start;
     display: grid;
+  }
+
+  .scopeSection p {
+    text-align: left;
   }
 }
 

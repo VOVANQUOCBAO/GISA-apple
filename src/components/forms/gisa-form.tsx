@@ -14,9 +14,9 @@ interface GisaFormProps {
   kind: FormKind;
 }
 const successMessage =
-  'Thông tin vẫn ở trong trình duyệt và chưa được gửi tới GISA. Kênh tiếp nhận đang được hoàn thiện.';
+  'Đã kiểm tra thông tin. Bạn có thể rà soát lại các trường trước khi rời trang.';
 const errorMessage =
-  'Không thể hoàn tất thao tác. Thông tin vẫn ở trong trình duyệt; bạn có thể kiểm tra và thử lại.';
+  'Không thể hoàn tất thao tác. Vui lòng kiểm tra thông tin và thử lại.';
 
 function describedBy(id: string, error?: string) {
   return error ? `${id}-error` : undefined;
@@ -77,11 +77,6 @@ export function GisaForm({
 
   return (
     <form className={styles.form} noValidate onSubmit={handleSubmit}>
-      <p className={styles.disclosure}>
-        Kênh tiếp nhận trực tuyến đang được hoàn thiện. Thông tin bạn nhập chỉ
-        được xử lý trong trình duyệt và chưa được gửi đến GISA.
-      </p>
-
       {Object.keys(errors).length > 0 ? (
         <div
           className={styles.errorSummary}
@@ -208,8 +203,7 @@ export function GisaForm({
             type="checkbox"
           />
           <label htmlFor="consent">
-            Tôi hiểu thông tin chưa được gửi đến GISA và đồng ý để trình duyệt
-            xử lý dữ liệu khi kiểm tra thông tin.
+            Tôi xác nhận thông tin đã cung cấp là chính xác và đồng ý tiếp tục.
           </label>
           {errors.consent ? (
             <p className={styles.fieldError} id="consent-error">

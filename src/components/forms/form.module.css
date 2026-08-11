@@ -74,19 +74,21 @@
 .stage {
   align-items: start;
   display: grid;
-  gap: clamp(3rem, 7vw, 8rem);
-  grid-template-columns: minmax(18rem, 0.78fr) minmax(32rem, 1.22fr);
-  margin-top: clamp(2.5rem, 6vw, 6rem);
+  gap: clamp(2rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  margin-top: clamp(1.75rem, 4vw, 4rem);
 }
 
 .introduction {
+  align-content: start;
+  display: grid;
+  gap: clamp(1.75rem, 3vw, 2.5rem);
   min-width: 0;
-  padding-top: clamp(0.5rem, 2vw, 1.5rem);
 }
 
 .pageHeader {
   border-top: 2px solid var(--color-navy);
-  padding-top: var(--space-6);
+  padding-top: var(--space-5);
 }
 
 .eyebrow,
@@ -101,26 +103,29 @@
 
 .pageHeader h1 {
   color: var(--color-navy);
-  font-size: clamp(2.75rem, 5.2vw, 5.4rem);
+  font-size: clamp(2.35rem, 3.4vw, 3.35rem);
   font-weight: 450;
   letter-spacing: -0.035em;
   line-height: 1.02;
   margin: 0;
-  max-width: 12ch;
+  max-width: 100%;
+  text-wrap: balance;
 }
 
 .lede {
   color: color-mix(in srgb, var(--color-navy) 78%, var(--color-ink));
   font-size: clamp(1.05rem, 1.25vw, 1.25rem);
-  line-height: 1.75;
-  margin: var(--space-8) 0 0;
-  max-width: 38rem;
+  line-height: 1.65;
+  margin: var(--space-5) 0 0;
+  max-width: 65ch;
+  text-align: start;
+  text-wrap: pretty;
 }
 
 .expectations {
   border-bottom: 1px solid color-mix(in srgb, var(--color-navy) 18%, transparent);
   border-top: 1px solid color-mix(in srgb, var(--color-navy) 18%, transparent);
-  margin-top: clamp(2.5rem, 5vw, 5rem);
+  margin-top: 0;
   padding-block: var(--space-6);
 }
 
@@ -131,6 +136,7 @@
   font-weight: 650;
   line-height: 1.35;
   margin: 0 0 var(--space-6);
+  text-wrap: balance;
 }
 
 .expectations ol {
@@ -150,6 +156,7 @@
   gap: var(--space-4);
   grid-template-columns: 2rem minmax(0, 1fr);
   line-height: 1.55;
+  text-wrap: pretty;
 }
 
 .expectations li::before {
@@ -184,8 +191,8 @@
 
 .formHeader {
   border-bottom: 1px solid color-mix(in srgb, var(--color-navy) 12%, transparent);
-  padding: clamp(1.75rem, 4vw, 3.5rem) clamp(1.25rem, 5vw, 4.5rem)
-    clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 4vw, 3.25rem)
+    clamp(1.5rem, 2.5vw, 2rem);
   position: relative;
 }
 
@@ -194,17 +201,19 @@
   bottom: -1px;
   content: '';
   height: 3px;
-  left: clamp(1.25rem, 5vw, 4.5rem);
+  left: clamp(1.25rem, 4vw, 3.25rem);
   position: absolute;
   width: 4rem;
 }
 
 .formHeader h2 {
   color: var(--color-navy);
-  font-size: clamp(2rem, 3.3vw, 3.15rem);
+  font-size: clamp(1.9rem, 2.6vw, 2.7rem);
   font-weight: 500;
   letter-spacing: -0.025em;
+  line-height: 1.08;
   margin: 0;
+  text-wrap: balance;
 }
 
 .formHeader > p:last-child {
@@ -212,20 +221,12 @@
   line-height: 1.65;
   margin: var(--space-4) 0 0;
   max-width: 42rem;
+  text-wrap: pretty;
 }
 
 .form {
-  padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1.25rem, 5vw, 4.5rem)
-    clamp(2rem, 5vw, 4.5rem);
-}
-
-.disclosure {
-  background: color-mix(in srgb, var(--form-secondary) 8%, var(--color-white));
-  border-left: 0.25rem solid var(--form-secondary);
-  color: color-mix(in srgb, var(--color-ink) 80%, var(--color-navy));
-  line-height: 1.55;
-  margin: 0 0 var(--space-8);
-  padding: var(--space-4) var(--space-6);
+  padding: clamp(1.5rem, 3vw, 2.75rem) clamp(1.25rem, 4vw, 3.25rem)
+    clamp(2rem, 4vw, 3.5rem);
 }
 
 .errorSummary {
@@ -389,7 +390,14 @@
   min-height: 1.6em;
 }
 
-@media (max-width: 64rem) {
+@media (min-width: 72.01rem) {
+  .introduction {
+    position: sticky;
+    top: 8rem;
+  }
+}
+
+@media (max-width: 72rem) {
   .stage {
     gap: clamp(2.5rem, 6vw, 4.5rem);
     grid-template-columns: 1fr;
@@ -402,7 +410,7 @@
   }
 
   .pageHeader h1 {
-    max-width: 14ch;
+    max-width: 100%;
   }
 
   .expectations {
@@ -411,6 +419,10 @@
 }
 
 @media (max-width: 42rem) {
+  .lede {
+    text-align: left;
+  }
+
   .page > .pageHeader {
     padding-bottom: 3.5rem;
   }
@@ -424,23 +436,22 @@
   }
 
   .introduction {
-    display: block;
+    display: grid;
+    gap: var(--space-8);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .pageHeader h1 {
-    font-size: clamp(2.5rem, 12vw, 4rem);
+    font-size: clamp(2.25rem, 10vw, 3.2rem);
+    max-width: 100%;
   }
 
   .expectations {
-    margin-top: var(--space-12);
+    margin-top: 0;
   }
 
   .formStage {
     border-radius: var(--radius-control);
-  }
-
-  .disclosure {
-    padding-inline: var(--space-4);
   }
 
   .submitButton {

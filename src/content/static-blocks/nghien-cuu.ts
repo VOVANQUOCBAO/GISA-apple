@@ -67,7 +67,7 @@ export const nghienCuuBlocks: Record<string, ContentBlock[]> = {
       ],
     },
 
-    { type: 'heading', level: 2, text: 'Kinh tế thực phẩm, nông nghiệp và nông thôn' },
+    { type: 'heading', level: 2, text: 'Kinh tế thực phẩm nông nghiệp và nông thôn' },
     {
       type: 'paragraph',
       text: 'GISA phát triển các nghiên cứu nhằm nâng cao giá trị chuỗi nông sản, tối ưu hóa hệ thống nông nghiệp – thực phẩm, cải thiện đời sống nông thôn và đảm bảo an ninh lương thực trong bối cảnh biến đổi khí hậu và chuyển đổi hệ thống thực phẩm.',
@@ -94,10 +94,10 @@ export const nghienCuuBlocks: Record<string, ContentBlock[]> = {
       ordered: false,
       items: [
         'Định giá tài nguyên và hệ sinh thái',
-        'Chính sách môi trường: thuế, phí, tín chỉ carbon, thị trường phát thải',
+        'Chính sách môi trường gồm thuế, phí, tín chỉ carbon và thị trường phát thải',
         'Phân tích chi phí – lợi ích môi trường và đầu tư xanh',
         'Kinh tế tuần hoàn và mô hình phục hồi sinh thái',
-        'Biến đổi khí hậu: thích ứng, giảm nhẹ và chiến lược phát triển bền vững',
+        'Biến đổi khí hậu, thích ứng, giảm nhẹ và chiến lược phát triển bền vững',
       ],
     },
 

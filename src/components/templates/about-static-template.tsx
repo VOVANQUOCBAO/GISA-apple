@@ -77,6 +77,11 @@ function splitPromise(text: string) {
   return cleanText(text).split(/\s+-\s+/).filter(Boolean);
 }
 
+function splitSlogan(text: string) {
+  const quotedLines = cleanText(text).match(/“[^”]+”/g);
+  return quotedLines?.length === 2 ? quotedLines : [cleanText(text)];
+}
+
 function splitLabeledItem(item: string) {
   const cleaned = cleanText(item);
   const separator = cleaned.indexOf(' - ');
@@ -142,6 +147,7 @@ function VisionLayout({ blocks }: { blocks: ContentBlock[] }) {
   const missionIntro = mission ? firstBlock(mission.blocks, 'paragraph') : undefined;
   const visionQuote = vision ? firstBlock(vision.blocks, 'quote') : undefined;
   const sloganCopy = slogan ? firstBlock(slogan.blocks, 'paragraph') : undefined;
+  const sloganLines = sloganCopy ? splitSlogan(sloganCopy.text) : [];
 
   return (
     <div className={styles.visionLayout}>
@@ -171,7 +177,11 @@ function VisionLayout({ blocks }: { blocks: ContentBlock[] }) {
         {sloganCopy ? (
           <section className={styles.sloganPanel} data-scroll-motion="reveal">
             <h2>{phrase(slogan?.heading.text ?? 'Khẩu hiệu')}</h2>
-            <p>{phrase(sloganCopy.text)}</p>
+            <p aria-label={sloganLines.join('. ')}>
+              {sloganLines.map((line) => (
+                <span aria-hidden="true" key={line}>{phrase(line)}</span>
+              ))}
+            </p>
           </section>
         ) : null}
       </div>

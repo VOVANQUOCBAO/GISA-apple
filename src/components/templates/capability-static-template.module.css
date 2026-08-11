@@ -7,9 +7,9 @@
 .capabilityFrame {
   align-items: start;
   display: grid;
-  gap: clamp(3rem, 6vw, 6.5rem);
+  gap: clamp(2.5rem, 4vw, 4.5rem);
   grid-template-columns: minmax(11rem, 14rem) minmax(0, 1fr);
-  margin-top: clamp(4rem, 8vw, 8rem);
+  margin-top: clamp(1.75rem, 3.5vw, 3.5rem);
 }
 
 .contextRail {
@@ -85,17 +85,30 @@
   min-width: 0;
 }
 
+.trainingBody blockquote p {
+  font-size: clamp(1.4rem, 2.6vw, 2.05rem);
+  line-height: 1.28;
+  max-width: 40ch;
+  text-wrap: balance;
+}
+
 .trainingOpening {
   background:
     radial-gradient(circle at 100% 0, color-mix(in srgb, var(--section-secondary, var(--color-teal)) 10%, transparent), transparent 40%),
     var(--section-pale, color-mix(in srgb, var(--color-mist) 76%, white));
   border-left: 4px solid var(--section-accent, var(--color-orange));
-  margin-bottom: clamp(4.5rem, 9vw, 8rem);
-  padding: clamp(2rem, 4vw, 3.75rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .trainingOpening > div {
-  max-width: 70ch;
+  max-width: none;
+  width: 100%;
+}
+
+.trainingOpening blockquote {
+  margin: 0;
+  padding: clamp(1.5rem, 2.6vw, 2.4rem);
 }
 
 .trainingOpening > div > p:first-child {
@@ -109,7 +122,7 @@
 
 .trainingChapter {
   border-top: 1px solid color-mix(in srgb, var(--color-navy) 16%, transparent);
-  padding-block: clamp(3.75rem, 8vw, 7rem);
+  padding-block: clamp(2.25rem, 4.5vw, 4rem);
   scroll-margin-top: 8rem;
 }
 
@@ -117,17 +130,37 @@
 .applicationChapterHeader > h2 {
   color: var(--color-navy);
   font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 4.7vw, 4.5rem);
+  font-size: clamp(2.15rem, 3.2vw, 3.4rem);
   font-weight: 600;
   letter-spacing: -.045em;
   line-height: 1.02;
   margin: 0 0 clamp(2rem, 4vw, 3.5rem);
-  max-width: 18ch;
+  max-width: 100%;
   text-wrap: balance;
 }
 
+.trainingChapter > h2 {
+  font-size: clamp(2.15rem, 3.2vw, 3.3rem);
+  margin-bottom: clamp(1.5rem, 2.8vw, 2.35rem);
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 .chapterContent {
-  max-width: 72ch;
+  max-width: none;
+  width: 100%;
+}
+
+.chapterContent > div {
+  max-width: none;
+  width: 100%;
+}
+
+.chapterContent > div:has(> p:nth-child(2):last-child) {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .pageContainer[data-page='linh-vuc'] .trainingBody,
@@ -174,33 +207,51 @@
   text-wrap: pretty;
 }
 
+.trainingOpening > div > p + p,
+.chapterContent > div > p,
+.applicationLead > div > p + p,
+.applicationChapterHeader > div > p,
+.applicationContent > div > p {
+  max-width: 68ch;
+  text-align: start;
+}
+
 .chapterContent ul,
 .chapterContent ol {
   display: grid;
   gap: .85rem 1.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.chapterContent ul:has(li:nth-child(5)),
-.chapterContent ol:has(li:nth-child(5)) {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.chapterContent ul:has(> li:nth-child(3):last-child),
+.chapterContent ol:has(> li:nth-child(3):last-child),
+.chapterContent ul:has(> li:nth-child(5)),
+.chapterContent ol:has(> li:nth-child(5)) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .chapterContent li {
   break-inside: avoid;
 }
 
+.chapterContent li [data-vietnamese-phrase='true'],
+.curriculumItem li [data-vietnamese-phrase='true'] {
+  display: inline-block !important;
+  max-width: 100%;
+}
+
 .curriculumGrid {
   display: grid;
   gap: clamp(1rem, 2vw, 1.5rem);
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 1rem;
+  margin-top: .5rem;
 }
 
 .curriculumItem {
   background: color-mix(in srgb, var(--section-pale, var(--color-mist)) 82%, white);
   border-top: 3px solid var(--section-accent, var(--color-orange));
   min-width: 0;
-  padding: clamp(1.5rem, 3vw, 2.35rem);
+  padding: clamp(1.4rem, 2vw, 1.75rem);
 }
 
 .curriculumItem:nth-child(even) {
@@ -221,26 +272,39 @@
   text-wrap: pretty;
 }
 
+.curriculumItem > div > p,
+.applicationItem > div > p {
+  max-width: 68ch;
+  text-align: start;
+}
+
+.curriculumItem > div > p[data-scroll-motion='item']:first-child {
+  font-size: clamp(1.04rem, 1.25vw, 1.14rem);
+  line-height: 1.72;
+}
+
 .curriculumItem ul,
 .curriculumItem ol {
   display: grid;
   gap: .75rem;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .applicationBody {
-  margin-top: clamp(4rem, 8vw, 8rem);
+  margin-top: clamp(2.75rem, 5vw, 5rem);
 }
 
 .applicationLead {
-  align-items: end;
+  align-items: start;
   display: grid;
-  gap: clamp(2.5rem, 6vw, 7rem);
-  grid-template-columns: minmax(0, 1.15fr) minmax(20rem, .85fr);
-  padding-bottom: clamp(4.5rem, 9vw, 8rem);
+  gap: clamp(2rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr);
+  padding-bottom: clamp(2.25rem, 3.5vw, 3.5rem);
 }
 
 .applicationLead > div {
-  max-width: 72ch;
+  max-width: 68ch;
+  width: 100%;
 }
 
 .applicationLead > div > p:first-child {
@@ -281,7 +345,7 @@
 
 .applicationChapters {
   display: grid;
-  gap: clamp(5rem, 10vw, 10rem);
+  gap: clamp(3.5rem, 6vw, 6rem);
 }
 
 .applicationChapter {
@@ -289,24 +353,29 @@
 }
 
 .applicationChapterHeader {
-  max-width: 72ch;
+  max-width: none;
+}
+
+.applicationChapterHeader > h2 {
+  font-size: clamp(2.15rem, 3.2vw, 3.4rem);
+  max-width: 100%;
 }
 
 .applicationGrid {
   display: grid;
-  gap: 1px;
+  gap: clamp(1rem, 2vw, 1.5rem);
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: clamp(2.5rem, 5vw, 4.5rem);
-  overflow: hidden;
+  margin-top: clamp(1.25rem, 1.8vw, 1.75rem);
 }
 
 .applicationItem {
   background:
     linear-gradient(145deg, color-mix(in srgb, var(--section-pale, var(--color-mist)) 88%, white), white 82%);
   border-left: 4px solid transparent;
+  border-radius: clamp(.85rem, 1.5vw, 1.25rem);
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-navy) 12%, transparent);
   min-width: 0;
-  padding: clamp(1.75rem, 4vw, 3.5rem);
+  padding: clamp(1.5rem, 2.6vw, 2.5rem);
   transition: border-color .25s ease, background-color .25s ease;
 }
 
@@ -324,66 +393,71 @@
 .applicationItem h3 {
   color: var(--color-navy);
   font-family: var(--font-heading);
-  font-size: clamp(1.55rem, 2.7vw, 2.35rem);
+  font-size: clamp(1.45rem, 2vw, 2rem);
   font-weight: 600;
   letter-spacing: -.032em;
   line-height: 1.08;
-  margin: 0 0 1.5rem;
-  max-width: 22ch;
+  margin: 0 0 1.1rem;
+  max-width: none;
   text-wrap: balance;
 }
 
 .applicationItem p,
 .applicationItem li {
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.65;
   text-wrap: pretty;
+}
+
+.applicationItem > div {
+  max-width: none;
 }
 
 .applicationItem ul,
 .applicationItem ol {
   display: grid;
   gap: .8rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.applicationItem li {
+  min-height: 0;
 }
 
 .applicationContent {
-  max-width: 72ch;
+  max-width: 68ch;
+}
+
+@media (min-width: 100rem) {
+  .applicationGrid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  }
+
+  .applicationItem {
+    padding: clamp(1.75rem, 2vw, 2.25rem);
+  }
 }
 
 @media (max-width: 70rem) {
   .capabilityFrame {
     grid-template-columns: minmax(10rem, 12rem) minmax(0, 1fr);
   }
-
-  .applicationLead {
-    gap: 3rem;
-    grid-template-columns: minmax(0, 1fr) minmax(18rem, .75fr);
-  }
 }
 
 @media (max-width: 72rem) {
+  .chapterContent ul,
+  .chapterContent ol,
   .pageContainer[data-page='linh-vuc'] .trainingChapter:first-of-type .chapterContent ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-}
 
-@media (max-width: 56rem) {
-  .capabilityFrame,
   .applicationLead {
-    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .contextRail {
-    display: grid;
-    gap: .75rem 2rem;
-    grid-template-columns: minmax(10rem, .45fr) 1fr;
-    position: static;
-  }
-
-  .contextCopy {
-    margin-top: 0;
-  }
-
-  .chapterNavigation {
-    display: none;
+  .applicationLead > div {
+    max-width: 70ch;
   }
 
   .applicationLens {
@@ -407,6 +481,28 @@
   }
 }
 
+@media (max-width: 56rem) {
+  .capabilityFrame {
+    grid-template-columns: 1fr;
+  }
+
+  .contextRail {
+    display: grid;
+    gap: .75rem 2rem;
+    grid-template-columns: minmax(10rem, .45fr) 1fr;
+    position: static;
+  }
+
+  .contextCopy {
+    margin-top: 0;
+  }
+
+  .chapterNavigation {
+    display: none;
+  }
+
+}
+
 @media (max-width: 48rem) {
   .capabilityFrame,
   .applicationBody {
@@ -427,8 +523,12 @@
     padding: 1.75rem 1.25rem;
   }
 
+  .trainingBody blockquote p {
+    max-width: 100%;
+  }
+
   .trainingChapter {
-    padding-block: 3.75rem;
+    padding-block: 2.75rem;
   }
 
   .trainingChapter > h2,
@@ -445,8 +545,16 @@
     min-height: 0;
   }
 
+  .chapterContent > div:has(> p:nth-child(2):last-child) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .chapterContent ul:has(li:nth-child(5)),
   .chapterContent ol:has(li:nth-child(5)),
+  .chapterContent ul:has(> li:nth-child(3):last-child),
+  .chapterContent ol:has(> li:nth-child(3):last-child),
+  .chapterContent ul,
+  .chapterContent ol,
   .curriculumGrid,
   .applicationGrid,
   .applicationLens {
@@ -458,7 +566,7 @@
   }
 
   .applicationLead {
-    padding-bottom: 4rem;
+    padding-bottom: 2.5rem;
   }
 
   .applicationLens > div {
@@ -474,7 +582,7 @@
   }
 
   .applicationChapters {
-    gap: 5rem;
+    gap: 4rem;
   }
 
   .applicationItem {
@@ -483,6 +591,16 @@
 
   .applicationItem h3 {
     max-width: 100%;
+  }
+
+  .trainingOpening > div > p + p,
+  .chapterContent > div > p,
+  .curriculumItem > div > p,
+  .applicationLead > div > p + p,
+  .applicationChapterHeader > div > p,
+  .applicationItem > div > p,
+  .applicationContent > div > p {
+    text-align: left;
   }
 }
 

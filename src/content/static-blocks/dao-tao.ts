@@ -34,23 +34,23 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
     },
     {
       type: 'quote',
-      text: 'Tư duy sâu, hành động thực, phát triển bền vững.',
+      text: 'Học để tư duy sâu, hành động thực và kiến tạo giá trị bền vững.',
       attribution: 'Triết lý đào tạo của GISA',
     },
     {
       type: 'paragraph',
       text: 'GISA thiết kế hệ thống đào tạo theo từng giai đoạn phát triển nghề nghiệp, từ sinh viên mới ra trường, nhà quản lý, đến lãnh đạo và chủ doanh nghiệp. Mỗi chương trình là một hành trình khai phá bản thân, phát triển năng lực và tạo dấu ấn khác biệt trong sự nghiệp và xã hội.',
     },
-    { type: 'heading', level: 2, text: 'Năm dòng chương trình' },
+    { type: 'heading', level: 2, text: 'Năm lộ trình phát triển nghề nghiệp' },
     {
       type: 'list',
       ordered: false,
       items: [
-        'GISA Core — Đào tạo chuyên môn: trang bị kiến thức chuyên sâu, tư duy hệ thống và kỹ năng nghiệp vụ cho chuyên viên, chuyên gia, nhà nghiên cứu, giảng viên và cán bộ kỹ thuật.',
-        'GISA Edge — Trải nghiệm thực chiến: phát triển kỹ năng nghề nghiệp nền tảng, tư duy thực tiễn và thái độ chuyên nghiệp cho sinh viên chuẩn bị tốt nghiệp và người mới bắt đầu sự nghiệp.',
-        'GISA Rise — Bứt phá sự nghiệp: nâng tầm tư duy, kỹ năng quản trị và năng lực lãnh đạo đội nhóm cho những cá nhân đang chuẩn bị lên vị trí quản lý.',
-        'GISA Ascend — Lãnh đạo thành công: phát triển năng lực lãnh đạo chiến lược, xây dựng ảnh hưởng bền vững cho lãnh đạo cấp trung đến cấp cao.',
-        'GISA Legacy — Sự nghiệp viên mãn: dành cho lãnh đạo cấp cao, doanh nhân và chuyên gia kỳ cựu, hướng tới cân bằng giữa thành công cá nhân, đóng góp xã hội và phát triển thế hệ kế thừa.',
+        'GISA Core — Đào tạo chuyên môn. Chương trình trang bị kiến thức chuyên sâu, tư duy hệ thống và kỹ năng nghiệp vụ cho chuyên viên, chuyên gia, nhà nghiên cứu, giảng viên và cán bộ kỹ thuật.',
+        'GISA Edge — Trải nghiệm thực chiến. Chương trình phát triển kỹ năng nghề nghiệp nền tảng, tư duy thực tiễn và thái độ chuyên nghiệp cho sinh viên chuẩn bị tốt nghiệp và người mới bắt đầu sự nghiệp.',
+        'GISA Rise — Bứt phá sự nghiệp. Chương trình nâng tầm tư duy, kỹ năng quản trị và năng lực lãnh đạo đội nhóm cho những cá nhân đang chuẩn bị lên vị trí quản lý.',
+        'GISA Ascend — Lãnh đạo thành công. Chương trình phát triển năng lực lãnh đạo chiến lược, xây dựng ảnh hưởng bền vững cho lãnh đạo cấp trung đến cấp cao.',
+        'GISA Legacy — Sự nghiệp viên mãn. Chương trình dành cho lãnh đạo cấp cao, doanh nhân và chuyên gia kỳ cựu, hướng tới cân bằng giữa thành công cá nhân, đóng góp xã hội và phát triển thế hệ kế thừa.',
       ],
     },
     {
@@ -68,7 +68,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
   '/dao-tao/gisa-core': [
     {
       type: 'quote',
-      text: 'Nền tảng vững chắc – Năng lực chuyên sâu – Chuẩn hóa nghề nghiệp',
+      text: 'Xây nền tảng vững chắc, phát triển năng lực chuyên sâu và chuẩn hóa nghề nghiệp.',
     },
     { type: 'heading', level: 2, text: 'Nội dung chính' },
     {
@@ -79,7 +79,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       type: 'paragraph',
       text: 'Mỗi khóa học tập trung vào nghiệp vụ chuyên môn then chốt, kỹ năng cứng quan trọng hoặc công cụ điều hành – quản lý có tính ứng dụng cao. Phương pháp đào tạo kết hợp tương tác, nghiên cứu tình huống và mô phỏng sát thực tế với sự tham gia của đội ngũ chuyên gia và giảng viên giàu kinh nghiệm.',
     },
-    { type: 'heading', level: 2, text: 'Người học phù hợp' },
+    { type: 'heading', level: 2, text: 'Chương trình dành cho ai?' },
     {
       type: 'list',
       ordered: false,
@@ -125,7 +125,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       items: [
         'Kế toán thực hành và tối ưu hóa thuế — kỹ năng kế toán doanh nghiệp thực tiễn, xử lý chứng từ, lập báo cáo tài chính, quyết toán thuế và tối ưu thuế đúng luật.',
         'Quản trị tài chính doanh nghiệp vừa và nhỏ — công cụ phân tích và quản trị dòng tiền, chi phí, đòn bẩy tài chính và tăng trưởng bền vững.',
-        'Digital & AI Marketing: tối ưu hóa chiến lược số — kết hợp marketing kỹ thuật số với công cụ AI để phân tích hành vi khách hàng và tự động hóa chiến dịch đa kênh.',
+        'Digital & AI Marketing — tối ưu hóa chiến lược số, kết hợp marketing kỹ thuật số với công cụ AI để phân tích hành vi khách hàng và tự động hóa chiến dịch đa kênh.',
         'Multi-channel & Effective Sales — kỹ năng bán hàng đa nền tảng, quản lý pipeline, kỹ thuật chốt sale và chăm sóc khách hàng bền vững.',
       ],
     },
@@ -186,7 +186,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       type: 'paragraph',
       text: 'Nội dung được tổ chức theo mô hình kết hợp linh hoạt, gồm khóa học tương tác, hoạt động nhóm, thực hành tình huống và kết nối với người hướng dẫn.',
     },
-    { type: 'heading', level: 2, text: 'Người học phù hợp' },
+    { type: 'heading', level: 2, text: 'Chương trình dành cho ai?' },
     {
       type: 'list',
       ordered: false,
@@ -203,7 +203,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       ordered: false,
       items: [
         'Trang bị kỹ năng nền tảng và tư duy làm việc chuyên nghiệp để hội nhập hiệu quả vào doanh nghiệp.',
-        'Rút ngắn khoảng cách giữa học thuật và thực tiễn thông qua dự án thực hành, tình huống mô phỏng và huấn luyện 1:1.',
+        'Rút ngắn khoảng cách giữa học thuật và thực tiễn thông qua dự án thực hành, tình huống mô phỏng và huấn luyện cá nhân.',
         'Hỗ trợ xác định định hướng nghề nghiệp phù hợp, nhận diện điểm mạnh và điểm yếu để phát triển cá nhân.',
         'Xây dựng hồ sơ nghề nghiệp và kết nối với hệ sinh thái chuyên gia, doanh nghiệp.',
       ],
@@ -234,7 +234,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
         'Khám phá bản thân và định hướng nghề nghiệp cá nhân — hiểu sâu giá trị, năng lực, sở thích và động lực cá nhân để chọn đúng hướng đi.',
         'Tư duy phản biện và giải quyết vấn đề thực tế — phân tích, đánh giá và ra quyết định trong tình huống mô phỏng thực tế doanh nghiệp.',
         'Làm việc nhóm và cộng tác hiệu quả — hiểu vai trò trong nhóm, phối hợp, xử lý mâu thuẫn trong môi trường chuyên nghiệp.',
-        'Hiểu doanh nghiệp từ bên trong: cấu trúc – vận hành – chiến lược — góc nhìn hệ thống về tổ chức và vai trò từng cá nhân.',
+        'Hiểu doanh nghiệp từ bên trong — cấu trúc, vận hành và chiến lược. Khóa học cung cấp góc nhìn hệ thống về tổ chức và vai trò từng cá nhân.',
       ],
     },
     { type: 'heading', level: 3, text: 'Hội nhập và tạo dấu ấn' },
@@ -247,8 +247,8 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       ordered: false,
       items: [
         'Tác phong và giao tiếp chuyên nghiệp trong công việc — giao tiếp qua email, thuyết trình, báo cáo và ứng xử công sở.',
-        '90 ngày đầu đi làm: hội nhập nhanh, tạo dấu ấn — xây dựng uy tín, thiết lập mối quan hệ và thích nghi trong giai đoạn then chốt.',
-        'Thực hành dự án thực tế: làm việc với mentor và doanh nghiệp — cùng giải quyết vấn đề doanh nghiệp dưới hướng dẫn sát sao.',
+        '90 ngày đầu đi làm — hội nhập nhanh, tạo dấu ấn. Người học xây dựng uy tín, thiết lập mối quan hệ và thích nghi trong giai đoạn then chốt.',
+        'Thực hành dự án thực tế — làm việc với mentor và doanh nghiệp. Người học cùng giải quyết vấn đề doanh nghiệp dưới hướng dẫn sát sao.',
         'Xây dựng thương hiệu cá nhân và hồ sơ nghề nghiệp — tạo dựng hình ảnh chuyên nghiệp và chuẩn bị kỹ năng phỏng vấn.',
       ],
     },
@@ -263,9 +263,9 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
     },
     {
       type: 'paragraph',
-      text: 'Mô hình học tập kết hợp huấn luyện thực tiễn, mentoring cá nhân và kết nối chuyên gia; hình thức tổ chức linh hoạt để phù hợp với người đang đi làm.',
+      text: 'Mô hình học tập kết hợp huấn luyện thực tiễn, mentoring cá nhân và kết nối chuyên gia. Hình thức tổ chức linh hoạt, phù hợp với người đang đi làm.',
     },
-    { type: 'heading', level: 2, text: 'Người học phù hợp' },
+    { type: 'heading', level: 2, text: 'Chương trình dành cho ai?' },
     {
       type: 'list',
       ordered: false,
@@ -281,7 +281,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: false,
       items: [
-        'Vượt qua điểm nghẽn nghề nghiệp để bước vào cấp độ mới: từ thực hiện đến định hướng, từ chuyên môn đến lãnh đạo.',
+        'Vượt qua điểm nghẽn nghề nghiệp để bước vào cấp độ mới, từ thực hiện đến định hướng và từ chuyên môn đến lãnh đạo.',
         'Xây dựng tư duy chiến lược, tư duy hệ thống và khả năng ra quyết định trong môi trường bất định.',
         'Phát triển kỹ năng quản lý đội nhóm, điều hành hiệu suất và tạo động lực dài hạn.',
         'Kích hoạt lại tinh thần lãnh đạo, sự tự tin và khả năng truyền cảm hứng.',
@@ -310,8 +310,8 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: false,
       items: [
-        'Tái định vị sự nghiệp: nhìn lại – bứt phá – tái tạo — phân tích hành trình nghề nghiệp hiện tại và xây dựng kế hoạch phát triển có chủ đích.',
-        'Quản lý đội ngũ hiệu quả: từ cá nhân mạnh đến tập thể vững — quản trị con người, xây dựng tinh thần đội nhóm và phân công hợp lý.',
+        'Tái định vị sự nghiệp — nhìn lại, bứt phá và tái tạo. Người học phân tích hành trình nghề nghiệp hiện tại và xây dựng kế hoạch phát triển có chủ đích.',
+        'Quản lý đội ngũ hiệu quả — từ cá nhân mạnh đến tập thể vững. Nội dung gồm quản trị con người, xây dựng tinh thần đội nhóm và phân công hợp lý.',
         'Tư duy chiến lược và ra quyết định trong môi trường bất định — tư duy hệ thống, phân tích đa chiều, quyết định linh hoạt dưới áp lực.',
         'Kỹ năng giao tiếp – thương lượng – xử lý xung đột cho quản lý — quản lý mối quan hệ đa tầng trong doanh nghiệp.',
       ],
@@ -344,7 +344,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       type: 'paragraph',
       text: 'Học viên tiếp cận các mô hình quản trị hiện đại và bài học quốc tế thông qua đối thoại chiến lược, thảo luận tình huống thực tế và mentoring cấp cao. Chương trình có thể được tổ chức theo hình thức kết hợp trực tuyến – trực tiếp hoặc chương trình chuyên sâu ngắn ngày.',
     },
-    { type: 'heading', level: 2, text: 'Người học phù hợp' },
+    { type: 'heading', level: 2, text: 'Chương trình dành cho ai?' },
     {
       type: 'list',
       ordered: false,
@@ -376,7 +376,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
         'Kỹ năng quản trị sự thay đổi, điều phối xung đột và ra quyết định cấp cao',
         'Tái tạo năng lượng lãnh đạo và khả năng ảnh hưởng',
         'Mạng lưới kết nối với lãnh đạo đa lĩnh vực',
-        'Mentoring 1:1 với các nhà lãnh đạo cấp cao nhiều kinh nghiệm',
+        'Mentoring cá nhân với các nhà lãnh đạo cấp cao nhiều kinh nghiệm',
       ],
     },
     { type: 'heading', level: 2, text: 'Các khóa học tiêu biểu' },
@@ -407,7 +407,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
         'Thương hiệu lãnh đạo và ảnh hưởng hệ thống — lan tỏa giá trị cá nhân và tổ chức đến cộng đồng, đối tác và hệ sinh thái.',
         'Đối thoại chiến lược và kết nối đa chiều — lắng nghe, đàm phán và đối thoại cấp cao để điều phối các bên liên quan.',
         'Lãnh đạo bằng trí tuệ cảm xúc và sức mạnh nội tâm — duy trì sự điềm tĩnh, minh triết và nhân văn trong mọi quyết định.',
-        'Lãnh đạo có tầm ảnh hưởng trong thời đại số: AI, ESG và toàn cầu hóa — vai trò của người lãnh đạo trong định hướng phát triển bền vững, có trách nhiệm.',
+        'Lãnh đạo có tầm ảnh hưởng trong thời đại số với AI, ESG và toàn cầu hóa — vai trò của người lãnh đạo trong định hướng phát triển bền vững, có trách nhiệm.',
       ],
     },
     enrolmentNote,
@@ -416,7 +416,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
   '/dao-tao/gisa-legacy': [
     {
       type: 'quote',
-      text: 'Sự nghiệp viên mãn, Cuộc đời trọn vẹn',
+      text: 'Xây sự nghiệp viên mãn, sống một cuộc đời trọn vẹn.',
     },
     { type: 'heading', level: 2, text: 'Nội dung chính' },
     {
@@ -427,7 +427,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       type: 'paragraph',
       text: 'Thông qua các chuyên đề chuyên sâu, đối thoại lãnh đạo và trải nghiệm tương tác, người học có không gian nhìn lại mục tiêu sống và phát triển tư duy lãnh đạo dài hạn.',
     },
-    { type: 'heading', level: 2, text: 'Người học phù hợp' },
+    { type: 'heading', level: 2, text: 'Chương trình dành cho ai?' },
     {
       type: 'list',
       ordered: false,
@@ -445,7 +445,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
         'Khám phá lại bản thân, sứ mệnh sống và triết lý lãnh đạo cá nhân ở giai đoạn viên mãn.',
         'Xây dựng kế hoạch kế thừa, phát triển tổ chức bền vững và gắn kết các thế hệ tiếp nối.',
         'Kết nối với cộng đồng lãnh đạo cùng chí hướng để lan tỏa giá trị vượt thời gian.',
-        'Tạo ra sự thịnh vượng toàn diện: trí tuệ – tâm hồn – cộng đồng – di sản.',
+        'Tạo ra sự thịnh vượng toàn diện trên bốn phương diện gồm trí tuệ, tâm hồn, cộng đồng và di sản.',
       ],
     },
     { type: 'heading', level: 2, text: 'Giá trị mang lại' },
@@ -453,7 +453,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: false,
       items: [
-        'Tư duy lãnh đạo chuyển hóa: từ điều hành sang truyền cảm hứng và dẫn dắt thế hệ kế thừa',
+        'Tư duy lãnh đạo chuyển hóa, từ điều hành sang truyền cảm hứng và dẫn dắt thế hệ kế thừa',
         'Nền tảng phát triển bền vững cá nhân và tổ chức ở cấp độ chiến lược',
         'Cơ hội xây dựng cộng đồng tinh hoa để chia sẻ, đồng hành và tạo ảnh hưởng sâu rộng',
         'Khả năng thiết kế di sản cá nhân từ giá trị sống, kinh nghiệm và trí tuệ',
@@ -470,7 +470,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: true,
       items: [
-        'Lãnh đạo chuyển hóa: từ điều hành đến dẫn dắt bằng tư duy di sản.',
+        'Lãnh đạo chuyển hóa, từ điều hành đến dẫn dắt bằng tư duy di sản.',
         'Chiến lược kế thừa và phát triển thế hệ lãnh đạo tiếp nối.',
         'Lãnh đạo bền vững trong thời đại bất định.',
       ],
@@ -484,7 +484,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: true,
       items: [
-        'Thiết kế di sản cá nhân: tầm nhìn, giá trị và dấu ấn để lại.',
+        'Thiết kế di sản cá nhân dựa trên tầm nhìn, giá trị và dấu ấn để lại.',
         'Trí tuệ cảm xúc cấp cao và nghệ thuật truyền cảm hứng.',
         'Tư duy khai phóng và nghệ thuật sống trọn vẹn.',
       ],
@@ -500,8 +500,8 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
       items: [
         'Lãnh đạo cộng đồng và tạo ảnh hưởng xã hội.',
         'Triết lý sống và năng lực sống hạnh phúc của nhà lãnh đạo.',
-        'Chuyển hóa tổ chức: từ hiệu suất đến di sản tập thể.',
-        'Thịnh vượng đa chiều và mô hình lãnh đạo viên mãn: tài chính – cảm xúc – tri thức – ảnh hưởng – di sản.',
+        'Chuyển hóa tổ chức, từ hiệu suất đến di sản tập thể.',
+        'Thịnh vượng đa chiều và mô hình lãnh đạo viên mãn trên các phương diện tài chính, cảm xúc, tri thức, ảnh hưởng và di sản.',
       ],
     },
     enrolmentNote,

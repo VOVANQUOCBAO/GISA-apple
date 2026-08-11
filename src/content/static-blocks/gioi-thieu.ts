@@ -53,12 +53,12 @@ export const gioiThieuBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: true,
       items: [
-        'Nghiên cứu và phát triển tri thức liên ngành: thực hiện các nghiên cứu khoa học chuyên sâu và nghiên cứu ứng dụng đa ngành nhằm tạo ra tri thức có giá trị thực tiễn, phục vụ chiến lược phát triển bền vững và quản trị hiện đại.',
-        'Thúc đẩy đổi mới sáng tạo và tư duy đột phá: khuyến khích, hỗ trợ và lan tỏa các sáng kiến đổi mới trong quản trị, công nghệ, giáo dục và mô hình kinh doanh.',
-        'Chuyển giao tri thức và công nghệ ứng dụng: biến các công trình nghiên cứu và tri thức học thuật thành giải pháp thực tiễn thông qua tư vấn, đào tạo và chuyển giao công nghệ.',
-        'Kết nối và hợp tác toàn cầu: xây dựng mạng lưới tri thức toàn cầu, kết nối các nhà khoa học, chuyên gia, lãnh đạo và doanh nhân để chia sẻ, cộng tác và tạo ra các giải pháp liên kết quốc tế vì lợi ích chung.',
-        'Ứng dụng khoa học – công nghệ vào thực tiễn: phát triển và triển khai các mô hình, công nghệ, công cụ và giải pháp hiện đại nhằm nâng cao hiệu quả hoạt động, năng lực cạnh tranh và khả năng thích ứng trong kỷ nguyên số.',
-        'Kiến tạo giá trị và lan tỏa tác động xã hội: thực hiện các sáng kiến, chương trình và dự án vì cộng đồng, hướng tới nâng cao phúc lợi xã hội, bảo vệ môi trường và thúc đẩy sự phát triển nhân văn, bền vững.',
+        'Nghiên cứu và phát triển tri thức liên ngành. GISA thực hiện các nghiên cứu khoa học chuyên sâu và nghiên cứu ứng dụng đa ngành nhằm tạo ra tri thức có giá trị thực tiễn, phục vụ chiến lược phát triển bền vững và quản trị hiện đại.',
+        'Thúc đẩy đổi mới sáng tạo và tư duy đột phá. GISA khuyến khích, hỗ trợ và lan tỏa các sáng kiến đổi mới trong quản trị, công nghệ, giáo dục và mô hình kinh doanh.',
+        'Chuyển giao tri thức và công nghệ ứng dụng. GISA biến các công trình nghiên cứu và tri thức học thuật thành giải pháp thực tiễn thông qua tư vấn, đào tạo và chuyển giao công nghệ.',
+        'Kết nối và hợp tác toàn cầu. GISA xây dựng mạng lưới tri thức toàn cầu, kết nối các nhà khoa học, chuyên gia, lãnh đạo và doanh nhân để chia sẻ, cộng tác và tạo ra các giải pháp liên kết quốc tế vì lợi ích chung.',
+        'Ứng dụng khoa học – công nghệ vào thực tiễn. GISA phát triển và triển khai các mô hình, công nghệ, công cụ và giải pháp hiện đại nhằm nâng cao hiệu quả hoạt động, năng lực cạnh tranh và khả năng thích ứng trong kỷ nguyên số.',
+        'Kiến tạo giá trị và lan tỏa tác động xã hội. GISA thực hiện các sáng kiến, chương trình và dự án vì cộng đồng, hướng tới nâng cao phúc lợi xã hội, bảo vệ môi trường và thúc đẩy sự phát triển nhân văn, bền vững.',
       ],
     },
     { type: 'heading', level: 2, text: 'Tầm nhìn' },
@@ -69,7 +69,7 @@ export const gioiThieuBlocks: Record<string, ContentBlock[]> = {
     { type: 'heading', level: 2, text: 'Khẩu hiệu' },
     {
       type: 'paragraph',
-      text: 'Tiếng Việt: “Kiến tạo tri thức, Lan tỏa giá trị”. Tiếng Anh: “Advancing Knowledge, Sharing Values”.',
+      text: '“Kiến tạo tri thức, lan tỏa giá trị” “Advancing Knowledge, Sharing Values”',
     },
   ],
 
@@ -77,7 +77,7 @@ export const gioiThieuBlocks: Record<string, ContentBlock[]> = {
     { type: 'heading', level: 2, text: 'Giá trị cốt lõi RISES' },
     {
       type: 'paragraph',
-      text: 'GISA dựa trên giá trị cốt lõi “RISES” với năm trụ cột nhằm hướng tới tầm nhìn dài hạn và hoàn thành sứ mệnh đã đặt ra: độ tin cậy, uy tín, chính trực (R); đổi mới, sáng tạo, đột phá (I); khoa học, chuẩn mực (S); hiệu quả và ý nghĩa thực tiễn (E); và tính bền vững (S). Giá trị cốt lõi này liên tục được cải thiện và nâng cao.',
+      text: 'GISA dựa trên giá trị cốt lõi “RISES” với năm trụ cột nhằm hướng tới tầm nhìn dài hạn và hoàn thành sứ mệnh đã đặt ra. Các trụ cột gồm độ tin cậy, uy tín và chính trực (R), đổi mới, sáng tạo và đột phá (I), khoa học và chuẩn mực (S), hiệu quả và ý nghĩa thực tiễn (E), cùng tính bền vững (S). Giá trị cốt lõi này liên tục được cải thiện và nâng cao.',
     },
     {
       type: 'table',
@@ -108,7 +108,7 @@ export const gioiThieuBlocks: Record<string, ContentBlock[]> = {
   '/gioi-thieu/linh-vuc-hoat-dong': [
     {
       type: 'paragraph',
-      text: 'Sáu lĩnh vực hoạt động của GISA gắn với nhau thành một chuỗi: nghiên cứu tạo ra tri thức, tư vấn và đào tạo đưa tri thức vào tổ chức, ứng dụng chuyển giao thành giải pháp, mạng lưới mở rộng nguồn lực và cộng đồng lan tỏa tác động. Mỗi lĩnh vực đi kèm một bộ công cụ chuyên môn được sử dụng thường xuyên.',
+      text: 'Sáu lĩnh vực hoạt động của GISA gắn với nhau thành một chuỗi liên kết, trong đó nghiên cứu tạo ra tri thức, tư vấn và đào tạo đưa tri thức vào tổ chức, ứng dụng chuyển giao thành giải pháp, mạng lưới mở rộng nguồn lực và cộng đồng lan tỏa tác động. Mỗi lĩnh vực đi kèm một bộ công cụ chuyên môn được sử dụng thường xuyên.',
     },
     { type: 'heading', level: 2, text: 'Nghiên cứu' },
     {

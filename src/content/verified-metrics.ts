@@ -186,7 +186,7 @@ export const consultingPillars = [
   },
   {
     listedItems: 4,
-    pillar: 'Kinh tế thực phẩm, nông nghiệp và nông thôn',
+    pillar: 'Kinh tế thực phẩm nông nghiệp và nông thôn',
     relationType: 'Lĩnh vực tư vấn do GISA công bố',
   },
   {
@@ -206,19 +206,19 @@ export const consultingPillars = [
  */
 export const applicationStreams = [
   {
-    basis: 'Lĩnh vực ứng dụng do GISA công bố; không có trọng số',
+    basis: 'Lĩnh vực ứng dụng do GISA công bố. Không áp dụng trọng số.',
     label: 'Mô hình quản lý & kinh doanh tiên tiến',
   },
   {
-    basis: 'Lĩnh vực ứng dụng do GISA công bố; không có trọng số',
+    basis: 'Lĩnh vực ứng dụng do GISA công bố. Không áp dụng trọng số.',
     label: 'Giải pháp khoa học & công nghệ đổi mới',
   },
   {
-    basis: 'Lĩnh vực ứng dụng do GISA công bố; không có trọng số',
+    basis: 'Lĩnh vực ứng dụng do GISA công bố. Không áp dụng trọng số.',
     label: 'Sáng kiến phát triển kinh tế bền vững',
   },
   {
-    basis: 'Lĩnh vực ứng dụng do GISA công bố; không có trọng số',
+    basis: 'Lĩnh vực ứng dụng do GISA công bố. Không áp dụng trọng số.',
     label: 'Khung tâm lý & phát triển con người toàn diện',
   },
 ] as const;
@@ -300,7 +300,7 @@ export const verifiedNetworkClusters = [
       'Viện Thünen',
     ],
     relationType:
-      'Tổ chức trong bộ logo đối tác GISA cung cấp; loại quan hệ cụ thể chưa được công bố',
+      'Tổ chức trong bộ logo đối tác GISA cung cấp. Loại quan hệ cụ thể chưa được công bố.',
     unit: 'tổ chức',
   },
   {
@@ -313,7 +313,7 @@ export const verifiedNetworkClusters = [
   {
     clusterName: 'Quỹ & nhà tài trợ được liệt kê',
     memberCount: 11,
-    relationType: 'Được đặt dưới tiêu đề Quỹ & Nhà Tài Trợ; chưa xác minh loại quan hệ',
+    relationType: 'Được đặt dưới tiêu đề Quỹ & Nhà Tài Trợ. Loại quan hệ chưa được xác minh.',
     unit: 'thực thể',
   },
 ] as const;
@@ -350,7 +350,7 @@ export interface ResearchItem {
  *
  * `crossDisciplinary` là **phân loại nội bộ** đọc từ cột "Nội dung và kết quả
  * chính" của chính danh mục, đối chiếu với năm lĩnh vực nghiên cứu GISA:
- * phát triển bền vững; quản lý và kinh doanh; kinh tế thực phẩm, nông nghiệp và
+ * phát triển bền vững; quản lý và kinh doanh; kinh tế thực phẩm nông nghiệp và
  * nông thôn; phát triển nguồn nhân lực; tâm lý học. GISA chưa công bố phân loại
  * nào như vậy — `disciplinaryBasis` là để người khác mở bài ra và bác bỏ được.
  *
@@ -366,7 +366,7 @@ export const researchItems: ResearchItem[] = [
       'Mô hình chuẩn đối sánh gồm cả cấu phần Quản lý và cấu phần Bền vững cho doanh nghiệp đồ gỗ — quản lý và kinh doanh cùng phát triển bền vững.',
     id: 'benchmarking-pms',
     title:
-      'Nghiên cứu phát triển mô hình chuẩn đối sánh (Benchmarking) đo lường hiệu suất hoạt động: Phân tích trường hợp các doanh nghiệp Việt Nam',
+      'Nghiên cứu phát triển mô hình chuẩn đối sánh (Benchmarking) đo lường hiệu suất hoạt động — Phân tích trường hợp các doanh nghiệp Việt Nam',
     year: 2023,
   },
   {
@@ -375,9 +375,9 @@ export const researchItems: ResearchItem[] = [
     citationSource: null,
     crossDisciplinary: false,
     disciplinaryBasis:
-      'Chỉ thuộc kinh tế thực phẩm: so sánh chênh giá giữa sản phẩm có và không có chương trình chất lượng.',
+      'Chỉ thuộc kinh tế thực phẩm, với nội dung so sánh chênh giá giữa sản phẩm có và không có chương trình chất lượng.',
     id: 'food-quality-price-premium',
-    title: 'Các chương trình chất lượng thực phẩm và phí bảo hiểm giá: rộng có đi cùng nhau không?',
+    title: 'Các chương trình chất lượng thực phẩm và phí bảo hiểm giá — rộng có đi cùng nhau không?',
     year: 2020,
   },
   {
@@ -386,7 +386,7 @@ export const researchItems: ResearchItem[] = [
     citationSource: null,
     crossDisciplinary: false,
     disciplinaryBasis:
-      'Chỉ thuộc kinh tế nông nghiệp: bản đồ chuỗi giá trị và năng lực cạnh tranh của một ngành hàng.',
+      'Chỉ thuộc kinh tế nông nghiệp, với nội dung lập bản đồ chuỗi giá trị và đánh giá năng lực cạnh tranh của một ngành hàng.',
     id: 'pomelo-value-chain-2015',
     title:
       'Phân tích chuỗi giá trị và đánh giá năng lực cạnh tranh của ngành bưởi da xanh tại Bến Tre, Việt Nam',
@@ -401,7 +401,7 @@ export const researchItems: ResearchItem[] = [
       'Đo trí tuệ cảm xúc, niềm tin và cam kết quan hệ của khách hàng trong bối cảnh dịch vụ — tâm lý học cùng quản lý và kinh doanh.',
     id: 'ai-chatbot-experience',
     title:
-      'Nâng cao trải nghiệm khách hàng với chatbot vận hành bởi AI: Vai trò của chất lượng dịch vụ, trí tuệ cảm xúc và sự cá nhân hóa của thuật toán',
+      'Nâng cao trải nghiệm khách hàng với chatbot vận hành bởi AI — Vai trò của chất lượng dịch vụ, trí tuệ cảm xúc và sự cá nhân hóa của thuật toán',
     year: 2023,
   },
   {
@@ -413,7 +413,7 @@ export const researchItems: ResearchItem[] = [
       'Dùng mô hình hành vi COM-B để giải thích tiêu dùng sữa bền vững — tâm lý học cùng phát triển bền vững.',
     id: 'sustainable-dairy-com-b',
     title:
-      'Nghiên cứu khám phá động lực và rào cản đối với hành vi tiêu dùng sữa bền vững tại Việt Nam: Ứng dụng mô hình COM-B',
+      'Nghiên cứu khám phá động lực và rào cản đối với hành vi tiêu dùng sữa bền vững tại Việt Nam — Ứng dụng mô hình COM-B',
     year: 2023,
   },
   {
@@ -425,7 +425,7 @@ export const researchItems: ResearchItem[] = [
       'Đo mức sẵn sàng chi trả của người tiêu dùng cho nhãn phúc lợi động vật — kinh tế thực phẩm cùng tâm lý học hành vi.',
     id: 'animal-welfare-wtp',
     title:
-      'Nghiên cứu sự sẵn sàng trả tiền đối với nhãn thực phẩm phúc lợi động vật: Ứng dụng phương pháp thí nghiệm lựa chọn',
+      'Nghiên cứu sự sẵn sàng trả tiền đối với nhãn thực phẩm phúc lợi động vật — Ứng dụng phương pháp thí nghiệm lựa chọn',
     year: 2023,
   },
   {
@@ -434,10 +434,10 @@ export const researchItems: ResearchItem[] = [
     citationSource: null,
     crossDisciplinary: false,
     disciplinaryBasis:
-      'Chỉ thuộc kinh tế nông nghiệp: so sánh lợi thế so sánh của ba loại cây trồng bằng DRC, SCB và PAM.',
+      'Chỉ thuộc kinh tế nông nghiệp, với nội dung so sánh lợi thế của ba loại cây trồng bằng DRC, SCB và PAM.',
     id: 'alternative-crops',
     title:
-      'Lợi thế so sánh của các loại cây trồng thay thế: Nghiên cứu so sánh ở Bến Tre, Đồng bằng sông Cửu Long, Việt Nam',
+      'Lợi thế so sánh của các loại cây trồng thay thế — Nghiên cứu so sánh ở Bến Tre, Đồng bằng sông Cửu Long, Việt Nam',
     year: null,
   },
   {
@@ -446,7 +446,7 @@ export const researchItems: ResearchItem[] = [
     citationSource: null,
     crossDisciplinary: false,
     disciplinaryBasis:
-      'Chỉ thuộc kinh tế nông nghiệp: chỉ số RCA, NRCA, RTA cho năng lực cạnh tranh xuất khẩu.',
+      'Chỉ thuộc kinh tế nông nghiệp, sử dụng các chỉ số RCA, NRCA và RTA để đánh giá năng lực cạnh tranh xuất khẩu.',
     id: 'rca-nrca-competitiveness',
     title:
       'Năng lực cạnh tranh nông nghiệp của Việt Nam theo các chỉ số RCA và NRCA và tính nhất quán của các chỉ số năng lực cạnh tranh',
@@ -461,7 +461,7 @@ export const researchItems: ResearchItem[] = [
       'Đánh giá cùng lúc hiệu quả kinh tế, môi trường, xã hội và quản trị của các hệ thống chất lượng — kinh tế thực phẩm cùng phát triển bền vững.',
     id: 'eu-food-quality-sustainability',
     title:
-      'Tính bền vững của các chương trình chất lượng thực phẩm châu Âu: Đa hiệu suất, cơ cấu và quản trị các hệ thống PDO, PGI và nông sản hữu cơ',
+      'Tính bền vững của các chương trình chất lượng thực phẩm châu Âu — Đa hiệu suất, cơ cấu và quản trị các hệ thống PDO, PGI và nông sản hữu cơ',
     year: null,
   },
   {
@@ -480,9 +480,9 @@ export const researchItems: ResearchItem[] = [
     citationCount: null,
     citationSource: null,
     crossDisciplinary: false,
-    disciplinaryBasis: 'Chỉ thuộc kinh tế nông nghiệp: cơ cấu thương mại nội ngành và liên ngành.',
+    disciplinaryBasis: 'Chỉ thuộc kinh tế nông nghiệp, tập trung vào cơ cấu thương mại nội ngành và liên ngành.',
     id: 'intra-industry-trade',
-    title: 'Động lực của thương mại nội ngành nông nghiệp: Một nghiên cứu điển hình toàn diện ở Việt Nam',
+    title: 'Động lực của thương mại nội ngành nông nghiệp — Một nghiên cứu điển hình toàn diện ở Việt Nam',
     year: null,
   },
   {
@@ -491,10 +491,10 @@ export const researchItems: ResearchItem[] = [
     citationSource: null,
     crossDisciplinary: false,
     disciplinaryBasis:
-      'Chỉ thuộc kinh tế nông nghiệp: chỉ số Lafay cho chuyên môn hóa thương mại. Danh mục ghi "1997–2014" là kỳ dữ liệu, không phải năm công bố.',
+      'Chỉ thuộc kinh tế nông nghiệp, sử dụng chỉ số Lafay để đánh giá chuyên môn hóa thương mại. Danh mục ghi "1997–2014" là kỳ dữ liệu, không phải năm công bố.',
     id: 'trade-specialisation',
     title:
-      'Nghiên cứu sự phát triển của chuyên môn hóa thương mại nông nghiệp ở các nền kinh tế chuyển đổi: Nghiên cứu trường hợp từ Việt Nam',
+      'Nghiên cứu sự phát triển của chuyên môn hóa thương mại nông nghiệp ở các nền kinh tế chuyển đổi — Nghiên cứu trường hợp từ Việt Nam',
     year: null,
   },
   {
@@ -503,7 +503,7 @@ export const researchItems: ResearchItem[] = [
     citationSource: null,
     crossDisciplinary: false,
     disciplinaryBasis:
-      'Chỉ thuộc kinh tế nông nghiệp: chi phí, lợi nhuận và giá trị gia tăng dọc một chuỗi giá trị.',
+      'Chỉ thuộc kinh tế nông nghiệp, tập trung vào chi phí, lợi nhuận và giá trị gia tăng dọc một chuỗi giá trị.',
     id: 'pomelo-value-chain-2016',
     title: 'Nghiên cứu chuỗi giá trị bưởi da xanh Bến Tre',
     year: 2016,
@@ -516,7 +516,7 @@ export const researchItems: ResearchItem[] = [
     disciplinaryBasis:
       'Khung sáu trụ cột và 28 chỉ số phủ thu nhập, việc làm, công bằng, sức khỏe và ô nhiễm — kinh tế thực phẩm cùng phát triển bền vững.',
     id: 'short-food-supply-chains-framework',
-    title: 'Chuỗi cung ứng thực phẩm ngắn hạn: Động lực bền vững và bình đẳng cho tương lai',
+    title: 'Chuỗi cung ứng thực phẩm ngắn hạn — Động lực bền vững và bình đẳng cho tương lai',
     year: null,
   },
 ];

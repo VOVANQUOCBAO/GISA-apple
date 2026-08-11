@@ -1,6 +1,6 @@
 .detailPage {
   margin-inline: auto;
-  padding-bottom: clamp(5rem, 9vw, 9rem);
+  padding-bottom: clamp(4rem, 6vw, 6rem);
   width: min(100% - (2 * var(--gutter)), var(--container));
 }
 
@@ -12,7 +12,7 @@
   display: grid;
   gap: clamp(1.5rem, 4vw, 4rem);
   grid-template-columns: minmax(9rem, .3fr) minmax(0, 1.7fr);
-  margin: clamp(2.75rem, 6vw, 5.5rem) auto 0;
+  margin: clamp(2.75rem, 4vw, 4rem) auto 0;
   max-width: 76rem;
   padding-block: clamp(1.75rem, 4vw, 3rem);
 }
@@ -58,10 +58,10 @@
 
 .readingStage {
   display: grid;
-  gap: clamp(2.5rem, 6vw, 6rem);
+  gap: clamp(2.5rem, 4.5vw, 4.5rem);
   grid-template-columns: minmax(12rem, 16rem) minmax(0, 50rem);
   justify-content: center;
-  margin: clamp(4rem, 9vw, 8rem) auto 0;
+  margin: clamp(3.5rem, 5vw, 5rem) auto 0;
   max-width: 78rem;
 }
 
@@ -86,7 +86,11 @@
 }
 
 .bodyColumn > div:first-child {
-  max-width: 50rem;
+  max-width: 68ch;
+}
+
+.bodyColumn > div:first-child > p {
+  text-align: start;
 }
 
 .endcap {
@@ -99,7 +103,7 @@
   display: grid;
   gap: 1.5rem;
   grid-template-columns: minmax(0, 1fr) auto;
-  margin-top: clamp(3rem, 7vw, 6rem);
+  margin-top: clamp(3rem, 4.5vw, 4.5rem);
   overflow: hidden;
   padding: clamp(1.6rem, 4vw, 3rem);
 }
@@ -206,6 +210,10 @@
 
   .endcapActions {
     justify-content: flex-start;
+  }
+
+  .bodyColumn > div:first-child > p {
+    text-align: left;
   }
 }
 

@@ -219,6 +219,14 @@
   font-size: clamp(1rem, 1.35vw, 1.12rem);
 }
 
+.featuredCard > article > p:last-of-type,
+.supportingCard > article > p:last-of-type {
+  line-height: 1.68;
+  max-width: 66ch;
+  text-align: start;
+  text-wrap: pretty;
+}
+
 .featuredCard > article:focus-within,
 .supportingCard > article:focus-within {
   outline: 3px solid color-mix(in srgb, var(--section-secondary, var(--color-orange)) 78%, transparent);
@@ -340,6 +348,11 @@
 
   .editorialList {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .featuredCard > article > p:last-of-type,
+  .supportingCard > article > p:last-of-type {
+    text-align: start;
   }
 }
 

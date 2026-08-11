@@ -86,7 +86,7 @@ export const tuVanBlocks: Record<string, ContentBlock[]> = {
       ],
     },
 
-    { type: 'heading', level: 2, text: 'Kinh tế thực phẩm, nông nghiệp và nông thôn' },
+    { type: 'heading', level: 2, text: 'Kinh tế thực phẩm nông nghiệp và nông thôn' },
     {
       type: 'paragraph',
       text: 'GISA kết hợp nghiên cứu định tính – định lượng, khảo sát thực địa và phân tích hệ thống để đưa ra các giải pháp toàn diện cho phát triển nông nghiệp bền vững và hiện đại hóa nông thôn.',
@@ -111,12 +111,12 @@ export const tuVanBlocks: Record<string, ContentBlock[]> = {
       type: 'list',
       ordered: false,
       items: [
-        'Chính sách kinh tế vĩ mô và phát triển bền vững: tư vấn chiến lược tăng trưởng xanh, kinh tế tuần hoàn, kinh tế số.',
-        'Phát triển vùng và địa phương: xây dựng chiến lược phát triển kinh tế vùng gắn kết ngành – địa phương, thu hút đầu tư và nâng cao năng lực cạnh tranh cấp tỉnh.',
-        'Phát triển ngành và hệ sinh thái kinh tế: hỗ trợ đổi mới ngành công nghiệp, nông nghiệp, dịch vụ theo chuỗi giá trị và phát triển cụm ngành.',
-        'Chính sách hỗ trợ doanh nghiệp và thị trường: thiết kế chính sách cho doanh nghiệp nhỏ và vừa, startup và doanh nghiệp xã hội.',
-        'Phát triển nguồn nhân lực và giáo dục – đào tạo: gắn kết đào tạo với nhu cầu thị trường lao động và cơ cấu ngành nghề tương lai.',
-        'Đối ngoại kinh tế và hội nhập toàn cầu: phân tích tác động và tận dụng cơ hội từ các hiệp định thương mại tự do, phát triển thương hiệu quốc gia.',
+        'Chính sách kinh tế vĩ mô và phát triển bền vững. GISA tư vấn chiến lược tăng trưởng xanh, kinh tế tuần hoàn và kinh tế số.',
+        'Phát triển vùng và địa phương. GISA xây dựng chiến lược phát triển kinh tế vùng gắn kết ngành – địa phương, thu hút đầu tư và nâng cao năng lực cạnh tranh cấp tỉnh.',
+        'Phát triển ngành và hệ sinh thái kinh tế. GISA hỗ trợ đổi mới ngành công nghiệp, nông nghiệp và dịch vụ theo chuỗi giá trị, đồng thời phát triển cụm ngành.',
+        'Chính sách hỗ trợ doanh nghiệp và thị trường. GISA thiết kế chính sách cho doanh nghiệp nhỏ và vừa, startup và doanh nghiệp xã hội.',
+        'Phát triển nguồn nhân lực và giáo dục – đào tạo. GISA gắn kết đào tạo với nhu cầu thị trường lao động và cơ cấu ngành nghề tương lai.',
+        'Đối ngoại kinh tế và hội nhập toàn cầu. GISA phân tích tác động và tận dụng cơ hội từ các hiệp định thương mại tự do, đồng thời phát triển thương hiệu quốc gia.',
       ],
     },
   ],
@@ -128,7 +128,7 @@ export const tuVanBlocks: Record<string, ContentBlock[]> = {
     },
     {
       type: 'paragraph',
-      text: 'Các hồ sơ sẽ tập trung vào bối cảnh, cách tiếp cận và giá trị đã được bên liên quan xác nhận; thông tin bảo mật của từng dự án luôn được tôn trọng.',
+      text: 'Các hồ sơ sẽ tập trung vào bối cảnh, cách tiếp cận và giá trị đã được bên liên quan xác nhận. Thông tin bảo mật của từng dự án luôn được tôn trọng.',
     },
   ],
 };

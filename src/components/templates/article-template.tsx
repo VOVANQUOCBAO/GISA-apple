@@ -23,7 +23,7 @@ export function ArticleTemplate({ record }: { record: ContentRecord }) {
           ) : null}
           {record.kind === 'notice' ? (
             <p className={styles.archiveNotice}>
-              Đây là thông báo lưu trữ; giao diện không xác nhận nội dung này còn hiệu lực.
+              Đây là thông báo lưu trữ. Giao diện không xác nhận nội dung này còn hiệu lực.
             </p>
           ) : null}
         </>

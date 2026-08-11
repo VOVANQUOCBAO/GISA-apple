@@ -41,6 +41,8 @@ describe('expert directory templates', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: 'Chuyên gia' })).toBeVisible();
     expect(screen.getByRole('heading', { name: 'Tri thức được dẫn dắt bởi con người' })).toBeVisible();
+    expect(screen.queryByText('hồ sơ được công bố')).not.toBeInTheDocument();
+    expect(screen.queryByText(result.total.toLocaleString('vi-VN'))).not.toBeInTheDocument();
     expect(screen.getByRole('link', { name: firstItem.title })).toHaveAttribute('href', firstItem.path);
     expect(
       screen.getByRole('img', {

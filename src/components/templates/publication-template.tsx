@@ -65,7 +65,10 @@ export function PublicationTemplate({
 
   return (
     <main id="main-content" tabIndex={-1}>
-      <article className={styles.pageContainer}>
+      <article
+        className={`${styles.pageContainer} ${styles.sectionTheme}`}
+        data-section="research"
+      >
         <Breadcrumbs
           items={[
             { href: '/', label: 'Trang chủ' },

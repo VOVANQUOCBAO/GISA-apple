@@ -102,7 +102,6 @@ export function ExpertListingTemplate({
   const hasQuery = Boolean(typeof searchParams.q === 'string' && searchParams.q.trim());
   const hasFilters = definition.filters.some((key) => Boolean(searchParams[key]));
   const profile = profileForPath(path);
-  const resultCount = result.total.toLocaleString('vi-VN');
   const offset = (result.page - 1) * result.pageSize;
 
   return (
@@ -118,7 +117,6 @@ export function ExpertListingTemplate({
         <InnerPageHero
           description={definition.description}
           eyebrow="Mạng lưới chuyên môn"
-          meta={<p aria-live="polite"><strong>{resultCount}</strong> hồ sơ</p>}
           path={path}
           title={definition.title}
         />
@@ -139,12 +137,14 @@ export function ExpertListingTemplate({
             <header className={styles.directoryHeader}>
               <div>
                 <p>Đội ngũ GISA</p>
-                <h2 id="expert-directory-title">Tri thức được dẫn dắt bởi con người</h2>
+                <h2 id="expert-directory-title">
+                  <span>Tri thức</span>
+                  {' '}
+                  <span>được dẫn dắt</span>
+                  {' '}
+                  <span>bởi con người</span>
+                </h2>
               </div>
-              <p aria-live="polite" className={styles.resultCount}>
-                <strong>{resultCount}</strong>
-                <span>hồ sơ được công bố</span>
-              </p>
             </header>
             <ol className={styles.expertGrid}>
               {result.items.map((item, index) => (
