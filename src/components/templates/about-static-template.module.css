@@ -77,7 +77,7 @@
 .storyTimeline::before {
   background: color-mix(in srgb, var(--section-accent) 24%, transparent);
   content: '';
-  inset: 0 auto 0 clamp(2.9rem, 5vw, 4.5rem);
+  inset: 0 auto 0 clamp(1.25rem, 2vw, 1.6rem);
   position: absolute;
   width: 1px;
 }
@@ -87,7 +87,7 @@
   gap: clamp(2rem, 6vw, 6rem);
   grid-template-columns: minmax(16rem, 0.82fr) minmax(0, 1.18fr);
   min-height: 24rem;
-  padding: 0 0 clamp(3.75rem, 5.5vw, 5.5rem) clamp(7rem, 12vw, 11rem);
+  padding: 0 0 clamp(3.75rem, 5.5vw, 5.5rem) clamp(4.25rem, 7vw, 6rem);
   position: relative;
 }
 
@@ -97,7 +97,7 @@
   border-radius: 50%;
   content: '';
   height: 1.25rem;
-  left: clamp(2.3rem, calc(5vw - .6rem), 3.9rem);
+  left: clamp(.625rem, calc(2vw - .625rem), .975rem);
   position: absolute;
   top: 0.35rem;
   width: 1.25rem;
@@ -570,7 +570,7 @@
 @media (max-width: 64rem) {
   .storyChapter {
     grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.3fr);
-    padding-left: 6.5rem;
+    padding-left: 4.25rem;
   }
 
   .missionPanel,
@@ -1147,7 +1147,14 @@
   color: var(--story-accent, var(--section-accent));
   display: inline-flex;
   gap: 0.5rem;
+  justify-self: start;
   padding: 0.42rem 0.7rem 0.42rem 0.46rem;
+  width: fit-content;
+}
+
+.storyChapterHeading .storyChapterMark {
+  display: inline-flex;
+  width: fit-content;
 }
 
 .storyChapterMark svg {

@@ -494,8 +494,9 @@
   letter-spacing: -.035em;
   line-height: 1.08;
   margin: 0;
-  max-width: 20ch;
+  max-width: 30ch;
   text-wrap: balance;
+  white-space: pre-line;
 }
 
 .actionClosure a {

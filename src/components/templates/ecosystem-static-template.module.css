@@ -1868,28 +1868,42 @@
    icon, chapter number and title together instead of leaving later chapters
    (notably “02 / Các nội dung trọng tâm”) aligned to the old left grid. */
 .container[data-mode='community'] .chapterTitle {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto;
   justify-content: center;
   text-align: center;
 }
 
 .container[data-mode='community'] .chapterTitle h2,
 .container[data-mode='community'] .chapterLead {
-  flex-basis: 100%;
   grid-column: 1 / -1;
-  margin-inline: auto;
+  justify-self: center;
+  margin-inline: 0;
+  max-width: none;
+  width: min(100%, 39rem);
 }
 
 .container[data-mode='community'] .chapterTitle h2 {
-  max-width: 22ch;
   text-align: center;
 }
 
 .container[data-mode='community'] .chapterLead {
-  max-width: 72ch;
-  text-align: justify;
-  text-align-last: left;
+  text-align: center;
+  text-align-last: center;
+}
+
+.chapterTitleLine {
+  display: block;
+}
+
+.container[data-mode='atlas'] .chapterTitleLine:last-child {
+  white-space: nowrap;
+}
+
+@media (max-width: 48rem) {
+  .container[data-mode='atlas'] .chapterTitleLine:last-child {
+    white-space: normal;
+  }
 }
 
 @media (max-width: 72rem) {

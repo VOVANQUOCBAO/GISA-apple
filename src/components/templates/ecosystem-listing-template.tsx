@@ -44,7 +44,7 @@ const LISTING_DIRECTIONS: Record<string, ListingDirection> = {
   },
   '/cong-dong/kinh-te-ben-vung': {
     action: { href: '/cong-dong', label: 'Khám phá cộng đồng' },
-    actionTitle: 'Xem thêm những hướng hành động vì cộng đồng',
+    actionTitle: 'Xem thêm những hướng\nhành động vì cộng đồng',
     description:
       'Khám phá các mô hình, công cụ và chương trình kết nối phát triển kinh tế với giá trị xã hội và môi trường.',
     mode: 'initiatives',

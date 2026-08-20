@@ -33,7 +33,7 @@ const STORY_CHAPTERS = new Set([
   'Động lực hình thành',
   'Giới thiệu về GISA',
 ]);
-const STORY_ICONS: IconName[] = ['globe', 'lightbulb', 'book'];
+const STORY_ICONS: IconName[] = ['compass', 'rocket', 'buildings'];
 const STORY_COLORS = ['#0b7a78', '#e66f2d', '#3469b0'];
 /* Trùng bộ biểu tượng và bảng màu với sáu cam kết ở trang chủ, để hai nơi nói
    về cùng một thứ thì trông cũng phải là cùng một thứ. */
@@ -170,7 +170,7 @@ function StoryLayout({ blocks }: { blocks: ContentBlock[] }) {
             >
               <div className={styles.storyChapterHeading}>
                 <span aria-hidden="true" className={styles.storyChapterMark} data-story-icon>
-                  <Icon name={STORY_ICONS[index] ?? 'leaf'} size={24} />
+                  <Icon name={STORY_ICONS[index] ?? 'leaf'} size={22} weight="duotone" />
                   <small>{String(index + 1).padStart(2, '0')}</small>
                 </span>
                 <h2>{phrase(chapter.heading.text)}</h2>

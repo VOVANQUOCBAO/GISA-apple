@@ -2335,3 +2335,25 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Narrow cards and the highlighted opening need natural word spacing.
+   This final override intentionally follows the legacy justified-text rules. */
+.pageContainer[data-capability='application'] .applicationLead > div > p + p,
+.pageContainer[data-capability='application'] .applicationItem p,
+.pageContainer[data-capability='application'] .applicationItem > div > p[data-scroll-motion='item'],
+.pageContainer[data-capability='application'] .applicationItem li {
+  letter-spacing: normal;
+  text-align: left;
+  text-align-last: auto;
+  word-spacing: normal;
+}
+
+.pageContainer[data-capability='application'] .applicationLead > div > p + p {
+  max-width: 62ch;
+}
+
+.pageContainer[data-capability='application'] .applicationItem p :global([data-vietnamese-phrase]),
+.pageContainer[data-capability='application'] .applicationItem > div > p[data-scroll-motion='item'] :global([data-vietnamese-phrase]),
+.pageContainer[data-capability='application'] .applicationItem li :global([data-vietnamese-phrase]) {
+  white-space: normal !important;
+}

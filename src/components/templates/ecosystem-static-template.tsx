@@ -115,6 +115,20 @@ function vietnameseText(text: string) {
   return bindPhrases(normalizeVisibleText(text));
 }
 
+function chapterHeadingText(text: string) {
+  if (normalizeVisibleText(text) === 'Kinh tế quốc tế và năng lực cạnh tranh toàn cầu') {
+    return (
+      <>
+        <span className={styles.chapterTitleLine}>Kinh tế quốc tế và</span>
+        {' '}
+        <span className={styles.chapterTitleLine}>năng lực cạnh tranh toàn cầu</span>
+      </>
+    );
+  }
+
+  return vietnameseText(text);
+}
+
 function splitEditorialBlocks(blocks: ContentBlock[]) {
   const introduction: ContentBlock[] = [];
   const chapters: EditorialChapter[] = [];
@@ -561,7 +575,7 @@ export function EcosystemStaticTemplate({
                         <span aria-hidden="true" className={styles.chapterNumber}>
                           {String(index + 1).padStart(2, '0')}
                         </span>
-                        <h2>{vietnameseText(chapter.title)}</h2>
+                        <h2>{chapterHeadingText(chapter.title)}</h2>
                         {chapterLead ? (
                           <p className={styles.chapterLead}>{vietnameseText(chapterLead.text)}</p>
                         ) : null}
