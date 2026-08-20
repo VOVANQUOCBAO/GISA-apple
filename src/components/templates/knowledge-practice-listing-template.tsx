@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import { ButtonLink } from '@/components/ui/button-link';
 import { EmptyState } from '@/components/ui/empty-state';
 import { FilterBar, type UrlQuery } from '@/components/ui/filter-bar';
+import { Icon, type IconName } from '@/components/ui/icon';
 import { Pagination } from '@/components/ui/pagination';
 import type { PageDefinition } from '@/content/pages';
 import type { ContentSummary, PaginatedResult } from '@/content/types';
@@ -25,19 +26,16 @@ export interface KnowledgePracticeListingTemplateProps {
 }
 
 interface Direction {
-  action: { href: string; label: string };
+  action?: { href: string; label: string };
   eyebrow: string;
-  introduction: string;
+  introduction?: string;
   sectionTitle: string;
   tone: 'consulting' | 'research' | 'tools';
 }
 
 const DIRECTIONS: Record<string, Direction> = {
   '/nghien-cuu/du-an': {
-    action: { href: '/nghien-cuu/linh-vuc', label: 'Xem lĩnh vực nghiên cứu' },
     eyebrow: 'Danh mục nghiên cứu',
-    introduction:
-      'Mỗi dự án bắt đầu từ một câu hỏi có ý nghĩa đối với chính sách, thị trường hoặc cộng đồng. Kết quả hướng đến bằng chứng có thể tiếp tục được sử dụng.',
     sectionTitle: 'Từ câu hỏi nghiên cứu đến bằng chứng ứng dụng',
     tone: 'research',
   },
@@ -50,10 +48,7 @@ const DIRECTIONS: Record<string, Direction> = {
     tone: 'consulting',
   },
   '/tu-van/cong-cu': {
-    action: { href: '/dang-ky/tu-van', label: 'Chọn công cụ cùng GISA' },
     eyebrow: 'Bộ công cụ thực hành',
-    introduction:
-      'Công cụ chỉ có giá trị khi được đặt đúng câu hỏi. GISA tổ chức bộ công cụ theo quyết định cần hỗ trợ, từ đọc bối cảnh đến đánh giá tác động.',
     sectionTitle: 'Chọn công cụ theo quyết định cần hỗ trợ',
     tone: 'tools',
   },
@@ -72,19 +67,20 @@ function metadataText(item: ContentSummary, key: string) {
   return Array.isArray(value) ? value.join(', ') : value;
 }
 
-function ProjectEntry({ featured, index, item }: { featured: boolean; index: number; item: ContentSummary }) {
+function ProjectEntry({ index, item }: { index: number; item: ContentSummary }) {
   const topic = metadataText(item, 'topic');
   const projectType = metadataText(item, 'projectType');
+  const logo = metadataText(item, 'logo');
   const projectMeta = [projectType, topic].filter(Boolean).join(' · ');
 
   return (
-    <article className={styles.projectEntry} data-featured={featured ? 'true' : 'false'}>
+    <article className={styles.projectEntry}>
       <div className={styles.projectVisual}>
         {item.image ? (
           <Image
             alt={item.image.alt}
             fill
-            sizes={featured ? '(max-width: 48rem) 94vw, 54rem' : '(max-width: 48rem) 94vw, 28rem'}
+            sizes="(max-width: 48rem) 94vw, (max-width: 72rem) 46vw, 34rem"
             src={item.image.src}
           />
         ) : (
@@ -93,6 +89,11 @@ function ProjectEntry({ featured, index, item }: { featured: boolean; index: num
             <i />
           </div>
         )}
+        {logo ? (
+          <span aria-hidden="true" className={styles.projectLogo}>
+            <Image alt="" fill sizes="10rem" src={logo} />
+          </span>
+        ) : null}
       </div>
       <div className={styles.projectCopy}>
         {projectMeta ? <p className={styles.projectMeta}>{visibleText(projectMeta)}</p> : null}
@@ -104,18 +105,53 @@ function ProjectEntry({ featured, index, item }: { featured: boolean; index: num
   );
 }
 
+const TOOL_ICONS: IconName[] = [
+  'compass',
+  'microscope',
+  'users',
+  'leaf',
+  'training',
+  'lightbulb',
+];
+
+const TOOL_VISUALS = [
+  { alt: 'Nhóm chuyên gia phân tích chiến lược và hoạch định chính sách', src: '/images/hero-gisa-strategy-table.png' },
+  { alt: 'Phân tích dữ liệu phục vụ nghiên cứu và đánh giá', src: '/images/article-performance-benchmarking.png' },
+  { alt: 'Đội ngũ phát triển tổ chức và năng lực nhân sự', src: '/images/hero-gisa-team.png' },
+  { alt: 'Phân tích ESG và giải pháp phát triển bền vững', src: '/images/article-esg-report.png' },
+  { alt: 'Hoạt động huấn luyện và cố vấn chuyên môn', src: '/images/knowledge-journey/consulting-workshop-editorial.png' },
+  { alt: 'Công nghệ hỗ trợ thiết kế và đổi mới sáng tạo', src: '/images/article-ai-chatbot.png' },
+] as const;
+
+function toolVisualFor(item: ContentSummary, group: string | undefined) {
+  const label = `${group ?? ''} ${item.title}`.toLocaleLowerCase('vi');
+  if (label.includes('nghiên cứu') || label.includes('đánh giá')) return TOOL_VISUALS[1];
+  if (label.includes('tổ chức') || label.includes('nhân sự')) return TOOL_VISUALS[2];
+  if (label.includes('bền vững') || label.includes('esg')) return TOOL_VISUALS[3];
+  if (label.includes('huấn luyện') || label.includes('cố vấn')) return TOOL_VISUALS[4];
+  if (label.includes('thiết kế') || label.includes('đổi mới')) return TOOL_VISUALS[5];
+  return TOOL_VISUALS[0];
+}
+
 function ToolEntry({ index, item }: { index: number; item: ContentSummary }) {
   const count = metadataText(item, 'toolCount');
   const group = metadataText(item, 'group');
+  const icon = TOOL_ICONS[index % TOOL_ICONS.length] ?? 'clipboard';
+  const visual = toolVisualFor(item, group);
 
   return (
     <article className={styles.toolEntry}>
+      <div className={styles.toolVisual}>
+        <Image alt={visual.alt} fill sizes="(max-width: 48rem) 94vw, 46vw" src={visual.src} />
+        <span aria-hidden="true" className={styles.toolVisualShade} />
+        <span aria-hidden="true" className={styles.toolVisualIcon}><Icon name={icon} size={28} /></span>
+        <span aria-hidden="true" className={styles.toolVisualNumber}>{String(index + 1).padStart(2, '0')}</span>
+      </div>
       <header>
-        <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+        <span>{visibleText(group ?? 'Nhóm công cụ tư vấn')}</span>
         {count ? <p><strong>{count}</strong> công cụ</p> : null}
       </header>
       <div>
-        <p className={styles.toolGroup}>{visibleText(group ?? 'Nhóm công cụ tư vấn')}</p>
         <h3><Link href={item.path}>{visibleText(item.title)}</Link></h3>
         <p>{visibleText(item.summary)}</p>
       </div>
@@ -168,23 +204,25 @@ export function KnowledgePracticeListingTemplate({
         />
         <SectionSubnav path={path} />
 
-        <section className={styles.editorialLead} aria-labelledby="practice-listing-title">
+        <section
+          className={styles.editorialLead}
+          aria-labelledby="practice-listing-title"
+          data-centered={!direction.introduction || !direction.action ? 'true' : undefined}
+        >
           <div>
             <p>{direction.eyebrow}</p>
             <h2 id="practice-listing-title">{visibleText(direction.sectionTitle)}</h2>
           </div>
-          <div>
-            <p>{visibleText(direction.introduction)}</p>
-            <Link href={direction.action.href}>{direction.action.label}</Link>
-          </div>
+          {direction.introduction && direction.action ? (
+            <div>
+              <p>{visibleText(direction.introduction)}</p>
+              <Link href={direction.action.href}>{direction.action.label}</Link>
+            </div>
+          ) : null}
         </section>
 
         {hasAvailableFilters ? (
           <section className={styles.filterStage} aria-label="Lọc nội dung">
-            <div>
-              <h2>Đi thẳng đến chủ đề bạn quan tâm</h2>
-              <p>Mỗi lựa chọn sẽ cập nhật danh sách bên dưới.</p>
-            </div>
             <FilterBar filters={availableFilters} path={path} query={searchParams} />
           </section>
         ) : null}
@@ -199,7 +237,7 @@ export function KnowledgePracticeListingTemplate({
           ) : (
             <ol className={styles.projectList} aria-label={definition.title}>
               {result.items.map((item, index) => (
-                <li key={item.id}><ProjectEntry featured={index === 0} index={index} item={item} /></li>
+                <li key={item.id}><ProjectEntry index={index} item={item} /></li>
               ))}
             </ol>
           )
@@ -211,11 +249,9 @@ export function KnowledgePracticeListingTemplate({
           />
         ) : scopeValues.length > 0 ? (
           <EmptyState
-            action={
-              <ButtonLink href={direction.action.href}>
-                {direction.action.label}
-              </ButtonLink>
-            }
+            action={direction.action ? (
+              <ButtonLink href={direction.action.href}>{direction.action.label}</ButtonLink>
+            ) : undefined}
             description={EDITORIAL_EMPTY_COPY.scope.description}
             title={EDITORIAL_EMPTY_COPY.scope.title}
           />

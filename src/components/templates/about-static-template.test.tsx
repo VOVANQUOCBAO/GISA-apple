@@ -7,8 +7,6 @@ import { AboutStaticTemplate, isAboutStaticPath } from './about-static-template'
 
 const ABOUT_CASES = [
   ['/gioi-thieu/cau-chuyen-gisa', 'Câu chuyện GISA', 'Bối cảnh và vấn đề đặt ra'],
-  ['/gioi-thieu/tam-nhin-su-menh', 'Tầm nhìn & sứ mệnh', 'Sứ mệnh'],
-  ['/gioi-thieu/rises-va-sau-tru-cot', 'RISES và sáu trụ cột', 'Giá trị cốt lõi RISES'],
   ['/gioi-thieu/linh-vuc-hoat-dong', 'Lĩnh vực hoạt động', 'Nghiên cứu'],
 ] as const;
 
@@ -28,15 +26,15 @@ describe('AboutStaticTemplate', () => {
     unmount();
   });
 
-  test('limits the custom template contract to the four approved child pages', () => {
+  test('limits the custom template contract to the two approved child pages', () => {
     for (const [path] of ABOUT_CASES) expect(isAboutStaticPath(path)).toBe(true);
     expect(isAboutStaticPath('/gioi-thieu')).toBe(false);
     expect(isAboutStaticPath('/')).toBe(false);
   });
 
   test('renders the bilingual slogan as two semantic lines without language labels', () => {
-    const definition = resolvePage('/gioi-thieu/tam-nhin-su-menh');
-    if (!definition || definition.template !== 'static') throw new Error('Missing vision page');
+    const definition = resolvePage('/gioi-thieu/cau-chuyen-gisa');
+    if (!definition || definition.template !== 'static') throw new Error('Missing story page');
 
     render(<AboutStaticTemplate definition={definition} path={definition.path} />);
 
@@ -47,5 +45,22 @@ describe('AboutStaticTemplate', () => {
     expect(lines?.[0]).toHaveTextContent('Kiến tạo tri thức, lan tỏa giá trị');
     expect(lines?.[1]).toHaveTextContent('Advancing Knowledge, Sharing Values');
     expect(slogan).not.toHaveTextContent(/Tiếng Việt:|Tiếng Anh:/);
+  });
+
+  test('consolidates vision, mission, slogan and RISES without the duplicate pillars', () => {
+    const definition = resolvePage('/gioi-thieu/cau-chuyen-gisa');
+    if (!definition || definition.template !== 'static') throw new Error('Missing story page');
+
+    const { container } = render(
+      <AboutStaticTemplate definition={definition} path={definition.path} />,
+    );
+
+    expect(container.querySelector('#tam-nhin')).toBeInTheDocument();
+    expect(container.querySelector('#su-menh')).toBeInTheDocument();
+    expect(container.querySelector('#khau-hieu')).toBeInTheDocument();
+    expect(container.querySelector('#gia-tri-cot-loi-rises')).toBeInTheDocument();
+    expect(container.querySelectorAll('#su-menh li')).toHaveLength(6);
+    expect(container.querySelectorAll('[data-story-icon]')).toHaveLength(3);
+    expect(screen.queryByRole('heading', { name: 'Sáu trụ cột hoạt động' })).not.toBeInTheDocument();
   });
 });

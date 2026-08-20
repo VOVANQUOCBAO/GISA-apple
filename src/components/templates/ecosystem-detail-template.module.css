@@ -1,5 +1,5 @@
 .page {
-  background: #f8fbfb;
+  background: #fff;
   color: #173848;
   overflow-x: clip;
 }
@@ -75,7 +75,7 @@
 
 .heroDescription {
   color: rgb(21 52 67 / 76%);
-  font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+  font-size: clamp(18px, 1.6vw, 20px);
   line-height: 1.65;
   margin: clamp(1.25rem, 2.5vw, 1.8rem) 0 0;
   max-width: 68ch;
@@ -157,7 +157,8 @@
 
 .partnerEvidence p:not(:first-child) {
   color: rgb(21 52 67 / 80%);
-  line-height: 1.7;
+  font-size: clamp(18px, 1.5vw, 20px);
+  line-height: 1.72;
   margin-block: .75rem 0;
   max-width: 68ch;
   text-align: start;
@@ -210,7 +211,7 @@
 
 .body > div:first-child > p {
   color: rgb(21 52 67 / 80%);
-  font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+  font-size: clamp(18px, 1.5vw, 20px);
   line-height: 1.78;
   text-align: start;
   text-wrap: pretty;
@@ -221,6 +222,13 @@
   font-family: var(--font-heading);
   font-size: clamp(1.45rem, 2.4vw, 2.15rem);
   line-height: 1.42;
+}
+
+.body > div:first-child > h2 {
+  border-top: 0;
+  max-width: none;
+  padding-top: 0;
+  text-wrap: pretty;
 }
 
 .body a:focus-visible,
@@ -295,13 +303,20 @@
   }
 
   .heroCopy {
+    min-width: 0;
     padding: 2rem 1.35rem 2.25rem;
+    width: 100%;
   }
 
   .hero h1,
   .hero[data-title-length='long'] h1 {
     font-size: clamp(2.45rem, 11vw, 3.7rem);
     line-height: 1.03;
+    width: 100%;
+  }
+
+  :global(#main-content) .hero h1 :global([data-vietnamese-phrase]) {
+    white-space: normal !important;
   }
 
   .heroVisual {
@@ -336,7 +351,9 @@
   .archiveNotice,
   .partnerEvidence p:not(:first-child),
   .body > div:first-child > p {
-    text-align: left;
+    font-size: 18px;
+    text-align: justify;
+    text-align-last: left;
   }
 }
 
@@ -350,5 +367,22 @@
 @media (prefers-contrast: more) {
   .hero {
     border-color: var(--detail-ink);
+  }
+}
+
+/* Doan van than bai can deu hai bien tren toan trang. Cac quy tac phia tren
+   dat `text-align: start` cho dung nhung doan nay, va chung thang quy tac
+   `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
+.heroDescription,
+.archiveNotice,
+.partnerEvidence p:not(:first-child),
+.body > div:first-child > p {
+  text-align: justify;
+}
+
+@media (max-width: 48rem) {
+  .container .heroDescription {
+    text-align: left;
+    text-align-last: auto;
   }
 }

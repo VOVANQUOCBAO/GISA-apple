@@ -64,7 +64,14 @@
 .pageHeader {
   background: var(--color-white);
   border: 1px solid rgb(25 72 106 / 12%);
-  border-left: 0.35rem solid var(--color-teal);
+  /* Vệt màu bên trái lấy màu của từng nhánh (trước đây nhánh nào cũng teal),
+     nên mỗi nhánh menu đọc ra một màu riêng. Dùng nền chuyển màu thay cho
+     border-image để giữ được bo góc. */
+  background-image: linear-gradient(160deg, var(--section-accent, #005f69), var(--section-secondary, #f26f33));
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: 0.35rem 100%;
+  border-left: 0;
   border-radius: var(--radius-card);
   box-shadow: 0 1rem 3rem rgb(11 52 85 / 5%);
   margin-bottom: clamp(2rem, 5vw, 4rem);
@@ -272,13 +279,14 @@
 }
 
 .leadMedia {
+  aspect-ratio: 3 / 2;
   border-radius: var(--radius-card);
   display: block;
   overflow: hidden;
+  position: relative;
 }
 
 .leadMedia img {
-  aspect-ratio: 3 / 2;
   object-fit: cover;
   transition: transform 0.6s var(--ease-out);
   width: 100%;
@@ -338,10 +346,27 @@
   border-top: 1px solid rgb(25 72 106 / 14%);
   display: grid;
   gap: clamp(1rem, 3vw, 2.5rem);
-  grid-template-columns: 9.5rem minmax(0, 1fr) 2rem;
+  grid-template-columns: clamp(9rem, 13vw, 13rem) 7.5rem minmax(0, 1fr) 2rem;
   padding-block: clamp(1.35rem, 3vw, 2rem);
   position: relative;
   transition: background-color 0.35s var(--ease-out);
+}
+
+.entryMedia {
+  aspect-ratio: 16 / 10;
+  border-radius: .65rem;
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.entryMedia img {
+  object-fit: cover;
+  transition: transform .55s var(--ease-out);
+}
+
+.entryRow:hover .entryMedia img {
+  transform: scale(1.04);
 }
 
 .entryRow:last-child {
@@ -641,7 +666,7 @@
   }
 
   .entryRow {
-    grid-template-columns: 7rem minmax(0, 1fr);
+    grid-template-columns: 9rem 6.5rem minmax(0, 1fr);
   }
 
   .entryArrow {
@@ -800,18 +825,18 @@
   letter-spacing: -0.035em;
   line-height: 0.98;
   margin: 0;
-  max-width: 18ch;
-  text-wrap: balance;
+  max-width: none;
+  text-wrap: pretty;
 }
 
 .innerHero[data-title-length='long'] h1 {
   font-size: clamp(2.65rem, 4.7vw, 4.6rem);
-  max-width: 22ch;
+  max-width: none;
 }
 
 .innerHeroDescription {
   color: rgb(19 48 61 / 76%);
-  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  font-size: clamp(18px, 1.7vw, 21px);
   line-height: 1.55;
   margin: clamp(1.25rem, 3vw, 2rem) 0 0;
   max-width: 62ch;
@@ -851,11 +876,7 @@
 }
 
 .innerHeroVisual::after {
-  background: linear-gradient(180deg, transparent 45%, rgb(3 27 39 / 38%));
-  content: '';
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
+  content: none;
 }
 
 .innerHeroVisual img {
@@ -892,6 +913,16 @@
   letter-spacing: 0.08em;
 }
 
+.innerHeroVisual {
+  min-width: 0;
+}
+
+.innerHeroEyebrow,
+.innerHeroDescription,
+.innerHeroGlass {
+  text-align: left;
+}
+
 .sectionSubnav {
   align-items: center;
   backdrop-filter: blur(18px) saturate(150%);
@@ -900,6 +931,7 @@
   border-radius: 1rem;
   display: flex;
   gap: 0.3rem;
+  justify-content: center;
   margin-block: clamp(1rem, 2vw, 1.5rem) clamp(2.75rem, 5vw, 4rem);
   overscroll-behavior-inline: contain;
   overflow-x: auto;
@@ -936,10 +968,11 @@
   border-radius: 0.7rem;
   color: rgb(20 49 64 / 70%);
   display: inline-flex;
-  flex: 0 0 auto;
+  flex: 1 1 0;
   font-size: 0.9rem;
   font-weight: 700;
   min-height: 2.75rem;
+  justify-content: center;
   padding: 0.65rem 0.9rem;
   position: relative;
   scroll-snap-align: center;
@@ -951,6 +984,7 @@
     opacity 180ms var(--ease-out),
     transform 140ms var(--ease-out);
   z-index: 1;
+  text-align: center;
 }
 
 .sectionSubnav a > span {
@@ -1259,7 +1293,7 @@
 
 .proseParagraph {
   color: rgb(22 42 51 / 82%);
-  font-size: clamp(1.04rem, 1.25vw, 1.14rem);
+  font-size: clamp(18px, 1.5vw, 20px);
   hyphens: none;
   line-height: 1.78;
   max-width: 68ch;
@@ -1296,6 +1330,7 @@
   border: 1px solid rgb(25 72 106 / 9%);
   border-radius: 1rem;
   color: #193f54;
+  font-size: clamp(18px, 1.5vw, 20px);
   min-height: 7rem;
   padding: 1.1rem 1.15rem 1.1rem 2.8rem;
   position: relative;
@@ -1487,12 +1522,12 @@ ol.proseList li::before {
 
   .innerHero h1 {
     font-size: clamp(2.7rem, 6.5vw, 4.3rem);
-    max-width: 18ch;
+    max-width: none;
   }
 
   .innerHero[data-title-length='long'] h1 {
     font-size: clamp(2.55rem, 5.8vw, 3.8rem);
-    max-width: 20ch;
+    max-width: none;
   }
 
   .readingLayout {
@@ -1530,6 +1565,10 @@ ol.proseList li::before {
     max-width: none;
   }
 
+  :global(#main-content) .innerHero h1 :global([data-vietnamese-phrase]) {
+    white-space: normal !important;
+  }
+
   .innerHeroDescription {
     max-width: 65ch;
   }
@@ -1548,8 +1587,13 @@ ol.proseList li::before {
 
   .sectionSubnav {
     border-radius: 0.85rem;
+    justify-content: flex-start;
     margin-bottom: 2.75rem;
     scroll-padding-inline: 25%;
+  }
+
+  .sectionSubnav a {
+    flex: 0 0 auto;
   }
 
   .sectionHeading {
@@ -1651,4 +1695,15 @@ ol.proseList li::before {
   .pageHeader {
     padding-inline: clamp(1.25rem, 6vw, 2rem);
   }
+}
+
+/* Doan van than bai can deu hai bien tren toan trang. Cac quy tac phia tren
+   dat `text-align: start` cho dung nhung doan nay, va chung thang quy tac
+   `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
+.leadSummary,
+.entrySummary,
+.articleLede,
+.articleBody .proseParagraph,
+.proseParagraph {
+  text-align: justify;
 }

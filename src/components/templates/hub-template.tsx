@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
-import { Icon } from '@/components/ui/icon';
+import { Icon, type IconName } from '@/components/ui/icon';
 import type { PageDefinition } from '@/content/pages';
 import { PAGE_REGISTRY } from '@/content/pages';
 import { bindPhrases } from '@/lib/vietnamese-text';
@@ -26,6 +26,19 @@ function getPage(path: string): HubEntry {
   return page && 'title' in page
     ? { description: page.description, path, title: page.title }
     : { description: '', path, title: path };
+}
+
+function iconForEntry(entry: HubEntry): IconName {
+  const text = `${entry.title} ${entry.description}`.toLocaleLowerCase('vi');
+  if (/mục tiêu|định hướng|chiến lược/.test(text)) return 'target';
+  if (/con người|tâm lý|xã hội|cộng đồng/.test(text)) return 'users';
+  if (/kiến thức|học tập|giáo dục|nghiên cứu/.test(text)) return 'book';
+  if (/hợp tác|mạng lưới|đối tác/.test(text)) return 'network';
+  if (/bền vững|môi trường|xanh/.test(text)) return 'leaf';
+  if (/công nghệ|dữ liệu|số/.test(text)) return 'cpu';
+  if (/kết quả|tăng trưởng|kinh tế|kinh doanh/.test(text)) return 'chart';
+  if (/giá trị|trách nhiệm|hỗ trợ|quỹ|tài trợ/.test(text)) return 'handHeart';
+  return 'lightbulb';
 }
 
 export function HubTemplate({ definition }: { definition: HubDefinition }) {
@@ -76,6 +89,7 @@ export function HubTemplate({ definition }: { definition: HubDefinition }) {
                       <Icon
                         name={profile.icon}
                         size={24}
+                        weight="duotone"
                       />
                     </span>
                     <span>Điểm bắt đầu · 01</span>
@@ -112,8 +126,13 @@ export function HubTemplate({ definition }: { definition: HubDefinition }) {
                         key={entry.path}
                         style={{ '--motion-index': index + 1 } as React.CSSProperties}
                       >
-                        <span className={hubStyles.indexNumber}>
-                          {String(index + 2).padStart(2, '0')}
+                        <span className={hubStyles.indexMarker}>
+                          <span aria-hidden="true" className={hubStyles.indexIcon}>
+                            <Icon name={iconForEntry(entry)} size={21} weight="duotone" />
+                          </span>
+                          <span className={hubStyles.indexNumber}>
+                            {String(index + 2).padStart(2, '0')}
+                          </span>
                         </span>
                         <div className={hubStyles.indexCopy}>
                           <h3>

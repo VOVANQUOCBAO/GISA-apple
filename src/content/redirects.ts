@@ -4,6 +4,8 @@ export interface LegacyRedirect {
 }
 
 export const OLD_ROUTE_REDIRECTS: LegacyRedirect[] = [
+  { source: '/gioi-thieu/tam-nhin-su-menh', destination: '/gioi-thieu/cau-chuyen-gisa' },
+  { source: '/gioi-thieu/rises-va-sau-tru-cot', destination: '/gioi-thieu/cau-chuyen-gisa' },
   { source: '/cau-chuyen-gisa', destination: '/gioi-thieu/cau-chuyen-gisa' },
   { source: '/linh-vuc-hoat-dong', destination: '/gioi-thieu/linh-vuc-hoat-dong' },
   { source: '/doi-ngu-chuyen-gia-giang-vien', destination: '/chuyen-gia' },

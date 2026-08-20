@@ -92,4 +92,13 @@ describe('bindPhrases', () => {
       'ra quyết định',
     ]);
   });
+
+  test('keeps dấu ấn khác biệt together as one semantic phrase', () => {
+    const text = 'Mỗi chương trình giúp người học tạo dấu ấn khác biệt trong sự nghiệp.';
+    const { container } = render(<p>{bindPhrases(text)}</p>);
+    const phrases = [...container.querySelectorAll('[data-vietnamese-phrase]')];
+
+    expect(container.querySelector('p')).toHaveTextContent(text);
+    expect(phrases.map((phrase) => phrase.textContent)).toContain('dấu ấn khác biệt');
+  });
 });

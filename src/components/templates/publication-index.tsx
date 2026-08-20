@@ -18,41 +18,49 @@ function meta(item: ContentSummary) {
   };
 }
 
+const PUBLICATION_FALLBACKS = [
+  '/images/article-performance-benchmarking.png',
+  '/images/article-food-quality-programs.png',
+  '/images/article-da-xanh-pomelo.png',
+  '/images/article-green-city.png',
+  '/images/article-renewables.png',
+  '/images/article-esg-report.png',
+  '/images/article-ai-chatbot.png',
+  '/images/hero-gisa-strategy-table.png',
+] as const;
+
+function publicationVisual(item: ContentSummary, index: number) {
+  return {
+    alt: item.image?.alt ?? `Minh họa cho bài viết ${item.title}`,
+    src: item.image?.src ?? PUBLICATION_FALLBACKS[index % PUBLICATION_FALLBACKS.length],
+  };
+}
+
 /**
  * Danh sách ấn phẩm được trình bày như mục lục của một viện nghiên cứu chứ không
- * phải lưới thẻ ảnh: bài đầu tiên chạy rộng làm bài dẫn, phần còn lại là các
- * dòng chỉ mục có cột năm bên trái, tiêu đề, tác giả và nơi công bố.
- *
- * Lý do: người đọc mục ấn phẩm quét theo năm và tác giả, không quét theo ảnh —
- * và chỉ 5/14 bài có ảnh nên lưới thẻ ảnh sẽ khuyết một nửa. Mỗi dòng chỉ có một
- * đường kẻ dưới, không kẻ cả trên lẫn dưới.
+ * phải lưới thẻ marketing: bài đầu chạy rộng làm bài dẫn, phần còn lại là các
+ * dòng chỉ mục có ảnh nhận diện, năm, chủ đề và tóm tắt. Ảnh giúp người đọc phân
+ * biệt bài nhanh hơn nhưng thứ bậc học thuật vẫn nằm ở tiêu đề và metadata.
  */
 export function PublicationIndex({ items }: { items: ContentSummary[] }) {
   const [lead, ...rest] = items;
   if (!lead) return null;
 
   const leadMeta = meta(lead);
+  const leadVisual = publicationVisual(lead, 0);
 
   return (
     <div className={styles.publicationIndex}>
       <article className={styles.leadEntry}>
-        {lead.image ? (
-          <Link
-            aria-hidden="true"
-            className={styles.leadMedia}
-            href={lead.path}
-            tabIndex={-1}
-          >
-            <Image
-              alt={lead.image.alt}
-              height={lead.image.height}
-              priority
-              sizes="(max-width: 64rem) 92vw, 44vw"
-              src={lead.image.src}
-              width={lead.image.width}
-            />
-          </Link>
-        ) : null}
+        <Link className={styles.leadMedia} href={lead.path} tabIndex={-1}>
+          <Image
+            alt={leadVisual.alt}
+            fill
+            priority
+            sizes="(max-width: 64rem) 92vw, 44vw"
+            src={leadVisual.src}
+          />
+        </Link>
         <div className={styles.leadCopy}>
           <p className={styles.entryMeta}>
             {[leadMeta.topic, leadMeta.year].filter(Boolean).join(' · ')}
@@ -65,10 +73,19 @@ export function PublicationIndex({ items }: { items: ContentSummary[] }) {
       </article>
 
       <ol className={styles.entryList}>
-        {rest.map((item) => {
+        {rest.map((item, index) => {
           const { topic, year } = meta(item);
+          const visual = publicationVisual(item, index + 1);
           return (
             <li className={styles.entryRow} key={item.id}>
+              <Link className={styles.entryMedia} href={item.path} tabIndex={-1}>
+                <Image
+                  alt={visual.alt}
+                  fill
+                  sizes="(max-width: 48rem) 34vw, 13rem"
+                  src={visual.src}
+                />
+              </Link>
               <div className={styles.entryRail}>
                 {year ? (
                   <span className={styles.entryYear}>{year}</span>

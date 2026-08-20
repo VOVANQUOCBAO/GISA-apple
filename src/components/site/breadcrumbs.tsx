@@ -8,11 +8,15 @@ export interface BreadcrumbItem {
 }
 
 export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
+  const visibleItems = items.length > 2
+    ? [items[0], items[items.length - 1]].filter((item): item is BreadcrumbItem => Boolean(item))
+    : items;
+
   return (
     <nav aria-label="Đường dẫn" className={styles.breadcrumbs}>
       <ol>
-        {items.map((item, index) => {
-          const isCurrent = index === items.length - 1;
+        {visibleItems.map((item, index) => {
+          const isCurrent = index === visibleItems.length - 1;
           return (
             <li aria-current={isCurrent ? 'page' : undefined} key={`${item.label}-${index}`}>
               {item.href && !isCurrent ? (

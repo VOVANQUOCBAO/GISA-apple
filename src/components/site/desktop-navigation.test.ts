@@ -19,6 +19,6 @@ describe('isNavigationGroupActive', () => {
 
   test('does not activate unrelated groups', () => {
     expect(isNavigationGroupActive('/dang-ky/hop-tac', group('Tư vấn'))).toBe(false);
-    expect(isNavigationGroupActive('/tin-tuc', group('Trang chủ'))).toBe(false);
+    expect(isNavigationGroupActive('/tin-tuc', group('Giới thiệu'))).toBe(false);
   });
 });

@@ -5,14 +5,16 @@ import { PAGE_REGISTRY } from './pages';
 import { OLD_ROUTE_REDIRECTS } from './redirects';
 
 describe('navigation completeness', () => {
-  test('navigation has ten top-level destinations and no hash links', () => {
-    expect(NAVIGATION).toHaveLength(10);
+  test('navigation keeps eight focused top-level destinations and no hash links', () => {
+    expect(NAVIGATION).toHaveLength(8);
     const links = NAVIGATION.flatMap((group) => [
       group.href,
       ...group.children.map((item) => item.href),
     ]);
 
     expect(links).not.toContain('#');
+    expect(links).not.toContain('/');
+    expect(links).not.toContain('/lien-he');
   });
 
   test('all 39 legacy menu destinations are routed or redirected', () => {

@@ -21,11 +21,10 @@ const records = [
 describe('EcosystemDetailTemplate', () => {
   test.each(records)('renders verified content for $kind', (record) => {
     const { container } = render(<EcosystemDetailTemplate record={record} />);
-    const displayTitle = record.title.replace(/\s*[—–]\s*/g, ' - ').replace(/\s{2,}/g, ' ').trim();
 
-    expect(screen.getByRole('heading', { level: 1, name: displayTitle })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: record.title })).toBeInTheDocument();
     expect(container.querySelector('br')).toBeNull();
-    expect(container.textContent).not.toMatch(/[—–]/);
+    expect(container).toHaveTextContent(record.title);
   });
 
   test('only claims the four assigned detail kinds', () => {
@@ -33,23 +32,18 @@ describe('EcosystemDetailTemplate', () => {
     expect(supportsEcosystemDetailTemplate({ ...newsFixtures[0], kind: 'project' })).toBe(false);
   });
 
-  test('keeps the section root in nested detail breadcrumbs without duplicating it', () => {
+  test('keeps nested detail breadcrumbs concise without redundant section roots', () => {
     const { unmount } = render(<EcosystemDetailTemplate record={initiativeFixtures[0]} />);
     let breadcrumb = screen.getByRole('navigation', { name: 'Đường dẫn' });
 
-    expect(within(breadcrumb).getByRole('link', { name: 'Cộng đồng' })).toHaveAttribute(
-      'href',
-      '/cong-dong',
-    );
-    expect(within(breadcrumb).getByRole('link', { name: 'Kinh tế bền vững' })).toHaveAttribute(
-      'href',
-      '/cong-dong/kinh-te-ben-vung',
-    );
+    expect(within(breadcrumb).getByRole('link', { name: 'Trang chủ' })).toHaveAttribute('href', '/');
+    expect(within(breadcrumb).queryByRole('link', { name: 'Cộng đồng' })).not.toBeInTheDocument();
+    expect(within(breadcrumb).queryByRole('link', { name: 'Kinh tế bền vững' })).not.toBeInTheDocument();
 
     unmount();
     render(<EcosystemDetailTemplate record={newsFixtures[0]} />);
     breadcrumb = screen.getByRole('navigation', { name: 'Đường dẫn' });
-    expect(within(breadcrumb).getAllByText('Tin tức')).toHaveLength(1);
+    expect(within(breadcrumb).queryByText('Tin tức')).not.toBeInTheDocument();
   });
 
   test('uses concise, evidence-limited copy for partner details', () => {
@@ -61,24 +55,16 @@ describe('EcosystemDetailTemplate', () => {
     expect(
       screen.getByText(/Chưa có dữ liệu đã xác minh về dự án, vai trò hoặc giai đoạn hợp tác/i),
     ).toBeVisible();
-    expect(screen.getByRole('link', { name: 'Mạng lưới' })).toHaveAttribute(
-      'href',
-      '/mang-luoi',
-    );
+    expect(screen.queryByRole('link', { name: 'Mạng lưới' })).not.toBeInTheDocument();
   });
 
   test('uses consistent Vietnamese labels for archived notices', () => {
     render(<EcosystemDetailTemplate record={noticeFixtures[0]} />);
     const breadcrumb = screen.getByRole('navigation', { name: 'Đường dẫn' });
 
-    expect(within(breadcrumb).getByRole('link', { name: 'Tin tức' })).toHaveAttribute(
-      'href',
-      '/tin-tuc',
-    );
-    expect(within(breadcrumb).getByRole('link', { name: 'Thông báo & lịch' })).toHaveAttribute(
-      'href',
-      '/tin-tuc/thong-bao-lich',
-    );
+    expect(within(breadcrumb).getByRole('link', { name: 'Trang chủ' })).toHaveAttribute('href', '/');
+    expect(within(breadcrumb).queryByRole('link', { name: 'Tin tức' })).not.toBeInTheDocument();
+    expect(within(breadcrumb).queryByRole('link', { name: 'Thông báo & lịch' })).not.toBeInTheDocument();
     expect(
       screen.getByRole('heading', { level: 1, name: 'Tuyển dụng vị trí trợ lý nghiên cứu' }),
     ).toBeVisible();

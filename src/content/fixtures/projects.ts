@@ -12,6 +12,12 @@ export const projectFixtures = [
     title: 'TRADE4SD',
     summary:
       'Sáng kiến nghiên cứu hành động do Horizon Europe tài trợ, khai thác thương mại quốc tế như một công cụ thúc đẩy phát triển bền vững trong nông nghiệp và thực phẩm.',
+    image: {
+      alt: 'Minh họa thành phố và chuỗi giá trị bền vững của dự án TRADE4SD',
+      height: 1024,
+      src: '/images/project-trade4sd.png',
+      width: 1536,
+    },
     body: [
       {
         type: 'paragraph',
@@ -46,6 +52,7 @@ export const projectFixtures = [
     sourceLabel: 'Website công khai GISA — mục dự án TRADE4SD',
     checkedAt: '2026-08-05',
     metadata: {
+      logo: '/icons/logos/02_trade4sd.png',
       projectType: 'Nghiên cứu',
       topic: 'Phát triển bền vững',
       context:
@@ -65,6 +72,12 @@ export const projectFixtures = [
     title: 'VALUMICS',
     summary:
       'Dự án liên ngành thuộc Horizon 2020, phân tích cấu trúc chuỗi cung ứng thực phẩm và cách giá trị được phân bổ giữa các bên tham gia.',
+    image: {
+      alt: 'Bảng phân tích dữ liệu và hiệu suất cho dự án VALUMICS',
+      height: 1024,
+      src: '/images/article-performance-benchmarking.png',
+      width: 1536,
+    },
     body: [
       {
         type: 'paragraph',
@@ -99,6 +112,7 @@ export const projectFixtures = [
     sourceLabel: 'Website công khai GISA — mục dự án VALUMICS',
     checkedAt: '2026-08-05',
     metadata: {
+      logo: '/icons/logos/01_valumics.png',
       projectType: 'Nghiên cứu',
       topic: 'Chuỗi giá trị thực phẩm',
       context:
@@ -118,6 +132,12 @@ export const projectFixtures = [
     title: 'Strength2Food',
     summary:
       'Dự án Horizon 2020 nghiên cứu tác động của nhãn hiệu chất lượng thực phẩm và chính sách mua sắm công bền vững.',
+    image: {
+      alt: 'Sản phẩm thực phẩm chất lượng trong chuỗi cung ứng của Strength2Food',
+      height: 1024,
+      src: '/images/article-food-quality-programs.png',
+      width: 1536,
+    },
     body: [
       {
         type: 'paragraph',
@@ -154,6 +174,7 @@ export const projectFixtures = [
     sourceLabel: 'Website công khai GISA — mục dự án Strength2Food',
     checkedAt: '2026-08-05',
     metadata: {
+      logo: '/icons/logos/04_strength2food.png',
       projectType: 'Nghiên cứu',
       topic: 'Hệ thống thực phẩm bền vững',
       context:
@@ -173,6 +194,12 @@ export const projectFixtures = [
     title: 'British Council Việt Nam',
     summary:
       'Sáng kiến hợp tác giữa Đại học Newcastle và các đối tác Việt Nam nhằm nâng cao giá trị gia tăng cho ngành rau quả tươi.',
+    image: {
+      alt: 'Chuyên gia trao đổi trong dự án hợp tác British Council Việt Nam',
+      height: 1024,
+      src: '/images/gisa-consulting-hero.png',
+      width: 1536,
+    },
     body: [
       {
         type: 'paragraph',
@@ -214,6 +241,7 @@ export const projectFixtures = [
     sourceLabel: 'Website công khai GISA — mục dự án British Council',
     checkedAt: '2026-08-05',
     metadata: {
+      logo: '/icons/logos/05_british_council.png',
       projectType: 'Nghiên cứu',
       topic: 'Nông nghiệp và chuỗi giá trị',
       context:

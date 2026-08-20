@@ -21,9 +21,12 @@ describe('CapabilityStaticTemplate', () => {
     );
 
     expect(container.querySelector('[data-capability="training"]')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Đào tạo' })).toHaveAttribute('href', '/dao-tao');
+    expect(screen.queryByRole('link', { name: 'Đào tạo' })).not.toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Nội dung chính' })).toBeVisible();
     expect(container.querySelector('section#noi-dung-chinh')).toBeInTheDocument();
+    expect(container.querySelectorAll('section#noi-dung-chinh img').length).toBeGreaterThan(0);
+    expect(container.querySelectorAll('section#noi-dung-chinh svg').length).toBeGreaterThan(0);
+    expect(screen.queryByText('Hành trình năng lực')).not.toBeInTheDocument();
     expect(container.querySelector('br')).not.toBeInTheDocument();
   });
 
@@ -40,8 +43,10 @@ describe('CapabilityStaticTemplate', () => {
     expect(screen.getByText('Bối cảnh')).toBeVisible();
     expect(screen.getByText('Cách tiếp cận')).toBeVisible();
     expect(screen.getByText('Giá trị')).toBeVisible();
-    expect(screen.getByRole('link', { name: 'Ứng dụng' })).toHaveAttribute('href', '/ung-dung');
+    expect(screen.queryByRole('link', { name: 'Ứng dụng' })).not.toBeInTheDocument();
     expect(container.querySelectorAll('article').length).toBeGreaterThan(1);
+    expect(container.querySelectorAll('[class*="applicationChapter"] img').length).toBeGreaterThan(0);
+    expect(container.querySelectorAll('[class*="applicationItem"] svg').length).toBeGreaterThan(0);
     expect(container.querySelector('br')).not.toBeInTheDocument();
   });
 });

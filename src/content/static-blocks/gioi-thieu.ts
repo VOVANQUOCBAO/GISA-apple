@@ -6,8 +6,7 @@ import type { ContentBlock } from '../types';
  * với trang công khai gisa.edu.vn. Các ghi chú biên tập trong tài liệu gốc
  * (tên người phụ trách, việc còn phải làm) không được đưa lên trang.
  */
-export const gioiThieuBlocks: Record<string, ContentBlock[]> = {
-  '/gioi-thieu/cau-chuyen-gisa': [
+const consolidatedStoryBlocks: ContentBlock[] = [
     {
       type: 'quote',
       text: 'Từ tri thức – Đến hành động – Vì tương lai bền vững',
@@ -33,16 +32,18 @@ export const gioiThieuBlocks: Record<string, ContentBlock[]> = {
     },
     {
       type: 'quote',
-      text: 'Kinh nghiệm thực tiễn làm định hướng – Nghiên cứu khoa học làm nền tảng – Mạng lưới toàn cầu làm sức mạnh.',
+      text: 'Kinh nghiệm thực tiễn làm định hướng\nNghiên cứu khoa học làm nền tảng\nMạng lưới toàn cầu làm sức mạnh.',
       attribution: 'Triết lý cốt lõi của GISA',
     },
     {
       type: 'paragraph',
       text: 'Chúng tôi tích hợp các tiếp cận liên ngành, ứng dụng công nghệ, dữ liệu, đổi mới sáng tạo và năng lực thực thi đa chiều nhằm góp phần giải quyết các vấn đề phức hợp trong phát triển và quản trị hiện đại. GISA tiên phong trong các lĩnh vực nghiên cứu, tư vấn, đào tạo và chuyển giao tri thức, với trọng tâm là ứng dụng công nghệ hiện đại và mô hình quản trị tiên tiến để mang đến các giải pháp đột phá giúp doanh nghiệp, tổ chức và cộng đồng phát triển bền vững, hiệu quả và thích ứng trong kỷ nguyên số.',
     },
-  ],
-
-  '/gioi-thieu/tam-nhin-su-menh': [
+    { type: 'heading', level: 2, text: 'Tầm nhìn' },
+    {
+      type: 'quote',
+      text: 'Tới năm 2030, GISA trở thành đơn vị tiên phong, uy tín cao và được biết đến rộng rãi về tri thức và thực hành trong lĩnh vực đổi mới sáng tạo, phát triển bền vững và quản lý nâng cao tại Việt Nam và khu vực thông qua các trụ cột hoạt động gồm nghiên cứu, tư vấn, đào tạo, chuyển giao ứng dụng, thúc đẩy mạng lưới hợp tác toàn cầu và đóng góp cộng đồng.',
+    },
     { type: 'heading', level: 2, text: 'Sứ mệnh' },
     {
       type: 'paragraph',
@@ -61,19 +62,11 @@ export const gioiThieuBlocks: Record<string, ContentBlock[]> = {
         'Kiến tạo giá trị và lan tỏa tác động xã hội. GISA thực hiện các sáng kiến, chương trình và dự án vì cộng đồng, hướng tới nâng cao phúc lợi xã hội, bảo vệ môi trường và thúc đẩy sự phát triển nhân văn, bền vững.',
       ],
     },
-    { type: 'heading', level: 2, text: 'Tầm nhìn' },
-    {
-      type: 'quote',
-      text: 'Tới năm 2030, GISA trở thành đơn vị tiên phong, uy tín cao và được biết đến rộng rãi về tri thức và thực hành trong lĩnh vực đổi mới sáng tạo, phát triển bền vững và quản lý nâng cao tại Việt Nam và khu vực thông qua các trụ cột hoạt động gồm nghiên cứu, tư vấn, đào tạo, chuyển giao ứng dụng, thúc đẩy mạng lưới hợp tác toàn cầu và đóng góp cộng đồng.',
-    },
     { type: 'heading', level: 2, text: 'Khẩu hiệu' },
     {
       type: 'paragraph',
       text: '“Kiến tạo tri thức, lan tỏa giá trị” “Advancing Knowledge, Sharing Values”',
     },
-  ],
-
-  '/gioi-thieu/rises-va-sau-tru-cot': [
     { type: 'heading', level: 2, text: 'Giá trị cốt lõi RISES' },
     {
       type: 'paragraph',
@@ -90,20 +83,10 @@ export const gioiThieuBlocks: Record<string, ContentBlock[]> = {
         ['S', 'Sustainability', 'Một cách bền vững và lâu dài.'],
       ],
     },
-    { type: 'heading', level: 2, text: 'Sáu trụ cột hoạt động' },
-    {
-      type: 'list',
-      ordered: false,
-      items: [
-        'Nghiên cứu — tạo ra tri thức có giá trị thực tiễn và độ tin cậy cao.',
-        'Tư vấn — đồng hành hoạch định chiến lược, triển khai ESG và tối ưu mô hình quản trị.',
-        'Đào tạo — phát triển khả năng lãnh đạo, quản trị và chuyên môn.',
-        'Ứng dụng — chuyển giao khoa học, công nghệ và mô hình quản trị tiên tiến.',
-        'Mạng lưới — kết nối nhà khoa học, chuyên gia, lãnh đạo và doanh nghiệp toàn cầu.',
-        'Cộng đồng — thực thi các chương trình và sáng kiến vì phúc lợi xã hội và môi trường.',
-      ],
-    },
-  ],
+];
+
+export const gioiThieuBlocks: Record<string, ContentBlock[]> = {
+  '/gioi-thieu/cau-chuyen-gisa': consolidatedStoryBlocks,
 
   '/gioi-thieu/linh-vuc-hoat-dong': [
     {

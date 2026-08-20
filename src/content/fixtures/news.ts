@@ -12,6 +12,12 @@ export const newsFixtures = [
     title: 'Tài chính khí hậu và phát triển bền vững không thể tách rời',
     summary:
       'Germanwatch cảnh báo việc tách rời tài chính khí hậu khỏi tài chính phát triển đang cản trở các mục tiêu phát triển bền vững toàn cầu.',
+    image: {
+      alt: 'Minh họa dòng vốn tài chính khí hậu và phát triển bền vững',
+      height: 1024,
+      src: '/images/knowledge-deck/news-climate-finance.webp',
+      width: 1536,
+    },
     body: [
       {
         type: 'paragraph',
@@ -42,6 +48,12 @@ export const newsFixtures = [
     title: 'Các nhà khoa học Nhật Bản sáng chế nhựa tan trong nước biển',
     summary:
       'Bài tin công khai trên GISA về một hướng nghiên cứu vật liệu liên quan đến ô nhiễm nhựa biển.',
+    image: {
+      alt: 'Minh họa vật liệu mới hướng tới giảm ô nhiễm nhựa đại dương',
+      height: 1024,
+      src: '/images/knowledge-deck/news-ocean-material.webp',
+      width: 1536,
+    },
     body: [
       {
         type: 'paragraph',

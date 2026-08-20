@@ -10,11 +10,6 @@ export const nghienCuuBlocks: Record<string, ContentBlock[]> = {
       type: 'paragraph',
       text: 'Nghiên cứu là trụ cột cốt lõi và mang tính chiến lược của GISA, giữ vai trò dẫn dắt trong việc tạo ra tri thức mới và chuyển hóa tri thức thành các giải pháp có giá trị thực tiễn. GISA đồng thời triển khai nghiên cứu khoa học hàn lâm và nghiên cứu ứng dụng liên ngành, nhằm giải quyết các vấn đề cấp thiết trong kinh tế, kinh doanh và xã hội, đồng thời đóng góp vào hoạch định chính sách và nâng cao năng lực cạnh tranh của quốc gia cũng như doanh nghiệp.',
     },
-    {
-      type: 'paragraph',
-      text: 'Các chương trình, dự án và đề tài nghiên cứu của GISA tập trung vào sáu lĩnh vực trọng điểm dưới đây.',
-    },
-
     { type: 'heading', level: 2, text: 'Phát triển bền vững' },
     {
       type: 'paragraph',

@@ -8,21 +8,18 @@ export interface NavigationGroup extends NavigationItem {
 }
 
 export const NAVIGATION: NavigationGroup[] = [
-  { label: 'Trang chủ', href: '/', children: [] },
   {
     label: 'Giới thiệu',
-    href: '/gioi-thieu',
+    href: '/gioi-thieu/cau-chuyen-gisa',
     children: [
       { label: 'Câu chuyện GISA', href: '/gioi-thieu/cau-chuyen-gisa' },
-      { label: 'Tầm nhìn & sứ mệnh', href: '/gioi-thieu/tam-nhin-su-menh' },
-      { label: 'RISES và sáu trụ cột', href: '/gioi-thieu/rises-va-sau-tru-cot' },
       { label: 'Lĩnh vực hoạt động', href: '/gioi-thieu/linh-vuc-hoat-dong' },
-      { label: 'Chuyên gia', href: '/chuyen-gia' },
+      { label: 'Đội ngũ chuyên gia', href: '/chuyen-gia' },
     ],
   },
   {
     label: 'Nghiên cứu',
-    href: '/nghien-cuu',
+    href: '/nghien-cuu/linh-vuc',
     children: [
       { label: 'Lĩnh vực nghiên cứu', href: '/nghien-cuu/linh-vuc' },
       { label: 'Dự án nghiên cứu', href: '/nghien-cuu/du-an' },
@@ -32,7 +29,7 @@ export const NAVIGATION: NavigationGroup[] = [
   },
   {
     label: 'Tư vấn',
-    href: '/tu-van',
+    href: '/tu-van/linh-vuc',
     children: [
       { label: 'Lĩnh vực tư vấn', href: '/tu-van/linh-vuc' },
       { label: 'Công cụ tư vấn', href: '/tu-van/cong-cu' },
@@ -43,7 +40,7 @@ export const NAVIGATION: NavigationGroup[] = [
   },
   {
     label: 'Đào tạo',
-    href: '/dao-tao',
+    href: '/dao-tao/linh-vuc',
     children: [
       { label: 'Lĩnh vực đào tạo', href: '/dao-tao/linh-vuc' },
       { label: 'GISA Core', href: '/dao-tao/gisa-core' },
@@ -57,7 +54,7 @@ export const NAVIGATION: NavigationGroup[] = [
   },
   {
     label: 'Ứng dụng',
-    href: '/ung-dung',
+    href: '/ung-dung/linh-vuc',
     children: [
       { label: 'Lĩnh vực ứng dụng', href: '/ung-dung/linh-vuc' },
       { label: 'Quản lý & Kinh doanh', href: '/ung-dung/quan-ly-kinh-doanh' },
@@ -68,7 +65,7 @@ export const NAVIGATION: NavigationGroup[] = [
   },
   {
     label: 'Mạng lưới',
-    href: '/mang-luoi',
+    href: '/mang-luoi/thuc-day-hop-tac',
     children: [
       { label: 'Thúc đẩy hợp tác', href: '/mang-luoi/thuc-day-hop-tac' },
       { label: 'Đối tác', href: '/mang-luoi/doi-tac' },
@@ -78,7 +75,7 @@ export const NAVIGATION: NavigationGroup[] = [
   },
   {
     label: 'Cộng đồng',
-    href: '/cong-dong',
+    href: '/cong-dong/kinh-te-ben-vung',
     children: [
       { label: 'Kinh tế bền vững', href: '/cong-dong/kinh-te-ben-vung' },
       { label: 'Trách nhiệm xã hội', href: '/cong-dong/trach-nhiem-xa-hoi' },
@@ -93,7 +90,6 @@ export const NAVIGATION: NavigationGroup[] = [
       { label: 'Thông báo & lịch', href: '/tin-tuc/thong-bao-lich' },
     ],
   },
-  { label: 'Liên hệ', href: '/lien-he', children: [] },
 ];
 
 export const LEGACY_MENU_PATHS = [

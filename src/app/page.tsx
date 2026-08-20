@@ -6,7 +6,7 @@ import { getHomePageModel } from '@/content/home';
 import { getContentRepository } from '@/content/repositories';
 
 export const metadata: Metadata = buildMetadata({
-  description: 'Kiến tạo kiến thức, lan tỏa giá trị.',
+  description: 'Kiến tạo tri thức, lan tỏa giá trị.',
   path: '/',
   title: 'GISA',
 });

@@ -48,7 +48,7 @@ describe('kind-specific detail templates', () => {
     ['course', 'Khóa học'],
     ['expert', 'Chuyên gia'],
     ['initiative', 'Sáng kiến'],
-    ['news', 'Tin tức'],
+    ['news', 'Góc nhìn và cập nhật'],
     ['notice', 'Thông báo lưu trữ'],
   ] as const)('renders %s with its explicit content label', (kind, label) => {
     const record = makeFixtureForKind(kind);
@@ -86,14 +86,8 @@ describe('kind-specific detail templates', () => {
     ).toBeVisible();
     expect(container.textContent).not.toContain('Hoàng Văn Việt');
     expect(container.textContent).toContain('2015');
-    expect(screen.getByRole('link', { name: 'Nghiên cứu' })).toHaveAttribute(
-      'href',
-      '/nghien-cuu',
-    );
-    expect(screen.getByRole('link', { name: 'Bài báo khoa học' })).toHaveAttribute(
-      'href',
-      '/nghien-cuu/bai-bao-khoa-hoc',
-    );
+    expect(screen.getByRole('link', { name: 'Trang chủ' })).toHaveAttribute('href', '/');
+    expect(screen.queryByRole('link', { name: 'Nghiên cứu' })).not.toBeInTheDocument();
     expect(
       screen.getByRole('heading', { level: 2, name: 'Bài nghiên cứu liên quan' }),
     ).toBeVisible();
@@ -129,14 +123,8 @@ describe('kind-specific detail templates', () => {
 
     render(<DetailTemplate record={record} related={related} />);
 
-    expect(screen.getByRole('link', { name: 'Nghiên cứu' })).toHaveAttribute(
-      'href',
-      '/nghien-cuu',
-    );
-    expect(screen.getByRole('link', { name: 'Bài báo ứng dụng' })).toHaveAttribute(
-      'href',
-      '/nghien-cuu/bai-bao-ung-dung',
-    );
+    expect(screen.getByRole('link', { name: 'Trang chủ' })).toHaveAttribute('href', '/');
+    expect(screen.queryByRole('link', { name: 'Nghiên cứu' })).not.toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: /Xem tất cả bài ứng dụng/ }),
     ).toHaveAttribute('href', '/nghien-cuu/bai-bao-ung-dung');

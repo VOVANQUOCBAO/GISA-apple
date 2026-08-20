@@ -9,10 +9,12 @@ const optionalText = (schema: z.ZodString) =>
   );
 
 const phonePattern = /^[0-9 +().-]{8,20}$/;
+const professionalKinds = new Set<FormKind>(['tu-van', 'hop-tac', 'lien-he']);
 
 export function createFormSchema(kind: FormKind) {
-  return z
-    .object({
+  const requiresProfessionalDetails = professionalKinds.has(kind);
+
+  return z.object({
       kind: z.literal(kind),
       fullName: z
         .string()
@@ -23,30 +25,54 @@ export function createFormSchema(kind: FormKind) {
         .string()
         .trim()
         .email('Vui lòng nhập địa chỉ email hợp lệ.'),
-      phone: optionalText(
-        z
-          .string()
-          .trim()
-          .regex(phonePattern, 'Số điện thoại phải có 8–20 ký tự hợp lệ.'),
-      ),
-      organization:
-        kind === 'hop-tac'
-          ? z
-              .string()
-              .trim()
-              .min(1, 'Vui lòng nhập tên tổ chức.')
-              .max(150, 'Tên tổ chức không được vượt quá 150 ký tự.')
-          : optionalText(
-              z
-                .string()
-                .trim()
-                .max(150, 'Tên tổ chức không được vượt quá 150 ký tự.'),
-            ),
-      message: z
+      phone: z
         .string()
         .trim()
-        .min(10, 'Nội dung phải có ít nhất 10 ký tự.')
-        .max(2000, 'Nội dung không được vượt quá 2.000 ký tự.'),
+        .min(1, 'Vui lòng nhập số điện thoại.')
+        .regex(phonePattern, 'Số điện thoại phải có 8–20 ký tự hợp lệ.'),
+      organization: requiresProfessionalDetails
+        ? z
+            .string({ error: 'Vui lòng nhập tên tổ chức.' })
+            .trim()
+            .min(1, 'Vui lòng nhập tên tổ chức.')
+            .max(150, 'Tên tổ chức không được vượt quá 150 ký tự.')
+        : optionalText(
+            z
+              .string()
+              .trim()
+              .max(150, 'Tên tổ chức không được vượt quá 150 ký tự.'),
+          ),
+      jobTitle: requiresProfessionalDetails
+        ? z
+            .string({ error: 'Vui lòng nhập chức vụ.' })
+            .trim()
+            .min(1, 'Vui lòng nhập chức vụ.')
+            .max(120, 'Chức vụ không được vượt quá 120 ký tự.')
+        : optionalText(
+            z.string().trim().max(120, 'Chức vụ không được vượt quá 120 ký tự.'),
+          ),
+      industry: requiresProfessionalDetails
+        ? z
+            .string({ error: 'Vui lòng nhập ngành nghề.' })
+            .trim()
+            .min(1, 'Vui lòng nhập ngành nghề.')
+            .max(150, 'Ngành nghề không được vượt quá 150 ký tự.')
+        : optionalText(
+            z.string().trim().max(150, 'Ngành nghề không được vượt quá 150 ký tự.'),
+          ),
+      message: requiresProfessionalDetails
+        ? z
+            .string({ error: 'Vui lòng nhập nội dung.' })
+            .trim()
+            .min(10, 'Nội dung phải có ít nhất 10 ký tự.')
+            .max(2000, 'Nội dung không được vượt quá 2.000 ký tự.')
+        : optionalText(
+            z
+              .string()
+              .trim()
+              .min(10, 'Nội dung phải có ít nhất 10 ký tự.')
+              .max(2000, 'Nội dung không được vượt quá 2.000 ký tự.'),
+          ),
       consent: z.literal(true, {
         error: 'Bạn cần xác nhận thông tin trước khi tiếp tục.',
       }),
@@ -60,6 +86,8 @@ export type FormFieldName =
   | 'email'
   | 'phone'
   | 'organization'
+  | 'jobTitle'
+  | 'industry'
   | 'message'
   | 'consent'
   | 'website'

@@ -38,7 +38,8 @@ describe('EcosystemStaticTemplate', () => {
       '/nghien-cuu/du-an',
     );
     expect(container.querySelector('br')).toBeNull();
-    expect(container.textContent).not.toMatch(/[—–]/);
+    expect(container).toHaveTextContent('GISA kết nối tri thức – hành động trong thực tiễn.');
+    expect(container).toHaveTextContent('Nghiên cứu liên ngành — kết nối bằng chứng với quyết định.');
   });
 
   test('limits the template contract to the assigned child routes', () => {
@@ -58,6 +59,44 @@ describe('EcosystemStaticTemplate', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: page.title })).toBeInTheDocument();
     expect(container.querySelector('br')).toBeNull();
-    expect(container.textContent).not.toMatch(/[—–]/);
   });
+
+  test('adds visual anchors to cooperation subsections', () => {
+    const page = resolvePage('/mang-luoi/thuc-day-hop-tac');
+    expect(page?.template).toBe('static');
+    if (!page || page.template !== 'static') return;
+
+    const { container } = render(
+      <EcosystemStaticTemplate definition={page} path={page.path} />,
+    );
+
+    const subsections = container.querySelectorAll('[data-mode="network"] section[class*="subsection"]');
+    expect(subsections.length).toBeGreaterThan(0);
+    expect(container.querySelectorAll('[data-mode="network"] section[class*="subsection"] img').length).toBe(
+      subsections.length,
+    );
+    expect(
+      container.querySelectorAll('[data-mode="network"] span[class*="subsectionIcon"] svg').length,
+    ).toBe(subsections.length);
+  });
+
+  test.each(['/cong-dong/bao-ve-moi-truong', '/cong-dong/quan-tri-hieu-qua'])(
+    'marks %s for centered community chapter styling',
+    (path) => {
+      const page = resolvePage(path);
+      expect(page?.template).toBe('static');
+      if (!page || page.template !== 'static') return;
+
+      const { container } = render(
+        <EcosystemStaticTemplate definition={page} path={path} />,
+      );
+
+      expect(container.querySelector('[data-mode="community"]')).toHaveAttribute(
+        'data-page',
+        path.split('/').at(-1),
+      );
+      expect(screen.getByRole('heading', { name: 'Tư duy và định hướng' })).toBeVisible();
+      expect(screen.getByRole('heading', { name: 'Các nội dung trọng tâm' })).toBeVisible();
+    },
+  );
 });

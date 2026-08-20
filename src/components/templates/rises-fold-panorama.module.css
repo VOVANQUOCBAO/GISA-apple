@@ -54,11 +54,13 @@
 .foldSurface {
   align-content: start;
   display: grid;
-  grid-template-rows: auto clamp(13.5rem, 15vw, 15rem) auto auto minmax(0, auto);
+  grid-template-rows: auto 3.4rem clamp(10.1rem, 12vw, 12rem) auto auto minmax(0, auto);
   height: 100%;
+  justify-items: center;
   overflow: hidden;
   padding: clamp(2.35rem, 3vw, 3.1rem) clamp(1.9rem, 2.8vw, 3rem) clamp(2.1rem, 3vw, 3rem);
   position: relative;
+  text-align: center;
 }
 
 .foldPanel:active .foldSurface {
@@ -81,6 +83,14 @@
   line-height: 1;
   opacity: var(--panel-open);
   transform: translateY(calc((1 - var(--panel-open)) * 0.6rem));
+}
+
+.foldPictogram {
+  align-items: center;
+  align-self: center;
+  color: var(--accent);
+  display: inline-flex;
+  justify-content: center;
 }
 
 .foldLetter {
@@ -109,6 +119,7 @@
   display: block;
   height: 0.2rem;
   margin-top: 0.95rem;
+  margin-inline: auto;
   width: clamp(2.35rem, 3vw, 3.15rem);
 }
 
@@ -184,14 +195,23 @@
   }
 
   .foldSurface {
-    grid-template-columns: 4.5rem minmax(0, 1fr);
+    grid-template-columns: 4rem minmax(0, 1fr);
     grid-template-rows: auto auto auto minmax(0, auto);
+    justify-items: stretch;
     padding: 1.45rem 1.3rem;
+    text-align: left;
   }
 
   .foldIndex {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 1;
+    justify-self: start;
+  }
+
+  .foldPictogram {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
   }
 
   .foldLetter {
@@ -206,19 +226,22 @@
     align-self: end;
     font-size: 1.3rem;
     grid-column: 2;
-    grid-row: 1;
+    grid-row: 2;
+    overflow-wrap: anywhere;
+    white-space: normal;
   }
 
   .foldRule {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 3;
+    margin-inline: 0;
     margin-top: 0.7rem;
   }
 
   .foldDescription {
     font-size: 0.96rem;
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 4;
     margin-top: 1rem;
   }
 }

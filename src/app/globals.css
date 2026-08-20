@@ -164,6 +164,14 @@ dd {
   word-break: normal;
 }
 
+/* Đoạn văn trong phần nội dung căn đều hai biên. Dòng cuối của đoạn không bị
+   kéo giãn, nên đoạn chỉ một dòng trông y như cũ — chỉ những đoạn thực sự xuống
+   dòng mới thẳng được cả hai biên. Độ ưu tiên để thấp cố ý: chỗ nào đã cố tình
+   căn giữa hay canh phải bằng lớp riêng thì vẫn giữ nguyên ý đồ đó. */
+main p {
+  text-align: justify;
+}
+
 img {
   display: block;
   height: auto;

@@ -87,6 +87,16 @@ export const journeyChapters: JourneyChapter[] = [
     title: 'Ứng dụng & Chuyển giao',
   },
   {
+    chart: 'network',
+    href: '/mang-luoi',
+    id: 'mang-luoi-hop-tac',
+    image: '/images/banner-global-network.png',
+    imageAlt: 'Mạng lưới đối tác học thuật, nghiên cứu và phát triển kết nối cùng GISA.',
+    legend: [],
+    lead: 'Kết nối chuyên gia, tổ chức và nguồn lực trong nước, quốc tế.',
+    title: 'Mạng lưới & Hợp tác',
+  },
+  {
     chart: 'impact',
     href: '/cong-dong',
     id: 'cong-dong-tac-dong',

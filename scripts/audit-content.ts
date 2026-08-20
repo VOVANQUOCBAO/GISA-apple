@@ -363,10 +363,10 @@ export function auditRoutes(
   const canonicalPaths = new Set([...fixedPaths, ...fixturePaths]);
   const redirectBySource = new Map<string, string>();
 
-  if (navigation.length !== 10) {
+  if (navigation.length !== 8) {
     issues.push({
       code: 'navigation-group-count',
-      message: `Expected 10 top-level navigation groups, found ${navigation.length}.`,
+      message: `Expected 8 focused top-level navigation groups, found ${navigation.length}.`,
       file: 'src/content/navigation.ts',
     });
   }

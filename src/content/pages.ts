@@ -75,24 +75,20 @@ const listingPage = (
 });
 
 export const PAGE_REGISTRY: PageDefinition[] = [
-  staticPage('/', 'GISA', 'Kiến tạo kiến thức, lan tỏa giá trị.'),
+  staticPage('/', 'GISA', 'Kiến tạo tri thức, lan tỏa giá trị.'),
   staticPage('/tim-kiem', 'Tìm kiếm', 'Tìm nội dung công khai trên website GISA.'),
   staticPage('/lien-he', 'Liên hệ', 'Trao đổi với GISA về nghiên cứu, tư vấn, đào tạo và hợp tác.'),
   staticPage('/dang-ky/tu-van', 'Đăng ký tư vấn', 'Chia sẻ nhu cầu để GISA hiểu rõ vấn đề bạn đang quan tâm.'),
   staticPage('/dang-ky/khoa-hoc', 'Đăng ký khóa học', 'Gửi thông tin về khóa học và năng lực bạn muốn phát triển.'),
   staticPage('/dang-ky/hop-tac', 'Đề nghị hợp tác', 'Giới thiệu nhu cầu và định hướng hợp tác của tổ chức bạn.'),
-  staticPage('/chinh-sach-quyen-rieng-tu', 'Chính sách quyền riêng tư', 'Cách các biểu mẫu GISA xử lý dữ liệu ngay trong trình duyệt ở giai đoạn hiện tại.'),
+  staticPage('/chinh-sach-quyen-rieng-tu', 'Chính sách quyền riêng tư', 'Cách GISA tiếp nhận và xử lý dữ liệu được gửi qua biểu mẫu trên website.'),
 
   hubPage('/gioi-thieu', 'Giới thiệu', 'Tìm hiểu GISA, định hướng và lĩnh vực hoạt động.', [
     '/gioi-thieu/cau-chuyen-gisa',
-    '/gioi-thieu/tam-nhin-su-menh',
-    '/gioi-thieu/rises-va-sau-tru-cot',
     '/gioi-thieu/linh-vuc-hoat-dong',
     '/chuyen-gia',
   ]),
   staticPage('/gioi-thieu/cau-chuyen-gisa', 'Câu chuyện GISA', 'Hành trình hình thành, triết lý và động lực phát triển của GISA.'),
-  staticPage('/gioi-thieu/tam-nhin-su-menh', 'Tầm nhìn & sứ mệnh', 'Định hướng dài hạn và những cam kết dẫn dắt hoạt động của GISA.'),
-  staticPage('/gioi-thieu/rises-va-sau-tru-cot', 'RISES và sáu trụ cột', 'Khung giá trị và trụ cột hoạt động của GISA.'),
   staticPage('/gioi-thieu/linh-vuc-hoat-dong', 'Lĩnh vực hoạt động', 'Các nhóm hoạt động chính của GISA.'),
   listingPage('/chuyen-gia', 'Chuyên gia', 'Tìm hiểu đội ngũ chuyên gia và các lĩnh vực chuyên môn tại GISA.', 'experts'),
   { template: 'detail', pathPattern: '/chuyen-gia/[slug]', collection: 'experts' },
@@ -165,7 +161,7 @@ export const PAGE_REGISTRY: PageDefinition[] = [
   staticPage('/cong-dong/quan-tri-hieu-qua', 'Quản trị hiệu quả', 'Nội dung cộng đồng về quản trị hiệu quả.'),
   { template: 'detail', pathPattern: '/cong-dong/[slug]', collection: 'initiatives' },
 
-  listingPage('/tin-tuc', 'Tin tức', 'Cập nhật hoạt động, góc nhìn và những câu chuyện mới từ GISA.', 'news', ['topic']),
+  listingPage('/tin-tuc', 'Tin tức', 'Cập nhật hoạt động, góc nhìn và những câu chuyện mới từ GISA.', 'news'),
   { template: 'detail', pathPattern: '/tin-tuc/[slug]', collection: 'news' },
   listingPage('/tin-tuc/thong-bao-lich', 'Thông báo & lịch', 'Theo dõi thông báo và lịch hoạt động do GISA công bố.', 'notices'),
   { template: 'detail', pathPattern: '/tin-tuc/thong-bao-lich/[slug]', collection: 'notices' },

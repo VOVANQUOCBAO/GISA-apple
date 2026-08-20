@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
+import { Icon, type IconName } from '@/components/ui/icon';
 import { SourceNote } from '@/components/ui/source-note';
 import type { ContentRecord } from '@/content/types';
 import { bindPhrases } from '@/lib/vietnamese-text';
@@ -85,6 +86,16 @@ function visualFallbackFor(record: ContentRecord): VisualFallbackContent {
   };
 }
 
+function toolIconFor(record: ContentRecord): IconName {
+  const group = metadataValue(record, 'group')?.toLocaleLowerCase('vi');
+  if (group?.includes('nghiên cứu')) return 'microscope';
+  if (group?.includes('tổ chức') || group?.includes('nhân sự')) return 'users';
+  if (group?.includes('bền vững')) return 'leaf';
+  if (group?.includes('huấn luyện') || group?.includes('cố vấn')) return 'training';
+  if (group?.includes('đổi mới')) return 'lightbulb';
+  return 'compass';
+}
+
 function visibleText(text: string) {
   return bindPhrases(text.replace(/\s*[—–]\s*/g, ' · ').replace(/\s{2,}/g, ' ').trim());
 }
@@ -110,6 +121,7 @@ export function ProjectToolDetailTemplate({ record }: { record: ContentRecord })
     return value ? [{ ...fact, value }] : [];
   });
   const visualFallback = visualFallbackFor(record);
+  const projectLogo = record.kind === 'project' ? metadataValue(record, 'logo') : undefined;
 
   return (
     <main id="main-content" tabIndex={-1}>
@@ -147,6 +159,11 @@ export function ProjectToolDetailTemplate({ record }: { record: ContentRecord })
                 />
               ) : (
                 <div aria-hidden="true" className={styles.visualFallback}>
+                  {record.kind === 'tool' ? (
+                    <span className={styles.fallbackIcon}>
+                      <Icon name={toolIconFor(record)} size={52} />
+                    </span>
+                  ) : null}
                   <p>{visualFallback.eyebrow}</p>
                   <strong>{visibleText(visualFallback.title)}</strong>
                   {visualFallback.detail ? (
@@ -154,6 +171,11 @@ export function ProjectToolDetailTemplate({ record }: { record: ContentRecord })
                   ) : null}
                 </div>
               )}
+              {projectLogo ? (
+                <span aria-hidden="true" className={styles.projectLogo}>
+                  <Image alt="" fill sizes="12rem" src={projectLogo} />
+                </span>
+              ) : null}
             </div>
           </header>
           <SectionSubnav path={record.path} />

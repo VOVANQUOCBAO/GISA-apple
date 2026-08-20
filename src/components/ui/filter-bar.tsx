@@ -40,11 +40,12 @@ const FILTER_LABELS: Record<string, string> = {
 
 interface FilterBarProps {
   filters: Record<string, string[]>;
+  hideLegends?: boolean;
   path: string;
   query: UrlQuery;
 }
 
-export function FilterBar({ filters, path, query }: FilterBarProps) {
+export function FilterBar({ filters, hideLegends = false, path, query }: FilterBarProps) {
   const entries = Object.entries(filters).filter(([, values]) => values.length > 0);
   if (entries.length === 0) return null;
   const allowedKeys = new Set(['q', ...entries.map(([key]) => key)]);
@@ -56,7 +57,9 @@ export function FilterBar({ filters, path, query }: FilterBarProps) {
     <section aria-label="Bộ lọc nội dung" className={styles.filterBar}>
       {entries.map(([key, values]) => (
         <fieldset key={key}>
-          <legend>{FILTER_LABELS[key] ?? key}</legend>
+          <legend className={hideLegends ? styles.visuallyHidden : undefined}>
+            {FILTER_LABELS[key] ?? key}
+          </legend>
           <div className={styles.filterOptions}>
             {values.map((value) => {
               const isCurrent = firstValue(safeQuery[key]) === value;

@@ -3,6 +3,7 @@
 import {
   ArrowRight,
   ArrowUpRight,
+  Atom,
   BookOpenText,
   Buildings,
   CalendarBlank,
@@ -13,24 +14,30 @@ import {
   ChatsCircle,
   ClipboardText,
   Compass,
+  Cpu,
   DownloadSimple,
   EnvelopeSimple,
   FacebookLogo,
   Flask,
   GlobeHemisphereWest,
   GraduationCap,
+  HandHeart,
   Lightbulb,
   LinkedinLogo,
   Leaf,
   List,
   MapPin,
   MagnifyingGlass,
+  Mountains,
   Megaphone,
   Microscope,
   Network,
   PaperPlaneTilt,
   Phone,
   PresentationChart,
+  Rocket,
+  ShareNetwork,
+  Target,
   UsersThree,
   YoutubeLogo,
   X,
@@ -39,6 +46,7 @@ import {
 const icons = {
   arrow: ArrowRight,
   arrowUp: ArrowUpRight,
+  atom: Atom,
   book: BookOpenText,
   buildings: Buildings,
   calendar: CalendarBlank,
@@ -46,11 +54,13 @@ const icons = {
   chats: ChatsCircle,
   clipboard: ClipboardText,
   compass: Compass,
+  cpu: Cpu,
   download: DownloadSimple,
   email: EnvelopeSimple,
   facebook: FacebookLogo,
   flask: Flask,
   graduation: GraduationCap,
+  handHeart: HandHeart,
   training: ChalkboardTeacher,
   chart: ChartLineUp,
   check: CheckCircle,
@@ -62,11 +72,15 @@ const icons = {
   menu: List,
   megaphone: Megaphone,
   microscope: Microscope,
+  mountains: Mountains,
   network: Network,
   phone: Phone,
   presentation: PresentationChart,
+  rocket: Rocket,
+  shareNetwork: ShareNetwork,
   search: MagnifyingGlass,
   send: PaperPlaneTilt,
+  target: Target,
   users: UsersThree,
   youtube: YoutubeLogo,
   close: X,
@@ -74,7 +88,19 @@ const icons = {
 
 export type IconName = keyof typeof icons;
 
-export function Icon({ name, size = 24 }: { name: IconName; size?: number }) {
+/* `duotone` tô thêm một lớp nền cùng màu ở độ mờ thấp, nên biểu tượng có khối
+   chứ không chỉ còn nét viền — dùng cho những chỗ biểu tượng phải bắt mắt. */
+export type IconWeight = 'regular' | 'bold' | 'fill' | 'duotone';
+
+export function Icon({
+  name,
+  size = 24,
+  weight = 'regular',
+}: {
+  name: IconName;
+  size?: number;
+  weight?: IconWeight;
+}) {
   const Component = icons[name];
-  return <Component aria-hidden="true" size={size} weight="regular" />;
+  return <Component aria-hidden="true" size={size} weight={weight} />;
 }

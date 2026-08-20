@@ -66,14 +66,9 @@ export function ListingTemplate({
         <SectionSubnav path={path} />
         {hasAvailableFilters ? (
           <section
-            aria-labelledby="listing-filter-title"
+            aria-label="Lọc nội dung"
             className={listingStyles.toolbar}
           >
-            <div className={listingStyles.toolbarCopy}>
-              <p className={listingStyles.eyebrow}>Công cụ khám phá</p>
-              <h2 id="listing-filter-title">Thu hẹp danh sách theo nhu cầu</h2>
-              <p>Sử dụng các tiêu chí dưới đây để tìm nội dung phù hợp.</p>
-            </div>
             <div className={listingStyles.filterPanel}>
               <FilterBar filters={availableFilters} path={path} query={searchParams} />
             </div>

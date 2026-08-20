@@ -5,13 +5,14 @@ import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import { ButtonLink } from '@/components/ui/button-link';
 import { EmptyState } from '@/components/ui/empty-state';
 import { FilterBar, type UrlQuery } from '@/components/ui/filter-bar';
+import { Icon, type IconName } from '@/components/ui/icon';
 import { Pagination } from '@/components/ui/pagination';
 import type { PageDefinition } from '@/content/pages';
 import type { ContentSummary, PaginatedResult } from '@/content/types';
 import { bindPhrases } from '@/lib/vietnamese-text';
 
 import { EDITORIAL_EMPTY_COPY } from './editorial-empty-copy';
-import { heroVisualForPath, profileForPath, SectionSubnav } from './inner-page-chrome';
+import { InnerPageHero, profileForPath, SectionSubnav } from './inner-page-chrome';
 import styles from './ecosystem-listing-template.module.css';
 
 type ListingDefinition = Extract<PageDefinition, { template: 'listing' }>;
@@ -72,7 +73,7 @@ export function supportsEcosystemListingTemplate(path: string) {
 }
 
 function normalizeVisibleText(text: string) {
-  return text.replace(/\s*[—–]\s*/g, ' - ').replace(/\s{2,}/g, ' ').trim();
+  return text.replace(/\s{2,}/g, ' ').trim();
 }
 
 function vietnameseText(text: string) {
@@ -83,6 +84,19 @@ function formattedDate(value: string) {
   return new Intl.DateTimeFormat('vi-VN', { dateStyle: 'long' }).format(
     new Date(`${value}T00:00:00Z`),
   );
+}
+
+function listingIconFor(text: string): IconName {
+  const normalized = text.toLocaleLowerCase('vi');
+  if (/mục tiêu|định hướng|chính sách/.test(normalized)) return 'target';
+  if (/con người|thanh niên|xã hội|cộng đồng|sức khỏe/.test(normalized)) return 'users';
+  if (/kiến thức|học tập|giáo dục|nghiên cứu/.test(normalized)) return 'book';
+  if (/hợp tác|mạng lưới|chuỗi/.test(normalized)) return 'network';
+  if (/bền vững|môi trường|xanh|khí hậu|nông nghiệp/.test(normalized)) return 'leaf';
+  if (/công nghệ|dữ liệu|số|ai|bản đồ|hệ thống/.test(normalized)) return 'cpu';
+  if (/kết quả|tăng trưởng|kinh tế|doanh nghiệp/.test(normalized)) return 'chart';
+  if (/giá trị|trách nhiệm|hỗ trợ/.test(normalized)) return 'handHeart';
+  return 'lightbulb';
 }
 
 function ListingHero({
@@ -98,32 +112,30 @@ function ListingHero({
   path: string;
   topic: string;
 }) {
-  const visual = heroVisualForPath(path);
-
   return (
-    <header className={styles.hero}>
-      <div className={styles.heroCopy}>
-        <p className={styles.heroTopic}>{vietnameseText(topic)}</p>
-        <h1>{vietnameseText(definition.title)}</h1>
-        <p className={styles.heroDescription}>{vietnameseText(description)}</p>
-        <p aria-live="polite" className={styles.heroCount}>
-          <strong>{count}</strong>
-          <span>nội dung trong danh mục</span>
+    <InnerPageHero
+      description={description}
+      eyebrow={topic}
+      meta={(
+        <p aria-live="polite">
+          <strong>{count}</strong> nội dung trong danh mục
         </p>
-      </div>
-      <figure className={styles.heroVisual}>
-        <Image alt={visual.alt} fill priority sizes="(max-width: 48rem) 100vw, 34vw" src={visual.src} />
-      </figure>
-    </header>
+      )}
+      path={path}
+      title={definition.title}
+    />
   );
 }
 
-function PartnerDirectory({ items }: { items: ContentSummary[] }) {
+function PartnerCards({ items }: { items: ContentSummary[] }) {
   return (
     <ol className={styles.partnerGrid}>
       {items.map((item) => (
         <li key={item.id}>
           <article className={styles.partnerCard}>
+            <span aria-hidden="true" className={styles.partnerMarker}>
+              <Icon name="network" size={20} weight="duotone" />
+            </span>
             {item.image ? (
               <span className={styles.partnerLogo}>
                 <Image
@@ -143,16 +155,62 @@ function PartnerDirectory({ items }: { items: ContentSummary[] }) {
   );
 }
 
+function PartnerDirectory({ items }: { items: ContentSummary[] }) {
+  const domestic = items.filter((item) => item.metadata.partnerScope === 'domestic');
+  const international = items.filter((item) => item.metadata.partnerScope !== 'domestic');
+
+  return (
+    <div className={styles.partnerDirectory}>
+      {domestic.length > 0 ? (
+        <section aria-labelledby="domestic-partners-title" className={styles.partnerGroup}>
+          <h2 id="domestic-partners-title">Đối tác trong nước</h2>
+          <PartnerCards items={domestic} />
+        </section>
+      ) : null}
+      {international.length > 0 ? (
+        <section aria-labelledby="international-partners-title" className={styles.partnerGroup}>
+          <h2 id="international-partners-title">Đối tác quốc tế</h2>
+          <PartnerCards items={international} />
+        </section>
+      ) : null}
+    </div>
+  );
+}
+
+const INITIATIVE_VISUALS = [
+  { alt: 'Mô hình đô thị xanh và phát triển bền vững', src: '/images/article-green-city.png' },
+  { alt: 'Chuỗi giá trị nông nghiệp gắn với sinh kế địa phương', src: '/images/article-da-xanh-pomelo.png' },
+  { alt: 'Cộng đồng cùng tham gia hoạt động tạo tác động', src: '/images/knowledge-journey/community-action-editorial.png' },
+  { alt: 'Mục tiêu phát triển bền vững định hướng sáng kiến cộng đồng', src: '/images/banner-sustainable-development-goals.png' },
+  { alt: 'Năng lượng tái tạo và lựa chọn xanh cho cộng đồng', src: '/images/article-renewables.png' },
+  { alt: 'Phân tích dữ liệu phục vụ đánh giá tác động địa phương', src: '/images/article-performance-benchmarking.png' },
+] as const;
+
 function InitiativeDirectory({ items }: { items: ContentSummary[] }) {
   return (
     <ol className={styles.initiativeGrid}>
       {items.map((item, index) => (
         <li className={index === 0 ? styles.initiativeLead : undefined} key={item.id}>
           <article className={styles.initiativeCard}>
-            <p className={styles.itemTopic}>{vietnameseText(item.tags[1] ?? item.tags[0] ?? 'Cộng đồng')}</p>
-            <h3><Link href={item.path}>{vietnameseText(item.title)}</Link></h3>
-            <p className={styles.itemSummary}>{vietnameseText(item.summary)}</p>
-            <span aria-hidden="true" className={styles.readMore}>Khám phá</span>
+            <span className={styles.initiativeVisual}>
+              <Image
+                alt={normalizeVisibleText(item.image?.alt ?? INITIATIVE_VISUALS[index % INITIATIVE_VISUALS.length]?.alt ?? 'Sáng kiến cộng đồng GISA')}
+                fill
+                sizes={index === 0 ? '(max-width: 48rem) 94vw, 46vw' : '(max-width: 48rem) 94vw, 42vw'}
+                src={item.image?.src ?? INITIATIVE_VISUALS[index % INITIATIVE_VISUALS.length]?.src ?? INITIATIVE_VISUALS[0].src}
+              />
+            </span>
+            <div className={styles.initiativeCopy}>
+              <p className={styles.itemTopic}>
+                <span aria-hidden="true" className={styles.itemTopicIcon}>
+                  <Icon name={listingIconFor(`${item.title} ${item.tags.join(' ')}`)} size={20} weight="duotone" />
+                </span>
+                {vietnameseText(item.tags[1] ?? item.tags[0] ?? 'Cộng đồng')}
+              </p>
+              <h3><Link href={item.path}>{vietnameseText(item.title)}</Link></h3>
+              <p className={styles.itemSummary}>{vietnameseText(item.summary)}</p>
+              <span aria-hidden="true" className={styles.readMore}>Khám phá</span>
+            </div>
           </article>
         </li>
       ))}
@@ -167,14 +225,33 @@ function NewsIndex({ items }: { items: ContentSummary[] }) {
         <li key={item.id}>
           <article className={styles.newsEntry}>
             <div className={styles.newsMeta}>
+              <span aria-hidden="true" className={styles.itemMetaIcon}>
+                <Icon name="megaphone" size={20} weight="duotone" />
+              </span>
               {item.publishedAt ? <time dateTime={item.publishedAt}>{formattedDate(item.publishedAt)}</time> : null}
               <span>{vietnameseText(String(item.metadata.topic ?? item.tags[1] ?? 'Tin tức'))}</span>
             </div>
+            {item.image ? (
+              <span className={styles.newsVisual}>
+                <Image
+                  alt={normalizeVisibleText(item.image.alt)}
+                  fill
+                  sizes="(max-width: 52rem) 94vw, (max-width: 80rem) 30vw, 22rem"
+                  src={item.image.src}
+                />
+              </span>
+            ) : (
+              <span aria-hidden="true" className={styles.newsFallback}>
+                <span>{vietnameseText(String(item.metadata.topic ?? 'GISA'))}</span>
+              </span>
+            )}
             <div className={styles.newsCopy}>
               <h3><Link href={item.path}>{vietnameseText(item.title)}</Link></h3>
               <p>{vietnameseText(item.summary)}</p>
             </div>
-            <span aria-hidden="true" className={styles.newsArrow}>→</span>
+            <span aria-hidden="true" className={styles.newsArrow}>
+              <Icon name="arrow" size={24} weight="bold" />
+            </span>
           </article>
         </li>
       ))}
@@ -189,6 +266,9 @@ function NoticeTimeline({ items }: { items: ContentSummary[] }) {
         <li key={item.id}>
           <article className={styles.noticeEntry}>
             <div className={styles.noticeDate}>
+              <span aria-hidden="true" className={styles.itemMetaIcon}>
+                <Icon name="calendar" size={20} weight="duotone" />
+              </span>
               {item.publishedAt ? <time dateTime={item.publishedAt}>{formattedDate(item.publishedAt)}</time> : null}
               <span>{vietnameseText(String(item.metadata.status ?? 'Cần xác nhận trạng thái'))}</span>
             </div>
@@ -241,6 +321,7 @@ export function EcosystemListingTemplate({
   const hasFilters = definition.filters.some((key) => Boolean(searchParams[key]));
   const scopeValues = Object.values(definition.fixedFilters ?? {});
   const resultCount = result.total.toLocaleString('vi-VN');
+  const usesCompactCommunityFilters = direction.mode === 'initiatives';
 
   return (
     <main className={styles.page} id="main-content" tabIndex={-1}>
@@ -264,12 +345,24 @@ export function EcosystemListingTemplate({
         <SectionSubnav path={path} />
 
         {hasAvailableFilters ? (
-          <section className={styles.filterStage} aria-labelledby="ecosystem-filter-title">
-            <div>
-              <h2 id="ecosystem-filter-title">Tìm theo nội dung bạn quan tâm</h2>
-              <p>Chọn một tiêu chí để thu hẹp danh sách.</p>
-            </div>
-            <FilterBar filters={availableFilters} path={path} query={searchParams} />
+          <section
+            aria-label={usesCompactCommunityFilters ? 'Lọc sáng kiến cộng đồng' : undefined}
+            aria-labelledby={usesCompactCommunityFilters ? undefined : 'ecosystem-filter-title'}
+            className={styles.filterStage}
+            data-compact={usesCompactCommunityFilters ? 'true' : undefined}
+          >
+            {!usesCompactCommunityFilters ? (
+              <div>
+                <h2 id="ecosystem-filter-title">Tìm theo nội dung bạn quan tâm</h2>
+                <p>Chọn một tiêu chí để thu hẹp danh sách.</p>
+              </div>
+            ) : null}
+            <FilterBar
+              filters={availableFilters}
+              hideLegends={usesCompactCommunityFilters}
+              path={path}
+              query={searchParams}
+            />
           </section>
         ) : null}
 

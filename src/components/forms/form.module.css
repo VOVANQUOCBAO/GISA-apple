@@ -390,6 +390,14 @@
   min-height: 1.6em;
 }
 
+.status[data-state='success'] {
+  color: #17613a;
+}
+
+.status[data-state='error'] {
+  color: #751b0d;
+}
+
 @media (min-width: 72.01rem) {
   .introduction {
     position: sticky;

@@ -184,7 +184,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
     },
     {
       type: 'paragraph',
-      text: 'Nội dung được tổ chức theo mô hình kết hợp linh hoạt, gồm khóa học tương tác, hoạt động nhóm, thực hành tình huống và kết nối với người hướng dẫn.',
+      text: 'Nội dung được tổ chức theo mô hình kết hợp linh hoạt, gồm khóa học tương tác, hoạt động nhóm, thực hành tình huống và kết nối với người hướng dẫn, qua đó giúp người học liên tục nhận phản hồi, điều chỉnh phương pháp làm việc và từng bước xây dựng năng lực nghề nghiệp phù hợp với mục tiêu cá nhân.',
     },
     { type: 'heading', level: 2, text: 'Chương trình dành cho ai?' },
     {
@@ -263,7 +263,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
     },
     {
       type: 'paragraph',
-      text: 'Mô hình học tập kết hợp huấn luyện thực tiễn, mentoring cá nhân và kết nối chuyên gia. Hình thức tổ chức linh hoạt, phù hợp với người đang đi làm.',
+      text: 'Mô hình học tập kết hợp huấn luyện thực tiễn, mentoring cá nhân và kết nối chuyên gia. Hình thức tổ chức linh hoạt, phù hợp với người đang đi làm, giúp học viên áp dụng ngay kiến thức vào công việc, giải quyết thách thức quản trị và từng bước hình thành phong cách lãnh đạo hiệu quả.',
     },
     { type: 'heading', level: 2, text: 'Chương trình dành cho ai?' },
     {
@@ -416,7 +416,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
   '/dao-tao/gisa-legacy': [
     {
       type: 'quote',
-      text: 'Xây sự nghiệp viên mãn, sống một cuộc đời trọn vẹn.',
+      text: 'Xây sự nghiệp viên mãn sống một cuộc đời trọn vẹn.',
     },
     { type: 'heading', level: 2, text: 'Nội dung chính' },
     {
@@ -425,7 +425,7 @@ export const daoTaoBlocks: Record<string, ContentBlock[]> = {
     },
     {
       type: 'paragraph',
-      text: 'Thông qua các chuyên đề chuyên sâu, đối thoại lãnh đạo và trải nghiệm tương tác, người học có không gian nhìn lại mục tiêu sống và phát triển tư duy lãnh đạo dài hạn.',
+      text: 'Thông qua các chuyên đề chuyên sâu, đối thoại lãnh đạo và trải nghiệm tương tác, người học có không gian nhìn lại mục tiêu sống và phát triển tư duy lãnh đạo dài hạn, đồng thời làm rõ giá trị cốt lõi, trách nhiệm xã hội và hướng đi để kiến tạo ảnh hưởng tích cực cho tổ chức, cộng đồng và thế hệ kế tiếp.',
     },
     { type: 'heading', level: 2, text: 'Chương trình dành cho ai?' },
     {

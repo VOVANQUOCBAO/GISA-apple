@@ -13,9 +13,9 @@ describe('heroVisualForPath', () => {
     expect(heroVisualForPath(path).src).toBe(src);
   });
 
-  test('falls back to the section visual when no route override exists', () => {
+  test('uses a dedicated visual for the funder network page', () => {
     expect(heroVisualForPath('/mang-luoi/quy-nha-tai-tro').src).toBe(
-      '/images/project-trade4sd.png',
+      '/images/hero-gisa-strategy-table.png',
     );
   });
 });

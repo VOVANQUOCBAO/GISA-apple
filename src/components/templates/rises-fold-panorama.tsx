@@ -10,6 +10,7 @@ import {
 } from 'react';
 
 import { bindPhrases } from '@/lib/vietnamese-text';
+import { Icon, type IconName } from '@/components/ui/icon';
 
 import styles from './rises-fold-panorama.module.css';
 
@@ -19,6 +20,8 @@ export type RiseValue = {
   label: string;
   text: string;
 };
+
+const RISES_PICTOGRAMS: IconName[] = ['check', 'lightbulb', 'microscope', 'chart', 'leaf'];
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(max, Math.max(min, value));
@@ -147,6 +150,9 @@ export function RisesFoldPanorama({ values }: { values: RiseValue[] }) {
             >
               <span aria-hidden="true" className={styles.foldSurface}>
                 <span className={styles.foldIndex}>{String(index + 1).padStart(2, '0')}</span>
+                <span className={styles.foldPictogram}>
+                  <Icon name={RISES_PICTOGRAMS[index % RISES_PICTOGRAMS.length]} size={30} />
+                </span>
                 <span className={styles.foldLetter}>{item.code}</span>
                 <span className={styles.foldLabel}>{item.label}</span>
                 <span className={styles.foldRule} />

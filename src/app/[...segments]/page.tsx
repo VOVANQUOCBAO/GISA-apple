@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 import { buildMetadata } from '@/components/seo/build-metadata';
 import { StructuredData } from '@/components/seo/structured-data.tsx';
@@ -27,6 +27,10 @@ export default async function ContentPage({
   const definition = resolvePage(path);
 
   if (!definition) notFound();
+
+  if (definition.template === 'hub') {
+    redirect(definition.childPaths[0] ?? '/');
+  }
 
   if (definition.template === 'detail') {
     const record = await getContentRepository().getByPath(path);

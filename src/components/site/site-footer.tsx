@@ -67,6 +67,13 @@ export function SiteFooter() {
           </Link>
         </div>
 
+        <address className={styles.footerContact} data-scroll-motion="reveal">
+          <strong>{bindPhrases('Viện Phát triển Bền vững và Quản lý Nâng cao Toàn cầu')}</strong>
+          <a href="tel:+84818711799"><Icon name="phone" size={18} />0818 711 799</a>
+          <a href="mailto:info@gisa.edu.vn">info@gisa.edu.vn</a>
+          <a href="https://www.facebook.com/gisa.edu.vn/" rel="noreferrer" target="_blank">Facebook GISA</a>
+        </address>
+
         <div className={styles.footerGrid}>
           <div className={styles.footerDirectory}>
             {footerGroups.map((group, index) => (
@@ -87,7 +94,7 @@ export function SiteFooter() {
         </div>
 
         <div className={styles.footerBottom} data-scroll-motion="reveal">
-          <span>{bindPhrases("© 2026 GISA. Kiến tạo kiến thức, lan tỏa giá trị.")}</span>
+          <span>{bindPhrases("© 2026 GISA. Kiến tạo tri thức, lan tỏa giá trị.")}</span>
           <FooterAffiliation />
         </div>
       </div>

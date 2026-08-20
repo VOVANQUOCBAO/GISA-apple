@@ -238,6 +238,27 @@
   word-break: normal;
 }
 
+.chapterNumber {
+  color: var(--ecosystem-accent);
+  display: none;
+  font-size: .78rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  letter-spacing: .1em;
+}
+
+.chapterVisual {
+  display: none;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.chapterVisual img {
+  object-fit: cover;
+  transition: transform 650ms cubic-bezier(.16, 1, .3, 1);
+}
+
 .chapterBody {
   min-width: 0;
 }
@@ -324,6 +345,7 @@
   border-radius: 1.25rem;
   min-width: 0;
   padding: clamp(1.5rem, 3vw, 2.4rem);
+  transition: border-color 200ms ease-out, transform 260ms cubic-bezier(.16, 1, .3, 1);
 }
 
 .subsection:nth-child(3n + 2) {
@@ -332,6 +354,53 @@
 
 .subsection:nth-child(3n) {
   background: color-mix(in srgb, var(--ecosystem-accent-soft) 72%, white);
+}
+
+.subsection:hover {
+  border-color: color-mix(in srgb, var(--ecosystem-accent) 42%, transparent);
+  transform: translateY(-.2rem);
+}
+
+.subsectionIcon {
+  align-items: center;
+  background: color-mix(in srgb, var(--ecosystem-accent) 11%, white);
+  color: var(--ecosystem-accent);
+  display: inline-flex;
+  height: 3rem;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  width: 3rem;
+}
+
+.subsectionVisual {
+  aspect-ratio: 16 / 7;
+  margin: calc(-1 * clamp(1.5rem, 3vw, 2.4rem)) calc(-1 * clamp(1.5rem, 3vw, 2.4rem)) 1.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.subsectionVisual img {
+  object-fit: cover;
+  transition: transform 520ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.subsection:hover .subsectionVisual img {
+  transform: scale(1.025);
+}
+
+.subsection[data-index='1'] .subsectionIcon {
+  background: #eef5df;
+  color: #5f7f22;
+}
+
+.subsection[data-index='2'] .subsectionIcon {
+  background: #eef3fa;
+  color: #315f9c;
+}
+
+.subsection[data-index='3'] .subsectionIcon {
+  background: #fbefe9;
+  color: #a84a27;
 }
 
 .subsection h3 {
@@ -612,6 +681,661 @@
   transform: scale(.98);
 }
 
+/* Atlas lĩnh vực: bỏ cặp cột tiêu đề–văn bản gây khoảng trống lớn. Sáu lĩnh
+   vực trở thành một bản đồ ảnh bất đối xứng, vẫn giữ nguyên nội dung gốc. */
+.container[data-mode='atlas'] .editorialStage {
+  gap: clamp(2rem, 3vw, 3rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.container[data-mode='atlas'] .contentNavigation {
+  backdrop-filter: blur(14px);
+  background: rgb(248 251 251 / 92%);
+  border-bottom: 1px solid color-mix(in srgb, var(--ecosystem-accent) 20%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--ecosystem-accent) 20%, transparent);
+  padding-block: .85rem;
+  position: sticky;
+  top: 5.8rem;
+  z-index: 3;
+}
+
+.container[data-mode='atlas'] .contentNavigation > p {
+  border: 0;
+  margin: 0 0 .65rem;
+  padding: 0;
+}
+
+.container[data-mode='atlas'] .contentNavigation ul {
+  display: flex;
+  gap: .4rem 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.container[data-mode='atlas'] .contentNavigation ul::-webkit-scrollbar {
+  display: none;
+}
+
+.container[data-mode='atlas'] .contentNavigation a {
+  border-left: 0;
+  border-bottom: 2px solid transparent;
+  padding: .35rem 0;
+  white-space: nowrap;
+}
+
+.container[data-mode='atlas'] .contentNavigation a:hover,
+.container[data-mode='atlas'] .contentNavigation a:focus-visible {
+  border-bottom-color: var(--ecosystem-accent);
+  transform: none;
+}
+
+.container[data-mode='atlas'] .introduction {
+  background: color-mix(in srgb, var(--ecosystem-pale) 78%, white);
+  border: 0;
+  border-radius: 1.25rem;
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+  padding: clamp(1.75rem, 3.5vw, 3.25rem);
+}
+
+.container[data-mode='atlas'] .introduction .prose {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 3rem);
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+  max-width: none;
+}
+
+.container[data-mode='atlas'] .introduction .prose:has(> p:only-child) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.container[data-mode='atlas'] .introduction .prose > p {
+  text-align: justify;
+  text-align-last: left;
+}
+
+.container[data-mode='atlas'] .introduction .prose > p + p {
+  border-left: 1px solid color-mix(in srgb, var(--ecosystem-accent) 22%, transparent);
+  margin: 0;
+  padding-left: clamp(1.25rem, 2.5vw, 2.5rem);
+}
+
+.container[data-mode='atlas'] .chapterList {
+  display: grid;
+  gap: clamp(1.25rem, 2vw, 2rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.container[data-mode='atlas'] .actionClosure {
+  min-height: clamp(17rem, 22vw, 22rem);
+  padding-inline: clamp(2rem, 5vw, 5rem);
+}
+
+.container[data-mode='atlas'] .actionClosure h2 {
+  font-size: clamp(2rem, 3.35vw, 3.45rem);
+  max-width: 30ch;
+}
+
+/* Shared editorial chapters for Network and Community child pages. */
+.container[data-mode='network'] .chapter,
+.container[data-mode='supporters'] .chapter {
+  gap: clamp(1.75rem, 3vw, 3rem);
+  grid-template-columns: minmax(20rem, .9fr) minmax(0, 1.1fr);
+}
+
+.container[data-mode='network'] .chapterTitle,
+.container[data-mode='supporters'] .chapterTitle,
+.container[data-mode='community'] .chapterTitle {
+  align-items: center;
+  display: grid;
+  gap: .7rem .85rem;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  min-width: 0;
+}
+
+.container[data-mode='network'] .chapterTitleIcon,
+.container[data-mode='supporters'] .chapterTitleIcon,
+.container[data-mode='community'] .chapterTitleIcon {
+  align-items: center;
+  background: color-mix(in srgb, var(--topic-accent, var(--ecosystem-accent)) 11%, white);
+  border-radius: .75rem;
+  color: var(--topic-accent, var(--ecosystem-accent));
+  display: inline-flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
+
+.container[data-mode='network'] .chapterNumber,
+.container[data-mode='supporters'] .chapterNumber,
+.container[data-mode='community'] .chapterNumber {
+  color: var(--topic-accent, var(--ecosystem-accent));
+  display: inline;
+}
+
+.container[data-mode='network'] .chapterTitle h2,
+.container[data-mode='supporters'] .chapterTitle h2,
+.container[data-mode='community'] .chapterTitle h2 {
+  grid-column: 3;
+  max-width: none;
+  text-wrap: pretty;
+  width: 100%;
+}
+
+.container[data-mode='network'] .chapterLead,
+.container[data-mode='supporters'] .chapterLead,
+.container[data-mode='community'] .chapterLead {
+  color: rgb(21 52 67 / 78%);
+  font-size: clamp(18px, 1.55vw, 20px);
+  grid-column: 3;
+  line-height: 1.72;
+  margin: .65rem 0 0;
+  max-width: 55ch;
+  text-align: justify;
+  text-align-last: left;
+  text-wrap: pretty;
+}
+
+.container[data-mode='network'] .prose p,
+.container[data-mode='supporters'] .prose p,
+.container[data-mode='community'] .prose p,
+.container[data-mode='network'] .editorialList strong,
+.container[data-mode='supporters'] .editorialList strong,
+.container[data-mode='community'] .editorialList strong,
+.container[data-mode='network'] .editorialList span,
+.container[data-mode='supporters'] .editorialList span,
+.container[data-mode='community'] .editorialList span {
+  font-size: clamp(18px, 1.5vw, 20px);
+}
+
+.container[data-mode='network'] .subsection,
+.container[data-mode='supporters'] .subsection,
+.container[data-mode='community'] .subsection {
+  --card-accent: #b9572b;
+  --card-surface: #fff5ef;
+  background: var(--card-surface);
+  border-color: color-mix(in srgb, var(--card-accent) 18%, transparent);
+  border-top: .24rem solid var(--card-accent);
+}
+
+.container[data-mode='network'] .subsection:nth-child(5n + 2),
+.container[data-mode='supporters'] .subsection:nth-child(5n + 2),
+.container[data-mode='community'] .subsection:nth-child(5n + 2) {
+  --card-accent: #167d78;
+  --card-surface: #effaf8;
+}
+
+.container[data-mode='network'] .subsection:nth-child(5n + 3),
+.container[data-mode='supporters'] .subsection:nth-child(5n + 3),
+.container[data-mode='community'] .subsection:nth-child(5n + 3) {
+  --card-accent: #416aa8;
+  --card-surface: #f1f5fc;
+}
+
+.container[data-mode='network'] .subsection:nth-child(5n + 4),
+.container[data-mode='supporters'] .subsection:nth-child(5n + 4),
+.container[data-mode='community'] .subsection:nth-child(5n + 4) {
+  --card-accent: #93631f;
+  --card-surface: #fbf7ec;
+}
+
+.container[data-mode='network'] .subsection:nth-child(5n),
+.container[data-mode='supporters'] .subsection:nth-child(5n),
+.container[data-mode='community'] .subsection:nth-child(5n) {
+  --card-accent: #775b92;
+  --card-surface: #f7f3fa;
+}
+
+.container[data-mode='network'] .subsectionIcon,
+.container[data-mode='supporters'] .subsectionIcon,
+.container[data-mode='community'] .subsectionIcon {
+  background: color-mix(in srgb, var(--card-accent) 11%, white);
+  color: var(--card-accent);
+}
+
+.container[data-mode='network'] .subsection h3,
+.container[data-mode='supporters'] .subsection h3,
+.container[data-mode='community'] .subsection h3 {
+  min-height: 2.3em;
+  text-wrap: pretty;
+}
+
+.container[data-mode='community'] .subsectionGrid:has(> section:nth-child(5):last-child),
+.container[data-mode='network'] .subsectionGrid:has(> section:nth-child(5):last-child),
+.container[data-mode='supporters'] .subsectionGrid:has(> section:nth-child(5):last-child) {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.container[data-mode='community'] .subsectionGrid:has(> section:nth-child(5):last-child) > section,
+.container[data-mode='network'] .subsectionGrid:has(> section:nth-child(5):last-child) > section,
+.container[data-mode='supporters'] .subsectionGrid:has(> section:nth-child(5):last-child) > section {
+  grid-column: span 2;
+}
+
+.container[data-mode='community'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:nth-last-child(-n + 2),
+.container[data-mode='network'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:nth-last-child(-n + 2),
+.container[data-mode='supporters'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:nth-last-child(-n + 2) {
+  grid-column: span 3;
+}
+
+.container[data-mode='network'] :global([data-vietnamese-phrase]),
+.container[data-mode='supporters'] :global([data-vietnamese-phrase]),
+.container[data-mode='community'] :global([data-vietnamese-phrase]) {
+  white-space: nowrap !important;
+}
+
+@media (max-width: 72rem) {
+  .container[data-mode='network'] .chapter,
+  .container[data-mode='supporters'] .chapter {
+    grid-template-columns: minmax(17rem, .85fr) minmax(0, 1.15fr);
+  }
+
+  .container[data-mode='community'] .subsectionGrid:has(> section:nth-child(5):last-child),
+  .container[data-mode='network'] .subsectionGrid:has(> section:nth-child(5):last-child),
+  .container[data-mode='supporters'] .subsectionGrid:has(> section:nth-child(5):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .container[data-mode='community'] .subsectionGrid:has(> section:nth-child(5):last-child) > section,
+  .container[data-mode='network'] .subsectionGrid:has(> section:nth-child(5):last-child) > section,
+  .container[data-mode='supporters'] .subsectionGrid:has(> section:nth-child(5):last-child) > section,
+  .container[data-mode='community'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:nth-last-child(-n + 2),
+  .container[data-mode='network'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:nth-last-child(-n + 2),
+  .container[data-mode='supporters'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:nth-last-child(-n + 2) {
+    grid-column: auto;
+  }
+
+  .container[data-mode='community'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:last-child,
+  .container[data-mode='network'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:last-child,
+  .container[data-mode='supporters'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 48rem) {
+  .container[data-mode='network'] .chapter,
+  .container[data-mode='supporters'] .chapter {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .container[data-mode='network'] .chapterHeader,
+  .container[data-mode='supporters'] .chapterHeader {
+    position: static;
+  }
+
+  .container[data-mode='network'] .chapterTitle,
+  .container[data-mode='supporters'] .chapterTitle,
+  .container[data-mode='community'] .chapterTitle {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .container[data-mode='network'] .chapterTitle h2,
+  .container[data-mode='supporters'] .chapterTitle h2,
+  .container[data-mode='community'] .chapterTitle h2,
+  .container[data-mode='network'] .chapterLead,
+  .container[data-mode='supporters'] .chapterLead,
+  .container[data-mode='community'] .chapterLead {
+    grid-column: 1 / -1;
+  }
+
+  .container[data-mode='network'] .chapterLead,
+  .container[data-mode='supporters'] .chapterLead,
+  .container[data-mode='community'] .chapterLead,
+  .container[data-mode='network'] .prose p,
+  .container[data-mode='supporters'] .prose p,
+  .container[data-mode='community'] .prose p {
+    font-size: 18px;
+    text-align: justify;
+    text-align-last: left;
+  }
+
+  .container[data-mode='community'] .subsectionGrid:has(> section:nth-child(5):last-child),
+  .container[data-mode='network'] .subsectionGrid:has(> section:nth-child(5):last-child),
+  .container[data-mode='supporters'] .subsectionGrid:has(> section:nth-child(5):last-child) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .container[data-mode='community'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:last-child,
+  .container[data-mode='network'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:last-child,
+  .container[data-mode='supporters'] .subsectionGrid:has(> section:nth-child(5):last-child) > section:last-child {
+    grid-column: auto;
+  }
+
+  .container[data-mode='network'] .subsection h3,
+  .container[data-mode='supporters'] .subsection h3,
+  .container[data-mode='community'] .subsection h3 {
+    min-height: 0;
+  }
+}
+
+/* Full-width Network and Community system. Navigation sidebar is removed in
+   the template; these rules rebuild the vacated space into an editorial grid. */
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .editorialStage {
+  gap: 0;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .storyColumn {
+  width: 100%;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  margin: 0 auto clamp(3rem, 5vw, 5rem);
+  padding: 0;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction .prose {
+  align-items: start;
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr);
+  max-width: none;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction .prose:has(> p:only-child),
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction .prose:has(> .linkCollection) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction .prose > p:first-child {
+  font-size: clamp(1.3rem, 1.85vw, 1.7rem);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 66ch;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction .prose > p + p {
+  background: color-mix(in srgb, var(--ecosystem-pale) 68%, white);
+  border-left: .22rem solid var(--ecosystem-accent);
+  margin: 0;
+  max-width: none;
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapter {
+  display: grid;
+  gap: clamp(2rem, 3.5vw, 3.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  padding-block: clamp(3.5rem, 6vw, 6rem);
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterHeader {
+  position: static;
+  top: auto;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterTitle {
+  gap: .8rem 1rem;
+  grid-template-columns: auto auto minmax(0, 1fr);
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterTitle h2 {
+  font-size: clamp(2.65rem, 4.4vw, 4.7rem);
+  grid-column: 3;
+  line-height: 1.02;
+  max-width: none;
+  text-wrap: pretty;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterLead {
+  font-size: clamp(18px, 1.35vw, 20px);
+  grid-column: 3;
+  max-width: 66ch;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterBody,
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterBody > .prose {
+  max-width: none;
+  width: 100%;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterBody > .prose > .editorialList {
+  gap: clamp(.9rem, 1.5vw, 1.3rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .editorialList li {
+  background: color-mix(in srgb, var(--topic-accent, var(--ecosystem-accent)) 7%, white);
+  border: 1px solid color-mix(in srgb, var(--topic-accent, var(--ecosystem-accent)) 16%, transparent);
+  border-left-width: 1px;
+  border-radius: .95rem;
+  min-height: 100%;
+  padding: clamp(1rem, 1.6vw, 1.4rem);
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .subsectionGrid {
+  gap: clamp(1rem, 1.7vw, 1.5rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .subsection {
+  height: 100%;
+}
+
+@media (max-width: 72rem) {
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction .prose {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterBody > .prose > .editorialList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterTitle {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterTitle h2,
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterLead {
+    grid-column: 1 / -1;
+  }
+
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterTitle h2 {
+    font-size: clamp(2.25rem, 10.5vw, 3.35rem);
+  }
+
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterBody > .prose > .editorialList,
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .subsectionGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.container[data-mode='atlas'] .chapter {
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--ecosystem-accent) 15%, transparent);
+  border-radius: 1.25rem;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(20rem, .86fr) minmax(0, 1.14fr);
+  overflow: hidden;
+  padding: 0;
+  transition: border-color 260ms ease, box-shadow 350ms ease, transform 350ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.container[data-mode='atlas'] .chapter:nth-child(4n + 1),
+.container[data-mode='atlas'] .chapter:nth-child(4n) {
+  grid-column: 1 / -1;
+}
+
+.container[data-mode='atlas'] .chapter:nth-child(4n + 2),
+.container[data-mode='atlas'] .chapter:nth-child(4n + 3) {
+  grid-column: 1 / -1;
+}
+
+.container[data-mode='atlas'] .chapter:hover {
+  border-color: color-mix(in srgb, var(--ecosystem-accent) 38%, transparent);
+  box-shadow: 0 1.35rem 3rem color-mix(in srgb, var(--ecosystem-ink) 11%, transparent);
+  transform: translateY(-.25rem);
+}
+
+.container[data-mode='atlas'] .chapterHeader {
+  background: white;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  top: auto;
+}
+
+.container[data-mode='atlas'] .chapterHeader::after {
+  content: none;
+}
+
+.container[data-mode='atlas'] .chapter:nth-child(even) .chapterHeader {
+  grid-column: 2;
+}
+
+.container[data-mode='atlas'] .chapter:nth-child(even) .chapterBody {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.container[data-mode='atlas'] .chapterVisual {
+  aspect-ratio: 16 / 10;
+  display: block;
+  height: auto;
+  min-height: 0;
+}
+
+.container[data-mode='atlas'] .chapter:nth-child(4n + 2) .chapterVisual,
+.container[data-mode='atlas'] .chapter:nth-child(4n + 3) .chapterVisual {
+  aspect-ratio: auto;
+}
+
+.container[data-mode='atlas'] .chapter:hover .chapterVisual img {
+  transform: scale(1.035);
+}
+
+.container[data-mode='atlas'] .chapterNumber {
+  bottom: auto;
+  color: var(--topic-accent, var(--ecosystem-accent));
+  display: block;
+  font-size: .76rem;
+  font-weight: 800;
+  left: auto;
+  letter-spacing: .1em;
+  margin: 0;
+  position: static;
+}
+
+.container[data-mode='atlas'] .chapterHeader h2 {
+  bottom: auto;
+  color: var(--ecosystem-ink);
+  font-size: clamp(1.85rem, 2.55vw, 2.8rem);
+  grid-column: 1 / -1;
+  left: auto;
+  margin: 0;
+  max-width: 22ch;
+  position: static;
+}
+
+.container[data-mode='atlas'] .chapterTitle {
+  align-items: center;
+  background: white;
+  display: grid;
+  gap: .85rem 1rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  padding: clamp(1.35rem, 2.5vw, 2.25rem);
+}
+
+.container[data-mode='atlas'] .chapterTitleIcon {
+  align-items: center;
+  background: color-mix(in srgb, var(--topic-accent, var(--ecosystem-accent)) 11%, white);
+  color: var(--topic-accent, var(--ecosystem-accent));
+  display: inline-flex;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+
+.container[data-mode='atlas'] .chapterBody {
+  align-self: center;
+  padding: 1.15rem clamp(1.4rem, 2.3vw, 2.25rem) clamp(1.75rem, 2.8vw, 2.6rem);
+}
+
+.container[data-mode='atlas'] .chapterBody > .prose {
+  max-width: none;
+}
+
+.container[data-mode='atlas'] .chapterBody > .prose > p {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 64ch;
+  text-align: justify;
+  text-align-last: left;
+}
+
+.container[data-mode='atlas'] .introduction p :global([data-vietnamese-phrase]),
+.container[data-mode='atlas'] .chapterBody p :global([data-vietnamese-phrase]) {
+  white-space: normal !important;
+}
+
+.container[data-mode='atlas'] .editorialList {
+  gap: .55rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.container[data-mode='atlas'] .editorialList li {
+  background: color-mix(in srgb, var(--ecosystem-pale) 62%, white);
+  border-left: 0;
+  border-radius: .7rem;
+  padding: .8rem .9rem;
+}
+
+.container[data-mode='atlas'] .editorialList strong {
+  font-size: .96rem;
+  line-height: 1.42;
+}
+
+@media (max-width: 72rem) {
+  .container[data-mode='atlas'] .introduction .prose {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .container[data-mode='atlas'] .introduction .prose > p + p {
+    border-left: 0;
+    border-top: 1px solid color-mix(in srgb, var(--ecosystem-accent) 22%, transparent);
+    padding-left: 0;
+    padding-top: 1.25rem;
+  }
+
+  .container[data-mode='atlas'] .chapter,
+  .container[data-mode='atlas'] .chapter:nth-child(n) {
+    display: block;
+    grid-column: 1 / -1;
+  }
+
+  .container[data-mode='atlas'] .chapter:nth-child(even) .chapterHeader,
+  .container[data-mode='atlas'] .chapter:nth-child(even) .chapterBody {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .container[data-mode='atlas'] .chapterHeader,
+  .container[data-mode='atlas'] .chapterVisual {
+    min-height: clamp(22rem, 58vw, 30rem);
+  }
+}
+
+@media (max-width: 48rem) {
+  .container[data-mode='atlas'] .contentNavigation {
+    display: none;
+  }
+
+  .container[data-mode='atlas'] .chapterList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .container[data-mode='atlas'] .chapter,
+  .container[data-mode='atlas'] .chapter:nth-child(n) {
+    grid-column: auto;
+  }
+}
+
 .emptyState {
   color: rgb(21 52 67 / 68%);
   font-size: 1.1rem;
@@ -782,6 +1506,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .heroVisual img,
+  .subsection,
+  .subsectionVisual img,
   .contentNavigation a,
   .linkCollection a,
   .actionClosure > a {
@@ -789,6 +1515,8 @@
   }
 
   .hero:hover .heroVisual img,
+  .subsection:hover,
+  .subsection:hover .subsectionVisual img,
   .contentNavigation a:hover,
   .contentNavigation a:focus-visible {
     transform: none;
@@ -801,5 +1529,371 @@
   .container[data-mode='evidence'] .introduction,
   .container[data-mode='supporters'] .introduction {
     border-color: var(--ecosystem-ink);
+  }
+}
+
+/* ══ Mục lĩnh vực: biểu tượng theo chủ đề ══════════════════════════════════
+   Danh sách lĩnh vực trước đây chỉ có một vạch dọc bên trái và chữ, nên các mục
+   trông như nhau và mắt không có chỗ bám khi lướt. Thêm ô biểu tượng bắt theo
+   chủ đề của chính mục đó, màu riêng cho từng nhóm chủ đề. */
+.editorialList li {
+  align-items: start;
+  column-gap: 0.85rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+/* `.editorialList span` ở trên đặt `display:block` và màu chữ phụ, cùng độ ưu
+   tiên 0-2-0 — ô biểu tượng cũng là một `span` nên phải bám đủ sâu mới đè được,
+   nếu không nó mất cả màu nhấn lẫn cách xếp bên trong. */
+.editorialList .topicIcon {
+  align-items: center;
+  background: color-mix(in srgb, var(--topic-accent, #0b6a72) 12%, white);
+  border-radius: 0.6rem;
+  color: var(--topic-accent, #0b6a72);
+  display: inline-flex;
+  grid-row: 1 / span 2;
+  height: 2.35rem;
+  justify-content: center;
+  margin-top: 0.1rem;
+  transition: transform 0.35s var(--ease-out);
+  width: 2.35rem;
+}
+
+.editorialList li:hover .topicIcon {
+  transform: scale(1.08);
+}
+
+.editorialList li .topicDetail {
+  grid-column: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorialList .topicIcon {
+    transition: none;
+  }
+  .editorialList li:hover .topicIcon {
+    transform: none;
+  }
+}
+
+/* Doan van than bai can deu hai bien tren toan trang. Cac quy tac phia tren
+   dat `text-align: start` cho dung nhung doan nay, va chung thang quy tac
+   `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
+.introduction > .prose > p,
+.chapterBody > .prose > p,
+.container[data-mode='network'] .subsection .prose p {
+  text-align: justify;
+}
+
+/* Image-led child pages and safer Vietnamese wrapping. */
+.heroVisual,
+.figure,
+.subsectionVisual {
+  min-width: 0;
+}
+
+.contentNavigation > p,
+.chapterNumber {
+  text-align: left;
+}
+
+.container[data-mode='network'] .introduction,
+.container[data-mode='community'] .introduction {
+  background:
+    radial-gradient(circle at 96% 8%, color-mix(in srgb, var(--ecosystem-accent) 10%, transparent), transparent 30%),
+    color-mix(in srgb, var(--ecosystem-pale) 72%, white);
+  border-radius: 0 1.25rem 1.25rem 0;
+  padding-block: clamp(1.5rem, 3vw, 2.75rem);
+  padding-right: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.container[data-mode='community'] .chapterBody > .prose > .editorialList {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.container[data-mode='community'] .subsection {
+  overflow: hidden;
+  padding-top: 0;
+}
+
+.container[data-mode='community'] .subsection .editorialList {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.container[data-mode='community'] .subsectionVisual,
+.container[data-mode='network'] .subsectionVisual,
+.container[data-mode='supporters'] .subsectionVisual {
+  margin: 0 calc(-1 * clamp(1.25rem, 2.5vw, 2rem)) clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.editorialList :global([data-vietnamese-phrase]),
+.subsection :global([data-vietnamese-phrase]) {
+  white-space: normal !important;
+}
+
+.subsection h3 {
+  min-height: 2.3em;
+}
+
+@media (min-width: 100rem) {
+  .container[data-mode='community'] .chapterBody > .prose > .editorialList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .container[data-mode='community'] .subsection .editorialList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .container[data-mode='community'] .chapterBody > .prose > .editorialList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .subsection h3 {
+    min-height: 0;
+  }
+}
+
+/* Pass cuối: khóa nhịp chữ sau mọi biến thể network/community/supporters. */
+.container[data-mode='community'] .chapterBody > .prose > .editorialList[data-count='5'] {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.container[data-mode='community'] .chapterBody > .prose > .editorialList[data-count='5'] > li {
+  grid-column: span 2;
+}
+
+.container[data-mode='community'] .chapterBody > .prose > .editorialList[data-count='5'] > li:nth-last-child(-n + 2) {
+  grid-column: span 3;
+}
+
+@media (max-width: 72rem) {
+  .container[data-mode='community'] .chapterBody > .prose > .editorialList[data-count='5'] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .container[data-mode='community'] .chapterBody > .prose > .editorialList[data-count='5'] > li,
+  .container[data-mode='community'] .chapterBody > .prose > .editorialList[data-count='5'] > li:nth-last-child(-n + 2) {
+    grid-column: auto;
+  }
+
+  .container[data-mode='community'] .chapterBody > .prose > .editorialList[data-count='5'] > li:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.introduction .prose > p:first-child {
+  font-size: clamp(1.25rem, 1.85vw, 1.65rem);
+  line-height: 1.56;
+  max-width: 66ch;
+}
+
+.introduction .prose > p,
+.chapterBody > .prose > p,
+.subsection .prose > p {
+  hyphens: none;
+  letter-spacing: normal;
+  overflow-wrap: normal;
+  text-align: justify;
+  text-align-last: left;
+  text-wrap: pretty;
+  word-spacing: normal;
+}
+
+.prose p :global([data-vietnamese-phrase]) {
+  white-space: normal !important;
+}
+
+@media (max-width: 48rem) {
+  .container[data-mode='community'] .chapterBody > .prose > .editorialList[data-count='5'] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .container[data-mode='community'] .chapterBody > .prose > .editorialList[data-count='5'] > li,
+  .container[data-mode='community'] .chapterBody > .prose > .editorialList[data-count='5'] > li:nth-last-child(-n + 2) {
+    grid-column: auto;
+  }
+
+  .introduction .prose > p,
+  .chapterBody > .prose > p,
+  .subsection .prose > p {
+    text-align: left;
+  }
+}
+
+/* Last Network/Community pass: keep the removed sidebar from leaving a ghost
+   column and override older split-chapter compatibility rules. */
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .editorialStage,
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapter {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterHeader {
+  position: static;
+  top: auto;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction > .prose > p,
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterBody > .prose > p,
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .subsection .prose > p {
+  text-align: justify;
+  text-align-last: left;
+}
+
+@media (max-width: 72rem) {
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapter {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 48rem) {
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction > .prose > p,
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterBody > .prose > p,
+  .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .subsection .prose > p {
+    text-align: justify;
+    text-align-last: left;
+  }
+}
+
+.container[data-mode='network'] .chapterLead,
+.container[data-mode='supporters'] .chapterLead,
+.container[data-mode='community'] .chapterLead,
+.container[data-mode='network'] .prose p,
+.container[data-mode='supporters'] .prose p,
+.container[data-mode='community'] .prose p,
+.container[data-mode='network'] .editorialList strong,
+.container[data-mode='supporters'] .editorialList strong,
+.container[data-mode='community'] .editorialList strong,
+.container[data-mode='network'] .editorialList span:not(.topicIcon),
+.container[data-mode='supporters'] .editorialList span:not(.topicIcon),
+.container[data-mode='community'] .editorialList span:not(.topicIcon) {
+  font-size: clamp(18px, 1.5vw, 20px);
+}
+
+.container[data-mode='network'] :global([data-vietnamese-phrase]),
+.container[data-mode='supporters'] :global([data-vietnamese-phrase]),
+.container[data-mode='community'] :global([data-vietnamese-phrase]) {
+  white-space: nowrap !important;
+}
+
+@media (max-width: 48rem) {
+  .container[data-mode='network'] .chapterLead,
+  .container[data-mode='supporters'] .chapterLead,
+  .container[data-mode='community'] .chapterLead,
+  .container[data-mode='network'] .introduction .prose > p,
+  .container[data-mode='supporters'] .introduction .prose > p,
+  .container[data-mode='community'] .introduction .prose > p,
+  .container[data-mode='network'] .chapterBody > .prose > p,
+  .container[data-mode='supporters'] .chapterBody > .prose > p,
+  .container[data-mode='community'] .chapterBody > .prose > p,
+  .container[data-mode='network'] .subsection .prose > p,
+  .container[data-mode='supporters'] .subsection .prose > p,
+  .container[data-mode='community'] .subsection .prose > p {
+    font-size: 18px;
+    text-align: justify;
+    text-align-last: left;
+  }
+}
+
+/* Per-screenshot alignment pass: centered content blocks, equal network copy. */
+.container[data-mode='community'] .introduction .prose,
+.container[data-mode='supporters'] .introduction .prose,
+.container[data-mode='community'] .chapterTitle,
+.container[data-mode='supporters'] .chapterTitle,
+.container[data-mode='network'] .chapterTitle {
+  margin-inline: auto;
+  max-width: 78rem;
+  width: 100%;
+}
+
+.container[data-mode='community'] .introduction .prose > p:first-child,
+.container[data-mode='supporters'] .introduction .prose > p:first-child {
+  margin-inline: auto;
+  width: 100%;
+}
+
+.container[data-mode='network'] .introduction .prose {
+  align-items: stretch;
+  margin-inline: auto;
+  max-width: 86rem;
+}
+
+.container[data-mode='network'] .introduction .prose > p {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: clamp(1.5rem, 2.5vw, 2.4rem);
+}
+
+.container[data-mode='network'] .introduction .prose > p:first-child {
+  background: color-mix(in srgb, var(--ecosystem-pale) 42%, white);
+  border-left: .22rem solid color-mix(in srgb, var(--ecosystem-accent) 58%, transparent);
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .actionClosure {
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  text-align: center;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .actionClosure h2 {
+  margin-inline: auto;
+  max-width: 24ch;
+  text-wrap: balance;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .actionClosure > a {
+  justify-self: center;
+}
+
+.container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .actionClosure p {
+  text-align: center;
+  text-align-last: center;
+  width: 100%;
+}
+
+/* Every Community child page shares one centred chapter axis. This keeps the
+   icon, chapter number and title together instead of leaving later chapters
+   (notably “02 / Các nội dung trọng tâm”) aligned to the old left grid. */
+.container[data-mode='community'] .chapterTitle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.container[data-mode='community'] .chapterTitle h2,
+.container[data-mode='community'] .chapterLead {
+  flex-basis: 100%;
+  grid-column: 1 / -1;
+  margin-inline: auto;
+}
+
+.container[data-mode='community'] .chapterTitle h2 {
+  max-width: 22ch;
+  text-align: center;
+}
+
+.container[data-mode='community'] .chapterLead {
+  max-width: 72ch;
+  text-align: justify;
+  text-align-last: left;
+}
+
+@media (max-width: 72rem) {
+  .container[data-mode='network'] .introduction .prose > p {
+    min-height: 0;
   }
 }

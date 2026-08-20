@@ -89,6 +89,22 @@
   object-fit: cover;
 }
 
+.projectLogo {
+  background: rgb(255 255 255 / 95%);
+  bottom: 1.25rem;
+  box-shadow: 0 .8rem 2.5rem rgb(8 47 67 / 18%);
+  height: 5.25rem;
+  left: 1.25rem;
+  position: absolute;
+  width: min(12rem, calc(100% - 2.5rem));
+  z-index: 1;
+}
+
+.projectLogo img {
+  object-fit: contain;
+  padding: .75rem 1rem;
+}
+
 .visualFallback {
   align-content: end;
   background: color-mix(in srgb, var(--detail-pale) 82%, white);
@@ -98,6 +114,17 @@
   inset: 0;
   padding: clamp(1.35rem, 3vw, 2.25rem);
   position: absolute;
+}
+
+.fallbackIcon {
+  align-items: center;
+  background: color-mix(in srgb, var(--detail-accent) 12%, white);
+  color: var(--detail-accent);
+  display: inline-flex;
+  height: 5rem;
+  justify-content: center;
+  margin-bottom: auto;
+  width: 5rem;
 }
 
 .visualFallback p {
@@ -310,4 +337,12 @@
   .bodyColumn > div > p {
     text-align: left;
   }
+}
+
+/* Doan van than bai can deu hai bien tren toan trang. Cac quy tac phia tren
+   dat `text-align: start` cho dung nhung doan nay, va chung thang quy tac
+   `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
+.lede,
+.bodyColumn > div > p {
+  text-align: justify;
 }

@@ -83,11 +83,31 @@
 
 .topLevelLinkRow > a {
   color: var(--color-ink);
-  font-size: 0.88rem;
+  font-size: 0.94rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
   padding-inline: clamp(0.4rem, 0.55vw, 0.62rem);
   text-decoration: none;
+  text-transform: uppercase;
   white-space: nowrap;
+}
+
+/* Trang đang mở được đánh dấu bằng màu và một gạch chân, thay cho chấm tròn:
+   màu khác biệt đọc được ngay ở tầm liếc, chấm thì không. */
+.topLevelLinkRow > a[aria-current='page'] {
+  color: var(--color-teal);
+  position: relative;
+}
+
+.topLevelLinkRow > a[aria-current='page']::after {
+  background: var(--color-orange);
+  border-radius: 999px;
+  bottom: 0.42rem;
+  content: '';
+  height: 2px;
+  left: clamp(0.4rem, 0.55vw, 0.62rem);
+  position: absolute;
+  right: clamp(0.4rem, 0.55vw, 0.62rem);
 }
 
 .topLevelLinkRow > a:hover,
@@ -324,6 +344,10 @@
 .footerGroup li a{color:#c8d8e3;display:block;font-size:.9rem;line-height:1.35;padding:.24rem 0;text-decoration:none}
 .footerGroup li a:hover{color:#fff;transform:translateX(.2rem)}
 .footerBottom{align-items:center;border-top:1px solid rgb(255 255 255 / 16%);color:#8fa9b9;display:flex;font-size:.84rem;justify-content:space-between;padding-top:1.5rem}
+.footerContact{align-items:center;border-bottom:1px solid rgb(255 255 255 / 16%);color:#c8d8e3;display:grid;font-style:normal;gap:.7rem 1.5rem;grid-template-columns:minmax(18rem,1fr) repeat(3,max-content);padding-block:1.25rem 1.5rem}
+.footerContact strong{color:#fff;font-family:var(--font-heading);font-size:1.05rem;font-weight:600}
+.footerContact a{align-items:center;color:#c8d8e3;display:inline-flex;gap:.45rem;text-decoration:none}
+.footerContact a:hover,.footerContact a:focus-visible{color:#fff}
 .footerPartners{display:flex;gap:.75rem}
 .footerBottom a{color:#c8d8e3;text-decoration:none}
 .footerBottom a:hover{color:#fff}
@@ -344,6 +368,9 @@
   .footerDirectory{gap:2rem}
   .footerBottom{align-items:flex-start;flex-direction:column;gap:1rem}
 }
+
+@media (max-width:70rem){.footerContact{align-items:start;grid-template-columns:1fr 1fr}.footerContact strong{grid-column:1/-1}}
+@media (max-width:48rem){.footerContact{grid-template-columns:1fr}}
 
 /* Wider, calmer footer rhythm with compact two-column service directories.
    Width comes from the shared frame tokens in globals.css — do not restate it. */
@@ -1525,19 +1552,19 @@
   width: 1px;
 }
 
-/* Orange dot marking the current section. */
+/* Workbook feedback: active item uses color, not a dot. */
 .topLevelLinkRow > a[aria-current='page'] {
-  color: #0b3455;
+  background: #e8f3f3;
+  color: var(--color-teal);
 }
 
 .topLevelLinkRow > a[aria-current='page']::before {
-  background: var(--color-orange);
-  border-radius: 50%;
-  content: '';
-  flex: none;
-  height: 0.42rem;
-  margin-right: 0.45rem;
-  width: 0.42rem;
+  content: none;
+}
+
+.topLevelLinkRow > a {
+  letter-spacing: .045em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 76rem) {
@@ -1690,4 +1717,54 @@
   }
 
   .affiliationCreditLabel { font-size: .66rem; }
+}
+
+/* ── Thanh điều hướng: chia đều + trạng thái đang mở đọc bằng màu ───────────
+   Trước đây các mục dồn về trái nên bên phải thanh trắng thừa một khoảng lớn,
+   còn trang đang mở chỉ được đánh dấu bằng gạch chân mảnh 2px — ở tầm liếc gần
+   như không thấy. Nay các mục trải đều hết bề ngang thanh, và mục đang mở
+   chuyển hẳn sang màu cam thương hiệu, bỏ cả gạch chân lẫn nền xanh nhạt. */
+.desktopList {
+  gap: 0;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.desktopItem {
+  flex: 1 1 auto;
+}
+
+.topLevelLinkRow {
+  justify-content: center;
+}
+
+.topLevelLinkRow > a[aria-current='page'] {
+  background: transparent;
+  color: #f15b2a;
+}
+
+.topLevelLinkRow > a[aria-current='page']::after,
+.topLevelLinkRow > a[aria-current='page']::before {
+  content: none;
+}
+
+/* Mũi caret của nhóm đang mở đi theo màu chữ để cả cụm là một khối cam. */
+.desktopItem:has(> .topLevelLinkRow > a[aria-current='page']) .submenuTrigger {
+  color: #f15b2a;
+}
+
+/* Từ 1216px (nơi tên thương hiệu ẩn đi) tới 1400px, tám mục cộng lại vẫn dài
+   hơn thanh nên chúng tràn ra ngoài mép thẻ trắng. Siết chữ và đệm ngang lại
+   trong quãng đó để cả tám nằm gọn, thay vì cắt bớt mục. */
+@media (max-width: 87.5rem) {
+  .topLevelLinkRow > a {
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+    padding-inline: 0.3rem;
+  }
+
+  .submenuTrigger {
+    margin-left: -0.2rem;
+    min-width: 1.4rem;
+  }
 }

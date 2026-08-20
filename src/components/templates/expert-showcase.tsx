@@ -1,8 +1,9 @@
 'use client';
 
 import { ArrowRight } from '@phosphor-icons/react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { expertFixtures } from '@/content/fixtures/experts';
 import { bindPhrases } from '@/lib/vietnamese-text';
@@ -10,11 +11,6 @@ import { bindPhrases } from '@/lib/vietnamese-text';
 import styles from './expert-showcase.module.css';
 
 const AUTO_ADVANCE_MS = 4600;
-
-const hiddenPortraitIds = new Set([
-  'expert-hoang-van-viet',
-  'expert-tran-anh-khang',
-]);
 
 const mockPortraitClasses = [
   styles.mockPortraitOne,
@@ -32,8 +28,8 @@ const experts = expertFixtures.map((expert, index) => {
 
   return {
     description: expertise[0] ?? expert.tags[0] ?? 'Kết nối tri thức',
-    hidePortrait: hiddenPortraitIds.has(expert.id),
     id: expert.id,
+    image: expert.image,
     mockPortraitClass: mockPortraitClasses[index % mockPortraitClasses.length],
     path: expert.path,
     title: expert.title,
@@ -45,9 +41,20 @@ const initialExpertIndex = Math.max(
   experts.findIndex((expert) => expert.id === 'expert-tran-anh-khang'),
 );
 
+/** Quãng kéo ngang (px) tương ứng một bước chuyển chuyên gia. */
+const DRAG_STEP_PX = 90;
+
 export function ExpertShowcase() {
   const [activeIndex, setActiveIndex] = useState(initialExpertIndex);
   const [isPaused, setIsPaused] = useState(false);
+  /* Kéo trái/phải bằng chuột hoặc ngón tay. Băng vẫn tự chạy như cũ; trong lúc
+     kéo thì tạm dừng, thả ra chạy tiếp. `origin` là mốc tính quãng đã kéo, dời
+     theo mỗi bước để kéo dài đổi được nhiều chuyên gia. */
+  const dragRef = useRef<{ origin: number; pointerId: number } | null>(null);
+
+  const step = (direction: number) => {
+    setActiveIndex((current) => (current + direction + experts.length) % experts.length);
+  };
 
   useEffect(() => {
     if (isPaused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -68,9 +75,10 @@ export function ExpertShowcase() {
       data-scroll-motion-ignore
       id="chuyen-gia-noi-bat"
     >
-      <h2 className={styles.srOnly} id="expert-showcase-title">
-        Mạng lưới tri thức GISA
-      </h2>
+      <header className={styles.heading}>
+        <h2 id="expert-showcase-title">Đội ngũ chuyên gia</h2>
+        <Link href="/chuyen-gia">Xem toàn bộ đội ngũ <ArrowRight aria-hidden="true" size={20} weight="bold" /></Link>
+      </header>
 
       <div
         className={styles.shell}
@@ -83,6 +91,27 @@ export function ExpertShowcase() {
         onFocusCapture={() => setIsPaused(true)}
         onPointerEnter={() => setIsPaused(true)}
         onPointerLeave={() => setIsPaused(false)}
+        onPointerDown={(event) => {
+          if (event.pointerType === 'mouse' && event.button !== 0) return;
+          dragRef.current = { origin: event.clientX, pointerId: event.pointerId };
+          setIsPaused(true);
+        }}
+        onPointerMove={(event) => {
+          const drag = dragRef.current;
+          if (!drag || drag.pointerId !== event.pointerId) return;
+          const distance = event.clientX - drag.origin;
+          if (Math.abs(distance) < DRAG_STEP_PX) return;
+          step(distance < 0 ? 1 : -1);
+          drag.origin = event.clientX;
+        }}
+        onPointerUp={() => {
+          dragRef.current = null;
+          setIsPaused(false);
+        }}
+        onPointerCancel={() => {
+          dragRef.current = null;
+          setIsPaused(false);
+        }}
       >
         <div className={styles.track}>
           {experts.map((expert, expertIndex) => {
@@ -110,8 +139,13 @@ export function ExpertShowcase() {
                   type="button"
                 >
                   <span className={styles.portrait}>
-                    {expert.hidePortrait ? (
-                      <span aria-hidden="true" className={styles.emptyPortrait} />
+                    {expert.image ? (
+                      <Image
+                        alt={expert.image.alt}
+                        fill
+                        sizes="(max-width: 48rem) 92vw, (max-width: 68rem) 23vw, 20vw"
+                        src={expert.image.src}
+                      />
                     ) : (
                       <span
                         aria-label={`Ảnh minh họa cho ${expert.title}`}

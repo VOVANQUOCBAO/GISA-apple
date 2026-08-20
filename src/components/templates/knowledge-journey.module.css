@@ -5,6 +5,16 @@
   padding: clamp(4.5rem, 8vw, 8rem) 0 clamp(5rem, 8vw, 8.5rem);
 }
 
+/* Giữ nhịp chữ tự nhiên, tránh khoảng trắng lớn do quy tắc justify toàn trang. */
+.headLead,
+.copy p {
+  hyphens: none;
+  letter-spacing: normal;
+  text-align: left;
+  text-wrap: pretty;
+  word-spacing: normal;
+}
+
 .head {
   margin: 0 auto clamp(3.5rem, 6vw, 6rem);
   max-width: min(100% - 2rem, 80rem);
@@ -223,5 +233,43 @@
 @media (prefers-reduced-motion: reduce) {
   .link svg {
     transition: none;
+  }
+}
+
+/* Homepage rhythm pass: preserve six-step narrative, remove oversized air
+   around heading and reduce image height slightly on wide screens. */
+.section {
+  padding: clamp(4.25rem, 5vw, 5.5rem) 0 clamp(4.75rem, 5.5vw, 6rem);
+}
+
+.head {
+  margin-bottom: clamp(2.75rem, 3.8vw, 4rem);
+}
+
+.stack {
+  gap: clamp(1rem, 1.6vw, 1.5rem);
+}
+
+.media {
+  aspect-ratio: 1.72 / 1;
+  min-height: clamp(22rem, 32vw, 30rem);
+}
+
+@media (max-width: 48rem) {
+  .section {
+    padding: 3.75rem 0 4.5rem;
+  }
+
+  .head {
+    margin-bottom: 2.75rem;
+  }
+
+  .stack {
+    gap: 3.25rem;
+  }
+
+  .media {
+    aspect-ratio: 1.45 / 1;
+    min-height: 0;
   }
 }

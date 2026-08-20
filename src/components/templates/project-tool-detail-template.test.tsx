@@ -43,22 +43,20 @@ describe('ProjectToolDetailTemplate', () => {
     expect(fallback).toHaveTextContent('Huấn luyện và cố vấn');
     expect(fallback).toHaveTextContent('4 công cụ trong nhóm');
     expect(fallback).not.toHaveTextContent(/METHOD|PROJECT/);
-    expect(within(breadcrumbs).getByRole('link', { name: 'Tư vấn' })).toHaveAttribute(
-      'href',
-      '/tu-van',
-    );
-    expect(within(breadcrumbs).getByRole('link', { name: 'Công cụ tư vấn' })).toHaveAttribute(
-      'href',
-      '/tu-van/cong-cu',
+    expect(within(breadcrumbs).getByRole('link', { name: 'Trang chủ' })).toHaveAttribute('href', '/');
+    expect(within(breadcrumbs).queryByText('Tư vấn')).not.toBeInTheDocument();
+    expect(within(breadcrumbs).getByText(record.title).closest('li')).toHaveAttribute(
+      'aria-current',
+      'page',
     );
   });
 
   test.each([
-    ['/nghien-cuu/du-an/trade4sd', 'Nghiên cứu', '/nghien-cuu', 'Dự án nghiên cứu'],
-    ['/tu-van/du-an/du-an-mau', 'Tư vấn', '/tu-van', 'Dự án tư vấn'],
+    ['/nghien-cuu/du-an/trade4sd'],
+    ['/tu-van/du-an/du-an-mau'],
   ] as const)(
-    'keeps the section root in breadcrumbs for %s',
-    (path, rootLabel, rootHref, parentLabel) => {
+    'keeps a compact breadcrumb for %s',
+    (path) => {
       render(
         <ProjectToolDetailTemplate
           record={makeRecord({ kind: 'project', path })}
@@ -66,14 +64,33 @@ describe('ProjectToolDetailTemplate', () => {
       );
       const breadcrumbs = screen.getByRole('navigation', { name: 'Đường dẫn' });
 
-      expect(within(breadcrumbs).getByRole('link', { name: rootLabel })).toHaveAttribute(
-        'href',
-        rootHref,
-      );
-      expect(within(breadcrumbs).getByRole('link', { name: parentLabel })).toHaveAttribute(
-        'href',
-        path.startsWith('/tu-van/') ? '/tu-van/du-an' : '/nghien-cuu/du-an',
+      expect(within(breadcrumbs).getByRole('link', { name: 'Trang chủ' })).toHaveAttribute('href', '/');
+      expect(within(breadcrumbs).getByText('Hồ sơ kiểm thử').closest('li')).toHaveAttribute(
+        'aria-current',
+        'page',
       );
     },
   );
+
+  test('renders the project image and verified program logo together', () => {
+    render(
+      <ProjectToolDetailTemplate
+        record={makeRecord({
+          image: {
+            alt: 'Minh họa dự án TRADE4SD',
+            height: 1024,
+            src: '/images/project-trade4sd.png',
+            width: 1536,
+          },
+          kind: 'project',
+          metadata: { logo: '/icons/logos/02_trade4sd.png' },
+          path: '/nghien-cuu/du-an/trade4sd',
+          title: 'TRADE4SD',
+        })}
+      />,
+    );
+
+    expect(screen.getByRole('img', { name: 'Minh họa dự án TRADE4SD' })).toBeVisible();
+    expect(document.querySelector('[class*="projectLogo"] img')).toBeInTheDocument();
+  });
 });

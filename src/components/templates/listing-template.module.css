@@ -8,27 +8,17 @@
 }
 
 .toolbar {
-  align-items: center;
-  background:
-    radial-gradient(circle at 8% 0%, rgb(255 255 255 / 92%), transparent 34%),
-    linear-gradient(135deg, var(--section-pale, #f3f8f7), color-mix(in srgb, var(--section-accent-soft, #e9f1f2) 72%, white));
-  border: 1px solid rgb(25 72 106 / 10%);
-  border-radius: clamp(1.1rem, 2.5vw, 1.6rem);
-  display: grid;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  grid-template-columns: minmax(14rem, 0.38fr) minmax(0, 0.62fr);
+  background: transparent;
+  border-bottom: 1px solid rgb(25 72 106 / 13%);
+  border-top: 1px solid rgb(25 72 106 / 13%);
+  display: block;
   margin-bottom: clamp(3rem, 6vw, 5rem);
-  overflow: hidden;
-  padding: clamp(1.4rem, 3vw, 2.25rem);
+  padding-block: clamp(1rem, 2vw, 1.4rem);
   position: relative;
 }
 
 .toolbar::after {
-  background: var(--section-accent, var(--color-teal));
-  content: '';
-  inset: 0 auto 0 0;
-  position: absolute;
-  width: 0.25rem;
+  content: none;
 }
 
 .toolbarCopy {
@@ -50,11 +40,10 @@
 }
 
 .filterPanel {
-  background: rgb(255 255 255 / 72%);
-  border: 1px solid rgb(255 255 255 / 90%);
-  border-radius: 1rem;
+  background: transparent;
+  border: 0;
   min-width: 0;
-  padding: clamp(0.9rem, 2vw, 1.25rem);
+  padding: 0;
 }
 
 .filterPanel > section {
@@ -385,4 +374,12 @@
   .itemNumber {
     border-color: var(--color-navy);
   }
+}
+
+/* Doan van than bai can deu hai bien tren toan trang. Cac quy tac phia tren
+   dat `text-align: start` cho dung nhung doan nay, va chung thang quy tac
+   `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
+.featuredCard > article > p:last-of-type,
+.supportingCard > article > p:last-of-type {
+  text-align: justify;
 }

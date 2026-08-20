@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, test } from 'vitest';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
+import { afterEach, describe, expect, test, vi } from 'vitest';
 
 import { getHomePageModel } from '@/content/home';
 import { getContentRepository } from '@/content/repositories';
@@ -19,13 +19,19 @@ const byFullText = (value: string) => (_: string, element: Element | null) =>
   ![...element.children].some((child) => child.textContent === value);
 
 describe('HomeTemplate', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
+  });
+
   test('renders the confirmed evidence-led homepage structure', async () => {
     const model = await getHomePageModel(getContentRepository());
     render(<HomeTemplate model={model} />);
 
     expect(document.querySelector('h1')?.textContent).toMatch(
-      /TRI THỨC GIẢI PHÁPTÁC ĐỘNG BỀN VỮNG/,
+      /KIẾN TẠO TRI THỨCLAN TỎA GIÁ TRỊ/,
     );
+    expect(screen.queryAllByRole('button', { name: /Hiển thị slide/ })).toHaveLength(0);
     expect(screen.queryByText('GISA trong 60 giây')).not.toBeInTheDocument();
     expect(screen.getByText(byFullText('Kiến trúc tri thức'))).toBeVisible();
     expect(
@@ -34,6 +40,19 @@ describe('HomeTemplate', () => {
       }),
     ).toBeVisible();
     expect(screen.getByRole('heading', { name: 'GIÁ TRỊ NỀN TẢNG — RISES' })).toBeVisible();
+    const missionSection = document.querySelector('#su-menh-gisa');
+    expect(missionSection).toBeInTheDocument();
+    expect(within(missionSection as HTMLElement).getAllByRole('listitem')).toHaveLength(6);
+    for (const title of [
+      'Nghiên cứu và phát triển tri thức liên ngành',
+      'Thúc đẩy đổi mới sáng tạo và tư duy đột phá',
+      'Chuyển giao tri thức và công nghệ ứng dụng',
+      'Kết nối và hợp tác toàn cầu',
+      'Ứng dụng khoa học – công nghệ vào thực tiễn',
+      'Kiến tạo giá trị và lan tỏa tác động xã hội',
+    ]) {
+      expect(within(missionSection as HTMLElement).getByRole('heading', { name: title })).toBeVisible();
+    }
     expect(
       screen.queryByRole('heading', { name: 'GÓC NHÌN & NGHIÊN CỨU MỚI' }),
     ).not.toBeInTheDocument();
@@ -49,10 +68,11 @@ describe('HomeTemplate', () => {
     ).not.toBeInTheDocument();
     expect(screen.getByText(byFullText('GISA kết nối cam kết phát triển bền vững với năng lực nghiên cứu, tư vấn và triển khai thực tiễn.'))).toBeVisible();
     expect(screen.getByRole('heading', { name: 'TRI THỨC TẠO CHUYỂN BIẾN' })).toBeVisible();
-    expect(document.querySelectorAll('#phat-trien-ben-vung img')).toHaveLength(5);
-    expect(document.querySelectorAll('#phat-trien-ben-vung h3')).toHaveLength(5);
-    expect(screen.getAllByRole('link', { name: /Tìm hiểu thêm về/ })).toHaveLength(5);
-    expect(screen.getByRole('heading', { name: 'Mạng lưới tri thức GISA' })).toBeInTheDocument();
+    expect(document.querySelectorAll('#phat-trien-ben-vung img')).toHaveLength(6);
+    expect(document.querySelectorAll('#phat-trien-ben-vung h3')).toHaveLength(6);
+    expect(screen.getAllByRole('link', { name: /Tìm hiểu thêm về/ })).toHaveLength(6);
+    expect(screen.getByRole('heading', { name: 'Mạng lưới & Hợp tác' })).toBeVisible();
+    expect(screen.getByRole('heading', { name: 'Đội ngũ chuyên gia' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Xem hồ sơ ThS. NCS.TS Trần Anh Khang' })).toHaveAttribute(
       'href',
       '/chuyen-gia/tran-anh-khang',
@@ -63,6 +83,68 @@ describe('HomeTemplate', () => {
     expect(screen.getByRole('link', { name: 'Khám phá dự án VALUMICS' })).toBeVisible();
     expect(screen.getByRole('link', { name: 'Khám phá dự án STRENGTH2FOOD' })).toBeVisible();
     expect(screen.getByRole('link', { name: 'Khám phá dự án BRITISH COUNCIL' })).toBeVisible();
+    expect(screen.getByText('5.000+')).toBeVisible();
+    expect(screen.getByText('400+')).toBeVisible();
+    expect(screen.getByText('200+')).toBeVisible();
+    expect(screen.getByText('30+')).toBeVisible();
+  });
+
+  /* jsdom không có `IntersectionObserver` lẫn `requestAnimationFrame` thật, nên
+     bài này tự dựng cả hai để chạy đúng vòng đời: dựng xong hiện số cuối, cuộn
+     tới thì tụt về 0 rồi bò lên lại. */
+  test('counts the impact metrics up from zero once the strip scrolls into view', async () => {
+    const callbacks: IntersectionObserverCallback[] = [];
+    class StubIntersectionObserver {
+      constructor(callback: IntersectionObserverCallback) {
+        callbacks.push(callback);
+      }
+      disconnect() {}
+      observe() {}
+      unobserve() {}
+    }
+
+    const frames: FrameRequestCallback[] = [];
+    let now = 0;
+
+    vi.stubGlobal('IntersectionObserver', StubIntersectionObserver);
+    vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => {
+      frames.push(callback);
+      return frames.length;
+    });
+    vi.stubGlobal('cancelAnimationFrame', () => {});
+    vi.spyOn(performance, 'now').mockImplementation(() => now);
+
+    const model = await getHomePageModel(getContentRepository());
+    render(<HomeTemplate model={model} />);
+
+    expect(screen.getAllByText('0+')).toHaveLength(4);
+
+    act(() => {
+      for (const callback of callbacks) {
+        callback(
+          [{ isIntersecting: true } as IntersectionObserverEntry],
+          {} as IntersectionObserver,
+        );
+      }
+    });
+
+    // Nửa quãng: số đã rời 0 nhưng chưa tới đích.
+    now = 800;
+    act(() => {
+      for (const frame of frames.splice(0)) frame(now);
+    });
+    expect(screen.queryByText('5.000+')).not.toBeInTheDocument();
+    expect(screen.queryAllByText('0+')).toHaveLength(0);
+
+    // Hết quãng: đúng bốn con số thật.
+    now = 2000;
+    act(() => {
+      for (const frame of frames.splice(0)) frame(now);
+    });
+    expect(screen.getByText('5.000+')).toBeVisible();
+    expect(screen.getByText('400+')).toBeVisible();
+    expect(screen.getByText('200+')).toBeVisible();
+    expect(screen.getByText('30+')).toBeVisible();
   });
 
   test('connects service gateways and capability cards to their real destinations', async () => {
@@ -86,6 +168,14 @@ describe('HomeTemplate', () => {
     for (const [name, href] of expectedLinks) {
       expect(screen.getByRole('link', { name })).toHaveAttribute('href', href);
     }
+    expect(screen.getByRole('link', { name: /Tầm nhìn/ })).toHaveAttribute(
+      'href',
+      '/gioi-thieu/cau-chuyen-gisa#tam-nhin',
+    );
+    expect(screen.getByRole('link', { name: /Sứ mệnh/ })).toHaveAttribute(
+      'href',
+      '/gioi-thieu/cau-chuyen-gisa#su-menh',
+    );
     expect(screen.queryByRole('link', { name: 'Tải hồ sơ năng lực' })).not.toBeInTheDocument();
   });
 
@@ -129,13 +219,7 @@ describe('HomeTemplate', () => {
     expect(screen.getByRole('link', { name: /Xem khóa học Multi-channel & Effective Sales/ })).toBeVisible();
   });
 
-  /*
-    "Đề nghị hợp tác" dưới dải logo đối tác là lối vào duy nhất của bảng trao đổi.
-    Trigger cũ nằm trong khối quy trình tư vấn đã gỡ, và suốt thời gian đó dialog
-    cùng phần bẫy phím Escape trong `home-template.tsx` không ai với tới được.
-    Test này giữ lối vào đó tồn tại.
-  */
-  test('opens the consultation dialog from the partner call to action', async () => {
+  test('opens the consultation dialog from the journey call to action', async () => {
     const model = await getHomePageModel(getContentRepository());
     render(<HomeTemplate model={model} />);
 
@@ -152,34 +236,14 @@ describe('HomeTemplate', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  test('keeps the partner marquee duplicated for a seamless loop', async () => {
+  test('moves the network chapter into the journey and removes the duplicate partner marquee', async () => {
     const model = await getHomePageModel(getContentRepository());
     const { container } = render(<HomeTemplate model={model} />);
 
-    expect(
-      screen.getByRole('heading', { name: 'KẾT NỐI TOÀN CẦU' }),
-    ).toBeInTheDocument();
-    expect(container.querySelector('#doi-tac')).toHaveTextContent(
-      'GISA kết nối các trường đại học, viện nghiên cứu và tổ chức phát triển toàn cầu.',
-    );
-
-    // Hai hàng chạy ngược chiều, mỗi hàng có bản sao thứ hai để vòng lặp không hở
-    // mối, nên tổng cộng bốn danh sách.
-    const partnerLists = container.querySelectorAll('#doi-tac ul');
-    expect(partnerLists).toHaveLength(4);
-    // 48 logo trong `public/icons/logos` chia đôi đều: mỗi hàng 24.
-    expect(partnerLists[0]?.querySelectorAll('li')).toHaveLength(24);
-    expect(partnerLists[2]?.querySelectorAll('li')).toHaveLength(24);
-    expect(partnerLists[1]?.querySelectorAll('li')).toHaveLength(
-      partnerLists[0]?.querySelectorAll('li').length ?? 0,
-    );
-    expect(partnerLists[3]?.querySelectorAll('li')).toHaveLength(
-      partnerLists[2]?.querySelectorAll('li').length ?? 0,
-    );
-    expect(partnerLists[1]).toHaveAttribute('aria-hidden', 'true');
-    expect(partnerLists[3]).toHaveAttribute('aria-hidden', 'true');
-    expect(document.querySelector('[autoplay]')).toBeNull();
-    expect(document.querySelector('[aria-roledescription="carousel"]')).toBeNull();
+    const chapters = container.querySelectorAll('#phat-trien-ben-vung ol[aria-label] > li');
+    expect(chapters).toHaveLength(6);
+    expect(chapters[4]).toHaveTextContent('Mạng lưới & Hợp tác');
+    expect(container.querySelector('#doi-tac')).toBeNull();
   });
 
   test('keeps perpetual motion independent while revealing static content', async () => {
@@ -193,26 +257,18 @@ describe('HomeTemplate', () => {
     expect(journey?.querySelectorAll('[data-scroll-motion]')).toHaveLength(0);
     expect(
       container.querySelectorAll('#phat-trien-ben-vung ol[aria-label] > li'),
-    ).toHaveLength(5);
+    ).toHaveLength(6);
     expect(
       container.querySelectorAll('#kien-truc [data-scroll-motion="rises-card"]'),
     ).toHaveLength(5);
     expect(
       container.querySelector('#kien-truc [data-scroll-motion="reveal"]'),
     ).toBeInTheDocument();
-    // Logo lanes own a perpetual CSS loop. Scroll-linked markers would park each
-    // logo until the section enters the viewport and fight the track transform.
-    expect(
-      container.querySelectorAll('#doi-tac [data-scroll-motion="partner-card"]'),
-    ).toHaveLength(0);
     expect(
       container.querySelectorAll(
         '#du-an-nghien-cuu-trong-diem [data-scroll-motion="item"]',
       ),
     ).toHaveLength(4);
-    expect(
-      container.querySelector('#doi-tac [data-scroll-motion="reveal"]'),
-    ).toBeInTheDocument();
     expect(
       container.querySelector(
         '#du-an-nghien-cuu-trong-diem [data-scroll-motion="reveal"]',
@@ -221,11 +277,16 @@ describe('HomeTemplate', () => {
     expect(
       container.querySelectorAll('nav[aria-label="Lối tắt dịch vụ"] [data-scroll-motion="item"]'),
     ).toHaveLength(6);
+    // Bốn dự án, mỗi dự án một ảnh nền và một logo tổ chức đè lên.
     expect(
       container.querySelectorAll('#du-an-nghien-cuu-trong-diem a img'),
-    ).toHaveLength(4);
+    ).toHaveLength(8);
     expect(
-      container.querySelector('#doi-tac [data-scroll-motion="partner-cta"]'),
-    ).toBeInTheDocument();
+      container.querySelectorAll('#du-an-nghien-cuu-trong-diem a img[alt^="Logo "]'),
+    ).toHaveLength(4);
+    expect(screen.getByRole('button', { name: /Đề nghị hợp tác/ }).parentElement).toHaveAttribute(
+      'data-scroll-motion',
+      'section',
+    );
   });
 });

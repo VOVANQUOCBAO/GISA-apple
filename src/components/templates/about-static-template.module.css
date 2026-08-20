@@ -105,11 +105,22 @@
 
 .storyChapterHeading span {
   color: color-mix(in srgb, var(--section-secondary) 72%, var(--section-ink) 28%);
-  display: block;
+  display: flex;
   font-size: 0.76rem;
   font-weight: 800;
+  gap: 0.65rem;
+  align-items: center;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
+}
+
+.storyChapterMark svg {
+  color: var(--section-accent);
+  flex: 0 0 auto;
+}
+
+.storyChapterMark small {
+  font: inherit;
 }
 
 .storyChapterHeading h2,
@@ -182,6 +193,7 @@
 .sloganPanel {
   border-radius: var(--about-radius);
   min-width: 0;
+  scroll-margin-top: 7rem;
 }
 
 .visionColumn {
@@ -234,11 +246,15 @@
   padding: clamp(1.25rem, 3vw, 2rem);
 }
 
-.missionList li > span {
-  color: color-mix(in srgb, var(--section-secondary) 72%, var(--section-ink) 28%);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+.missionIcon {
+  align-items: center;
+  background: color-mix(in srgb, var(--section-accent) 10%, white);
+  border-radius: 0.8rem;
+  color: var(--section-accent);
+  display: inline-flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
 }
 
 .missionList h3 {
@@ -305,7 +321,8 @@
 
 .sloganPanel p > span {
   display: block;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .sloganPanel p > span + span {
@@ -317,6 +334,10 @@
   display: grid;
   gap: clamp(3rem, 8vw, 8rem);
   grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.28fr);
+}
+
+.risesLayout {
+  scroll-margin-top: 7rem;
 }
 
 .risesIntro > div > p {
@@ -340,8 +361,20 @@
   border-top: 1px solid color-mix(in srgb, var(--color-navy) 15%, transparent);
   display: grid;
   gap: clamp(1.25rem, 3vw, 2.5rem);
-  grid-template-columns: 4rem minmax(0, 1fr);
+  grid-template-columns: 3rem 3.5rem minmax(0, 1fr);
   padding: 1.5rem 0;
+}
+
+.valueIcon {
+  align-items: center;
+  align-self: center;
+  background: color-mix(in srgb, var(--section-accent) 10%, white);
+  border-radius: 0.75rem;
+  color: var(--section-accent);
+  display: inline-flex;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
 }
 
 .valueSequence li:first-child {
@@ -447,9 +480,31 @@
 }
 
 .fieldCard h2 {
+  align-items: center;
+  display: flex;
   font-size: clamp(2rem, 4vw, 3.7rem);
+  gap: 0.75rem;
   margin: 0;
 }
+
+/* Mỗi lĩnh vực nhận màu riêng qua `--field-color`; viền và biểu tượng lấy màu đó
+   nên sáu thẻ đọc ra khác nhau ngay từ xa. */
+.fieldCard {
+  border-color: color-mix(in srgb, var(--field-color, var(--section-accent)) 26%, transparent);
+}
+
+.fieldIcon {
+  align-items: center;
+  background: color-mix(in srgb, var(--field-color, var(--section-accent)) 12%, white);
+  border-radius: 999px;
+  color: var(--field-color, var(--section-accent));
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
+
 
 .fieldCard > p {
   color: rgb(20 49 64 / 74%);
@@ -470,7 +525,7 @@
 }
 
 .fieldCard li {
-  border-top: 1px solid color-mix(in srgb, var(--section-accent) 20%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--field-color, var(--section-accent)) 28%, transparent);
   color: var(--color-navy);
   font-size: 0.88rem;
   line-height: 1.5;
@@ -571,7 +626,16 @@
   }
 
   .sloganPanel p {
-    font-size: clamp(0.78rem, 3.5vw, 1rem);
+    font-size: clamp(0.92rem, 4.2vw, 1.08rem);
+  }
+
+  .valueSequence li {
+    gap: 0.75rem;
+    grid-template-columns: 2.65rem 2.5rem minmax(0, 1fr);
+  }
+
+  .valueSequence strong {
+    font-size: 2.2rem;
   }
 
   .storyPromiseStep {
@@ -673,5 +737,640 @@
 @media (prefers-reduced-motion: reduce) {
   .nextPage a {
     transition: none;
+  }
+}
+
+/* --- Tầm nhìn · Sứ mệnh · Khẩu hiệu -------------------------------------
+   Ba khối trước đây không cùng kiểu chữ: phần Tầm nhìn và Khẩu hiệu chạy font
+   tiêu đề (có chân) trong khi Sứ mệnh chạy font nội dung, đúng như góp ý "font
+   chữ của tầm nhìn chưa thống nhất". Nay cả ba dùng chung font nội dung, chỉ
+   khác cỡ chữ và nền để phân vai. Bỏ `max-width: 38ch` vì trong cột hẹp nó cắt
+   dòng quá sớm, chữ so le. */
+.visionPanel blockquote {
+  font-family: var(--font-body);
+  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  line-height: 1.72;
+  margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
+  max-width: none;
+}
+
+.sloganPanel {
+  background: linear-gradient(135deg, #0b5f66 0%, #0a4f57 62%, #0b3f49 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+.sloganPanel::after {
+  background: radial-gradient(circle at 50% 50%, rgb(242 138 44 / 32%), transparent 70%);
+  content: '';
+  height: 18rem;
+  pointer-events: none;
+  position: absolute;
+  right: -6rem;
+  top: -7rem;
+  width: 18rem;
+}
+
+.sloganPanel h2 {
+  color: rgb(255 255 255 / 72%);
+  font-family: var(--font-body);
+  position: relative;
+}
+
+.sloganPanel p {
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: clamp(1.3rem, 1.9vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  position: relative;
+}
+
+/* Cột Tầm nhìn/Khẩu hiệu rộng thêm một cột lưới: ở 4/12 các cụm từ tiếng Việt
+   (giữ nguyên dòng theo `bindPhrases`) làm dòng ngắt quá sớm, chữ so le. Đồng
+   thời cột kéo cao bằng khối Sứ mệnh nên không còn khoảng hụt dưới đáy. */
+.missionPanel {
+  grid-column: span 7;
+}
+
+.visionColumn {
+  align-content: stretch;
+  grid-column: span 5;
+}
+
+@media (max-width: 60rem) {
+  .missionPanel,
+  .visionColumn {
+    grid-column: 1 / -1;
+  }
+
+  .visionColumn {
+    align-content: start;
+  }
+}
+
+/* Khẩu hiệu nay là dải riêng chạy hết bề ngang, đặt dưới Sứ mệnh và Tầm nhìn.
+   Cột Tầm nhìn kéo cao bằng khối Sứ mệnh, chữ neo ở trên, phần dưới để ánh
+   sáng cam làm điểm nhìn thay vì khoảng trắng hụt. */
+.visionLayout > .sloganPanel {
+  align-items: center;
+  display: grid;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  grid-column: 1 / -1;
+  grid-template-columns: auto minmax(0, 1fr);
+  margin-top: 0.25rem;
+  padding: clamp(2rem, 3.6vw, 3rem) clamp(1.6rem, 3.4vw, 3.25rem);
+}
+
+.visionLayout > .sloganPanel h2 {
+  align-self: center;
+  border-right: 1px solid rgb(255 255 255 / 22%);
+  padding-right: clamp(1rem, 2.5vw, 2.5rem);
+  writing-mode: horizontal-tb;
+}
+
+.visionLayout > .sloganPanel p {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.visionPanel {
+  align-content: start;
+  display: grid;
+  overflow: hidden;
+  position: relative;
+}
+
+.visionPanel::after {
+  background: radial-gradient(circle at 50% 50%, rgb(242 138 44 / 26%), transparent 70%);
+  bottom: -7rem;
+  content: '';
+  height: 20rem;
+  pointer-events: none;
+  position: absolute;
+  right: -7rem;
+  width: 20rem;
+}
+
+.visionPanel > h2,
+.visionPanel blockquote {
+  position: relative;
+}
+
+@media (max-width: 60rem) {
+  .visionLayout > .sloganPanel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .visionLayout > .sloganPanel h2 {
+    border-right: 0;
+    padding-right: 0;
+  }
+}
+
+/* Tầm nhìn giữ chiều cao tự nhiên: khi kéo bằng khối Sứ mệnh (cao gấp bốn lần)
+   thì nền xanh trống gần hết panel. */
+.visionLayout {
+  align-items: start;
+}
+
+.visionColumn {
+  align-content: start;
+}
+
+.visionPanel::after {
+  bottom: -9rem;
+  right: -9rem;
+}
+
+/* Ba khối xếp dọc, mỗi khối chiếm hết bề ngang: Tầm nhìn - Sứ mệnh - Khẩu hiệu.
+   Bố cục hai cột trước đây để trống gần nửa trang bên phải khối Sứ mệnh. */
+.visionLayout {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.visionLayout > .visionColumn,
+.visionLayout > .missionPanel,
+.visionLayout > .sloganPanel {
+  grid-column: 1 / -1;
+}
+
+.visionLayout > .visionColumn {
+  display: grid;
+}
+
+.visionPanel {
+  align-items: center;
+  column-gap: clamp(1.5rem, 4vw, 4rem);
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.34fr) minmax(0, 1fr);
+  padding: clamp(2rem, 3.6vw, 3.25rem) clamp(1.75rem, 3.4vw, 3.25rem);
+}
+
+.visionPanel blockquote {
+  margin-top: 0;
+  max-width: 74ch;
+}
+
+.missionList {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 70rem) {
+  .missionList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 60rem) {
+  .visionPanel {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1.25rem;
+  }
+
+  .missionList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Sáu lĩnh vực trước đây chỉ khác nhau ở biểu tượng và viền 26%, nhìn từ xa
+   vẫn là sáu thẻ cùng màu. Nay mỗi thẻ có dải màu trên đầu, nền pha nhẹ màu
+   lĩnh vực và tiêu đề cùng tông - đúng góp ý "màu sắc khác nhau cho lĩnh vực
+   khác nhau theo gam màu chủ đạo của GISA". */
+.fieldCard {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--field-color, var(--section-accent)) 9%, white) 0%,
+    color-mix(in srgb, var(--field-color, var(--section-accent)) 3%, white) 62%,
+    white 100%
+  );
+  border-top: 0.28rem solid var(--field-color, var(--section-accent));
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  transition: box-shadow 320ms var(--ease-out, ease), transform 320ms var(--ease-out, ease);
+}
+
+.fieldCard:hover {
+  box-shadow: 0 1.1rem 2.5rem color-mix(in srgb, var(--field-color, var(--section-accent)) 18%, transparent);
+  transform: translateY(-0.2rem);
+}
+
+.fieldCard h2 {
+  color: color-mix(in srgb, var(--field-color, var(--section-accent)) 72%, var(--color-navy) 28%);
+}
+
+.fieldCard ul li {
+  border-top: 1px solid color-mix(in srgb, var(--field-color, var(--section-accent)) 22%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fieldCard,
+  .fieldCard:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ══ Đoạn văn căn đều hai biên ═════════════════════════════════════════════
+   Các đoạn dài trong trang chạy so le bên phải, đọc ra là biên trái thẳng còn
+   biên phải răng cưa. Căn đều hai biên; `text-wrap: pretty` giữ cho dòng cuối
+   không rơi lại một từ, và cắt âm tiết theo tiếng Việt để khoảng cách chữ
+   không bị kéo giãn quá đà. */
+.storyChapterBody > p,
+.missionIntro,
+.missionList p,
+.risesIntro > p,
+.fieldsIntro,
+.fieldCard p,
+.visionPanel > p {
+  hyphens: auto;
+  text-align: justify;
+  text-wrap: pretty;
+}
+
+/* ══ Triết lý cốt lõi: ba vế, ba dòng ══════════════════════════════════════
+   Hai gạch nối đã bỏ khỏi nội dung; ba vế nay xuống dòng theo đúng chỗ ngắt ý,
+   nên vế nào ra vế đó thay vì dính thành một câu dài. */
+.storyChapterBody blockquote p {
+  text-align: left;
+  text-wrap: balance;
+  white-space: pre-line;
+}
+
+/* ══ Sáu cam kết: ô biểu tượng màu đặc, mỗi cam kết một màu ════════════════ */
+.missionList li {
+  --section-accent: var(--mission-accent, #006b75);
+}
+
+.missionIcon {
+  background: color-mix(in srgb, var(--mission-accent, #006b75) 90%, #05233a);
+  border-radius: 0.85rem;
+  box-shadow: 0 0.35rem 0.8rem color-mix(in srgb, var(--mission-accent, #006b75) 30%, transparent);
+  color: #fff;
+}
+
+/* Đoạn dẫn RISES nằm trong một `div`, và quy tắc `.risesIntro > div > p` ở trên
+   đã đặt `text-align: start` — phải bám đúng đường dẫn đó mới đè được. */
+.risesIntro > div > p {
+  hyphens: auto;
+  text-align: justify;
+  text-wrap: pretty;
+}
+
+/* ══ Triết lý cốt lõi: dải riêng ═══════════════════════════════════════════
+   Ba vế xếp thành ba dòng, mỗi dòng trôi lên lệch nhau một nhịp ngắn khi dải
+   lọt vào khung nhìn — đủ để mắt đọc theo thứ tự ba vế chứ không nuốt cả khối. */
+.philosophyBand {
+  align-items: center;
+  background: linear-gradient(105deg, #0b5f66 0%, #0a4f57 58%, #0b3f49 100%);
+  border-radius: 1rem;
+  color: #fff;
+  display: grid;
+  gap: clamp(1.25rem, 2.6vw, 2.25rem);
+  grid-template-columns: auto minmax(0, 1fr);
+  margin-top: clamp(2.5rem, 4vw, 3.75rem);
+  overflow: hidden;
+  padding: clamp(1.75rem, 3.2vw, 2.85rem) clamp(1.5rem, 3vw, 3rem);
+  position: relative;
+}
+
+.philosophyBand::after {
+  background: radial-gradient(circle at 50% 50%, rgba(242, 138, 44, 0.32), transparent 68%);
+  content: '';
+  height: 26rem;
+  pointer-events: none;
+  position: absolute;
+  right: -7rem;
+  top: -10rem;
+  width: 26rem;
+}
+
+.philosophyMark {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  display: inline-flex;
+  height: 4.5rem;
+  justify-content: center;
+  width: 4.5rem;
+}
+
+.philosophyBand blockquote {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.philosophyBand blockquote p {
+  display: grid;
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  gap: 0.2rem;
+  line-height: 1.3;
+  margin: 0;
+  text-align: left;
+}
+
+.philosophyBand blockquote p > span {
+  animation: philosophy-line-rise 620ms var(--ease-out) both;
+  animation-delay: calc(var(--philosophy-index) * 110ms);
+  display: block;
+}
+
+@keyframes philosophy-line-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.6rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.philosophyBand cite {
+  color: rgba(255, 255, 255, 0.72);
+  display: block;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+@media (max-width: 48rem) {
+  .philosophyBand {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .philosophyMark {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .philosophyBand blockquote p > span {
+    animation: none;
+  }
+}
+
+/* Doan van than bai can deu hai bien tren toan trang. Cac quy tac phia tren
+   dat `text-align: start` cho dung nhung doan nay, va chung thang quy tac
+   `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
+.storyChapterBody > p,
+.missionIntro,
+.missionList p,
+.risesIntro > div > p,
+.valueSequence p,
+.pillarGrid p,
+.fieldsIntro,
+.fieldCard > p {
+  hyphens: none;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+/* Các cụm tiêu đề của hành trình có màu riêng: xanh ngọc cho bối cảnh, cam
+   cho động lực và lam cho phần giới thiệu. Nền mềm giúp icon nổi bật hơn mà
+   không làm đứt mạch đọc của đường thời gian. */
+.storyChapterMark {
+  align-items: center;
+  background: color-mix(in srgb, var(--story-accent, var(--section-accent)) 12%, white);
+  border: 1px solid color-mix(in srgb, var(--story-accent, var(--section-accent)) 28%, transparent);
+  border-radius: 999px;
+  color: var(--story-accent, var(--section-accent));
+  display: inline-flex;
+  gap: 0.5rem;
+  padding: 0.42rem 0.7rem 0.42rem 0.46rem;
+}
+
+.storyChapterMark svg {
+  color: var(--story-accent, var(--section-accent));
+}
+
+.storyChapter::before {
+  background: var(--story-accent, var(--section-accent));
+  box-shadow: 0 0 0 0.22rem color-mix(in srgb, var(--story-accent, var(--section-accent)) 14%, transparent);
+}
+
+.storyLead p,
+.sloganPanel p,
+.nextPage p {
+  text-align: left;
+}
+
+/* Final editorial pass: shared title scale, readable line length and aligned
+   baselines across the Vision / Mission / RISES sections. */
+.visionPanel,
+.missionPanel {
+  column-gap: clamp(2rem, 5vw, 5rem);
+  display: grid;
+  grid-template-columns: minmax(12rem, .34fr) minmax(0, 1fr);
+}
+
+.visionPanel > h2,
+.missionPanel > h2,
+.risesIntro h2 {
+  font-size: clamp(2.9rem, 4.7vw, 4.6rem);
+  letter-spacing: -.045em;
+  line-height: .98;
+}
+
+.visionPanel blockquote,
+.missionIntro,
+.risesIntro > div > p {
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.76;
+  max-width: 66ch;
+  text-align: justify;
+  text-align-last: left;
+}
+
+.visionPanel blockquote,
+.missionIntro {
+  margin: 0;
+}
+
+.missionList {
+  grid-column: 1 / -1;
+  margin-top: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+.missionList li {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  min-height: 14.5rem;
+}
+
+.missionList h3 {
+  font-size: clamp(1.3rem, 1.75vw, 1.6rem);
+  line-height: 1.18;
+  min-height: 2.36em;
+}
+
+.missionList p {
+  line-height: 1.7;
+  max-width: 48ch;
+  text-align: left;
+}
+
+.risesIntro {
+  gap: clamp(3rem, 7vw, 7rem);
+  grid-template-columns: minmax(18rem, .78fr) minmax(0, 1.22fr);
+}
+
+.risesIntro h2 {
+  max-width: 8.5ch;
+  text-wrap: balance;
+}
+
+.risesIntro > div > p {
+  margin-top: 1.75rem;
+  max-width: 48ch;
+}
+
+.valueSequence li {
+  align-items: center;
+  padding-block: 1.65rem;
+}
+
+.valueSequence h3 {
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.valueSequence p {
+  line-height: 1.68;
+  max-width: 58ch;
+  text-align: left;
+}
+
+.sloganPanel p {
+  line-height: 1.34;
+  text-wrap: balance;
+}
+
+@media (max-width: 60rem) {
+  .visionPanel,
+  .missionPanel,
+  .risesIntro {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1.5rem;
+  }
+
+  .missionList {
+    margin-top: 1.25rem;
+  }
+
+  .risesIntro h2 {
+    max-width: 11ch;
+  }
+}
+
+@media (max-width: 48rem) {
+  .visionPanel > h2,
+  .missionPanel > h2,
+  .risesIntro h2 {
+    font-size: clamp(2.55rem, 12vw, 3.65rem);
+  }
+
+  .visionPanel blockquote,
+  .missionIntro,
+  .risesIntro > div > p {
+    text-align: left;
+  }
+
+  .missionList h3,
+  .missionList li {
+    min-height: 0;
+  }
+}
+
+/* Đồng bộ ba khối Triết lý - Tầm nhìn - Sứ mệnh thành cùng một hệ biên tập.
+   Chúng đứng liền nhau trong hành trình giới thiệu nên dùng chung nền sáng,
+   vạch nhấn và tỷ lệ cột; nội dung vẫn giữ nguyên cấu trúc riêng. */
+.philosophyBand,
+.visionPanel,
+.missionPanel {
+  background:
+    radial-gradient(circle at 92% 12%, color-mix(in srgb, var(--section-secondary) 11%, transparent), transparent 27%),
+    color-mix(in srgb, var(--section-pale) 76%, white);
+  border: 1px solid color-mix(in srgb, var(--section-accent) 20%, transparent);
+  border-left: .32rem solid var(--section-accent);
+  border-radius: 1.25rem;
+  box-shadow: 0 1.1rem 2.8rem color-mix(in srgb, var(--section-ink) 8%, transparent);
+  color: var(--color-navy);
+  overflow: hidden;
+  padding: clamp(2rem, 4vw, 3.75rem);
+  position: relative;
+}
+
+.philosophyBand {
+  align-items: center;
+  grid-template-columns: minmax(12rem, .34fr) minmax(0, 1fr);
+}
+
+.philosophyBand::after,
+.visionPanel::after {
+  display: none;
+}
+
+.philosophyMark {
+  background: color-mix(in srgb, var(--section-accent) 10%, white);
+  border: 1px solid color-mix(in srgb, var(--section-accent) 22%, transparent);
+  border-radius: .9rem;
+  color: var(--section-accent);
+}
+
+.philosophyBand blockquote p,
+.visionPanel > h2,
+.missionPanel > h2 {
+  color: var(--color-navy);
+}
+
+.philosophyBand blockquote p {
+  font-family: var(--font-heading);
+  font-size: clamp(1.45rem, 2.25vw, 2.15rem);
+  font-weight: 600;
+  line-height: 1.28;
+}
+
+.philosophyBand cite {
+  color: color-mix(in srgb, var(--section-accent) 72%, var(--color-navy));
+}
+
+.visionPanel blockquote {
+  color: rgb(20 49 64 / 78%);
+}
+
+.fieldsIntro {
+  hyphens: none;
+  text-align: justify;
+  text-align-last: left;
+}
+
+@media (max-width: 60rem) {
+  .philosophyBand {
+    align-items: start;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 48rem) {
+  .philosophyBand,
+  .visionPanel,
+  .missionPanel {
+    border-left-width: .22rem;
+    padding: 1.5rem;
+  }
+
+  .fieldsIntro {
+    text-align: left;
   }
 }

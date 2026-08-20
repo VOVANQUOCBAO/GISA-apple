@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import styles from '../../components/forms/form.module.css';
 
 export const metadata: Metadata = buildMetadata({
-  description: 'Chính sách mô tả cách các biểu mẫu GISA xử lý dữ liệu ngay trong trình duyệt ở giai đoạn hiện tại.',
+  description: 'Chính sách mô tả cách GISA tiếp nhận và xử lý dữ liệu được gửi qua các biểu mẫu trên website.',
   path: '/chinh-sach-quyen-rieng-tu',
   title: 'Chính sách quyền riêng tư',
 });
@@ -21,34 +21,37 @@ export default function PrivacyPolicyPage() {
         ]}
       />
       <header className={styles.pageHeader}>
-        <p>Phạm vi hiện tại</p>
+        <p>Minh bạch dữ liệu</p>
         <h1>Chính sách quyền riêng tư</h1>
       </header>
-      <div aria-label="Cách biểu mẫu xử lý dữ liệu hiện tại">
+      <div aria-label="Cách GISA xử lý dữ liệu biểu mẫu">
         <p>
-          Trang này mô tả đúng phạm vi xử lý dữ liệu của các biểu mẫu đang có trên
-          website GISA. Các biểu mẫu hiện chỉ kiểm tra thông tin ngay trong trình
-          duyệt; dữ liệu không được gửi tới GISA và không được lưu trên máy chủ của GISA.
+          Khi bạn chủ động gửi biểu mẫu, website chuyển thông tin tới kênh tiếp nhận
+          được GISA cấu hình để phản hồi yêu cầu tư vấn, đăng ký, liên hệ hoặc hợp tác.
+          Nếu kênh này chưa sẵn sàng, website sẽ báo lỗi và giữ dữ liệu trên biểu mẫu
+          để bạn thử lại; website không hiển thị thông báo tiếp nhận giả.
         </p>
 
-        <h2>Dữ liệu xuất hiện trong biểu mẫu</h2>
+        <h2>Dữ liệu được tiếp nhận</h2>
         <p>
           Tùy loại biểu mẫu, bạn có thể nhập họ tên, email, số điện thoại, tổ chức,
-          nội dung trao đổi hoặc khóa học quan tâm. Những thông tin này chỉ được dùng
-          để kiểm tra trường bắt buộc và định dạng trong phiên trình duyệt hiện tại.
+          chức vụ, ngành nghề, nội dung trao đổi hoặc khóa học quan tâm. GISA chỉ dùng
+          dữ liệu này để xử lý yêu cầu bạn đã gửi và liên hệ lại khi cần thiết.
         </p>
 
-        <h2>Không có thao tác gửi trực tuyến</h2>
+        <h2>Cách truyền và lưu trữ</h2>
         <p>
-          Nút kiểm tra thông tin không gửi yêu cầu qua mạng và không tạo hồ sơ tiếp
-          nhận tại GISA. Bạn có thể rời trang mà không thực hiện bước kiểm tra.
+          Dữ liệu được truyền qua kết nối HTTPS tới kênh tiếp nhận do GISA lựa chọn.
+          Website không lưu bản sao lâu dài trong mã nguồn hoặc trình duyệt. Thời gian
+          lưu trữ và quyền truy cập tại kênh tiếp nhận được giới hạn theo nhu cầu xử lý
+          yêu cầu và quy định áp dụng của GISA.
         </p>
 
-        <h2>Khi phạm vi xử lý thay đổi</h2>
+        <h2>Quyền của bạn và kênh liên hệ</h2>
         <p>
-          Nếu website bắt đầu tiếp nhận dữ liệu trực tuyến, chính sách này cần được
-          cập nhật trước khi thu thập để nêu rõ đơn vị chịu trách nhiệm, mục đích xử
-          lý, thời gian lưu trữ và kênh liên hệ liên quan.
+          Bạn có thể đề nghị kiểm tra, cập nhật hoặc xóa thông tin đã gửi bằng cách
+          liên hệ info@gisa.edu.vn hoặc 0818 711 799. GISA sẽ cập nhật chính sách này
+          khi mục đích, đơn vị tiếp nhận hoặc thời gian lưu trữ thay đổi đáng kể.
         </p>
       </div>
     </main>

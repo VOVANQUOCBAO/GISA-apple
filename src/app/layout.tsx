@@ -26,14 +26,16 @@ const PageViewTransition = (
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://gisa.edu.vn'),
+  applicationName: 'GISA',
   icons: {
     icon: '/brand/gisa-logo-temp.png',
   },
   title: {
     default: 'GISA',
-    template: '%s | GISA'
+    template: '%s | GISA',
   },
-  description: 'Website nội dung của GISA.'
+  description:
+    'GISA kết nối tri thức liên ngành để thúc đẩy phát triển bền vững.',
 };
 
 export default function RootLayout({

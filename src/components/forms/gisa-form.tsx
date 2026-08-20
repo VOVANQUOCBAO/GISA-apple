@@ -2,10 +2,14 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { ApiFormAdapter } from './api-form-adapter';
 import { createFormSchema, type FormErrors, type FormFieldName } from './form-schema';
 import { FormField } from './form-field';
-import { SimulatedFormAdapter } from './simulated-form-adapter';
-import type { FormKind, FormSubmissionAdapter } from './form-types';
+import type {
+  FormKind,
+  FormSubmissionAdapter,
+  FormSubmissionResult,
+} from './form-types';
 import styles from './form.module.css';
 
 interface GisaFormProps {
@@ -13,24 +17,25 @@ interface GisaFormProps {
   courseSlug?: string;
   kind: FormKind;
 }
-const successMessage =
-  'Đã kiểm tra thông tin. Bạn có thể rà soát lại các trường trước khi rời trang.';
 const errorMessage =
-  'Không thể hoàn tất thao tác. Vui lòng kiểm tra thông tin và thử lại.';
+  'Không thể gửi thông tin lúc này. Dữ liệu vẫn còn trên biểu mẫu để bạn thử lại.';
+const defaultAdapter = new ApiFormAdapter();
 
 function describedBy(id: string, error?: string) {
   return error ? `${id}-error` : undefined;
 }
 
 export function GisaForm({
-  adapter = new SimulatedFormAdapter(),
+  adapter = defaultAdapter,
   courseSlug,
   kind,
 }: GisaFormProps) {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isPending, setIsPending] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [result, setResult] = useState<FormSubmissionResult | null>(null);
   const summaryRef = useRef<HTMLDivElement>(null);
+  const requiresProfessionalDetails = kind !== 'khoa-hoc';
+  const requiresMessage = kind !== 'khoa-hoc';
 
   useEffect(() => {
     if (Object.keys(errors).length > 0) summaryRef.current?.focus();
@@ -38,7 +43,7 @@ export function GisaForm({
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus('idle');
+    setResult(null);
 
     const formData = new FormData(event.currentTarget);
     const parsed = createFormSchema(kind).safeParse({
@@ -47,6 +52,8 @@ export function GisaForm({
       email: formData.get('email'),
       phone: formData.get('phone'),
       organization: formData.get('organization'),
+      jobTitle: formData.get('jobTitle'),
+      industry: formData.get('industry'),
       message: formData.get('message'),
       consent: formData.get('consent') === 'on',
       website: formData.get('website'),
@@ -66,10 +73,9 @@ export function GisaForm({
     setErrors({});
     setIsPending(true);
     try {
-      const result = await adapter.submit(parsed.data);
-      setStatus(result.status === 'simulated_success' ? 'success' : 'error');
+      setResult(await adapter.submit(parsed.data));
     } catch {
-      setStatus('error');
+      setResult({ message: errorMessage, status: 'error' });
     } finally {
       setIsPending(false);
     }
@@ -128,7 +134,8 @@ export function GisaForm({
         <FormField
           error={errors.phone}
           id="phone"
-          label="Số điện thoại (không bắt buộc)"
+          label="Số điện thoại"
+          required
         >
           <input
             aria-describedby={describedBy('phone', errors.phone)}
@@ -137,14 +144,15 @@ export function GisaForm({
             id="phone"
             inputMode="tel"
             name="phone"
+            required
           />
         </FormField>
 
         <FormField
           error={errors.organization}
           id="organization"
-          label={`Tổ chức${kind === 'hop-tac' ? '' : ' (không bắt buộc)'}`}
-          required={kind === 'hop-tac'}
+          label="Tổ chức"
+          required={requiresProfessionalDetails}
         >
           <input
             aria-describedby={describedBy(
@@ -156,7 +164,40 @@ export function GisaForm({
             id="organization"
             maxLength={150}
             name="organization"
-            required={kind === 'hop-tac'}
+            required={requiresProfessionalDetails}
+          />
+        </FormField>
+
+        <FormField
+          error={errors.jobTitle}
+          id="jobTitle"
+          label="Chức vụ"
+          required={requiresProfessionalDetails}
+        >
+          <input
+            aria-describedby={describedBy('jobTitle', errors.jobTitle)}
+            aria-invalid={Boolean(errors.jobTitle)}
+            autoComplete="organization-title"
+            id="jobTitle"
+            maxLength={120}
+            name="jobTitle"
+            required={requiresProfessionalDetails}
+          />
+        </FormField>
+
+        <FormField
+          error={errors.industry}
+          id="industry"
+          label="Ngành nghề"
+          required={requiresProfessionalDetails}
+        >
+          <input
+            aria-describedby={describedBy('industry', errors.industry)}
+            aria-invalid={Boolean(errors.industry)}
+            id="industry"
+            maxLength={150}
+            name="industry"
+            required={requiresProfessionalDetails}
           />
         </FormField>
 
@@ -176,7 +217,7 @@ export function GisaForm({
           error={errors.message}
           id="message"
           label="Nội dung"
-          required
+          required={requiresMessage}
         >
           <textarea
             aria-describedby={describedBy('message', errors.message)}
@@ -184,7 +225,7 @@ export function GisaForm({
             id="message"
             maxLength={2000}
             name="message"
-            required
+            required={requiresMessage}
             rows={7}
           />
         </FormField>
@@ -203,7 +244,8 @@ export function GisaForm({
             type="checkbox"
           />
           <label htmlFor="consent">
-            Tôi xác nhận thông tin đã cung cấp là chính xác và đồng ý tiếp tục.
+            Tôi xác nhận thông tin đã cung cấp là chính xác và đồng ý để GISA
+            tiếp nhận, phản hồi yêu cầu này.
           </label>
           {errors.consent ? (
             <p className={styles.fieldError} id="consent-error">
@@ -214,15 +256,16 @@ export function GisaForm({
       </div>
 
       <button className={styles.submitButton} disabled={isPending} type="submit">
-        {isPending ? 'Đang kiểm tra…' : 'Kiểm tra thông tin'}
+        {isPending ? 'Đang gửi…' : 'Gửi thông tin'}
       </button>
 
-      <div aria-live="polite" className={styles.status} role="status">
-        {status === 'success'
-          ? successMessage
-          : status === 'error'
-            ? errorMessage
-            : null}
+      <div
+        aria-live={result?.status === 'error' ? 'assertive' : 'polite'}
+        className={styles.status}
+        data-state={result?.status}
+        role={result?.status === 'error' ? 'alert' : 'status'}
+      >
+        {result?.message ?? null}
       </div>
     </form>
   );

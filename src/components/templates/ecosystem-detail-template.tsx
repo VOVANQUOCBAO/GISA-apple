@@ -46,7 +46,7 @@ export function supportsEcosystemDetailTemplate(record: ContentRecord) {
 }
 
 function normalizeVisibleText(text: string) {
-  return text.replace(/\s*[—–]\s*/g, ' - ').replace(/\s{2,}/g, ' ').trim();
+  return text.replace(/\s{2,}/g, ' ').trim();
 }
 
 function vietnameseText(text: string) {

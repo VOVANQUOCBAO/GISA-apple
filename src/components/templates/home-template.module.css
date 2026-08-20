@@ -1528,18 +1528,28 @@
   object-fit:cover;
   transition:transform .7s var(--ease-out),filter .7s var(--ease-out);
 }
-.researchGalleryItem>span{
+/* Logo dự án nằm trên nền trắng mờ để mọi bộ logo — sẫm hay nhạt — đều đọc
+   được trên ảnh; tên dự án giữ trong aria-label của liên kết. */
+.researchGalleryLogo{
+  align-items:center;
+  background:rgba(255,255,255,.94);
+  border-radius:var(--radius-control);
   bottom:1.55rem;
-  font-family:var(--font-heading);
-  font-size:clamp(1.25rem,1.75vw,1.7rem);
-  font-weight:600;
+  display:flex;
+  justify-content:center;
   left:1rem;
-  line-height:1.1;
+  padding:.75rem 1rem;
   position:absolute;
   right:1rem;
-  text-align:center;
-  text-shadow:0 2px 12px rgba(0,0,0,.24);
   z-index:2;
+}
+/* Chiều cao cố định, chiều rộng suy ra từ tỉ lệ ảnh, nên logo cao thấp khác
+   nhau vẫn nằm trên cùng một hàng. */
+.researchGalleryLogo img{
+  height:2.6rem;
+  max-width:100%;
+  object-fit:contain;
+  width:auto;
 }
 .researchGalleryItem:focus-visible img{filter:saturate(1.06);transform:scale(1.035)}
 @media (hover:hover) and (pointer:fine){
@@ -1708,6 +1718,20 @@
   display:block;
 }
 
+/* Keep every slide decoded and stacked. Each active image holds for exactly
+   three seconds in React, then both layers crossfade through opacity together. */
+.heroMedia{background:#dce9e8;isolation:isolate}
+.heroImage{
+  opacity:0;
+  transition:opacity 800ms var(--ease-in-out);
+  will-change:opacity;
+  z-index:0;
+}
+.heroImageActive{
+  opacity:1;
+  z-index:1;
+}
+
 /* Hold animated fragments at their first keyframe while intro covers page. */
 :global(html:not([data-site-intro='complete'])) .heroKickerPhrase,
 :global(html:not([data-site-intro='complete'])) .heroCopy>h1>span,
@@ -1731,11 +1755,6 @@
   }
 }
 
-@keyframes hero-background-advance{
-  from{transform:scale(1.004)}
-  to{transform:scale(1.075)}
-}
-
 :global(html[data-site-intro='complete']) .heroKickerPhrase,
 :global(html[data-site-intro='complete']) .heroCopy>h1>span,
 :global(html[data-site-intro='complete']) .heroLead>span,
@@ -1754,11 +1773,49 @@
 :global(html[data-site-intro='complete']) .heroLead>span:nth-child(2){animation-delay:890ms}
 :global(html[data-site-intro='complete']) .heroButtons{animation-delay:1040ms}
 
-:global(html[data-site-intro='complete']) .heroImage{
-  animation:hero-background-advance 14s cubic-bezier(.2,.58,.22,1) both;
-  transform-origin:center;
-  will-change:transform;
+.visionStack article{grid-template-columns:1fr}
+
+.visionCardLink{
+  color:inherit;
+  display:block;
+  text-decoration:none;
 }
+.visionStack .visionCard .visionCardLink article{
+  align-items:center;
+  grid-template-columns:minmax(0,1fr) auto;
+  transition:background-color 220ms ease,color 220ms ease;
+}
+.visionCardLink svg{color:#006b75;transition:transform 220ms var(--ease-out)}
+.visionCardLink:hover article,.visionCardLink:focus-visible article{background:#f3f8f8}
+.visionCardLink:hover svg,.visionCardLink:focus-visible svg{transform:translateX(.25rem)}
+.visionCardLink:focus-visible{outline:3px solid #006b75;outline-offset:3px}
+
+.missionSection{
+  background:
+    radial-gradient(circle at 9% 4%,rgb(0 113 123 / 10%),transparent 27rem),
+    linear-gradient(180deg,#f7faf9 0%,#fff 100%);
+  padding-block:clamp(5rem,8vw,8rem);
+}
+.missionHeading{display:grid;gap:1.25rem;grid-template-columns:minmax(0,1.05fr) minmax(18rem,.95fr);margin-bottom:clamp(2.5rem,5vw,4.5rem)}
+.missionHeading .sectionEyebrow{grid-column:1/-1;margin:0}
+.missionHeading h2{color:#0b3455;font-size:clamp(2.7rem,4.7vw,4.8rem);font-weight:400;letter-spacing:-.035em;line-height:1;margin:0;max-width:14ch;text-wrap:balance}
+.missionHeading>p:last-child{align-self:end;color:#405469;font-size:1.08rem;line-height:1.75;margin:0;max-width:52ch;text-wrap:pretty}
+.missionGrid{display:grid;gap:1px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
+.missionGrid li{background:rgb(255 255 255 / 82%);border-top:.22rem solid var(--mission-accent,#006b75);min-width:0;padding:clamp(1.5rem,2.7vw,2.5rem);transition:background-color 240ms ease,transform 240ms var(--ease-out)}
+.missionGrid li:nth-child(2),.missionGrid li:nth-child(5){--mission-accent:#6a9f2c}
+.missionGrid li:nth-child(3),.missionGrid li:nth-child(6){--mission-accent:#f26f33}
+.missionGrid li:hover{background:#fff;transform:translateY(-.2rem)}
+.missionPictogram{align-items:center;background:color-mix(in srgb,var(--mission-accent) 10%,white);border-radius:1rem;color:var(--mission-accent);display:flex;height:4.25rem;justify-content:center;margin-bottom:2.5rem;width:4.25rem}
+.missionGrid small{color:var(--mission-accent);font-size:.72rem;font-variant-numeric:tabular-nums;font-weight:800;letter-spacing:.1em}
+.missionGrid h3{color:#0b3455;font-size:clamp(1.35rem,2vw,1.85rem);line-height:1.18;margin:1rem 0 .9rem;text-wrap:balance}
+.missionGrid p{color:#405469;line-height:1.7;margin:0;max-width:52ch;text-wrap:pretty}
+
+.journeyCta{align-items:center;background:#0b3455;color:#fff;display:flex;gap:2rem;justify-content:space-between;margin:0 auto clamp(3rem,6vw,6rem);max-width:min(calc(100% - (2 * var(--gutter))),var(--container));padding:clamp(1.4rem,2.5vw,2rem) clamp(1.5rem,3vw,3rem)}
+.journeyCta p{font-family:var(--font-heading);font-size:clamp(1.2rem,2vw,1.7rem);line-height:1.35;margin:0;max-width:46rem;text-wrap:balance}
+.journeyCta button{align-items:center;background:#f26f33;border:0;border-radius:.25rem;color:#fff;cursor:pointer;display:inline-flex;flex:0 0 auto;font:700 .9rem var(--font-body);gap:.65rem;min-height:3.25rem;padding-inline:1.3rem;text-transform:uppercase;transition:background-color 200ms ease,transform 160ms ease}
+.journeyCta button:hover,.journeyCta button:focus-visible{background:#d8491c}
+.journeyCta button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.journeyCta button:active{transform:scale(.98)}
 
 @media (prefers-reduced-motion:reduce){
   :global(html:not([data-site-intro='complete'])) .heroKickerPhrase,
@@ -1768,11 +1825,1204 @@
   :global(html[data-site-intro='complete']) .heroKickerPhrase,
   :global(html[data-site-intro='complete']) .heroCopy>h1>span,
   :global(html[data-site-intro='complete']) .heroLead>span,
-  :global(html[data-site-intro='complete']) .heroButtons,
-  :global(html[data-site-intro='complete']) .heroImage{
+  :global(html[data-site-intro='complete']) .heroButtons{
     animation:none;
     filter:none;
     opacity:1;
     transform:none;
+  }
+  :global(html[data-site-intro='complete']) .heroImage{
+    animation:none;
+    filter:none;
+    transform:none;
+    transition:none;
+  }
+}
+
+@media (max-width:48rem){
+  .aboutGrid,.aboutGrid>* ,.aboutIntro,.visionStack,.visionCard,.visionCardLink,.aboutMotto{
+    max-width:100%;
+    min-width:0;
+    width:100%;
+  }
+  .aboutIntro h2,.aboutIntro p,.visionCardLink article>div,.visionCardLink h3,.visionCardLink p{
+    min-width:0;
+    overflow-wrap:anywhere;
+    width:auto;
+  }
+  .aboutIntro h2 :global([data-vietnamese-phrase]){white-space:normal!important}
+  .visionStack .visionCard .visionCardLink article{grid-template-columns:minmax(0,1fr) auto}
+  .missionHeading{grid-template-columns:minmax(0,1fr)}
+  .missionHeading .sectionEyebrow{grid-column:auto}
+  .missionHeading h2{font-size:clamp(2.35rem,10.5vw,3.25rem);max-width:none;overflow-wrap:anywhere}
+  .missionGrid{grid-template-columns:minmax(0,1fr)}
+  .missionGrid li{padding:1.5rem 1.25rem}
+  .missionPictogram{height:3.5rem;margin-bottom:1.75rem;width:3.5rem}
+  .journeyCta{align-items:flex-start;flex-direction:column;margin-inline:var(--gutter)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .visionCardLink svg,.missionGrid li,.journeyCta button{transition:none}
+  .missionGrid li:hover,.journeyCta button:active{transform:none}
+}
+
+/* --- Khẩu hiệu: dải riêng dưới lưới giới thiệu ---------------------------
+   Trước đây khẩu hiệu nằm chung cột với Tầm nhìn/Sứ mệnh nên vừa chìm vừa
+   để lại khoảng trống lớn dưới cột phải. Nay là một dải chạy hết bề ngang,
+   đặt ngay dưới lưới, chữ lớn hơn để đọc ra ngay từ xa. */
+.aboutSection .aboutMotto{
+  align-items:center;
+  background:linear-gradient(105deg,#0b5f66 0%,#0a4f57 58%,#0b3f49 100%);
+  border-radius:1rem;
+  box-shadow:0 1.1rem 2.75rem rgba(11,53,85,.16);
+  color:#fff;
+  display:grid;
+  gap:clamp(1.5rem,3vw,2.75rem);
+  grid-template-columns:auto minmax(0,1fr) auto;
+  margin-top:clamp(2rem,3.5vw,3.25rem);
+  min-height:0;
+  overflow:hidden;
+  padding:clamp(2rem,3.6vw,3rem) clamp(1.6rem,3.4vw,3.25rem);
+  position:relative;
+  text-decoration:none;
+  transition:box-shadow 380ms var(--ease-out),transform 380ms var(--ease-out);
+  width:100%;
+}
+.aboutSection .aboutMotto::after{
+  background:radial-gradient(circle at 50% 50%,rgba(242,138,44,.34),transparent 68%);
+  content:'';
+  height:24rem;
+  pointer-events:none;
+  position:absolute;
+  right:-6rem;
+  top:-9rem;
+  width:24rem;
+}
+.aboutSection .aboutMotto:hover,
+.aboutSection .aboutMotto:focus-visible{
+  box-shadow:0 1.5rem 3.25rem rgba(11,53,85,.22);
+  transform:translateY(-.15rem);
+}
+.aboutMottoIcon{
+  align-items:center;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  display:inline-flex;
+  height:5.25rem;
+  justify-content:center;
+  width:5.25rem;
+}
+.aboutMottoText{display:grid;gap:.85rem;min-width:0}
+.aboutMottoEyebrow{
+  color:rgba(255,255,255,.72);
+  font-family:var(--font-body);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.aboutSection .aboutMotto .aboutMottoLines{
+  display:grid;
+  font-family:var(--font-heading);
+  font-size:clamp(2rem,3.4vw,3.1rem);
+  gap:.15rem;
+  line-height:1.16;
+}
+.aboutSection .aboutMotto .aboutMottoLines>span{display:block}
+.aboutSection .aboutMotto>svg{flex:0 0 auto;opacity:.9}
+
+@media (max-width:48rem){
+  .aboutSection .aboutMotto{
+    gap:1.25rem;
+    grid-template-columns:auto minmax(0,1fr);
+    padding:1.6rem 1.4rem;
+  }
+  .aboutMottoIcon{height:3.5rem;width:3.5rem}
+  .aboutSection .aboutMotto>svg{display:none}
+}
+
+/* Cột Tầm nhìn/Sứ mệnh kéo cao bằng cột nội dung bên trái: trước đây thẻ dừng
+   sớm nên nửa dưới cột phải bỏ trống. Hai mục chia đều chiều cao thẻ. */
+.aboutGrid{align-items:stretch}
+.aboutGrid>.visionStack{align-content:stretch;height:100%}
+.aboutGrid>.visionStack .visionCard{display:grid;height:100%}
+.aboutGrid>.visionStack .visionCard .visionCardLink{align-content:center;display:grid}
+.aboutGrid>.visionStack .visionCard .visionCardLink article{align-content:center;height:100%}
+
+@media (max-width:70rem){
+  .aboutGrid>.visionStack,
+  .aboutGrid>.visionStack .visionCard{height:auto}
+}
+
+/* Hai mục chia đôi chiều cao thẻ, có đường kẻ ngăn nên khoảng trắng ở giữa đọc
+   ra là hai khoang bằng nhau chứ không phải chỗ hụt nội dung. */
+.aboutGrid>.visionStack .visionCard{grid-template-rows:repeat(2,minmax(0,1fr))}
+.aboutGrid>.visionStack .visionCard .visionCardLink+.visionCardLink{border-top:1px solid #e4ebee}
+
+/* `--mission-accent` trước chỉ có giá trị dự phòng trong `border-top`, nên ở hai
+   thẻ teal (01 và 04) các `color-mix()` dùng biến này thành giá trị không hợp lệ
+   và ô biểu tượng mất hẳn nền. Khai báo biến ngay trên thẻ để cả sáu đồng bộ. */
+.missionGrid li{--mission-accent:#006b75}
+
+/* Các poster xếp chồng lệch nhau 1,25rem, nên số thứ tự 02–04 nằm đúng dải bị
+   thẻ trước che. Đẩy phần chú thích của thẻ bị chồng vào trong đúng bằng độ
+   chồng để số hiện đủ, vẫn giữ dáng xếp quạt. */
+.knowledgePoster+.knowledgePoster .knowledgePosterCaption{padding-left:2.3rem}
+
+@media (max-width:70rem){
+  .knowledgePoster+.knowledgePoster .knowledgePosterCaption{padding-left:1.05rem}
+}
+
+/* ══ Dải giới thiệu: bớt vỏ, dồn vào chữ ═══════════════════════════════════
+   Cột trái trước đây là một thẻ trắng có viền teal dày và đổ bóng, đặt trên nền
+   cũng trắng — vỏ thẻ không phân tách được gì mà chỉ thêm một lớp khung. Nay là
+   chữ chạy thẳng trên nền trang, dòng ngắn lại còn khoảng 60 ký tự nên mắt bắt
+   đầu dòng sau dễ hơn. Cột phải thôi bị kéo giãn cho bằng chiều cao cột trái,
+   vì phần giãn đó chính là hai khoảng trống lớn giữa Tầm nhìn và Sứ mệnh. */
+.aboutIntro {
+  background: transparent;
+  border-top: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.aboutIntro h2 {
+  font-size: clamp(2.2rem, 3.1vw, 2.95rem);
+  letter-spacing: -0.015em;
+  line-height: 1.14;
+  margin-bottom: 1.5rem;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+
+.aboutIntro > p:not(.eyebrow) {
+  color: #46596c;
+  font-size: 1.05rem;
+  line-height: 1.78;
+  margin-bottom: 1.15rem;
+  max-width: 62ch;
+}
+
+.aboutGrid {
+  align-items: start;
+  gap: clamp(2rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.aboutGrid > .visionStack,
+.aboutGrid > .visionStack .visionCard {
+  height: auto;
+}
+
+.aboutGrid > .visionStack .visionCard {
+  grid-template-rows: none;
+}
+
+.visionCard {
+  border: 1px solid #e2e9ed;
+  border-top: 1px solid #e2e9ed;
+  border-radius: 1rem;
+  box-shadow: 0 0.65rem 1.8rem rgba(12, 57, 91, 0.055);
+}
+
+.visionStack .visionCard .visionCardLink article {
+  gap: 1.5rem;
+  padding: clamp(1.6rem, 2.4vw, 2.1rem) clamp(1.5rem, 2.4vw, 2.1rem);
+}
+
+.visionStack h3 {
+  font-size: 1.42rem;
+  margin-bottom: 0.55rem;
+}
+
+.visionStack p {
+  color: #46596c;
+  font-size: 0.99rem;
+  line-height: 1.7;
+  max-width: 48ch;
+}
+
+@media (max-width: 70rem) {
+  .aboutGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ══ Khẩu hiệu: một dòng, đặt giữa dải ═════════════════════════════════════
+   Nhãn "KHẨU HIỆU GISA" đã bỏ, hai vế cũng gộp lại thành một dòng, nên dải chỉ
+   còn một câu duy nhất — đặt nó vào giữa, giữa biểu tượng lá và mũi tên. */
+.aboutSection .aboutMotto {
+  padding-block: clamp(1.6rem, 2.8vw, 2.35rem);
+}
+
+.aboutMottoText {
+  gap: 0;
+  justify-items: center;
+  text-align: center;
+}
+
+.aboutSection .aboutMotto .aboutMottoLines {
+  display: block;
+  font-size: clamp(1.5rem, 2.6vw, 2.35rem);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+/* ══ Sáu cam kết: cùng ngôn ngữ thẻ với các dải còn lại ════════════════════
+   Nền chuyển sắc riêng của dải này là thứ duy nhất trên trang không nằm trên
+   nền trắng chung, nên nó tự tách ra thành một mảng lạ. Bỏ nền, và thay lưới
+   dính liền 1px bằng đúng bộ thẻ mà Năng lực và Tri thức đang dùng: nền trắng,
+   viền tóc, bo góc, nhấc nhẹ khi rê chuột. */
+.missionSection {
+  background: #fff;
+}
+
+.missionHeading h2 {
+  font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  max-width: 16ch;
+}
+
+.missionGrid {
+  gap: 1.1rem;
+}
+
+.missionGrid li {
+  background: #fff;
+  border: 1px solid #d9e3e6;
+  border-radius: 0.75rem;
+  padding: clamp(1.6rem, 2.4vw, 2.15rem);
+  transition:
+    border-color 0.48s var(--ease-out),
+    box-shadow 0.48s var(--ease-out),
+    transform 0.48s var(--ease-out);
+}
+
+.missionGrid li:hover {
+  background: #fff;
+  border-color: #9fc0c5;
+  box-shadow: 0 1rem 2.4rem rgba(20, 57, 82, 0.09);
+  transform: translateY(-0.2rem);
+}
+
+.missionPictogram {
+  border-radius: 0.85rem;
+  height: 3.6rem;
+  margin-bottom: 1.5rem;
+  width: 3.6rem;
+}
+
+.missionGrid h3 {
+  font-size: clamp(1.22rem, 1.6vw, 1.45rem);
+  margin: 0.85rem 0 0.75rem;
+}
+
+.missionGrid p {
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+@media (max-width: 48rem) {
+  .missionGrid li {
+    padding: 1.5rem 1.35rem;
+  }
+  .missionPictogram {
+    height: 3.25rem;
+    margin-bottom: 1.25rem;
+    width: 3.25rem;
+  }
+}
+
+/* Dải khẩu hiệu giờ chỉ còn một dòng chữ, nhưng vòng tròn biểu tượng vẫn giữ cỡ
+   cũ nên chính nó quyết định chiều cao dải. Thu lại cho vừa dòng chữ. */
+.aboutMottoIcon {
+  height: 4rem;
+  width: 4rem;
+}
+
+/* ══ Đồng bộ với các dải còn lại ═══════════════════════════════════════════
+   Đo lại cả trang thì tiêu đề mục chạy thành một chùm quanh 52px (Năng lực 52,
+   Đội ngũ 51, Tri thức 52,5, RISES 54), riêng Giới thiệu và Sáu cam kết bị thu
+   xuống 40 và 44 — hai mục nhỏ nhất trang. Kéo cả hai về đúng chùm đó, và cho
+   giãn chữ âm giống các tiêu đề khác thay vì dương 0,01em. Thẻ cũng gom về một
+   bộ: viền #d8e1e5, bo 0,75rem, khe 1,25rem, không đổ bóng khi nằm yên. */
+.aboutIntro h2,
+.missionHeading h2 {
+  font-size: clamp(2.6rem, 4.1vw, 3.3rem);
+  letter-spacing: -0.025em;
+}
+
+.aboutIntro h2 {
+  max-width: 16ch;
+}
+
+.capabilitiesIntro h2 {
+  letter-spacing: -0.025em;
+}
+
+.visionCard,
+.missionGrid li {
+  border-color: #d8e1e5;
+  border-radius: 0.75rem;
+}
+
+.visionCard {
+  box-shadow: none;
+}
+
+.missionGrid {
+  gap: 1.25rem;
+}
+
+/* Biểu tượng duotone tự mang một lớp nền cùng màu, nên ô chứa lùi lại còn một
+   vệt màu rất nhạt — đủ giữ khối, không thành hai lớp tô chồng nhau. */
+.missionPictogram {
+  background: color-mix(in srgb, var(--mission-accent) 8%, white);
+}
+
+/* Số thứ tự chỉ cao 11,5px nên nó phải đạt tương phản 4,5:1 như mọi chữ nhỏ
+   khác. Bốn trong sáu màu nhấn — cam, lam nhạt, lục, ô-liu — sáng hơn ngưỡng
+   đó trên nền trắng, nên riêng con số dùng bản trộn sẫm của chính màu ấy. Biểu
+   tượng vẫn giữ màu gốc: nó lớn, mang tính trang trí và đã có `aria-hidden`. */
+.missionGrid small {
+  color: color-mix(in srgb, var(--mission-accent) 58%, #06243a);
+}
+
+/* ══ Vá lỗ hổng giữa hai cột giới thiệu ════════════════════════════════════
+   Trước đó tôi chặn bề rộng đoạn văn (62ch) nhưng để nguyên cột 1,15fr, nên ở
+   màn rộng cột dài 985px mà chữ chỉ chiếm 521px — thừa ra 528px trống giữa
+   trang. Thẻ Tầm nhìn/Sứ mệnh cũng thế: chữ chặn 48ch trong thẻ rộng 728px.
+   Sửa bằng cách chặn đúng cái cột chứ không chặn chữ: cột trái bằng đúng độ
+   dài dòng, cột phải lấy phần còn lại. Từ 1440px trở lên phần còn lại đủ rộng
+   cho Tầm nhìn và Sứ mệnh nằm cạnh nhau, ngăn bằng đường kẻ dọc. */
+.aboutGrid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.visionStack p {
+  max-width: none;
+}
+
+@media (min-width: 90rem) {
+  .aboutGrid {
+    grid-template-columns: minmax(0, 34rem) minmax(0, 1fr);
+  }
+}
+
+/* Hai mục chỉ nằm cạnh nhau khi cột phải đủ rộng cho mỗi mục khoảng 46 ký tự
+   một dòng; dưới ngưỡng đó xếp cạnh nhau chỉ tạo ra hai cột chữ quá hẹp. */
+@media (min-width: 108rem) {
+  .aboutGrid > .visionStack .visionCard {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .aboutGrid > .visionStack .visionCard .visionCardLink + .visionCardLink {
+    border-left: 1px solid #e4ebee;
+    border-top: 0;
+  }
+}
+
+/* Tiêu đề Cam kết tác động: bỏ câu dẫn bên phải nên lưới hai cột không còn gì
+   để giữ — chuyển thành một cột, chip và tiêu đề cùng nằm giữa dải. */
+.missionHeading {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  text-align: center;
+}
+
+.missionHeading h2 {
+  max-width: none;
+}
+
+/* ══ Dải giới thiệu, bố cục cuối ═══════════════════════════════════════════
+   Hai thẻ Tầm nhìn/Sứ mệnh ngắn hơn hai đoạn văn rất nhiều, nên khi chúng nằm
+   ở cột phải thì cột đó luôn hụt một mảng trống lớn ở dưới — kéo giãn thẻ cũng
+   chỉ dời chỗ trống vào trong thẻ. Nay dải chạy theo đúng khuôn mà Tri thức và
+   Đối tác đang dùng: tiêu đề bên trái, đoạn dẫn bên phải, rồi lưới thẻ chạy
+   hết bề ngang bên dưới. Không còn cột nào phải chờ cột kia. */
+.aboutGrid {
+  align-items: start;
+  gap: clamp(2rem, 4vw, 5rem);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
+.aboutIntro h2 {
+  margin-bottom: 0;
+  max-width: 14ch;
+}
+
+.aboutBody {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  max-width: 42rem;
+}
+
+.aboutBody p {
+  color: #46596c;
+  font-size: 1.05rem;
+  line-height: 1.78;
+  margin: 0;
+}
+
+.aboutBody .textLink {
+  margin-top: 0.35rem;
+}
+
+.aboutSection .visionStack {
+  margin-top: clamp(2.25rem, 3.5vw, 3.25rem);
+}
+
+/* `display:grid` trước đây do một quy tắc gắn với `.aboutGrid > .visionStack`
+   cấp; thẻ đã ra khỏi lưới đó nên phải tự khai báo, không thì hai mục rơi về
+   xếp khối chồng lên nhau. */
+.aboutSection .visionCard {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.aboutSection .visionCardLink + .visionCardLink {
+  border-left: 1px solid #e4ebee;
+  border-top: 0;
+}
+
+@media (max-width: 70rem) {
+  .aboutGrid {
+    align-items: start;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aboutSection .visionCard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aboutSection .visionCardLink + .visionCardLink {
+    border-left: 0;
+    border-top: 1px solid #e4ebee;
+  }
+}
+
+.aboutIntro .textLink {
+  margin-top: 1.5rem;
+}
+
+/* Biểu tượng đổi sang ô màu đặc: nét viền duotone trên nền trắng nhạt vẫn còn
+   mờ, còn khối màu nguyên với hình trắng bên trong thì nhận ra ngay và sáu màu
+   GISA đọc thành một dải rõ ràng. Màu nền trộn thêm chút mực để hình trắng nổi
+   trên cả ba sắc sáng (lam nhạt, lục, ô-liu). */
+.missionPictogram {
+  background: color-mix(in srgb, var(--mission-accent) 90%, #05233a);
+  box-shadow: 0 0.4rem 0.9rem color-mix(in srgb, var(--mission-accent) 30%, transparent);
+  color: #fff;
+}
+
+/* ══ Lối tắt dịch vụ: sáu thẻ dọc, mỗi lối một màu ═════════════════════════
+   Trước đây biểu tượng và chữ nằm ngang cùng một sắc teal, sáu thẻ chỉ khác
+   nhau ở chữ. Nay biểu tượng vào đĩa tròn màu riêng đặt trên, chữ ở dưới, và
+   một vạch ngắn cùng màu khóa chân thẻ — nhận ra lối cần đi bằng màu trước khi
+   kịp đọc chữ. */
+.gatewayInner > a {
+  align-content: center;
+  gap: 0.85rem;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  min-height: 11rem;
+  padding: 1.75rem 1rem 1.5rem;
+  text-align: center;
+}
+
+.gatewayIcon {
+  align-items: center;
+  background: var(--gateway-tint);
+  border-radius: 50%;
+  color: var(--gateway-accent);
+  display: inline-flex;
+  height: 4.5rem;
+  justify-content: center;
+  transition: transform 0.35s var(--ease-out);
+  width: 4.5rem;
+}
+
+.gatewayInner strong {
+  color: #0b3455;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.gatewayRule {
+  background: var(--gateway-accent);
+  border-radius: 999px;
+  display: block;
+  height: 0.19rem;
+  transition: width 0.35s var(--ease-out);
+  width: 2.1rem;
+}
+
+.gatewayInner > a:hover .gatewayIcon,
+.gatewayInner > a:focus-visible .gatewayIcon {
+  transform: scale(1.06);
+}
+
+.gatewayInner > a:hover .gatewayRule,
+.gatewayInner > a:focus-visible .gatewayRule {
+  width: 3.4rem;
+}
+
+.gatewayInner > a:hover,
+.gatewayInner > a:focus-visible {
+  border-color: var(--gateway-accent) !important;
+}
+
+@media (max-width: 70rem) {
+  .gatewayInner > a {
+    min-height: 9.5rem;
+    padding: 1.35rem 0.75rem 1.15rem;
+  }
+  .gatewayIcon {
+    height: 3.6rem;
+    width: 3.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gatewayIcon,
+  .gatewayRule {
+    transition: none;
+  }
+  .gatewayInner > a:hover .gatewayIcon,
+  .gatewayInner > a:focus-visible .gatewayIcon {
+    transform: none;
+  }
+}
+
+/* ══ Tầm nhìn · Sứ mệnh: đĩa biểu tượng, vách ngăn, nút mũi tên ════════════ */
+/* Phải bám đủ sâu như `.visionStack .visionCard .visionCardLink article` ở trên,
+   nếu không quy tắc hai cột cũ thắng và đĩa biểu tượng bị ép còn 0px. */
+.aboutSection .visionStack .visionCard .visionCardLink article {
+  align-items: center;
+  gap: clamp(1.1rem, 1.8vw, 1.6rem);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.visionIcon {
+  align-items: center;
+  background: #e8f3f2;
+  border-radius: 50%;
+  color: #0b6a72;
+  display: inline-flex;
+  height: 4.25rem;
+  justify-content: center;
+  width: 4.25rem;
+}
+
+.aboutSection .visionCardLink article > div {
+  border-left: 1px solid #e4ebee;
+  padding-left: clamp(1.1rem, 1.8vw, 1.6rem);
+}
+
+.visionArrow {
+  align-items: center;
+  border: 1px solid #b9d5d7;
+  border-radius: 50%;
+  color: #0b6a72;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 3rem;
+  justify-content: center;
+  transition:
+    background-color 0.32s var(--ease-out),
+    border-color 0.32s var(--ease-out),
+    color 0.32s var(--ease-out);
+  width: 3rem;
+}
+
+.visionCardLink:hover .visionArrow,
+.visionCardLink:focus-visible .visionArrow {
+  background: #0b6a72;
+  border-color: #0b6a72;
+  color: #fff;
+}
+
+@media (max-width: 48rem) {
+  .aboutSection .visionStack .visionCard .visionCardLink article {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .visionArrow {
+    display: none;
+  }
+  .visionIcon {
+    height: 3.25rem;
+    width: 3.25rem;
+  }
+}
+
+/* Cột tiêu đề dải Giới thiệu rộng hơn cột chữ, nên tiêu đề để cỡ cũ thì hai
+   cột lệch hẳn về sức nặng. Kéo to lên cho cân với khối chữ bên phải. */
+.aboutIntro h2 {
+  font-size: clamp(2.8rem, 4.6vw, 4rem);
+  max-width: 13ch;
+}
+
+/* Các cụm từ tiếng Việt được giữ cùng dòng; căn đều sẽ kéo giãn khoảng trắng. */
+.capabilitiesIntro > p:not(.eyebrow),
+.capabilityCard p,
+.aboutBody p,
+.knowledgeLead {
+  hyphens: none;
+  letter-spacing: normal;
+  text-align: left;
+  text-wrap: pretty;
+  word-spacing: normal;
+}
+
+/* Tin tức được đặt trước phần giới thiệu để homepage bắt đầu bằng các chuyển
+   động hiện tại của GISA. Lưới lệch nhịp và đường dẫn nét mảnh lấy cảm hứng từ
+   bản hướng nghệ thuật đã duyệt, nhưng dùng ảnh và nội dung thật của website. */
+.featuredNewsSection {
+  background: #fff;
+  margin-top: clamp(2.5rem, 4vw, 4.5rem);
+  overflow: hidden;
+  padding-block: clamp(4rem, 7vw, 7rem);
+}
+
+.featuredNewsHeading {
+  align-items: end;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-bottom: clamp(2.5rem, 4vw, 4.25rem);
+}
+
+.featuredNewsHeading h2 {
+  color: #0b3455;
+  font-size: clamp(2.3rem, 4vw, 4.35rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin: 0;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
+.featuredNewsAllLink {
+  align-items: center;
+  color: #08717a;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 0.95rem;
+  font-weight: 700;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.featuredNewsAllLink:hover,
+.featuredNewsAllLink:focus-visible { color: #e66f2d; }
+
+.featuredNewsGrid {
+  display: grid;
+  gap: clamp(1.25rem, 2.8vw, 3.25rem);
+  grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+}
+
+.featuredNewsItem:first-child { grid-row: span 2; }
+
+.featuredNewsItem > a {
+  color: #0b3455;
+  display: grid;
+  gap: clamp(1rem, 1.5vw, 1.4rem);
+  grid-template-columns: minmax(9rem, 0.82fr) minmax(0, 1.18fr);
+  text-decoration: none;
+}
+
+.featuredNewsItem:first-child > a { display: block; }
+
+.featuredNewsImage {
+  display: block;
+  min-height: 10.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.featuredNewsItem:first-child .featuredNewsImage { aspect-ratio: 1.42; min-height: 0; }
+.featuredNewsImage img { object-fit: cover; transition: transform 280ms ease; }
+.featuredNewsItem > a:hover .featuredNewsImage img { transform: scale(1.035); }
+
+.featuredNewsContent {
+  align-items: start;
+  border-top: 1px solid rgb(11 52 85 / 18%);
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  padding-top: 1rem;
+}
+
+.featuredNewsIndex {
+  color: #e66f2d;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+  line-height: 0.9;
+}
+
+.featuredNewsContent > span:last-child { display: grid; gap: 0.55rem; }
+.featuredNewsContent small { color: #08717a; font-size: 0.73rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; }
+.featuredNewsContent strong { font-family: var(--font-heading); font-size: clamp(1.12rem, 1.55vw, 1.45rem); font-weight: 600; line-height: 1.18; text-wrap: balance; }
+.featuredNewsContent time { color: #718090; font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+.featuredNewsItem:first-child .featuredNewsContent { margin-top: 1.15rem; }
+
+@media (max-width: 48rem) {
+  .featuredNewsHeading { align-items: start; flex-direction: column; gap: 1.25rem; }
+  .featuredNewsGrid { grid-template-columns: 1fr; }
+  .featuredNewsItem:first-child { grid-row: auto; }
+  .featuredNewsItem > a { grid-template-columns: minmax(7.5rem, 0.72fr) minmax(0, 1.28fr); }
+  .featuredNewsItem:first-child > a { display: grid; }
+  .featuredNewsItem:first-child .featuredNewsImage { aspect-ratio: auto; min-height: 10.5rem; }
+  .featuredNewsItem:first-child .featuredNewsContent { margin-top: 0; }
+}
+
+/* Final spacing pass: title centered, right rail fills its two rows, and the
+   large desktop gaps between consecutive homepage sections are optically even. */
+.featuredNewsSection {
+  margin-top: clamp(2rem, 3vw, 3rem);
+  padding-block: clamp(3.5rem, 4.5vw, 5rem);
+}
+
+.featuredNewsHeading {
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto clamp(2.5rem, 3.5vw, 3.5rem);
+  text-align: center;
+}
+
+.featuredNewsHeading > div {
+  display: grid;
+  justify-items: center;
+}
+
+.featuredNewsHeading .sectionEyebrow {
+  margin-bottom: 1.15rem;
+}
+
+.featuredNewsHeading h2 {
+  font-size: clamp(2.45rem, 3.8vw, 4rem);
+  line-height: 1.02;
+  max-width: 24ch;
+}
+
+.featuredNewsGrid {
+  align-items: stretch;
+  column-gap: clamp(1.5rem, 2.4vw, 2.75rem);
+  grid-template-columns: minmax(0, 1.42fr) minmax(26rem, 0.78fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  row-gap: clamp(1.25rem, 2vw, 2rem);
+}
+
+.featuredNewsItem:not(:first-child) > a {
+  align-items: center;
+  border-top: 1px solid rgb(11 52 85 / 18%);
+  height: 100%;
+  padding-block: 1rem;
+}
+
+.featuredNewsItem:not(:first-child) .featuredNewsImage {
+  height: 100%;
+  min-height: 0;
+}
+
+.featuredNewsItem:not(:first-child) .featuredNewsContent {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.featuredNewsItem:first-child .featuredNewsImage {
+  aspect-ratio: 1.68;
+}
+
+.aboutSection {
+  padding-block: clamp(3.75rem, 4.5vw, 4.75rem);
+}
+
+.aboutGrid {
+  align-items: center;
+  gap: clamp(2.5rem, 3.4vw, 4rem);
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+}
+
+.aboutIntro {
+  align-self: center;
+}
+
+.aboutBody {
+  max-width: none;
+}
+
+.aboutBody p {
+  font-size: 1.02rem;
+  line-height: 1.72;
+}
+
+.aboutSection .visionStack,
+.aboutSection .aboutMotto {
+  margin-top: clamp(1.75rem, 2.3vw, 2.25rem);
+}
+
+.aboutSection .aboutMotto {
+  min-height: 0;
+  padding-block: clamp(1.35rem, 1.8vw, 1.75rem);
+}
+
+.impactStatsBlock {
+  margin-top: clamp(2.25rem, 2.8vw, 3rem);
+}
+
+.impactStatsBlock .impactStats > div {
+  padding-block: clamp(1.65rem, 2vw, 2.1rem);
+}
+
+.impactStatsBlock .impactStats dt {
+  font-size: clamp(2.65rem, 3.5vw, 3.8rem);
+}
+
+.missionSection {
+  padding-block: clamp(4.25rem, 5vw, 5.5rem);
+}
+
+.missionHeading {
+  margin-bottom: clamp(2.5rem, 3.3vw, 3.5rem);
+}
+
+.missionGrid li {
+  padding: clamp(1.5rem, 2vw, 1.9rem);
+}
+
+.missionGrid p {
+  line-height: 1.62;
+}
+
+.journeyCta {
+  margin-bottom: clamp(2.75rem, 3.8vw, 4rem);
+}
+
+@media (max-width: 70rem) {
+  .featuredNewsGrid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.75fr);
+  }
+
+  .featuredNewsHeading h2 {
+    max-width: 18ch;
+  }
+
+  .aboutGrid {
+    align-items: start;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aboutIntro {
+    align-self: start;
+  }
+}
+
+@media (min-width: 90rem) {
+  .featuredNewsHeading h2 {
+    font-size: clamp(3rem, 3.35vw, 3.8rem);
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 48rem) {
+  .featuredNewsSection {
+    margin-top: 1.75rem;
+    padding-block: 3.5rem 4rem;
+  }
+
+  .featuredNewsHeading {
+    align-items: center;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .featuredNewsGrid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+  }
+
+  .featuredNewsItem:not(:first-child) > a,
+  .featuredNewsItem:first-child > a {
+    align-items: stretch;
+    display: grid;
+    height: auto;
+  }
+
+  .featuredNewsItem:not(:first-child) .featuredNewsImage,
+  .featuredNewsItem:first-child .featuredNewsImage {
+    aspect-ratio: 1.15;
+    height: auto;
+    min-height: 0;
+  }
+
+  .featuredNewsItem:not(:first-child) .featuredNewsContent {
+    border-top: 0;
+  }
+
+  .aboutSection {
+    padding-block: 3.5rem;
+  }
+
+  .aboutSection .visionStack,
+  .aboutSection .aboutMotto,
+  .impactStatsBlock {
+    margin-top: 2rem;
+  }
+
+  .missionSection {
+    padding-block: 3.75rem 4.25rem;
+  }
+}
+
+/* The final Vietnamese compound is intentionally kept together. Let the
+   heading use its full grid track so that phrase fits without crossing into
+   the body column. */
+.aboutIntro h2 {
+  font-size: clamp(2.8rem, 3.7vw, 4rem);
+  max-width: none;
+}
+
+.aboutGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 70rem) {
+  .aboutGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Keep the hand-off compact, centred and visually distinct from the page edge. */
+.journeyCta {
+  border-radius: 1rem;
+  margin-inline: auto;
+  max-width: 92rem;
+  width: min(calc(100% - (2 * var(--gutter))), 92rem);
+}
+
+.journeyCta p {
+  flex: 1;
+  max-width: none;
+  text-align: left;
+  text-align-last: left;
+  white-space: nowrap;
+  word-spacing: normal;
+}
+
+@media (max-width: 70rem) {
+  .journeyCta p {
+    white-space: normal;
+  }
+}
+
+/* Tầm nhìn · Sứ mệnh: two independent editorial cards. Strong icon tiles and
+   restrained accent colour make each destination scannable without adding
+   decorative motion that competes with the copy. */
+.aboutSection .visionCard {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  gap: clamp(1rem, 1.6vw, 1.5rem);
+  overflow: visible;
+}
+
+.aboutSection .visionCardLink {
+  --vision-accent: #08717a;
+  --vision-tint: #e9f5f4;
+  background:
+    radial-gradient(circle at 0 0, var(--vision-tint), transparent 15rem),
+    #fff;
+  border: 1px solid color-mix(in srgb, var(--vision-accent) 19%, #dce5e8);
+  border-radius: 1.15rem;
+  display: grid;
+  height: 100%;
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 160ms var(--ease-out);
+}
+
+.aboutSection .visionCardLink:last-child {
+  --vision-accent: #dc5b25;
+  --vision-tint: #fff0e8;
+}
+
+.aboutSection .visionCardLink::before {
+  background: var(--vision-accent);
+  content: '';
+  height: 0.28rem;
+  inset: 0 0 auto;
+  position: absolute;
+}
+
+.aboutSection .visionCardLink + .visionCardLink {
+  border-left: 1px solid color-mix(in srgb, var(--vision-accent) 19%, #dce5e8);
+  border-top: 1px solid color-mix(in srgb, var(--vision-accent) 19%, #dce5e8);
+}
+
+.aboutSection .visionStack .visionCard .visionCardLink article {
+  align-items: start;
+  background: transparent;
+  gap: clamp(1.25rem, 1.8vw, 1.75rem);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  height: 100%;
+  padding: clamp(1.75rem, 2.4vw, 2.5rem);
+}
+
+.aboutSection .visionCardLink article > div {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.aboutSection .visionIcon {
+  background: var(--vision-accent);
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 1.15rem;
+  box-shadow:
+    0 0.8rem 1.8rem color-mix(in srgb, var(--vision-accent) 24%, transparent),
+    inset 0 1px 0 rgb(255 255 255 / 30%);
+  color: #fff;
+  height: 5rem;
+  width: 5rem;
+}
+
+.aboutSection .visionStack .visionCard article > .visionIcon {
+  color: #fff;
+  padding-top: 0;
+}
+
+.aboutSection .visionIcon svg {
+  color: #fff;
+  height: 2.25rem;
+  transition: transform 180ms var(--ease-out);
+  width: 2.25rem;
+}
+
+.aboutSection .visionCardLink h3 {
+  color: #0b3455;
+  font-size: clamp(1.55rem, 1.9vw, 1.9rem);
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+
+.aboutSection .visionCardLink h3::after {
+  background: var(--vision-accent);
+  border-radius: 999px;
+  content: '';
+  display: block;
+  height: 0.2rem;
+  margin-top: 0.75rem;
+  width: 2.25rem;
+}
+
+.aboutSection .visionCardLink p {
+  color: #41576a;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: none;
+}
+
+.aboutSection .visionArrow {
+  align-self: start;
+  background: color-mix(in srgb, var(--vision-accent) 10%, #fff);
+  border: 1px solid color-mix(in srgb, var(--vision-accent) 30%, #fff);
+  color: var(--vision-accent);
+  height: 3.25rem;
+  width: 3.25rem;
+}
+
+.aboutSection .visionStack .visionCard article > .visionArrow {
+  color: var(--vision-accent);
+  padding-top: 0;
+}
+
+.aboutSection .visionArrow svg {
+  color: inherit;
+  transition: transform 180ms var(--ease-out);
+}
+
+.aboutSection .visionCardLink:focus-visible {
+  outline-color: var(--vision-accent);
+  outline-offset: 0.28rem;
+}
+
+.aboutSection .visionCardLink:active {
+  transform: scale(0.985);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .aboutSection .visionCardLink:hover {
+    border-color: color-mix(in srgb, var(--vision-accent) 42%, #dce5e8);
+    box-shadow: 0 1rem 2.5rem color-mix(in srgb, var(--vision-accent) 12%, transparent);
+    transform: translateY(-0.2rem);
+  }
+
+  .aboutSection .visionCardLink:hover article {
+    background: transparent;
+  }
+
+  .aboutSection .visionCardLink:hover .visionIcon svg {
+    transform: scale(1.08);
+  }
+
+  .aboutSection .visionCardLink:hover .visionArrow {
+    background: var(--vision-accent);
+    border-color: var(--vision-accent);
+    color: #fff;
+  }
+
+  .aboutSection .visionCardLink:hover .visionArrow svg {
+    transform: translateX(0.2rem);
+  }
+}
+
+@media (max-width: 48rem) {
+  .aboutSection .visionStack .visionCard .visionCardLink article {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 1.5rem;
+  }
+
+  .aboutSection .visionIcon {
+    grid-column: 1;
+    grid-row: 1;
+    height: 4.25rem;
+    width: 4.25rem;
+  }
+
+  .aboutSection .visionCardLink article > div {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .aboutSection .visionArrow {
+    display: inline-flex;
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aboutSection .visionCardLink,
+  .aboutSection .visionIcon svg,
+  .aboutSection .visionArrow svg {
+    transition: none;
+  }
+
+  .aboutSection .visionCardLink:active,
+  .aboutSection .visionCardLink:hover {
+    transform: none;
   }
 }

@@ -72,7 +72,7 @@ export async function TemplateRouter({
       collection: definition.collection,
       filters,
       page: positiveInteger(searchParams.page),
-      pageSize: 12,
+      pageSize: definition.collection === 'partners' ? 60 : 12,
       query,
       scope: definition.fixedFilters,
     };

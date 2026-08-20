@@ -12,6 +12,12 @@ const values: RiseValue[] = [
 ];
 
 describe('RisesFoldPanorama', () => {
+  test('renders one centered pictogram for each RISES value', () => {
+    const { container } = render(<RisesFoldPanorama values={values} />);
+
+    expect(container.querySelectorAll('button svg')).toHaveLength(5);
+  });
+
   test('shows detail only while a panel is previewed', () => {
     render(<RisesFoldPanorama values={values} />);
 

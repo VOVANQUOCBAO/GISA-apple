@@ -28,7 +28,7 @@ const PROFILES: Record<string, SectionProfile> = {
     icon: 'compass',
     image: '/images/hero-gisa-team.png',
     label: 'Về GISA',
-    root: '/gioi-thieu',
+    root: '/gioi-thieu/cau-chuyen-gisa',
     section: 'about',
     signal: 'Tổ chức · Sứ mệnh · Con người',
   },
@@ -38,7 +38,7 @@ const PROFILES: Record<string, SectionProfile> = {
     icon: 'microscope',
     image: '/images/gisa-hero-knowledge-horizon-background.png',
     label: 'Nghiên cứu',
-    root: '/nghien-cuu',
+    root: '/nghien-cuu/linh-vuc',
     section: 'research',
     signal: 'Dữ liệu · Bằng chứng · Tri thức',
   },
@@ -48,7 +48,7 @@ const PROFILES: Record<string, SectionProfile> = {
     icon: 'chats',
     image: '/images/gisa-consulting-hero.png',
     label: 'Tư vấn',
-    root: '/tu-van',
+    root: '/tu-van/linh-vuc',
     section: 'consulting',
     signal: 'Chẩn đoán · Chiến lược · Chuyển đổi',
   },
@@ -58,7 +58,7 @@ const PROFILES: Record<string, SectionProfile> = {
     icon: 'graduation',
     image: '/images/knowledge-journey/training-session-editorial.png',
     label: 'Đào tạo',
-    root: '/dao-tao',
+    root: '/dao-tao/linh-vuc',
     section: 'training',
     signal: 'Năng lực · Thực hành · Dẫn dắt',
   },
@@ -68,7 +68,7 @@ const PROFILES: Record<string, SectionProfile> = {
     icon: 'lightbulb',
     image: '/images/hero-gisa-strategy-table.png',
     label: 'Ứng dụng',
-    root: '/ung-dung',
+    root: '/ung-dung/linh-vuc',
     section: 'application',
     signal: 'Khoa học · Công nghệ · Chuyển giao',
   },
@@ -78,7 +78,7 @@ const PROFILES: Record<string, SectionProfile> = {
     icon: 'network',
     image: '/images/project-trade4sd.png',
     label: 'Mạng lưới',
-    root: '/mang-luoi',
+    root: '/mang-luoi/thuc-day-hop-tac',
     section: 'network',
     signal: 'Đối tác · Chuyên gia · Hợp tác',
   },
@@ -88,7 +88,7 @@ const PROFILES: Record<string, SectionProfile> = {
     icon: 'users',
     image: '/images/article-green-city.png',
     label: 'Cộng đồng',
-    root: '/cong-dong',
+    root: '/cong-dong/kinh-te-ben-vung',
     section: 'community',
     signal: 'Con người · Môi trường · Tác động',
   },
@@ -115,6 +115,30 @@ const PROFILES: Record<string, SectionProfile> = {
 };
 
 const HERO_VISUALS_BY_PATH: Record<string, { alt: string; src: string }> = {
+  '/dao-tao/linh-vuc': {
+    alt: 'Giảng viên chia sẻ trong chương trình phát triển năng lực của GISA',
+    src: '/images/knowledge-journey/training-session-editorial.png',
+  },
+  '/dao-tao/gisa-core': {
+    alt: 'Chương trình xây dựng năng lực chuyên môn và quản trị nhân sự',
+    src: '/images/course-strategic-human-resources.png',
+  },
+  '/dao-tao/gisa-edge': {
+    alt: 'Học viên trải nghiệm chương trình chuỗi cung ứng và logistics số',
+    src: '/images/course-digital-supply-chain-logistics.png',
+  },
+  '/dao-tao/gisa-rise': {
+    alt: 'Chương trình phát triển năng lực kinh doanh và bán hàng đa kênh',
+    src: '/images/course-multichannel-effective-sales.png',
+  },
+  '/dao-tao/gisa-ascend': {
+    alt: 'Chương trình quản trị tài chính dành cho nhà lãnh đạo doanh nghiệp',
+    src: '/images/course-sme-financial-management.png',
+  },
+  '/dao-tao/gisa-legacy': {
+    alt: 'Đội ngũ lãnh đạo cùng trao đổi về hành trình phát triển dài hạn',
+    src: '/images/hero-gisa-team.png',
+  },
   '/ung-dung/linh-vuc': {
     alt: '',
     src: '/images/knowledge-journey/transfer-field-editorial.png',
@@ -142,6 +166,10 @@ const HERO_VISUALS_BY_PATH: Record<string, { alt: string; src: string }> = {
   '/mang-luoi/doi-tac': {
     alt: '',
     src: '/images/banner-global-network.png',
+  },
+  '/mang-luoi/quy-nha-tai-tro': {
+    alt: 'Đội ngũ trao đổi về nguồn lực đồng hành cho các sáng kiến tạo tác động',
+    src: '/images/hero-gisa-strategy-table.png',
   },
   '/cong-dong/kinh-te-ben-vung': {
     alt: '',
@@ -181,6 +209,15 @@ const HERO_VISUALS_BY_PATH: Record<string, { alt: string; src: string }> = {
   },
 };
 
+const INITIATIVE_DETAIL_VISUALS = [
+  { alt: 'Mô hình đô thị và cộng đồng phát triển theo hướng bền vững', src: '/images/article-green-city.png' },
+  { alt: 'Chuỗi giá trị nông nghiệp gắn với sinh kế địa phương', src: '/images/article-da-xanh-pomelo.png' },
+  { alt: 'Cộng đồng cùng tham gia hoạt động tạo tác động', src: '/images/knowledge-journey/community-action-editorial.png' },
+  { alt: 'Dữ liệu hỗ trợ theo dõi và đánh giá tác động phát triển', src: '/images/article-performance-benchmarking.png' },
+  { alt: 'Năng lượng tái tạo góp phần bảo vệ môi trường địa phương', src: '/images/article-renewables.png' },
+  { alt: 'Mục tiêu phát triển bền vững định hướng hành động cộng đồng', src: '/images/banner-sustainable-development-goals.png' },
+] as const;
+
 export function profileForPath(path: string): SectionProfile {
   if (path.startsWith('/gioi-thieu') || path.startsWith('/chuyen-gia')) return PROFILES.about;
   if (path.startsWith('/nghien-cuu')) return PROFILES.research;
@@ -194,7 +231,22 @@ export function profileForPath(path: string): SectionProfile {
 }
 
 export function heroVisualForPath(path: string) {
-  return HERO_VISUALS_BY_PATH[path] ?? { alt: '', src: profileForPath(path).image };
+  const configured = HERO_VISUALS_BY_PATH[path];
+  if (configured) {
+    return {
+      ...configured,
+      alt: configured.alt || `Hình ảnh minh họa cho ${profileForPath(path).label}`,
+    };
+  }
+
+  if (path.startsWith('/cong-dong/')) {
+    const index = [...path].reduce((total, character) => total + character.charCodeAt(0), 0)
+      % INITIATIVE_DETAIL_VISUALS.length;
+    return INITIATIVE_DETAIL_VISUALS[index] ?? INITIATIVE_DETAIL_VISUALS[0];
+  }
+
+  const profile = profileForPath(path);
+  return { alt: `Hình ảnh minh họa cho ${profile.label}`, src: profile.image };
 }
 
 interface InnerPageHeroProps {
@@ -222,7 +274,7 @@ export function InnerPageHero({
       className={styles.innerHero}
       data-accent={profile.accent}
       data-section={profile.section}
-      data-title-length={title.length > 32 ? 'long' : 'standard'}
+      data-title-length={title.length > 24 ? 'long' : 'standard'}
       data-scroll-motion="reveal"
     >
       <div className={styles.innerHeroCopy}>
@@ -258,15 +310,13 @@ export function InnerPageHero({
 
 export function SectionSubnav({ path }: { path: string }) {
   const profile = profileForPath(path);
-  const group = NAVIGATION.find((item) => item.href === profile.root);
+  const groupLabel = profile.label === 'Về GISA' ? 'Giới thiệu' : profile.label;
+  const group = NAVIGATION.find((item) => item.label === groupLabel);
   if (!group?.children.length) return null;
 
   return <SectionSubnavRail
     label={`Khám phá ${profile.label}`}
-    links={[
-      { href: group.href, label: 'Tổng quan' },
-      ...group.children.map((item) => ({ href: item.href, label: item.label })),
-    ]}
+    links={group.children.map((item) => ({ href: item.href, label: item.label }))}
     path={path}
   />;
 }

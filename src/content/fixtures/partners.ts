@@ -16,6 +16,13 @@ const SOURCE_LABEL =
   'Bộ logo đối tác do GISA cung cấp — thư mục "Logo Partner - Renamed"';
 const CHECKED_AT = '2026-08-05';
 
+const DOMESTIC_PARTNER_IDS = new Set([
+  'partner-ueh-university',
+  'partner-golden-land',
+  'partner-halo-land',
+  'partner-moc-gia',
+]);
+
 interface PartnerSeed {
   height: number;
   id: string;
@@ -437,5 +444,8 @@ export const partnerFixtures = seeds.map((seed) => ({
   sourceUrl: SOURCE_URL,
   sourceLabel: SOURCE_LABEL,
   checkedAt: CHECKED_AT,
-  metadata: { network: 'Mạng lưới hợp tác GISA' },
+  metadata: {
+    network: 'Mạng lưới hợp tác GISA',
+    partnerScope: DOMESTIC_PARTNER_IDS.has(seed.id) ? 'domestic' : 'international',
+  },
 })) satisfies ContentRecord[];
