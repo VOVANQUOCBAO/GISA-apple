@@ -2,6 +2,197 @@ import type { ContentRecord } from '../types';
 
 export const newsFixtures = [
   {
+    id: 'news-trade4sd-sustainable-mekong-conference',
+    kind: 'news',
+    collection: 'news',
+    slug: 'hoi-thao-thuong-mai-nong-san-ben-vung-mekong',
+    path: '/tin-tuc/hoi-thao-thuong-mai-nong-san-ben-vung-mekong',
+    locale: 'vi',
+    translationKey: 'news-trade4sd-sustainable-mekong-conference',
+    title: 'Hội thảo quốc tế về thương mại nông sản bền vững tại Mekong',
+    summary:
+      'Hội thảo thuộc dự án TRADE4SD kết nối nghiên cứu, chính sách và doanh nghiệp để thảo luận các giải pháp cho chuỗi giá trị nông sản bền vững.',
+    image: {
+      alt: 'Áp phích hội thảo Agri Food Trade and Sustainability tại UEH Mekong',
+      height: 600,
+      src: '/assets/gisa-web-posts/image1.png',
+      width: 1499,
+    },
+    body: [
+      { type: 'heading', level: 2, text: 'Bối cảnh hội thảo' },
+      {
+        type: 'paragraph',
+        text: 'Hội thảo Quốc tế Agri-Food Trade and Sustainability: Lessons and Solutions for a More Sustainable Mekong do Đại học Kinh tế Thành phố Hồ Chí Minh tổ chức trong khuôn khổ dự án TRADE4SD do Liên minh châu Âu tài trợ. Sự kiện được triển khai với sự phối hợp giữa GIBA và Phân hiệu UEH Mekong.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Hội thảo hướng đến thúc đẩy hệ sinh thái tri thức, chính sách và doanh nghiệp vì mục tiêu phát triển bền vững chuỗi giá trị nông sản tại Đồng bằng sông Cửu Long và Việt Nam nói chung.',
+      },
+      { type: 'heading', level: 2, text: 'Mục tiêu' },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          'Chia sẻ kết quả nghiên cứu về mối liên hệ giữa chính sách thương mại, các Mục tiêu Phát triển Bền vững và thực hành tại doanh nghiệp nông sản.',
+          'Thiết lập diễn đàn đối thoại liên ngành giữa học giả, doanh nhân, nhà hoạch định chính sách và tổ chức quốc tế.',
+          'Đề xuất giải pháp thực tiễn để xây dựng hệ thống thương mại và chuỗi giá trị nông sản bền vững cho khu vực Mekong và Việt Nam.',
+        ],
+      },
+      { type: 'heading', level: 2, text: 'Nội dung chính' },
+      {
+        type: 'paragraph',
+        text: 'Phiên nghiên cứu khoa học trình bày các kết quả thuộc dự án TRADE4SD, tập trung vào chính sách thương mại và phát triển bền vững trong bối cảnh nông nghiệp Việt Nam. Các diễn giả phân tích mô hình tác động, lợi ích và rủi ro của tự do hóa thương mại đối với nông hộ và doanh nghiệp.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Phiên đối thoại doanh nghiệp chia sẻ thực tiễn triển khai truy xuất nguồn gốc, nông nghiệp sinh thái và tiêu chuẩn xuất khẩu. Phiên thảo luận cũng xem xét cơ hội, thách thức khi tham gia chuỗi giá trị toàn cầu trong bối cảnh chuyển đổi xanh và tăng trưởng bao trùm.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Không gian kết nối học thuật và hợp tác đa ngành tạo điều kiện phát triển các dự án liên ngành, mô hình chính sách và khuyến nghị khoa học có thể áp dụng trong thực tiễn.',
+      },
+      { type: 'heading', level: 2, text: 'Thông tin sự kiện' },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          'Thời gian: 8 giờ ngày 15 tháng 5 năm 2025. Đón tiếp đại biểu từ 7 giờ 30.',
+          'Địa điểm: Hội trường A, UEH Mekong, 01B Nguyễn Trung Trực, Phường 8, Thành phố Vĩnh Long, tỉnh Vĩnh Long.',
+          'Đăng ký tham dự: Ms. Phi Anh, 0974 468 623 qua Zalo.',
+        ],
+      },
+    ],
+    publishedAt: '2025-04-20',
+    tags: ['tin tức', 'TRADE4SD', 'thương mại nông sản', 'phát triển bền vững'],
+    evidenceStatus: 'provided_by_gisa',
+    sourceUrl: 'https://gisa.edu.vn/tin-tuc',
+    sourceLabel: 'Tài liệu nội dung do GISA cung cấp',
+    checkedAt: '2026-09-05',
+    metadata: { topic: 'Thương mại bền vững' },
+  },
+  {
+    id: 'news-p4g-green-growth-exhibition',
+    kind: 'news',
+    collection: 'news',
+    slug: 'san-pham-khoa-hoc-cong-nghe-tai-trien-lam-tang-truong-xanh',
+    path: '/tin-tuc/san-pham-khoa-hoc-cong-nghe-tai-trien-lam-tang-truong-xanh',
+    locale: 'vi',
+    translationKey: 'news-p4g-green-growth-exhibition',
+    title: 'Loạt sản phẩm khoa học công nghệ tại triển lãm tăng trưởng xanh',
+    summary:
+      'Thiết bị đo chất lượng đất, lọc nước không cần hóa chất và giải pháp nhà thông minh thu hút sự quan tâm tại triển lãm P4G 2025.',
+    image: {
+      alt: 'Các gian hàng công nghệ xanh tại triển lãm P4G 2025',
+      height: 800,
+      src: '/assets/gisa-web-posts/image2.jpeg',
+      width: 1200,
+    },
+    body: [
+      { type: 'heading', level: 2, text: 'Triển lãm trong khuôn khổ P4G 2025' },
+      {
+        type: 'paragraph',
+        text: 'Hội nghị thượng đỉnh Đối tác vì tăng trưởng xanh và mục tiêu toàn cầu 2030 lần thứ tư diễn ra từ ngày 15 đến 17 tháng 4 tại Hà Nội. Đây là sự kiện cấp cao đa phương về tăng trưởng xanh, chuyển đổi xanh và phát triển bền vững do Việt Nam lần đầu đăng cai tổ chức.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Triển lãm sản phẩm xanh quy tụ khoảng 80 gian hàng của các đơn vị Việt Nam và quốc tế trong lĩnh vực nông nghiệp, sản xuất và nhà thông minh.',
+      },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image3.jpeg', caption: 'Thiết bị đo chất lượng đất kết nối ứng dụng di động.' },
+      {
+        type: 'paragraph',
+        text: 'Thiết bị đo chất lượng đất cầm tay do Enfarm Việt Nam phát triển cho phép nông dân kiểm tra nhanh NPK, pH và độ ẩm. Dữ liệu được đưa vào ứng dụng di động để theo dõi theo thời gian thực và tối ưu hóa theo gợi ý của AI.',
+      },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image4.jpeg', caption: 'Thiết bị lọc nước ứng dụng nguyên tắc thủy động lực học.' },
+      {
+        type: 'paragraph',
+        text: 'Thiết bị lọc nước của Công ty công nghệ MET ứng dụng nguyên tắc thủy động lực học và vật lý ứng dụng. Nước đi qua không gian có tiết diện thay đổi liên tục để tách phần nước sạch khỏi chất bẩn mà không dùng phương pháp lọc hóa học hoặc sinh học truyền thống.',
+      },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image5.jpeg', caption: 'Thiết bị đo kiểm chi tiết cơ khí có thể dùng ngoài hiện trường.' },
+      {
+        type: 'paragraph',
+        text: 'Một thiết bị đo kiểm chi tiết cơ khí có thể vận hành ngoài hiện trường nhờ vật liệu và thuật toán bù trừ tác động của nhiệt độ bên ngoài.',
+      },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image6.jpeg', caption: 'Giải pháp theo dõi việc sử dụng điện, nước và gas.' },
+      {
+        type: 'paragraph',
+        text: 'Các thiết bị của LC đọc chỉ số từ đồng hồ nước truyền thống, đo lượng điện tiêu thụ theo từng khu vực và đưa dữ liệu vào hệ thống theo dõi, quản lý để người dùng tối ưu mức tiêu thụ điện, nước và gas.',
+      },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image7.jpeg', caption: 'Thiết bị hỗ trợ an toàn lao động tại triển lãm.' },
+      {
+        type: 'paragraph',
+        text: 'Thiết bị hỗ trợ an toàn lao động do HSafe phát triển được giới thiệu cùng các giải pháp AIoT, dịch vụ năng lượng và tiết kiệm năng lượng cho doanh nghiệp.',
+      },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image8.jpeg', caption: 'Thiết bị giám sát và quản lý năng lượng.' },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image9.jpeg', caption: 'Vật liệu pallet tái chế từ phụ phẩm nông nghiệp.' },
+      {
+        type: 'paragraph',
+        text: 'NetZero Pallet được sản xuất từ phụ phẩm nông nghiệp như vỏ dừa, có khả năng chịu tải cao và thiết kế xếp chồng giúp tiết kiệm không gian kho. Triển lãm cũng giới thiệu các sản phẩm từ xơ dứa, robot và drone phục vụ nông nghiệp.',
+      },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image10.jpeg', caption: 'Sản phẩm vật liệu từ lá dứa có khả năng phân hủy sinh học.' },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image11.jpeg', caption: 'Ứng dụng robot và drone trong nông nghiệp.' },
+      {
+        type: 'paragraph',
+        text: 'Triển lãm tăng trưởng xanh giới thiệu các sáng kiến, công nghệ tiên tiến và mô hình khởi nghiệp tiêu biểu, với sự tham gia của doanh nghiệp tiên phong tích hợp đổi mới sáng tạo vào các giải pháp phát triển bền vững.',
+      },
+    ],
+    publishedAt: '2025-04-22',
+    tags: ['tin tức', 'P4G', 'công nghệ xanh', 'đổi mới sáng tạo'],
+    evidenceStatus: 'provided_by_gisa',
+    sourceUrl: 'https://gisa.edu.vn/tin-tuc',
+    sourceLabel: 'Tài liệu nội dung do GISA cung cấp',
+    checkedAt: '2026-09-05',
+    metadata: { topic: 'Khoa học công nghệ' },
+  },
+  {
+    id: 'news-vifotec-2024-awards',
+    kind: 'news',
+    collection: 'news',
+    slug: 'cong-trinh-thang-giai-sang-tao-khoa-hoc-cong-nghe-viet-nam-2024',
+    path: '/tin-tuc/cong-trinh-thang-giai-sang-tao-khoa-hoc-cong-nghe-viet-nam-2024',
+    locale: 'vi',
+    translationKey: 'news-vifotec-2024-awards',
+    title: '42 công trình thắng giải Sáng tạo khoa học công nghệ Việt Nam 2024',
+    summary:
+      'Các công trình nghiên cứu và ứng dụng xuất sắc được trao giải Vifotec 2024, ghi nhận những đóng góp thiết thực cho phát triển đất nước.',
+    image: {
+      alt: 'Các tác giả nhận giải nhất tại Vifotec 2024',
+      height: 391,
+      src: '/assets/gisa-web-posts/image12.jpeg',
+      width: 680,
+    },
+    body: [
+      { type: 'heading', level: 2, text: 'Kết quả giải thưởng' },
+      {
+        type: 'paragraph',
+        text: 'Giải thưởng Sáng tạo Khoa học Công nghệ Việt Nam năm 2024 có 128 công trình tham gia và 42 nghiên cứu tiêu biểu được trao giải. Trong đó có 5 giải nhất, 9 giải nhì, 13 giải ba và 15 giải khuyến khích.',
+      },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image13.jpeg', caption: 'Các tác giả công trình nhận giải ba.' },
+      { type: 'heading', level: 2, text: 'Năm công trình giải nhất' },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          'Cơ khí tự động hóa: nghiên cứu, thiết kế và chế tạo đạn xuyên cháy vạch đường 23 x 152 mm.',
+          'Tiết kiệm năng lượng và sử dụng năng lượng mới: thiết kế bộ hoàn thiện giếng trong sửa chữa giếng dầu khí có điều kiện phức tạp.',
+          'Công nghệ vật liệu: nghiên cứu và chuyển giao công nghệ sản xuất thuốc phóng một gốc thuần hóa cho đạn cao xạ và hải quân.',
+          'Ứng phó biến đổi khí hậu, bảo vệ môi trường và sử dụng hợp lý tài nguyên: giải pháp tuần hoàn nhựa PET đã qua sử dụng theo mô hình Bottles-to-Bottles.',
+          'Công nghệ thông tin, điện tử và viễn thông: hệ thống thiết bị bảo mật đường truyền thế hệ mới cho mạng thông tin vệ tinh.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Các công trình được ghi nhận nhờ hiệu quả ứng dụng trong thực tiễn. Giải thưởng Vifotec do Liên hiệp các hội Khoa học và kỹ thuật Việt Nam, Bộ Khoa học và Công nghệ, Tổng Liên đoàn Lao động Việt Nam và Trung ương Đoàn phối hợp tổ chức thường niên từ năm 1995.',
+      },
+    ],
+    publishedAt: '2025-05-29',
+    tags: ['tin tức', 'Vifotec', 'khoa học công nghệ', 'đổi mới sáng tạo'],
+    evidenceStatus: 'provided_by_gisa',
+    sourceUrl: 'https://gisa.edu.vn/tin-tuc',
+    sourceLabel: 'Tài liệu nội dung do GISA cung cấp',
+    checkedAt: '2026-09-05',
+    metadata: { topic: 'Đổi mới sáng tạo' },
+  },
+  {
     id: 'news-climate-development-finance',
     kind: 'news',
     collection: 'news',
@@ -21,7 +212,7 @@ export const newsFixtures = [
     body: [
       {
         type: 'paragraph',
-        text: 'Seville, Tây Ban Nha — Trước thềm Hội nghị Liên Hợp Quốc lần thứ tư về Tài trợ Phát triển (FfD4), tổ chức Germanwatch đã đưa ra một cảnh báo quan trọng. Việc tách biệt giữa tài chính khí hậu và tài chính phát triển đang làm suy yếu những nỗ lực toàn cầu nhằm đạt được phát triển bền vững.',
+        text: 'Seville, Tây Ban Nha—Trước thềm Hội nghị Liên Hợp Quốc lần thứ tư về Tài trợ Phát triển (FfD4), tổ chức Germanwatch đã đưa ra một cảnh báo quan trọng. Việc tách biệt giữa tài chính khí hậu và tài chính phát triển đang làm suy yếu những nỗ lực toàn cầu nhằm đạt được phát triển bền vững.',
       },
       {
         type: 'paragraph',
@@ -33,7 +224,7 @@ export const newsFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://www.gisa.edu.vn/tai-chinh-khi-hau-va-phat-trien-khong-the-tach-roi-neu-muon-tuong-lai-ben-vung',
-    sourceLabel: 'Website công khai GISA — bài tài chính khí hậu',
+    sourceLabel: 'Website công khai GISA—bài tài chính khí hậu',
     checkedAt: '2026-08-05',
     metadata: { topic: 'Phát triển bền vững' },
   },
@@ -47,25 +238,40 @@ export const newsFixtures = [
     translationKey: 'news-sea-soluble-plastic',
     title: 'Các nhà khoa học Nhật Bản sáng chế nhựa tan trong nước biển',
     summary:
-      'Bài tin công khai trên GISA về một hướng nghiên cứu vật liệu liên quan đến ô nhiễm nhựa biển.',
+      'Một loại nhựa mới có thể tan trong nước biển, hướng đến giảm ô nhiễm nhựa đại dương.',
     image: {
-      alt: 'Minh họa vật liệu mới hướng tới giảm ô nhiễm nhựa đại dương',
-      height: 1024,
-      src: '/images/knowledge-deck/news-ocean-material.webp',
-      width: 1536,
+      alt: 'Nhà khoa học cầm mẫu nhựa có thể tan trong nước biển',
+      height: 446,
+      src: '/assets/gisa-web-posts/image14.png',
+      width: 680,
     },
     body: [
+      { type: 'heading', level: 2, text: 'Vật liệu mới cho môi trường biển' },
       {
         type: 'paragraph',
-        text: 'Thông tin chi tiết cần được đọc cùng nguồn bài viết công khai.',
+        text: 'Nhóm nghiên cứu tại Trung tâm Khoa học Vật chất Mới nổi RIKEN phối hợp với Đại học Tokyo công bố một loại nhựa có thể tan hoàn toàn trong nước biển. Trong điều kiện thử nghiệm, một mẫu nhựa nhỏ tan hết sau khoảng một giờ khi được khuấy trong nước biển nhân tạo và không để lại vi nhựa.',
+      },
+      {
+        type: 'quote',
+        text: 'Vật liệu được thiết kế để phân hủy nhanh trong môi trường biển và tiếp tục phân hủy sinh học mà không tạo ra hợp chất độc hại.',
+        attribution: 'Nhóm nghiên cứu RIKEN',
+      },
+      {
+        type: 'paragraph',
+        text: 'Vật liệu có thể sử dụng như nhựa thông thường nếu được phủ một lớp bảo vệ mỏng. Ngoài nước biển, vật liệu cũng có thể tan trong đất ẩm có chứa muối. Nhóm nghiên cứu đang phát triển lớp phủ phù hợp để ứng dụng trong sản xuất bao bì.',
+      },
+      { type: 'image', assetId: '/assets/gisa-web-posts/image15.png', caption: 'Mẫu vật liệu nhựa mới trong dung dịch nước muối tại phòng thí nghiệm.' },
+      {
+        type: 'paragraph',
+        text: 'Vật liệu được kỳ vọng góp phần giảm tác động của rác nhựa đối với môi trường biển và sức khỏe con người, trong bối cảnh lượng rác nhựa trôi nổi trên đại dương được dự báo tiếp tục gia tăng.',
       },
     ],
-    publishedAt: '2025-06-09',
+    publishedAt: '2025-06-04',
     tags: ['tin tức', 'môi trường', 'nghiên cứu'],
-    evidenceStatus: 'verified',
+    evidenceStatus: 'provided_by_gisa',
     sourceUrl: 'https://gisa.edu.vn/tin-tuc',
-    sourceLabel: 'Website công khai GISA — danh sách tin tức',
-    checkedAt: '2026-07-18',
+    sourceLabel: 'Tài liệu nội dung do GISA cung cấp',
+    checkedAt: '2026-09-05',
     metadata: { topic: 'Môi trường' },
   },
 ] satisfies ContentRecord[];

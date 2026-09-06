@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
-import { SourceNote } from '@/components/ui/source-note';
 import type { ContentRecord } from '@/content/types';
 import { bindPhrases } from '@/lib/vietnamese-text';
 
@@ -99,11 +98,6 @@ export function ExpertTemplate({ record }: { record: ContentRecord }) {
               <p>Khám phá thêm hồ sơ trong mạng lưới chuyên môn của GISA.</p>
               <Link href="/chuyen-gia">Xem tất cả chuyên gia</Link>
             </nav>
-            <SourceNote
-              checkedAt={record.checkedAt}
-              sourceLabel={record.sourceLabel.replace(/\s*[–—]\s*/g, ' - ')}
-              sourceUrl={record.sourceUrl}
-            />
           </div>
         </div>
       </article>

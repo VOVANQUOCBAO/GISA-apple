@@ -56,12 +56,12 @@
   display: inline-flex;
   flex: 0 0 auto;
   font-family: var(--font-body);
-  font-size: 0.62rem;
+  font-size: 0.9rem;
   font-weight: 800;
-  height: 2rem;
+  height: 2.4rem;
   justify-content: center;
   letter-spacing: 0.08em;
-  width: 2rem;
+  width: 2.4rem;
 }
 
 .storyPromiseStep strong {
@@ -121,6 +121,7 @@
 
 .storyChapterMark small {
   font: inherit;
+  font-size: 0.9rem;
 }
 
 .storyChapterHeading h2,
@@ -988,7 +989,7 @@
 .fieldCard p,
 .visionPanel > p {
   hyphens: auto;
-  text-align: justify;
+  text-align: start;
   text-wrap: pretty;
 }
 
@@ -996,7 +997,8 @@
    Hai gạch nối đã bỏ khỏi nội dung; ba vế nay xuống dòng theo đúng chỗ ngắt ý,
    nên vế nào ra vế đó thay vì dính thành một câu dài. */
 .storyChapterBody blockquote p {
-  text-align: left;
+  text-align: start;
+  text-align-last: auto;
   text-wrap: balance;
   white-space: pre-line;
 }
@@ -1017,7 +1019,7 @@
    đã đặt `text-align: start` — phải bám đúng đường dẫn đó mới đè được. */
 .risesIntro > div > p {
   hyphens: auto;
-  text-align: justify;
+  text-align: start;
   text-wrap: pretty;
 }
 
@@ -1076,10 +1078,13 @@
   text-align: left;
 }
 
-.philosophyBand blockquote p > span {
+.philosophyBand blockquote p > em {
   animation: philosophy-line-rise 620ms var(--ease-out) both;
   animation-delay: calc(var(--philosophy-index) * 110ms);
   display: block;
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.65;
 }
 
 @keyframes philosophy-line-rise {
@@ -1115,7 +1120,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .philosophyBand blockquote p > span {
+  .philosophyBand blockquote p > em {
     animation: none;
   }
 }
@@ -1132,7 +1137,8 @@
 .fieldsIntro,
 .fieldCard > p {
   hyphens: none;
-  text-align: left;
+  text-align: start;
+  text-align-last: auto;
   text-wrap: pretty;
 }
 
@@ -1195,8 +1201,8 @@
   font-size: clamp(1.05rem, 1.3vw, 1.2rem);
   line-height: 1.76;
   max-width: 66ch;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
 }
 
 .visionPanel blockquote,
@@ -1318,9 +1324,30 @@
   position: relative;
 }
 
+.philosophyBand > h2 {
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(2.9rem, 4.7vw, 4.6rem);
+  letter-spacing: -.045em;
+  line-height: .98;
+  margin: 0;
+  text-wrap: balance;
+}
+
 .philosophyBand {
-  align-items: center;
+  align-items: stretch;
+  column-gap: clamp(2rem, 5vw, 5rem);
   grid-template-columns: minmax(12rem, .34fr) minmax(0, 1fr);
+}
+
+.philosophyBand > h2 {
+  align-items: center;
+  display: flex;
+}
+
+.philosophyBand blockquote {
+  align-items: stretch;
+  display: flex;
 }
 
 .philosophyBand::after,
@@ -1342,10 +1369,29 @@
 }
 
 .philosophyBand blockquote p {
+  align-content: center;
+  flex: 1;
   font-family: var(--font-heading);
-  font-size: clamp(1.45rem, 2.25vw, 2.15rem);
-  font-weight: 600;
-  line-height: 1.28;
+  font-size: inherit;
+  gap: 0;
+  grid-template-rows: repeat(3, auto);
+  line-height: inherit;
+  width: 100%;
+}
+
+.philosophyBand blockquote p > em {
+  align-items: center;
+  display: flex;
+  font-style: italic;
+  line-height: 1.76;
+  padding-inline-start: 0;
+}
+
+/* Hai khối dùng cùng một nhịp dọc: ba vế triết lý chia đều trong đúng chiều
+   cao dành cho đoạn Tầm nhìn, nên mắt đọc xuống hai panel không bị hụt nhịp. */
+.philosophyBand blockquote p,
+.visionPanel blockquote {
+  min-height: clamp(11rem, 13vw, 12.5rem);
 }
 
 .philosophyBand cite {
@@ -1358,14 +1404,22 @@
 
 .fieldsIntro {
   hyphens: none;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
 }
 
 @media (max-width: 60rem) {
   .philosophyBand {
     align-items: start;
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .philosophyBand blockquote p {
+    min-height: 8.5rem;
+  }
+
+  .visionPanel blockquote {
+    min-height: auto;
   }
 }
 
@@ -1377,7 +1431,51 @@
     padding: 1.5rem;
   }
 
+  .philosophyBand > h2 {
+    font-size: clamp(2.55rem, 12vw, 3.65rem);
+  }
+
+  .philosophyBand blockquote p > em {
+    padding-inline-start: 0;
+  }
+
   .fieldsIntro {
     text-align: left;
+  }
+}
+
+/* Card copy shares the same two-sided editorial measure as the page prose. */
+.missionList p,
+.fieldCard > p,
+.valueSequence p {
+  text-align: start;
+  text-align-last: auto;
+}
+
+.visionPanel blockquote,
+.missionIntro {
+  text-align: start;
+  text-align-last: auto;
+}
+
+@media (max-width: 48rem) {
+  .missionPanel {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .missionList {
+    gap: 1rem;
+    overflow: visible;
+  }
+
+  .missionList li {
+    border: 1px solid color-mix(in srgb, var(--section-accent) 20%, transparent);
+    border-radius: 1rem;
+    padding: 1.5rem;
   }
 }

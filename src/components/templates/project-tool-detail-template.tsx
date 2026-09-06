@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import { Icon, type IconName } from '@/components/ui/icon';
-import { SourceNote } from '@/components/ui/source-note';
 import type { ContentRecord } from '@/content/types';
 import { bindPhrases } from '@/lib/vietnamese-text';
 
@@ -204,11 +203,6 @@ export function ProjectToolDetailTemplate({ record }: { record: ContentRecord })
                 <h2>{record.kind === 'tool' ? 'Đặt công cụ vào đúng bối cảnh' : 'Tiếp tục từ bằng chứng đã có'}</h2>
                 <Link href={direction.action.href}>{direction.action.label}</Link>
               </div>
-              <SourceNote
-                checkedAt={record.checkedAt}
-                sourceLabel={record.sourceLabel}
-                sourceUrl={record.sourceUrl}
-              />
             </aside>
           </section>
         </div>

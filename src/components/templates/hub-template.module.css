@@ -353,8 +353,8 @@
   .introductionText,
   .featuredCopy p,
   .indexCopy p {
-    text-align: justify;
-    text-align-last: left;
+    text-align: start;
+    text-align-last: auto;
   }
 
   .introduction h2 {
@@ -426,5 +426,5 @@
 .introductionText,
 .featuredCopy p,
 .indexCopy p {
-  text-align: justify;
+  text-align: start;
 }

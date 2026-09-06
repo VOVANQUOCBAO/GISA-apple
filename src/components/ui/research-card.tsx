@@ -10,6 +10,7 @@ import styles from './ui.module.css';
 interface ResearchCardProps {
   headingLevel?: 2 | 3;
   item: ContentSummary;
+  summaryClassName?: string;
 }
 
 function firstValue(value: string | string[] | undefined): string | undefined {
@@ -23,7 +24,11 @@ function firstValue(value: string | string[] | undefined): string | undefined {
  * vậy là gán sai hình cho nội dung — mà dùng một bìa chữ: chủ đề đặt trên nền
  * navy theo lối bìa ấn phẩm, nên hàng thẻ vẫn đều nhịp dù thiếu ảnh.
  */
-export function ResearchCard({ headingLevel = 3, item }: ResearchCardProps) {
+export function ResearchCard({
+  headingLevel = 3,
+  item,
+  summaryClassName,
+}: ResearchCardProps) {
   const Heading = `h${headingLevel}` as const;
   const topic = firstValue(item.metadata?.topic) ?? item.tags[0];
   const year = firstValue(item.metadata?.year);
@@ -52,7 +57,9 @@ export function ResearchCard({ headingLevel = 3, item }: ResearchCardProps) {
         <Heading className={styles.researchTitle}>
           <Link href={item.path}>{bindPhrases(item.title)}</Link>
         </Heading>
-        <p className={styles.researchSummary}>{bindPhrases(item.summary)}</p>
+        <p className={[styles.researchSummary, summaryClassName].filter(Boolean).join(' ')}>
+          {bindPhrases(item.summary)}
+        </p>
         <span aria-hidden="true" className={styles.researchArrow}>
           <Icon name="arrow" size={18} />
         </span>

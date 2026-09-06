@@ -74,7 +74,7 @@ const PAGE_LABELS: Record<string, string> = {
 };
 
 function cleanText(text: string) {
-  return text.replace(/\s*[–—]\s*/g, ' - ').replace(/\s{2,}/g, ' ').trim();
+  return text.replace(/\s*[–—]\s*/g, ' – ').replace(/\s{2,}/g, ' ').trim();
 }
 
 function phrase(text: string) {
@@ -114,7 +114,7 @@ function renderParagraphs(blocks: ContentBlock[]) {
 }
 
 function splitPromise(text: string) {
-  return cleanText(text).split(/\s+-\s+/).filter(Boolean);
+  return cleanText(text).split(/\s+[–—-]\s+/).filter(Boolean);
 }
 
 function splitSlogan(text: string) {
@@ -190,22 +190,19 @@ function StoryLayout({ blocks }: { blocks: ContentBlock[] }) {
       </div>
       {philosophy ? (
         <aside className={styles.philosophyBand} data-scroll-motion="reveal">
-          <span aria-hidden="true" className={styles.philosophyMark}>
-            <Icon name="compass" size={30} weight="fill" />
-          </span>
+          <h2>{phrase('Triết lý cốt lõi')}</h2>
           <blockquote>
             <p aria-label={philosophyLines.join('. ')}>
               {philosophyLines.map((line, index) => (
-                <span
+                <em
                   aria-hidden="true"
                   key={line}
                   style={{ '--philosophy-index': index } as CSSProperties}
                 >
                   {phrase(line)}
-                </span>
+                </em>
               ))}
             </p>
-            {philosophy.attribution ? <cite>{phrase(philosophy.attribution)}</cite> : null}
           </blockquote>
         </aside>
       ) : null}

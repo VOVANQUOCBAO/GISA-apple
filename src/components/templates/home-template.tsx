@@ -351,7 +351,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
             <span aria-hidden="true" className={styles.heroOrnament}><Icon name="leaf" size={14} /></span>
             {/* Each line is its own block so the first-load sequence can bring them
                 in one after another; a plain <br> gives nothing to animate. */}
-            <h1><span>{bindPhrases(heroSlide.headline[0])}</span><span><em>{bindPhrases(heroSlide.headline[1])}</em></span></h1>
+            <h1 data-hero-slide={activeHeroSlide}><span>{bindPhrases(heroSlide.headline[0])}</span><span><em>{bindPhrases(heroSlide.headline[1])}</em></span></h1>
             <p className={styles.heroLead}>
               <span>{bindPhrases(heroSlide.lead)}</span>
             </p>

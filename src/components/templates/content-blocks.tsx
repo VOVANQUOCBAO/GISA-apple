@@ -3,7 +3,6 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
-import { SourceNote } from '@/components/ui/source-note';
 import { resolvePublishableAsset } from '@/content/assets';
 import { resolvePage } from '@/content/pages';
 import type { ContentBlock, ContentRecord } from '@/content/types';
@@ -209,13 +208,6 @@ export function ContentDetailLayout({
                 </Link>
               </div>
             </section>
-            <div className={detailStyles.sourceStage}>
-              <SourceNote
-                checkedAt={record.checkedAt}
-                sourceLabel={record.sourceLabel}
-                sourceUrl={record.sourceUrl}
-              />
-            </div>
           </div>
         </div>
       </article>

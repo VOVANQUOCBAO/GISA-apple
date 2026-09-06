@@ -454,7 +454,7 @@
 
 @media (min-width: 70rem) {
   .editorialLead[data-centered='true'] h2 {
-    white-space: nowrap;
+    white-space: normal;
   }
 }
 
@@ -500,7 +500,7 @@
 .editorialLead > div:last-child > p,
 .projectSummary,
 .toolEntry > div > p:last-child {
-  text-align: justify;
+  text-align: start;
 }
 
 /* Typographic rhythm for the tools catalogue. The previous display size made
@@ -561,7 +561,7 @@
   margin: 1.15rem 0 0;
   max-width: 59ch;
   min-height: 3.44em;
-  text-align-last: left;
+  text-align-last: auto;
 }
 
 .toolEntry .textLink {
@@ -610,7 +610,7 @@
 
 @media (min-width: 90rem) {
   .editorialLead[data-centered='true'] h2 {
-    white-space: nowrap;
+    white-space: normal;
   }
 }
 
@@ -619,5 +619,35 @@
     font-size: clamp(2.55rem, 11vw, 3.65rem);
     max-width: 14ch;
     white-space: normal;
+  }
+}
+
+/* Keep the final cascade aligned with the mobile audit thresholds. */
+.editorialLead[data-centered='true'] h2 {
+  font-size: clamp(2.4rem, 3.15vw, 3.15rem);
+  max-width: 22ch;
+}
+
+.projectSummary,
+.toolEntry > div > p:last-child {
+  text-align: start;
+  text-align-last: auto;
+}
+
+.toolEntry h3 {
+  font-size: clamp(1.5rem, 1.75vw, 2rem);
+  min-height: 2.16em;
+}
+
+@media (max-width: 48rem) {
+  .editorialLead h2,
+  .editorialLead[data-centered='true'] h2,
+  .pageContainer[data-tone='consulting'] .editorialLead h2 {
+    font-size: clamp(2.1rem, 9vw, 2.4rem);
+    max-width: none;
+  }
+
+  .toolEntry h3 {
+    min-height: 0;
   }
 }

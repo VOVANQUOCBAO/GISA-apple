@@ -381,5 +381,5 @@
    `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
 .featuredCard > article > p:last-of-type,
 .supportingCard > article > p:last-of-type {
-  text-align: justify;
+  text-align: start;
 }

@@ -86,7 +86,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/nghien-cuu-phat-trien-mo-hinh-chuan-doi-sanh-benchmarking-do-luong-hieu-suat-hoat-dong-phan-tich-truong-hop-cac-doanh-nghiep-viet-nam',
-    sourceLabel: 'Website công khai GISA — bài nghiên cứu chuẩn đối sánh',
+    sourceLabel: 'Website công khai GISA—bài nghiên cứu chuẩn đối sánh',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -137,7 +137,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/cac-chuong-trinh-chat-luong-thuc-pham-va-phi-bao-hiem-gia-rong-co-di-cung-nhau-khong',
-    sourceLabel: 'Website công khai GISA — chương trình chất lượng thực phẩm',
+    sourceLabel: 'Website công khai GISA—chương trình chất lượng thực phẩm',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -193,7 +193,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/phan-tich-chuoi-gia-tri-va-danh-gia-nang-luc-canh-tranh-cua-nganh-buoi-da-xanh-tai-ben-tre-viet-nam',
-    sourceLabel: 'Website công khai GISA — chuỗi giá trị bưởi da xanh',
+    sourceLabel: 'Website công khai GISA—chuỗi giá trị bưởi da xanh',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -246,7 +246,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/nang-cao-trai-nghiem-khach-hang-voi-chatbot-van-hanh-boi-tri-tue-nhan-tao-ai-vai-tro-cua-chat-luong-dich-vu-tri-tue-cam-xuc-va-su-ca-nhan-hoa-cua-thuat-toan',
-    sourceLabel: 'Website công khai GISA — chatbot vận hành bởi AI',
+    sourceLabel: 'Website công khai GISA—chatbot vận hành bởi AI',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -285,6 +285,16 @@ export const publicationFixtures = [
         type: 'paragraph',
         text: 'Dữ liệu thu từ năm nhóm tập trung với 40 người tham gia, cho phép nhận diện 32 động lực và 14 rào cản.',
       },
+      {
+        type: 'image',
+        assetId: '/assets/gisa-web-posts/image16.png',
+        caption: 'Mô hình COM-B định hướng việc nhận diện các yếu tố tác động đến hành vi tiêu dùng bền vững.',
+      },
+      {
+        type: 'image',
+        assetId: '/assets/gisa-web-posts/image17.png',
+        caption: 'Quy trình nghiên cứu kết hợp rà soát tài liệu, thu thập dữ liệu định tính và phân tích bằng mô hình COM-B.',
+      },
       { type: 'heading', level: 2, text: 'Kết quả chính' },
       {
         type: 'list',
@@ -300,7 +310,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/nghien-cuu-kham-pha-dong-luc-va-rao-can-doi-voi-hanh-vi-tieu-dung-sua-ben-vung-tai-viet-nam-ung-dung-mo-hinh-quan-tri-com-b',
-    sourceLabel: 'Website công khai GISA — tiêu dùng sữa bền vững',
+    sourceLabel: 'Website công khai GISA—tiêu dùng sữa bền vững',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -358,7 +368,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/nghien-cuu-su-san-sang-tra-tien-doi-voi-nhan-thuc-pham-phuc-loi-dong-vat-ung-dung-phuong-phap-thi-nghiem-lua-chon',
-    sourceLabel: 'Website công khai GISA — nhãn phúc lợi động vật',
+    sourceLabel: 'Website công khai GISA—nhãn phúc lợi động vật',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -412,7 +422,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/loi-the-so-sanh-cua-cac-loai-cay-trong-thay-the-nghien-cuu-so-sanh-o-ben-tre-dong-bang-song-cuu-long-viet-nam',
-    sourceLabel: 'Website công khai GISA — lợi thế so sánh cây trồng thay thế',
+    sourceLabel: 'Website công khai GISA—lợi thế so sánh cây trồng thay thế',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -466,7 +476,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/nang-luc-canh-tranh-nong-nghiep-cua-viet-nam-theo-cac-chi-so-rca-va-nrca-va-tinh-nhat-quan-cua-cac-chi-so-nang-luc-canh-tranh',
-    sourceLabel: 'Website công khai GISA — chỉ số RCA và NRCA',
+    sourceLabel: 'Website công khai GISA—chỉ số RCA và NRCA',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -525,7 +535,7 @@ export const publicationFixtures = [
     sourceUrl:
       'https://gisa.edu.vn/tinh-ben-vung-cua-cac-chuong-trinh-chat-luong-thuc-pham-chau-au-da-hieu-suat-co-cau-va-quan-tri-cac-he-thong-pdo-pgi-va-nong-san-huu-co',
     sourceLabel:
-      'Website công khai GISA — chương trình chất lượng thực phẩm châu Âu',
+      'Website công khai GISA—chương trình chất lượng thực phẩm châu Âu',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Chuyên khảo',
@@ -578,7 +588,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/do-luong-tinh-ben-vung-ve-kinh-te-moi-truong-va-xa-hoi-cua-chuoi-cung-ung-thuc-pham-ngan-han',
-    sourceLabel: 'Website công khai GISA — chuỗi cung ứng thực phẩm ngắn',
+    sourceLabel: 'Website công khai GISA—chuỗi cung ứng thực phẩm ngắn',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -626,7 +636,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/dong-luc-cua-thuong-mai-noi-nganh-nong-nghiep-mot-nghien-cuu-dien-hinh-toan-dien-o-viet-nam',
-    sourceLabel: 'Website công khai GISA — thương mại nội ngành nông nghiệp',
+    sourceLabel: 'Website công khai GISA—thương mại nội ngành nông nghiệp',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -677,7 +687,7 @@ export const publicationFixtures = [
     sourceUrl:
       'https://gisa.edu.vn/nghien-cuu-su-phat-trien-cua-chuyen-mon-hoa-thuong-mai-nong-nghiep-o-cac-nen-kinh-te-chuyen-doi-nghien-cuu-truong-hop-tu-viet-nam',
     sourceLabel:
-      'Website công khai GISA — chuyên môn hóa thương mại nông nghiệp',
+      'Website công khai GISA—chuyên môn hóa thương mại nông nghiệp',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -730,7 +740,7 @@ export const publicationFixtures = [
     tags: ['Chuỗi giá trị', 'bưởi da xanh', 'Bến Tre', 'nông nghiệp'],
     evidenceStatus: 'provided_by_gisa',
     sourceUrl: 'https://gisa.edu.vn/nghien-cuu-chuoi-gia-tri-buoi-da-xanh-ben-tre',
-    sourceLabel: 'Website công khai GISA — chuỗi giá trị bưởi da xanh Bến Tre',
+    sourceLabel: 'Website công khai GISA—chuỗi giá trị bưởi da xanh Bến Tre',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',
@@ -754,7 +764,7 @@ export const publicationFixtures = [
     locale: 'vi',
     translationKey: 'publication-short-food-supply-chain-framework',
     title:
-      'Chuỗi cung ứng thực phẩm ngắn — Động lực bền vững và bình đẳng cho tương lai',
+      'Chuỗi cung ứng thực phẩm ngắn—Động lực bền vững và bình đẳng cho tương lai',
     summary:
       'Khung khái niệm sáu trụ cột với 28 chỉ số cho chuỗi cung ứng thực phẩm ngắn, áp dụng cho chuỗi rau tại Việt Nam.',
     body: [
@@ -785,7 +795,7 @@ export const publicationFixtures = [
     evidenceStatus: 'verified',
     sourceUrl:
       'https://gisa.edu.vn/chuoi-cung-ung-thuc-pham-ngan-han-dong-luc-ben-vung-va-binh-dang-cho-tuong-lai',
-    sourceLabel: 'Website công khai GISA — chuỗi cung ứng thực phẩm ngắn',
+    sourceLabel: 'Website công khai GISA—chuỗi cung ứng thực phẩm ngắn',
     checkedAt: CHECKED_AT,
     metadata: {
       type: 'Bài báo khoa học',

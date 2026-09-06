@@ -2,7 +2,6 @@ import Image from 'next/image';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import { Icon } from '@/components/ui/icon';
-import { SourceNote } from '@/components/ui/source-note';
 import type { ContentRecord, ContentSummary } from '@/content/types';
 import { bindPhrases } from '@/lib/vietnamese-text';
 
@@ -19,17 +18,16 @@ function firstValue(value: string | string[] | undefined): string | undefined {
   return Array.isArray(value) ? value[0] : value;
 }
 
-/**
- * Trang chi tiết bài nghiên cứu.
- *
- * Không dùng `ContentDetailLayout` như các loại nội dung khác: bố cục ở đó giới
- * hạn mọi khối con ở 70ch nên đầu bài và ảnh bìa không thể chạy rộng.
- *
- * Bố cục ở đây theo lối trang ấn phẩm học thuật: đầu bài chạy hết khung, một
- * thanh thông tin xuất bản nằm trên đường kẻ, rồi thân bài giữ khổ đọc hẹp với
- * khối trích dẫn dính bên phải — đó là thứ người đọc học thuật cần lấy đầu tiên,
- * nên nó theo họ suốt bài thay vì nằm cuối trang.
- */
+function displayValue(value: string | string[] | undefined): string | undefined {
+  if (Array.isArray(value)) {
+    const joined = value.filter(Boolean).join(', ');
+    return joined || undefined;
+  }
+
+  return value || undefined;
+}
+
+/** Wide academic masthead and cover, followed by one centered reading flow. */
 export function PublicationTemplate({
   record,
   related = [],
@@ -48,25 +46,32 @@ export function PublicationTemplate({
         label: 'Bài báo khoa học',
         relatedLabel: 'Xem tất cả bài nghiên cứu',
       };
-  const relatedInSection = publicationType
+  const sameTypeRelated = publicationType
     ? related.filter(
         (item) => firstValue(item.metadata.type) === publicationType,
       )
     : related;
+  const relatedInSection = sameTypeRelated.length > 0 ? sameTypeRelated : related;
   const citation = firstValue(record.metadata.citation);
+  const authors = displayValue(record.metadata.authors);
   const year =
     firstValue(record.metadata.year) ?? record.publication?.year?.toString();
   const journal = record.publication?.journal;
   const doi = record.publication?.doi;
   const facts = [
-    year ? { label: 'Năm công bố', value: year } : null,
-    journal ? { label: 'Công bố tại', value: journal } : null,
-  ].filter((fact): fact is { label: string; value: string } => fact !== null);
+    authors ? { label: 'Tác giả', value: authors, wide: true } : null,
+    year ? { label: 'Năm công bố', value: year, wide: false } : null,
+    journal ? { label: 'Công bố tại', value: journal, wide: true } : null,
+    publicationType ? { label: 'Loại ấn phẩm', value: publicationType, wide: false } : null,
+  ].filter(
+    (fact): fact is { label: string; value: string; wide: boolean } => fact !== null,
+  );
 
   return (
     <main id="main-content" tabIndex={-1}>
       <article
-        className={`${styles.pageContainer} ${styles.sectionTheme}`}
+        className={`${styles.pageContainer} ${styles.publicationDetail} ${styles.sectionTheme}`}
+        data-editorial-layout="publication"
         data-section="research"
       >
         <Breadcrumbs
@@ -79,20 +84,25 @@ export function PublicationTemplate({
         />
 
         <header className={styles.articleMasthead}>
-          {topic ? <p className={styles.eyebrow}>{bindPhrases(topic)}</p> : null}
+          <div className={styles.articleOverline}>
+            <p>{bindPhrases(publicationSection.label)}</p>
+            {topic ? <span>{bindPhrases(topic)}</span> : null}
+          </div>
           <h1>{bindPhrases(record.title)}</h1>
-          <p className={styles.articleLede}>{bindPhrases(record.summary)}</p>
-          {facts.length > 0 ? (
+        </header>
+
+        {facts.length > 0 ? (
+          <section aria-label="Thông tin xuất bản" className={styles.articleFactsPanel} data-publication-facts="band">
             <dl className={styles.articleFacts}>
               {facts.map((fact) => (
-                <div key={fact.label}>
+                <div className={fact.wide ? styles.articleFactWide : undefined} key={fact.label}>
                   <dt>{bindPhrases(fact.label)}</dt>
                   <dd>{fact.value}</dd>
                 </div>
               ))}
             </dl>
-          ) : null}
-        </header>
+          </section>
+        ) : null}
 
         {record.image ? (
           <figure className={styles.articleCover}>
@@ -100,62 +110,58 @@ export function PublicationTemplate({
               alt={record.image.alt}
               height={record.image.height}
               priority
-              sizes="(max-width: 70rem) 92vw, 70rem"
+              sizes="(max-width: 75rem) 94vw, 75rem"
               src={record.image.src}
               width={record.image.width}
             />
           </figure>
         ) : null}
 
-        <div className={styles.articleColumns}>
-          <div className={styles.articleBody}>
-            <ContentBlocks blocks={record.body} />
-            {record.tags.length > 0 ? (
-              <ul aria-label="Từ khóa" className={styles.articleTags}>
-                {record.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
+        <div className={styles.articleReading} data-publication-reading>
+          <section aria-labelledby="publication-abstract" className={styles.articleAbstract}>
+            <h2 id="publication-abstract">Tóm tắt</h2>
+            <p className={styles.articleLede}>{bindPhrases(record.summary)}</p>
+          </section>
+          <section aria-labelledby="trich-dan" className={styles.citationCard} data-citation-layout="inline">
+            <h2 className={styles.citationHeading} id="trich-dan">
+              {bindPhrases('Trích dẫn và nguồn')}
+            </h2>
+            {citation ? (
+              <p className={styles.citationText}>{citation}</p>
             ) : null}
-          </div>
-
-          <aside aria-labelledby="trich-dan" className={styles.articleAside}>
-            <div className={styles.citationCard}>
-              <h2 className={styles.citationHeading} id="trich-dan">
-                {bindPhrases('Trích dẫn')}
-              </h2>
-              {citation ? (
-                <p className={styles.citationText}>{citation}</p>
-              ) : null}
-              <div className={styles.citationLinks}>
+            <div className={styles.citationLinks}>
+              <a
+                className={styles.citationSource}
+                href={record.sourceUrl}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {bindPhrases('Đọc bản công bố tại GISA')}
+                <Icon name="arrowUp" size={17} />
+              </a>
+              {doi ? (
                 <a
-                  className={styles.citationPrimary}
-                  href={record.sourceUrl}
+                  className={styles.citationDoi}
+                  href={doi}
                   rel="noreferrer"
                   target="_blank"
                 >
-                  {bindPhrases('Bản công bố trên gisa.edu.vn')}
+                  <span>DOI: {doi.replace(/^https?:\/\/(?:dx\.)?doi\.org\//, '')}</span>
                   <Icon name="arrowUp" size={17} />
                 </a>
-                {doi ? (
-                  <a
-                    className={styles.citationSecondary}
-                    href={doi}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    {bindPhrases('Bản gốc theo DOI')}
-                    <Icon name="arrowUp" size={17} />
-                  </a>
-                ) : null}
-              </div>
+              ) : null}
             </div>
-            <SourceNote
-              checkedAt={record.checkedAt}
-              sourceLabel={record.sourceLabel}
-              sourceUrl={record.sourceUrl}
-            />
-          </aside>
+          </section>
+          <div className={styles.articleBody} data-publication-body>
+            <ContentBlocks blocks={record.body} />
+          </div>
+          {record.tags.length > 0 ? (
+            <ul aria-label="Từ khóa" className={styles.articleTags}>
+              {record.tags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </article>
 

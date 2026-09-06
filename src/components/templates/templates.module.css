@@ -447,19 +447,50 @@
 }
 
 /* ── Trang chi tiết: đầu bài ────────────────────────────────────────────────── */
+.publicationDetail {
+  width: min(100% - (2 * var(--gutter)), 75rem);
+}
+
 .articleMasthead {
-  border-bottom: 1px solid rgb(25 72 106 / 16%);
   border-top: 2px solid var(--color-navy);
-  margin-bottom: clamp(1.75rem, 4vw, 3rem);
-  padding-block: clamp(1.5rem, 4vw, 3rem);
+  padding-block: clamp(1.5rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem);
+}
+
+.articleOverline {
+  align-items: baseline;
+  color: var(--color-teal);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.articleOverline p {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-align: start;
+  text-align-last: auto;
+  text-justify: auto;
+  text-transform: uppercase;
+}
+
+.articleOverline > span {
+  border-left: 1px solid rgb(25 72 106 / 24%);
+  color: var(--color-navy);
+  font-size: 0.9rem;
+  padding-left: 1.5rem;
 }
 
 .articleMasthead h1 {
   color: var(--color-navy);
-  font-size: clamp(2rem, 4.6vw, 3.6rem);
+  font-size: clamp(2.5rem, 4.8vw, 4rem);
+  letter-spacing: -0.035em;
+  line-height: 1.14;
   margin: 0;
-  max-width: 22ch;
-  overflow-wrap: normal;
+  max-width: 28ch;
+  overflow-wrap: break-word;
   text-wrap: balance;
   word-break: normal;
 }
@@ -473,13 +504,18 @@
   text-wrap: pretty;
 }
 
-.articleFacts {
+.articleFactsPanel {
+  border-bottom: 1px solid rgb(25 72 106 / 14%);
   border-top: 1px solid rgb(25 72 106 / 14%);
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  padding-block: 1.5rem;
+}
+
+.articleFacts {
   display: grid;
-  gap: 1rem 2.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
-  padding-top: clamp(1.25rem, 3vw, 1.75rem);
+  gap: 1.25rem 2rem;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr) minmax(0, 1.5fr) minmax(0, 0.9fr);
+  margin: 0;
 }
 
 .articleFacts div {
@@ -495,46 +531,86 @@
 }
 
 .articleFacts dd {
+  color: var(--color-navy);
+  line-height: 1.5;
   margin: 0.3rem 0 0;
+  overflow-wrap: anywhere;
 }
 
 .articleCover {
-  border-radius: var(--radius-card);
-  margin: 0 0 clamp(1.75rem, 4vw, 3rem);
-  max-width: 70rem;
+  border-radius: 0.4rem;
+  margin: 0 0 clamp(2.5rem, 6vw, 5rem);
+  max-width: none;
   overflow: hidden;
 }
 
 .articleCover img {
   aspect-ratio: 21 / 9;
+  display: block;
+  height: auto;
   object-fit: cover;
   width: 100%;
 }
 
-/* ── Trang chi tiết: thân bài và cột trích dẫn ──────────────────────────────── */
-.articleColumns {
-  display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
-  grid-template-columns: minmax(0, 1fr) 20rem;
-}
-
-.articleBody {
-  max-width: 68ch;
+/* Publication content, citation and tags share one centered reading column. */
+.articleReading {
+  margin-inline: auto;
+  max-width: 46.25rem;
   min-width: 0;
 }
 
+.articleAbstract {
+  margin-bottom: 2rem;
+}
+
+.articleAbstract h2 {
+  color: var(--color-teal);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.articleAbstract .articleLede {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.55;
+  margin-top: 0.85rem;
+}
+
+.articleBody {
+  max-width: 46.25rem;
+  min-width: 0;
+}
+
+.publicationDetail.sectionTheme[data-section='research'] .articleBody .prose {
+  max-width: 46.25rem;
+}
+
 .articleBody .proseParagraph {
-  max-width: 68ch;
+  max-width: 46.25rem;
   text-align: start;
 }
 
+.articleBody .blockFigure {
+  max-width: 46.25rem;
+}
+
+.articleBody .blockFigure figcaption {
+  border-left: 2px solid var(--section-accent);
+  padding-left: 0.75rem;
+}
+
 .articleTags {
+  border-top: 1px solid rgb(25 72 106 / 14%);
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   list-style: none;
   margin: clamp(2rem, 4vw, 3rem) 0 0;
-  padding: 0;
+  padding: 1.5rem 0 0;
 }
 
 .articleTags li {
@@ -545,25 +621,11 @@
   padding: 0.3rem 0.8rem;
 }
 
-.articleAside {
-  min-width: 0;
-}
-
-/* Khối trích dẫn theo người đọc suốt bài: với trang học thuật, thông tin cần
-   lấy đi thường là dòng trích dẫn và DOI chứ không phải phần thân. */
-@media (min-width: 68rem) {
-  .articleAside {
-    align-self: start;
-    position: sticky;
-    top: 7rem;
-  }
-}
-
 .citationCard {
-  background: var(--color-mist);
-  border-left: 3px solid var(--color-teal);
-  border-radius: var(--radius-control);
-  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+  background: #f3f6f5;
+  border-block: 1px solid rgb(25 72 106 / 14%);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
 }
 
 .citationHeading {
@@ -577,40 +639,73 @@
 }
 
 .citationText {
-  font-size: 0.95rem;
-  line-height: 1.55;
+  font-size: 1rem;
+  line-height: 1.65;
   margin: 0.75rem 0 0;
+  overflow-wrap: anywhere;
 }
 
 .citationLinks {
-  display: grid;
-  gap: 0.5rem;
-  margin-top: 1.1rem;
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.5rem;
+  margin-top: 1rem;
 }
 
-.citationPrimary,
-.citationSecondary {
+.citationSource,
+.citationDoi {
   align-items: center;
-  border: 2px solid transparent;
-  border-radius: var(--radius-control);
-  display: inline-flex;
-  font-size: 0.95rem;
-  font-weight: 700;
-  gap: 0.45rem;
-  justify-content: space-between;
-  min-height: 2.75rem;
-  padding: 0.6rem 0.9rem;
-  text-decoration: none;
-}
-
-.citationPrimary {
-  background: var(--color-teal);
-  color: var(--color-white);
-}
-
-.citationSecondary {
-  border-color: rgb(0 95 105 / 45%);
   color: var(--color-teal);
+  display: inline-flex;
+  font-size: 0.92rem;
+  font-weight: 600;
+  gap: 0.45rem;
+  max-width: 100%;
+  min-height: 2.75rem;
+  overflow-wrap: anywhere;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.citationLinks svg {
+  flex-shrink: 0;
+}
+
+.citationLinks a:hover {
+  color: var(--color-navy);
+}
+
+.publicationDetail .citationProvenance {
+  color: #536872;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 0.75rem 0 0;
+  text-align: start;
+}
+
+.publicationDetail .articleBody .proseList {
+  display: block;
+  list-style: disc;
+  padding-left: 1.35rem;
+}
+
+.publicationDetail .articleBody ol.proseList {
+  list-style: decimal;
+}
+
+.publicationDetail .articleBody .proseList li {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  line-height: 1.75;
+  margin-block: 0.85rem;
+  min-height: 0;
+  padding: 0 0 0 0.25rem;
+}
+
+.publicationDetail .articleBody .proseList li::before {
+  content: none;
 }
 
 /* ── Khối bài liên quan ─────────────────────────────────────────────────────── */
@@ -654,9 +749,76 @@
   min-width: 0;
 }
 
-@media (max-width: 68rem) {
-  .articleColumns {
+@media (max-width: 48rem) {
+  .publicationDetail {
+    width: calc(100% - 2.5rem);
+  }
+
+  .articleMasthead {
+    padding-block: 1.5rem 2rem;
+  }
+
+  .articleMasthead h1 {
+    font-size: clamp(2rem, 10vw, 2.75rem);
+    max-width: 100%;
+  }
+
+  .articleFactsPanel {
+    margin-bottom: 1.75rem;
+    padding-block: 1.1rem;
+  }
+
+  .articleFacts {
+    gap: 0.85rem;
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .articleFacts div {
+    align-items: baseline;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+  }
+
+  .articleFacts dd {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .articleFactWide {
+    grid-column: 1 / -1;
+  }
+
+  .articleFacts dt {
+    font-size: 0.68rem;
+  }
+
+  .articleOverline {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .articleOverline > span {
+    border: 0;
+    padding: 0;
+  }
+
+  .publicationDetail :global([data-vietnamese-phrase]) {
+    white-space: normal;
+  }
+
+  .articleCover {
+    margin-bottom: 2.5rem;
+  }
+
+  .articleCover img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .articleTags {
+    margin-top: 2rem;
   }
 }
 
@@ -948,12 +1110,13 @@
   background: var(--section-ink, #123f5d);
   border-radius: 0.7rem;
   box-shadow: 0 0.5rem 1.2rem rgb(18 63 93 / 16%);
-  inset-block: 0.4rem;
+  height: 0;
   left: 0;
   opacity: 1;
   pointer-events: none;
   position: absolute;
   transform-origin: left center;
+  top: 0;
   width: 0;
   will-change: transform;
   z-index: 0;
@@ -1556,7 +1719,7 @@ ol.proseList li::before {
   }
 
   .innerHero h1 {
-    font-size: clamp(2.45rem, 12vw, 3.65rem);
+    font-size: clamp(2.25rem, 10vw, 3.25rem);
     max-width: none;
   }
 
@@ -1587,13 +1750,22 @@ ol.proseList li::before {
 
   .sectionSubnav {
     border-radius: 0.85rem;
-    justify-content: flex-start;
+    display: grid;
+    gap: 0.4rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
+    mask-image: none;
     margin-bottom: 2.75rem;
-    scroll-padding-inline: 25%;
+    overflow: visible;
+    padding: 0.4rem;
+    scroll-padding-inline: 0;
   }
 
   .sectionSubnav a {
-    flex: 0 0 auto;
+    flex: none;
+    min-width: 0;
+    padding-inline: 0.6rem;
+    white-space: normal;
   }
 
   .sectionHeading {
@@ -1697,13 +1869,33 @@ ol.proseList li::before {
   }
 }
 
-/* Doan van than bai can deu hai bien tren toan trang. Cac quy tac phia tren
-   dat `text-align: start` cho dung nhung doan nay, va chung thang quy tac
-   `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
+/* Nội dung dài dùng mép phải tự nhiên để tránh kéo giãn chữ tiếng Việt. */
 .leadSummary,
 .entrySummary,
 .articleLede,
-.articleBody .proseParagraph,
 .proseParagraph {
-  text-align: justify;
+  text-align: start;
+}
+
+/* The publication reading column is deliberately ragged-right. At 740px, this
+   avoids the uneven spaces that justified Vietnamese paragraphs create. */
+.articleBody .proseParagraph {
+  text-align: start;
+}
+
+/* These compact publication texts inherit `main p` from globals.css. Keep
+   their editorial spacing natural in both the citation card and related cards. */
+.publicationDetail .citationText,
+.relatedResearchSummary {
+  text-align: start;
+  text-align-last: auto;
+  text-justify: auto;
+}
+
+/* Card summaries and article introductions are too narrow for even word spacing. */
+.leadSummary,
+.entrySummary,
+.articleLede {
+  text-align: start;
+  text-align-last: auto;
 }

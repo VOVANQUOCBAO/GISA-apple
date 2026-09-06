@@ -15,7 +15,8 @@ test('every sourced detail kind renders without placeholder facts', async ({ pag
     const response = await page.goto(path);
     expect(response?.ok(), `${path} should resolve`).toBe(true);
     await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
-    await expect(page.getByRole('complementary', { name: 'Nguồn nội dung' })).toBeVisible();
+    await expect(page.getByRole('complementary', { name: 'Nguồn nội dung' })).toHaveCount(0);
+    await expect(page.locator('body')).not.toContainText('Kiểm tra ngày');
     await expect(page.locator('body')).not.toContainText('undefined');
     await expect(page.locator('body')).not.toContainText('đang cập nhật');
   }

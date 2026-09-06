@@ -58,6 +58,45 @@ describe('EcosystemDetailTemplate', () => {
     expect(screen.queryByRole('link', { name: 'Mạng lưới' })).not.toBeInTheDocument();
   });
 
+  test.each(newsFixtures)(
+    'gives the news article $title a dedicated editorial reading region',
+    (record) => {
+      render(<EcosystemDetailTemplate record={record} />);
+
+      expect(
+        screen.getByRole('region', { name: 'Thông tin chính' }),
+      ).toHaveTextContent('Ngày công bố');
+      expect(screen.getByRole('img', { name: record.image?.alt })).toBeVisible();
+      expect(screen.getByRole('region', { name: 'Nội dung bài viết' })).toHaveTextContent(
+        record.body[0]?.type === 'paragraph' || record.body[0]?.type === 'heading'
+          ? record.body[0].text
+          : '',
+      );
+      expect(screen.getByRole('link', { name: 'Xem tin tức' })).toHaveAttribute('href', '/tin-tuc');
+    },
+  );
+
+  test.each(newsFixtures)(
+    'places metadata before the reading column and ends $title with an article footer',
+    (record) => {
+      const { container } = render(<EcosystemDetailTemplate record={record} />);
+      const metadata = screen.getByRole('region', { name: 'Thông tin chính' });
+      const content = screen.getByRole('region', { name: 'Nội dung bài viết' });
+      const readingColumn = content.parentElement;
+
+      expect(metadata.querySelector('dl')).toHaveTextContent('Ngày công bố');
+      expect(metadata.querySelectorAll('dt')).toHaveLength(2);
+      expect(readingColumn).not.toContainElement(metadata);
+      expect(metadata.nextElementSibling).toBe(readingColumn?.parentElement);
+      expect(metadata.compareDocumentPosition(content) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+      expect(container.querySelector('article')).toHaveAttribute('data-editorial-layout', 'news');
+      const footer = readingColumn?.querySelector('footer');
+      expect(footer).toContainElement(screen.getByRole('link', { name: 'Xem tin tức' }));
+      expect(screen.queryByRole('complementary', { name: 'Nguồn nội dung' })).not.toBeInTheDocument();
+      expect(container).not.toHaveTextContent('Kiểm tra ngày');
+    },
+  );
+
   test('uses consistent Vietnamese labels for archived notices', () => {
     render(<EcosystemDetailTemplate record={noticeFixtures[0]} />);
     const breadcrumb = screen.getByRole('navigation', { name: 'Đường dẫn' });

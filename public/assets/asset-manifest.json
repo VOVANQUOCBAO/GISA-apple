@@ -537,5 +537,192 @@
     "notes": "Logo đối tác do GISA cung cấp; dùng trong dải mạng lưới hợp tác. Cần xác nhận quyền sử dụng nhãn hiệu với từng tổ chức trước production.",
     "width": 750,
     "height": 750
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image1.png",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Áp phích hội thảo Agri Food Trade and Sustainability tại UEH Mekong",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1499,
+    "height": 600
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image2.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Các gian hàng công nghệ xanh tại triển lãm P4G 2025",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image3.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Thiết bị đo chất lượng đất kết nối ứng dụng di động",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image4.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Thiết bị lọc nước ứng dụng nguyên tắc thủy động lực học",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image5.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Thiết bị đo kiểm chi tiết cơ khí tại triển lãm",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image6.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Thiết bị theo dõi mức sử dụng năng lượng và nước",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image7.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Thiết bị hỗ trợ an toàn lao động tại triển lãm",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image8.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Thiết bị giám sát và quản lý năng lượng",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image9.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Pallet tái chế từ phụ phẩm nông nghiệp",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image10.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Vật liệu từ lá dứa có khả năng phân hủy sinh học",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image11.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Robot và drone phục vụ nông nghiệp",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image12.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Các tác giả nhận giải nhất tại Vifotec 2024",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 680,
+    "height": 391
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image13.jpeg",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Các tác giả công trình nhận giải ba tại Vifotec 2024",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 680,
+    "height": 451
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image14.png",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Nhà khoa học cầm mẫu nhựa có thể tan trong nước biển",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 680,
+    "height": 446
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image15.png",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Mẫu vật liệu nhựa mới trong dung dịch nước muối",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 680,
+    "height": 458
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image16.png",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Sơ đồ mô hình COM B cho hành vi tiêu dùng bền vững",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 937,
+    "height": 406
+  },
+  {
+    "publicPath": "/assets/gisa-web-posts/image17.png",
+    "sourcePath": "Bài đăng web GISA.docx",
+    "sourceType": "provided_by_gisa",
+    "rightsStatus": "approved_for_web",
+    "alt": "Quy trình nghiên cứu sử dụng mô hình COM B",
+    "reviewedAt": "2026-09-06",
+    "notes": "Ảnh do GISA cung cấp trong tài liệu nội dung cho bài đăng website.",
+    "width": 679,
+    "height": 322
   }
 ]

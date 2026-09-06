@@ -163,7 +163,6 @@
 @media (max-width:48rem){
   .hero{min-height:52rem}
   .gatewayInner>a{grid-template-columns:2.1rem minmax(0,1fr);padding-inline:.85rem}
-  .gatewayInner>a:last-child{grid-column:1/-1}
   .gatewayInner>a>svg:last-child{display:none}
   .gatewayInner small{font-size:.74rem}
   .knowledgeToolbar{align-items:flex-start;flex-direction:column;gap:.25rem}
@@ -314,6 +313,29 @@
     filter: blur(0);
     opacity: 1;
     transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Final mobile reading scale from the route-by-route audit. */
+@media (max-width: 48rem) {
+  .capabilitiesIntro h2 {
+    font-size: clamp(2.35rem, 10.8vw, 2.8rem);
+    margin-bottom: 1.75rem;
+  }
+
+  .homeMain .hero .heroCopy h1 {
+    font-size: clamp(2.15rem, 9.4vw, 2.65rem);
+    max-width: 100%;
+    white-space: normal;
+    width: 100%;
+  }
+
+  .homeMain .hero .heroCopy h1 > span {
+    max-width: 100%;
+  }
+
+  .homeMain .hero .heroCopy h1[data-hero-slide='2'] {
+    font-size: clamp(2rem, 8.5vw, 2.75rem);
   }
 }
 
@@ -2759,9 +2781,12 @@
 
   .featuredNewsItem:not(:first-child) .featuredNewsImage,
   .featuredNewsItem:first-child .featuredNewsImage {
+    align-self: start;
     aspect-ratio: 1.15;
     height: auto;
     min-height: 0;
+    min-width: 0;
+    width: 100%;
   }
 
   .featuredNewsItem:not(:first-child) .featuredNewsContent {
@@ -2813,7 +2838,7 @@
   flex: 1;
   max-width: none;
   text-align: left;
-  text-align-last: left;
+  text-align-last: auto;
   white-space: nowrap;
   word-spacing: normal;
 }
@@ -3025,4 +3050,18 @@
   .aboutSection .visionCardLink:hover {
     transform: none;
   }
+}
+
+/* Final narrow-reading alignment from the route-by-route mobile audit. */
+.aboutBody p,
+.aboutSection .visionCardLink p,
+.missionGrid p {
+  text-align: start;
+  text-align-last: auto;
+}
+
+.aboutBody p :global([data-vietnamese-phrase]),
+.aboutSection .visionCardLink p :global([data-vietnamese-phrase]),
+.missionGrid p :global([data-vietnamese-phrase]) {
+  white-space: normal !important;
 }

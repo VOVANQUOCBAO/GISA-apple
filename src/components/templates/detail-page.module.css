@@ -227,5 +227,5 @@
    dat `text-align: start` cho dung nhung doan nay, va chung thang quy tac
    `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
 .bodyColumn > div:first-child > p {
-  text-align: justify;
+  text-align: start;
 }

@@ -317,5 +317,21 @@
    dat `text-align: start` cho dung nhung doan nay, va chung thang quy tac
    `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
 .cardCopy > p {
-  text-align: justify;
+  text-align: start;
+  text-align-last: auto;
+}
+
+/* Let short editorial cards end with their content instead of inheriting the
+   height of the tallest neighbour in the CSS-grid row. */
+.expertCard {
+  height: auto;
+  min-height: 16rem;
+}
+
+.cardCopy {
+  align-content: center;
+}
+
+.portrait {
+  min-height: 16rem;
 }

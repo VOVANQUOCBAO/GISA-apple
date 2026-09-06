@@ -88,7 +88,8 @@ describe('TemplateRouter', () => {
       }),
     );
     expect(screen.getByRole('heading', { level: 1, name: 'TRADE4SD' })).toBeVisible();
-    expect(screen.getByText('Website công khai GISA — mục dự án TRADE4SD')).toBeVisible();
+    expect(screen.queryByText('Website công khai GISA — mục dự án TRADE4SD')).not.toBeInTheDocument();
+    expect(screen.queryByText(/Kiểm tra ngày/)).not.toBeInTheDocument();
     expect(document.body).not.toHaveTextContent('undefined');
   });
 

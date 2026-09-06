@@ -277,10 +277,8 @@
   }
 }
 
-/* Doan van than bai can deu hai bien tren toan trang. Cac quy tac phia tren
-   dat `text-align: start` cho dung nhung doan nay, va chung thang quy tac
-   `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
+/* Nội dung dài dùng mép phải tự nhiên để tránh kéo giãn chữ tiếng Việt. */
 .pageContainer[data-section='research'] .opening > div > p,
 .pageContainer[data-section='research'] .chapterContent p {
-  text-align: justify;
+  text-align: start;
 }

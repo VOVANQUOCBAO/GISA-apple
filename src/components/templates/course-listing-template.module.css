@@ -308,5 +308,5 @@
    `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
 .discoveryCopy p,
 .courseSummary {
-  text-align: justify;
+  text-align: start;
 }

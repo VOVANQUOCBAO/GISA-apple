@@ -653,7 +653,7 @@
 .itemSummary,
 .newsCopy p,
 .noticeCopy p {
-  text-align: justify;
+  text-align: start;
 }
 
 /* Community initiatives need a visual identity, not another text-card grid. */
@@ -699,7 +699,7 @@
 
 .initiativeCopy .itemSummary {
   margin-bottom: 0;
-  text-align-last: left;
+  text-align-last: auto;
 }
 
 .initiativeCopy .readMore {
@@ -749,8 +749,8 @@
   letter-spacing: normal;
   line-height: 1.72;
   overflow-wrap: normal;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
   text-wrap: pretty;
   word-spacing: normal;
 }
@@ -979,7 +979,49 @@
   .newsCopy p,
   .noticeCopy p {
     font-size: 18px;
-    text-align: justify;
-    text-align-last: left;
+    text-align: start;
+    text-align-last: auto;
   }
+}
+
+/* Final type scale and text alignment from the cross-page visual audit. */
+.itemSummary,
+.newsCopy p,
+.noticeCopy p {
+  text-align: start;
+  text-align-last: auto;
+}
+
+.initiativeCard h3 {
+  font-size: clamp(1.55rem, 2vw, 2rem);
+}
+
+.initiativeLead h3 {
+  font-size: clamp(2rem, 3.6vw, 3.5rem);
+}
+
+.newsCopy h3,
+.noticeCopy h3 {
+  font-size: clamp(1.7rem, 2.55vw, 2.55rem);
+}
+
+@media (max-width: 48rem) {
+  .initiativeCard h3,
+  .newsCopy h3,
+  .noticeCopy h3 {
+    font-size: clamp(1.65rem, 8vw, 2rem);
+  }
+
+  .itemSummary,
+  .newsCopy p,
+  .noticeCopy p {
+    text-align: start;
+    text-align-last: auto;
+  }
+}
+
+.container[data-section='community'] .itemSummary :global([data-vietnamese-phrase]),
+.container[data-section='news'] .newsCopy p :global([data-vietnamese-phrase]),
+.container[data-section='news'] .noticeCopy p :global([data-vietnamese-phrase]) {
+  white-space: normal !important;
 }

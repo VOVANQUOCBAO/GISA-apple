@@ -1,6 +1,5 @@
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import { ButtonLink } from '@/components/ui/button-link';
-import { SourceNote } from '@/components/ui/source-note';
 import type { ContentBlock, ContentRecord } from '@/content/types';
 import { toAnchorId } from '@/lib/anchor-id';
 import { bindPhrases } from '@/lib/vietnamese-text';
@@ -197,13 +196,6 @@ export function CourseTemplate({ record }: { record: ContentRecord }) {
                 <ContentBlocks blocks={chapter.blocks} />
               </section>
             ))}
-            <div className={styles.sourceStage}>
-              <SourceNote
-                checkedAt={record.checkedAt}
-                sourceLabel={record.sourceLabel}
-                sourceUrl={record.sourceUrl}
-              />
-            </div>
           </div>
         </section>
       </article>

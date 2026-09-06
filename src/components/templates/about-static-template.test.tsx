@@ -22,7 +22,10 @@ describe('AboutStaticTemplate', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: title })).toBeVisible();
     expect(screen.getByRole('heading', { level: 2, name: sectionTitle })).toBeVisible();
-    expect(container.textContent).not.toMatch(/[–—]/);
+    expect(container.textContent).not.toMatch(/ {2,}/);
+    const bridgedDashes = container.querySelectorAll('[data-dash-bridge]');
+    expect(bridgedDashes.length).toBeGreaterThan(0);
+    for (const bridge of bridgedDashes) expect(bridge.textContent).toMatch(/^[-–—]\s+\S/u);
     unmount();
   });
 

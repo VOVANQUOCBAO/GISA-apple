@@ -101,4 +101,14 @@ describe('bindPhrases', () => {
     expect(container.querySelector('p')).toHaveTextContent(text);
     expect(phrases.map((phrase) => phrase.textContent)).toContain('dấu ấn khác biệt');
   });
+
+  test('keeps a dash with the word that follows it', () => {
+    const text = 'Ứng dụng khoa học – công nghệ vào thực tiễn';
+    const { container } = render(<h3>{bindPhrases(text)}</h3>);
+    const bridges = [...container.querySelectorAll('[data-dash-bridge]')];
+
+    expect(container.querySelector('h3')).toHaveTextContent(text);
+    expect(bridges.map((bridge) => bridge.textContent)).toEqual(['– công nghệ']);
+    expect(bridges[0]?.getAttribute('style')).toContain('white-space: nowrap');
+  });
 });

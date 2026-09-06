@@ -749,8 +749,8 @@
 }
 
 .container[data-mode='atlas'] .introduction .prose > p {
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
 }
 
 .container[data-mode='atlas'] .introduction .prose > p + p {
@@ -830,8 +830,8 @@
   line-height: 1.72;
   margin: .65rem 0 0;
   max-width: 55ch;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
   text-wrap: pretty;
 }
 
@@ -984,8 +984,8 @@
   .container[data-mode='supporters'] .prose p,
   .container[data-mode='community'] .prose p {
     font-size: 18px;
-    text-align: justify;
-    text-align-last: left;
+    text-align: start;
+    text-align-last: auto;
   }
 
   .container[data-mode='community'] .subsectionGrid:has(> section:nth-child(5):last-child),
@@ -1265,8 +1265,8 @@
   font-size: 1rem;
   line-height: 1.7;
   max-width: 64ch;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
 }
 
 .container[data-mode='atlas'] .introduction p :global([data-vietnamese-phrase]),
@@ -1315,9 +1315,14 @@
     grid-row: auto;
   }
 
-  .container[data-mode='atlas'] .chapterHeader,
-  .container[data-mode='atlas'] .chapterVisual {
+  .container[data-mode='atlas'] .chapterHeader {
     min-height: clamp(22rem, 58vw, 30rem);
+  }
+
+  .container[data-mode='atlas'] .chapterVisual {
+    max-width: 100%;
+    min-height: 0;
+    width: 100%;
   }
 }
 
@@ -1583,7 +1588,7 @@
 .introduction > .prose > p,
 .chapterBody > .prose > p,
 .container[data-mode='network'] .subsection .prose p {
-  text-align: justify;
+  text-align: start;
 }
 
 /* Image-led child pages and safer Vietnamese wrapping. */
@@ -1696,8 +1701,8 @@
   hyphens: none;
   letter-spacing: normal;
   overflow-wrap: normal;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
   text-wrap: pretty;
   word-spacing: normal;
 }
@@ -1745,8 +1750,8 @@
 .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction > .prose > p,
 .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterBody > .prose > p,
 .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .subsection .prose > p {
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
 }
 
 @media (max-width: 72rem) {
@@ -1759,8 +1764,8 @@
   .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .introduction > .prose > p,
   .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .chapterBody > .prose > p,
   .container:is([data-mode='network'], [data-mode='supporters'], [data-mode='community']) .subsection .prose > p {
-    text-align: justify;
-    text-align-last: left;
+    text-align: start;
+    text-align-last: auto;
   }
 }
 
@@ -1799,8 +1804,8 @@
   .container[data-mode='supporters'] .subsection .prose > p,
   .container[data-mode='community'] .subsection .prose > p {
     font-size: 18px;
-    text-align: justify;
-    text-align-last: left;
+    text-align: start;
+    text-align-last: auto;
   }
 }
 
@@ -1897,7 +1902,7 @@
 }
 
 .container[data-mode='atlas'] .chapterTitleLine:last-child {
-  white-space: nowrap;
+  white-space: normal;
 }
 
 @media (max-width: 48rem) {

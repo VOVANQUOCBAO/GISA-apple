@@ -35,7 +35,11 @@ export function RelatedResearch({
         </div>
         <div className={styles.relatedGrid}>
           {items.map((item) => (
-            <ResearchCard item={item} key={item.id} />
+            <ResearchCard
+              item={item}
+              key={item.id}
+              summaryClassName={styles.relatedResearchSummary}
+            />
           ))}
         </div>
       </div>

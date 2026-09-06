@@ -27,7 +27,7 @@ const COMPOUNDS = [
   'hiệu suất', 'học thuật', 'hợp tác', 'khách hàng', 'khí hậu', 'khoa học',
   'khoa học công nghệ', 'khóa học', 'khởi nghiệp', 'kỹ năng', 'kiến tạo', 'kinh doanh',
   'kinh tế bền vững', 'kinh tế thực phẩm', 'kinh tế', 'kết nối', 'lãnh đạo', 'liên hệ',
-  'liên ngành', 'mạng lưới', 'minh bạch', 'mô hình', 'môi trường', 'mục tiêu', 'năng lực',
+  'lan tỏa', 'liên ngành', 'mạng lưới', 'minh bạch', 'mô hình', 'môi trường', 'mục tiêu', 'năng lực',
   'lựa chọn', 'lộ trình',
   'nguồn nhân lực', 'nhân lực', 'nhân sự', 'nghiên cứu', 'nông nghiệp', 'nông thôn', 'phát triển',
   'phát triển bền vững', 'phát triển con người', 'phân tích', 'phương pháp', 'quản lý',
@@ -45,10 +45,11 @@ const COMPOUNDS = [
  * shorter phrase would match first and leave "nguồn" free to wrap away from it.
  * The lookarounds stop a phrase from matching inside a longer word.
  */
+const SORTED_COMPOUNDS = [...COMPOUNDS].sort((a, b) => b.length - a.length);
+const DASH_BRIDGE = new RegExp(`^[\\-–—]\\s+(?:${SORTED_COMPOUNDS.join('|')}|\\p{L}[\\p{L}\\p{M}]*)$`, 'iu');
+
 const PATTERN = new RegExp(
-  `(?<!\\p{L})(${[...COMPOUNDS]
-    .sort((a, b) => b.length - a.length)
-    .join('|')})(?!\\p{L})`,
+  `(?<!\\p{L})([\\-–—]\\s+(?:${SORTED_COMPOUNDS.join('|')}|\\p{L}[\\p{L}\\p{M}]*)|${SORTED_COMPOUNDS.join('|')})(?!\\p{L})`,
   'giu',
 );
 
@@ -84,6 +85,7 @@ export function bindPhrases(text: string): ReactNode {
       {parts.map((part, index) =>
         index % 2 === 1 ? (
           <span
+            data-dash-bridge={DASH_BRIDGE.test(part) ? true : undefined}
             data-vietnamese-phrase
             key={`${part}-${index}`}
             style={{ ...inheritedTypography, whiteSpace: 'nowrap' }}

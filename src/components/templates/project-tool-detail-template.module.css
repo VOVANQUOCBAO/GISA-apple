@@ -344,5 +344,20 @@
    `main p` chung trong globals.css, nen phai lat lai ngay tai day. */
 .lede,
 .bodyColumn > div > p {
-  text-align: justify;
+  text-align: start;
+}
+
+.lede {
+  text-align: start;
+  text-align-last: auto;
+}
+
+.page[data-tone='tool'] .masthead h1 {
+  font-size: clamp(2.75rem, 4.35vw, 4rem);
+}
+
+@media (max-width: 48rem) {
+  .page[data-tone='tool'] .masthead h1 {
+    font-size: clamp(2.25rem, 9vw, 2.75rem);
+  }
 }

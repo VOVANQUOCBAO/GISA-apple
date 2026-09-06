@@ -164,12 +164,32 @@ dd {
   word-break: normal;
 }
 
-/* Đoạn văn trong phần nội dung căn đều hai biên. Dòng cuối của đoạn không bị
-   kéo giãn, nên đoạn chỉ một dòng trông y như cũ — chỉ những đoạn thực sự xuống
-   dòng mới thẳng được cả hai biên. Độ ưu tiên để thấp cố ý: chỗ nào đã cố tình
-   căn giữa hay canh phải bằng lớp riêng thì vẫn giữ nguyên ý đồ đó. */
+/* Giữ khoảng cách chữ tự nhiên cho nội dung dài. Căn đều hai biên khiến trình
+   duyệt kéo giãn ký tự tiếng Việt trên những dòng thiếu khoảng trắng. */
 main p {
-  text-align: justify;
+  text-align: start;
+  text-align-last: auto;
+  text-justify: auto;
+}
+
+/* On narrow columns, phrase wrappers may break normally so justified copy can
+   keep two clean edges without creating wide spacing rivers. Dash bridges are
+   the sole exception: the punctuation must travel with the following word. */
+@media (max-width: 48rem) {
+  #main-content p [data-vietnamese-phrase],
+  #main-content li [data-vietnamese-phrase],
+  #main-content dd [data-vietnamese-phrase] {
+    white-space: normal !important;
+  }
+
+  #main-content p [data-dash-bridge],
+  #main-content li [data-dash-bridge],
+  #main-content dd [data-dash-bridge],
+  #main-content h1 [data-dash-bridge],
+  #main-content h2 [data-dash-bridge],
+  #main-content h3 [data-dash-bridge] {
+    white-space: nowrap !important;
+  }
 }
 
 img {

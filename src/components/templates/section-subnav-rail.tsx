@@ -21,12 +21,14 @@ let fallbackReadyHref: string | undefined;
 function geometryWithin(
   nav: HTMLElement,
   element: HTMLElement,
-): { left: number; width: number } {
+): { height: number; left: number; top: number; width: number } {
   const navRect = nav.getBoundingClientRect();
   const elementRect = element.getBoundingClientRect();
 
   return {
+    height: elementRect.height,
     left: elementRect.left - navRect.left + nav.scrollLeft,
+    top: elementRect.top - navRect.top + nav.scrollTop,
     width: elementRect.width,
   };
 }
@@ -68,8 +70,9 @@ export function SectionSubnavRail({ label, links, path }: SectionSubnavRailProps
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     activeAnimations.forEach((animation) => animation.cancel());
+    indicator.style.height = `${target.height}px`;
     indicator.style.width = `${target.width}px`;
-    indicator.style.transform = `translate3d(${target.left}px, 0, 0)`;
+    indicator.style.transform = `translate3d(${target.left}px, ${target.top}px, 0)`;
     indicator.dataset.positioned = 'true';
 
     if (shouldAnimate && typeof indicator.animate === 'function') {
@@ -82,10 +85,10 @@ export function SectionSubnavRail({ label, links, path }: SectionSubnavRailProps
         indicator.animate(
           [
             {
-              transform: `translate3d(${start.left}px, 0, 0) scaleX(${start.width / target.width})`,
+              transform: `translate3d(${start.left}px, ${start.top}px, 0) scale(${start.width / target.width}, ${start.height / target.height})`,
             },
             {
-              transform: `translate3d(${target.left}px, 0, 0) scaleX(1)`,
+              transform: `translate3d(${target.left}px, ${target.top}px, 0) scale(1)`,
             },
           ],
           {
@@ -115,8 +118,9 @@ export function SectionSubnavRail({ label, links, path }: SectionSubnavRailProps
 
     const syncIndicator = () => {
       const target = geometryWithin(nav, current);
+      indicator.style.height = `${target.height}px`;
       indicator.style.width = `${target.width}px`;
-      indicator.style.transform = `translate3d(${target.left}px, 0, 0)`;
+      indicator.style.transform = `translate3d(${target.left}px, ${target.top}px, 0)`;
     };
     const observer = new ResizeObserver(syncIndicator);
 

@@ -797,7 +797,7 @@
   line-height: 1.62;
   margin-inline: auto;
   max-width: 62ch;
-  text-align: justify;
+  text-align: start;
   text-align-last: center;
 }
 
@@ -1008,7 +1008,7 @@
   line-height: 1.75;
   margin: clamp(2rem, 3vw, 3rem) auto 0;
   max-width: 65ch;
-  text-align: justify;
+  text-align: start;
   text-align-last: center;
 }
 
@@ -1098,8 +1098,8 @@
   line-height: 1.68;
   margin: 0;
   max-width: 55ch;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
   text-wrap: pretty;
 }
 
@@ -1144,7 +1144,7 @@
   .pageContainer[data-capability='training'] .trainingOpening > div > p:first-child,
   .pageContainer[data-capability='training'] .trainingPhilosophy > p {
     text-align: left;
-    text-align-last: left;
+    text-align-last: auto;
   }
 
   .pageContainer[data-capability='training'] .trainingFieldGrid li {
@@ -1195,7 +1195,7 @@
 .applicationContent > div > p,
 .curriculumItem > div > p,
 .applicationItem > div > p {
-  text-align: justify;
+  text-align: start;
 }
 
 /* Editorial redesign for Training and Application child pages. */
@@ -1270,7 +1270,7 @@
 .applicationLead > div > p + p {
   line-height: 1.76;
   max-width: 62ch;
-  text-align-last: left;
+  text-align-last: auto;
 }
 
 .applicationItem > div > p[data-scroll-motion='item']:first-child,
@@ -1278,7 +1278,7 @@
 .applicationContent > div > p[data-scroll-motion='item']:first-child {
   font-size: clamp(1.02rem, 1.2vw, 1.12rem);
   line-height: 1.74;
-  text-align-last: left;
+  text-align-last: auto;
 }
 
 .applicationLens {
@@ -1329,8 +1329,8 @@
   line-height: 1.74;
   max-width: 66ch;
   overflow-wrap: normal;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
   text-wrap: pretty;
   word-spacing: normal;
 }
@@ -1616,8 +1616,8 @@
   line-height: 1.75;
   max-width: 68ch;
   overflow-wrap: normal;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
   text-wrap: pretty;
   word-break: normal;
 }
@@ -1717,8 +1717,8 @@
   line-height: 1.68;
   margin: 1.75rem 0 0;
   max-width: 43ch;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
   text-wrap: pretty;
 }
 
@@ -1766,7 +1766,7 @@
   line-height: 1.62;
   margin-inline: auto;
   max-width: 62ch;
-  text-align: justify;
+  text-align: start;
   text-align-last: center;
 }
 
@@ -1804,15 +1804,15 @@
 
 @media (max-width: 48rem) {
   .pageContainer[data-capability='training'] .trainingOpening > div > p:first-child {
-    text-align: justify;
-    text-align-last: left;
+    text-align: start;
+    text-align-last: auto;
   }
 
   .pageContainer[data-capability='training'] .chapterContent > div > p,
   .pageContainer[data-capability='training'] .curriculumItem > div > p,
   .pageContainer[data-capability='training'] .trainingPhilosophy > p {
-    text-align: justify;
-    text-align-last: left;
+    text-align: start;
+    text-align-last: auto;
   }
 
   .pageContainer[data-capability='training'][data-page='linh-vuc'] .trainingChapter .chapterContent > ol.trainingPathwayGrid {
@@ -2008,8 +2008,8 @@
   hyphens: none;
   line-height: 1.72;
   overflow-wrap: normal;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
   text-wrap: pretty;
   word-break: normal;
 }
@@ -2256,8 +2256,8 @@
   .pageContainer[data-capability='application'] .applicationContent > div > p[data-scroll-motion='item'],
   .pageContainer[data-capability='application'] .applicationItem li {
     font-size: 18px;
-    text-align: justify;
-    text-align-last: left;
+    text-align: start;
+    text-align-last: auto;
   }
 }
 
@@ -2306,8 +2306,8 @@
   color: color-mix(in srgb, var(--color-navy) 86%, white);
   margin: 0;
   max-width: none;
-  text-align: justify;
-  text-align-last: left;
+  text-align: start;
+  text-align-last: auto;
 }
 
 /* Giữ cụm từ có nghĩa trọn vẹn và mở rộng khổ chữ để dòng cuối không rơi riêng

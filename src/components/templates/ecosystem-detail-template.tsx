@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
-import { SourceNote } from '@/components/ui/source-note';
 import type { ContentBlock, ContentRecord } from '@/content/types';
 import { bindPhrases } from '@/lib/vietnamese-text';
 
@@ -116,8 +115,8 @@ function DetailFacts({ record }: { record: ContentRecord }) {
   const entries = factEntries(record);
   if (!entries.length && !record.publishedAt) return null;
 
-  return (
-    <aside className={styles.facts} aria-label="Thông tin chính">
+  const facts = (
+    <>
       {record.publishedAt ? (
         <div>
           <dt>Ngày công bố</dt>
@@ -130,7 +129,15 @@ function DetailFacts({ record }: { record: ContentRecord }) {
           <dd>{vietnameseText(Array.isArray(value) ? value.join(', ') : value)}</dd>
         </div>
       ))}
-    </aside>
+    </>
+  );
+
+  return record.kind === 'news' ? (
+    <section className={styles.metadataBand} aria-label="Thông tin chính">
+      <dl>{facts}</dl>
+    </section>
+  ) : (
+    <aside className={styles.facts} aria-label="Thông tin chính">{facts}</aside>
   );
 }
 
@@ -139,14 +146,20 @@ export function EcosystemDetailTemplate({ record }: { record: ContentRecord }) {
 
   const direction = DETAIL_DIRECTIONS[record.kind as EcosystemKind];
   const profile = profileForPath(record.path);
-  const partnerVisual = record.kind === 'partner' && record.image;
-  const visual = partnerVisual
+  const ArticleFooter = record.kind === 'news' ? 'footer' : 'div';
+  const recordVisual = (record.kind === 'partner' || record.kind === 'news') && record.image;
+  const visual = recordVisual
     ? { alt: normalizeVisibleText(record.image?.alt ?? record.title), src: record.image?.src ?? profile.image }
     : heroVisualForPath(record.path);
 
   return (
     <main className={styles.page} id="main-content" tabIndex={-1}>
-      <article className={styles.container} data-kind={record.kind} data-section={profile.section}>
+      <article
+        className={styles.container}
+        data-kind={record.kind}
+        data-section={profile.section}
+        data-editorial-layout={record.kind === 'news' ? 'news' : undefined}
+      >
         <Breadcrumbs
           items={[
             { href: '/', label: 'Trang chủ' },
@@ -164,7 +177,11 @@ export function EcosystemDetailTemplate({ record }: { record: ContentRecord }) {
             <h1>{vietnameseText(record.title)}</h1>
             <p className={styles.heroDescription}>{vietnameseText(record.summary)}</p>
           </div>
-          <figure className={styles.heroVisual} data-logo={partnerVisual ? 'true' : 'false'}>
+          <figure
+            className={styles.heroVisual}
+            data-image-fit={record.kind === 'news' ? 'contain' : 'cover'}
+            data-logo={record.kind === 'partner' && record.image ? 'true' : 'false'}
+          >
             <Image
               alt={visual.alt}
               fill
@@ -181,8 +198,9 @@ export function EcosystemDetailTemplate({ record }: { record: ContentRecord }) {
             Thông báo này thuộc kho lưu trữ. Vui lòng xác nhận trực tiếp với GISA nếu cần kiểm tra hiệu lực hiện tại.
           </p>
         ) : null}
+        {record.kind === 'news' ? <DetailFacts record={record} /> : null}
         <div className={styles.readingStage}>
-          <DetailFacts record={record} />
+          {record.kind !== 'news' ? <DetailFacts record={record} /> : null}
           <div className={styles.body}>
             {record.kind === 'partner' ? (
               <section className={styles.partnerEvidence} aria-labelledby="partner-information-scope">
@@ -197,20 +215,22 @@ export function EcosystemDetailTemplate({ record }: { record: ContentRecord }) {
                   hiển thị trên website.
                 </p>
               </section>
+            ) : record.kind === 'news' ? (
+              <section
+                className={styles.articleBody}
+                aria-label="Nội dung bài viết"
+              >
+                <ContentBlocks blocks={normalizeBlocks(record.body)} />
+              </section>
             ) : (
               <ContentBlocks blocks={normalizeBlocks(record.body)} />
             )}
-            <section className={styles.actionClosure} aria-label="Bước tiếp theo">
-              <h2>{vietnameseText(`Tiếp tục khám phá ${direction.parent.label.toLocaleLowerCase('vi')}`)}</h2>
-              <Link href={direction.action.href}>{vietnameseText(direction.action.label)}</Link>
-            </section>
-            <div className={styles.source}>
-              <SourceNote
-                checkedAt={record.checkedAt}
-                sourceLabel={normalizeVisibleText(record.sourceLabel)}
-                sourceUrl={record.sourceUrl}
-              />
-            </div>
+            <ArticleFooter className={record.kind === 'news' ? styles.articleFooter : undefined}>
+              <section className={styles.actionClosure} aria-label="Bước tiếp theo">
+                <h2>{vietnameseText(`Tiếp tục khám phá ${direction.parent.label.toLocaleLowerCase('vi')}`)}</h2>
+                <Link href={direction.action.href}>{vietnameseText(direction.action.label)}</Link>
+              </section>
+            </ArticleFooter>
           </div>
         </div>
       </article>
