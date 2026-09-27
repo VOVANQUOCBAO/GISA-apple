@@ -82,7 +82,7 @@ function toRecord(post: SanityPost): ContentRecord | null {
   if (body.length === 0) return null;
   const summary = post.summary?.trim() || body.find((block) => block.type === 'paragraph')?.text || post.title;
   const date = post._createdAt?.slice(0, 10);
-  const topic = ({ news: 'Tin tức GISA', activities: 'Hoạt động học sinh', announcements: 'Thông báo' } as Record<string, string>)[post.category ?? ''] ?? 'Tin tức GISA';
+  const topic = ({ news: 'Tin tức GISA', activities: 'Hoạt động GISA', announcements: 'Thông báo' } as Record<string, string>)[post.category ?? ''] ?? 'Tin tức GISA';
   const image = trustedImage(post.coverUrl) ? {
     src: post.coverUrl,
     alt: post.coverAlt?.trim() || post.title,
