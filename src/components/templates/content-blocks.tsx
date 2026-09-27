@@ -97,6 +97,14 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
           return <p className={styles.proseVideoLink} key={`${block.type}-${index}`}><a href={block.externalUrl}>{bindPhrases(block.title)}</a></p>;
         }
         if (block.type === 'image') {
+          if (block.assetId.startsWith('https://cdn.sanity.io/images/j7fuzzrp/production/')) {
+            return (
+              <figure className={styles.blockFigure} data-scroll-motion="media" key={`${block.type}-${index}`}>
+                <Image alt={block.caption || 'Ảnh trong bài viết'} height={800} sizes="(max-width: 48rem) 94vw, 44rem" src={block.assetId} width={1200} />
+                {block.caption ? <figcaption>{bindPhrases(block.caption)}</figcaption> : null}
+              </figure>
+            );
+          }
           const asset = resolvePublishableAsset(block.assetId);
           // Chưa có dòng manifest, hoặc có mà quyền đăng chưa được xác nhận: chỉ
           // hiển thị chú thích. Không dựng khung ảnh trống vì trang sẽ có một ô xám

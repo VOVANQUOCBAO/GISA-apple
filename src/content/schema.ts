@@ -93,7 +93,7 @@ export const contentRecordSchema = z.object({
   publishedAt: isoDateSchema.optional(),
   image: z
     .object({
-      src: z.string().startsWith('/'),
+    src: z.string().refine((src) => src.startsWith('/') || src.startsWith('https://cdn.sanity.io/images/j7fuzzrp/production/')),
       alt: z.string().min(1),
       width: z.number().int().positive(),
       height: z.number().int().positive(),

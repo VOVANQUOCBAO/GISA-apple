@@ -14,7 +14,8 @@ const nextConfig: NextConfig = {
     viewTransition: true,
   },
   images: {
-    qualities: [75, 95]
+    qualities: [75, 95],
+    remotePatterns: [{ protocol: 'https', hostname: 'cdn.sanity.io', pathname: '/images/j7fuzzrp/production/**' }]
   },
   poweredByHeader: false,
   async headers() {

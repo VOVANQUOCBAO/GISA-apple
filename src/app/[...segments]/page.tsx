@@ -8,6 +8,8 @@ import type { UrlQuery } from '@/components/ui/filter-bar';
 import { PAGE_REGISTRY, resolvePage } from '@/content/pages';
 import { getContentRepository } from '@/content/repositories';
 
+export const revalidate = 60;
+
 interface ContentPageProps {
   params: Promise<{ segments: string[] }>;
   searchParams: Promise<UrlQuery>;

@@ -1,5 +1,6 @@
 import { FixtureContentRepository } from './fixture-content-repository';
 import { HttpContentRepository } from './http-content-repository';
+import { SanityNewsRepository } from './sanity-news-repository';
 import type { ContentRepository } from './content-repository';
 
 export type { ContentRepository } from './content-repository';
@@ -10,11 +11,12 @@ export {
 } from './http-content-repository';
 
 const fixtureContentRepository = new FixtureContentRepository();
+const sanityContentRepository = new SanityNewsRepository(fixtureContentRepository);
 
 export function getContentRepository(): ContentRepository {
   const source = process.env.CONTENT_SOURCE?.trim() || 'fixture';
 
-  if (source === 'fixture') return fixtureContentRepository;
+  if (source === 'fixture') return sanityContentRepository;
 
   if (source === 'http') {
     const baseUrl = process.env.CONTENT_API_BASE_URL?.trim();

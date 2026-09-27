@@ -1,0 +1,16 @@
+studio/
+node_modules/
+.next/
+.git/
+test-results/
+playwright-report/
+.pnpm-store/
+.tools/
+.docx-source-extract/
+.env.local
+artifacts/
+.codex-preview/
+.next-dev-*
+news-editorial-*.png
+playwright.local.config.ts
+.tmp-*
