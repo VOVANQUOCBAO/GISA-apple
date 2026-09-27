@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { createDataAttribute } from '@sanity/visual-editing';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import type { ContentBlock, ContentRecord } from '@/content/types';
@@ -141,7 +142,7 @@ function DetailFacts({ record }: { record: ContentRecord }) {
   );
 }
 
-export function EcosystemDetailTemplate({ record }: { record: ContentRecord }) {
+export function EcosystemDetailTemplate({ record, editDocumentId }: { record: ContentRecord; editDocumentId?: string }) {
   if (!supportsEcosystemDetailTemplate(record)) return null;
 
   const direction = DETAIL_DIRECTIONS[record.kind as EcosystemKind];
@@ -151,6 +152,9 @@ export function EcosystemDetailTemplate({ record }: { record: ContentRecord }) {
   const visual = recordVisual
     ? { alt: normalizeVisibleText(record.image?.alt ?? record.title), src: record.image?.src ?? profile.image }
     : heroVisualForPath(record.path);
+  const editField = (path: string) => editDocumentId
+    ? createDataAttribute({ id: editDocumentId, type: 'post', path, baseUrl: 'https://gisa-editor.sanity.studio/' }).toString()
+    : undefined;
 
   return (
     <main className={styles.page} id="main-content" tabIndex={-1}>
@@ -174,11 +178,12 @@ export function EcosystemDetailTemplate({ record }: { record: ContentRecord }) {
         <header className={styles.hero} data-title-length={record.title.length > 52 ? 'long' : 'standard'}>
           <div className={styles.heroCopy}>
             <p className={styles.heroTopic}>{vietnameseText(direction.topic)}</p>
-            <h1>{vietnameseText(record.title)}</h1>
-            <p className={styles.heroDescription}>{vietnameseText(record.summary)}</p>
+            <h1 data-sanity={editField('title')}>{vietnameseText(record.title)}</h1>
+            <p className={styles.heroDescription} data-sanity={editField('summary')}>{vietnameseText(record.summary)}</p>
           </div>
           <figure
             className={styles.heroVisual}
+            data-sanity={editField('cover')}
             data-image-fit={record.kind === 'news' ? 'contain' : 'cover'}
             data-logo={record.kind === 'partner' && record.image ? 'true' : 'false'}
           >
@@ -219,6 +224,7 @@ export function EcosystemDetailTemplate({ record }: { record: ContentRecord }) {
               <section
                 className={styles.articleBody}
                 aria-label="Nội dung bài viết"
+                data-sanity={editField('body')}
               >
                 <ContentBlocks blocks={normalizeBlocks(record.body)} />
               </section>

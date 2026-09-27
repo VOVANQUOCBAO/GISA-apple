@@ -3,3 +3,4 @@ node_modules
 .sanity
 dist
 .tmp-*
+.preview-token*

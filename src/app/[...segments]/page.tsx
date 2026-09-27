@@ -1,12 +1,17 @@
 import type { Metadata } from 'next';
+import { draftMode } from 'next/headers';
 import { notFound, redirect } from 'next/navigation';
+import { VisualEditing } from 'next-sanity/visual-editing';
 
 import { buildMetadata } from '@/components/seo/build-metadata';
 import { StructuredData } from '@/components/seo/structured-data.tsx';
 import { TemplateRouter } from '@/components/templates/template-router';
+import { EcosystemDetailTemplate } from '@/components/templates/ecosystem-detail-template';
+import { PreviewRefresh } from '@/components/sanity/preview-refresh';
 import type { UrlQuery } from '@/components/ui/filter-bar';
 import { PAGE_REGISTRY, resolvePage } from '@/content/pages';
 import { getContentRepository } from '@/content/repositories';
+import { getDraftPost } from '@/sanity/draft-post';
 
 export const revalidate = 60;
 
@@ -35,6 +40,21 @@ export default async function ContentPage({
   }
 
   if (definition.template === 'detail') {
+    if (definition.collection === 'news' && (await draftMode()).isEnabled) {
+      const preview = await getDraftPost(segments.at(-1) ?? '');
+      if (preview?.record) {
+        return (
+          <>
+            <EcosystemDetailTemplate
+              record={preview.record}
+              editDocumentId={preview.documentId}
+            />
+            <VisualEditing />
+            <PreviewRefresh />
+          </>
+        );
+      }
+    }
     const record = await getContentRepository().getByPath(path);
     if (!record) notFound();
 

@@ -13,7 +13,7 @@ const PROJECT_ID = 'j7fuzzrp';
 const DATASET = 'production';
 const API_VERSION = '2025-02-19';
 const IMAGE_HOST = `https://cdn.sanity.io/images/${PROJECT_ID}/${DATASET}/`;
-const POST_FIELDS = `{
+export const POST_FIELDS = `{
   _id, _createdAt, title, "slug": slug.current, summary, category,
   "coverUrl": cover.asset->url,
   "coverWidth": cover.asset->metadata.dimensions.width,
@@ -32,7 +32,7 @@ interface SanityBlock {
   imageUrl?: string;
   alt?: string;
 }
-interface SanityPost {
+export interface SanityPost {
   _id: string;
   _createdAt: string;
   title: string;
@@ -76,10 +76,13 @@ function blocksFromSanity(blocks: SanityBlock[] = []): ContentBlock[] {
   return result;
 }
 
-function toRecord(post: SanityPost): ContentRecord | null {
+export function toRecord(post: SanityPost, preview = false): ContentRecord | null {
   if (!post._id || !post.title?.trim() || !/^[a-z0-9-]+$/.test(post.slug ?? '')) return null;
   const body = blocksFromSanity(post.body);
-  if (body.length === 0) return null;
+  if (body.length === 0) {
+    if (!preview) return null;
+    body.push({ type: 'paragraph', text: 'Nội dung bài viết đang được soạn.' });
+  }
   const summary = post.summary?.trim() || body.find((block) => block.type === 'paragraph')?.text || post.title;
   const date = post._createdAt?.slice(0, 10);
   const topic = ({ news: 'Tin tức GISA', activities: 'Hoạt động GISA', announcements: 'Thông báo' } as Record<string, string>)[post.category ?? ''] ?? 'Tin tức GISA';

@@ -5,7 +5,7 @@ import { OLD_ROUTE_REDIRECTS } from './src/content/redirects';
 const securityHeaders = [
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   { key: 'X-Content-Type-Options', value: 'nosniff' },
-  { key: 'X-Frame-Options', value: 'SAMEORIGIN' }
+  { key: 'Content-Security-Policy', value: "frame-ancestors 'self' https://gisa-editor.sanity.studio https://www.sanity.io" }
 ];
 
 const nextConfig: NextConfig = {
