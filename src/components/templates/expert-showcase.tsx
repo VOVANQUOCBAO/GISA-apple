@@ -76,8 +76,8 @@ export function ExpertShowcase() {
       id="chuyen-gia-noi-bat"
     >
       <header className={styles.heading}>
-        <h2 id="expert-showcase-title">Đội ngũ chuyên gia</h2>
-        <Link href="/chuyen-gia">Xem toàn bộ đội ngũ <ArrowRight aria-hidden="true" size={20} weight="bold" /></Link>
+        <h2 id="expert-showcase-title">{bindPhrases('Đội ngũ chuyên gia')}</h2>
+        <Link href="/chuyen-gia">{bindPhrases('Xem toàn bộ đội ngũ ')}<ArrowRight aria-hidden="true" size={20} weight="bold" /></Link>
       </header>
 
       <div

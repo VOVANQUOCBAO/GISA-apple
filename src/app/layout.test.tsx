@@ -1,11 +1,14 @@
+import { vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import RootLayout from './layout';
 
-test('renders the Vietnamese document shell and skip link', () => {
+vi.mock('next/headers', () => ({ cookies: async () => ({ get: () => undefined }) }));
+
+test('renders the Vietnamese document shell and skip link', async () => {
   render(
-    <RootLayout>
+    await RootLayout({ children: <>
       <main id="main-content">Nội dung</main>
-    </RootLayout>
+    </> })
   );
 
   expect(
@@ -14,11 +17,11 @@ test('renders the Vietnamese document shell and skip link', () => {
   expect(document.documentElement.lang).toBe('vi');
 });
 
-test('renders the ENGONOW-only footer affiliation signature', () => {
+test('renders the ENGONOW-only footer affiliation signature', async () => {
   render(
-    <RootLayout>
+    await RootLayout({ children: <>
       <main id="main-content">Nội dung</main>
-    </RootLayout>
+    </> })
   );
 
   expect(screen.getByText('Designed by')).toBeInTheDocument();

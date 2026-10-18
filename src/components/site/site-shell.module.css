@@ -196,7 +196,7 @@
   padding-inline: 0.65rem;
 }
 
-.languageControl span[aria-current='true'] {
+.languageControl button[aria-pressed='true'] {
   background: var(--color-teal);
   color: var(--color-white);
   font-weight: 700;
@@ -1365,7 +1365,12 @@
   }
 
   .languageControl {
-    display: none;
+    display: flex;
+  }
+
+  .languageControl > * {
+    min-width: 2.2rem;
+    padding-inline: 0.4rem;
   }
 
   .searchLink {
@@ -1768,3 +1773,6 @@
     min-width: 1.4rem;
   }
 }
+
+.languageControl button { cursor: pointer; }
+.languageControl button:focus-visible { outline: 2px solid var(--color-teal); outline-offset: -3px; }

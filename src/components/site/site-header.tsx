@@ -1,5 +1,7 @@
 'use client';
 
+import { bindPhrases } from '@/lib/vietnamese-text';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
@@ -41,7 +43,7 @@ export function SiteHeader() {
           <LanguageControl />
           <Link className={styles.searchLink} href="/tim-kiem">
             <Icon name="search" size={18} />
-            <span>Tìm kiếm</span>
+            <span>{bindPhrases('Tìm kiếm')}</span>
           </Link>
           <button
             aria-controls="mobile-navigation"
