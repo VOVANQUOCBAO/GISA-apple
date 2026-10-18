@@ -1,26 +1,21 @@
 'use client';
 
 import { ArrowRight } from '@phosphor-icons/react';
-import Image from 'next/image';
+import Image from '@/components/ui/content-image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { expertFixtures } from '@/content/fixtures/experts';
 import { bindPhrases } from '@/lib/vietnamese-text';
 
 import styles from './expert-showcase.module.css';
 
-const AUTO_ADVANCE_MS = 4600;
+const showcaseOrder = ['ngo-thanh-hanh', 'le-khanh-lam', 'hoang-van-viet', 'tran-anh-khang', 'phan-thi-kim-anh', 'tran-van-quy'];
 
-const mockPortraitClasses = [
-  styles.mockPortraitOne,
-  styles.mockPortraitTwo,
-  styles.mockPortraitThree,
-  styles.mockPortraitFour,
-  styles.mockPortraitFive,
-];
-
-const experts = expertFixtures.map((expert, index) => {
+const experts = [...expertFixtures].sort((left, right) =>
+  (showcaseOrder.indexOf(left.slug) < 0 ? 100 : showcaseOrder.indexOf(left.slug)) -
+  (showcaseOrder.indexOf(right.slug) < 0 ? 100 : showcaseOrder.indexOf(right.slug)),
+).map((expert) => {
   const metadata = expert.metadata as Record<string, string[] | undefined>;
   const expertise = Array.isArray(metadata.expertise)
     ? metadata.expertise
@@ -30,7 +25,6 @@ const experts = expertFixtures.map((expert, index) => {
     description: expertise[0] ?? expert.tags[0] ?? 'Kết nối tri thức',
     id: expert.id,
     image: expert.image,
-    mockPortraitClass: mockPortraitClasses[index % mockPortraitClasses.length],
     path: expert.path,
     title: expert.title,
   };
@@ -38,7 +32,7 @@ const experts = expertFixtures.map((expert, index) => {
 
 const initialExpertIndex = Math.max(
   0,
-  experts.findIndex((expert) => expert.id === 'expert-tran-anh-khang'),
+  experts.findIndex((expert) => expert.id === 'expert-hoang-van-viet'),
 );
 
 /** Quãng kéo ngang (px) tương ứng một bước chuyển chuyên gia. */
@@ -46,27 +40,12 @@ const DRAG_STEP_PX = 90;
 
 export function ExpertShowcase() {
   const [activeIndex, setActiveIndex] = useState(initialExpertIndex);
-  const [isPaused, setIsPaused] = useState(false);
-  /* Kéo trái/phải bằng chuột hoặc ngón tay. Băng vẫn tự chạy như cũ; trong lúc
-     kéo thì tạm dừng, thả ra chạy tiếp. `origin` là mốc tính quãng đã kéo, dời
-     theo mỗi bước để kéo dài đổi được nhiều chuyên gia. */
+  /* Giữ vị trí ban đầu cho đến khi người xem chọn hoặc kéo ảnh. */
   const dragRef = useRef<{ origin: number; pointerId: number } | null>(null);
 
   const step = (direction: number) => {
     setActiveIndex((current) => (current + direction + experts.length) % experts.length);
   };
-
-  useEffect(() => {
-    if (isPaused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return;
-    }
-
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % experts.length);
-    }, AUTO_ADVANCE_MS);
-
-    return () => window.clearInterval(timer);
-  }, [isPaused]);
 
   return (
     <section
@@ -76,25 +55,16 @@ export function ExpertShowcase() {
       id="chuyen-gia-noi-bat"
     >
       <header className={styles.heading}>
-        <h2 id="expert-showcase-title">{bindPhrases('Đội ngũ chuyên gia')}</h2>
-        <Link href="/chuyen-gia">{bindPhrases('Xem toàn bộ đội ngũ ')}<ArrowRight aria-hidden="true" size={20} weight="bold" /></Link>
+        <h2 id="expert-showcase-title">Đội ngũ chuyên gia</h2>
+        <Link href="/chuyen-gia">Xem toàn bộ đội ngũ <ArrowRight aria-hidden="true" size={20} weight="bold" /></Link>
       </header>
 
       <div
         className={styles.shell}
         data-scroll-motion="reveal"
-        onBlurCapture={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget)) {
-            setIsPaused(false);
-          }
-        }}
-        onFocusCapture={() => setIsPaused(true)}
-        onPointerEnter={() => setIsPaused(true)}
-        onPointerLeave={() => setIsPaused(false)}
         onPointerDown={(event) => {
           if (event.pointerType === 'mouse' && event.button !== 0) return;
           dragRef.current = { origin: event.clientX, pointerId: event.pointerId };
-          setIsPaused(true);
         }}
         onPointerMove={(event) => {
           const drag = dragRef.current;
@@ -106,11 +76,9 @@ export function ExpertShowcase() {
         }}
         onPointerUp={() => {
           dragRef.current = null;
-          setIsPaused(false);
         }}
         onPointerCancel={() => {
           dragRef.current = null;
-          setIsPaused(false);
         }}
       >
         <div className={styles.track}>
@@ -143,15 +111,18 @@ export function ExpertShowcase() {
                       <Image
                         alt={expert.image.alt}
                         fill
+                        quality={95}
                         sizes="(max-width: 48rem) 92vw, (max-width: 68rem) 23vw, 20vw"
                         src={expert.image.src}
                       />
                     ) : (
                       <span
-                        aria-label={`Ảnh minh họa cho ${expert.title}`}
-                        className={`${styles.mockPortrait} ${expert.mockPortraitClass}`}
+                        aria-label={`${expert.title} chưa có ảnh thật`}
+                        className={styles.initialPortrait}
                         role="img"
-                      />
+                      >
+                        {expert.title.split(/\s+/).slice(-2).map((word) => word[0]).join('')}
+                      </span>
                     )}
                   </span>
                   <span className={styles.caption}>

@@ -1,7 +1,5 @@
 'use client';
 
-import { bindPhrases } from '@/lib/vietnamese-text';
-
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
@@ -68,7 +66,7 @@ export function MobileNavigation({ isOpen, onClose }: MobileNavigationProps) {
         role="dialog"
       >
         <div className={styles.mobilePanelHeader}>
-          <strong>{bindPhrases('Điều hướng')}</strong>
+          <strong>Điều hướng</strong>
           <button aria-label="Đóng menu" onClick={onClose} type="button">
             ×
           </button>
@@ -84,7 +82,7 @@ export function MobileNavigation({ isOpen, onClose }: MobileNavigationProps) {
                 <li key={group.href}>
                   <div className={styles.mobileLinkRow}>
                     <Link href={group.href} onClick={onClose}>
-                      {bindPhrases(group.label)}
+                      {group.label}
                     </Link>
                     {hasChildren ? (
                       <button
@@ -110,7 +108,7 @@ export function MobileNavigation({ isOpen, onClose }: MobileNavigationProps) {
                       {group.children.map((item) => (
                         <li key={item.href}>
                           <Link href={item.href} onClick={onClose}>
-                            {bindPhrases(item.label)}
+                            {item.label}
                           </Link>
                         </li>
                       ))}

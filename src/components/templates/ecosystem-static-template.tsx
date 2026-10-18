@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/ui/content-image';
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
 
@@ -9,7 +9,6 @@ import type { PageDefinition } from '@/content/pages';
 import type { ContentBlock } from '@/content/types';
 import { toAnchorId } from '@/lib/anchor-id';
 import { bindPhrases } from '@/lib/vietnamese-text';
-import { LocalizedText } from '@/lib/i18n/language-provider';
 
 import { EDITORIAL_EMPTY_COPY } from './editorial-empty-copy';
 import { InnerPageHero, profileForPath, SectionSubnav } from './inner-page-chrome';
@@ -119,11 +118,11 @@ function vietnameseText(text: string) {
 function chapterHeadingText(text: string) {
   if (normalizeVisibleText(text) === 'Kinh tế quốc tế và năng lực cạnh tranh toàn cầu') {
     return (
-      <LocalizedText text={text}>
+      <>
         <span className={styles.chapterTitleLine}>Kinh tế quốc tế và</span>
         {' '}
         <span className={styles.chapterTitleLine}>năng lực cạnh tranh toàn cầu</span>
-      </LocalizedText>
+      </>
     );
   }
 
@@ -206,7 +205,6 @@ function EditorialList({ items, ordered }: { items: string[]; ordered: boolean }
             <span aria-hidden="true" className={styles.topicIcon}>
               <Icon name={icon} size={20} weight="fill" />
             </span>
-            <LocalizedText as="strong" text={item}>
             <strong>{vietnameseText(title)}</strong>
             {detail ? (
               <span className={styles.topicDetail}>
@@ -214,7 +212,6 @@ function EditorialList({ items, ordered }: { items: string[]; ordered: boolean }
                 {vietnameseText(detail)}
               </span>
             ) : null}
-            </LocalizedText>
           </li>
         );
       })}
@@ -458,7 +455,7 @@ function ContentNavigation({ chapters }: { chapters: EditorialChapter[] }) {
 
   return (
     <nav className={styles.contentNavigation} aria-label="Nội dung trong trang">
-      <p>{bindPhrases('Khám phá nội dung')}</p>
+      <p>Khám phá nội dung</p>
       <ul>
         {chapters.map((chapter) => (
           <li key={chapter.title}>
@@ -480,7 +477,7 @@ function ActionClosure({
   return (
     <section className={styles.actionClosure} aria-label="Bước tiếp theo">
       <div>
-        <p>{bindPhrases('Tiếp tục cùng GISA')}</p>
+        <p>Tiếp tục cùng GISA</p>
         <h2>{vietnameseText(title)}</h2>
       </div>
       <Link href={action.href}>{vietnameseText(action.label)}</Link>

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/ui/content-image';
 import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
@@ -55,6 +55,7 @@ export function ExpertTemplate({ record }: { record: ContentRecord }) {
               <Image
                 alt={record.image.alt}
                 fill
+                quality={95}
                 priority
                 sizes="(max-width: 48rem) 94vw, 38vw"
                 src={record.image.src}

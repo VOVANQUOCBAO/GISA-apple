@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/ui/content-image';
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
 
@@ -84,7 +84,7 @@ export function SiteFooter() {
                 key={group.heading}
                 style={{ '--motion-index': index } as CSSProperties}
               >
-                <Link className={styles.footerGroupHeading} href={group.href}>{bindPhrases(group.heading)}</Link>
+                <Link className={styles.footerGroupHeading} href={group.href}>{group.heading}</Link>
                 <ul className={group.columns === 2 ? styles.footerGroupColumns : undefined}>
                   {group.links.map((label) => <li key={label}><Link href={group.href}>{bindPhrases(label)}</Link></li>)}
                 </ul>

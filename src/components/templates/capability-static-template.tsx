@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/ui/content-image';
 import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';

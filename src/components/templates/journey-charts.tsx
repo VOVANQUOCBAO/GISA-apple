@@ -14,7 +14,7 @@
 
 'use client';
 
-import Image from 'next/image';
+import Image from '@/components/ui/content-image';
 import {
   createContext,
   type CSSProperties,

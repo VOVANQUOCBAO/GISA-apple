@@ -280,6 +280,16 @@
 }
 
 @media (max-width: 48rem) {
+  .courseChapter ul,
+  .courseChapter ol {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .courseChapter li [data-vietnamese-phrase] {
+    display: inline !important;
+    white-space: normal !important;
+  }
+
   .courseOpening > div > p,
   .courseChapter > div > p {
     text-align: left;

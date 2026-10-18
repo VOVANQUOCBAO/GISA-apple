@@ -1,15 +1,12 @@
 'use client';
 
-import { bindPhrases } from '@/lib/vietnamese-text';
-
-import Image from 'next/image';
+import Image from '@/components/ui/content-image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 
 import { Icon } from '@/components/ui/icon';
 
 import { DesktopNavigation } from './desktop-navigation';
-import { LanguageControl } from './language-control';
 import { MobileNavigation } from './mobile-navigation';
 import styles from './site-shell.module.css';
 
@@ -40,11 +37,6 @@ export function SiteHeader() {
         </Link>
         <DesktopNavigation />
         <div className={styles.headerActions}>
-          <LanguageControl />
-          <Link className={styles.searchLink} href="/tim-kiem">
-            <Icon name="search" size={18} />
-            <span>{bindPhrases('Tìm kiếm')}</span>
-          </Link>
           <button
             aria-controls="mobile-navigation"
             aria-expanded={isMobileOpen}

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/ui/content-image';
 import type { ReactNode } from 'react';
 
 import { Icon, type IconName } from '@/components/ui/icon';
@@ -26,7 +26,7 @@ const PROFILES: Record<string, SectionProfile> = {
     accent: 'teal',
     code: '01',
     icon: 'compass',
-    image: '/images/hero-gisa-team.png',
+    image: '/images/gisa-provided/research.png',
     label: 'Về GISA',
     root: '/gioi-thieu/cau-chuyen-gisa',
     section: 'about',
@@ -36,7 +36,7 @@ const PROFILES: Record<string, SectionProfile> = {
     accent: 'blue',
     code: '02',
     icon: 'microscope',
-    image: '/images/gisa-hero-knowledge-horizon-background.png',
+    image: '/images/gisa-provided/research.png',
     label: 'Nghiên cứu',
     root: '/nghien-cuu/linh-vuc',
     section: 'research',
@@ -46,7 +46,7 @@ const PROFILES: Record<string, SectionProfile> = {
     accent: 'teal',
     code: '03',
     icon: 'chats',
-    image: '/images/gisa-consulting-hero.png',
+    image: '/images/gisa-provided/consulting.png',
     label: 'Tư vấn',
     root: '/tu-van/linh-vuc',
     section: 'consulting',
@@ -56,7 +56,7 @@ const PROFILES: Record<string, SectionProfile> = {
     accent: 'orange',
     code: '04',
     icon: 'graduation',
-    image: '/images/knowledge-journey/training-session-editorial.png',
+    image: '/images/gisa-provided/training.png',
     label: 'Đào tạo',
     root: '/dao-tao/linh-vuc',
     section: 'training',
@@ -66,7 +66,7 @@ const PROFILES: Record<string, SectionProfile> = {
     accent: 'blue',
     code: '05',
     icon: 'lightbulb',
-    image: '/images/hero-gisa-strategy-table.png',
+    image: '/images/gisa-provided/transfer.png',
     label: 'Ứng dụng',
     root: '/ung-dung/linh-vuc',
     section: 'application',
@@ -76,7 +76,7 @@ const PROFILES: Record<string, SectionProfile> = {
     accent: 'blue',
     code: '06',
     icon: 'network',
-    image: '/images/project-trade4sd.png',
+    image: '/images/gisa-provided/slide-3.png',
     label: 'Mạng lưới',
     root: '/mang-luoi/thuc-day-hop-tac',
     section: 'network',
@@ -86,7 +86,7 @@ const PROFILES: Record<string, SectionProfile> = {
     accent: 'green',
     code: '07',
     icon: 'users',
-    image: '/images/article-green-city.png',
+    image: '/images/gisa-provided/community.png',
     label: 'Cộng đồng',
     root: '/cong-dong/kinh-te-ben-vung',
     section: 'community',
@@ -96,7 +96,7 @@ const PROFILES: Record<string, SectionProfile> = {
     accent: 'orange',
     code: '08',
     icon: 'megaphone',
-    image: '/images/knowledge-deck/news-research-institute.webp',
+    image: '/images/gisa-provided/research.png',
     label: 'Tin tức',
     root: '/tin-tuc',
     section: 'news',
@@ -106,7 +106,7 @@ const PROFILES: Record<string, SectionProfile> = {
     accent: 'teal',
     code: '09',
     icon: 'send',
-    image: '/images/hero-gisa-team.png',
+    image: '/images/gisa-provided/research.png',
     label: 'Kết nối',
     root: '/lien-he',
     section: 'contact',
@@ -330,7 +330,7 @@ export function ContentIndex({ blocks }: { blocks: ContentBlock[] }) {
 
   return (
     <nav className={styles.contentIndex} aria-label="Mục lục trang">
-      <p>{bindPhrases('Trong trang này')}</p>
+      <p>Trong trang này</p>
       <ol>
         {headings.map((heading, index) => (
           <li key={`${heading.text}-${index}`}>

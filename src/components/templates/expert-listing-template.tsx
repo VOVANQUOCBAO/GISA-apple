@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/ui/content-image';
 import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
@@ -58,6 +58,7 @@ function ExpertDirectoryCard({
           <Image
             alt={item.image.alt}
             fill
+            quality={95}
             sizes="(max-width: 48rem) 94vw, (max-width: 80rem) 45vw, 38rem"
             src={item.image.src}
           />
@@ -125,8 +126,8 @@ export function ExpertListingTemplate({
         {hasAvailableFilters ? (
           <section aria-labelledby="expert-filter-title" className={styles.filterStage}>
             <div>
-              <h2 id="expert-filter-title">{bindPhrases('Tìm theo lĩnh vực chuyên môn')}</h2>
-              <p>{bindPhrases('Chọn lĩnh vực phù hợp để thu hẹp danh sách hồ sơ.')}</p>
+              <h2 id="expert-filter-title">Tìm theo lĩnh vực chuyên môn</h2>
+              <p>Chọn lĩnh vực phù hợp để thu hẹp danh sách hồ sơ.</p>
             </div>
             <FilterBar filters={availableFilters} path={path} query={searchParams} />
           </section>
@@ -136,13 +137,13 @@ export function ExpertListingTemplate({
           <section aria-labelledby="expert-directory-title" className={styles.directory}>
             <header className={styles.directoryHeader}>
               <div>
-                <p>{bindPhrases('Đội ngũ GISA')}</p>
+                <p>Đội ngũ GISA</p>
                 <h2 id="expert-directory-title">
-                  <span>{bindPhrases('Tri thức')}</span>
+                  <span>Tri thức</span>
                   {' '}
-                  <span>{bindPhrases('được dẫn dắt')}</span>
+                  <span>được dẫn dắt</span>
                   {' '}
-                  <span>{bindPhrases('bởi con người')}</span>
+                  <span>bởi con người</span>
                 </h2>
               </div>
             </header>

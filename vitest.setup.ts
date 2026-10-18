@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom/vitest';
 import { afterEach } from 'vitest';
-import { cleanup } from '@testing-library/react';
 
 // jsdom ships no `matchMedia`. Components that branch on viewport width or on
 // `prefers-reduced-motion` would throw on mount without it, so provide a stub
@@ -21,6 +20,5 @@ if (typeof window !== 'undefined' && !window.matchMedia) {
 }
 
 afterEach(() => {
-  cleanup();
   document.documentElement.lang = '';
 });

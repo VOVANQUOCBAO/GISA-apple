@@ -61,6 +61,10 @@ function sortKey(record: ContentRecord): string {
 }
 
 function compareRecords(left: ContentRecord, right: ContentRecord): number {
+  if (left.kind === 'expert' && right.kind === 'expert') {
+    const priorityOrder = Number(left.metadata.displayOrder ?? 100) - Number(right.metadata.displayOrder ?? 100);
+    if (priorityOrder) return priorityOrder;
+  }
   const dateOrder = sortKey(right).localeCompare(sortKey(left));
   return dateOrder || left.title.localeCompare(right.title, 'vi');
 }

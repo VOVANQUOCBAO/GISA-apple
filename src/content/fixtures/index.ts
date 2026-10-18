@@ -7,12 +7,14 @@ import { partnerFixtures } from './partners';
 import { projectFixtures } from './projects';
 import { publicationFixtures } from './publications';
 import { toolFixtures } from './tools';
+import { gisaDocumentFixtures } from './gisa-document';
 
 export const allContentFixtures = [
   ...projectFixtures,
   ...publicationFixtures,
   ...toolFixtures,
-  ...courseFixtures,
+  ...courseFixtures.filter((record) => !gisaDocumentFixtures.some((updated) => updated.path === record.path)),
+  ...gisaDocumentFixtures,
   ...expertFixtures,
   ...newsFixtures,
   ...noticeFixtures,

@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image from '@/components/ui/content-image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
@@ -86,23 +86,23 @@ const HERO_SLIDE_HOLD_MS = 3000;
 
 const heroSlides = [
   {
-    alt: 'Nhóm chuyên gia GISA cùng xem mô hình quy hoạch đô thị xanh trên bàn họp',
+    alt: 'GISA: Nghiên cứu, Tư vấn, Đào tạo, Cộng đồng, Mạng lưới và Ứng dụng',
     headline: ['KIẾN TẠO TRI THỨC', 'LAN TỎA GIÁ TRỊ'],
-    image: '/images/gisa-hero-knowledge-horizon-background.png',
+    image: '/images/gisa-provided/slide-1.png',
     kicker: 'GISA — TRI THỨC CHO PHÁT TRIỂN BỀN VỮNG',
     lead: 'GISA kết nối nghiên cứu liên ngành, tư vấn chiến lược và đào tạo ứng dụng để biến tri thức thành giá trị thực tiễn.',
   },
   {
-    alt: 'Nhóm nghiên cứu GISA phân tích mô hình trong khuôn viên xanh',
+    alt: 'GISA: Global Institute for Sustainable Development and Advanced Management',
     headline: ['NGHIÊN CỨU LIÊN NGÀNH', 'TẠO CHUYỂN BIẾN'],
-    image: '/images/gisa-hero-interdisciplinary-research-background.png',
+    image: '/images/gisa-provided/slide-2.png',
     kicker: 'NGHIÊN CỨU & ĐỔI MỚI SÁNG TẠO',
     lead: 'Bằng chứng khoa học, dữ liệu đáng tin cậy và tư duy đột phá cho những quyết định có tác động lâu dài.',
   },
   {
-    alt: 'Nhóm chuyên gia GISA đồng hành hoạch định chiến lược phát triển bền vững',
+    alt: 'Các dự án nghiên cứu, viện và trường đại học trong mạng lưới GISA',
     headline: ['ĐỒNG HÀNH TỔ CHỨC', 'PHÁT TRIỂN BỀN VỮNG'],
-    image: '/images/gisa-hero-organizational-partnership-background.png',
+    image: '/images/gisa-provided/slide-3.png',
     kicker: 'TƯ VẤN, ĐÀO TẠO & CHUYỂN GIAO',
     lead: 'Cùng doanh nghiệp và tổ chức thiết kế giải pháp phù hợp bối cảnh, nâng cao năng lực và đo lường kết quả.',
   },
@@ -269,7 +269,13 @@ function CountUpValue({ value }: { value: string }) {
 }
 
 export function HomeTemplate({ model }: { model: HomePageModel }) {
-  void model;
+  const featuredNews = model.news.slice(0, 3).map((item) => ({
+    title: item.title,
+    href: item.path,
+    image: item.image?.src ?? '/images/gisa-provided/research.png',
+    kicker: Array.isArray(item.metadata.topic) ? item.metadata.topic.join(', ') : item.metadata.topic ?? 'Góc nhìn GISA',
+    date: item.publishedAt?.split('-').reverse().join('.') ?? '',
+  }));
   const [consultationOpen, setConsultationOpen] = useState(false);
   const [activeKnowledge, setActiveKnowledge] = useState<KnowledgeKey>('news');
   const [activeHeroSlide, setActiveHeroSlide] = useState(0);
@@ -277,9 +283,17 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
   const [heroFocusWithin, setHeroFocusWithin] = useState(false);
   const [heroHovered, setHeroHovered] = useState(false);
   const heroPaused = heroFocusWithin || heroHovered;
-  const knowledge = knowledgeGroups[activeKnowledge];
+  const sourceItems = activeKnowledge === 'courses' ? model.courses : activeKnowledge === 'news' ? model.news : null;
+  const knowledge: (typeof knowledgeGroups)[KnowledgeKey] = {
+    ...knowledgeGroups[activeKnowledge],
+    ...(sourceItems ? { items: sourceItems.map((item) => ({
+      title: item.title,
+      href: item.path,
+      image: item.image?.src,
+      meta: activeKnowledge === 'courses' ? 'Khóa học GISA' : 'Góc nhìn GISA',
+    })) } : {}),
+  };
   const visibleKnowledgeItems = knowledge.items.slice(0, 4);
-  const heroSlide = heroSlides[activeHeroSlide];
 
   useEffect(() => {
     const root = document.documentElement;
@@ -343,18 +357,14 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
             />
           ))}
         </div>
+        <div className={styles.bannerControls} aria-label="Chọn banner">
+          {heroSlides.map((slide, index) => (
+            <button type="button" key={slide.image} aria-label={`Banner ${index + 1}`} aria-pressed={activeHeroSlide === index} onClick={() => setActiveHeroSlide(index)} />
+          ))}
+        </div>
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>
-              <span className={styles.heroKickerPhrase}>{bindPhrases(heroSlide.kicker)}</span>
-            </p>
-            <span aria-hidden="true" className={styles.heroOrnament}><Icon name="leaf" size={14} /></span>
-            {/* Each line is its own block so the first-load sequence can bring them
-                in one after another; a plain <br> gives nothing to animate. */}
-            <h1 data-hero-slide={activeHeroSlide}><span>{bindPhrases(heroSlide.headline[0])}</span><span><em>{bindPhrases(heroSlide.headline[1])}</em></span></h1>
-            <p className={styles.heroLead}>
-              <span>{bindPhrases(heroSlide.lead)}</span>
-            </p>
+            <h1 className={styles.bannerTitle}>GISA — Kiến tạo tri thức, lan tỏa giá trị</h1>
             <div className={styles.heroButtons}>
               <Link className={styles.primaryButton} href="#nang-luc">{bindPhrases("Khám phá năng lực ")}<Icon name="arrow" size={20} /></Link>
               <Link className={styles.secondaryButton} href="/dang-ky/tu-van">{bindPhrases("Đăng ký tư vấn ")}<Icon name="arrow" size={20} /></Link>
@@ -398,7 +408,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
           <div className={styles.featuredNewsGrid}>
             {featuredNews.map((item, index) => (
               <article className={styles.featuredNewsItem} key={item.title}>
-                <Link aria-label={`Đọc tin ${item.title}`} href="/tin-tuc">
+                <Link aria-label={`Đọc tin ${item.title}`} href={item.href}>
                   <span className={styles.featuredNewsImage}>
                     <Image alt={`Ảnh minh họa: ${item.title}`} fill priority={index === 0} sizes="(max-width: 48rem) 100vw, (max-width: 70rem) 50vw, 42vw" src={item.image} />
                   </span>
@@ -585,12 +595,12 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
                     role="tab"
                     type="button"
                   >
-                    {bindPhrases(knowledgeGroups[key].label)}
+                    {knowledgeGroups[key].label}
                   </button>
                 ))}
               </div>
               <Link className={styles.knowledgeDeckAllLink} href={knowledge.href}>
-                {bindPhrases('Xem tất cả')} {bindPhrases(knowledge.label)} <Icon name="arrow" size={17} />
+                Xem tất cả {knowledge.label.toLowerCase()} <Icon name="arrow" size={17} />
               </Link>
             </div>
 

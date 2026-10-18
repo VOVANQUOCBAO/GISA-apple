@@ -1,0 +1,1517 @@
+import type { ContentRecord } from '../types';
+
+// Source snapshot: docs/google-doc-source-2026-09-29.txt.
+// Editorial layout notes are excluded; claims remain attributed to GISA.
+export const gisaDocumentFixtures = [
+  {
+    "id": "gisa-doc-tam-ly-hoc-lanh-dao",
+    "kind": "course",
+    "collection": "courses",
+    "slug": "tam-ly-hoc-lanh-dao",
+    "path": "/khoa-hoc/tam-ly-hoc-lanh-dao",
+    "locale": "vi",
+    "translationKey": "gisa-doc-tam-ly-hoc-lanh-dao",
+    "title": "Tâm lý học Lãnh đạo",
+    "summary": "Dẫn dắt người khác bắt đầu từ dẫn dắt chính mình. Hành trình chuyển hóa từ người thực thi xuất sắc thành nhà lãnh đạo được tin cậy, xây trên nền tảng tâm lý học và khoa học hành vi.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dẫn dắt người khác bắt đầu từ dẫn dắt chính mình"
+      },
+      {
+        "type": "paragraph",
+        "text": "Chương trình Tâm lý học Lãnh đạo của GISA — hành trình chuyển hóa từ người thực thi xuất sắc thành nhà lãnh đạo được tin cậy, xây trên nền tảng tâm lý học và khoa học hành vi."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "THÁCH THỨC & GIẢI PHÁP"
+      },
+      {
+        "type": "paragraph",
+        "text": "Có một nghịch lý rằng: nhân viên giỏi nhất phòng, khi lên làm quản lý, lại thường là người chật vật nhất."
+      },
+      {
+        "type": "paragraph",
+        "text": "Không phải vì họ dở. Mà vì luật chơi đã đổi, đột ngột và chẳng ai báo trước. Ngày còn là chuyên viên, giá trị của bạn nằm ở việc tự tay làm ra kết quả. Ngày lên làm quản lý, giá trị lại nằm ở việc khiến người khác làm ra kết quả, kể cả khi không trực tiếp nhúng tay vào. Đó là hai cách tạo giá trị hoàn toàn khác nhau và không có chuyện cái này tự động biến thành cái kia chỉ vì bạn ngồi lâu ở vị trí mới."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trớ trêu hơn là chính những thứ từng đưa bạn lên vị trí này giờ lại là thứ kéo bạn lại. Thói quen tự tay xử lý mọi việc. Nhu cầu luôn phải là người giỏi nhất trong phòng. Và cách bạn tự chấm điểm bản thân bằng số đầu việc đã xong, thay vì bằng việc đội ngũ dưới tay mình đã trưởng thành ra sao."
+      },
+      {
+        "type": "paragraph",
+        "text": "Khoảng cách giữa lúc nhận chức danh quản lý và lúc thực sự trở thành một người lãnh đạo được tin cậy có thể kéo dài hàng tháng, có khi hàng năm, và phần lớn công ty chọn cách để bạn tự trải qua giai đoạn đó. Đây không đơn giản là học thêm một kỹ năng, mà là thay đổi tận gốc trong cách bạn nhìn nhận chính mình. Cũng vì vậy mà rất nhiều khóa \"kỹ năng quản lý\" - họp sao cho hiệu quả, giao việc thế nào, phản hồi ra sao, học xong vẫn thấy thiếu thiếu: chúng chạm được vào hành vi bên ngoài, nhưng chưa chạm tới phần gốc rễ bên trong."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "MÔ HÌNH UTLI"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Bước",
+          "Ý nghĩa",
+          "Câu hỏi trung tâm"
+        ],
+        "rows": [
+          [
+            "U — Understand (Hiểu mình)",
+            "Nhận diện giá trị, động lực và những khuôn mẫu hành vi đang chi phối mình mà mình không để ý",
+            "Bạn không thể chuyển hóa thứ mình không nhìn thấy"
+          ],
+          [
+            "T — Transform (Chuyển hóa)",
+            "Thay một thói quen hay giả định cũ bằng một lựa chọn có chủ đích, lặp lại đủ lâu để thành bản năng mới",
+            "Biết mình cần thay đổi và thay đổi được cách nhau một vực"
+          ],
+          [
+            "L — Lead (Dẫn dắt người khác)",
+            "Xây niềm tin, truyền động lực, phát triển đội — sau khi đã vững bên trong",
+            "Niềm tin là hạ tầng của ảnh hưởng, không phải kết quả của nó"
+          ],
+          [
+            "I — Impact (Kiến tạo tác động)",
+            "Đo bằng kết quả quan sát được cho tổ chức và cộng đồng",
+            "\"Tạo tác động\" đo bằng gì, để không rơi vào tự sướng thành tích"
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "CHƯƠNG TRÌNH DÀNH CHO AI?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Đối tượng phù hợp Người đi làm 23–35 tuổi, có vài năm kinh nghiệm, đang chuẩn bị hoặc vừa bước vào vai trò quản lý, muốn phát triển từ gốc (tư duy, cảm xúc, hành vi) chứ không chỉ thêm công cụ quản lý."
+      },
+      {
+        "type": "paragraph",
+        "text": "Chương trình KHÔNG phù hợp nếu bạn:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Tìm một bộ mẹo quản lý áp dụng được ngay tuần sau — đây là hành trình chuyển hóa, kết quả tích lũy qua thực hành, không phải sau một buổi học.",
+          "Không sẵn sàng nhìn lại chính mình — toàn bộ mô hình bắt đầu từ tự nhận thức; nếu bạn chỉ muốn học cách \"sửa người khác\", nền tảng sẽ lệch.",
+          "Không có thời gian cho phản tư, thực hành và coaching giữa các buổi — giá trị nằm ở phần bạn làm giữa các buổi, không chỉ trong buổi học."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Chương trình phù hợp nếu bạn đang ở ngưỡng chuyển từ người thực thi sang người dẫn dắt, và sẵn sàng đồng hành cùng một nhóm cùng chí hướng trong suốt hành trình."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "HÀNH TRÌNH HỌC TẬP"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trải nghiệm là một hành trình 12 buổi, kết hợp học tập trung, thực hành, coaching đồng đẳng và kết nối; học viên được chia nhóm đồng hành trong suốt chương trình. Người học không ngồi nghe,  họ phản tư, thực hành, nhận phản hồi và điều chỉnh liên tục, vận hành đúng theo trình tự U → T → L → I."
+      },
+      {
+        "type": "paragraph",
+        "text": "Triết lý thiết kế xuyên suốt: học để chuyển hóa và tạo kết quả, không chỉ học để biết."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "SÁU THỨ BẠN SỞ HỮU SAU KHÓA"
+      },
+      {
+        "type": "paragraph",
+        "text": "Không phải một tấm chứng chỉ, mà sáu sản phẩm hữu hình:"
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "Bản đánh giá năng lực lãnh đạo của chính mình",
+          "Hồ sơ phát triển cá nhân",
+          "Kế hoạch chuyển hóa",
+          "Một dự án hành động lãnh đạo đã triển khai (Leadership Action Project)",
+          "Một mạng lưới coaching đồng đẳng",
+          "Cộng đồng những người cùng chí hướng, ở lại sau khóa"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Với người phù hợp, còn một lớp giá trị nữa: một con đường nghề - từ tham gia Train-the-Trainers, trở thành trợ giảng, tới facilitator hoặc coach trong hệ sinh thái GISA."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Bắt đầu hành trình lãnh đạo"
+      },
+      {
+        "type": "paragraph",
+        "text": "Nếu bạn đang ở giữa bước chuyển từ người thực thi sang người dẫn dắt, hãy bắt đầu bằng một câu hỏi: điều gì ở chính bạn đang cản bạn dẫn dắt hiệu quả hơn? Tìm hiểu chương trình Tâm lý học Lãnh đạo của GISA để đi qua bước chuyển này một cách có cấu trúc và có đồng hành."
+      }
+    ],
+    "image": {
+      "src": "/images/gisa-provided/training.png",
+      "alt": "Chương trình đào tạo của GISA",
+      "width": 1563,
+      "height": 1031
+    },
+    "tags": [
+      "đào tạo"
+    ],
+    "evidenceStatus": "provided_by_gisa",
+    "sourceUrl": "https://docs.google.com/document/d/14gdM2pwp_WtP4X7My39dhnpLV51NopaKNn8bEL3pYv8/edit",
+    "sourceLabel": "Nội dung Google Docs do GISA cung cấp",
+    "checkedAt": "2026-09-29",
+    "metadata": {
+      "program": "Phát triển lãnh đạo",
+      "audience": "Người đi làm 23–35 tuổi, chuẩn bị hoặc vừa bước vào vai trò quản lý",
+      "format": "12 buổi: học tập trung, thực hành, coaching đồng đẳng và kết nối"
+    },
+    "publishedAt": "2026-09-29"
+  },
+  {
+    "id": "gisa-doc-behavioral-design-thinking-for-sustainable-sales",
+    "kind": "course",
+    "collection": "courses",
+    "slug": "behavioral-design-thinking-for-sustainable-sales",
+    "path": "/khoa-hoc/behavioral-design-thinking-for-sustainable-sales",
+    "locale": "vi",
+    "translationKey": "gisa-doc-behavioral-design-thinking-for-sustainable-sales",
+    "title": "Behavioral Design Thinking for Sustainable Sales & Marketing",
+    "summary": "Thấu hiểu khách hàng – Kiến tạo giá trị – Tăng trưởng bền vững. Tích hợp khoa học hành vi, tư duy thiết kế và dự án kinh doanh thực tế.",
+    "body": [
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Vì sao chương trình này ra đời"
+      },
+      {
+        "type": "paragraph",
+        "text": "Nhiều doanh nghiệp sở hữu dữ liệu khách hàng phong phú, mạng lưới quan hệ rộng, đội ngũ sales đông và hoạt động marketing liên tục, nhưng vẫn không chuyển hóa được những nguồn lực đó thành khách hàng, doanh thu và tăng trưởng thực tế."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Bạn có thấy quen không?"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Khách hàng hỏi rất nhiều nhưng chưa quyết định mua.",
+          "Họ so sánh giá liên tục vì chưa nhìn thấy giá trị khác biệt.",
+          "Mua một lần vì quan hệ, rồi không quay lại.",
+          "Hài lòng với sản phẩm, nhưng chưa từng chủ động giới thiệu."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Vấn đề hiếm khi nằm ở sản phẩm. Nó nằm ở chỗ doanh nghiệp chưa thực sự hiểu khách hàng, chưa xác định đúng rào cản khiến họ chần chừ, và chưa thiết kế được một hành trình đủ rõ ràng, đủ tin cậy, đủ giá trị để dẫn khách hàng đi hết chặng đường, từ biết đến, đến giới thiệu."
+      },
+      {
+        "type": "paragraph",
+        "text": "Công nghệ và AI giúp tiếp cận nhanh hơn, xử lý dữ liệu tốt hơn. Nhưng công nghệ không thay thế được khả năng thấu hiểu con người, xác định đúng vấn đề và xây dựng niềm tin."
+      },
+      {
+        "type": "paragraph",
+        "text": "Behavioral Design Thinking for Sustainable Sales & Marketing ra đời để lấp đúng khoảng trống đó, bằng cách tích hợp ba nền tảng:"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Nền tảng",
+          "Vai trò"
+        ],
+        "rows": [
+          [
+            "Behavioral Science — Khoa học hành vi",
+            "Hiểu sâu nhu cầu, động cơ, cảm xúc, niềm tin, thiên kiến và rào cản ra quyết định của khách hàng"
+          ],
+          [
+            "Design Thinking — Tư duy thiết kế",
+            "Quy trình lấy con người làm trung tâm: quan sát, thấu cảm, xác định đúng vấn đề, tạo giải pháp, thử nghiệm, cải tiến"
+          ],
+          [
+            "Sustainable Sales & Marketing",
+            "Tạo giá trị thực, xây niềm tin, giữ khách hàng lâu dài — thay vì chỉ chốt một đơn hàng"
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Chương trình dành cho ai"
+      },
+      {
+        "type": "paragraph",
+        "text": "Dành cho bất kỳ ai trực tiếp hoặc gián tiếp tham gia tạo giá trị, phát triển khách hàng và tăng trưởng kinh doanh:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Chủ doanh nghiệp, nhà sáng lập, lãnh đạo doanh nghiệp",
+          "Quản lý, giám đốc, trưởng phòng sales / marketing / phát triển kinh doanh",
+          "Nhân viên sales, marketing, phát triển thị trường",
+          "Key Account Managers, Product/Brand/CX Managers",
+          "Chuyên viên tư vấn, business coach, đào tạo doanh nghiệp"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Đặc biệt phù hợp nếu bạn đang gặp một trong những tình huống này:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Nhiều data, nhiều network — nhưng chưa chuyển hóa thành khách hàng",
+          "Nhiều người hỏi — nhưng tỷ lệ chốt thấp",
+          "Khách hàng liên tục so sánh giá, chưa thấy giá trị khác biệt",
+          "Khách hàng mua một lần rồi biến mất",
+          "Sales – marketing – product chưa phối hợp ăn ý",
+          "Muốn thử nghiệm và kiểm chứng giải pháp trước khi đầu tư lớn"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Để đạt kết quả tốt nhất, học viên nên mang theo một bài toán thật và sẵn sàng hành động giữa các buổi học."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Không phải một khóa học kỹ năng, mà là một hành trình chuyển hóa"
+      },
+      {
+        "type": "paragraph",
+        "text": "Đây không phải một khóa học thuần kỹ thuật bán hàng, digital marketing hay Design Thinking đơn lẻ. Đây là một Applied Business Transformation Program, nơi mỗi học viên mang theo một bài toán kinh doanh thật và dùng kiến thức, công cụ, coaching, network của chương trình để giải quyết nó đến cùng."
+      },
+      {
+        "type": "paragraph",
+        "text": "Chương trình tạo ra bốn chuyển dịch tư duy:"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Từ",
+          "Sang"
+        ],
+        "rows": [
+          [
+            "Bán sản phẩm",
+            "Kiến tạo giá trị"
+          ],
+          [
+            "Thuyết phục khách hàng",
+            "Thấu hiểu & hỗ trợ khách hàng ra quyết định"
+          ],
+          [
+            "Giao dịch ngắn hạn",
+            "Xây niềm tin & quan hệ dài hạn"
+          ],
+          [
+            "Học kiến thức",
+            "Thiết kế – thử nghiệm – tạo kết quả thực tế"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Lời hứa giá trị: Mỗi người tham gia không chỉ hoàn thành chương trình với kiến thức mới, mà còn với một giải pháp thực tế đã được thiết kế, bước đầu kiểm chứng và có kế hoạch triển khai cụ thể."
+      },
+      {
+        "type": "paragraph",
+        "text": "Nguyên tắc xuyên suốt: \"Influence for Value – Not Manipulation for Conversion\" — tạo ảnh hưởng để mang lại giá trị, không thao túng để chốt đơn."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Hành trình khách hàng mà chương trình theo đuổi"
+      },
+      {
+        "type": "paragraph",
+        "text": "Thay vì chỉ tối ưu điểm chốt đơn, chương trình đi xuyên suốt toàn bộ vòng đời khách hàng:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Know → Trust → Buy → Use → Happy → Engage → Advocate → Sustain (Biết đến → Tin tưởng → Mua → Sử dụng → Hài lòng → Gắn kết → Giới thiệu → Phát triển bền vững)"
+      },
+      {
+        "type": "paragraph",
+        "text": "Mỗi chặng gắn với một câu hỏi trọng tâm học viên sẽ học cách trả lời cho chính doanh nghiệp/sản phẩm của mình — ví dụ: Vì sao khách hàng hỏi nhiều nhưng chưa chốt? Vì sao họ hài lòng nhưng không quay lại? Điều gì khiến họ sẵn sàng đặt uy tín của mình vào một lời giới thiệu?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Ba sự chuyển hóa trọng tâm chương trình nhắm tới:"
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "Từ contact → customer: chuyển network và sự quan tâm thành niềm tin và quyết định mua",
+          "Từ customer → loyal customer: giúp khách hàng sử dụng, hài lòng, mua lại",
+          "Từ loyal customer → value advocate: tạo đủ niềm tin để khách hàng chủ động giới thiệu"
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Master Framework - 4 lớp tích hợp"
+      },
+      {
+        "type": "paragraph",
+        "text": "Mọi module trong chương trình đều vận hành đồng thời trên 4 lớp nền tảng:"
+      },
+      {
+        "type": "paragraph",
+        "text": "🧠 Behavioral Understanding Layer Hiểu vì sao khách hàng nói quan tâm nhưng chưa hành động; vì sao mua rồi nhưng không quay lại. Không dùng để thao túng, mà để thiết kế trải nghiệm giúp khách hàng quyết định tốt hơn."
+      },
+      {
+        "type": "paragraph",
+        "text": "🎨 Human-Centered Design Layer Quy trình quan sát – thấu cảm – xác định đúng vấn đề – tạo prototype – thử nghiệm – điều chỉnh. Tư duy: \"Thiết kế nhỏ – Thử nghiệm sớm – Học nhanh – Cải tiến liên tục.\""
+      },
+      {
+        "type": "paragraph",
+        "text": "💼 Business Value & Sustainable Growth Layer Mọi giải pháp được kiểm định qua 4 tiêu chí: Desirability (khách hàng có muốn?), Feasibility (có làm được?), Viability (có hiệu quả kinh doanh?), Sustainability (có duy trì được lâu dài?)."
+      },
+      {
+        "type": "paragraph",
+        "text": "🤝 Applied Learning & Coaching Layer Học đi đôi với làm: nghiên cứu khách hàng thật, xây sản phẩm đầu ra thật, nhận coaching và phản biện thật."
+      },
+      {
+        "type": "paragraph",
+        "text": "\"Understand Behavior – Design Value – Test Solutions – Create Sustainable Results\""
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "6 Core Modules"
+      },
+      {
+        "type": "paragraph",
+        "text": "Empathize → Define → Ideate → Prototype → Test → Implement & Improve"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Module",
+          "Câu hỏi trung tâm",
+          "Đầu ra chính"
+        ],
+        "rows": [
+          [
+            "1. Empathize — Thấu cảm",
+            "Khách hàng thực sự cần gì và vì sao họ hành động như hiện tại?",
+            "Customer Behavioral Profile, Empathy Map, Customer Journey, Customer Insight"
+          ],
+          [
+            "2. Define — Xác định vấn đề",
+            "Rào cản thực sự khiến khách hàng chưa hành động là gì?",
+            "Behavioral Barrier Map, Problem Statement"
+          ],
+          [
+            "3. Ideate — Tạo ý tưởng",
+            "Giải pháp nào tạo ra giá trị cho cả khách hàng và doanh nghiệp?",
+            "Value Proposition, danh mục ý tưởng ưu tiên"
+          ],
+          [
+            "4. Prototype — Tạo mẫu thử",
+            "Làm sao để khách hàng nhìn thấy và phản hồi về giải pháp?",
+            "Prototype, Minimum Viable Offer, Testing Plan"
+          ],
+          [
+            "5. Test — Kiểm chứng",
+            "Khách hàng có hiểu, cần, dùng, hoặc sẵn sàng trả tiền không?",
+            "Testing Report, bằng chứng hành vi & kinh doanh"
+          ],
+          [
+            "6. Implement & Improve — Triển khai & cải tiến",
+            "Làm sao để duy trì, giữ chân và lan tỏa giá trị?",
+            "Sustainable Sales & Marketing Action Plan, kế hoạch 30–60–90 ngày"
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Mô hình tích hợp 6–6–6"
+      },
+      {
+        "type": "paragraph",
+        "text": "06 buổi Core Learning & Practice"
+      },
+      {
+        "type": "paragraph",
+        "text": "Kiến thức nền tảng + tình huống thực tiễn + thực hành có hướng dẫn (~3 giờ/buổi)"
+      },
+      {
+        "type": "paragraph",
+        "text": "06 buổi Applied Business Project & Group Coaching"
+      },
+      {
+        "type": "paragraph",
+        "text": "Đưa công cụ vào bài toán thật, trình bày tiến độ, nhận phản biện & coaching (~2 giờ/buổi)"
+      },
+      {
+        "type": "paragraph",
+        "text": "06 buổi Peer Learning & Business Networking Circles"
+      },
+      {
+        "type": "paragraph",
+        "text": "Nhóm nhỏ 4–6 người: chia sẻ, phản biện đồng cấp, kết nối nguồn lực (~1,5 giờ/buổi)"
+      },
+      {
+        "type": "paragraph",
+        "text": "Mỗi sprint học tập đi theo nhịp: Learn & Practice → Apply & Coach → Reflect, Connect & Improve — và tạo ra một sản phẩm cụ thể, đưa dự án của học viên tiến thêm một bước."
+      },
+      {
+        "type": "paragraph",
+        "text": "Tổng thời lượng: 10–12 tuần · ~39 giờ tương tác trực tiếp · ~51–57 giờ học tập & ứng dụng toàn chương trình. Hình thức: trực tiếp / trực tuyến / kết hợp / in-house cho doanh nghiệp."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Applied Business Project — mỗi học viên mang một bài toán thật đi hết chương trình"
+      },
+      {
+        "type": "paragraph",
+        "text": "Không phải bài tập mô phỏng. Mỗi học viên (hoặc nhóm) chọn một bài toán sales/marketing/sản phẩm/khách hàng có thật của mình, và phát triển nó qua từng module — từ Customer Insight, Problem Statement, Value Proposition, Prototype, đến Testing Report và một kế hoạch triển khai 30–60–90 ngày."
+      },
+      {
+        "type": "paragraph",
+        "text": "Chương trình khép lại bằng Capstone Project Presentation & Business Value Showcase — nơi học viên trình bày toàn bộ hành trình: bài toán ban đầu, insight, giải pháp, kết quả thử nghiệm, và kế hoạch tiếp theo — đồng thời là cơ hội kết nối chuyên gia, đối tác và cơ hội hợp tác."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Giá trị khác biệt"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Tích hợp thật, không lắp ghép: Behavioral Science lý giải vì sao, Design Thinking chỉ ra làm thế nào — hai lớp bổ trợ nhau trong từng module, không phải hai chuyên đề tách rời.",
+          "Đi hết hành trình khách hàng, không chỉ điểm chốt đơn — mở rộng từ Conversion sang Adoption, Retention, Loyalty, Advocacy.",
+          "Học gắn với dự án thật: kiến thức được dùng ngay vào bài toán của chính học viên, không dừng ở lý thuyết.",
+          "AI là công cụ hỗ trợ, không thay thế sự thấu hiểu: \"AI accelerates the process; human understanding directs the value.\"",
+          "Một hệ sinh thái hỗ trợ đầy đủ: Lead Instructor, Facilitator/Coach, Mentor thực chiến và Peer Circle Leader đồng hành xuyên suốt."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Học viên nhận được gì"
+      },
+      {
+        "type": "paragraph",
+        "text": "Với cá nhân: Hiểu khách hàng sâu hơn · biết chuyển data/network thành cơ hội thật · chuyển từ cạnh tranh bằng giá sang cạnh tranh bằng giá trị · tự tin thiết kế và trình bày giải pháp · một giải pháp thực tế có khả năng triển khai · mở rộng mạng lưới quan hệ."
+      },
+      {
+        "type": "paragraph",
+        "text": "Với doanh nghiệp: Cải thiện tỷ lệ chuyển đổi · giảm phụ thuộc khuyến mãi/giảm giá · tăng tỷ lệ giữ chân & mua lại · gia tăng referral · rút ngắn thời gian thử nghiệm ý tưởng mới · sales – marketing – product phối hợp tốt hơn."
+      }
+    ],
+    "image": {
+      "src": "/images/gisa-provided/consulting.png",
+      "alt": "Hoạt động tư vấn và trao đổi chuyên môn",
+      "width": 1563,
+      "height": 1033
+    },
+    "tags": [
+      "đào tạo"
+    ],
+    "evidenceStatus": "provided_by_gisa",
+    "sourceUrl": "https://docs.google.com/document/d/14gdM2pwp_WtP4X7My39dhnpLV51NopaKNn8bEL3pYv8/edit",
+    "sourceLabel": "Nội dung Google Docs do GISA cung cấp",
+    "checkedAt": "2026-09-29",
+    "metadata": {
+      "program": "Đào tạo ứng dụng",
+      "format": "Trực tiếp / trực tuyến / kết hợp / in-house",
+      "schedule": "10–12 tuần · 18 buổi theo mô hình 6–6–6 · khoảng 39 giờ tương tác"
+    },
+    "publishedAt": "2026-09-29"
+  },
+  {
+    "id": "gisa-doc-ke-toan-thuc-hanh-va-toi-uu-hoa-thue",
+    "kind": "course",
+    "collection": "courses",
+    "slug": "ke-toan-thuc-hanh-va-toi-uu-hoa-thue",
+    "path": "/khoa-hoc/ke-toan-thuc-hanh-va-toi-uu-hoa-thue",
+    "locale": "vi",
+    "translationKey": "gisa-doc-ke-toan-thuc-hanh-va-toi-uu-hoa-thue",
+    "title": "Kế toán Thực hành và Tối ưu hóa Thuế",
+    "summary": "Trang bị kỹ năng kế toán doanh nghiệp thực tiễn, từ xử lý chứng từ, lập báo cáo tài chính đến quyết toán thuế. Đồng thời, hướng dẫn nguyên tắc tối ưu thuế đúng luật và cách phòng tránh rủi ro khi bị kiểm toán, thanh tra.",
+    "body": [
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Khoảng cách giữa làm sổ sách và làm đúng luật"
+      },
+      {
+        "type": "paragraph",
+        "text": "Không ít doanh nghiệp có đầy đủ chứng từ, sổ sách và báo cáo hằng tháng, nhưng chỉ đến kỳ quyết toán mới phát hiện những khoản hạch toán chưa đúng, chứng từ chưa hợp lệ, hoặc những khoản chi phí không được chấp nhận khi tính thuế."
+      },
+      {
+        "type": "paragraph",
+        "text": "Không ít kế toán viên nắm vững nghiệp vụ cơ bản nhưng chưa tự tin xử lý những tình huống phát sinh trong thực tế: một khoản chi chưa rõ có được trừ hay không, một cách hạch toán có thể tối ưu thuế nhưng cũng có thể tạo rủi ro bị truy thu và xử phạt."
+      },
+      {
+        "type": "paragraph",
+        "text": "Ranh giới giữa tối ưu thuế hợp pháp và rủi ro thuế thường không nằm ở kiến thức lý thuyết, mà ở khả năng áp dụng đúng quy định vào từng tình huống cụ thể của doanh nghiệp — và khả năng chuẩn bị hồ sơ đủ vững để giải trình khi bị kiểm toán, thanh tra."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Chương trình dành cho ai"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Kế toán viên, kế toán tổng hợp muốn củng cố nghiệp vụ và nâng cao khả năng xử lý tình huống thực tế.",
+          "Chủ doanh nghiệp nhỏ và vừa trực tiếp quản lý hoặc giám sát công tác kế toán – thuế.",
+          "Người mới vào nghề kế toán – thuế, cần rút ngắn khoảng cách giữa kiến thức đã học và công việc thực tế.",
+          "Nhân sự phụ trách tài chính – kế toán muốn hiểu sâu hơn về tối ưu thuế đúng luật và phòng ngừa rủi ro."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Ba trụ cột của chương trình"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "I. Vững nghiệp vụ kế toán thực tiễn"
+      },
+      {
+        "type": "paragraph",
+        "text": "Xử lý chứng từ, hạch toán và ghi sổ đúng chuẩn mực kế toán và quy định hiện hành — nền tảng cho mọi báo cáo và quyết toán sau này."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "II. Báo cáo tài chính & quyết toán thuế"
+      },
+      {
+        "type": "paragraph",
+        "text": "Lập báo cáo tài chính đầy đủ, chính xác; thực hiện quyết toán thuế thu nhập doanh nghiệp, thu nhập cá nhân và giá trị gia tăng đúng thời hạn."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "III. Tối ưu hóa thuế & phòng vệ rủi ro"
+      },
+      {
+        "type": "paragraph",
+        "text": "Áp dụng các nguyên tắc tối ưu thuế trong khuôn khổ pháp luật; nhận diện sớm rủi ro và chuẩn bị hồ sơ vững vàng trước các đợt kiểm toán, thanh tra."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Sau chương trình, bạn có thể"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Xử lý chứng từ kế toán đúng quy trình, hạn chế những sai sót thường gặp.",
+          "Lập báo cáo tài chính hoàn chỉnh, đúng chuẩn mực kế toán Việt Nam.",
+          "Thực hiện quyết toán thuế TNDN, TNCN và GTGT chính xác, đúng thời hạn.",
+          "Áp dụng các nguyên tắc tối ưu thuế hợp pháp, phù hợp với đặc thù từng doanh nghiệp.",
+          "Nhận diện các dấu hiệu rủi ro thuế trước khi bị thanh tra, kiểm toán phát hiện.",
+          "Chuẩn bị hồ sơ, số liệu và giải trình sẵn sàng cho các đợt kiểm tra, thanh tra thuế."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Nội dung chương trình"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "01. Nền tảng chứng từ & hạch toán kế toán doanh nghiệp"
+      },
+      {
+        "type": "paragraph",
+        "text": "Nguyên tắc lập, kiểm tra và lưu trữ chứng từ; hạch toán các nghiệp vụ kinh tế phát sinh theo đúng chế độ kế toán hiện hành."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "02. Kế toán các phần hành trọng yếu"
+      },
+      {
+        "type": "paragraph",
+        "text": "Thực hành theo từng phần hành: tiền, hàng tồn kho, tài sản cố định, công nợ, doanh thu và chi phí."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "03. Lập Báo cáo tài chính"
+      },
+      {
+        "type": "paragraph",
+        "text": "Tổng hợp số liệu, lập bảng cân đối kế toán, báo cáo kết quả kinh doanh, báo cáo lưu chuyển tiền tệ và thuyết minh báo cáo tài chính."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "04. Quyết toán thuế TNDN, TNCN, GTGT"
+      },
+      {
+        "type": "paragraph",
+        "text": "Xác định thu nhập chịu thuế, các khoản chi phí được trừ và không được trừ; lập và nộp hồ sơ quyết toán đúng quy định."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "05. Nguyên tắc tối ưu hóa thuế đúng luật"
+      },
+      {
+        "type": "paragraph",
+        "text": "Vận dụng các quy định về ưu đãi, khấu trừ và thời điểm ghi nhận để tối ưu nghĩa vụ thuế trong khuôn khổ pháp luật."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "06. Nhận diện rủi ro & chuẩn bị hồ sơ trước kiểm toán, thanh tra thuế"
+      },
+      {
+        "type": "paragraph",
+        "text": "Rà soát các điểm dễ bị truy thu, xử phạt; xây dựng hồ sơ và cách giải trình khi làm việc với cơ quan thuế, kiểm toán."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Phương pháp đào tạo"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Thực hành trực tiếp trên chứng từ, số liệu và tình huống gần với thực tế doanh nghiệp.",
+          "Phân tích case study về những lỗi thường gặp khi quyết toán và những trường hợp từng bị truy thu, xử phạt.",
+          "Hướng dẫn cách tra cứu và áp dụng văn bản pháp luật thuế hiện hành vào công việc.",
+          "Giải đáp trực tiếp những tình huống thực tế mà học viên đang gặp phải."
+        ]
+      }
+    ],
+    "image": {
+      "src": "/images/gisa-provided/training.png",
+      "alt": "Đào tạo chuyên môn của GISA",
+      "width": 1563,
+      "height": 1031
+    },
+    "tags": [
+      "đào tạo"
+    ],
+    "evidenceStatus": "provided_by_gisa",
+    "sourceUrl": "https://docs.google.com/document/d/14gdM2pwp_WtP4X7My39dhnpLV51NopaKNn8bEL3pYv8/edit",
+    "sourceLabel": "Nội dung Google Docs do GISA cung cấp",
+    "checkedAt": "2026-09-29",
+    "metadata": {
+      "program": "GISA Core",
+      "audience": "Kế toán viên, chủ doanh nghiệp nhỏ và vừa, nhân sự tài chính – kế toán"
+    },
+    "publishedAt": "2026-09-29"
+  },
+  {
+    "id": "gisa-doc-nong-lam-san-viet-nam-tieu-chuan-chong-pha-rung-eu",
+    "kind": "news",
+    "collection": "news",
+    "slug": "nong-lam-san-viet-nam-tieu-chuan-chong-pha-rung-eu",
+    "path": "/tin-tuc/nong-lam-san-viet-nam-tieu-chuan-chong-pha-rung-eu",
+    "locale": "vi",
+    "translationKey": "gisa-doc-nong-lam-san-viet-nam-tieu-chuan-chong-pha-rung-eu",
+    "title": "Nông – lâm sản Việt Nam trước áp lực tiêu chuẩn chống phá rừng của EU: Thách thức và cơ hội chuyển đổi bền vững",
+    "summary": "Nông – lâm sản Việt Nam đang đối mặt với những yêu cầu khắt khe hơn khi EU áp dụng Quy định chống phá rừng (EUDR) đối với hàng hóa nhập khẩu. Các tiêu chuẩn về truy xuất nguồn gốc và minh bạch dữ liệu tạo ra không ít thách thức cho doanh nghiệp, nhưng đồng thời cũng mở ra cơ hội để ngành nông nghiệp Việt Nam chuyển đổi theo hướng bền vững và nâng cao giá trị xuất khẩu.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Nông – lâm sản Việt Nam đang đối mặt với những yêu cầu khắt khe hơn khi EU áp dụng Quy định chống phá rừng (EUDR) đối với hàng hóa nhập khẩu. Các tiêu chuẩn về truy xuất nguồn gốc và minh bạch dữ liệu tạo ra không ít thách thức cho doanh nghiệp, nhưng đồng thời cũng mở ra cơ hội để ngành nông nghiệp Việt Nam chuyển đổi theo hướng bền vững và nâng cao giá trị xuất khẩu."
+      },
+      {
+        "type": "paragraph",
+        "text": "Liên minh châu Âu đã ban hành Quy định chống phá rừng (EUDR 2023/1115) và chính thức có hiệu lực từ ngày 29/6/2023. Theo lộ trình, quy định này sẽ được áp dụng bắt buộc từ ngày 30/12/2025 đối với doanh nghiệp lớn và vừa, và từ ngày 30/6/2026 đối với doanh nghiệp nhỏ và siêu nhỏ. EUDR yêu cầu các sản phẩm nông – lâm sản nhập khẩu vào EU phải chứng minh không liên quan đến phá rừng sau ngày 31/12/2020, kèm theo hệ thống truy xuất nguồn gốc, dữ liệu tọa độ địa lý và hồ sơ pháp lý đất đai rõ ràng. Việc ban hành quy định này thể hiện cam kết mạnh mẽ của EU trong bảo vệ rừng, đa dạng sinh học và giảm phát thải, đồng thời nâng cao trách nhiệm môi trường của các chuỗi cung ứng toàn cầu."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Khó khăn, thách thức cho doanh nghiệp Việt Nam:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Yêu cầu truy xuất nguồn gốc chi tiết đến từng lô hàng, bao gồm tọa độ GPS và ranh giới vùng trồng, trong khi sản xuất nông nghiệp Việt Nam còn nhỏ lẻ, phân tán.",
+          "Thiếu dữ liệu số hóa về đất đai, vùng nguyên liệu và lịch sử canh tác, gây khó khăn cho việc chứng minh không phá rừng.",
+          "Chi phí đầu tư cho công nghệ, hệ thống quản lý dữ liệu và nhân lực tuân thủ tiêu chuẩn EUDR khá cao, đặc biệt đối với doanh nghiệp nhỏ và vừa.",
+          "Nông hộ và hợp tác xã còn hạn chế về kỹ năng kỹ thuật, nhận thức và khả năng tiếp cận công nghệ số.",
+          "Nguy cơ bị gián đoạn xuất khẩu hoặc mất thị phần nếu không kịp đáp ứng yêu cầu đúng thời hạn."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Giải pháp “chuyển hóa” khó khăn thành lợi thế cạnh tranh:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Đầu tư hệ thống truy xuất nguồn gốc số, quản lý chuỗi cung ứng và lưu trữ dữ liệu tập trung theo chuẩn quốc tế.",
+          "Tổ chức lại sản xuất theo vùng nguyên liệu tập trung, liên kết doanh nghiệp – hợp tác xã – nông dân để giảm chi phí tuân thủ.",
+          "Đẩy mạnh chuyển đổi số trong nông nghiệp, bao gồm bản đồ hóa vùng trồng, quản lý đất đai và giám sát bằng dữ liệu vệ tinh.",
+          "Tăng cường đào tạo nông dân và doanh nghiệp về yêu cầu EUDR, kỹ năng thu thập dữ liệu và quy trình tuân thủ.",
+          "Nhà nước hỗ trợ xây dựng cơ sở dữ liệu đất đai, hướng dẫn kỹ thuật và chính sách hỗ trợ tài chính cho doanh nghiệp tham gia chuyển đổi bền vững."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Dù tạo ra nhiều áp lực trong ngắn hạn, EUDR cũng mở ra cơ hội để nông – lâm sản Việt Nam nâng cao chất lượng, tính minh bạch và giá trị gia tăng. Việc đáp ứng tiêu chuẩn cao của EU không chỉ giúp giữ vững thị phần mà còn tạo lợi thế cạnh tranh tại các thị trường cao cấp khác. Về dài hạn, đây là động lực thúc đẩy ngành nông nghiệp Việt Nam phát triển theo hướng bền vững, hiện đại và hội nhập sâu hơn vào chuỗi giá trị toàn cầu."
+      }
+    ],
+    "image": {
+      "src": "/images/gisa-provided/community.png",
+      "alt": "Hoạt động thực địa cùng cộng đồng",
+      "width": 1563,
+      "height": 1155
+    },
+    "tags": [
+      "góc nhìn",
+      "GIBA"
+    ],
+    "evidenceStatus": "provided_by_gisa",
+    "sourceUrl": "https://docs.google.com/document/d/14gdM2pwp_WtP4X7My39dhnpLV51NopaKNn8bEL3pYv8/edit",
+    "sourceLabel": "Nội dung Google Docs do GISA cung cấp",
+    "checkedAt": "2026-09-29",
+    "metadata": {
+      "topic": "Góc nhìn"
+    },
+    "publishedAt": "2026-01-29"
+  },
+  {
+    "id": "gisa-doc-thuong-hieu-ca-nhan-von-vo-hinh-doanh-nhan",
+    "kind": "news",
+    "collection": "news",
+    "slug": "thuong-hieu-ca-nhan-von-vo-hinh-doanh-nhan",
+    "path": "/tin-tuc/thuong-hieu-ca-nhan-von-vo-hinh-doanh-nhan",
+    "locale": "vi",
+    "translationKey": "gisa-doc-thuong-hieu-ca-nhan-von-vo-hinh-doanh-nhan",
+    "title": "THƯƠNG HIỆU CÁ NHÂN: “VỐN VÔ HÌNH” ĐỊNH DANH TẦM VÓC DOANH NHÂN TRONG KỶ NGUYÊN SỐ",
+    "summary": "Trong dòng chảy không ngừng của kỷ nguyên số, thương hiệu cá nhân không chỉ là một bộ hồ sơ đẹp trên mạng xã hội. Đó là bảo chứng cho uy tín, là tổng hòa của tri thức và là tài sản chiến lược định hình nên tầm ảnh hưởng của một nhà lãnh đạo.Đối với cộng đồng Doanh nhân Trí thức, việc xây dựng thương hiệu không phải là nỗ lực để trở nên \"nổi tiếng\", mà là hành trình để trở nên \"đáng tin cậy\".",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Trong dòng chảy không ngừng của kỷ nguyên số, thương hiệu cá nhân không chỉ là một bộ hồ sơ đẹp trên mạng xã hội. Đó là bảo chứng cho uy tín, là tổng hòa của tri thức và là tài sản chiến lược định hình nên tầm ảnh hưởng của một nhà lãnh đạo.Đối với cộng đồng Doanh nhân Trí thức, việc xây dựng thương hiệu không phải là nỗ lực để trở nên \"nổi tiếng\", mà là hành trình để trở nên \"đáng tin cậy\"."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Tại sao phải định vị chiến lược ngay bây giờ?"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Vượt qua sự nhiễu loạn thông tin: Giữa \"biển\" dữ liệu, bản sắc độc bản (Unique Selling Point) giúp bạn trở thành điểm chạm tin cậy đối với đối tác và thị trường.",
+          "Chuyển hóa Tri thức thành Sức mạnh: Thương hiệu cá nhân giúp \"đóng gói\" kinh nghiệm và tư duy thành giá trị có thể lan tỏa, tạo ra sức hút tự nhiên trong các mạng lưới Networking cao cấp.",
+          "Kiến tạo giá trị bền vững: Một hình ảnh cá nhân vững vàng là nền tảng cốt lõi để bảo vệ và phát triển thương hiệu doanh nghiệp trong mọi biến động."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Lộ trình kiến tạo của những nhà lãnh đạo có tầm:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Nội tại (Self-Reflection): Quay về giá trị cốt lõi. Bạn đại diện cho điều gì? Di sản bạn muốn để lại là gì?",
+          "Định danh (Authentic Style): Không cần sự hoàn hảo ảo ảnh, hãy chọn sự chân thực (Authenticity). Sự nhất quán giữa tư duy, lời nói và hành động chính là phong cách bền vững nhất.",
+          "Kết nối (Strategic Connection): Thương hiệu cá nhân không tồn tại biệt lập. Nó được nuôi dưỡng và cộng hưởng trong một hệ sinh thái những người cùng tầng tư duy."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Tại GIBA, chúng tôi hiểu rằng mỗi Doanh nhân là một thực thể kiến tạo (Creator). Xây dựng thương hiệu cá nhân chính là cách bạn khẳng định cam kết đối với sự phát triển bền vững và phụng sự cộng đồng tri thức."
+      },
+      {
+        "type": "linkGroup",
+        "links": [
+          {
+            "label": "Tham khảo chi tiết tại:",
+            "href": "https://ueh.edu.vn/cuoc-song-ueh/tin-tuc/xay-dung-thuong-hieu-ca-nhan-chia-khoa-thanh-cong-trong-ky-nguyen-so-72596"
+          }
+        ]
+      }
+    ],
+    "image": {
+      "src": "/images/gisa-provided/consulting.png",
+      "alt": "Hoạt động chuyên môn và hợp tác GISA",
+      "width": 1563,
+      "height": 1033
+    },
+    "tags": [
+      "góc nhìn",
+      "GIBA"
+    ],
+    "evidenceStatus": "provided_by_gisa",
+    "sourceUrl": "https://docs.google.com/document/d/14gdM2pwp_WtP4X7My39dhnpLV51NopaKNn8bEL3pYv8/edit",
+    "sourceLabel": "Nội dung Google Docs do GISA cung cấp",
+    "checkedAt": "2026-09-29",
+    "metadata": {
+      "topic": "Góc nhìn"
+    },
+    "publishedAt": "2026-04-07"
+  },
+  {
+    "id": "gisa-doc-lanh-dao-toan-cau-2026",
+    "kind": "news",
+    "collection": "news",
+    "slug": "lanh-dao-toan-cau-2026",
+    "path": "/tin-tuc/lanh-dao-toan-cau-2026",
+    "locale": "vi",
+    "translationKey": "gisa-doc-lanh-dao-toan-cau-2026",
+    "title": "LÃNH ĐẠO TOÀN CẦU 2026: KHI TỐC ĐỘ KHÔNG CÒN LÀ LỢI THẾ LỚN NHẤT",
+    "summary": "Thế giới kinh doanh đang bước vào một giai đoạn chuyển đổi chưa từng có. Trong bối cảnh đó, năng lực lãnh đạo cũng dần phải thay đổi để thích nghi nhanh chóng. Thành công không còn được đo bằng khả năng phản ứng nhanh nhất, mà bằng việc dẫn dắt tổ chức với tầm nhìn dài hạn, xây dựng sự đồng thuận và tạo ra giá trị bền vững giữa những biến động không ngừng.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Thế giới kinh doanh đang bước vào một giai đoạn chuyển đổi chưa từng có. Trong bối cảnh đó, năng lực lãnh đạo cũng dần phải thay đổi để thích nghi nhanh chóng. Thành công không còn được đo bằng khả năng phản ứng nhanh nhất, mà bằng việc dẫn dắt tổ chức với tầm nhìn dài hạn, xây dựng sự đồng thuận và tạo ra giá trị bền vững giữa những biến động không ngừng."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "BỐI CẢNH"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trí tuệ nhân tạo (AI) liên tục tái định hình cách doanh nghiệp vận hành, các mô hình kinh doanh truyền thống bị thách thức bởi những công nghệ mới, chuỗi cung ứng toàn cầu trở nên khó dự báo hơn, trong khi kỳ vọng của khách hàng, nhân sự và nhà đầu tư cũng thay đổi với tốc độ chóng mặt. Những yếu tố từng tạo nên lợi thế cạnh tranh ngày hôm qua có thể nhanh chóng trở nên lỗi thời chỉ sau một thời gian ngắn."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trong bối cảnh đó, năng lực lãnh đạo cũng dẫn được định nghĩa lại. Nếu trước đây, một nhà lãnh đạo được đánh giá bởi khả năng phản ứng nhanh và đưa ra quyết định kịp thời, thì ngày nay, điều tạo nên khác biệt không còn đơn thuần là tốc độ. Điều quan trọng hơn là khả năng giữ vững phương hướng giữa những biến động, đưa ra các quyết định dựa trên tầm nhìn dài hạn thay vì chỉ xử lý những áp lực trước mắt. Thành công của doanh nghiệp trong kỷ nguyên mới không được đo bằng việc \"đi nhanh nhất\", mà bằng việc tạo ra giá trị bền vững, thích ứng linh hoạt và phát triển có định hướng."
+      },
+      {
+        "type": "paragraph",
+        "text": "Hiện nay, các nhà lãnh đạo toàn cầu đang phải đối mặt với một yêu cầu mới: không chỉ dẫn dắt tổ chức vượt qua biến động, mà còn xây dựng khả năng thích nghi lâu dài. Điều này đòi hỏi ba năng lực cốt lõi sau:"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Ra quyết định với tầm nhìn dài hạn"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trong môi trường kinh doanh đầy biến động, áp lực từ thị trường thường khiến doanh nghiệp dễ ưu tiên các kết quả ngắn hạn. Tuy nhiên, những nhà lãnh đạo xuất sắc là những người có khả năng cân bằng giữa mục tiêu trước mắt và chiến lược dài hạn. Họ không chỉ giải quyết vấn đề của hôm nay mà còn chuẩn bị cho những cơ hội và thách thức của nhiều năm tới. Một quyết định đúng không chỉ tạo ra kết quả tức thời mà còn xây dựng nền tảng cho sự phát triển bền vững của doanh nghiệp."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Tạo sự đồng thuận trong tổ chức"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trong thời đại mà sự thay đổi diễn ra liên tục, con người dễ rơi vào trạng thái mất phương hướng nếu không hiểu rõ mục tiêu chung. Vì vậy, vai trò của người lãnh đạo không chỉ là ban hành chiến lược mà còn là truyền cảm hứng, kết nối và tạo ra sự đồng thuận trong toàn bộ tổ chức."
+      },
+      {
+        "type": "paragraph",
+        "text": "Khi mọi thành viên hiểu được lý do của sự thay đổi, nhận thức rõ vai trò của mình và cùng hướng đến một mục tiêu chung, doanh nghiệp sẽ hình thành sức mạnh nội tại để thích ứng nhanh hơn với những biến động bên ngoài."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Dẫn dắt chuyển đổi số bằng con người"
+      },
+      {
+        "type": "paragraph",
+        "text": "AI, dữ liệu lớn và các nền tảng số đang thay đổi gần như mọi lĩnh vực. Tuy nhiên, công nghệ tự thân không tạo ra giá trị nếu con người chưa sẵn sàng tiếp nhận và khai thác hiệu quả. Những nhà lãnh đạo thành công trong giai đoạn tới sẽ không chỉ đầu tư vào công nghệ mà còn đầu tư vào con người thông qua đào tạo, phát triển kỹ năng, xây dựng văn hóa học tập liên tục và tạo môi trường khuyến khích đổi mới sáng tạo. Chuyển đổi số thành công luôn bắt đầu từ chuyển đổi tư duy và năng lực của đội ngũ."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "2. Khi tư duy lãnh đạo trở thành lợi thế cạnh tranh"
+      },
+      {
+        "type": "paragraph",
+        "text": "Những thay đổi đang diễn ra không chỉ là sự dịch chuyển về công nghệ hay mô hình kinh doanh, mà còn là sự thay đổi trong chính tư duy lãnh đạo."
+      },
+      {
+        "type": "paragraph",
+        "text": "Một doanh nghiệp có thể sở hữu nguồn lực tài chính mạnh, công nghệ hiện đại hay chiến lược được xây dựng bài bản. Tuy nhiên, những yếu tố đó chỉ thực sự phát huy giá trị khi được dẫn dắt bởi những nhà lãnh đạo biết cân bằng giữa:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Tốc độ và sự thấu đáo.",
+          "Đổi mới và các giá trị cốt lõi.",
+          "Hiệu quả ngắn hạn và phát triển dài hạn.",
+          "Mục tiêu tăng trưởng và trách nhiệm đối với xã hội."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Khả năng đưa ra những quyết định đúng vào đúng thời điểm sẽ trở thành lợi thế cạnh tranh quan trọng hơn việc chỉ đơn thuần đưa ra quyết định nhanh."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "3. \"Hurry up slowly\" – Hãy vội vàng một cách chậm rãi"
+      },
+      {
+        "type": "paragraph",
+        "text": "Nghe có vẻ mâu thuẫn, nhưng đây lại là một trong những triết lý lãnh đạo có giá trị nhất trong bối cảnh hiện nay."
+      },
+      {
+        "type": "paragraph",
+        "text": "\"Hurry up slowly\" không khuyến khích sự chậm chạp, mà nhấn mạnh đến việc hành động quyết liệt trên nền tảng của sự chuẩn bị kỹ lưỡng và tư duy chiến lược. Đó là khả năng thích ứng nhanh với những thay đổi của thị trường nhưng vẫn giữ được sự bình tĩnh, tỉnh táo và không đánh mất tầm nhìn dài hạn. Khi áp lực ngày càng lớn, thông tin ngày càng nhiều và tốc độ thay đổi ngày càng nhanh, sự bình tĩnh trong tư duy và sự chắc chắn trong quyết định sẽ trở thành phẩm chất khác biệt của những nhà lãnh đạo thực sự."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "4. Góc nhìn GIBA"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trong một thế giới đầy bất định, vai trò của người lãnh đạo không chỉ là đưa doanh nghiệp tiến về phía trước mà còn là người kiến tạo niềm tin, xây dựng văn hóa học hỏi và kết nối con người với một tầm nhìn chung. Lãnh đạo trong kỷ nguyên mới không đơn thuần là quản trị hiệu quả, mà là khả năng tạo ra những tổ chức có sức chống chịu cao, biết đổi mới liên tục và phát triển bền vững trước mọi biến động của môi trường kinh doanh toàn cầu."
+      },
+      {
+        "type": "paragraph",
+        "text": "Đối với doanh nghiệp Việt Nam, đây cũng chính là thời điểm để chuyển dịch từ tư duy cạnh tranh bằng chi phí sang cạnh tranh bằng năng lực lãnh đạo, đổi mới sáng tạo và giá trị bền vững. Khi các nhà lãnh đạo đủ bản lĩnh để dẫn dắt sự thay đổi, doanh nghiệp sẽ không chỉ thích ứng với thế giới mà còn có khả năng tạo ra những giá trị mới, nâng cao vị thế trên thị trường quốc tế và đóng góp tích cực cho sự phát triển của nền kinh tế."
+      },
+      {
+        "type": "paragraph",
+        "text": "Bởi trong kỷ nguyên của AI và chuyển đổi số, lợi thế cạnh tranh lớn nhất không còn là tốc độ, mà là khả năng dẫn dắt con người tiến về phía trước với một tầm nhìn rõ ràng, những quyết định đúng đắn và giá trị bền vững."
+      }
+    ],
+    "image": {
+      "src": "/images/gisa-provided/consulting.png",
+      "alt": "Hoạt động chuyên môn và hợp tác GISA",
+      "width": 1563,
+      "height": 1033
+    },
+    "tags": [
+      "góc nhìn",
+      "GIBA"
+    ],
+    "evidenceStatus": "provided_by_gisa",
+    "sourceUrl": "https://docs.google.com/document/d/14gdM2pwp_WtP4X7My39dhnpLV51NopaKNn8bEL3pYv8/edit",
+    "sourceLabel": "Nội dung Google Docs do GISA cung cấp",
+    "checkedAt": "2026-09-29",
+    "metadata": {
+      "topic": "Góc nhìn"
+    },
+    "publishedAt": "2026-07-02"
+  },
+  {
+    "id": "gisa-doc-gioi-chuyen-mon-va-thach-thuc-quan-ly",
+    "kind": "news",
+    "collection": "news",
+    "slug": "gioi-chuyen-mon-va-thach-thuc-quan-ly",
+    "path": "/tin-tuc/gioi-chuyen-mon-va-thach-thuc-quan-ly",
+    "locale": "vi",
+    "translationKey": "gisa-doc-gioi-chuyen-mon-va-thach-thuc-quan-ly",
+    "title": "Vì sao nhiều người giỏi chuyên môn lại trở thành những người quản lý đầy trăn trở?",
+    "summary": "Trong hầu hết các tổ chức, việc bổ nhiệm một nhân sự có thành tích chuyên môn nổi bật vào vị trí quản lý được xem là một bước phát triển tự nhiên. Tuy nhiên, thực tiễn quản trị cho thấy điều ngược lại. Không ít cá nhân từng là những chuyên gia xuất sắc lại gặp nhiều khó khăn khi đảm nhận vai trò lãnh đạo",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Trong hầu hết các tổ chức, việc bổ nhiệm một nhân sự có thành tích chuyên môn nổi bật vào vị trí quản lý được xem là một bước phát triển tự nhiên. Tuy nhiên, thực tiễn quản trị cho thấy điều ngược lại. Không ít cá nhân từng là những chuyên gia xuất sắc lại gặp nhiều khó khăn khi đảm nhận vai trò lãnh đạo"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trong hầu hết các tổ chức, việc bổ nhiệm một nhân sự có thành tích chuyên môn nổi bật vào vị trí quản lý được xem là một bước phát triển tự nhiên. Giả định phổ biến là: nếu một người có thể tạo ra kết quả vượt trội với tư cách cá nhân, họ cũng sẽ có khả năng giúp cả đội ngũ đạt được kết quả tương tự."
+      },
+      {
+        "type": "paragraph",
+        "text": "Tuy nhiên, thực tiễn quản trị cho thấy điều ngược lại. Không ít cá nhân từng là những chuyên gia xuất sắc lại gặp nhiều khó khăn khi đảm nhận vai trò lãnh đạo. Họ làm việc nhiều hơn, chịu áp lực lớn hơn nhưng hiệu quả của đội ngũ không tăng tương xứng. Điều này đặt ra một câu hỏi quan trọng đối với các tổ chức: \"Liệu năng lực chuyên môn có thực sự là tiền đề của năng lực lãnh đạo?\""
+      },
+      {
+        "type": "paragraph",
+        "text": "Câu trả lời, theo nhiều nghiên cứu về quản trị và hành vi tổ chức, là “không hoàn toàn”."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Khi bản chất của công việc thay đổi"
+      },
+      {
+        "type": "paragraph",
+        "text": "Sự khác biệt cốt lõi giữa một chuyên gia và một nhà quản lý không nằm ở chức danh, mà ở cách họ tạo ra giá trị. Một chuyên gia được đánh giá thông qua năng lực giải quyết vấn đề, chất lượng chuyên môn và hiệu suất cá nhân. Thành công của họ phụ thuộc vào việc tự mình hoàn thành công việc."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trong khi đó, nhà quản lý tạo ra giá trị theo một cơ chế hoàn toàn khác. Họ không còn là người trực tiếp giải quyết mọi vấn đề mà trở thành người thiết kế hệ thống làm việc, phân bổ nguồn lực, phát triển năng lực nhân sự và tạo điều kiện để người khác có thể đạt hiệu suất cao. Thành công của họ được đo lường bằng “kết quả mà tập thể tạo ra”, chứ không phải số lượng công việc họ trực tiếp hoàn thành."
+      },
+      {
+        "type": "paragraph",
+        "text": "Đây là sự chuyển dịch từ “đóng góp cá nhân (individual contribution)” sang “tạo dựng năng lực tổ chức (organizational capability)”. Và sự chuyển dịch này đòi hỏi một bộ năng lực hoàn toàn khác."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Nghịch lý của sự thăng tiến"
+      },
+      {
+        "type": "paragraph",
+        "text": "Laurence J. Peter đã mô tả hiện tượng này từ rất sớm trong The Peter Principle (1969). Theo ông, các tổ chức thường thăng chức nhân viên dựa trên thành tích ở vị trí hiện tại, trong khi vai trò mới lại yêu cầu những năng lực khác biệt. Kết quả là nhiều người được đưa lên một cấp độ mà ở đó, năng lực từng giúp họ thành công không còn đủ để đáp ứng yêu cầu công việc."
+      },
+      {
+        "type": "paragraph",
+        "text": "Điều đáng chú ý là nghịch lý này không bắt nguồn từ việc cá nhân thiếu năng lực. Ngược lại, chính những điểm mạnh từng tạo nên thành công lại có thể trở thành rào cản trong vai trò lãnh đạo."
+      },
+      {
+        "type": "paragraph",
+        "text": "Một chuyên gia giỏi thường có xu hướng tự mình giải quyết vấn đề vì đó là cách nhanh nhất để đảm bảo chất lượng. Tuy nhiên, khi trở thành quản lý, thói quen này dễ dẫn đến việc ôm đồm công việc, hạn chế trao quyền và làm suy giảm khả năng phát triển của đội ngũ."
+      },
+      {
+        "type": "paragraph",
+        "text": "Tương tự, việc luôn mong muốn trở thành người giỏi nhất trong nhóm có thể thúc đẩy thành tích cá nhân, nhưng lại cản trở việc xây dựng một môi trường nơi nhiều người cùng phát triển và chia sẻ trách nhiệm."
+      },
+      {
+        "type": "paragraph",
+        "text": "Nói cách khác, điều giúp một người trở thành nhân viên xuất sắc chưa chắc sẽ giúp họ trở thành nhà lãnh đạo hiệu quả."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Lãnh đạo là quá trình tạo ảnh hưởng, không phải gia tăng kiểm soát"
+      },
+      {
+        "type": "paragraph",
+        "text": "Marshall Goldsmith từng đưa ra một nhận định nổi tiếng: “What got you here won't get you there”. Thành công ở một giai đoạn không đảm bảo thành công ở giai đoạn tiếp theo nếu cá nhân không thay đổi cách tư duy và hành động."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trong vai trò lãnh đạo, giá trị không còn đến từ việc kiểm soát nhiều hơn hay làm việc nhiều hơn, mà đến từ khả năng tạo ra ảnh hưởng đối với hành vi, động lực và năng lực của người khác."
+      },
+      {
+        "type": "paragraph",
+        "text": "Đó là lý do các nghiên cứu của Daniel Goleman về trí tuệ cảm xúc (Emotional Intelligence) trở nên đặc biệt quan trọng trong bối cảnh quản trị hiện đại. Goleman chỉ ra rằng những nhà lãnh đạo tạo ra hiệu suất bền vững thường nổi bật ở bốn năng lực nền tảng: tự nhận thức (self-awareness), tự quản trị (self-management), nhận thức xã hội (social awareness) và quản trị các mối quan hệ (relationship management)."
+      },
+      {
+        "type": "paragraph",
+        "text": "Những năng lực này không thay thế chuyên môn, nhưng quyết định khả năng chuyển hóa chuyên môn thành ảnh hưởng đối với tổ chức."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Từ quản lý con người đến kiến tạo môi trường làm việc"
+      },
+      {
+        "type": "paragraph",
+        "text": "Nhiều tổ chức vẫn xem vai trò của nhà quản lý là giám sát và kiểm soát. Tuy nhiên, xu hướng quản trị hiện đại ngày càng nhấn mạnh một vai trò khác: kiến tạo bối cảnh để con người có thể phát huy năng lực."
+      },
+      {
+        "type": "paragraph",
+        "text": "Điều này đòi hỏi nhà lãnh đạo phải chuyển trọng tâm từ việc trả lời mọi câu hỏi sang đặt ra những câu hỏi tốt hơn; từ việc đưa ra mọi quyết định sang xây dựng năng lực ra quyết định cho đội ngũ; từ việc tập trung vào hiệu suất cá nhân sang phát triển hiệu quả của toàn hệ thống."
+      },
+      {
+        "type": "paragraph",
+        "text": "Đó cũng là lý do vì sao phát triển lãnh đạo không chỉ là học thêm các công cụ quản trị. Đó là quá trình thay đổi mô hình tư duy (mental models), điều chỉnh hành vi và hình thành những năng lực phù hợp với một vai trò mới."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Phát triển lãnh đạo bắt đầu từ việc hiểu chính mình"
+      },
+      {
+        "type": "paragraph",
+        "text": "Nghiên cứu trong tâm lý học lãnh đạo cho thấy khả năng dẫn dắt người khác luôn bắt đầu từ khả năng dẫn dắt bản thân. Một nhà lãnh đạo khó có thể xây dựng niềm tin nếu họ thiếu tự nhận thức; khó trao quyền nếu họ không sẵn sàng từ bỏ nhu cầu kiểm soát; và khó phát triển đội ngũ nếu họ vẫn đánh giá giá trị của mình thông qua thành tích cá nhân."
+      },
+      {
+        "type": "paragraph",
+        "text": "Tại GIBA, chúng tôi tiếp cận phát triển lãnh đạo từ nền tảng của tâm lý học, khoa học hành vi và khoa học quản trị. Thay vì chỉ cung cấp các công cụ quản lý, chúng tôi tập trung vào việc giúp nhà lãnh đạo hiểu cơ chế hình thành hành vi, nhận diện những mô thức tư duy đang giới hạn hiệu quả lãnh đạo và xây dựng những năng lực cần thiết để tạo ra ảnh hưởng bền vững đối với con người và tổ chức."
+      },
+      {
+        "type": "paragraph",
+        "text": "Bởi sau cùng, lãnh đạo không phải là quá trình trở thành người giỏi nhất trong căn phòng. Đó là quá trình giúp những người khác cùng phát triển để cả tổ chức đạt được những kết quả mà một cá nhân, dù xuất sắc đến đâu, cũng không thể tạo ra một mình."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Tài liệu tham khảo"
+      },
+      {
+        "type": "paragraph",
+        "text": "Goleman, D. (1995). Emotional Intelligence: Why It Can Matter More Than IQ. Bantam Books."
+      },
+      {
+        "type": "paragraph",
+        "text": "Goldsmith, M. (2007). What Got You Here Won't Get You There. Hyperion."
+      },
+      {
+        "type": "paragraph",
+        "text": "Peter, L. J., & Hull, R. (1969). *The Peter Principle. William Morrow & Company."
+      }
+    ],
+    "image": {
+      "src": "/images/gisa-provided/consulting.png",
+      "alt": "Hoạt động chuyên môn và hợp tác GISA",
+      "width": 1563,
+      "height": 1033
+    },
+    "tags": [
+      "góc nhìn",
+      "GIBA"
+    ],
+    "evidenceStatus": "provided_by_gisa",
+    "sourceUrl": "https://docs.google.com/document/d/14gdM2pwp_WtP4X7My39dhnpLV51NopaKNn8bEL3pYv8/edit",
+    "sourceLabel": "Nội dung Google Docs do GISA cung cấp",
+    "checkedAt": "2026-09-29",
+    "metadata": {
+      "topic": "Góc nhìn"
+    },
+    "publishedAt": "2026-07-06"
+  },
+  {
+    "id": "gisa-doc-giba-business-insights-28-08-2026",
+    "kind": "news",
+    "collection": "news",
+    "slug": "giba-business-insights-28-08-2026",
+    "path": "/tin-tuc/giba-business-insights-28-08-2026",
+    "locale": "vi",
+    "translationKey": "gisa-doc-giba-business-insights-28-08-2026",
+    "title": "28.08.2026 || GIBA Business Insights || Rủi Ro Kẹt Hồ Sơ C/O, Cú Hích FDI Công Nghệ & Điểm Nóng Hormuz",
+    "summary": "Thị trường ngày 28/08/2026 ghi nhận nhiều biến động đa chiều, từ quy định phân cấp hồ sơ xuất nhập khẩu trong nước đến các dịch chuyển chiến lược của dòng vốn FDI và căng thẳng địa chính trị quốc tế. Cùng GIBA Business Insights điểm qua 4 tiêu điểm đáng chú ý nhất hôm nay để kịp thời đưa ra chiến lược hành động.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Thị trường ngày 28/08/2026 ghi nhận nhiều biến động đa chiều, từ quy định phân cấp hồ sơ xuất nhập khẩu trong nước đến các dịch chuyển chiến lược của dòng vốn FDI và căng thẳng địa chính trị quốc tế. Cùng GIBA Business Insights điểm qua 4 tiêu điểm đáng chú ý nhất hôm nay để kịp thời đưa ra chiến lược hành động."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "1. Phân cấp C/O mới: Ách tắc tiềm ẩn nếu doanh nghiệp chọn sai nơi cấp"
+      },
+      {
+        "type": "paragraph",
+        "text": "Mức độ tác động: Cao | Thời gian ảnh hưởng: Ngay lập tức"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Từ ngày 01/08/2026, quy định phân cấp mới về việc cấp, cấp lại và cấp giáp lưng các loại C/O chính thức được áp dụng theo Thông tư 26/2026/TT-BCT của Bộ Công Thương. Việc áp dụng quy định mới đang tạo ra áp lực lớn tại các trung tâm kinh tế; cụ thể, chỉ trong 14 ngày đầu tháng 8, Sở Công Thương TPHCM đã phải tiếp nhận một khối lượng khổng lồ với khoảng 9.000 hồ sơ.",
+          "Nhiều doanh nghiệp đang hiểu lầm rằng có thể tùy ý nộp C/O ở bất kỳ cơ quan nào, dẫn đến tình trạng dồn ứ cục bộ tại các đầu mối lớn. Khối lượng hồ sơ cao sẽ trực tiếp kéo dài thời gian xử lý và đe dọa làm chậm lịch giao hàng xuất khẩu.",
+          "Trong vòng 7 ngày tới, doanh nghiệp cần lập ma trận \"Thị trường - Mẫu C/O - Cơ quan cấp có thẩm quyền\". Hãy tiến hành nộp thử hồ sơ điện tử và luôn chuẩn bị sẵn một đầu mối cấp C/O dự phòng hợp lệ để tránh rủi ro quá tải."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Nguồn tham khảo:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Báo Chính phủ: Hướng dẫn cơ quan cấp C/O (27/08/2026)"
+      },
+      {
+        "type": "paragraph",
+        "text": "Chính phủ Việt Nam: Thông tư 26/2026/TT-BCT (20/05/2026)"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "2. Bước ngoặt FDI: Dịch chuyển mạnh mẽ sang Công nghệ, R&D và Nhà cung ứng Việt"
+      },
+      {
+        "type": "paragraph",
+        "text": "Mức độ tác động: Cao | Thời gian ảnh hưởng: 6 – 24 tháng"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Dòng vốn đầu tư nước ngoài đang hướng đến chiều sâu. Ngày 27/08, Thủ tướng Chính phủ đã đề nghị các doanh nghiệp Trung Quốc cụ thể hóa các thỏa thuận thành những dự án thực tế về đường sắt, logistics, năng lượng sạch, AI, bán dẫn, 5G và dữ liệu lớn.",
+          "Cùng ngày, tập đoàn Samsung tuyên bố sẽ tiếp tục mở rộng quy mô R&D công nghệ cao, đào tạo nhân lực và hỗ trợ sâu hơn để doanh nghiệp Việt Nam tham gia chuỗi cung ứng. Đáng chú ý, tổng đầu tư lũy kế của Samsung tại Việt Nam dự kiến sẽ đạt 24 tỷ USD vào cuối năm 2025.",
+          "Doanh nghiệp nội địa (công nghiệp hỗ trợ, phần mềm, tự động hóa, logistics...) có 30 ngày để hoàn thiện hồ sơ năng lực song ngữ. Hồ sơ cần làm nổi bật các chứng nhận chất lượng, chỉ số ESG, bảo mật dữ liệu, năng lực kỹ thuật và một đề xuất cải tiến năng suất/giảm chi phí rõ ràng bằng số liệu."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Nguồn tham khảo:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Reuters: Việt Nam tìm kiếm đầu tư công nghệ cao từ Trung Quốc (27/08/2026)"
+      },
+      {
+        "type": "paragraph",
+        "text": "Báo Chính phủ: Phát triển R&D và nhà cung ứng của Samsung (27/08/2026)"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "3. Điểm nóng Hormuz: Rủi ro logistics, tàu biển và bảo hiểm tiếp tục tăng"
+      },
+      {
+        "type": "paragraph",
+        "text": "Mức độ tác động: Rất cao | Thời gian ảnh hưởng: Ngay - 30 ngày"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Báo cáo phân tích dữ liệu Kpler chỉ ra rằng, lưu lượng tàu hàng hóa qua eo biển Hormuz trong ngày thứ Tư đạt 10 tàu; dù có tăng so với mức 8 tàu nhưng vẫn thấp hơn hẳn mức bình quân 15 tàu của chu kỳ 10 ngày trước đó. Tình hình trở nên phức tạp hơn khi Iran vừa đưa thêm 45 tàu vào \"danh sách đen\".",
+          "Hệ quả là nhiều nhà máy lọc dầu và hãng năng lượng lớn đang lên kế hoạch né tránh giao dịch với các tàu trong danh sách này. Điều này có thể làm thu hẹp số lượng chủ tàu sẵn sàng hoạt động, đẩy phí bảo hiểm chiến tranh, cước vận tải và biến động thời gian giao hàng lên cao.",
+          "Yêu cầu nhà cung cấp và forwarder xác nhận rõ tên tàu, quyền sở hữu, bảo hiểm chiến tranh và lịch sử chuyển tải (STS). Nhanh chóng yêu cầu thêm báo giá giao tận nơi (delivered-price) và kích hoạt các ngưỡng điều chỉnh giá nhiên liệu trong hợp đồng."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Nguồn tham khảo:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Reuters: Lưu lượng hàng hải qua Hormuz (27/08/2026)"
+      },
+      {
+        "type": "paragraph",
+        "text": "Reuters: Danh sách đen 45 tàu của Iran (26/08/2026)"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "4. Hàn Quốc thắt chặt tiền tệ nhưng nâng mạnh dự báo tăng trưởng"
+      },
+      {
+        "type": "paragraph",
+        "text": "Mức độ tác động: Trung bình | Thời gian ảnh hưởng: 3 – 12 tháng"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Ngân hàng Trung ương Hàn Quốc vừa quyết định tăng lãi suất chính sách thêm 0,25 điểm phần trăm, đưa mức lãi suất lên 3,00% trong lần tăng thứ hai liên tiếp. Đáng chú ý, cơ quan này đồng thời nâng dự báo tăng trưởng kinh tế của Hàn Quốc năm 2026 từ mức 2,6% lên 3,3%.",
+          "Sự tăng trưởng mạnh mẽ của kinh tế Hàn Quốc có thể mang lại tín hiệu tích cực cho các đơn hàng và đầu tư tại Việt Nam. Tuy nhiên, cái giá phải trả là chi phí vốn đắt đỏ hơn và các tiêu chuẩn phê duyệt dự án, đối tác từ phía Hàn Quốc sẽ khắt khe hơn.",
+          "Rà soát lại toàn bộ hợp đồng với các đối tác Hàn Quốc dựa trên 3 biến số: Giá bán, tỷ giá KRW/VND và chi phí tài trợ. Hãy ưu tiên đàm phán các điều khoản điều chỉnh tỷ giá và lịch thanh toán thay vì chỉ nhượng bộ bằng cách giảm giá bán."
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Nguồn tham khảo:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Reuters: Quyết định lãi suất của Ngân hàng Trung ương Hàn Quốc (27/08/2026)"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Khuyến nghị Điều hành"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Cơ hội vàng: Dòng vốn FDI đang chuyển dịch mạnh mẽ từ mở rộng quy mô sang R&D và công nghệ. Đây là thời điểm vàng để các nhà cung ứng nội địa gia nhập chuỗi giá trị toàn cầu.",
+          "Cảnh báo trọng điểm: Tuyệt đối không chủ quan coi giá dầu hay lưu lượng tàu tăng nhẹ là bằng chứng eo biển Hormuz đã bình thường hóa; rủi ro giao nhận và bảo hiểm vẫn đang ở mức rất cao.",
+          "3 Hành động ưu tiên trong tuần: (1) Rà soát luồng nộp C/O; (2) Chuẩn hóa hồ sơ năng lực nhà cung ứng; (3) Kiểm tra kỹ thông tin tàu, bảo hiểm và điều khoản tỷ giá."
+        ]
+      }
+    ],
+    "image": {
+      "src": "/images/gisa-provided/research.png",
+      "alt": "Hoạt động chuyên môn và hợp tác GISA",
+      "width": 1563,
+      "height": 1035
+    },
+    "tags": [
+      "góc nhìn",
+      "GIBA"
+    ],
+    "evidenceStatus": "provided_by_gisa",
+    "sourceUrl": "https://docs.google.com/document/d/14gdM2pwp_WtP4X7My39dhnpLV51NopaKNn8bEL3pYv8/edit",
+    "sourceLabel": "Nội dung Google Docs do GISA cung cấp",
+    "checkedAt": "2026-09-29",
+    "metadata": {
+      "topic": "GIBA Business Insights"
+    },
+    "publishedAt": "2026-08-28"
+  },
+  {
+    "id": "gisa-doc-giba-business-insights-31-08-2026",
+    "kind": "news",
+    "collection": "news",
+    "slug": "giba-business-insights-31-08-2026",
+    "path": "/tin-tuc/giba-business-insights-31-08-2026",
+    "locale": "vi",
+    "translationKey": "gisa-doc-giba-business-insights-31-08-2026",
+    "title": "31.08.2026 || GIBA Business Insights || Đề Xuất Giảm Thuế, Rủi Ro Xuất Xứ Hàng Hóa & Cú Hích FDI Công Nghệ",
+    "summary": "Tuần 24-30/08/2026 không chứng kiến một cú sốc đơn lẻ, mà là sự hội tụ của một cụm tín hiệu chính sách và vĩ mô dày đặc. Từ các gói hỗ trợ thuế, làn sóng 11 dự án luật mới, đến áp lực chuỗi cung ứng và dòng vốn FDI công nghệ. Câu chuyện tuần này không chỉ dừng ở việc \"theo dõi tin tức\", mà đòi hỏi doanh nghiệp phải ngay lập tức chuyển sang trạng thái chuẩn hóa dữ liệu và kịch bản dòng tiền.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Tuần 24-30/08/2026 không chứng kiến một cú sốc đơn lẻ, mà là sự hội tụ của một cụm tín hiệu chính sách và vĩ mô dày đặc. Từ các gói hỗ trợ thuế, làn sóng 11 dự án luật mới, đến áp lực chuỗi cung ứng và dòng vốn FDI công nghệ. Câu chuyện tuần này không chỉ dừng ở việc \"theo dõi tin tức\", mà đòi hỏi doanh nghiệp phải ngay lập tức chuyển sang trạng thái chuẩn hóa dữ liệu và kịch bản dòng tiền."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "1. Chính sách: Trợ lực dòng tiền và Chu kỳ tuân thủ pháp lý mới"
+      },
+      {
+        "type": "paragraph",
+        "text": "Mức độ tác động: Cao | Thời gian ảnh hưởng: 7 - 180 ngày"
+      },
+      {
+        "type": "paragraph",
+        "text": "Chính phủ vừa đề xuất giảm 30% số thuế TNDN phải nộp trong kỳ tính thuế 2026-2027 cho các doanh nghiệp, tổ chức có doanh thu hằng năm không quá 10 tỷ đồng. Cùng lúc đó, một chu kỳ tuân thủ mới đang mở ra khi 11 dự án luật quan trọng (bao gồm An ninh dữ liệu, Bảo vệ môi trường, An toàn thực phẩm, Sở hữu trí tuệ...) đang được đẩy nhanh hoàn thiện và lấy ý kiến. Sự thay đổi đồng loạt này đòi hỏi doanh nghiệp phải chủ động cập nhật hợp đồng, tiêu chuẩn sản phẩm và quy trình bảo mật."
+      },
+      {
+        "type": "paragraph",
+        "text": "→ Hành động chiến lược: Lập 2 kịch bản dòng tiền (có/không có giảm thuế) để ưu tiên nguồn lực cho số hóa và tăng năng suất. Phân công đầu mối phụ trách theo dõi biến động của 11 dự án luật để chuẩn bị sẵn sàng hồ sơ tuân thủ."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Nguồn tham khảo:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Cổng TTĐT Chính phủ (22/08/2026): Đề xuất giảm 30% thuế TNDN cho DN doanh thu không quá 10 tỷ đồng"
+      },
+      {
+        "type": "paragraph",
+        "text": "Cổng TTĐT Chính phủ (26/08/2026): Chính phủ hoàn thiện 11 dự án luật trình Quốc hội"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "2. Rào cản chiến lược: Rủi ro xuất xứ và chuyển tải hàng hóa"
+      },
+      {
+        "type": "paragraph",
+        "text": "Mức độ tác động: Rất cao | Thời gian ảnh hưởng: 7 - 180 ngày"
+      },
+      {
+        "type": "paragraph",
+        "text": "Việt Nam đang tiếp tục các cuộc đối thoại với Mỹ nhằm giải quyết quan ngại về vấn đề chuyển tải hàng hóa; phía Mỹ ước tính mỗi năm thất thu thuế quan từ 19-26 tỷ USD do hàng hóa đi qua nước thứ ba. Điều này đồng nghĩa với việc Giấy chứng nhận xuất xứ (C/O) không còn là thủ tục hành chính đơn thuần. Các cơ quan kiểm tra và nhà nhập khẩu sẽ soi xét kỹ lưỡng toàn bộ chuỗi cung ứng, tỷ lệ nội địa hóa và danh tính nhà cung cấp."
+      },
+      {
+        "type": "paragraph",
+        "text": "→ Hành động chiến lược: Xây dựng bản đồ mã HS (HS code) và nguồn gốc vật tư đầu vào. Quản lý chặt chẽ hóa đơn, định mức nguyên liệu (BOM) và quy trình sản xuất để biến năng lực truy xuất nguồn gốc (traceability) thành lợi thế cạnh tranh."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Nguồn tham khảo:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Reuters (20/08/2026): Việt Nam phản hồi quan ngại của Mỹ về chuyển tải hàng hóa"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "3. Áp lực Vĩ mô: Doanh thu tăng nhưng Biên lợi nhuận bị \"ép\""
+      },
+      {
+        "type": "paragraph",
+        "text": "Mức độ tác động: Cao | Thời gian ảnh hưởng: 7 - 90 ngày"
+      },
+      {
+        "type": "paragraph",
+        "text": "Dữ liệu vĩ mô tháng 7 cho thấy xuất khẩu tăng 25% nhưng nhập khẩu vọt lên tới 41%, đi kèm với CPI tăng 4,45%. Trên trường quốc tế, giá dầu Brent duy trì mức biến động khó lường quanh mốc 87,84 USD/thùng, trong khi lạm phát PCE của Mỹ tăng 3,7%, làm giảm kỳ vọng nới lỏng lãi suất nhanh từ Fed. Những chỉ báo này cho thấy tăng trưởng doanh thu không đảm bảo lợi nhuận nếu doanh nghiệp mắc kẹt với chi phí đầu vào cao, rủi ro tỷ giá và hợp đồng giá cố định."
+      },
+      {
+        "type": "paragraph",
+        "text": "→ Hành động chiến lược: Chạy thử nghiệm chịu đựng (stress-test) cho biên lợi nhuận. Đàm phán lại các điều khoản điều chỉnh giá với đối tác và đánh giá lại chi phí vay USD so với VND đã phòng vệ rủi ro tỷ giá (hedge)."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Nguồn tham khảo:"
+      },
+      {
+        "type": "paragraph",
+        "text": "National Statistics Office (21/08/2026): Tình hình KTXH tháng 7 và 7 tháng 2026"
+      },
+      {
+        "type": "paragraph",
+        "text": "Reuters (25/08/2026): Brent chốt 87,84 USD/thùng khi thị trường theo dõi Hormuz"
+      },
+      {
+        "type": "paragraph",
+        "text": "U.S. BEA (26/08/2026): PCE tháng 7 tăng 3,7% so với cùng kỳ"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "4. Động lực Mới: Làn sóng M&A, AI và Kinh tế tuần hoàn (EPR)"
+      },
+      {
+        "type": "paragraph",
+        "text": "Mức độ tác động: Trung bình - Cao | Thời gian ảnh hưởng: 30 - 180 ngày"
+      },
+      {
+        "type": "paragraph",
+        "text": "Thị trường đang định giá lại các tài sản chất lượng của Việt Nam với điểm nhấn là FDI giải ngân 7 tháng đạt 15,2 tỷ USD và thương vụ đàm phán tỷ đô giữa Techcombank với BNP Paribas & KB Kookmin. Đồng thời, công nghiệp công nghệ số bứt tốc mạnh mẽ (xuất khẩu đạt 22,4 tỷ USD trong tháng 8). Kinh tế tuần hoàn cũng không còn là khẩu hiệu CSR khi các chương trình thu hồi vật liệu thực tế như EPR nhựa đang được mở rộng."
+      },
+      {
+        "type": "paragraph",
+        "text": "→ Hành động chiến lược: Chuẩn hóa hồ sơ doanh nghiệp (Company Profile/ESG/Supplier Profile) để đón đầu đối tác chiến lược. Chọn triển khai 1 dự án thử nghiệm (pilot) về AI hoặc kinh tế tuần hoàn có ngân sách, chỉ số đo lường và tỷ suất hoàn vốn (ROI) rõ ràng."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Nguồn tham khảo:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Reuters (26/08/2026): BNP Paribas và KB Kookmin đàm phán mua cổ phần Techcombank"
+      },
+      {
+        "type": "paragraph",
+        "text": "Cổng TTĐT Chính phủ (26/08/2026): Khởi động Hành trình Tuần hoàn Nhựa 2026"
+      },
+      {
+        "type": "paragraph",
+        "text": "Cổng TTĐT Chính phủ (28/08/2026): Công nghiệp công nghệ số tháng 8"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "✅ 3 Hành động ưu tiên:"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Rà soát tổng thể dòng tiền, hồ sơ thuế và kịch bản tỷ giá.",
+          "Thiết lập bản đồ xuất xứ vật tư đầu vào (traceability) cho các mặt hàng xuất khẩu chủ lực.",
+          "Lựa chọn một quy trình sẵn sàng về dữ liệu để chạy thử nghiệm AI/EPR với bộ chỉ số đo lường hiệu quả (ROI) cụ thể."
+        ]
+      }
+    ],
+    "image": {
+      "src": "/images/gisa-provided/research.png",
+      "alt": "Hoạt động chuyên môn và hợp tác GISA",
+      "width": 1563,
+      "height": 1035
+    },
+    "tags": [
+      "góc nhìn",
+      "GIBA"
+    ],
+    "evidenceStatus": "provided_by_gisa",
+    "sourceUrl": "https://docs.google.com/document/d/14gdM2pwp_WtP4X7My39dhnpLV51NopaKNn8bEL3pYv8/edit",
+    "sourceLabel": "Nội dung Google Docs do GISA cung cấp",
+    "checkedAt": "2026-09-29",
+    "metadata": {
+      "topic": "GIBA Business Insights"
+    },
+    "publishedAt": "2026-08-31"
+  }
+] satisfies ContentRecord[];

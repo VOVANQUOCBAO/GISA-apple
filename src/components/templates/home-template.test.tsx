@@ -29,7 +29,7 @@ describe('HomeTemplate', () => {
     render(<HomeTemplate model={model} />);
 
     expect(document.querySelector('h1')?.textContent).toMatch(
-      /KIẾN TẠO TRI THỨCLAN TỎA GIÁ TRỊ/,
+      /GISA — Kiến tạo tri thức, lan tỏa giá trị/,
     );
     expect(screen.queryAllByRole('button', { name: /Hiển thị slide/ })).toHaveLength(0);
     expect(screen.queryByText('GISA trong 60 giây')).not.toBeInTheDocument();
@@ -194,12 +194,9 @@ describe('HomeTemplate', () => {
     ]);
     let deckImages = container.querySelectorAll('#knowledge-panel img');
     expect(deckImages).toHaveLength(4);
-    expect(
-      [...deckImages].every((image) =>
-        decodeURIComponent(image.getAttribute('src') ?? '').includes('/images/knowledge-deck/news-'),
-      ),
-    ).toBe(true);
-    expect(screen.getByRole('link', { name: /Xem tin Chuyển đổi mô hình viện nghiên cứu và phát triển đại học đẳng cấp/ })).toBeVisible();
+    for (const item of model.news.slice(0, 4)) {
+      expect(within(container.querySelector('#knowledge-panel') as HTMLElement).getByRole('link', { name: `Xem tin ${item.title}` })).toHaveAttribute('href', item.path);
+    }
 
     fireEvent.click(screen.getByRole('tab', { name: 'Bài nghiên cứu' }));
     expect(screen.getByRole('tab', { name: 'Bài nghiên cứu' })).toHaveAttribute(
@@ -215,8 +212,10 @@ describe('HomeTemplate', () => {
       'aria-selected',
       'true',
     );
-    expect(container.querySelectorAll('#knowledge-panel img')).toHaveLength(4);
-    expect(screen.getByRole('link', { name: /Xem khóa học Multi-channel & Effective Sales/ })).toBeVisible();
+    expect(container.querySelectorAll('#knowledge-panel img')).toHaveLength(model.courses.slice(0, 4).filter((item) => item.image).length);
+    for (const item of model.courses.slice(0, 4)) {
+      expect(screen.getByRole('link', { name: `Xem khóa học ${item.title}` })).toHaveAttribute('href', item.path);
+    }
   });
 
   test('opens the consultation dialog from the journey call to action', async () => {

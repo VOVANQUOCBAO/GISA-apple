@@ -1,7 +1,5 @@
 'use client';
 
-import { bindPhrases } from '@/lib/vietnamese-text';
-
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
@@ -103,7 +101,7 @@ export function DesktopNavigation() {
                   }
                   href={group.href}
                 >
-                  {bindPhrases(group.label)}
+                  {group.label}
                 </Link>
                 {hasChildren ? (
                   <button
@@ -124,7 +122,7 @@ export function DesktopNavigation() {
                   {group.children.map((item) => (
                     <li key={item.href}>
                       <Link href={item.href} onClick={() => setOpenIndex(null)}>
-                        {bindPhrases(item.label)}
+                        {item.label}
                       </Link>
                     </li>
                   ))}

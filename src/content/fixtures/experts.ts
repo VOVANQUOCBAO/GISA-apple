@@ -1,4 +1,5 @@
 import type { ContentRecord } from '../types';
+import { providedExpertPortraits } from './expert-portraits';
 
 /**
  * Trang "Đội ngũ chuyên gia & giảng viên" của gisa.edu.vn công bố đúng ba dòng cho
@@ -27,12 +28,6 @@ const seeds: ExpertSeed[] = [
     title: 'TS. Hoàng Văn Việt',
     affiliation: 'Giảng viên - Đại học Kinh tế TP.HCM (UEH)',
     expertise: ['Phát triển Bền vững', 'Tâm lý học', 'Nghiên cứu Khoa học'],
-    image: {
-      alt: 'Chân dung TS. Hoàng Văn Việt',
-      height: 615,
-      src: '/images/experts/hoang-van-viet.png',
-      width: 405,
-    },
     tags: ['phát triển bền vững', 'tâm lý học'],
   },
   {
@@ -49,12 +44,6 @@ const seeds: ExpertSeed[] = [
     title: 'ThS. NCS.TS Trần Anh Khang',
     affiliation: 'Tổng Giám đốc Công ty Đầu tư Giáo dục Quốc tế Engonow',
     expertise: ['Quản trị Vận hành', 'Ứng dụng AI trong Kinh doanh & Networking'],
-    image: {
-      alt: 'Chân dung ThS. NCS.TS Trần Anh Khang',
-      height: 1487,
-      src: '/images/experts/tran-anh-khang.png',
-      width: 1058,
-    },
     tags: ['quản trị', 'công nghệ'],
   },
   {
@@ -186,6 +175,14 @@ const seeds: ExpertSeed[] = [
     tags: ['kế toán', 'thuế'],
   },
   {
+    id: 'expert-tran-van-quy',
+    slug: 'tran-van-quy',
+    title: 'NCS. TS. Trần Văn Quy',
+    affiliation: 'Chuyên gia GISA',
+    expertise: [],
+    tags: ['chuyên gia'],
+  },
+  {
     id: 'expert-nguyen-thi-nhat-phuong',
     slug: 'nguyen-thi-nhat-phuong',
     title: 'ThS. Nguyễn Thị Nhất Phương',
@@ -203,7 +200,12 @@ const seeds: ExpertSeed[] = [
   },
 ];
 
-export const expertFixtures = seeds.map((seed) => ({
+const prioritySlugs = ['hoang-van-viet', 'le-khanh-lam', 'tran-anh-khang', 'phan-thi-kim-anh', 'ngo-thanh-hanh', 'tran-van-quy'];
+
+export const expertFixtures = seeds.filter((seed) => seed.title.trim() && providedExpertPortraits[seed.slug]).sort((left, right) =>
+  (prioritySlugs.indexOf(left.slug) === -1 ? 100 : prioritySlugs.indexOf(left.slug)) -
+  (prioritySlugs.indexOf(right.slug) === -1 ? 100 : prioritySlugs.indexOf(right.slug)),
+).map((seed) => ({
   id: seed.id,
   kind: 'expert',
   collection: 'experts',
@@ -213,7 +215,7 @@ export const expertFixtures = seeds.map((seed) => ({
   translationKey: seed.id,
   title: seed.title,
   summary: seed.affiliation,
-  ...(seed.image ? { image: seed.image } : {}),
+  ...(providedExpertPortraits[seed.slug] ? { image: providedExpertPortraits[seed.slug] } : {}),
   body: [
     { type: 'paragraph', text: seed.affiliation },
     ...(seed.expertise.length
@@ -224,13 +226,16 @@ export const expertFixtures = seeds.map((seed) => ({
       : []),
     {
       type: 'paragraph',
-      text: 'Trang nguồn chỉ công bố chức danh, nơi công tác và lĩnh vực chuyên môn. Tiểu sử đầy đủ, danh mục công bố và thông tin liên hệ cần được xác minh riêng trước khi bổ sung.',
+      text: seed.slug === 'tran-van-quy' ? 'Ảnh và tên chuyên gia do GISA cung cấp.' : 'Trang nguồn chỉ công bố chức danh, nơi công tác và lĩnh vực chuyên môn. Tiểu sử đầy đủ, danh mục công bố và thông tin liên hệ cần được xác minh riêng trước khi bổ sung.',
     },
   ],
   tags: seed.tags,
-  evidenceStatus: 'verified',
+  evidenceStatus: seed.slug === 'tran-van-quy' ? 'provided_by_gisa' : 'verified',
   sourceUrl: SOURCE_URL,
-  sourceLabel: SOURCE_LABEL,
+  sourceLabel: seed.slug === 'tran-van-quy' ? 'Tên và ảnh do GISA cung cấp — Chuyên gia.zip' : SOURCE_LABEL,
   checkedAt: CHECKED_AT,
-  metadata: seed.expertise.length ? { expertise: seed.expertise } : {},
+  metadata: {
+    ...(seed.expertise.length ? { expertise: seed.expertise } : {}),
+    ...(prioritySlugs.includes(seed.slug) ? { displayOrder: String(prioritySlugs.indexOf(seed.slug) + 1) } : {}),
+  },
 })) satisfies ContentRecord[];

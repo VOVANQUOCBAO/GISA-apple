@@ -10,20 +10,20 @@ describe('ExpertShowcase', () => {
     expect(screen.getByRole('heading', { name: 'Đội ngũ chuyên gia' })).toBeInTheDocument();
     expect(screen.queryByText(/20 chuyên gia/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/Quy tụ các chuyên gia/i)).not.toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Xem hồ sơ ThS. NCS.TS Trần Anh Khang' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Xem hồ sơ TS. Hoàng Văn Việt' })).toHaveAttribute(
       'href',
-      '/chuyen-gia/tran-anh-khang',
+      '/chuyen-gia/hoang-van-viet',
     );
     expect(screen.getAllByRole('img')).toHaveLength(5);
     expect(
       container.querySelector('#chuyen-gia-noi-bat [data-scroll-motion="reveal"]'),
     ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole('button', { name: 'Chọn GS. TS. Attila Jambor' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Chọn TS. Phan Thị Kim Anh' }));
 
-    expect(screen.getByRole('link', { name: 'Xem hồ sơ GS. TS. Attila Jambor' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Xem hồ sơ TS. Phan Thị Kim Anh' })).toHaveAttribute(
       'href',
-      '/chuyen-gia/attila-jambor',
+      '/chuyen-gia/phan-thi-kim-anh',
     );
   });
 

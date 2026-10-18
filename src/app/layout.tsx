@@ -1,8 +1,4 @@
 import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
-import { LanguageProvider } from '@/lib/i18n/language-provider';
-import { LANGUAGE_COOKIE } from '@/lib/i18n/language';
-import { bindPhrases } from '@/lib/vietnamese-text';
 import * as React from 'react';
 
 import '@fontsource/source-sans-3/vietnamese-400.css';
@@ -42,17 +38,15 @@ export const metadata: Metadata = {
     'GISA kết nối tri thức liên ngành để thúc đẩy phát triển bền vững.',
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children
 }: Readonly<{ children: React.ReactNode }>) {
-  const language = (await cookies()).get(LANGUAGE_COOKIE)?.value === 'en' ? 'en' : 'vi';
   return (
-    <html data-scroll-behavior="smooth" data-site-intro="pending" lang={language}>
+    <html data-scroll-behavior="smooth" data-site-intro="pending" lang="vi">
       <body>
-        <LanguageProvider language={language}>
         <SiteIntro />
         <a className="skip-link" href="#main-content">
-          {bindPhrases('Bỏ qua đến nội dung chính')}
+          Bỏ qua đến nội dung chính
         </a>
         <SiteHeader />
         <ScrollMotionDirector />
@@ -60,7 +54,6 @@ export default async function RootLayout({
           <PageViewTransition name="page-content">{children}</PageViewTransition>
         ) : children}
         <SiteFooter />
-        </LanguageProvider>
       </body>
     </html>
   );

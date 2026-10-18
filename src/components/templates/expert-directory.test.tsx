@@ -29,6 +29,10 @@ describe('expert directory templates', () => {
       query: '',
     });
     const firstItem = result.items[0];
+    expect(result.items.slice(0, 6).map((item) => item.slug)).toEqual([
+      'hoang-van-viet', 'le-khanh-lam', 'tran-anh-khang',
+      'phan-thi-kim-anh', 'ngo-thanh-hanh', 'tran-van-quy',
+    ]);
     if (!firstItem) throw new Error('Missing expert summaries');
     render(
       <ExpertListingTemplate
@@ -46,7 +50,7 @@ describe('expert directory templates', () => {
     expect(screen.getByRole('link', { name: firstItem.title })).toHaveAttribute('href', firstItem.path);
     expect(
       screen.getByRole('img', {
-        name: `Hồ sơ ${firstItem.title} chưa có ảnh được công bố`,
+        name: firstItem.image?.alt,
       }),
     ).toBeVisible();
     expect(screen.getByRole('link', { name: 'Trang 2' })).toBeVisible();
