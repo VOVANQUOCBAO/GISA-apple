@@ -330,7 +330,7 @@ export function ContentIndex({ blocks }: { blocks: ContentBlock[] }) {
 
   return (
     <nav className={styles.contentIndex} aria-label="Mục lục trang">
-      <p>Trong trang này</p>
+      <p>{bindPhrases('Trong trang này')}</p>
       <ol>
         {headings.map((heading, index) => (
           <li key={`${heading.text}-${index}`}>

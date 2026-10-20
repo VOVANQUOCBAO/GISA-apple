@@ -46,7 +46,7 @@ export function ExpertTemplate({ record }: { record: ContentRecord }) {
 
         <header className={styles.profileHero}>
           <div className={styles.profileCopy}>
-            <p className={styles.eyebrow}>Chuyên gia</p>
+            <p className={styles.eyebrow}>{bindPhrases('Chuyên gia')}</p>
             <h1>{bindPhrases(record.title)}</h1>
             <p className={styles.affiliation}>{bindPhrases(record.summary)}</p>
           </div>
@@ -75,13 +75,13 @@ export function ExpertTemplate({ record }: { record: ContentRecord }) {
 
         <div className={styles.profileBody}>
           <aside className={styles.profileIndex}>
-            <p>Hồ sơ chuyên môn</p>
+            <p>{bindPhrases('Hồ sơ chuyên môn')}</p>
             <span>{String(expertise.length).padStart(2, '0')}</span>
           </aside>
           <div className={styles.profileContent}>
             {expertise.length > 0 ? (
               <section className={styles.expertiseSection} aria-labelledby="expertise-title">
-                <h2 id="expertise-title">Lĩnh vực chuyên môn</h2>
+                <h2 id="expertise-title">{bindPhrases('Lĩnh vực chuyên môn')}</h2>
                 <ul>
                   {expertise.map((specialty) => <li key={specialty}>{bindPhrases(specialty)}</li>)}
                 </ul>
@@ -90,14 +90,14 @@ export function ExpertTemplate({ record }: { record: ContentRecord }) {
 
             {notes.length > 0 ? (
               <section className={styles.scopeSection} aria-labelledby="scope-title">
-                <h2 id="scope-title">Phạm vi thông tin đã xác minh</h2>
+                <h2 id="scope-title">{bindPhrases('Phạm vi thông tin đã xác minh')}</h2>
                 {notes.map((note) => <p key={note}>{bindPhrases(note)}</p>)}
               </section>
             ) : null}
 
             <nav className={styles.backStage} aria-label="Quay lại danh sách chuyên gia">
-              <p>Khám phá thêm hồ sơ trong mạng lưới chuyên môn của GISA.</p>
-              <Link href="/chuyen-gia">Xem tất cả chuyên gia</Link>
+              <p>{bindPhrases('Khám phá thêm hồ sơ trong mạng lưới chuyên môn của GISA.')}</p>
+              <Link href="/chuyen-gia">{bindPhrases('Xem tất cả chuyên gia')}</Link>
             </nav>
           </div>
         </div>

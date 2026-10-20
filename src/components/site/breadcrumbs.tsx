@@ -1,3 +1,4 @@
+import { bindPhrases } from '@/lib/vietnamese-text';
 import Link from 'next/link';
 
 import styles from './site-shell.module.css';
@@ -20,9 +21,9 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
           return (
             <li aria-current={isCurrent ? 'page' : undefined} key={`${item.label}-${index}`}>
               {item.href && !isCurrent ? (
-                <Link href={item.href}>{item.label}</Link>
+                <Link href={item.href}>{bindPhrases(item.label)}</Link>
               ) : (
-                <span>{item.label}</span>
+                <span>{bindPhrases(item.label)}</span>
               )}
             </li>
           );

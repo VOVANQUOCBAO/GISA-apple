@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { bindPhrases } from '@/lib/vietnamese-text';
 
 import styles from './ui.module.css';
 
@@ -58,7 +59,7 @@ export function FilterBar({ filters, hideLegends = false, path, query }: FilterB
       {entries.map(([key, values]) => (
         <fieldset key={key}>
           <legend className={hideLegends ? styles.visuallyHidden : undefined}>
-            {FILTER_LABELS[key] ?? key}
+            {bindPhrases(FILTER_LABELS[key] ?? key)}
           </legend>
           <div className={styles.filterOptions}>
             {values.map((value) => {
@@ -71,7 +72,7 @@ export function FilterBar({ filters, hideLegends = false, path, query }: FilterB
                   })}
                   key={value}
                 >
-                  {value}
+                  {bindPhrases(value)}
                 </Link>
               );
             })}

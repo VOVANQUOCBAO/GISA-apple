@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
+import { LocalizedText } from './i18n/language-provider';
 
 /**
  * Vietnamese writes each syllable as a separate token, so a browser is free to
@@ -76,6 +77,10 @@ const inheritedTypography: CSSProperties = {
 
 /** Keeps the syllables of known Vietnamese words on the same line. */
 export function bindPhrases(text: string): ReactNode {
+  return <LocalizedText text={text}>{bindVietnamesePhrases(text)}</LocalizedText>;
+}
+
+function bindVietnamesePhrases(text: string): ReactNode {
   const parts = text.split(PATTERN);
   if (parts.length === 1) return text;
 

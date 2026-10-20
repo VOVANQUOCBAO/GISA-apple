@@ -364,7 +364,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
         </div>
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
-            <h1 className={styles.bannerTitle}>GISA — Kiến tạo tri thức, lan tỏa giá trị</h1>
+            <h1 className={styles.bannerTitle}>{bindPhrases('GISA — Kiến tạo tri thức, lan tỏa giá trị')}</h1>
             <div className={styles.heroButtons}>
               <Link className={styles.primaryButton} href="#nang-luc">{bindPhrases("Khám phá năng lực ")}<Icon name="arrow" size={20} /></Link>
               <Link className={styles.secondaryButton} href="/dang-ky/tu-van">{bindPhrases("Đăng ký tư vấn ")}<Icon name="arrow" size={20} /></Link>
@@ -595,12 +595,12 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
                     role="tab"
                     type="button"
                   >
-                    {knowledgeGroups[key].label}
+                    {bindPhrases(knowledgeGroups[key].label)}
                   </button>
                 ))}
               </div>
               <Link className={styles.knowledgeDeckAllLink} href={knowledge.href}>
-                Xem tất cả {knowledge.label.toLowerCase()} <Icon name="arrow" size={17} />
+                {bindPhrases('Xem tất cả')} {bindPhrases(knowledge.label)} <Icon name="arrow" size={17} />
               </Link>
             </div>
 

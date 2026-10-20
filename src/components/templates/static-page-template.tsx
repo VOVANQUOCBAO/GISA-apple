@@ -79,7 +79,7 @@ export function StaticPageTemplate({
           <aside className={styles.readingRail} aria-label="Mục lục trong trang">
             <div className={styles.railIntro}>
               <span aria-hidden="true">{String(chapterCount).padStart(2, '0')}</span>
-              <p>{chapterCount > 0 ? 'Chương nội dung' : 'Nội dung chuyên đề'}</p>
+              <p>{bindPhrases(chapterCount > 0 ? 'Chương nội dung' : 'Nội dung chuyên đề')}</p>
             </div>
             <ContentIndex blocks={definition.blocks} />
           </aside>
@@ -87,7 +87,7 @@ export function StaticPageTemplate({
           <div className={styles.editorialBody}>
             {introduction.length > 0 ? (
               <section className={styles.opening} data-scroll-motion="reveal">
-                <p className={styles.openingLabel}>Dẫn nhập</p>
+                <p className={styles.openingLabel}>{bindPhrases('Dẫn nhập')}</p>
                 <ContentBlocks blocks={introduction} />
               </section>
             ) : null}

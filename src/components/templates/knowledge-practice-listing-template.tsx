@@ -149,13 +149,13 @@ function ToolEntry({ index, item }: { index: number; item: ContentSummary }) {
       </div>
       <header>
         <span>{visibleText(group ?? 'Nhóm công cụ tư vấn')}</span>
-        {count ? <p><strong>{count}</strong> công cụ</p> : null}
+        {count ? <p><strong>{count}</strong> {bindPhrases('công cụ')}</p> : null}
       </header>
       <div>
         <h3><Link href={item.path}>{visibleText(item.title)}</Link></h3>
         <p>{visibleText(item.summary)}</p>
       </div>
-      <Link className={styles.textLink} href={item.path}>Xem cách sử dụng</Link>
+      <Link className={styles.textLink} href={item.path}>{bindPhrases('Xem cách sử dụng')}</Link>
     </article>
   );
 }
@@ -197,8 +197,8 @@ export function KnowledgePracticeListingTemplate({
         />
         <InnerPageHero
           description={definition.description}
-          eyebrow={direction.eyebrow}
-          meta={<p aria-live="polite"><strong>{resultCount}</strong> nội dung</p>}
+          eyebrow={bindPhrases(direction.eyebrow)}
+          meta={<p aria-live="polite"><strong>{resultCount}</strong> {bindPhrases('nội dung')}</p>}
           path={path}
           title={definition.title}
         />
@@ -210,13 +210,13 @@ export function KnowledgePracticeListingTemplate({
           data-centered={!direction.introduction || !direction.action ? 'true' : undefined}
         >
           <div>
-            <p>{direction.eyebrow}</p>
+            <p>{bindPhrases(direction.eyebrow)}</p>
             <h2 id="practice-listing-title">{visibleText(direction.sectionTitle)}</h2>
           </div>
           {direction.introduction && direction.action ? (
             <div>
               <p>{visibleText(direction.introduction)}</p>
-              <Link href={direction.action.href}>{direction.action.label}</Link>
+              <Link href={direction.action.href}>{bindPhrases(direction.action.label)}</Link>
             </div>
           ) : null}
         </section>
@@ -250,7 +250,7 @@ export function KnowledgePracticeListingTemplate({
         ) : scopeValues.length > 0 ? (
           <EmptyState
             action={direction.action ? (
-              <ButtonLink href={direction.action.href}>{direction.action.label}</ButtonLink>
+              <ButtonLink href={direction.action.href}>{bindPhrases(direction.action.label)}</ButtonLink>
             ) : undefined}
             description={EDITORIAL_EMPTY_COPY.scope.description}
             title={EDITORIAL_EMPTY_COPY.scope.title}

@@ -353,7 +353,7 @@ function NextAboutPage({ path }: { path: string }) {
 
   return (
     <nav className={styles.nextPage} aria-label="Nội dung giới thiệu tiếp theo">
-      <p>Tiếp tục khám phá GISA</p>
+      <p>{bindPhrases('Tiếp tục khám phá GISA')}</p>
       <Link href={nextPath}>{phrase(nextLabel)}</Link>
     </nav>
   );

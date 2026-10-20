@@ -126,8 +126,8 @@ export function ExpertListingTemplate({
         {hasAvailableFilters ? (
           <section aria-labelledby="expert-filter-title" className={styles.filterStage}>
             <div>
-              <h2 id="expert-filter-title">Tìm theo lĩnh vực chuyên môn</h2>
-              <p>Chọn lĩnh vực phù hợp để thu hẹp danh sách hồ sơ.</p>
+              <h2 id="expert-filter-title">{bindPhrases('Tìm theo lĩnh vực chuyên môn')}</h2>
+              <p>{bindPhrases('Chọn lĩnh vực phù hợp để thu hẹp danh sách hồ sơ.')}</p>
             </div>
             <FilterBar filters={availableFilters} path={path} query={searchParams} />
           </section>
@@ -137,13 +137,13 @@ export function ExpertListingTemplate({
           <section aria-labelledby="expert-directory-title" className={styles.directory}>
             <header className={styles.directoryHeader}>
               <div>
-                <p>Đội ngũ GISA</p>
+                <p>{bindPhrases('Đội ngũ GISA')}</p>
                 <h2 id="expert-directory-title">
-                  <span>Tri thức</span>
+                  <span>{bindPhrases('Tri thức')}</span>
                   {' '}
-                  <span>được dẫn dắt</span>
+                  <span>{bindPhrases('được dẫn dắt')}</span>
                   {' '}
-                  <span>bởi con người</span>
+                  <span>{bindPhrases('bởi con người')}</span>
                 </h2>
               </div>
             </header>

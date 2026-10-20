@@ -140,7 +140,7 @@ export function ProjectToolDetailTemplate({ record }: { record: ContentRecord })
             data-title-length={record.title.length > 44 ? 'long' : 'standard'}
           >
             <div className={styles.mastheadCopy}>
-              <p className={styles.eyebrow}>{direction.eyebrow}</p>
+              <p className={styles.eyebrow}>{bindPhrases(direction.eyebrow)}</p>
               <h1>{visibleText(record.title)}</h1>
               <p className={styles.lede}>{visibleText(record.summary)}</p>
             </div>
@@ -163,7 +163,7 @@ export function ProjectToolDetailTemplate({ record }: { record: ContentRecord })
                       <Icon name={toolIconFor(record)} size={52} />
                     </span>
                   ) : null}
-                  <p>{visualFallback.eyebrow}</p>
+                  <p>{bindPhrases(visualFallback.eyebrow)}</p>
                   <strong>{visibleText(visualFallback.title)}</strong>
                   {visualFallback.detail ? (
                     <span>{visibleText(visualFallback.detail)}</span>
@@ -185,7 +185,7 @@ export function ProjectToolDetailTemplate({ record }: { record: ContentRecord })
                 <div key={fact.key}>
                   <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
                   <dl>
-                    <dt>{fact.label}</dt>
+                    <dt>{bindPhrases(fact.label)}</dt>
                     <dd>{visibleText(fact.value)}</dd>
                   </dl>
                 </div>
@@ -199,9 +199,9 @@ export function ProjectToolDetailTemplate({ record }: { record: ContentRecord })
             </div>
             <aside className={styles.contextAside}>
               <div className={styles.actionCard}>
-                <p>Bước tiếp theo</p>
-                <h2>{record.kind === 'tool' ? 'Đặt công cụ vào đúng bối cảnh' : 'Tiếp tục từ bằng chứng đã có'}</h2>
-                <Link href={direction.action.href}>{direction.action.label}</Link>
+                <p>{bindPhrases('Bước tiếp theo')}</p>
+                <h2>{bindPhrases(record.kind === 'tool' ? 'Đặt công cụ vào đúng bối cảnh' : 'Tiếp tục từ bằng chứng đã có')}</h2>
+                <Link href={direction.action.href}>{bindPhrases(direction.action.label)}</Link>
               </div>
             </aside>
           </section>

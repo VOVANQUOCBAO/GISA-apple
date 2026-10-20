@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { bindPhrases } from '@/lib/vietnamese-text';
 
 import { buildQueryHref, type UrlQuery } from './filter-bar';
 import styles from './ui.module.css';
@@ -22,7 +23,7 @@ export function Pagination({ page, pageCount, path, query }: PaginationProps) {
   return (
     <nav aria-label="Phân trang" className={styles.pagination}>
       {page > 1 ? (
-        <Link href={pageHref(path, query, page - 1)}>Trang trước</Link>
+        <Link href={pageHref(path, query, page - 1)}>{bindPhrases('Trang trước')}</Link>
       ) : null}
       {Array.from({ length: pageCount }, (_, index) => index + 1).map(
         (pageNumber) => (
@@ -32,13 +33,13 @@ export function Pagination({ page, pageCount, path, query }: PaginationProps) {
             href={pageHref(path, query, pageNumber)}
             key={pageNumber}
           >
-            <span className={styles.visuallyHidden}>Trang </span>
+            <span className={styles.visuallyHidden}>{bindPhrases('Trang ')}</span>
             {pageNumber}
           </Link>
         ),
       )}
       {page < pageCount ? (
-        <Link href={pageHref(path, query, page + 1)}>Trang sau</Link>
+        <Link href={pageHref(path, query, page + 1)}>{bindPhrases('Trang sau')}</Link>
       ) : null}
     </nav>
   );

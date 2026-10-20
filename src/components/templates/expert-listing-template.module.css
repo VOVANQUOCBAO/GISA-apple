@@ -335,3 +335,28 @@
 .portrait {
   min-height: 16rem;
 }
+
+/* Keep the restored portraits and longer English profiles on an even grid. */
+:global(html[lang='en']) .expertGrid {
+  grid-auto-flow: row;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+:global(html[lang='en']) .expertGrid > li { grid-column: auto; }
+:global(html[lang='en']) .expertGrid .expertCard {
+  grid-template-columns: minmax(0, .42fr) minmax(0, .58fr);
+  height: 100%;
+  min-height: 18rem;
+}
+:global(html[lang='en']) .cardCopy { align-content: start; min-width: 0; padding: 1.5rem; }
+:global(html[lang='en']) .cardCopy h3 { font-size: clamp(1.4rem, 2vw, 1.875rem); line-height: 1.25; }
+:global(html[lang='en']) .directoryHeader h2 > span { white-space: normal; }
+@media (max-width: 60rem) {
+  :global(html[lang='en']) .expertGrid { display: grid; grid-template-columns: minmax(0, 1fr); }
+  :global(html[lang='en']) .expertGrid > li + li { margin-top: 0; }
+}
+@media (max-width: 34rem) {
+  :global(html[lang='en']) .expertGrid .expertCard { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  :global(html[lang='en']) .portrait { aspect-ratio: 4 / 3; min-height: 0; }
+  :global(html[lang='en']) .portrait img { object-fit: contain; }
+  :global(html[lang='en']) .cardCopy { padding: 1.25rem; }
+}
