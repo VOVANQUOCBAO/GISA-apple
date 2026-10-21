@@ -15,9 +15,11 @@ Use Node.js 22 and pnpm 10:
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm dev -- --port 3004
+pnpm dev --port 3004
 ```
 
 Open http://localhost:3004 and select VI or EN.
 
-This review branch is separate from `main`; it has not been promoted to gisa.edu.vn.
+The recovered source and English typography updates are on `main`. They have not been promoted to gisa.edu.vn.
+
+The English typography audit checked 33 routes at desktop (1920px) and mobile (390px): 66 page views and 772 paragraph/description checks, with no alignment or overflow failures. The regression coverage is in `tests/e2e/english-typography.spec.ts`.

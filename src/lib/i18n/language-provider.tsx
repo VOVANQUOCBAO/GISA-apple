@@ -21,10 +21,10 @@ export function useLanguage() {
   return useContext(LanguageContext);
 }
 
-export function LocalizedText({ text, children, as: Tag }: { text: string; children: ReactNode; as?: 'strong' | 'span' }) {
+export function LocalizedText({ text, children, as: Tag, copy }: { text: string; children: ReactNode; as?: 'strong' | 'span'; copy?: 'body' }) {
   const language = useLanguage();
   const pathname = usePathname() ?? '/';
   if (language !== 'en' || !hasEnglishContent(pathname)) return children;
   const translated = translate(text, language);
-  return Tag ? <Tag>{translated}</Tag> : translated;
+  return Tag ? <Tag data-copy={copy}>{translated}</Tag> : translated;
 }

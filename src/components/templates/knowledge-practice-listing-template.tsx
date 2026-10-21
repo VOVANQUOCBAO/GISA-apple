@@ -96,7 +96,7 @@ function ProjectEntry({ index, item }: { index: number; item: ContentSummary }) 
         ) : null}
       </div>
       <div className={styles.projectCopy}>
-        {projectMeta ? <p className={styles.projectMeta}>{visibleText(projectMeta)}</p> : null}
+        {projectMeta ? <p className={styles.projectMeta} data-copy="label">{visibleText(projectMeta)}</p> : null}
         <h3><Link href={item.path}>{visibleText(item.title)}</Link></h3>
         <p className={styles.projectSummary}>{visibleText(item.summary)}</p>
         <Link className={styles.textLink} href={item.path}>Đọc hồ sơ dự án</Link>
@@ -149,7 +149,7 @@ function ToolEntry({ index, item }: { index: number; item: ContentSummary }) {
       </div>
       <header>
         <span>{visibleText(group ?? 'Nhóm công cụ tư vấn')}</span>
-        {count ? <p><strong>{count}</strong> {bindPhrases('công cụ')}</p> : null}
+        {count ? <p data-copy="label"><strong>{count}</strong> {bindPhrases('công cụ')}</p> : null}
       </header>
       <div>
         <h3><Link href={item.path}>{visibleText(item.title)}</Link></h3>
@@ -198,7 +198,7 @@ export function KnowledgePracticeListingTemplate({
         <InnerPageHero
           description={definition.description}
           eyebrow={bindPhrases(direction.eyebrow)}
-          meta={<p aria-live="polite"><strong>{resultCount}</strong> {bindPhrases('nội dung')}</p>}
+          meta={<p aria-live="polite" data-copy="label"><strong>{resultCount}</strong> {bindPhrases('nội dung')}</p>}
           path={path}
           title={definition.title}
         />
@@ -210,7 +210,7 @@ export function KnowledgePracticeListingTemplate({
           data-centered={!direction.introduction || !direction.action ? 'true' : undefined}
         >
           <div>
-            <p>{bindPhrases(direction.eyebrow)}</p>
+            <p data-copy="label">{bindPhrases(direction.eyebrow)}</p>
             <h2 id="practice-listing-title">{visibleText(direction.sectionTitle)}</h2>
           </div>
           {direction.introduction && direction.action ? (

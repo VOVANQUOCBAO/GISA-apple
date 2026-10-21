@@ -168,6 +168,11 @@
   width: 1px;
 }
 
+:global(html[lang='en']) .foldDescription { --english-copy-size: 1rem; }
+@media (max-width: 48rem) {
+  :global(html[lang='en']) .foldDescription { grid-column: 1 / -1; }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .foldPanel:not([data-active='true']):hover {
     border-color: color-mix(in srgb, var(--accent) 42%, #cbd7dc);

@@ -1479,3 +1479,22 @@
     padding: 1.5rem;
   }
 }
+
+:global(html[lang='en']) .philosophyBand > h2 {
+  font-size: clamp(2rem, 2.5vw, 2.75rem);
+  line-height: 1.18;
+}
+:global(html[lang='en']) .fieldGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+:global(html[lang='en']) .fieldGrid .fieldCard { grid-column: auto; }
+:global(html[lang='en']) .fieldsIntro {
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  line-height: 1.5;
+  text-align: center;
+  text-wrap: balance;
+}
+@media (max-width: 48rem) {
+  :global(html[lang='en']) .fieldGrid { display: grid; grid-template-columns: minmax(0, 1fr); }
+  :global(html[lang='en']) .fieldCard + .fieldCard { margin-top: 0; }
+}

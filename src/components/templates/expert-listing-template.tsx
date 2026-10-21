@@ -137,7 +137,7 @@ export function ExpertListingTemplate({
           <section aria-labelledby="expert-directory-title" className={styles.directory}>
             <header className={styles.directoryHeader}>
               <div>
-                <p>{bindPhrases('Đội ngũ GISA')}</p>
+                <p data-copy="label">{bindPhrases('Đội ngũ GISA')}</p>
                 <h2 id="expert-directory-title">
                   <span>{bindPhrases('Tri thức')}</span>
                   {' '}

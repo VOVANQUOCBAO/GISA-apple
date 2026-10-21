@@ -792,6 +792,17 @@
   min-width: 0;
 }
 
+/* Give English topic sentences the whole card measure on narrow screens. */
+@media (max-width: 48rem) {
+  :global(html[lang='en']) .editorialList li {
+    gap: .75rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  :global(html[lang='en']) .editorialList .topicIcon {
+    grid-row: auto;
+  }
+}
+
 .container[data-mode='network'] .chapterTitleIcon,
 .container[data-mode='supporters'] .chapterTitleIcon,
 .container[data-mode='community'] .chapterTitleIcon {
@@ -1199,6 +1210,20 @@
   display: block;
   height: auto;
   min-height: 0;
+}
+
+:global(html[lang='en']) .container[data-mode='atlas'] .chapter:nth-child(n) .chapterVisual {
+  aspect-ratio: 16 / 10;
+}
+
+@media (max-width: 72rem) {
+  :global(html[lang='en']) .container[data-mode='atlas'] .chapterHeader {
+    min-height: 0;
+  }
+  :global(html[lang='en']) .container[data-mode='atlas'] .chapterLead {
+    margin-bottom: 0;
+    min-height: 0;
+  }
 }
 
 .container[data-mode='atlas'] .chapter:nth-child(4n + 2) .chapterVisual,

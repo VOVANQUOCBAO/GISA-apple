@@ -206,7 +206,7 @@ function EditorialList({ items, ordered }: { items: string[]; ordered: boolean }
             <span aria-hidden="true" className={styles.topicIcon}>
               <Icon name={icon} size={20} weight="fill" />
             </span>
-            <LocalizedText as="strong" text={item}>
+            <LocalizedText as="strong" copy="body" text={item}>
             <strong>{vietnameseText(title)}</strong>
             {detail ? (
               <span className={styles.topicDetail}>
@@ -458,7 +458,7 @@ function ContentNavigation({ chapters }: { chapters: EditorialChapter[] }) {
 
   return (
     <nav className={styles.contentNavigation} aria-label="Nội dung trong trang">
-      <p>{bindPhrases('Khám phá nội dung')}</p>
+      <p data-copy="label">{bindPhrases('Khám phá nội dung')}</p>
       <ul>
         {chapters.map((chapter) => (
           <li key={chapter.title}>
@@ -480,7 +480,7 @@ function ActionClosure({
   return (
     <section className={styles.actionClosure} aria-label="Bước tiếp theo">
       <div>
-        <p>{bindPhrases('Tiếp tục cùng GISA')}</p>
+        <p data-copy="label">{bindPhrases('Tiếp tục cùng GISA')}</p>
         <h2>{vietnameseText(title)}</h2>
       </div>
       <Link href={action.href}>{vietnameseText(action.label)}</Link>

@@ -180,12 +180,6 @@ const knowledgeGroups: Record<KnowledgeKey, {
 
 const knowledgeOrder: KnowledgeKey[] = ['news', 'research', 'courses'];
 
-const featuredNews = [
-  { date: '06.08.2026', image: '/images/knowledge-deck/news-research-institute.webp', kicker: 'Diễn đàn học thuật', title: 'Chuyển đổi mô hình viện nghiên cứu và phát triển đại học đẳng cấp' },
-  { date: '24.07.2026', image: '/images/knowledge-deck/news-climate-finance.webp', kicker: 'Phát triển bền vững', title: 'Tài chính khí hậu và tài chính phát triển không thể tách rời' },
-  { date: '12.07.2026', image: '/images/knowledge-deck/news-ai-reliability.webp', kicker: 'Công nghệ & quản trị', title: 'Sự phụ thuộc vào chatbot AI nhìn từ những gián đoạn dịch vụ' },
-] as const;
-
 // `logo` lấy từ bộ logo GISA gửi kèm (`public/icons/logos`, nguồn là thư mục
 // "0 Nội dung Web_GISA/Logo Partner - Renamed"). Logo thay cho dòng chữ tên dự
 // án — tên vẫn nằm trong `aria-label` của liên kết cho trình đọc màn hình.
@@ -398,7 +392,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
         <div className={styles.contentContainer}>
           <header className={styles.featuredNewsHeading}>
             <div>
-              <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`}>{bindPhrases('Nhịp sống GISA')}</p>
+              <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`} data-copy="label">{bindPhrases('Nhịp sống GISA')}</p>
               <h2 id="featured-news-title">{bindPhrases('TIN TỨC & HOẠT ĐỘNG NỔI BẬT')}</h2>
             </div>
             <Link className={styles.featuredNewsAllLink} href="/tin-tuc">
@@ -433,7 +427,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
             <div className={styles.aboutIntro}>
               {/* Dải này là dải nội dung duy nhất còn thiếu chip nhãn, trong khi
                   Cam kết tác động, Năng lực, Tri thức và RISES đều có. */}
-              <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`}>{bindPhrases('Giới thiệu GISA')}</p>
+              <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`} data-copy="label">{bindPhrases('Giới thiệu GISA')}</p>
               <h2>{bindPhrases("TRI THỨC CHO PHÁT TRIỂN BỀN VỮNG")}</h2>
               {/* Liên kết đi cùng tiêu đề chứ không nằm cuối đoạn văn: cột trái
                   nhờ đó có điểm mở và điểm đóng, đọc ra là một khối hoàn chỉnh
@@ -494,7 +488,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
       <section aria-labelledby="mission-title" className={styles.missionSection} id="su-menh-gisa">
         <div className={styles.contentContainer}>
           <header className={styles.missionHeading} data-scroll-motion="reveal">
-            <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`}>{bindPhrases('Sứ mệnh GISA')}</p>
+            <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`} data-copy="label">{bindPhrases('Sứ mệnh GISA')}</p>
             <h2 id="mission-title">{bindPhrases('CAM KẾT TÁC ĐỘNG')}</h2>
           </header>
           <ol className={styles.missionGrid}>
@@ -519,7 +513,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
       <section className={styles.capabilitiesSection} id="nang-luc">
         <div className={styles.capabilitiesInner}>
           <div className={styles.capabilitiesIntro}>
-            <p className={`${styles.eyebrow} ${styles.sectionEyebrow} ${styles.orange}`}>{bindPhrases("Từ tri thức đến tác động")}</p>
+            <p className={`${styles.eyebrow} ${styles.sectionEyebrow} ${styles.orange}`} data-copy="label">{bindPhrases("Từ tri thức đến tác động")}</p>
             <h2>{bindPhrases("GIẢI PHÁP CHO TÁC ĐỘNG BỀN VỮNG")}</h2>
             <p>{bindPhrases("GISA kết hợp tri thức học thuật, kinh nghiệm thực tiễn và cách tiếp cận hệ thống để hỗ trợ tổ chức giải quyết các thách thức phát triển bền vững một cách hiệu quả và có tác động lâu dài.")}</p>
             <div className={styles.capabilityButtons}>
@@ -564,7 +558,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
       <section className={styles.architectureSection} id="kien-truc">
         <div className={styles.contentContainer}>
           <div className={styles.risesHeading} data-scroll-motion="reveal">
-            <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`}>{bindPhrases("Kiến trúc tri thức")}</p>
+            <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`} data-copy="label">{bindPhrases("Kiến trúc tri thức")}</p>
             <h2 className={styles.sectionTitle}>{bindPhrases("GIÁ TRỊ NỀN TẢNG — RISES")}</h2>
           </div>
           <RisesFoldPanorama values={rises} />
@@ -575,7 +569,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
         <div className={styles.contentContainer}>
           <div className={styles.knowledgeShowcase}>
             <div className={styles.knowledgeIntro}>
-              <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`}>{bindPhrases(knowledge.eyebrow)}</p>
+              <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`} data-copy="label">{bindPhrases(knowledge.eyebrow)}</p>
               <h2>
                 <span>{bindPhrases("TRI THỨC")}</span>
                 <span>{bindPhrases("DẪN LỐI")}</span>
@@ -651,7 +645,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
       <section aria-labelledby="featured-research-title" className={styles.researchProjectsSection} id="du-an-nghien-cuu-trong-diem">
         <div className={styles.contentContainer}>
           <div className={styles.researchShowcaseHeading} data-scroll-motion="reveal">
-            <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`}>{bindPhrases("Nghiên cứu tạo chuyển biến")}</p>
+            <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`} data-copy="label">{bindPhrases("Nghiên cứu tạo chuyển biến")}</p>
             <h2 id="featured-research-title">{bindPhrases("NGHIÊN CỨU TRỌNG ĐIỂM")}</h2>
             <p>{bindPhrases("Tri thức quốc tế, tác động tại Việt Nam.")}</p>
           </div>

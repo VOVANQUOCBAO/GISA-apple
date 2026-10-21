@@ -55,9 +55,9 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
           const List = block.ordered ? 'ol' : 'ul';
           const activeHeadingId = precedingHeadingId(blocks, index);
           return (
-            <List className={styles.proseList} data-scroll-motion="reveal" key={`${block.type}-${index}`}>
+            <List className={styles.proseList} data-copy="list" data-scroll-motion="reveal" key={`${block.type}-${index}`}>
               {block.items.map((item) => (
-                <li id={activeHeadingId ? `${activeHeadingId}-${toAnchorId(item)}` : undefined} key={item}>{bindPhrases(item)}</li>
+                <li data-copy="body" id={activeHeadingId ? `${activeHeadingId}-${toAnchorId(item)}` : undefined} key={item}>{bindPhrases(item)}</li>
               ))}
             </List>
           );

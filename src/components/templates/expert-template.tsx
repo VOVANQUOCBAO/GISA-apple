@@ -46,7 +46,7 @@ export function ExpertTemplate({ record }: { record: ContentRecord }) {
 
         <header className={styles.profileHero}>
           <div className={styles.profileCopy}>
-            <p className={styles.eyebrow}>{bindPhrases('Chuyên gia')}</p>
+            <p className={styles.eyebrow} data-copy="label">{bindPhrases('Chuyên gia')}</p>
             <h1>{bindPhrases(record.title)}</h1>
             <p className={styles.affiliation}>{bindPhrases(record.summary)}</p>
           </div>
@@ -75,7 +75,7 @@ export function ExpertTemplate({ record }: { record: ContentRecord }) {
 
         <div className={styles.profileBody}>
           <aside className={styles.profileIndex}>
-            <p>{bindPhrases('Hồ sơ chuyên môn')}</p>
+            <p data-copy="label">{bindPhrases('Hồ sơ chuyên môn')}</p>
             <span>{String(expertise.length).padStart(2, '0')}</span>
           </aside>
           <div className={styles.profileContent}>

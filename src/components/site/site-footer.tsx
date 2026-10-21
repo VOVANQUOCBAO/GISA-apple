@@ -55,7 +55,7 @@ export function SiteFooter() {
             data-scroll-motion="item"
             style={{ '--motion-index': 1 } as CSSProperties}
           >
-            <p>{bindPhrases("Kết nối tri thức liên ngành, kiến tạo tác động bền vững.")}</p>
+            <p data-copy="body">{bindPhrases("Kết nối tri thức liên ngành, kiến tạo tác động bền vững.")}</p>
           </div>
           <Link
             className={styles.footerCta}

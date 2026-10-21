@@ -147,7 +147,7 @@ function StoryLayout({ blocks }: { blocks: ContentBlock[] }) {
     <div className={styles.storyLayout}>
       {leadQuote ? (
         <blockquote className={styles.storyLead} data-scroll-motion="reveal">
-          <p aria-label={`${promise.join('. ')}.`}>
+          <p aria-label={`${promise.join('. ')}.`} data-copy="label">
             {promise.map((step, index) => (
               <span aria-hidden="true" className={styles.storyPromiseStep} key={step}>
                 <small>{String(index + 1).padStart(2, '0')}</small>
@@ -192,7 +192,7 @@ function StoryLayout({ blocks }: { blocks: ContentBlock[] }) {
         <aside className={styles.philosophyBand} data-scroll-motion="reveal">
           <h2>{phrase('Triết lý cốt lõi')}</h2>
           <blockquote>
-            <p aria-label={philosophyLines.join('. ')}>
+            <p aria-label={philosophyLines.join('. ')} data-copy="label">
               {philosophyLines.map((line, index) => (
                 <em
                   aria-hidden="true"
@@ -226,7 +226,7 @@ function VisionLayout({ blocks }: { blocks: ContentBlock[] }) {
       <div className={styles.visionColumn}>
         <aside className={styles.visionPanel} data-scroll-motion="reveal" id="tam-nhin">
           <h2>{phrase(vision?.heading.text ?? 'Tầm nhìn')}</h2>
-          {visionQuote ? <blockquote>{phrase(visionQuote.text)}</blockquote> : null}
+          {visionQuote ? <blockquote data-copy="body">{phrase(visionQuote.text)}</blockquote> : null}
         </aside>
       </div>
       <section className={styles.missionPanel} data-scroll-motion="reveal" id="su-menh">
@@ -257,7 +257,7 @@ function VisionLayout({ blocks }: { blocks: ContentBlock[] }) {
       {sloganCopy ? (
         <section className={styles.sloganPanel} data-scroll-motion="reveal" id="khau-hieu">
           <h2>{phrase(slogan?.heading.text ?? 'Khẩu hiệu')}</h2>
-          <p aria-label={sloganLines.join('. ')}>
+          <p aria-label={sloganLines.join('. ')} data-copy="label">
             {sloganLines.map((line) => (
               <span aria-hidden="true" key={line}>{phrase(line)}</span>
             ))}
@@ -313,7 +313,7 @@ function FieldsLayout({ blocks }: { blocks: ContentBlock[] }) {
   return (
     <div className={styles.fieldsLayout}>
       {introductionCopy ? (
-        <p className={styles.fieldsIntro} data-scroll-motion="reveal">{phrase(introductionCopy.text)}</p>
+        <p className={styles.fieldsIntro} data-copy="label" data-scroll-motion="reveal">{phrase(introductionCopy.text)}</p>
       ) : null}
       <div className={styles.fieldGrid}>
         {chapters.map((chapter) => {
@@ -353,7 +353,7 @@ function NextAboutPage({ path }: { path: string }) {
 
   return (
     <nav className={styles.nextPage} aria-label="Nội dung giới thiệu tiếp theo">
-      <p>{bindPhrases('Tiếp tục khám phá GISA')}</p>
+      <p data-copy="label">{bindPhrases('Tiếp tục khám phá GISA')}</p>
       <Link href={nextPath}>{phrase(nextLabel)}</Link>
     </nav>
   );

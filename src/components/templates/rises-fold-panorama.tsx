@@ -156,7 +156,7 @@ export function RisesFoldPanorama({ values }: { values: RiseValue[] }) {
                 <span className={styles.foldLetter}>{item.code}</span>
                 <span className={styles.foldLabel}>{item.label}</span>
                 <span className={styles.foldRule} />
-                <span className={styles.foldDescription}>{bindPhrases(item.text)}</span>
+                <span className={styles.foldDescription} data-copy="body">{bindPhrases(item.text)}</span>
               </span>
             </button>
           );

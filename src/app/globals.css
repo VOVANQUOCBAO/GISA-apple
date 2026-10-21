@@ -172,6 +172,40 @@ main p {
   text-justify: auto;
 }
 
+/* English editorial copy has one alignment contract across every template.
+   Labels retain their component alignment; prose, statements and descriptions
+   share two clean edges with a natural final line at every viewport width. */
+html[lang='en'] #main-content :is(p:not([data-copy='label']), [data-copy='body']),
+html[lang='en'] footer [data-copy='body'] {
+  font-family: var(--font-body);
+  font-size: var(--english-copy-size, clamp(1rem, 1.1vw, 1.125rem));
+  font-weight: 400;
+  hyphens: auto;
+  hyphenate-limit-chars: 7 3 3;
+  letter-spacing: normal;
+  line-height: 1.75;
+  overflow-wrap: break-word;
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-word;
+  text-wrap: wrap;
+  white-space: normal;
+  word-break: normal;
+  word-spacing: normal;
+}
+
+html[lang='en'] #main-content [data-copy='body'] > [data-vietnamese-text] {
+  white-space: normal;
+}
+
+html[lang='en'] #main-content :is(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+html[lang='en'] #main-content [data-copy='list'] {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 /* On narrow columns, phrase wrappers may break normally so justified copy can
    keep two clean edges without creating wide spacing rivers. Dash bridges are
    the sole exception: the punctuation must travel with the following word. */
