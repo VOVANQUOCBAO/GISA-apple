@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server';
 
-import { adminDisabled, disabled, failure } from '@/lib/admin/http';
+import { failure, guardApi } from '@/lib/admin/http';
 import { createDocument, listDocuments } from '@/lib/admin/store';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     return NextResponse.json({ documents: await listDocuments() });
@@ -16,7 +17,8 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     const body = (await request.json().catch(() => ({}))) as {

@@ -1,9 +1,5 @@
 import 'server-only';
 
-import { randomUUID } from 'node:crypto';
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
-
 import type {
   StudioDoc,
   StudioDraft,
@@ -12,14 +8,16 @@ import type {
   StudioStatus,
 } from '@/components/studio/types';
 
+import { readDoc, readDocsIn, removeDoc, writeDoc } from './kv';
+
 /**
  * Kho bài dựng tự do (studio).
  *
- * Cùng triết lý với kho admin hiện có: file JSON trong `content-data/admin/studio`
- * để có thể mở, chép hoặc xoá bằng tay. Khác ở chỗ bài studio là một trang tự do
- * (toạ độ tuyệt đối) chứ không phải `ContentRecord`, nên có kho riêng.
+ * Cùng kho với admin (`kv.ts`), dưới khoá `studio/`. Khác ở chỗ bài studio là
+ * một trang tự do (toạ độ tuyệt đối) chứ không phải `ContentRecord`, nên có
+ * khoá riêng.
  */
-const STUDIO_DIR = path.join(process.cwd(), 'content-data', 'admin', 'studio');
+const STUDIO_DIR = 'studio';
 const ID_PATTERN = /^[a-z0-9][a-z0-9-]{5,63}$/u;
 const ELEMENT_KINDS = new Set(['text', 'image', 'shape', 'icon', 'button', 'video']);
 const MAX_ELEMENTS = 400;
@@ -181,41 +179,8 @@ export function sanitizeSourcePath(value: unknown): string | undefined {
   return trimmed === '/' ? undefined : trimmed;
 }
 
-function fileFor(id: string): string {
-  return path.join(STUDIO_DIR, `${id}.json`);
-}
-
-const writeQueues = new Map<string, Promise<void>>();
-
-async function writeFileAtomic(file: string, value: unknown): Promise<void> {
-  await fs.mkdir(path.dirname(file), { recursive: true });
-  // Tên tạm phải duy nhất: autosave và thao tác publish/unpublish có thể ghi
-  // gần như cùng lúc.
-  const temporary = `${file}.${process.pid}.${randomUUID()}.tmp`;
-
-  try {
-    await fs.writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
-    await fs.rename(temporary, file);
-  } catch (error) {
-    await fs.unlink(temporary).catch(() => undefined);
-    throw error;
-  }
-}
-
-/**
- * Ghi tuần tự theo từng file. Trên Windows, rename đè lên file đích đang được
- * ghi bởi request khác có thể lỗi EPERM; xếp hàng tránh cả 500 lẫn file .tmp sót.
- */
-async function writeJson(file: string, value: unknown): Promise<void> {
-  const previous = writeQueues.get(file) ?? Promise.resolve();
-  const next = previous.catch(() => undefined).then(() => writeFileAtomic(file, value));
-  writeQueues.set(file, next);
-
-  try {
-    await next;
-  } finally {
-    if (writeQueues.get(file) === next) writeQueues.delete(file);
-  }
+function keyFor(id: string): string {
+  return `${STUDIO_DIR}/${id}`;
 }
 
 function summaryOf(draft: StudioDraft): StudioDraftSummary {
@@ -255,29 +220,25 @@ export async function getStudioDraft(id: string): Promise<StudioDraft | null> {
   if (!ID_PATTERN.test(id)) return null;
 
   try {
-    const raw = JSON.parse(await fs.readFile(fileFor(id), 'utf8')) as unknown;
-    return parseDraft(raw, id);
+    return parseDraft(await readDoc<unknown>(keyFor(id)), id);
   } catch {
     return null;
   }
 }
 
 async function readAllDrafts(): Promise<StudioDraft[]> {
-  let files: string[];
+  let stored: Map<string, unknown>;
 
   try {
-    files = await fs.readdir(STUDIO_DIR);
+    stored = await readDocsIn<unknown>(STUDIO_DIR);
   } catch {
     return [];
   }
 
-  const drafts = await Promise.all(
-    files
-      .filter((file) => file.endsWith('.json'))
-      .map((file) => getStudioDraft(file.slice(0, -5))),
-  );
-
-  return drafts.filter((draft): draft is StudioDraft => draft !== null);
+  return [...stored]
+    .filter(([id]) => ID_PATTERN.test(id))
+    .map(([id, raw]) => parseDraft(raw, id))
+    .filter((draft): draft is StudioDraft => draft !== null);
 }
 
 export async function listStudioDrafts(): Promise<StudioDraftSummary[]> {
@@ -338,7 +299,7 @@ export async function createStudioDraft(input: {
     doc: input.doc,
   };
 
-  await writeJson(fileFor(id), draft);
+  await writeDoc(keyFor(id), draft);
   return draft;
 }
 
@@ -375,17 +336,12 @@ export async function updateStudioDraft(
     doc,
   };
 
-  await writeJson(fileFor(id), draft);
+  await writeDoc(keyFor(id), draft);
   return draft;
 }
 
 export async function deleteStudioDraft(id: string): Promise<boolean> {
   if (!ID_PATTERN.test(id)) return false;
 
-  try {
-    await fs.unlink(fileFor(id));
-    return true;
-  } catch {
-    return false;
-  }
+  return removeDoc(keyFor(id));
 }

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { Studio } from '@/components/studio/studio';
+import { requireAdminPage } from '@/lib/admin/auth';
 import { getStudioDraft } from '@/lib/admin/studio-store';
 
 export const dynamic = 'force-dynamic';
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function StudioDraftPage({ params }: { params: Promise<{ id: string }> }) {
-  if (process.env.NODE_ENV === 'production' && process.env.ADMIN_LOCAL !== '1') notFound();
+  await requireAdminPage('/admin');
 
   const { id } = await params;
   const draft = await getStudioDraft(id);

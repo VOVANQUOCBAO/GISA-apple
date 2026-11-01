@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
 
-import { adminDisabled, disabled, failure } from '@/lib/admin/http';
+import { failure, guardApi } from '@/lib/admin/http';
 import { getDocument, saveDraft } from '@/lib/admin/store';
 import type { ContentRecord } from '@/content/types';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(_request: Request, context: { params: Promise<{ id: string }> }) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     const { id } = await context.params;
@@ -23,7 +24,8 @@ export async function GET(_request: Request, context: { params: Promise<{ id: st
 }
 
 export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     const { id } = await context.params;

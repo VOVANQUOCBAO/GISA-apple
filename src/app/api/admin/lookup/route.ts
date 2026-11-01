@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import { adminDisabled, disabled, failure } from '@/lib/admin/http';
+import { failure, guardApi } from '@/lib/admin/http';
 import { listDocuments } from '@/lib/admin/store';
 import { listStudioDrafts } from '@/lib/admin/studio-store';
 
@@ -12,7 +12,8 @@ export const dynamic = 'force-dynamic';
  * ghi một dòng 404 vào console mỗi lần mở trang chủ.
  */
 export async function GET(request: Request) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     const path = new URL(request.url).searchParams.get('path') ?? '';

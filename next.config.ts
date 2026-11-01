@@ -28,9 +28,10 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     // Ảnh do admin PHP upload lên InfinityFree được proxy qua cùng origin để
-    // schema ảnh của frontend vẫn nhận đường dẫn bắt đầu bằng "/".
+    // schema ảnh của frontend vẫn nhận đường dẫn bắt đầu bằng "/". Riêng
+    // `/media/admin/...` là ảnh admin lưu trong database, do route của app phục vụ.
     return mediaOrigin
-      ? [{ source: '/media/:path*', destination: `${mediaOrigin}/media/:path*` }]
+      ? [{ source: '/media/:path((?!admin/).*)', destination: `${mediaOrigin}/media/:path` }]
       : [];
   },
   async redirects() {

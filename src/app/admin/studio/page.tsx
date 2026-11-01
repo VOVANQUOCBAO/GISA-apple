@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 
 import { Studio } from '@/components/studio/studio';
 import { emptyDoc } from '@/components/studio/types';
+import { requireAdminPage } from '@/lib/admin/auth';
 import { getPageTemplate } from '@/lib/admin/page-templates';
 
 export const dynamic = 'force-dynamic';
@@ -18,7 +18,7 @@ export default async function NewStudioPage({
 }: {
   searchParams: Promise<{ bai?: string }>;
 }) {
-  if (process.env.NODE_ENV === 'production' && process.env.ADMIN_LOCAL !== '1') notFound();
+  await requireAdminPage('/admin/studio');
 
   const { bai } = await searchParams;
   if (bai) {

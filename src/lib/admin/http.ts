@@ -1,17 +1,25 @@
 import { NextResponse } from 'next/server';
 
+import { adminAvailable, currentAdmin, loginRequired } from './auth';
 import { AdminValidationError } from './store';
 
-/** Admin chỉ phục vụ trên máy local; bản deploy không bao giờ mở route này. */
-export function adminDisabled(): boolean {
-  return process.env.NODE_ENV === 'production' && process.env.ADMIN_LOCAL !== '1';
-}
+/**
+ * Đặt ở đầu mỗi API admin. Trả về response chặn (404 khi admin tắt, 401 khi
+ * chưa đăng nhập), hoặc null nếu được đi tiếp.
+ */
+export async function guardApi(): Promise<NextResponse | null> {
+  if (!adminAvailable()) {
+    return NextResponse.json(
+      { error: 'Admin chỉ chạy trên máy local (ADMIN_LOCAL=1 để bật ngoài dev).' },
+      { status: 404 },
+    );
+  }
 
-export function disabled(): NextResponse {
-  return NextResponse.json(
-    { error: 'Admin chỉ chạy trên máy local (ADMIN_LOCAL=1 để bật ngoài dev).' },
-    { status: 404 },
-  );
+  if (loginRequired() && !(await currentAdmin())) {
+    return NextResponse.json({ error: 'Phiên đăng nhập đã hết, hãy đăng nhập lại.' }, { status: 401 });
+  }
+
+  return null;
 }
 
 export function failure(error: unknown): NextResponse {

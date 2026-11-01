@@ -1,39 +1,32 @@
 import 'server-only';
 
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
+import { listDocNames, readDoc, writeDoc } from './kv';
 
 /**
  * Chữ của các trang tĩnh (trang chủ, giới thiệu…) không nằm trong `ContentRecord`,
  * vì chúng là bố cục chứ không phải bài viết. Những gì biên tập được ghi đè ở đây,
  * theo từng đường dẫn và từng khoá chữ.
  */
-const ROOT = path.join(process.cwd(), 'content-data', 'admin', 'pages');
+const ROOT = 'pages';
 
 export type PageCopy = Record<string, string>;
 
-function fileFor(pagePath: string): string {
+function keyFor(pagePath: string): string {
   const safe = pagePath.replace(/^\//, '').replace(/[^a-z0-9-]+/gi, '-') || 'home';
-  return path.join(ROOT, `${safe}.json`);
+  return `${ROOT}/${safe}`;
 }
 
 export async function getPageCopy(pagePath: string): Promise<PageCopy> {
   try {
-    const raw = await fs.readFile(fileFor(pagePath), 'utf8');
-    const parsed = JSON.parse(raw) as { copy?: PageCopy };
-    return parsed.copy ?? {};
+    const stored = await readDoc<{ copy?: PageCopy }>(keyFor(pagePath));
+    return stored?.copy ?? {};
   } catch {
     return {};
   }
 }
 
 export async function listPagePaths(): Promise<string[]> {
-  try {
-    const entries = await fs.readdir(ROOT);
-    return entries.filter((entry) => entry.endsWith('.json')).map((entry) => entry.slice(0, -5));
-  } catch {
-    return [];
-  }
+  return listDocNames(ROOT);
 }
 
 export async function setPageCopyEntry(
@@ -50,16 +43,11 @@ export async function setPageCopyEntry(
     next[key] = value;
   }
 
-  await fs.mkdir(ROOT, { recursive: true });
-  const file = fileFor(pagePath);
-  const temporary = `${file}.${process.pid}.tmp`;
-
-  await fs.writeFile(
-    temporary,
-    `${JSON.stringify({ path: pagePath, updatedAt: new Date().toISOString(), copy: next }, null, 2)}\n`,
-    'utf8',
-  );
-  await fs.rename(temporary, file);
+  await writeDoc(keyFor(pagePath), {
+    path: pagePath,
+    updatedAt: new Date().toISOString(),
+    copy: next,
+  });
 
   return next;
 }

@@ -52,6 +52,26 @@
   font-size: 12px;
 }
 
+.logout {
+  margin-left: auto;
+}
+
+.logout button {
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid #c9d3cd;
+  border-radius: 8px;
+  background: transparent;
+  color: #17211d;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.logout button:hover {
+  background: #f1f4f2;
+}
+
 .group {
   margin-bottom: 28px;
 }

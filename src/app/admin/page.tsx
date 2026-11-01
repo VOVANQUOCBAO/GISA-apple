@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 
 import { StudioDraftActions } from '@/components/admin/studio-draft-actions';
+import { loginRequired, requireAdminPage } from '@/lib/admin/auth';
 import { listStudioDrafts } from '@/lib/admin/studio-store';
 import { listDocuments } from '@/lib/admin/store';
 
 import styles from './admin.module.css';
+import { logout } from './dang-nhap/actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,7 +46,7 @@ function formatDateTime(value: string): string {
  * đang có. Việc viết và sửa diễn ra trên chính trang thật ở `/xem-truoc/...`.
  */
 export default async function AdminPage() {
-  if (process.env.NODE_ENV === 'production' && process.env.ADMIN_LOCAL !== '1') notFound();
+  await requireAdminPage('/admin');
 
   const [documents, studioDrafts] = await Promise.all([listDocuments(), listStudioDrafts()]);
 
@@ -71,6 +72,11 @@ export default async function AdminPage() {
           + Tạo bài mới
         </Link>
         <span className={styles.actionsNote}>Trang trắng · kéo thả tự do · tự động lưu</span>
+        {loginRequired() ? (
+          <form action={logout} className={styles.logout}>
+            <button type="submit">Đăng xuất</button>
+          </form>
+        ) : null}
       </div>
 
       {studioDrafts.length ? (

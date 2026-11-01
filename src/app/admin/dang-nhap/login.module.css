@@ -1,0 +1,81 @@
+.page {
+  display: grid;
+  place-items: center;
+  min-height: 70vh;
+  padding: 48px 16px 96px;
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  color: #17211d;
+}
+
+.card {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  max-width: 24rem;
+  padding: 32px 28px;
+  border: 1px solid #dfe5e1;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.card h1 {
+  margin: 0;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  margin: -8px 0 0;
+  color: #5d6b64;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.error {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fdecea;
+  color: #9b2c22;
+  font-size: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.field input {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #c9d3cd;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.field input:focus-visible {
+  outline: 2px solid #12785c;
+  outline-offset: 1px;
+}
+
+.submit {
+  height: 44px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 10px;
+  background: #12785c;
+  color: #ffffff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background: #0e6149;
+}

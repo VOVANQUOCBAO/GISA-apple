@@ -1,7 +1,7 @@
 import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 
-import { adminDisabled, disabled, failure } from '@/lib/admin/http';
+import { failure, guardApi } from '@/lib/admin/http';
 import {
   deleteStudioDraft,
   getStudioDraft,
@@ -17,7 +17,8 @@ export const runtime = 'nodejs';
 type Context = { params: Promise<{ id: string }> };
 
 export async function GET(_request: Request, context: Context) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   const { id } = await context.params;
   const draft = await getStudioDraft(id);
@@ -27,7 +28,8 @@ export async function GET(_request: Request, context: Context) {
 }
 
 export async function PUT(request: Request, context: Context) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     const { id } = await context.params;
@@ -59,7 +61,8 @@ export async function PUT(request: Request, context: Context) {
 }
 
 export async function DELETE(_request: Request, context: Context) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   const { id } = await context.params;
   const draft = await getStudioDraft(id);

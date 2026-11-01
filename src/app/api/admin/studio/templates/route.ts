@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
 
-import { adminDisabled, disabled, failure } from '@/lib/admin/http';
+import { failure, guardApi } from '@/lib/admin/http';
 import { getPageTemplate, listPageTemplates } from '@/lib/admin/page-templates';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
 export async function GET(request: Request) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     const id = new URL(request.url).searchParams.get('id');

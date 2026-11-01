@@ -1,13 +1,11 @@
 import 'server-only';
 
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
-
 import { allContentFixtures } from '@/content/fixtures';
 import { contentRecordSchema } from '@/content/schema';
 import type { ContentRecord } from '@/content/types';
 import { toAnchorId } from '@/lib/anchor-id';
 
+import { listDocNames, readDoc, readDocsIn, removeDoc, writeDoc } from './kv';
 import type {
   AdminDocumentPayload,
   AdminDocumentSummary,
@@ -16,17 +14,13 @@ import type {
 } from './types';
 
 /**
- * Kho nội dung local của admin.
- *
- * Cố tình dùng file JSON thay vì database: người dựng thử có thể mở
- * `content-data/admin/` bằng bất kỳ trình soạn thảo nào, chép đi, hoặc xoá sạch
- * để bắt đầu lại. Toàn bộ nội dung vẫn đi qua đúng `ContentRecord` mà website
- * đang dùng, nên bản xem trước và trang thật không thể lệch schema.
+ * Kho nội dung của admin (file JSON trên máy, Postgres khi deploy — xem `kv.ts`).
+ * Toàn bộ nội dung vẫn đi qua đúng `ContentRecord` mà website đang dùng, nên
+ * bản xem trước và trang thật không thể lệch schema.
  */
-const ADMIN_ROOT = path.join(process.cwd(), 'content-data', 'admin');
-const DRAFT_DIR = path.join(ADMIN_ROOT, 'drafts');
-const PUBLISHED_DIR = path.join(ADMIN_ROOT, 'published');
-const HISTORY_DIR = path.join(ADMIN_ROOT, 'history');
+const DRAFT_DIR = 'drafts';
+const PUBLISHED_DIR = 'published';
+const HISTORY_DIR = 'history';
 const MAX_HISTORY = 20;
 
 export class AdminValidationError extends Error {
@@ -53,36 +47,8 @@ export function documentIdFor(kind: string, slug: string): string {
   return `${kind}--${slug}`;
 }
 
-function fileFor(directory: string, id: string): string {
-  return path.join(directory, `${id}.json`);
-}
-
-async function ensureDirectory(directory: string): Promise<void> {
-  await fs.mkdir(directory, { recursive: true });
-}
-
-async function readJson<T>(file: string): Promise<T | null> {
-  try {
-    return JSON.parse(await fs.readFile(file, 'utf8')) as T;
-  } catch {
-    return null;
-  }
-}
-
-async function writeJson(file: string, value: unknown): Promise<void> {
-  await ensureDirectory(path.dirname(file));
-  const temporary = `${file}.${process.pid}.tmp`;
-  await fs.writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
-  await fs.rename(temporary, file);
-}
-
-async function listIds(directory: string): Promise<string[]> {
-  try {
-    const entries = await fs.readdir(directory);
-    return entries.filter((entry) => entry.endsWith('.json')).map((entry) => entry.slice(0, -5));
-  } catch {
-    return [];
-  }
+function keyFor(directory: string, id: string): string {
+  return `${directory}/${id}`;
 }
 
 function toStored(record: ContentRecord, status: StoredRecordFile['status']): StoredRecordFile {
@@ -124,19 +90,13 @@ let seeding: Promise<void> | null = null;
 async function ensureSeeded(): Promise<void> {
   if (!seeding) {
     seeding = (async () => {
-      await Promise.all([
-        ensureDirectory(DRAFT_DIR),
-        ensureDirectory(PUBLISHED_DIR),
-        ensureDirectory(HISTORY_DIR),
-      ]);
-
-      if ((await listIds(PUBLISHED_DIR)).length > 0) return;
+      if ((await listDocNames(PUBLISHED_DIR)).length > 0) return;
 
       const records = contentRecordSchema.array().parse(allContentFixtures);
       for (const record of records) {
         if (!(EDITORIAL_KINDS as readonly string[]).includes(record.kind)) continue;
-        await writeJson(
-          fileFor(PUBLISHED_DIR, documentIdFor(record.kind, record.slug)),
+        await writeDoc(
+          keyFor(PUBLISHED_DIR, documentIdFor(record.kind, record.slug)),
           toStored(record, 'published'),
         );
       }
@@ -150,28 +110,25 @@ async function ensureSeeded(): Promise<void> {
 }
 
 async function pushHistory(id: string, record: ContentRecord): Promise<void> {
-  const directory = path.join(HISTORY_DIR, id);
-  await ensureDirectory(directory);
-  await writeJson(path.join(directory, `${Date.now()}.json`), record);
+  const directory = keyFor(HISTORY_DIR, id);
+  await writeDoc(`${directory}/${Date.now()}`, record);
 
-  const versions = (await listIds(directory)).sort().reverse();
+  const versions = (await listDocNames(directory)).sort().reverse();
   for (const stale of versions.slice(MAX_HISTORY)) {
-    await fs.rm(path.join(directory, `${stale}.json`), { force: true });
+    await removeDoc(`${directory}/${stale}`);
   }
 }
 
 export async function listDocuments(): Promise<AdminDocumentSummary[]> {
   await ensureSeeded();
 
-  const ids = new Set([...(await listIds(PUBLISHED_DIR)), ...(await listIds(DRAFT_DIR))]);
-  const documents = await Promise.all(
-    [...ids].map(async (id) => {
-      const [draft, published] = await Promise.all([
-        readJson<StoredRecordFile>(fileFor(DRAFT_DIR, id)),
-        readJson<StoredRecordFile>(fileFor(PUBLISHED_DIR, id)),
-      ]);
-      return summaryOf(id, draft, published);
-    }),
+  const [drafts, published] = await Promise.all([
+    readDocsIn<StoredRecordFile>(DRAFT_DIR),
+    readDocsIn<StoredRecordFile>(PUBLISHED_DIR),
+  ]);
+  const ids = new Set([...published.keys(), ...drafts.keys()]);
+  const documents = [...ids].map((id) =>
+    summaryOf(id, drafts.get(id) ?? null, published.get(id) ?? null),
   );
 
   return documents.sort((left, right) => right.updatedAt.localeCompare(left.updatedAt));
@@ -181,8 +138,8 @@ export async function getDocument(id: string): Promise<AdminDocumentPayload | nu
   await ensureSeeded();
 
   const [draft, published] = await Promise.all([
-    readJson<StoredRecordFile>(fileFor(DRAFT_DIR, id)),
-    readJson<StoredRecordFile>(fileFor(PUBLISHED_DIR, id)),
+    readDoc<StoredRecordFile>(keyFor(DRAFT_DIR, id)),
+    readDoc<StoredRecordFile>(keyFor(PUBLISHED_DIR, id)),
   ]);
 
   const record = draft?.record ?? published?.record;
@@ -214,7 +171,7 @@ export async function saveDraft(id: string, record: ContentRecord): Promise<Admi
   const previous = await getDocument(id);
   const next = normalizeIdentity(record, previous?.record ?? record);
 
-  await writeJson(fileFor(DRAFT_DIR, id), {
+  await writeDoc(keyFor(DRAFT_DIR, id), {
     ...toStored(next, 'draft'),
     updatedAt: new Date().toISOString(),
   });
@@ -245,9 +202,9 @@ export async function publishDocument(id: string): Promise<AdminDocumentPayload>
     );
   }
 
-  await writeJson(fileFor(PUBLISHED_DIR, id), toStored(parsed.data, 'published'));
+  await writeDoc(keyFor(PUBLISHED_DIR, id), toStored(parsed.data, 'published'));
   await pushHistory(id, parsed.data);
-  await fs.rm(fileFor(DRAFT_DIR, id), { force: true });
+  await removeDoc(keyFor(DRAFT_DIR, id));
 
   const published = await getDocument(id);
   if (!published) throw new Error(`Không đăng được ${id}.`);
@@ -261,8 +218,8 @@ export async function unpublishDocument(id: string): Promise<AdminDocumentPayloa
   const document = await getDocument(id);
   if (!document) throw new Error(`Không tìm thấy ${id}.`);
 
-  await writeJson(fileFor(DRAFT_DIR, id), toStored(document.record, 'draft'));
-  await fs.rm(fileFor(PUBLISHED_DIR, id), { force: true });
+  await writeDoc(keyFor(DRAFT_DIR, id), toStored(document.record, 'draft'));
+  await removeDoc(keyFor(PUBLISHED_DIR, id));
 
   const unpublished = await getDocument(id);
   if (!unpublished) throw new Error(`Không gỡ được ${id}.`);
@@ -270,7 +227,10 @@ export async function unpublishDocument(id: string): Promise<AdminDocumentPayloa
 }
 
 async function uniqueSlug(base: string): Promise<string> {
-  const taken = new Set([...(await listIds(PUBLISHED_DIR)), ...(await listIds(DRAFT_DIR))]);
+  const taken = new Set([
+    ...(await listDocNames(PUBLISHED_DIR)),
+    ...(await listDocNames(DRAFT_DIR)),
+  ]);
   const root = base || 'bai-viet';
 
   if (!taken.has(documentIdFor('news', root))) return root;
@@ -317,31 +277,18 @@ export async function createDocument(input: {
 }
 
 export async function listVersions(id: string): Promise<AdminVersion[]> {
-  const directory = path.join(HISTORY_DIR, id);
+  const snapshots = await readDocsIn<ContentRecord>(keyFor(HISTORY_DIR, id));
+  const versions = [...snapshots].map(([version, record]) => ({
+    version,
+    at: new Date(Number(version)).toISOString(),
+    title: record?.title ?? '',
+  }));
 
-  try {
-    const entries = await fs.readdir(directory);
-    const versions = await Promise.all(
-      entries
-        .filter((entry) => entry.endsWith('.json'))
-        .map(async (entry) => {
-          const record = await readJson<ContentRecord>(path.join(directory, entry));
-          return {
-            version: entry.slice(0, -5),
-            at: new Date(Number(entry.slice(0, -5))).toISOString(),
-            title: record?.title ?? '',
-          };
-        }),
-    );
-
-    return versions.sort((left, right) => right.version.localeCompare(left.version));
-  } catch {
-    return [];
-  }
+  return versions.sort((left, right) => right.version.localeCompare(left.version));
 }
 
 export async function restoreVersion(id: string, version: string): Promise<AdminDocumentPayload> {
-  const snapshot = await readJson<ContentRecord>(path.join(HISTORY_DIR, id, `${version}.json`));
+  const snapshot = await readDoc<ContentRecord>(`${keyFor(HISTORY_DIR, id)}/${version}`);
   if (!snapshot) throw new Error(`Không tìm thấy bản lưu ${version}.`);
 
   return saveDraft(id, snapshot);
@@ -350,27 +297,21 @@ export async function restoreVersion(id: string, version: string): Promise<Admin
 /** Nội dung đã đăng, dùng cho repository của website công khai. */
 export async function listPublishedRecords(): Promise<ContentRecord[]> {
   await ensureSeeded();
-  const ids = await listIds(PUBLISHED_DIR);
-
-  const records = await Promise.all(
-    ids.map(async (id) => (await readJson<StoredRecordFile>(fileFor(PUBLISHED_DIR, id)))?.record ?? null),
-  );
-
-  return records.filter((record): record is ContentRecord => record !== null);
+  const published = await readDocsIn<StoredRecordFile>(PUBLISHED_DIR);
+  return [...published.values()].map((file) => file.record).filter(Boolean);
 }
 
 /** Đường dẫn đang có bản nháp nhưng chưa đăng, để website ẩn chúng đi. */
 export async function listDraftOnlyPaths(): Promise<string[]> {
   await ensureSeeded();
 
-  const [drafts, published] = await Promise.all([listIds(DRAFT_DIR), listIds(PUBLISHED_DIR)]);
+  const [drafts, published] = await Promise.all([
+    readDocsIn<StoredRecordFile>(DRAFT_DIR),
+    listDocNames(PUBLISHED_DIR),
+  ]);
   const publishedIds = new Set(published);
 
-  const paths = await Promise.all(
-    drafts
-      .filter((id) => !publishedIds.has(id))
-      .map(async (id) => (await readJson<StoredRecordFile>(fileFor(DRAFT_DIR, id)))?.path ?? null),
-  );
-
-  return paths.filter((value): value is string => value !== null);
+  return [...drafts]
+    .filter(([id, file]) => !publishedIds.has(id) && Boolean(file.path))
+    .map(([, file]) => file.path);
 }

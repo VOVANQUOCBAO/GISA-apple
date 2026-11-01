@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import { adminDisabled, disabled, failure } from '@/lib/admin/http';
+import { failure, guardApi } from '@/lib/admin/http';
 import { getPageCopy, setPageCopyEntry } from '@/lib/admin/pages';
 
 export const dynamic = 'force-dynamic';
@@ -11,7 +11,8 @@ function normalizePath(value: string | null): string | null {
 }
 
 export async function GET(request: Request) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     const pagePath = normalizePath(new URL(request.url).searchParams.get('path'));
@@ -24,7 +25,8 @@ export async function GET(request: Request) {
 }
 
 export async function PATCH(request: Request) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     const body = (await request.json()) as { path?: string; key?: string; value?: string };

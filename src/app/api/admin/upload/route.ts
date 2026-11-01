@@ -3,7 +3,8 @@ import path from 'node:path';
 
 import { NextResponse } from 'next/server';
 
-import { adminDisabled, disabled, failure } from '@/lib/admin/http';
+import { failure, guardApi } from '@/lib/admin/http';
+import { putMedia, usesDatabase } from '@/lib/admin/kv';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -18,11 +19,14 @@ const ALLOWED = new Map([
 ]);
 
 /**
- * Ảnh được ghi vào `public/media/uploads/...` để đường dẫn bắt đầu bằng `/media`,
- * đúng quy ước mà schema nội dung và `ContentBlocks` đang chấp nhận.
+ * Đường dẫn ảnh luôn bắt đầu bằng `/media`, đúng quy ước mà schema nội dung và
+ * `ContentBlocks` đang chấp nhận. Trên máy, ảnh ghi vào `public/media/uploads/`;
+ * khi deploy với database, ảnh nằm trong bảng `admin_media` và được phục vụ ở
+ * `/media/admin/...` (xem `src/app/media/admin`).
  */
 export async function POST(request: Request) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     const form = await request.formData();
@@ -57,11 +61,18 @@ export async function POST(request: Request) {
       .slice(0, 48) || 'anh';
 
     const name = `${Date.now().toString(36)}-${base}.${extension}`;
-    const relative = `/media/uploads/${month}/${name}`;
-    const target = path.join(process.cwd(), 'public', 'media', 'uploads', month, name);
+    const bytes = Buffer.from(await file.arrayBuffer());
+    let relative: string;
 
-    await fs.mkdir(path.dirname(target), { recursive: true });
-    await fs.writeFile(target, Buffer.from(await file.arrayBuffer()));
+    if (usesDatabase()) {
+      await putMedia(`${month}/${name}`, file.type, bytes);
+      relative = `/media/admin/${month}/${name}`;
+    } else {
+      const target = path.join(process.cwd(), 'public', 'media', 'uploads', month, name);
+      await fs.mkdir(path.dirname(target), { recursive: true });
+      await fs.writeFile(target, bytes);
+      relative = `/media/uploads/${month}/${name}`;
+    }
 
     return NextResponse.json({
       src: relative,

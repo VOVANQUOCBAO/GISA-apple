@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { EditorChrome } from '@/components/admin/editor-chrome';
 import { EditorProvider } from '@/components/admin/editor-provider';
 import { EcosystemDetailTemplate } from '@/components/templates/ecosystem-detail-template';
+import { requireAdminPage } from '@/lib/admin/auth';
 import { getDocument } from '@/lib/admin/store';
 
 import '@/components/admin/preview.css';
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
  * Mọi công cụ soạn thảo nằm ngay trên trang này, không có màn hình quản trị thứ hai.
  */
 export default async function PreviewPage({ params }: { params: Promise<{ doc: string[] }> }) {
-  if (process.env.NODE_ENV === 'production' && process.env.ADMIN_LOCAL !== '1') notFound();
+  await requireAdminPage('/admin');
 
   const { doc } = await params;
   const id = decodeURIComponent(doc.join('/'));

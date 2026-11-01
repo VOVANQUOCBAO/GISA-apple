@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import { adminDisabled, disabled, failure } from '@/lib/admin/http';
+import { failure, guardApi } from '@/lib/admin/http';
 import { publishDocument, saveDraft } from '@/lib/admin/store';
 import type { ContentRecord } from '@/content/types';
 
@@ -11,7 +11,8 @@ export const dynamic = 'force-dynamic';
  * đăng — tránh trường hợp bấm Đăng trong lúc autosave chưa kịp chạy.
  */
 export async function POST(request: Request, context: { params: Promise<{ id: string }> }) {
-  if (adminDisabled()) return disabled();
+  const blocked = await guardApi();
+  if (blocked) return blocked;
 
   try {
     const { id } = await context.params;
