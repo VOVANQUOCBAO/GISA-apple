@@ -24,6 +24,7 @@
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 14px;
   margin-bottom: 32px;
@@ -35,16 +36,42 @@
   height: 42px;
   padding: 0 20px;
   border-radius: 10px;
+  border: 0;
   background: #12785c;
   color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+
+.primaryAction:hover {
+  background: #0f654e;
+}
+
+.primaryAction:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 18px;
+  border: 1px solid #12785c;
+  border-radius: 10px;
+  color: #12785c;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   transition: background 140ms ease;
 }
 
-.primaryAction:hover {
-  background: #0f654e;
+.secondaryAction:hover {
+  background: #eef6f2;
 }
 
 .actionsNote {

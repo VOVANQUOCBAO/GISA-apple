@@ -526,14 +526,14 @@ export function EditorChrome() {
               <input
                 defaultValue={keywordOf(record)}
                 key={`keyword-${docId}`}
-                onBlur={(event) => {
+                onChange={(event) => {
                   const keyword = event.target.value.trim();
                   if (keyword === keywordOf(record)) return;
                   editor.updateRecord({ metadata: { ...record.metadata, keyword } });
                 }}
                 placeholder="Ví dụ: kinh tế tuần hoàn"
               />
-              <small>Nhập để chấm các mục liên quan tới từ khoá, rồi bấm Kiểm tra lại.</small>
+              <small>Điểm và các mục liên quan tới từ khoá được chấm lại ngay khi gõ.</small>
             </label>
 
             <ul className="gisa-check-list">

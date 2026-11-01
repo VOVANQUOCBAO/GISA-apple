@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { NewArticleButton } from '@/components/admin/new-article-button';
 import { StudioDraftActions } from '@/components/admin/studio-draft-actions';
 import { loginRequired, requireAdminPage } from '@/lib/admin/auth';
 import { listStudioDrafts } from '@/lib/admin/studio-store';
@@ -62,16 +63,17 @@ export default async function AdminPage() {
       <header className={styles.header}>
         <h1>Quản trị nội dung</h1>
         <p>
-          Tạo bài mới trên một trang trắng rộng 1200px, kéo khối từ thanh công cụ vào bất kỳ đâu.
-          Hoặc mở một bài có sẵn để sửa trực tiếp trên trang thật.
+          Viết tin tức ngay trên trang thật, có chấm điểm SEO trước khi đăng. Hoặc dựng bài trên
+          một trang trắng rộng 1200px, kéo khối từ thanh công cụ vào bất kỳ đâu.
         </p>
       </header>
 
       <div className={styles.actions}>
-        <Link className={styles.primaryAction} href="/admin/studio">
-          + Tạo bài mới
+        <NewArticleButton />
+        <Link className={styles.secondaryAction} href="/admin/studio">
+          + Bài dựng tự do
         </Link>
-        <span className={styles.actionsNote}>Trang trắng · kéo thả tự do · tự động lưu</span>
+        <span className={styles.actionsNote}>Tin tức có kiểm tra SEO · bài dựng kéo thả tự do</span>
         {loginRequired() ? (
           <form action={logout} className={styles.logout}>
             <button type="submit">Đăng xuất</button>
