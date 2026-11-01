@@ -7,6 +7,7 @@ import { Pagination } from '@/components/ui/pagination';
 import type { PageDefinition } from '@/content/pages';
 import type { ContentSummary, PaginatedResult } from '@/content/types';
 import { bindPhrases } from '@/lib/vietnamese-text';
+import { LocalizedText } from '@/lib/i18n/language-provider';
 
 import { EDITORIAL_EMPTY_COPY } from './editorial-empty-copy';
 import { PublicationIndex } from './publication-index';
@@ -59,7 +60,7 @@ export function ListingTemplate({
         <InnerPageHero
           description={definition.description}
           eyebrow={isPublications ? 'Thư viện học thuật' : 'Danh mục chuyên môn'}
-          meta={<p aria-live="polite"><strong>{resultCount}</strong> nội dung</p>}
+          meta={<p aria-live="polite"><strong>{resultCount}</strong>{bindPhrases(" nội dung")}</p>}
           path={path}
           title={definition.title}
         />
@@ -86,14 +87,15 @@ export function ListingTemplate({
             >
               <header className={listingStyles.resultsHeader}>
                 <div>
-                  <p className={listingStyles.eyebrow}>Khám phá nội dung</p>
+                  <p className={listingStyles.eyebrow}>{bindPhrases("Khám phá nội dung")}</p>
                   <h2 id="listing-results-title">
-                    {bindPhrases(`Danh sách ${definition.title.toLocaleLowerCase('vi')}`)}
+                    {bindPhrases('Danh sách')}{' '}
+                    <LocalizedText text={definition.title}>{bindPhrases(definition.title.toLocaleLowerCase('vi'))}</LocalizedText>
                   </h2>
                 </div>
                 <p aria-live="polite" className={listingStyles.resultCount}>
                   <strong>{resultCount}</strong>
-                  <span>kết quả phù hợp</span>
+                  <span>{bindPhrases("kết quả phù hợp")}</span>
                 </p>
               </header>
               <ol
@@ -113,7 +115,7 @@ export function ListingTemplate({
                       <div aria-hidden="true" className={listingStyles.featuredRail}>
                         <span>01</span>
                         <i />
-                        <small>Nội dung nổi bật</small>
+                        <small>{bindPhrases("Nội dung nổi bật")}</small>
                       </div>
                     ) : (
                       <span aria-hidden="true" className={listingStyles.itemNumber}>

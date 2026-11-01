@@ -8,7 +8,12 @@ const securityHeaders = [
   { key: 'Content-Security-Policy', value: "frame-ancestors 'self' https://gisa-editor.sanity.studio https://www.sanity.io" }
 ];
 
+const mediaOrigin = process.env.CONTENT_MEDIA_ORIGIN?.trim().replace(/\/$/, '');
+
 const nextConfig: NextConfig = {
+  // Cho phép chạy song song một dev server riêng cho bản thử nghiệm admin mà
+  // không ghi đè `.next` của server đang chạy.
+  distDir: process.env.GISA_DIST_DIR?.trim() || '.next',
   allowedDevOrigins: ['127.0.0.1'],
   experimental: {
     viewTransition: true,
@@ -20,6 +25,13 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }];
+  },
+  async rewrites() {
+    // Ảnh do admin PHP upload lên InfinityFree được proxy qua cùng origin để
+    // schema ảnh của frontend vẫn nhận đường dẫn bắt đầu bằng "/".
+    return mediaOrigin
+      ? [{ source: '/media/:path*', destination: `${mediaOrigin}/media/:path*` }]
+      : [];
   },
   async redirects() {
     return OLD_ROUTE_REDIRECTS.map(({ source, destination }) => ({

@@ -1,24 +1,17 @@
 import { expect, test } from '@playwright/test';
 
-import { expertFixtures } from '../../src/content/fixtures/experts';
-import { toolFixtures } from '../../src/content/fixtures/tools';
+import { allContentFixtures } from '../../src/content/fixtures';
+import { PAGE_REGISTRY } from '../../src/content/pages';
+import { isPublishableEvidence } from '../../src/content/evidence';
 
-const englishRoutes = [
-  '/',
-  '/gioi-thieu/cau-chuyen-gisa',
-  '/gioi-thieu/linh-vuc-hoat-dong',
-  '/chuyen-gia',
-  '/chuyen-gia?page=2',
-  '/nghien-cuu/linh-vuc',
-  '/tu-van/linh-vuc',
-  '/tu-van/cong-cu',
-  '/tu-van/thanh-qua',
-  '/mang-luoi/quy-nha-tai-tro',
-  ...toolFixtures.map((tool) => tool.path),
-  ...expertFixtures.map((expert) => expert.path),
-];
+const englishRoutes = [...new Set([
+  ...PAGE_REGISTRY.flatMap((definition) => 'path' in definition ? [definition.path] : []),
+  ...allContentFixtures.filter((record) => isPublishableEvidence(record.evidenceStatus)).map((record) => record.path),
+  '/landing-lp', '/landing-bdt', '/chuyen-gia?page=2', '/khoa-hoc?page=2',
+  '/tin-tuc?page=2', '/tim-kiem?q=leadership', '/dang-ky/khoa-hoc?course=tam-ly-hoc-lanh-dao',
+])];
 
-test.use({ reducedMotion: 'reduce' });
+test.use({ contextOptions: { reducedMotion: 'reduce' } });
 
 for (const width of [390, 1920]) {
   for (const route of englishRoutes) {
@@ -39,13 +32,13 @@ for (const width of [390, 1920]) {
           return true;
         };
         const prose = [...document.querySelectorAll<HTMLElement>(
-          '#main-content p:not([data-copy="label"]), #main-content [data-copy="body"], footer [data-copy="body"]',
+          '#main-content p:not([data-copy="label"]):not([data-copy="statement"]), #main-content [data-copy="body"], footer [data-copy="body"]',
         )].filter((element) => visible(element) && element.textContent?.trim());
         return {
           count: prose.length,
           unaligned: prose.filter((element) => {
             const style = getComputedStyle(element);
-            return style.textAlign !== 'justify' || style.textAlignLast !== 'start';
+            return style.textAlign !== 'justify' || style.textAlignLast !== 'start' || style.hyphens !== 'auto';
           }).map((element) => element.textContent),
           overflow: prose.filter((element) => element.scrollWidth > element.clientWidth + 3).map((element) => element.textContent),
           pageWidth: document.documentElement.scrollWidth,
@@ -59,3 +52,16 @@ for (const width of [390, 1920]) {
     });
   }
 }
+
+test('English selection survives navigation, filters and form validation', async ({ page, context, baseURL }) => {
+  await context.addCookies([{ name: 'gisa-language', value: 'en', url: baseURL! }]);
+  await page.goto('/tim-kiem?q=leadership');
+  await expect(page.getByRole('heading', { name: 'Search Results' })).toBeVisible();
+  await expect(page.locator('main')).toContainText('Leadership Psychology');
+  await page.goto('/dang-ky/khoa-hoc?course=tam-ly-hoc-lanh-dao');
+  await expect(page.getByLabel('Course of Interest')).toHaveValue('tam-ly-hoc-lanh-dao');
+  await page.getByRole('button', { name: 'Send Information' }).click();
+  await expect(page.getByRole('heading', { name: 'Please Check the Following Fields' })).toBeVisible();
+  await expect(page.getByRole('alert')).toContainText('Your name must contain at least 2 characters.');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+});

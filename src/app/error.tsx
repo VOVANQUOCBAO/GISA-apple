@@ -1,5 +1,8 @@
 'use client';
 
+import { bindPhrases } from '@/lib/vietnamese-text';
+
+
 export default function ErrorPage({
   reset,
 }: {
@@ -9,12 +12,10 @@ export default function ErrorPage({
   return (
     <main className="container" id="main-content" tabIndex={-1}>
       <div role="alert">
-        <h1>Không thể tải nội dung</h1>
-        <p>Nguồn nội dung gặp lỗi tạm thời. Bạn có thể thử lại.</p>
+        <h1>{bindPhrases("Không thể tải nội dung")}</h1>
+        <p>{bindPhrases("Nguồn nội dung gặp lỗi tạm thời. Bạn có thể thử lại.")}</p>
       </div>
-      <button onClick={reset} type="button">
-        Thử lại
-      </button>
+      <button onClick={reset} type="button">{bindPhrases(" Thử lại ")}</button>
     </main>
   );
 }

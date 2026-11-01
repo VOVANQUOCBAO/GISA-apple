@@ -1,6 +1,7 @@
 'use client';
 
 import { bindPhrases } from '@/lib/vietnamese-text';
+import { useTranslation } from '@/lib/i18n/language-provider';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -27,6 +28,7 @@ export function isNavigationGroupActive(
 }
 
 export function DesktopNavigation() {
+  const t = useTranslation();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const navigationRef = useRef<HTMLElement>(null);
   const menuIdPrefix = useId();
@@ -52,7 +54,7 @@ export function DesktopNavigation() {
 
   return (
     <nav
-      aria-label="Điều hướng chính"
+      aria-label={t('Điều hướng chính')}
       className={styles.desktopNavigation}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setOpenIndex(null);
@@ -109,7 +111,7 @@ export function DesktopNavigation() {
                   <button
                     aria-controls={menuId}
                     aria-expanded={isOpen}
-                    aria-label={`${isOpen ? 'Đóng' : 'Mở'} menu ${group.label}`}
+                    aria-label={`${t(isOpen ? 'Đóng' : 'Mở')} menu ${t(group.label)}`}
                     className={styles.submenuTrigger}
                     data-menu-index={index}
                     onClick={() => setOpenIndex(isOpen ? null : index)}

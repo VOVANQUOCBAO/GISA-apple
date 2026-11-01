@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 
 import { FormPage } from '@/components/forms/form-page';
 import type { FormKind } from '@/components/forms/form-types';
-import { buildMetadata } from '@/components/seo/build-metadata';
+import { buildLocalizedMetadata } from '@/components/seo/localized-metadata';
 
 const allowedKinds = new Set<FormKind>(['tu-van', 'khoa-hoc', 'hop-tac']);
 const formMetadata: Record<
@@ -33,7 +33,7 @@ export async function generateMetadata({
   if (!allowedKinds.has(kind as FormKind)) return {};
   const copy = formMetadata[kind as keyof typeof formMetadata];
 
-  return buildMetadata({
+  return buildLocalizedMetadata({
     ...copy,
     indexable: false,
     path: `/dang-ky/${kind}`,

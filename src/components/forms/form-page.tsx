@@ -1,3 +1,4 @@
+import { bindPhrases } from '@/lib/vietnamese-text';
 import { Breadcrumbs, type BreadcrumbItem } from '@/components/site/breadcrumbs';
 import { NAVIGATION } from '@/content/navigation';
 
@@ -118,9 +119,9 @@ export function FormPage({
       <section className={styles.stage} aria-labelledby={titleId}>
         <div className={styles.introduction}>
           <header className={styles.pageHeader}>
-            <p className={styles.eyebrow}>{copy.eyebrow}</p>
-            <h1 id={titleId}>{copy.title}</h1>
-            <p className={styles.lede}>{copy.description}</p>
+            <p className={styles.eyebrow} data-copy="label">{bindPhrases(copy.eyebrow)}</p>
+            <h1 id={titleId}>{bindPhrases(copy.title)}</h1>
+            <p className={styles.lede}>{bindPhrases(copy.description)}</p>
           </header>
 
           <aside
@@ -128,11 +129,11 @@ export function FormPage({
             className={styles.expectations}
           >
             <p className={styles.expectationTitle} id={expectationsId}>
-              {copy.expectationTitle}
+              {bindPhrases(copy.expectationTitle)}
             </p>
             <ol>
               {copy.expectations.map((expectation) => (
-                <li key={expectation}>{expectation}</li>
+                <li data-copy="body" key={expectation}>{bindPhrases(expectation)}</li>
               ))}
             </ol>
           </aside>
@@ -140,9 +141,9 @@ export function FormPage({
 
         <div className={styles.formStage}>
           <header className={styles.formHeader}>
-            <p>Thông tin cần thiết</p>
-            <h2>{copy.formTitle}</h2>
-            <p>{copy.formDescription}</p>
+            <p>{bindPhrases("Thông tin cần thiết")}</p>
+            <h2>{bindPhrases(copy.formTitle)}</h2>
+            <p>{bindPhrases(copy.formDescription)}</p>
           </header>
           <GisaForm courseSlug={courseSlug} kind={kind} />
         </div>

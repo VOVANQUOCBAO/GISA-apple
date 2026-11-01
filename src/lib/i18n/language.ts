@@ -1,15 +1,30 @@
 import english from './english.json';
+import interfaceEnglish from './english-interface.json';
+import ecosystemEnglish from './english-ecosystem.json';
+import trainingEnglish from './english-training.json';
+import editorialEnglish from './english-editorial.json';
+import landingEnglish from './english-landing.json';
+import supplementalEnglish from './english-supplemental.json';
+import landingUiEnglish from './english-landing-ui.json';
+// Approved English copy deck (DOCX) for the editorial body of each main section.
+// These files are imported last so the deck wording wins over the earlier
+// translation pass while every untouched UI string keeps its existing value.
+import docxIntroduction from './docx-introduction.json';
+import docxResearch from './docx-research.json';
+import docxConsulting from './docx-consulting.json';
+import docxTrainingA from './docx-training-a.json';
+import docxTrainingB from './docx-training-b.json';
+import docxNetwork from './docx-network.json';
+import docxCommunity from './docx-community.json';
+import docxApplication from './docx-application.json';
 
 export type Language = 'vi' | 'en';
 export const LANGUAGE_COOKIE = 'gisa-language';
 
-// English copy covers the supplied documents and the restored expert profiles.
+// Every public route uses the selected language, including forms and search.
+// URL slugs and filter values remain stable in both languages.
 export function hasEnglishContent(path: string) {
-  return ['/', '/gioi-thieu', '/gioi-thieu/cau-chuyen-gisa',
-    '/gioi-thieu/linh-vuc-hoat-dong', '/chuyen-gia',
-    '/nghien-cuu', '/nghien-cuu/linh-vuc', '/tu-van', '/tu-van/linh-vuc',
-    '/tu-van/cong-cu', '/tu-van/thanh-qua', '/mang-luoi/quy-nha-tai-tro',
-  ].includes(path) || path.startsWith('/tu-van/cong-cu/') || path.startsWith('/chuyen-gia/');
+  return path.startsWith('/');
 }
 
 export function normalizeCopy(text: string) {
@@ -17,7 +32,26 @@ export function normalizeCopy(text: string) {
 }
 
 const dictionary: Record<string, string> = Object.fromEntries(
-  Object.entries(english).map(([key, value]) => [normalizeCopy(key), value]),
+  [
+    supplementalEnglish,
+    interfaceEnglish,
+    ecosystemEnglish,
+    trainingEnglish,
+    editorialEnglish,
+    landingEnglish,
+    landingUiEnglish,
+    english,
+    docxIntroduction,
+    docxResearch,
+    docxConsulting,
+    docxTrainingA,
+    docxTrainingB,
+    docxNetwork,
+    docxCommunity,
+    docxApplication,
+  ].flatMap((section) =>
+    Object.entries(section).map(([key, value]) => [normalizeCopy(key), value]),
+  ),
 );
 
 export function translate(text: string, language: Language): string {

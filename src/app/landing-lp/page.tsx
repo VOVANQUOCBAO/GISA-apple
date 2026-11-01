@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { buildMetadata } from '@/components/seo/build-metadata';
+import { buildLocalizedMetadata } from '@/components/seo/localized-metadata';
 
 import { LandingClient } from './landing-client';
 
@@ -11,13 +11,15 @@ import { LandingClient } from './landing-client';
  * Not registered in `PAGE_REGISTRY`, navigation or the sitemap, and `noindex`
  * until the mock enrolment data in `data.ts` is confirmed.
  */
-export const metadata: Metadata = buildMetadata({
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocalizedMetadata({
   description:
     'Chương trình phát triển lãnh đạo của GISA: tiếp cận từ tâm lý học và khoa học hành vi để chuyển hóa từ bên trong, dẫn dắt người khác và kiến tạo ảnh hưởng.',
   indexable: false,
   path: '/landing-lp',
   title: 'Tâm lý học Lãnh đạo — Chuyển hóa từ bên trong',
 });
+}
 
 export default function LandingLpPage() {
   return <LandingClient />;

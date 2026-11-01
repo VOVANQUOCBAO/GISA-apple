@@ -68,7 +68,7 @@ function visualFallbackFor(record: ContentRecord): VisualFallbackContent {
     const toolCount = metadataValue(record, 'toolCount');
 
     return {
-      detail: toolCount ? `${toolCount} công cụ trong nhóm` : undefined,
+      detail: toolCount,
       eyebrow: 'Nhóm công cụ',
       title: metadataValue(record, 'group') ?? record.title,
     };
@@ -96,7 +96,7 @@ function toolIconFor(record: ContentRecord): IconName {
 }
 
 function visibleText(text: string) {
-  return bindPhrases(text.replace(/\s*[—–]\s*/g, ' · ').replace(/\s{2,}/g, ' ').trim());
+  return bindPhrases(text.replace(/\s{2,}/g, ' ').trim());
 }
 
 export function ProjectToolDetailTemplate({ record }: { record: ContentRecord }) {
@@ -166,7 +166,7 @@ export function ProjectToolDetailTemplate({ record }: { record: ContentRecord })
                   <p data-copy="label">{bindPhrases(visualFallback.eyebrow)}</p>
                   <strong>{visibleText(visualFallback.title)}</strong>
                   {visualFallback.detail ? (
-                    <span>{visibleText(visualFallback.detail)}</span>
+                    <span>{record.kind === 'tool' ? <>{visualFallback.detail} {bindPhrases('công cụ trong nhóm')}</> : visibleText(visualFallback.detail)}</span>
                   ) : null}
                 </div>
               )}

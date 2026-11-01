@@ -686,6 +686,13 @@
   transition: transform 560ms cubic-bezier(.16, 1, .3, 1);
 }
 
+/* Supplied 16:9 campaign banners are artwork, not photography: show the whole
+   poster rather than cropping words and icons off both sides. */
+.initiativeVisual img[src*='banner-'],
+.newsVisual img[src*='banner-'] {
+  object-fit: contain;
+}
+
 .initiativeCard:hover .initiativeVisual img {
   transform: scale(1.035);
 }

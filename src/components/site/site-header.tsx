@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRef, useState } from 'react';
 
 import { Icon } from '@/components/ui/icon';
+import { useTranslation } from '@/lib/i18n/language-provider';
 
 import { DesktopNavigation } from './desktop-navigation';
 import { LanguageControl } from './language-control';
@@ -12,6 +13,7 @@ import { MobileNavigation } from './mobile-navigation';
 import styles from './site-shell.module.css';
 
 export function SiteHeader() {
+  const t = useTranslation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
 
@@ -23,7 +25,7 @@ export function SiteHeader() {
   return (
     <header className={styles.siteHeader}>
       <div className={styles.headerInner}>
-        <Link aria-label="GISA — Trang chủ" className={styles.headerBrand} href="/">
+        <Link aria-label={t('GISA — Trang chủ')} className={styles.headerBrand} href="/">
           <span className={styles.logoLink}>
             <Image
               alt=""
@@ -42,7 +44,7 @@ export function SiteHeader() {
           <button
             aria-controls="mobile-navigation"
             aria-expanded={isMobileOpen}
-            aria-label={isMobileOpen ? 'Đóng menu' : 'Mở menu'}
+            aria-label={t(isMobileOpen ? 'Đóng menu' : 'Mở menu')}
             className={styles.mobileTrigger}
             onClick={() =>
               isMobileOpen ? closeMobileMenu() : setIsMobileOpen(true)

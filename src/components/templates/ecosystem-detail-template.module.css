@@ -35,7 +35,7 @@
   border: 1px solid color-mix(in srgb, var(--detail-accent) 14%, transparent);
   border-radius: clamp(1.25rem, 2.5vw, 2rem);
   display: grid;
-  grid-template-columns: minmax(0, 1.42fr) minmax(22rem, .58fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(22rem, .92fr);
   min-height: clamp(30rem, 43vw, 37rem);
   overflow: hidden;
 }
@@ -84,11 +84,14 @@
 }
 
 .heroVisual {
+  align-self: center;
+  aspect-ratio: 16 / 9;
   border-radius: 1.25rem;
   margin: clamp(.65rem, 1.2vw, 1.1rem);
-  min-height: 24rem;
+  min-height: 0;
   overflow: hidden;
   position: relative;
+  width: auto;
 }
 
 .heroVisual img {
@@ -320,7 +323,7 @@
   }
 
   .heroVisual {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     margin: 0 .5rem .5rem;
     min-height: 0;
   }

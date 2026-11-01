@@ -5,6 +5,10 @@ import { createDataAttribute } from '@sanity/visual-editing';
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import type { ContentBlock, ContentRecord } from '@/content/types';
 import { bindPhrases } from '@/lib/vietnamese-text';
+import { LocalizedDate } from '@/lib/i18n/localized-date';
+
+import { EditableBlocks } from '@/components/admin/editable-blocks';
+import { EditableText } from '@/components/admin/editable-text';
 
 import { ContentBlocks } from './content-blocks';
 import { heroVisualForPath, profileForPath, SectionSubnav } from './inner-page-chrome';
@@ -84,14 +88,18 @@ function normalizeBlocks(blocks: ContentBlock[]): ContentBlock[] {
         links: block.links.map((link) => ({ ...link, label: normalizeVisibleText(link.label) })),
       };
     }
+    if (block.type === 'canvas') {
+      return {
+        ...block,
+        items: block.items.map((item) =>
+          item.kind === 'text'
+            ? { ...item, text: normalizeVisibleText(item.text) }
+            : { ...item, alt: item.alt ? normalizeVisibleText(item.alt) : undefined },
+        ),
+      };
+    }
     return { ...block, title: normalizeVisibleText(block.title) };
   });
-}
-
-function formattedDate(value: string) {
-  return new Intl.DateTimeFormat('vi-VN', { dateStyle: 'long' }).format(
-    new Date(`${value}T00:00:00Z`),
-  );
 }
 
 function factEntries(record: ContentRecord) {
@@ -120,14 +128,16 @@ function DetailFacts({ record }: { record: ContentRecord }) {
     <>
       {record.publishedAt ? (
         <div>
-          <dt>Ngày công bố</dt>
-          <dd><time dateTime={record.publishedAt}>{formattedDate(record.publishedAt)}</time></dd>
+          <dt>{vietnameseText('Ngày công bố')}</dt>
+          <dd><time dateTime={record.publishedAt}><LocalizedDate value={record.publishedAt} /></time></dd>
         </div>
       ) : null}
       {entries.map(({ label, value }) => (
         <div key={label}>
           <dt>{vietnameseText(label)}</dt>
-          <dd>{vietnameseText(Array.isArray(value) ? value.join(', ') : value)}</dd>
+          <dd data-copy="body">{Array.isArray(value)
+            ? value.map((item, index) => <span key={`${item}-${index}`}>{index ? ', ' : ''}{vietnameseText(item)}</span>)
+            : vietnameseText(value)}</dd>
         </div>
       ))}
     </>
@@ -142,7 +152,15 @@ function DetailFacts({ record }: { record: ContentRecord }) {
   );
 }
 
-export function EcosystemDetailTemplate({ record, editDocumentId }: { record: ContentRecord; editDocumentId?: string }) {
+export function EcosystemDetailTemplate({
+  record,
+  editDocumentId,
+  editable = false,
+}: {
+  record: ContentRecord;
+  editDocumentId?: string;
+  editable?: boolean;
+}) {
   if (!supportsEcosystemDetailTemplate(record)) return null;
 
   const direction = DETAIL_DIRECTIONS[record.kind as EcosystemKind];
@@ -177,9 +195,21 @@ export function EcosystemDetailTemplate({ record, editDocumentId }: { record: Co
 
         <header className={styles.hero} data-title-length={record.title.length > 52 ? 'long' : 'standard'}>
           <div className={styles.heroCopy}>
-            <p className={styles.heroTopic}>{vietnameseText(direction.topic)}</p>
-            <h1 data-sanity={editField('title')}>{vietnameseText(record.title)}</h1>
-            <p className={styles.heroDescription} data-sanity={editField('summary')}>{vietnameseText(record.summary)}</p>
+            <p className={styles.heroTopic} data-copy="label">{vietnameseText(direction.topic)}</p>
+            <h1 data-sanity={editField('title')}>
+              {editable ? (
+                <EditableText field="title" label="Tiêu đề bài viết" placeholder="Nhập tiêu đề bài viết…" />
+              ) : (
+                vietnameseText(record.title)
+              )}
+            </h1>
+            <p className={styles.heroDescription} data-copy="body" data-sanity={editField('summary')}>
+              {editable ? (
+                <EditableText field="summary" label="Giới thiệu ngắn" placeholder="Một hai câu tóm tắt nội dung…" />
+              ) : (
+                vietnameseText(record.summary)
+              )}
+            </p>
           </div>
           <figure
             className={styles.heroVisual}
@@ -200,7 +230,7 @@ export function EcosystemDetailTemplate({ record, editDocumentId }: { record: Co
 
         {record.kind === 'notice' ? (
           <p className={styles.archiveNotice}>
-            Thông báo này thuộc kho lưu trữ. Vui lòng xác nhận trực tiếp với GISA nếu cần kiểm tra hiệu lực hiện tại.
+            {vietnameseText('Thông báo này thuộc kho lưu trữ. Vui lòng xác nhận trực tiếp với GISA nếu cần kiểm tra hiệu lực hiện tại.')}
           </p>
         ) : null}
         {record.kind === 'news' ? <DetailFacts record={record} /> : null}
@@ -209,15 +239,14 @@ export function EcosystemDetailTemplate({ record, editDocumentId }: { record: Co
           <div className={styles.body}>
             {record.kind === 'partner' ? (
               <section className={styles.partnerEvidence} aria-labelledby="partner-information-scope">
-                <p>Hồ sơ đối tác</p>
-                <h2 id="partner-information-scope">Phạm vi thông tin hiện có</h2>
+                <p data-copy="label">{vietnameseText('Hồ sơ đối tác')}</p>
+                <h2 id="partner-information-scope">{vietnameseText('Phạm vi thông tin hiện có')}</h2>
                 <p>
-                  Hiện hồ sơ chỉ ghi nhận <strong>{vietnameseText(record.title)}</strong> có mặt
-                  trong bộ logo đối tác do GISA cung cấp.
+                  {vietnameseText('Hiện hồ sơ chỉ ghi nhận')}{' '}<strong>{vietnameseText(record.title)}</strong>{' '}
+                  {vietnameseText('có mặt trong bộ logo đối tác do GISA cung cấp.')}
                 </p>
                 <p>
-                  Chưa có dữ liệu đã xác minh về dự án, vai trò hoặc giai đoạn hợp tác để
-                  hiển thị trên website.
+                  {vietnameseText('Chưa có dữ liệu đã xác minh về dự án, vai trò hoặc giai đoạn hợp tác để hiển thị trên website.')}
                 </p>
               </section>
             ) : record.kind === 'news' ? (
@@ -226,10 +255,10 @@ export function EcosystemDetailTemplate({ record, editDocumentId }: { record: Co
                 aria-label="Nội dung bài viết"
                 data-sanity={editField('body')}
               >
-                <ContentBlocks blocks={normalizeBlocks(record.body)} />
+                {editable ? <EditableBlocks /> : <ContentBlocks blocks={normalizeBlocks(record.body)} />}
               </section>
             ) : (
-              <ContentBlocks blocks={normalizeBlocks(record.body)} />
+              <>{editable ? <EditableBlocks /> : <ContentBlocks blocks={normalizeBlocks(record.body)} />}</>
             )}
             <ArticleFooter className={record.kind === 'news' ? styles.articleFooter : undefined}>
               <section className={styles.actionClosure} aria-label="Bước tiếp theo">

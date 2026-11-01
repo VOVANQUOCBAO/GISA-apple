@@ -1491,8 +1491,11 @@
 :global(html[lang='en']) .fieldsIntro {
   font-size: clamp(1.4rem, 2vw, 2rem);
   line-height: 1.5;
-  text-align: center;
-  text-wrap: balance;
+  /* English prose keeps the same two clean edges as every other template:
+     the block stays centred by its width, not by every line. */
+  text-align: justify;
+  text-align-last: start;
+  text-wrap: pretty;
 }
 @media (max-width: 48rem) {
   :global(html[lang='en']) .fieldGrid { display: grid; grid-template-columns: minmax(0, 1fr); }

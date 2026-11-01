@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { buildMetadata } from '@/components/seo/build-metadata';
+import { buildLocalizedMetadata } from '@/components/seo/localized-metadata';
 
 import { LandingClient } from './landing-client';
 
@@ -13,13 +13,15 @@ import { LandingClient } from './landing-client';
  * navigation or the sitemap yet, and is marked `noindex` until the mock
  * commercial data in `data.ts` is replaced with confirmed information.
  */
-export const metadata: Metadata = buildMetadata({
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocalizedMetadata({
   description:
     'Chương trình đào tạo ứng dụng của GISA: kết hợp khoa học hành vi và tư duy thiết kế để thấu hiểu khách hàng, kiến tạo giá trị và tăng trưởng bền vững.',
   indexable: false,
   path: '/landing-bdt',
   title: 'Behavioral Design Thinking for Sustainable Sales & Marketing',
 });
+}
 
 export default function LandingBdtPage() {
   return <LandingClient />;

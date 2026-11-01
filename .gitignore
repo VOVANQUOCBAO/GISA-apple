@@ -25,6 +25,7 @@ debug.log
 .design-references/
 artifacts/
 design-qa.md
+dist/
 
 # Local scratch produced while iterating on the design — screenshots, probe
 # scripts and image experiments. None of it is referenced by the app.
@@ -34,3 +35,9 @@ dev-server.cmd
 
 .vercel
 .env*
+
+# Admin chạy thử trên máy: bản nháp, bản đã đăng và ảnh tải lên đều là dữ liệu
+# cục bộ, không commit.
+content-data/admin/
+public/media/uploads/
+.next-admin/

@@ -97,7 +97,7 @@ export function PublicationTemplate({
               {facts.map((fact) => (
                 <div className={fact.wide ? styles.articleFactWide : undefined} key={fact.label}>
                   <dt>{bindPhrases(fact.label)}</dt>
-                  <dd>{fact.value}</dd>
+                  <dd>{bindPhrases(fact.value)}</dd>
                 </div>
               ))}
             </dl>
@@ -119,7 +119,7 @@ export function PublicationTemplate({
 
         <div className={styles.articleReading} data-publication-reading>
           <section aria-labelledby="publication-abstract" className={styles.articleAbstract}>
-            <h2 id="publication-abstract">Tóm tắt</h2>
+            <h2 id="publication-abstract">{bindPhrases('Tóm tắt')}</h2>
             <p className={styles.articleLede}>{bindPhrases(record.summary)}</p>
           </section>
           <section aria-labelledby="trich-dan" className={styles.citationCard} data-citation-layout="inline">
@@ -127,7 +127,7 @@ export function PublicationTemplate({
               {bindPhrases('Trích dẫn và nguồn')}
             </h2>
             {citation ? (
-              <p className={styles.citationText}>{citation}</p>
+              <p className={styles.citationText}>{bindPhrases(citation)}</p>
             ) : null}
             <div className={styles.citationLinks}>
               <a
@@ -158,7 +158,7 @@ export function PublicationTemplate({
           {record.tags.length > 0 ? (
             <ul aria-label="Từ khóa" className={styles.articleTags}>
               {record.tags.map((tag) => (
-                <li key={tag}>{tag}</li>
+                <li key={tag}>{bindPhrases(tag)}</li>
               ))}
             </ul>
           ) : null}

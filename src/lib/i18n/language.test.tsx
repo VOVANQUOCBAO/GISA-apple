@@ -18,12 +18,14 @@ describe('English copy from the four supplied documents', () => {
     expect(document.documentElement.lang).toBe('en');
   });
 
-  test('leaves sections without supplied English content in Vietnamese', () => {
+  test('keeps English selected on every public section and utility route', () => {
     route.path = '/dao-tao/linh-vuc';
     render(<LanguageProvider language="en"><h1>{bindPhrases('Đào tạo')}</h1></LanguageProvider>);
-    expect(screen.getByRole('heading', { name: 'Đào tạo' })).toBeVisible();
-    expect(document.documentElement.lang).toBe('vi');
-    expect(hasEnglishContent('/tin-tuc/example')).toBe(false);
+    expect(screen.getByRole('heading', { name: 'Training' })).toBeVisible();
+    expect(document.documentElement.lang).toBe('en');
+    for (const path of ['/tin-tuc/example', '/khoa-hoc/example', '/ung-dung/linh-vuc', '/dang-ky/tu-van', '/lien-he', '/tim-kiem']) {
+      expect(hasEnglishContent(path)).toBe(true);
+    }
   });
 
   test('keeps original Vietnamese and unknown content intact', () => {

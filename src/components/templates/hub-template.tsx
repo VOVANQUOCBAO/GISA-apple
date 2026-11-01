@@ -71,9 +71,9 @@ export function HubTemplate({ definition }: { definition: HubDefinition }) {
           >
             <header className={hubStyles.introduction}>
               <div>
-                <p className={hubStyles.eyebrow}>Lộ trình nội dung</p>
+                <p className={hubStyles.eyebrow}>{bindPhrases("Lộ trình nội dung")}</p>
                 <h2 id="hub-navigation-title">
-                  {bindPhrases(`Khám phá ${definition.title}`)}
+                  {bindPhrases('Khám phá')} {bindPhrases(definition.title)}
                 </h2>
               </div>
             </header>
@@ -92,7 +92,7 @@ export function HubTemplate({ definition }: { definition: HubDefinition }) {
                         weight="duotone"
                       />
                     </span>
-                    <span>Điểm bắt đầu · 01</span>
+                    <span>{bindPhrases("Điểm bắt đầu · 01")}</span>
                   </div>
                   <div className={hubStyles.featuredCopy}>
                     <h3>{bindPhrases(featuredEntry.title)}</h3>
@@ -100,9 +100,7 @@ export function HubTemplate({ definition }: { definition: HubDefinition }) {
                       <p>{bindPhrases(featuredEntry.description)}</p>
                     ) : null}
                   </div>
-                  <span className={hubStyles.featuredAction}>
-                    Khám phá chuyên mục
-                    <Icon aria-hidden="true" name="arrow" size={20} />
+                  <span className={hubStyles.featuredAction}>{bindPhrases(" Khám phá chuyên mục ")}<Icon aria-hidden="true" name="arrow" size={20} />
                   </span>
                 </Link>
               </article>
@@ -113,10 +111,9 @@ export function HubTemplate({ definition }: { definition: HubDefinition }) {
                   className={hubStyles.pathIndex}
                 >
                   <div className={hubStyles.indexHeading}>
-                    <p>Các hướng khám phá</p>
+                    <p>{bindPhrases("Các hướng khám phá")}</p>
                     <span>
-                      {String(indexEntries.length).padStart(2, '0')} mục tiếp theo
-                    </span>
+                      {String(indexEntries.length).padStart(2, '0')}{bindPhrases(" mục tiếp theo ")}</span>
                   </div>
                   <ol>
                     {indexEntries.map((entry, index) => (

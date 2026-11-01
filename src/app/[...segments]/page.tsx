@@ -3,14 +3,17 @@ import { draftMode } from 'next/headers';
 import { notFound, redirect } from 'next/navigation';
 import { VisualEditing } from 'next-sanity/visual-editing';
 
-import { buildMetadata } from '@/components/seo/build-metadata';
+import { buildLocalizedMetadata } from '@/components/seo/localized-metadata';
 import { StructuredData } from '@/components/seo/structured-data.tsx';
+import { StaticPageShell } from '@/components/studio/static-page-shell';
 import { TemplateRouter } from '@/components/templates/template-router';
 import { EcosystemDetailTemplate } from '@/components/templates/ecosystem-detail-template';
 import { PreviewRefresh } from '@/components/sanity/preview-refresh';
 import type { UrlQuery } from '@/components/ui/filter-bar';
 import { PAGE_REGISTRY, resolvePage } from '@/content/pages';
 import { getContentRepository } from '@/content/repositories';
+import type { StudioDoc } from '@/components/studio/types';
+import { findPublishedStudioPage } from '@/lib/admin/studio-store';
 import { getDraftPost } from '@/sanity/draft-post';
 
 export const revalidate = 60;
@@ -37,6 +40,12 @@ export default async function ContentPage({
 
   if (definition.template === 'hub') {
     redirect(definition.childPaths[0] ?? '/');
+  }
+
+  // Trang đã được dựng lại trong studio: hiển thị bản dựng thay cho template gốc.
+  const studioPage = await findPublishedStudioPage(path);
+  if (studioPage) {
+    return <StaticPageShell doc={studioPage.doc} />;
   }
 
   if (definition.template === 'detail') {
@@ -79,6 +88,17 @@ export default async function ContentPage({
   );
 }
 
+function studioDescription(doc: StudioDoc): string {
+  const text =
+    doc.elements.find(
+      (element) => element.kind === 'text' && element.role === 'body' && element.text.trim().length > 40,
+    ) ?? doc.elements.find((element) => element.kind === 'text' && element.text.trim().length > 0);
+
+  return text && text.kind === 'text'
+    ? text.text.replace(/\s+/gu, ' ').slice(0, 160)
+    : doc.title;
+}
+
 export async function generateMetadata({
   params,
 }: ContentPageProps): Promise<Metadata> {
@@ -87,18 +107,45 @@ export async function generateMetadata({
   const definition = resolvePage(path);
   if (!definition) return {};
 
-  if (definition.template === 'detail') {
-    const record = await getContentRepository().getByPath(path);
-    return record
-      ? buildMetadata({
-          description: record.summary,
-          path: record.path,
-          title: record.title,
-        })
-      : {};
+  const studioPage = await findPublishedStudioPage(path);
+  if (studioPage) {
+    return buildLocalizedMetadata({
+      description: studioDescription(studioPage.doc),
+      path,
+      title: studioPage.title,
+    });
   }
 
-  return buildMetadata({
+  if (definition.template === 'detail') {
+    const record = await getContentRepository().getByPath(path);
+    if (!record) return {};
+
+    const isArticle = record.kind === 'news' || record.kind === 'publication';
+    const author =
+      typeof record.metadata.author === 'string'
+        ? record.metadata.author.trim()
+        : '';
+    const updatedAt =
+      typeof record.metadata.updatedAt === 'string'
+        ? record.metadata.updatedAt
+        : '';
+    const seoTitle = (record.seo?.title ?? '')
+      .replace(/\s*\|\s*GISA\s*$/i, '')
+      .trim();
+
+    return buildLocalizedMetadata({
+      description: record.seo?.description?.trim() || record.summary,
+      path: record.path,
+      title: seoTitle || record.title,
+      ...(record.image ? { image: record.image } : {}),
+      type: isArticle ? 'article' : 'website',
+      ...(record.publishedAt ? { publishedTime: record.publishedAt } : {}),
+      ...(updatedAt ? { modifiedTime: updatedAt } : {}),
+      ...(author ? { authors: [author] } : {}),
+    });
+  }
+
+  return buildLocalizedMetadata({
     description: definition.description,
     path,
     title: definition.title,

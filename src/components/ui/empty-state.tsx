@@ -1,3 +1,4 @@
+import { bindPhrases } from '@/lib/vietnamese-text';
 import type { ReactNode } from 'react';
 
 import styles from './ui.module.css';
@@ -11,8 +12,8 @@ interface EmptyStateProps {
 export function EmptyState({ action, description, title }: EmptyStateProps) {
   return (
     <section className={styles.emptyState}>
-      <h2>{title}</h2>
-      <p>{description}</p>
+      <h2>{bindPhrases(title)}</h2>
+      <p>{bindPhrases(description)}</p>
       {action}
     </section>
   );

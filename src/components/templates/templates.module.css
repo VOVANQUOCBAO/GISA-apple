@@ -172,6 +172,58 @@
   width: 100%;
 }
 
+/* Hai dáng khung do biên tập chọn trong admin. Ảnh gốc có thể không vuông nên
+   phải `object-fit: cover`, nếu không mặt người sẽ bị bóp méo. */
+.blockFigureSquare {
+  max-width: 22rem;
+}
+
+.blockFigureSquare img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.blockFigureCircle {
+  max-width: 15rem;
+}
+
+.blockFigureCircle img {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Vùng dựng tự do: khung tỉ lệ cố định, các phần tử đặt theo phần trăm để co
+   giãn theo bề rộng trang thay vì lệch khi màn hình hẹp lại. */
+.canvasBlock {
+  position: relative;
+  width: 100%;
+  margin-block: 1.6rem;
+  overflow: hidden;
+  border-radius: 12px;
+  container-type: inline-size;
+}
+
+.canvasItem {
+  position: absolute;
+}
+
+.canvasItem img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.canvasText {
+  margin: 0;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(13px, 2.4cqw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
 /* Dùng khi manifest chưa khai kích thước: `next/image` ở chế độ `fill` cần một
    khung có kích thước xác định, nếu không ảnh sẽ không chiếm chỗ nào cả. */
 .blockFigureFrame {
@@ -1029,11 +1081,16 @@
 }
 
 .innerHeroVisual {
+  align-self: center;
   border-radius: clamp(1.1rem, 2vw, 1.75rem);
   margin: clamp(0.65rem, 1.3vw, 1.2rem);
-  min-height: 20rem;
+  /* The frame follows the supplied artwork instead of stretching to the text
+     column: infographic banners keep their full width and are never cropped. */
+  min-height: 0;
   overflow: hidden;
+  padding-bottom: 4.25rem;
   position: relative;
+  width: auto;
   z-index: 1;
 }
 
@@ -1042,10 +1099,12 @@
 }
 
 .innerHeroVisual img {
-  height: 100%;
-  object-fit: cover;
+  height: auto !important;
+  inset: auto !important;
+  object-fit: contain;
   object-position: center;
-  width: 100%;
+  position: static !important;
+  width: 100% !important;
 }
 
 .innerHeroGlass {
@@ -1737,9 +1796,10 @@ ol.proseList li::before {
   }
 
   .innerHeroVisual {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: auto;
     margin: 0 0.55rem 0.55rem;
     min-height: 0;
+    padding-bottom: 3.75rem;
   }
 
   .innerHeroGlass {

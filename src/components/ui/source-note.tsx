@@ -1,3 +1,5 @@
+import { bindPhrases } from '@/lib/vietnamese-text';
+import { LocalizedDate } from '@/lib/i18n/localized-date';
 import styles from './ui.module.css';
 
 interface SourceNoteProps {
@@ -13,9 +15,9 @@ export function SourceNote({
 }: SourceNoteProps) {
   return (
     <aside aria-label="Nguồn nội dung" className={styles.sourceNote}>
-      <strong>Nguồn:</strong>{' '}
-      <a href={sourceUrl}>{sourceLabel}</a>
-      <span>Kiểm tra ngày {checkedAt}.</span>
+      <strong>{bindPhrases("Nguồn:")}</strong>{' '}
+      <a href={sourceUrl}>{bindPhrases(sourceLabel)}</a>
+      <span>{bindPhrases("Kiểm tra ngày ")}<LocalizedDate value={checkedAt} />.</span>
     </aside>
   );
 }

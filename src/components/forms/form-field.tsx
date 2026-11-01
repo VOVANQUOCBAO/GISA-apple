@@ -1,3 +1,4 @@
+import { bindPhrases } from '@/lib/vietnamese-text';
 import type { ReactNode } from 'react';
 
 import styles from './form.module.css';
@@ -19,13 +20,13 @@ export function FormField({
   return (
     <div className={styles.field}>
       <label htmlFor={id}>
-        {label}
+        {bindPhrases(label)}
         {required ? <span aria-hidden="true"> *</span> : null}
       </label>
       {children}
       {error ? (
         <p className={styles.fieldError} id={`${id}-error`}>
-          {error}
+          {bindPhrases(error)}
         </p>
       ) : null}
     </div>

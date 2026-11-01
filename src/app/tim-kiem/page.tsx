@@ -1,6 +1,7 @@
+import { bindPhrases } from '@/lib/vietnamese-text';
 import type { Metadata } from 'next';
 
-import { buildMetadata } from '@/components/seo/build-metadata';
+import { buildLocalizedMetadata } from '@/components/seo/localized-metadata';
 import { Breadcrumbs } from '@/components/site/breadcrumbs';
 import { SearchForm } from '@/components/search/search-form';
 import {
@@ -12,12 +13,14 @@ import type { Collection } from '@/content/types';
 
 import styles from '../../components/search/search.module.css';
 
-export const metadata: Metadata = buildMetadata({
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocalizedMetadata({
   description: 'Tìm nội dung công khai trên website GISA.',
   indexable: false,
   path: '/tim-kiem',
   title: 'Tìm kiếm',
 });
+}
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -65,11 +68,8 @@ export default async function SearchPage({
         items={[{ href: '/', label: 'Trang chủ' }, { label: 'Tìm kiếm' }]}
       />
       <header className={styles.pageHeader}>
-        <h1>Tìm kiếm</h1>
-        <p>
-          Tìm nhanh trong các bài viết, chương trình và tài liệu đang được công
-          khai trên website GISA.
-        </p>
+        <h1>{bindPhrases("Tìm kiếm")}</h1>
+        <p>{bindPhrases(" Tìm nhanh trong các bài viết, chương trình và tài liệu đang được công khai trên website GISA. ")}</p>
       </header>
       <SearchForm query={query} selectedCollection={selectedCollection} />
       <SearchResults

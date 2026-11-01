@@ -62,8 +62,10 @@ export function PublicationIndex({ items }: { items: ContentSummary[] }) {
           />
         </Link>
         <div className={styles.leadCopy}>
-          <p className={styles.entryMeta}>
-            {[leadMeta.topic, leadMeta.year].filter(Boolean).join(' · ')}
+          <p className={styles.entryMeta} data-copy="label">
+            {leadMeta.topic ? bindPhrases(leadMeta.topic) : null}
+            {leadMeta.topic && leadMeta.year ? ' · ' : null}
+            {leadMeta.year}
           </p>
           <h2 className={styles.leadTitle}>
             <Link href={lead.path}>{bindPhrases(lead.title)}</Link>

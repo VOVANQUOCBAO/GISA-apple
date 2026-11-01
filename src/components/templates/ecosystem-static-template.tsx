@@ -595,7 +595,7 @@ export function EcosystemStaticTemplate({
             ) : null}
 
             {!introduction.length && !chapters.length ? (
-              <p className={styles.emptyState}>{EDITORIAL_EMPTY_COPY.static}</p>
+              <p className={styles.emptyState}>{vietnameseText(EDITORIAL_EMPTY_COPY.static)}</p>
             ) : null}
           </div>
         </section>

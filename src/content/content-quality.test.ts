@@ -42,6 +42,12 @@ function collectBlockStrings(block: ContentBlock, path: string): LocatedString[]
       ];
     case 'linkGroup':
       return block.links.flatMap((link, index) => stringAt(`${path}.links[${index}].label`, link.label));
+    case 'canvas':
+      return block.items.flatMap((item, index) =>
+        item.kind === 'text'
+          ? stringAt(`${path}.items[${index}].text`, item.text)
+          : stringAt(`${path}.items[${index}].alt`, item.alt),
+      );
     case 'video':
       return stringAt(`${path}.title`, block.title);
   }

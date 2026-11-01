@@ -59,7 +59,7 @@ export function supportsKnowledgePracticeListing(path: string) {
 }
 
 function visibleText(text: string) {
-  return bindPhrases(text.replace(/\s*[—–]\s*/g, ' · ').replace(/\s{2,}/g, ' ').trim());
+  return bindPhrases(text.replace(/\s{2,}/g, ' ').trim());
 }
 
 function metadataText(item: ContentSummary, key: string) {
@@ -71,7 +71,6 @@ function ProjectEntry({ index, item }: { index: number; item: ContentSummary }) 
   const topic = metadataText(item, 'topic');
   const projectType = metadataText(item, 'projectType');
   const logo = metadataText(item, 'logo');
-  const projectMeta = [projectType, topic].filter(Boolean).join(' · ');
 
   return (
     <article className={styles.projectEntry}>
@@ -96,10 +95,16 @@ function ProjectEntry({ index, item }: { index: number; item: ContentSummary }) 
         ) : null}
       </div>
       <div className={styles.projectCopy}>
-        {projectMeta ? <p className={styles.projectMeta} data-copy="label">{visibleText(projectMeta)}</p> : null}
+        {projectType || topic ? (
+          <p className={styles.projectMeta} data-copy="label">
+            {projectType ? visibleText(projectType) : null}
+            {projectType && topic ? ' · ' : null}
+            {topic ? visibleText(topic) : null}
+          </p>
+        ) : null}
         <h3><Link href={item.path}>{visibleText(item.title)}</Link></h3>
         <p className={styles.projectSummary}>{visibleText(item.summary)}</p>
-        <Link className={styles.textLink} href={item.path}>Đọc hồ sơ dự án</Link>
+        <Link className={styles.textLink} href={item.path}>{bindPhrases("Đọc hồ sơ dự án")}</Link>
       </div>
     </article>
   );
@@ -243,7 +248,7 @@ export function KnowledgePracticeListingTemplate({
           )
         ) : hasQuery || hasFilters ? (
           <EmptyState
-            action={<ButtonLink href={path}>Xóa bộ lọc</ButtonLink>}
+            action={<ButtonLink href={path}>{bindPhrases("Xóa bộ lọc")}</ButtonLink>}
             description={EDITORIAL_EMPTY_COPY.filtered.description}
             title={EDITORIAL_EMPTY_COPY.filtered.title}
           />

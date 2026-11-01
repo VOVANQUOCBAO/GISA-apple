@@ -494,6 +494,10 @@
   font-size: clamp(1.5rem, 3.4vw, 2.65rem);
   line-height: 1.35;
   margin: 0;
+  /* These statement lines are deliberately centred under the quote mark and
+     opt out of the body-prose justify contract with data-copy="statement". */
+  text-align: center;
+  text-align-last: center;
 }
 
 .philosophyBand p:last-child {
@@ -953,6 +957,10 @@
   font-size: clamp(1.5rem, 3.2vw, 2.5rem);
   line-height: 1.35;
   margin: 0 0 1.5rem;
+  /* Keep the closing statement, its translation and the buttons on one
+     centred axis; both carry data-copy="statement". */
+  text-align: center;
+  text-align-last: center;
 }
 
 .closing p {
@@ -962,6 +970,8 @@
   line-height: 1.7;
   margin: 0 auto 2.75rem;
   max-width: 46rem;
+  text-align: center;
+  text-align-last: center;
 }
 
 .closingActions {

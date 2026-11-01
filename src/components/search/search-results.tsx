@@ -1,3 +1,4 @@
+import { bindPhrases } from '@/lib/vietnamese-text';
 import Link from 'next/link';
 
 import { ContentCard } from '@/components/ui/content-card';
@@ -48,10 +49,10 @@ export function SearchResults({
       <EmptyState
         action={
           <div className={styles.suggestions}>
-            <Link href="/nghien-cuu">Nghiên cứu</Link>
-            <Link href="/dao-tao">Đào tạo</Link>
-            <Link href="/cong-dong">Cộng đồng</Link>
-            <Link href="/tin-tuc">Tin tức</Link>
+            <Link href="/nghien-cuu">{bindPhrases("Nghiên cứu")}</Link>
+            <Link href="/dao-tao">{bindPhrases("Đào tạo")}</Link>
+            <Link href="/cong-dong">{bindPhrases("Cộng đồng")}</Link>
+            <Link href="/tin-tuc">{bindPhrases("Tin tức")}</Link>
           </div>
         }
         description="Nhập từ khóa ở trên hoặc bắt đầu từ một nhóm nội dung để khám phá nghiên cứu, dự án, khóa học và hoạt động của GISA."
@@ -65,21 +66,19 @@ export function SearchResults({
   return (
     <section aria-labelledby="search-results-heading" className={styles.results}>
       <div className={styles.resultsHeader}>
-        <h2 id="search-results-heading">Kết quả tìm kiếm</h2>
+        <h2 id="search-results-heading">{bindPhrases("Kết quả tìm kiếm")}</h2>
         <p aria-live="polite">
-          <strong>{result.total}</strong> kết quả cho “{query}”
+          <strong>{result.total}</strong>{bindPhrases(" kết quả cho “")}{query}”
         </p>
       </div>
 
       <fieldset className={styles.typeFilters}>
-        <legend>Lọc theo loại nội dung</legend>
+        <legend>{bindPhrases("Lọc theo loại nội dung")}</legend>
         <div>
           <Link
             aria-current={!selectedCollection ? 'true' : undefined}
             href={searchHref(query)}
-          >
-            Tất cả
-          </Link>
+          >{bindPhrases(" Tất cả ")}</Link>
           {SEARCH_COLLECTION_OPTIONS.map((option) => (
             <Link
               aria-current={
@@ -88,7 +87,7 @@ export function SearchResults({
               href={searchHref(query, option.value)}
               key={option.value}
             >
-              {option.label}
+              {bindPhrases(option.label)}
             </Link>
           ))}
         </div>
@@ -102,7 +101,7 @@ export function SearchResults({
         </div>
       ) : (
         <EmptyState
-          action={<Link href="/tim-kiem">Xóa tìm kiếm</Link>}
+          action={<Link href="/tim-kiem">{bindPhrases("Xóa tìm kiếm")}</Link>}
           description="Thử từ khóa ngắn hơn, chọn loại nội dung khác hoặc xóa tìm kiếm."
           title="Không tìm thấy kết quả"
         />

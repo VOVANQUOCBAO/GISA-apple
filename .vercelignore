@@ -1,4 +1,6 @@
 studio/
+infinity-admin/
+dist/
 node_modules/
 .next/
 .git/

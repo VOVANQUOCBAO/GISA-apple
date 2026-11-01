@@ -329,6 +329,9 @@
   font-size: .96rem;
   line-height: 1.62;
   margin-top: .35rem;
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-word;
 }
 
 .subsectionGrid {

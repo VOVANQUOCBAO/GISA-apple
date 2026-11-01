@@ -7,7 +7,10 @@ import { resolvePublishableAsset } from '@/content/assets';
 import { resolvePage } from '@/content/pages';
 import type { ContentBlock, ContentRecord } from '@/content/types';
 import { toAnchorId } from '@/lib/anchor-id';
+import { plainText } from '@/lib/inline-format';
 import { bindPhrases } from '@/lib/vietnamese-text';
+
+import { InlineText } from './inline-text';
 
 import styles from './templates.module.css';
 import detailStyles from './detail-page.module.css';
@@ -39,9 +42,16 @@ function detailFactCount(record: ContentRecord) {
 function precedingHeadingId(blocks: ContentBlock[], index: number) {
   for (let cursor = index - 1; cursor >= 0; cursor -= 1) {
     const block = blocks[cursor];
-    if (block?.type === 'heading') return toAnchorId(block.text);
+    if (block?.type === 'heading') return toAnchorId(plainText(block.text));
   }
   return '';
+}
+
+/** Dáng khung ảnh: ngang (mặc định), vuông hoặc tròn. */
+function figureClass(shape: 'wide' | 'square' | 'circle' | undefined): string {
+  if (shape === 'square') return `${styles.blockFigure} ${styles.blockFigureSquare}`;
+  if (shape === 'circle') return `${styles.blockFigure} ${styles.blockFigureCircle}`;
+  return styles.blockFigure;
 }
 
 export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
@@ -49,7 +59,7 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
     <div className={styles.prose}>
       {blocks.map((block, index) => {
         if (block.type === 'paragraph') {
-          return <p className={styles.proseParagraph} data-scroll-motion="item" key={`${block.type}-${index}`}>{bindPhrases(block.text)}</p>;
+          return <p className={styles.proseParagraph} data-scroll-motion="item" key={`${block.type}-${index}`}><InlineText bind={bindPhrases} text={block.text} /></p>;
         }
         if (block.type === 'list') {
           const List = block.ordered ? 'ol' : 'ul';
@@ -57,21 +67,45 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
           return (
             <List className={styles.proseList} data-copy="list" data-scroll-motion="reveal" key={`${block.type}-${index}`}>
               {block.items.map((item) => (
-                <li data-copy="body" id={activeHeadingId ? `${activeHeadingId}-${toAnchorId(item)}` : undefined} key={item}>{bindPhrases(item)}</li>
+                <li data-copy="body" id={activeHeadingId ? `${activeHeadingId}-${toAnchorId(plainText(item))}` : undefined} key={item}><InlineText bind={bindPhrases} text={item} /></li>
               ))}
             </List>
           );
         }
         if (block.type === 'heading') {
           const Heading = block.level === 2 ? 'h2' : 'h3';
-          return <Heading className={styles.proseHeading} id={toAnchorId(block.text)} key={`${block.type}-${index}`}>{bindPhrases(block.text)}</Heading>;
+          return <Heading className={styles.proseHeading} id={toAnchorId(plainText(block.text))} key={`${block.type}-${index}`}><InlineText bind={bindPhrases} text={block.text} /></Heading>;
         }
         if (block.type === 'quote') {
           return (
             <blockquote className={styles.proseQuote} data-scroll-motion="reveal" key={`${block.type}-${index}`}>
-              <p>{bindPhrases(block.text)}</p>
+              <p><InlineText bind={bindPhrases} text={block.text} /></p>
               {block.attribution ? <cite>{bindPhrases(block.attribution)}</cite> : null}
             </blockquote>
+          );
+        }
+        if (block.type === 'canvas') {
+          return (
+            <div
+              className={styles.canvasBlock}
+              key={`${block.type}-${index}`}
+              style={{ aspectRatio: `1 / ${block.ratio ?? 0.62}` }}
+            >
+              {block.items.map((item) => (
+                <div
+                  className={styles.canvasItem}
+                  key={item.id}
+                  style={{ left: `${item.x}%`, top: `${item.y}%`, width: `${item.w}%` }}
+                >
+                  {item.kind === 'image' ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img alt={item.alt ?? ''} src={item.assetId} />
+                  ) : (
+                    <p className={styles.canvasText}><InlineText bind={bindPhrases} text={item.text} /></p>
+                  )}
+                </div>
+              ))}
+            </div>
           );
         }
         if (block.type === 'table') {
@@ -99,8 +133,26 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
         if (block.type === 'image') {
           if (block.assetId.startsWith('https://cdn.sanity.io/images/j7fuzzrp/production/')) {
             return (
-              <figure className={styles.blockFigure} data-scroll-motion="media" key={`${block.type}-${index}`}>
+              <figure className={figureClass(block.shape)} data-scroll-motion="media" key={`${block.type}-${index}`}>
                 <Image alt={block.caption || 'Ảnh trong bài viết'} height={800} sizes="(max-width: 48rem) 94vw, 44rem" src={block.assetId} width={1200} />
+                {block.caption ? <figcaption>{bindPhrases(block.caption)}</figcaption> : null}
+              </figure>
+            );
+          }
+          if (block.assetId.startsWith('/media/')) {
+            const alt =
+              block.alt?.trim() ||
+              block.caption?.trim() ||
+              'Ảnh trong bài viết';
+            return (
+              <figure className={figureClass(block.shape)} data-scroll-motion="media" key={`${block.type}-${index}`}>
+                <Image
+                  alt={alt}
+                  height={block.height ?? 800}
+                  sizes="(max-width: 48rem) 94vw, 44rem"
+                  src={block.assetId}
+                  width={block.width ?? 1200}
+                />
                 {block.caption ? <figcaption>{bindPhrases(block.caption)}</figcaption> : null}
               </figure>
             );
@@ -113,7 +165,7 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
             return block.caption ? <p key={`${block.type}-${index}`}>{bindPhrases(block.caption)}</p> : null;
           }
           return (
-            <figure className={styles.blockFigure} data-scroll-motion="media" key={`${block.type}-${index}`}>
+            <figure className={figureClass(block.shape)} data-scroll-motion="media" key={`${block.type}-${index}`}>
               {asset.width && asset.height ? (
                 <Image
                   alt={asset.alt}
@@ -182,9 +234,7 @@ export function ContentDetailLayout({
         <SectionSubnav path={record.path} />
         {details && factCount > 0 ? (
           <section className={detailStyles.factsStage} aria-label="Thông tin chính">
-            <p className={detailStyles.factsLabel}>
-              Thông tin chính
-              <span aria-hidden="true">{String(factCount).padStart(2, '0')}</span>
+            <p className={detailStyles.factsLabel}>{bindPhrases(" Thông tin chính ")}<span aria-hidden="true">{String(factCount).padStart(2, '0')}</span>
             </p>
             <div className={`${styles.detailFactsPanel} ${detailStyles.factsContent}`}>
               {details}
@@ -198,7 +248,7 @@ export function ContentDetailLayout({
         >
           {hasContentIndex ? (
             <aside className={detailStyles.readingAside} aria-label="Điều hướng bài viết">
-              <p className={detailStyles.readingLabel}>Trong nội dung này</p>
+              <p className={detailStyles.readingLabel}>{bindPhrases("Trong nội dung này")}</p>
               <ContentIndex blocks={record.body} />
             </aside>
           ) : null}
@@ -206,13 +256,13 @@ export function ContentDetailLayout({
             <ContentBlocks blocks={record.body} />
             <section className={detailStyles.endcap} aria-label="Bước tiếp theo">
               <div className={detailStyles.endcapCopy}>
-                <p className={detailStyles.endcapLabel}>Tiếp tục khám phá</p>
-                <p>{bindPhrases(`Khám phá thêm trong chuyên mục ${parentTitle}`)}</p>
+                <p className={detailStyles.endcapLabel}>{bindPhrases("Tiếp tục khám phá")}</p>
+                <p>{bindPhrases('Khám phá thêm trong chuyên mục')} {bindPhrases(parentTitle)}</p>
               </div>
               <div className={detailStyles.endcapActions}>
                 {actions ? <div className={styles.detailActions}>{actions}</div> : null}
                 <Link className={detailStyles.backLink} href={parentPath}>
-                  {bindPhrases(`Trở về ${parentTitle}`)}
+                  {bindPhrases('Trở về')} {bindPhrases(parentTitle)}
                 </Link>
               </div>
             </section>

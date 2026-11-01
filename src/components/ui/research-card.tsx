@@ -51,8 +51,10 @@ export function ResearchCard({
         )}
       </div>
       <div className={styles.researchBody}>
-        <p className={styles.researchMeta}>
-          {[topic, year].filter(Boolean).join(' · ')}
+        <p className={styles.researchMeta} data-copy="label">
+          {topic ? bindPhrases(topic) : null}
+          {topic && year ? ' · ' : null}
+          {year}
         </p>
         <Heading className={styles.researchTitle}>
           <Link href={item.path}>{bindPhrases(item.title)}</Link>

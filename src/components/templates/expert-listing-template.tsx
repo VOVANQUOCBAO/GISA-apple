@@ -157,7 +157,7 @@ export function ExpertListingTemplate({
           </section>
         ) : hasQuery || hasFilters ? (
           <EmptyState
-            action={<ButtonLink href={path}>Xóa bộ lọc</ButtonLink>}
+            action={<ButtonLink href={path}>{bindPhrases("Xóa bộ lọc")}</ButtonLink>}
             description="Hãy thử từ khóa khác hoặc điều chỉnh lĩnh vực đang chọn."
             title="Không có hồ sơ phù hợp"
           />

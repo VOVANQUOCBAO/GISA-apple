@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 import { GisaForm } from '@/components/forms/gisa-form';
+import { PageText } from '@/components/admin/page-copy';
 import { Icon, type IconName } from '@/components/ui/icon';
 import { Illustration, type IllustrationName } from '@/components/ui/illustration';
 import type { HomePageModel } from '@/content/home';
 import { bindPhrases } from '@/lib/vietnamese-text';
+import { useTranslation } from '@/lib/i18n/language-provider';
 
 import styles from './home-template.module.css';
 import { ExpertShowcase } from './expert-showcase';
@@ -263,6 +265,8 @@ function CountUpValue({ value }: { value: string }) {
 }
 
 export function HomeTemplate({ model }: { model: HomePageModel }) {
+  const t = useTranslation();
+  const dialogCloseRef = useRef<HTMLButtonElement>(null);
   const featuredNews = model.news.slice(0, 3).map((item) => ({
     title: item.title,
     href: item.path,
@@ -314,7 +318,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
       if (event.key === 'Escape') setConsultationOpen(false);
     };
     document.body.style.overflow = 'hidden';
-    document.querySelector<HTMLButtonElement>('button[aria-label="Đóng bảng trao đổi"]')?.focus();
+    dialogCloseRef.current?.focus();
     window.addEventListener('keydown', closeOnEscape);
     return () => {
       document.body.style.overflow = previousOverflow;
@@ -351,7 +355,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
             />
           ))}
         </div>
-        <div className={styles.bannerControls} aria-label="Chọn banner">
+        <div className={styles.bannerControls} aria-label={t('Chọn banner')}>
           {heroSlides.map((slide, index) => (
             <button type="button" key={slide.image} aria-label={`Banner ${index + 1}`} aria-pressed={activeHeroSlide === index} onClick={() => setActiveHeroSlide(index)} />
           ))}
@@ -393,7 +397,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
           <header className={styles.featuredNewsHeading}>
             <div>
               <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`} data-copy="label">{bindPhrases('Nhịp sống GISA')}</p>
-              <h2 id="featured-news-title">{bindPhrases('TIN TỨC & HOẠT ĐỘNG NỔI BẬT')}</h2>
+              <h2 id="featured-news-title"><PageText k="home.news.title" text="TIN TỨC & HOẠT ĐỘNG NỔI BẬT" /></h2>
             </div>
             <Link className={styles.featuredNewsAllLink} href="/tin-tuc">
               {bindPhrases('Xem tất cả tin tức ')}<Icon name="arrow" size={18} />
@@ -402,9 +406,9 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
           <div className={styles.featuredNewsGrid}>
             {featuredNews.map((item, index) => (
               <article className={styles.featuredNewsItem} key={item.title}>
-                <Link aria-label={`Đọc tin ${item.title}`} href={item.href}>
+                <Link aria-label={`${t('Đọc tin')} ${t(item.title)}`} href={item.href}>
                   <span className={styles.featuredNewsImage}>
-                    <Image alt={`Ảnh minh họa: ${item.title}`} fill priority={index === 0} sizes="(max-width: 48rem) 100vw, (max-width: 70rem) 50vw, 42vw" src={item.image} />
+                    <Image alt={`${t('Ảnh minh họa:')} ${t(item.title)}`} fill priority={index === 0} sizes="(max-width: 48rem) 100vw, (max-width: 70rem) 50vw, 42vw" src={item.image} />
                   </span>
                   <span className={styles.featuredNewsContent}>
                     <span className={styles.featuredNewsIndex}>{String(index + 1).padStart(2, '0')}</span>
@@ -428,7 +432,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
               {/* Dải này là dải nội dung duy nhất còn thiếu chip nhãn, trong khi
                   Cam kết tác động, Năng lực, Tri thức và RISES đều có. */}
               <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`} data-copy="label">{bindPhrases('Giới thiệu GISA')}</p>
-              <h2>{bindPhrases("TRI THỨC CHO PHÁT TRIỂN BỀN VỮNG")}</h2>
+              <h2><PageText k="home.intro.title" text="TRI THỨC CHO PHÁT TRIỂN BỀN VỮNG" /></h2>
               {/* Liên kết đi cùng tiêu đề chứ không nằm cuối đoạn văn: cột trái
                   nhờ đó có điểm mở và điểm đóng, đọc ra là một khối hoàn chỉnh
                   (nhãn, tiêu đề, lối đi tiếp). */}
@@ -489,7 +493,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
         <div className={styles.contentContainer}>
           <header className={styles.missionHeading} data-scroll-motion="reveal">
             <p className={`${styles.eyebrow} ${styles.sectionEyebrow}`} data-copy="label">{bindPhrases('Sứ mệnh GISA')}</p>
-            <h2 id="mission-title">{bindPhrases('CAM KẾT TÁC ĐỘNG')}</h2>
+            <h2 id="mission-title"><PageText k="home.mission.title" text="CAM KẾT TÁC ĐỘNG" /></h2>
           </header>
           <ol className={styles.missionGrid}>
             {missions.map((mission, index) => (
@@ -523,7 +527,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
           <div className={styles.capabilityGrid}>
             {capabilities.map((item) => (
               <Link
-                aria-label={`Khám phá ${item.title}`}
+                aria-label={`${t('Khám phá')} ${t(item.title)}`}
                 className={styles.capabilityCard}
                 href={item.href}
                 key={item.title}
@@ -578,7 +582,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
             {knowledge.lead ? (
               <p className={styles.knowledgeLead}>{bindPhrases(knowledge.lead)}</p>
             ) : null}
-              <div aria-label="Nhóm nội dung" className={styles.knowledgeDeckTabs} role="tablist">
+              <div aria-label={t('Nhóm nội dung')} className={styles.knowledgeDeckTabs} role="tablist">
                 {knowledgeOrder.map((key) => (
                   <button
                     aria-controls="knowledge-panel"
@@ -613,11 +617,11 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
                     key={`${activeKnowledge}-${item.title}`}
                     style={{ '--poster-index': index } as React.CSSProperties}
                   >
-                    <Link aria-label={`Xem ${knowledge.itemNoun} ${item.title}`} href={itemHref}>
+                    <Link aria-label={`${t('Xem')} ${t(knowledge.itemNoun)} ${t(item.title)}`} href={itemHref}>
                       <span className={styles.knowledgePosterImage}>
                         {item.image ? (
                           <Image
-                            alt={`Ảnh minh họa ${knowledge.itemNoun} ${item.title}`}
+                            alt={`${t('Ảnh minh họa:')} ${t(item.title)}`}
                             fill
                             sizes="(max-width: 768px) 76vw, (max-width: 1120px) 38vw, 24vw"
                             src={item.image}
@@ -652,7 +656,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
           <div className={styles.researchGallery}>
             {featuredResearchProjects.map((project, index) => (
               <Link
-                aria-label={`Khám phá dự án ${project.title}`}
+                aria-label={`${t('Khám phá dự án')} ${t(project.title)}`}
                 className={styles.researchGalleryItem}
                 data-scroll-motion="item"
                 href={project.href}
@@ -691,7 +695,7 @@ export function HomeTemplate({ model }: { model: HomePageModel }) {
         <div className={styles.consultationOverlay}>
           <div aria-labelledby="consultation-title" aria-modal="true" className={styles.consultationDialog} role="dialog">
             <div className={`${styles.heroForm} ${styles.consultationForm}`} id="tu-van">
-              <button aria-label="Đóng bảng trao đổi" className={styles.dialogClose} onClick={() => setConsultationOpen(false)} type="button"><Icon name="close" size={22} /></button>
+              <button aria-label={t('Đóng bảng trao đổi')} className={styles.dialogClose} onClick={() => setConsultationOpen(false)} ref={dialogCloseRef} type="button"><Icon name="close" size={22} /></button>
               <h2 id="consultation-title">{bindPhrases("Trao đổi cùng GISA")}</h2>
               <p>{bindPhrases("Chúng tôi sẵn sàng lắng nghe và đồng hành cùng bạn.")}</p>
               <GisaForm kind="hop-tac" />

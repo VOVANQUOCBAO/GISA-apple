@@ -23,6 +23,38 @@ export const contentBlockSchema = z.discriminatedUnion('type', [
     type: z.literal('image'),
     assetId: z.string().min(1),
     caption: z.string().min(1).optional(),
+    alt: z.string().min(1).optional(),
+    width: z.number().int().positive().optional(),
+    height: z.number().int().positive().optional(),
+    // Dáng khung ảnh do biên tập chọn. Bỏ trống = ảnh ngang mặc định.
+    shape: z.enum(['wide', 'square', 'circle']).optional(),
+  }),
+  z.object({
+    type: z.literal('canvas'),
+    ratio: z.number().positive().max(4).optional(),
+    items: z
+      .array(
+        z.discriminatedUnion('kind', [
+          z.object({
+            id: z.string().min(1),
+            kind: z.literal('text'),
+            x: z.number().min(0).max(100),
+            y: z.number().min(0).max(100),
+            w: z.number().min(5).max(100),
+            text: z.string().min(1),
+          }),
+          z.object({
+            id: z.string().min(1),
+            kind: z.literal('image'),
+            x: z.number().min(0).max(100),
+            y: z.number().min(0).max(100),
+            w: z.number().min(5).max(100),
+            assetId: z.string().min(1),
+            alt: z.string().min(1).optional(),
+          }),
+        ]),
+      )
+      .min(1),
   }),
   z.object({
     type: z.literal('table'),

@@ -1,3 +1,4 @@
+import { bindPhrases } from '@/lib/vietnamese-text';
 import Link from 'next/link';
 
 import styles from './not-found.module.css';
@@ -17,12 +18,9 @@ export default function NotFoundPage() {
       <section className={styles.stage} aria-labelledby="not-found-title">
         <p aria-hidden="true" className={styles.code}>404</p>
         <div className={styles.copy}>
-          <p className={styles.eyebrow}>Đường dẫn không khả dụng</p>
-          <h1 id="not-found-title">Không tìm thấy trang</h1>
-          <p className={styles.lede}>
-            Đường dẫn có thể đã thay đổi hoặc nội dung hiện không còn khả dụng.
-            Bạn có thể tiếp tục từ một trong các khu vực chính dưới đây.
-          </p>
+          <p className={styles.eyebrow}>{bindPhrases("Đường dẫn không khả dụng")}</p>
+          <h1 id="not-found-title">{bindPhrases("Không tìm thấy trang")}</h1>
+          <p className={styles.lede}>{bindPhrases(" Đường dẫn có thể đã thay đổi hoặc nội dung hiện không còn khả dụng. Bạn có thể tiếp tục từ một trong các khu vực chính dưới đây. ")}</p>
           <nav aria-label="Các đường dẫn thay thế">
             <ul className={styles.links}>
               {recoveryLinks.map((link) => (

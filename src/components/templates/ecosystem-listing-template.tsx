@@ -10,6 +10,7 @@ import { Pagination } from '@/components/ui/pagination';
 import type { PageDefinition } from '@/content/pages';
 import type { ContentSummary, PaginatedResult } from '@/content/types';
 import { bindPhrases } from '@/lib/vietnamese-text';
+import { LocalizedDate } from '@/lib/i18n/localized-date';
 
 import { EDITORIAL_EMPTY_COPY } from './editorial-empty-copy';
 import { InnerPageHero, profileForPath, SectionSubnav } from './inner-page-chrome';
@@ -80,12 +81,6 @@ function vietnameseText(text: string) {
   return bindPhrases(normalizeVisibleText(text));
 }
 
-function formattedDate(value: string) {
-  return new Intl.DateTimeFormat('vi-VN', { dateStyle: 'long' }).format(
-    new Date(`${value}T00:00:00Z`),
-  );
-}
-
 function listingIconFor(text: string): IconName {
   const normalized = text.toLocaleLowerCase('vi');
   if (/mục tiêu|định hướng|chính sách/.test(normalized)) return 'target';
@@ -117,8 +112,8 @@ function ListingHero({
       description={description}
       eyebrow={topic}
       meta={(
-        <p aria-live="polite">
-          <strong>{count}</strong> nội dung trong danh mục
+        <p aria-live="polite" data-copy="label">
+          <strong>{count}</strong>{' '}{vietnameseText('nội dung trong danh mục')}
         </p>
       )}
       path={path}
@@ -163,13 +158,13 @@ function PartnerDirectory({ items }: { items: ContentSummary[] }) {
     <div className={styles.partnerDirectory}>
       {domestic.length > 0 ? (
         <section aria-labelledby="domestic-partners-title" className={styles.partnerGroup}>
-          <h2 id="domestic-partners-title">Đối tác trong nước</h2>
+          <h2 id="domestic-partners-title">{vietnameseText('Đối tác trong nước')}</h2>
           <PartnerCards items={domestic} />
         </section>
       ) : null}
       {international.length > 0 ? (
         <section aria-labelledby="international-partners-title" className={styles.partnerGroup}>
-          <h2 id="international-partners-title">Đối tác quốc tế</h2>
+          <h2 id="international-partners-title">{vietnameseText('Đối tác quốc tế')}</h2>
           <PartnerCards items={international} />
         </section>
       ) : null}
@@ -201,15 +196,15 @@ function InitiativeDirectory({ items }: { items: ContentSummary[] }) {
               />
             </span>
             <div className={styles.initiativeCopy}>
-              <p className={styles.itemTopic}>
+              <p className={styles.itemTopic} data-copy="label">
                 <span aria-hidden="true" className={styles.itemTopicIcon}>
                   <Icon name={listingIconFor(`${item.title} ${item.tags.join(' ')}`)} size={20} weight="duotone" />
                 </span>
                 {vietnameseText(item.tags[1] ?? item.tags[0] ?? 'Cộng đồng')}
               </p>
               <h3><Link href={item.path}>{vietnameseText(item.title)}</Link></h3>
-              <p className={styles.itemSummary}>{vietnameseText(item.summary)}</p>
-              <span aria-hidden="true" className={styles.readMore}>Khám phá</span>
+              <p className={styles.itemSummary} data-copy="body">{vietnameseText(item.summary)}</p>
+              <span aria-hidden="true" className={styles.readMore}>{vietnameseText('Khám phá')}</span>
             </div>
           </article>
         </li>
@@ -228,7 +223,7 @@ function NewsIndex({ items }: { items: ContentSummary[] }) {
               <span aria-hidden="true" className={styles.itemMetaIcon}>
                 <Icon name="megaphone" size={20} weight="duotone" />
               </span>
-              {item.publishedAt ? <time dateTime={item.publishedAt}>{formattedDate(item.publishedAt)}</time> : null}
+              {item.publishedAt ? <time dateTime={item.publishedAt}><LocalizedDate value={item.publishedAt} /></time> : null}
               <span>{vietnameseText(String(item.metadata.topic ?? item.tags[1] ?? 'Tin tức'))}</span>
             </div>
             {item.image ? (
@@ -269,7 +264,7 @@ function NoticeTimeline({ items }: { items: ContentSummary[] }) {
               <span aria-hidden="true" className={styles.itemMetaIcon}>
                 <Icon name="calendar" size={20} weight="duotone" />
               </span>
-              {item.publishedAt ? <time dateTime={item.publishedAt}>{formattedDate(item.publishedAt)}</time> : null}
+              {item.publishedAt ? <time dateTime={item.publishedAt}><LocalizedDate value={item.publishedAt} /></time> : null}
               <span>{vietnameseText(String(item.metadata.status ?? 'Cần xác nhận trạng thái'))}</span>
             </div>
             <div className={styles.noticeCopy}>
@@ -353,8 +348,8 @@ export function EcosystemListingTemplate({
           >
             {!usesCompactCommunityFilters ? (
               <div>
-                <h2 id="ecosystem-filter-title">Tìm theo nội dung bạn quan tâm</h2>
-                <p>Chọn một tiêu chí để thu hẹp danh sách.</p>
+                <h2 id="ecosystem-filter-title">{vietnameseText('Tìm theo nội dung bạn quan tâm')}</h2>
+                <p>{vietnameseText('Chọn một tiêu chí để thu hẹp danh sách.')}</p>
               </div>
             ) : null}
             <FilterBar
@@ -370,13 +365,13 @@ export function EcosystemListingTemplate({
           <section className={styles.collection} aria-labelledby="ecosystem-results-title">
             <header className={styles.collectionHeader}>
               <h2 id="ecosystem-results-title">{vietnameseText(definition.title)}</h2>
-              <p aria-live="polite">{resultCount} kết quả phù hợp</p>
+              <p aria-live="polite" data-copy="label">{resultCount}{' '}{vietnameseText('kết quả phù hợp')}</p>
             </header>
             <Collection items={result.items} mode={direction.mode} />
           </section>
         ) : hasQuery || hasFilters ? (
           <EmptyState
-            action={<ButtonLink href={path}>Xóa bộ lọc</ButtonLink>}
+            action={<ButtonLink href={path}>{vietnameseText('Xóa bộ lọc')}</ButtonLink>}
             description={EDITORIAL_EMPTY_COPY.filtered.description}
             title={EDITORIAL_EMPTY_COPY.filtered.title}
           />

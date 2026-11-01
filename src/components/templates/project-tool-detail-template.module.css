@@ -311,7 +311,12 @@
     align-self: stretch;
     aspect-ratio: auto;
     margin: 0 .75rem .75rem;
-    min-height: 11.5rem;
+    min-height: 0;
+  }
+
+  .mastheadVisual[data-has-image='false'] .visualFallback {
+    inset: auto;
+    position: relative;
   }
 
   .visualFallback strong {

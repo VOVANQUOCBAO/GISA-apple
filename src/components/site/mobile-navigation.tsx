@@ -1,6 +1,7 @@
 'use client';
 
 import { bindPhrases } from '@/lib/vietnamese-text';
+import { useTranslation } from '@/lib/i18n/language-provider';
 
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
@@ -18,6 +19,7 @@ const focusableSelector =
   'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 export function MobileNavigation({ isOpen, onClose }: MobileNavigationProps) {
+  const t = useTranslation();
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -38,7 +40,7 @@ export function MobileNavigation({ isOpen, onClose }: MobileNavigationProps) {
   return (
     <div className={styles.mobileBackdrop} onPointerDown={onClose}>
       <div
-        aria-label="Menu chính"
+        aria-label={t('Menu chính')}
         aria-modal="true"
         className={styles.mobilePanel}
         onKeyDown={(event) => {
@@ -69,11 +71,11 @@ export function MobileNavigation({ isOpen, onClose }: MobileNavigationProps) {
       >
         <div className={styles.mobilePanelHeader}>
           <strong>{bindPhrases('Điều hướng')}</strong>
-          <button aria-label="Đóng menu" onClick={onClose} type="button">
+          <button aria-label={t('Đóng menu')} onClick={onClose} type="button">
             ×
           </button>
         </div>
-        <nav aria-label="Điều hướng chính trên thiết bị di động">
+        <nav aria-label={t('Điều hướng chính trên thiết bị di động')}>
           <ul className={styles.mobileList}>
             {NAVIGATION.map((group) => {
               const hasChildren = group.children.length > 0;
@@ -90,7 +92,7 @@ export function MobileNavigation({ isOpen, onClose }: MobileNavigationProps) {
                       <button
                         aria-controls={panelId}
                         aria-expanded={isExpanded}
-                        aria-label={`${isExpanded ? 'Thu gọn' : 'Mở rộng'} ${group.label}`}
+                        aria-label={`${t(isExpanded ? 'Thu gọn' : 'Mở rộng')} ${t(group.label)}`}
                         onClick={() => {
                           setExpandedGroups((current) => {
                             const next = new Set(current);

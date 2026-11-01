@@ -1,3 +1,8 @@
+'use client';
+
+import { bindPhrases } from '@/lib/vietnamese-text';
+import { LocalizedText, useLanguage } from '@/lib/i18n/language-provider';
+import { translate } from '@/lib/i18n/language';
 /**
  * Six code-native SVG plates for the "TRI THỨC TẠO CHUYỂN BIẾN" story.
  *
@@ -11,8 +16,6 @@
  * reference will drift the composition. Numbers never live here; they come from
  * `@/content/verified-metrics`.
  */
-
-'use client';
 
 import Image from '@/components/ui/content-image';
 import {
@@ -69,6 +72,18 @@ type MotionStyle = CSSProperties & {
 interface EntityLink {
   href: string;
   label: string;
+}
+
+/** Translate copy before interpolation so numbers, links, and SVG geometry stay intact. */
+function useChartCopy() {
+  const language = useLanguage();
+  return (text: string, values: Record<string, string | number> = {}) => {
+    let translated = translate(text, language);
+    for (const [key, value] of Object.entries(values)) {
+      translated = translated.replaceAll(`{${key}}`, String(value));
+    }
+    return translated;
+  };
 }
 
 const researchLinks = new Map(
@@ -351,13 +366,14 @@ function JourneyMorphTrigger({
   ...props
 }: JourneyMorphTriggerProps) {
   const { openKey } = useContext(JourneyMorphContext);
+  const t = useChartCopy();
 
   return (
     <a
       {...props}
       aria-controls={panelId}
       aria-expanded={openKey === dataKey}
-      aria-label={accessibleLabel}
+      aria-label={t(accessibleLabel)}
       data-morph-trigger=""
       data-node-key={dataKey}
       id={`${panelId}-trigger`}
@@ -404,6 +420,7 @@ function JourneyMorphPanel({
   title,
 }: JourneyMorphPanelProps) {
   const { openKey } = useContext(JourneyMorphContext);
+  const t = useChartCopy();
   const isOpen = openKey === dataKey;
 
   return (
@@ -427,19 +444,17 @@ function JourneyMorphPanel({
           </span>
         ) : null}
         <div className={styles.journeyMorphPanelCopy}>
-          <span className={styles.journeyMorphPanelEyebrow}>{eyebrow}</span>
-          <strong className={styles.journeyMorphPanelTitle}>{title}</strong>
+          <span className={styles.journeyMorphPanelEyebrow}>{t(eyebrow)}</span>
+          <strong className={styles.journeyMorphPanelTitle}>{t(title)}</strong>
           <ul className={styles.journeyMorphPanelList}>
-            {lines.map((line) => <li key={line}>{line}</li>)}
+            {lines.map((line) => <li data-copy="body" key={line}>{t(line)}</li>)}
           </ul>
           <a
             className={styles.journeyMorphPanelCta}
             data-morph-cta=""
             href={href}
             tabIndex={isOpen ? 0 : -1}
-          >
-            Xem chi tiết
-          </a>
+          >{bindPhrases(" Xem chi tiết ")}</a>
         </div>
       </div>
     </aside>
@@ -552,6 +567,7 @@ const RESEARCH_MORPH_CONTENT: Record<string, { title: string; lines: readonly [s
 };
 
 function ResearchCard({ index, item, row }: { index: number; item: (typeof researchItems)[number]; row: number }) {
+  const t = useChartCopy();
   const cx = RESEARCH_X[index];
   const cy = RESEARCH_ROW_Y[row][index];
   const radius = RESEARCH_AVATAR_R[index];
@@ -567,14 +583,14 @@ function ResearchCard({ index, item, row }: { index: number; item: (typeof resea
   };
   return (
     <JourneyMorphTrigger
-      accessibleLabel={`Xem công trình nghiên cứu: ${link.label}. ${classification}${item.year ? `, ${item.year}` : ''}.`}
+      accessibleLabel={t('Xem công trình nghiên cứu: {title}. {classification}{year}.', { title: t(link.label), classification: t(classification), year: item.year ? `, ${item.year}` : '' })}
       className={`${styles.entityLink} ${styles.researchEntityLink}`}
       dataKey={String(itemIndex)}
       href={link.href}
       panelId={panelId}
     >
-      <title>{link.label}</title>
-      <desc>{`${classification}${item.year ? ` · ${item.year}` : ''}`}</desc>
+      <title>{t(link.label)}</title>
+      <desc>{`${t(classification)}${item.year ? ` · ${item.year}` : ''}`}</desc>
       <g className={styles.researchCard} style={motion(2, index, 7)}>
         {thumbnail ? (
           <defs>
@@ -632,15 +648,16 @@ const RESEARCH_THUMBS = [
 ];
 
 function ResearchPlate() {
+  const t = useChartCopy();
   return (
     <div className={styles.researchStage}>
       <svg
-        aria-label={`Theo phân loại nội bộ dựa trên nội dung công trình: ${researchBands[0].length} nghiên cứu liên ngành và ${researchBands[1].length} nghiên cứu đơn ngành, hội tụ về tổng ${researchItems.length} công trình nghiên cứu.`}
+        aria-label={t('Theo phân loại nội bộ dựa trên nội dung công trình: {cross} nghiên cứu liên ngành và {single} nghiên cứu đơn ngành, hội tụ về tổng {total} công trình nghiên cứu.', { cross: researchBands[0].length, single: researchBands[1].length, total: researchItems.length })}
         className={styles.plate}
         role="group"
         viewBox="0 0 1600 780"
       >
-      <desc>Mở từng ảnh đại diện để xem tên, năm và căn cứ phân loại của công trình.</desc>
+      <desc>{t('Mở từng ảnh đại diện để xem tên, năm và căn cứ phân loại của công trình.')}</desc>
       <defs>
         <filter height="140%" id="research-media-depth" width="140%" x="-20%" y="-20%">
           <feDropShadow dx="0" dy="4" floodColor="#0f3554" floodOpacity=".22" stdDeviation="4" />
@@ -710,8 +727,8 @@ function ResearchPlate() {
         <JourneyGlyph className={styles.researchChipGlyph} name="atom" size={0.76} x={59} y={238} />
         <path className={styles.researchChipDivider} d="M104 202v72" />
         <text className={styles.researchChipValue} x="121" y="236">{researchBands[0].length}</text>
-        <text className={styles.researchChipLabel} x="121" y="266">LIÊN NGÀNH</text>
-        <text className={styles.researchChipNote} x="121" y="286">PHÂN LOẠI NỘI BỘ</text>
+        <text className={styles.researchChipLabel} x="121" y="266"><LocalizedText text={"LIÊN NGÀNH"}>{"LIÊN NGÀNH"}</LocalizedText></text>
+        <text className={styles.researchChipNote} x="121" y="286"><LocalizedText text={"PHÂN LOẠI NỘI BỘ"}>{"PHÂN LOẠI NỘI BỘ"}</LocalizedText></text>
       </g>
       <g className={styles.researchChip} style={motion(2)}>
         <rect className={styles.researchChipShadow} height="112" rx="34" width="286" x="0" y="490" />
@@ -723,8 +740,8 @@ function ResearchPlate() {
         <JourneyGlyph className={styles.researchChipGlyph} name="flask" size={0.76} x={59} y={536} />
         <path className={styles.researchChipDivider} d="M104 500v72" />
         <text className={styles.researchChipValue} x="121" y="534">{researchBands[1].length}</text>
-        <text className={styles.researchChipLabel} x="121" y="564">ĐƠN NGÀNH</text>
-        <text className={styles.researchChipNote} x="121" y="584">PHÂN LOẠI NỘI BỘ</text>
+        <text className={styles.researchChipLabel} x="121" y="564"><LocalizedText text={"ĐƠN NGÀNH"}>{"ĐƠN NGÀNH"}</LocalizedText></text>
+        <text className={styles.researchChipNote} x="121" y="584"><LocalizedText text={"PHÂN LOẠI NỘI BỘ"}>{"PHÂN LOẠI NỘI BỘ"}</LocalizedText></text>
       </g>
 
       {researchBands.map((band, row) =>
@@ -732,7 +749,7 @@ function ResearchPlate() {
       )}
 
       {/* tổng 14 */}
-      <a aria-label="Xem toàn bộ 14 công trình nghiên cứu" className={styles.entityLink} href={RESEARCH_INDEX_PATH}>
+      <a aria-label={t('Xem toàn bộ 14 công trình nghiên cứu')} className={styles.entityLink} href={RESEARCH_INDEX_PATH}>
       <g className={styles.researchTotalCard} style={motion(6)}>
         <rect className={styles.entityHit} height="284" rx="50" width="286" x="1300" y="250" />
         <rect className={styles.researchStack} height="248" rx="40" width="258" x="1288" y="278" />
@@ -743,8 +760,8 @@ function ResearchPlate() {
         <text className={styles.researchTotalValue} textAnchor="middle" x="1431" y="387">
           {researchItems.length}
         </text>
-        <text className={styles.researchTotalLabel} textAnchor="middle" x="1431" y="438">CÔNG TRÌNH</text>
-        <text className={styles.researchTotalLabel} textAnchor="middle" x="1431" y="476">NGHIÊN CỨU</text>
+        <text className={styles.researchTotalLabel} textAnchor="middle" x="1431" y="438"><LocalizedText text={"CÔNG TRÌNH"}>{"CÔNG TRÌNH"}</LocalizedText></text>
+        <text className={styles.researchTotalLabel} textAnchor="middle" x="1431" y="476"><LocalizedText text={"NGHIÊN CỨU"}>{"NGHIÊN CỨU"}</LocalizedText></text>
       </g>
       </a>
       </svg>
@@ -770,7 +787,7 @@ function ResearchPlate() {
               anchor={extendsRight ? 'right' : 'left'}
               className={styles.researchMorphPanel}
               dataKey={String(itemIndex)}
-              eyebrow={`${classification}${item.year ? ` · ${item.year}` : ''}`}
+              eyebrow={`${t(classification)}${item.year ? ` · ${item.year}` : ''}`}
               href={href}
               id={`research-detail-${item.id}`}
               image={image}
@@ -878,10 +895,11 @@ function strategySector(angle: number) {
 }
 
 function StrategyPlate() {
+  const t = useChartCopy();
   return (
     <div className={styles.strategyStage}>
       <svg
-        aria-label={`Sáu lĩnh vực tư vấn, tổng cộng ${consultingTotal} hạng mục: ${consultingPillars.map((item) => `${item.pillar} ${item.listedItems}`).join(', ')}.`}
+        aria-label={t('Sáu lĩnh vực tư vấn, tổng cộng {total} hạng mục: {fields}.', { total: consultingTotal, fields: consultingPillars.map((item) => `${t(item.pillar)} ${item.listedItems}`).join(', ') })}
         className={styles.plate}
         role="group"
         viewBox={VIEW_BOX}
@@ -928,7 +946,7 @@ function StrategyPlate() {
         <circle className={styles.strategyPlateRim} cx={STRATEGY_CENTER.x} cy={STRATEGY_CENTER.y} r="432" />
         <circle className={styles.strategyDish} cx={STRATEGY_CENTER.x} cy={STRATEGY_CENTER.y} r="146" />
         <a
-          aria-label="Xem toàn bộ 29 hạng mục tư vấn"
+          aria-label={t('Xem toàn bộ 29 hạng mục tư vấn')}
           className={styles.entityLink}
           href={CONSULTING_INDEX_PATH}
         >
@@ -940,12 +958,8 @@ function StrategyPlate() {
             {consultingTotal}
           </text>
           <path className={styles.strategyCoreDivider} d={`M${STRATEGY_CENTER.x - 17} ${STRATEGY_CENTER.y + 22}h34`} />
-          <text className={styles.strategyCoreLabel} textAnchor="middle" x={STRATEGY_CENTER.x} y={STRATEGY_CENTER.y + 46}>
-            HẠNG MỤC
-          </text>
-          <text className={styles.strategyCoreSublabel} textAnchor="middle" x={STRATEGY_CENTER.x} y={STRATEGY_CENTER.y + 65}>
-            TƯ VẤN
-          </text>
+          <text className={styles.strategyCoreLabel} textAnchor="middle" x={STRATEGY_CENTER.x} y={STRATEGY_CENTER.y + 46}>{t('HẠNG MỤC')}</text>
+          <text className={styles.strategyCoreSublabel} textAnchor="middle" x={STRATEGY_CENTER.x} y={STRATEGY_CENTER.y + 65}>{t('TƯ VẤN')}</text>
         </a>
       </g>
 
@@ -957,13 +971,13 @@ function StrategyPlate() {
         return (
           <g className={styles.consultingPetal} key={pillar.pillar} style={tone(sector.tone, motion(sector.phase))}>
             <JourneyMorphTrigger
-              accessibleLabel={`Xem lĩnh vực tư vấn ${pillar.pillar}`}
+              accessibleLabel={t('Xem lĩnh vực tư vấn {field}', { field: t(pillar.pillar) })}
               className={`${styles.entityLink} ${styles.strategyPopoverTrigger}`}
               dataKey={String(index)}
               href={pillarHref}
               panelId={panelId}
             >
-              <title>{pillar.pillar}</title>
+              <title>{t(pillar.pillar)}</title>
               <path className={styles.strategySectorFrame} d={strategySector(sector.angle)} />
               <path className={styles.strategySectorShadow} d={strategySector(sector.angle)} />
               <path className={styles.strategySector} d={strategySector(sector.angle)} />
@@ -1012,7 +1026,7 @@ function StrategyPlate() {
               anchor={morph.anchor}
               className={styles.strategyMorphPanel}
               dataKey={String(index)}
-              eyebrow={`${pillar.listedItems} hạng mục tư vấn`}
+              eyebrow={t('{count} hạng mục tư vấn', { count: pillar.listedItems })}
               href={href}
               id={`consulting-pillar-detail-${index}`}
               image={CONSULTING_ICON_ASSETS[index]}
@@ -1140,12 +1154,13 @@ const TRAINING_PATH = TRAINING_FLATS.reduce((path, flat, index) => {
 }, '');
 
 function TrainingPlate() {
+  const t = useChartCopy();
   const { openKey } = useContext(JourneyMorphContext);
 
   return (
     <div className={styles.trainingStageShell}>
       <svg
-        aria-label={`Lộ trình năm chương trình gồm ${trainingTotal} khóa: ${trainingPathway.map((stage) => `${stage.name} ${stage.listedCourses}`).join(', ')}.`}
+        aria-label={t('Lộ trình năm chương trình gồm {total} khóa: {programs}.', { total: trainingTotal, programs: trainingPathway.map((stage) => `${stage.name} ${stage.listedCourses}`).join(', ') })}
         className={`${styles.plate} ${styles.trainingPlate}`}
         role="group"
         viewBox={TRAINING_VIEW_BOX}
@@ -1214,13 +1229,13 @@ function TrainingPlate() {
             style={tone(spot.tone, motion(index + 2))}
           >
             <JourneyMorphTrigger
-              accessibleLabel={`${stage.name}. ${stage.subtitle}. ${stage.listedCourses} khóa học trong danh mục. Nội dung, lợi ích và danh sách khóa học.`}
+              accessibleLabel={t('{program}. {subtitle}. {count} khóa học trong danh mục. Nội dung, lợi ích và danh sách khóa học.', { program: stage.name, subtitle: t(stage.subtitle), count: stage.listedCourses })}
               className={`${styles.entityLink} ${styles.trainingProgramLink}`}
               dataKey={dataKey}
               href={trainingProgramLinks[index]}
               panelId={panelId}
             >
-              <title>{`${stage.name} — ${stage.subtitle}`}</title>
+              <title>{`${stage.name} — ${t(stage.subtitle)}`}</title>
               <rect
                 className={styles.entityHit}
                 height="260"
@@ -1284,12 +1299,12 @@ function TrainingPlate() {
               const isEnd = row === rows - 1;
               return (
                 <a
-                  aria-label={`Xem khóa học: ${course.label}`}
+                  aria-label={t('Xem khóa học: {course}', { course: t(course.label) })}
                   className={styles.entityLink}
                   href={course.href}
                   key={course.href}
                 >
-                  <title>{course.label}</title>
+                  <title>{t(course.label)}</title>
                   <circle className={styles.entityHit} cx={cx} cy={cy} r="15" />
                   <circle
                     className={isEnd ? styles.trainingDropEnd : styles.trainingDropDot}
@@ -1316,7 +1331,7 @@ function TrainingPlate() {
       })}
 
       {/* 49 có sẵn từ đầu chương */}
-      <a aria-label="Xem toàn bộ 49 khóa học" className={styles.entityLink} href={COURSE_INDEX_PATH}>
+      <a aria-label={t('Xem toàn bộ 49 khóa học')} className={styles.entityLink} href={COURSE_INDEX_PATH}>
       <g className={styles.trainingTotalCard}>
         <rect className={styles.entityHit} height="310" rx="72" width="410" x="0" y="500" />
         <rect className={styles.trainingTotalStack} height="250" rx="58" width="380" x="14" y="558" />
@@ -1324,7 +1339,7 @@ function TrainingPlate() {
         <rect className={styles.trainingTotalShadow} height="260" rx="58" width="380" x="22" y="560" />
         <rect className={styles.trainingTotalFace} height="260" rx="58" width="380" x="22" y="525" />
         <text className={styles.trainingTotalValue} textAnchor="middle" x="212" y="680">{trainingTotal}</text>
-        <text className={styles.trainingTotalLabel} textAnchor="middle" x="212" y="748">KHÓA HỌC</text>
+        <text className={styles.trainingTotalLabel} textAnchor="middle" x="212" y="748"><LocalizedText text={"KHÓA HỌC"}>{"KHÓA HỌC"}</LocalizedText></text>
       </g>
       </a>
       </svg>
@@ -1357,7 +1372,7 @@ function TrainingPlate() {
                   <Image alt="" height={160} src={TRAINING_ICON_ASSETS[index]} width={160} />
                 </span>
                 <span className={styles.trainingMorphHeading}>
-                  <small>Chương trình đào tạo</small>
+                  <small>{bindPhrases("Chương trình đào tạo")}</small>
                   <strong>{stage.name}</strong>
                 </span>
               </span>
@@ -1365,15 +1380,15 @@ function TrainingPlate() {
               <ul className={styles.trainingMorphFacts}>
                 <li>
                   <b>01</b>
-                  <span>{stage.subtitle}</span>
+                  <span>{t(stage.subtitle)}</span>
                 </li>
                 <li>
                   <b>02</b>
-                  <span>{stage.listedCourses} khóa học trong danh mục</span>
+                  <span>{stage.listedCourses}{bindPhrases(" khóa học trong danh mục")}</span>
                 </li>
                 <li>
                   <b>03</b>
-                  <span>Nội dung, lợi ích &amp; danh sách khóa học</span>
+                  <span>{bindPhrases("Nội dung, lợi ích & danh sách khóa học")}</span>
                 </li>
               </ul>
               <a
@@ -1381,9 +1396,7 @@ function TrainingPlate() {
                 data-morph-cta=""
                 href={trainingProgramLinks[index]}
                 tabIndex={isOpen ? 0 : -1}
-              >
-                Xem chương trình
-              </a>
+              >{bindPhrases(" Xem chương trình ")}</a>
             </aside>
           );
         })}
@@ -1469,12 +1482,13 @@ type TransferTargetStyle = MotionStyle & {
 };
 
 function TransferPlate() {
+  const t = useChartCopy();
   const sourceMid = TRANSFER_SOURCE.y + TRANSFER_SOURCE.h / 2;
   const sourceEdge = TRANSFER_SOURCE.x + TRANSFER_SOURCE.w;
   return (
     <div className={styles.transferStageShell}>
       <svg
-        aria-label={`GISA chuyển giao tri thức vào bốn hướng ứng dụng không có trọng số: ${applicationStreams.map((stream) => stream.label).join(', ')}.`}
+        aria-label={t('GISA chuyển giao tri thức vào bốn hướng ứng dụng không có trọng số: {fields}.', { fields: applicationStreams.map((stream) => t(stream.label)).join(', ') })}
         className={`${styles.plate} ${styles.transferPlate}`}
         role="group"
         viewBox={TRANSFER_VIEW_BOX}
@@ -1528,14 +1542,14 @@ function TransferPlate() {
         };
         return (
           <JourneyMorphTrigger
-            accessibleLabel={`Xem lĩnh vực ứng dụng: ${stream.label}`}
+            accessibleLabel={t('Xem lĩnh vực ứng dụng: {field}', { field: t(stream.label) })}
             className={`${styles.entityLink} ${styles.transferEntityLink}`}
             dataKey={String(index)}
             href={href}
             key={target.label}
             panelId={panelId}
           >
-            <title>{stream.label}</title>
+            <title>{t(stream.label)}</title>
             <path className={styles.transferBandShadow} d={band} pathLength="1" style={motion(index + 1)} />
             <path className={styles.transferBandRim} d={band} pathLength="1" style={motion(index + 1)} />
             <path
@@ -1579,14 +1593,14 @@ function TransferPlate() {
                   y={target.y - 38}
                 />
                 <path className={styles.transferDivider} d={`M1309 ${target.y - 42}v84`} />
-                <text className={styles.transferLabel} x="1343" y={target.y + 9}>{target.label}</text>
+                <text className={styles.transferLabel} x="1343" y={target.y + 9}>{t(target.label)}</text>
               </g>
             </g>
           </JourneyMorphTrigger>
         );
       })}
 
-      <a aria-label="Xem toàn bộ lĩnh vực ứng dụng của GISA" className={styles.entityLink} href={TRANSFER_INDEX_PATH}>
+      <a aria-label={t('Xem toàn bộ lĩnh vực ứng dụng của GISA')} className={styles.entityLink} href={TRANSFER_INDEX_PATH}>
       <g className={styles.transferSource} style={motion(0)}>
         <rect
           className={styles.entityHit}
@@ -1802,14 +1816,15 @@ function networkFineCurve(
 }
 
 function NetworkPlate() {
+  const t = useChartCopy();
   return (
     <svg
-      aria-label={`Mạng lưới GISA gồm bốn nhóm riêng biệt: ${verifiedNetworkClusters.map((cluster) => `${cluster.memberCount} ${cluster.unit}`).join(', ')}. Các nhóm không được cộng thành một tổng.`}
+      aria-label={t('Mạng lưới GISA gồm bốn nhóm riêng biệt: {groups}. Các nhóm không được cộng thành một tổng.', { groups: verifiedNetworkClusters.map((cluster) => `${cluster.memberCount} ${t(cluster.unit)}`).join(', ') })}
       className={`${styles.plate} ${styles.networkPlate}`}
       role="group"
       viewBox="0 72 1600 664"
     >
-      <desc>Các slot chuyên gia, tổ chức và quỹ được để trống để bổ sung ảnh hoặc logo đã xác minh sau này. Ảnh dự án lấy từ dữ liệu GISA hiện có. Đường nối chỉ mô tả cấu trúc trực quan, không tuyên bố quan hệ đã được kiểm chứng giữa từng thực thể.</desc>
+      <desc>{t('Các slot chuyên gia, tổ chức và quỹ được để trống để bổ sung ảnh hoặc logo đã xác minh sau này. Ảnh dự án lấy từ dữ liệu GISA hiện có. Đường nối chỉ mô tả cấu trúc trực quan, không tuyên bố quan hệ đã được kiểm chứng giữa từng thực thể.')}</desc>
       <defs>
         <linearGradient id="network-slot-face" x1="0" x2="0.75" y1="0" y2="1">
           <stop offset="0" stopColor="#ffffff" />
@@ -1859,7 +1874,7 @@ function NetworkPlate() {
       {NETWORK_METRICS.map((metric, index) => (
         <g className={styles.networkHeading} key={metric.label} style={motion(index === 2 ? 6 : index * 2)}>
           <text className={styles.networkValue} textAnchor="middle" x={metric.x} y={metric.y}>{metric.value}</text>
-          <text className={styles.networkLabel} textAnchor="middle" x={metric.x} y={metric.y + 30}>{metric.label}</text>
+          <text className={styles.networkLabel} textAnchor="middle" x={metric.x} y={metric.y + 30}>{t(metric.label)}</text>
           <path className={styles.networkMetricRule} d={`M${metric.x - 58} ${metric.y + 44}H${metric.x + 58}`} />
           <circle className={styles.networkMetricSpark} cx={metric.x} cy={metric.y + 44} r="3.5" />
         </g>
@@ -1949,19 +1964,13 @@ function NetworkPlate() {
         <circle className={styles.networkCompassCoreShadow} cx="796" cy="455" r="43" />
         <circle className={styles.networkCompassCore} cx="800" cy="448" r="43" />
         <text className={styles.networkCompassValue} textAnchor="middle" x="800" y="447">{projectCluster.memberCount}</text>
-        <text className={styles.networkCompassLabel} textAnchor="middle" x="800" y="469">DỰ ÁN</text>
+        <text className={styles.networkCompassLabel} textAnchor="middle" x="800" y="469"><LocalizedText text={"DỰ ÁN"}>{"DỰ ÁN"}</LocalizedText></text>
       </g>
 
       {networkExperts.map((dot, index) => {
         const expert = expertFixtures[index];
-        return (
-          <a
-            aria-label={`Xem chuyên gia: ${expert.title}`}
-            className={`${styles.entityLink} ${styles.networkEntity}`}
-            href={expert.path}
-            key={expert.id}
-          >
-            <title>{expert.title}</title>
+        const geometry = (
+          <>
             <path
               className={styles.networkFineLink}
               d={networkFineCurve(dot, { x: 574, y: 448 }, (dot.podIndex - 2) * 8)}
@@ -1978,6 +1987,35 @@ function NetworkPlate() {
             />
             <circle className={styles.networkExpertInset} cx={dot.x} cy={dot.y} r={NETWORK_EXPERT_R - 5} />
             <circle className={styles.networkBeadGlint} cx={dot.x - 5} cy={dot.y - 6} r="2" />
+          </>
+        );
+
+        // Keep the supplied layout's slots, but link only real published profiles.
+        // A missing record must never become a fabricated name or a broken URL.
+        if (!expert) {
+          return (
+            <g
+              aria-hidden="true"
+              className={styles.networkEntity}
+              data-expert-placeholder=""
+              data-network-expert-slot={index}
+              key={`expert-slot-${index}`}
+            >
+              {geometry}
+            </g>
+          );
+        }
+
+        return (
+          <a
+            aria-label={t('Xem chuyên gia: {name}', { name: t(expert.title) })}
+            className={`${styles.entityLink} ${styles.networkEntity}`}
+            data-network-expert-slot={index}
+            href={expert.path}
+            key={expert.id}
+          >
+            <title>{t(expert.title)}</title>
+            {geometry}
           </a>
         );
       })}
@@ -1986,12 +2024,12 @@ function NetworkPlate() {
         const partner = partnerFixtures[index];
         return (
           <a
-            aria-label={`Xem tổ chức: ${partner.title}`}
+            aria-label={t('Xem tổ chức: {name}', { name: t(partner.title) })}
             className={`${styles.entityLink} ${styles.networkEntity}`}
             href={partner.path}
             key={partner.id}
           >
-            <title>{partner.title}</title>
+            <title>{t(partner.title)}</title>
             <path
               className={styles.networkFineLink}
               d={networkFineCurve(
@@ -2019,12 +2057,12 @@ function NetworkPlate() {
         const project = projectFixtures[index];
         return (
           <a
-            aria-label={`Xem dự án: ${project.title}`}
+            aria-label={t('Xem dự án: {title}', { title: t(project.title) })}
             className={`${styles.entityLink} ${styles.networkEntity}`}
             href={project.path}
             key={project.id}
           >
-            <title>{project.title}</title>
+            <title>{t(project.title)}</title>
             <g
               className={styles.networkProject}
               style={tone(NETWORK_PROJECT_RINGS[index], motion(4, index, 4))}
@@ -2046,7 +2084,7 @@ function NetworkPlate() {
                 y={point.y - 41}
               />
               <circle className={styles.networkProjectInset} cx={point.x} cy={point.y} r={NETWORK_PROJECT_R - 10} />
-              <text className={styles.networkProjectName} textAnchor="middle" x={point.x} y={point.y + 78}>{project.title}</text>
+              <text className={styles.networkProjectName} textAnchor="middle" x={point.x} y={point.y + 78}>{t(project.title)}</text>
             </g>
           </a>
         );
@@ -2055,18 +2093,18 @@ function NetworkPlate() {
       {networkFunds.map((pill, index) => {
         const fund = fundLinks[index] ?? {
           href: '/mang-luoi/quy-nha-tai-tro',
-          label: `Quỹ hoặc nhà tài trợ ${index + 1}`,
+          label: t('Quỹ hoặc nhà tài trợ {number}', { number: index + 1 }),
         };
         return (
           <a
-            aria-label={`Mở thông tin quỹ hoặc nhà tài trợ: ${fund.label}`}
+            aria-label={t('Mở thông tin quỹ hoặc nhà tài trợ: {name}', { name: t(fund.label) })}
             className={`${styles.entityLink} ${styles.networkEntity}`}
             href={fund.href}
             key={fund.href}
             rel={fund.href.startsWith('http') ? 'noreferrer' : undefined}
             target={fund.href.startsWith('http') ? '_blank' : undefined}
           >
-            <title>{fund.label}</title>
+            <title>{t(fund.label)}</title>
             <path
               className={styles.networkFineLink}
               d={networkFineCurve({ x: 1026, y: 448 }, { x: pill.x - 37, y: pill.y }, (index - 5) * 4)}
@@ -2120,6 +2158,7 @@ const IMPACT_NODE_ASSETS = [
 /** Approved impact-flow redesign: one calm horizontal system with a readable
  * GISA hub and three distinct, non-overlapping impact pillars. */
 function ApprovedImpactPlate() {
+  const t = useChartCopy();
   const nodeX = [135, 390, 1210, 1465];
   const nodeY = 430;
   const pillarX = [800, 675, 925];
@@ -2130,7 +2169,7 @@ function ApprovedImpactPlate() {
   return (
     <div className={styles.impactStageShell}>
     <svg
-      aria-label="Khung định tính gồm ba trụ cột Môi trường, Xã hội và Kinh tế, cùng bốn giai đoạn Đầu vào, Hoạt động, Kết quả và Tác động. Không biểu thị tỷ trọng hay số lượng."
+      aria-label={t('Khung định tính gồm ba trụ cột Môi trường, Xã hội và Kinh tế, cùng bốn giai đoạn Đầu vào, Hoạt động, Kết quả và Tác động. Không biểu thị tỷ trọng hay số lượng.')}
       className={`${styles.plate} ${styles.impactPlate} ${styles.approvedImpactPlate}`}
       role="group"
       viewBox={IMPACT_VIEW_BOX}
@@ -2171,14 +2210,14 @@ function ApprovedImpactPlate() {
         const panelId = `impact-pillar-detail-${index}`;
         return (
           <JourneyMorphTrigger
-            accessibleLabel={`Xem nội dung ${pillar.label.toLocaleLowerCase('vi')}: ${pillar.detail}`}
+            accessibleLabel={t('Xem nội dung {label}: {detail}', { label: t(pillar.label).toLocaleLowerCase(), detail: t(pillar.detail) })}
             className={`${styles.entityLink} ${styles.impactEntityLink}`}
             dataKey={`pillar-${index}`}
             href={pillar.href}
             key={pillar.label}
             panelId={panelId}
           >
-            <title>{`${pillar.label}: ${pillar.detail}`}</title>
+            <title>{`${t(pillar.label)}: ${t(pillar.detail)}`}</title>
             <g className={`${styles.impactPillar} ${styles.approvedImpactPillar}`} style={tone(pillar.tone, motion(2, index, IMPACT_PILLARS.length))}>
               <circle className={styles.entityHit} cx={pillarX[index]} cy={pillarY[index]} r="112" />
               <circle className={styles.approvedImpactPillarField} cx={pillarX[index]} cy={pillarY[index]} r="104" />
@@ -2193,7 +2232,7 @@ function ApprovedImpactPlate() {
                 x={pillarX[index] - 61}
                 y={pillarY[index] - 79}
               />
-              <text className={styles.approvedImpactPillarLabel} textAnchor="middle" x={pillarX[index]} y={pillarY[index] + 70}>{pillar.label}</text>
+              <text className={styles.approvedImpactPillarLabel} textAnchor="middle" x={pillarX[index]} y={pillarY[index] + 70}>{t(pillar.label)}</text>
             </g>
           </JourneyMorphTrigger>
         );
@@ -2206,7 +2245,7 @@ function ApprovedImpactPlate() {
         href={COMMUNITY_INDEX_PATH}
         panelId="impact-core-detail"
       >
-        <title>GISA — trung tâm kết nối</title>
+        <title>{t('GISA — trung tâm kết nối')}</title>
         <g className={`${styles.impactCore} ${styles.approvedImpactCore}`} style={motion(3)}>
           <circle className={styles.entityHit} cx={coreX} cy={coreY} r="116" />
           <circle className={styles.approvedImpactCoreShadow} cx={coreX} cy={coreY + 10} r="108" />
@@ -2217,7 +2256,7 @@ function ApprovedImpactPlate() {
             <tspan className={styles.impactCoreWordmarkS}>S</tspan>
             <tspan className={styles.impactCoreWordmarkA}>A</tspan>
           </text>
-          <text className={styles.approvedImpactCoreLabel} textAnchor="middle" x={coreX} y={coreY + 52}>KẾT NỐI</text>
+          <text className={styles.approvedImpactCoreLabel} textAnchor="middle" x={coreX} y={coreY + 52}><LocalizedText text={"KẾT NỐI"}>{"KẾT NỐI"}</LocalizedText></text>
         </g>
       </JourneyMorphTrigger>
 
@@ -2225,14 +2264,14 @@ function ApprovedImpactPlate() {
         const panelId = `impact-node-detail-${index}`;
         return (
           <JourneyMorphTrigger
-            accessibleLabel={`Xem nội dung giai đoạn ${node.label.toLocaleLowerCase('vi')}: ${node.detail}`}
+            accessibleLabel={t('Xem nội dung giai đoạn {label}: {detail}', { label: t(node.label).toLocaleLowerCase(), detail: t(node.detail) })}
             className={`${styles.entityLink} ${styles.impactEntityLink}`}
             dataKey={`node-${index}`}
             href={node.href}
             key={node.label}
             panelId={panelId}
           >
-            <title>{`${node.label}: ${node.detail}`}</title>
+            <title>{`${t(node.label)}: ${t(node.detail)}`}</title>
             <g className={`${styles.impactNode} ${styles.approvedImpactNode} ${index < 2 ? styles.approvedImpactNodeStart : styles.approvedImpactNodeEnd}`} style={tone(node.tone, motion(node.phase))}>
               <rect className={styles.entityHit} height="250" rx="72" width="216" x={nodeX[index] - 108} y={nodeY - 125} />
               <rect className={styles.approvedImpactNodeShadow} height="226" rx="68" width="202" x={nodeX[index] - 101} y={nodeY - 105} />
@@ -2248,7 +2287,7 @@ function ApprovedImpactPlate() {
                 x={nodeX[index] - 62}
                 y={nodeY - 77}
               />
-              <text className={styles.approvedImpactNodeLabel} textAnchor="middle" x={nodeX[index]} y={nodeY + 82}>{node.label}</text>
+              <text className={styles.approvedImpactNodeLabel} textAnchor="middle" x={nodeX[index]} y={nodeY + 82}>{t(node.label)}</text>
             </g>
           </JourneyMorphTrigger>
         );

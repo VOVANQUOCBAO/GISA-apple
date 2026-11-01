@@ -76,12 +76,44 @@ export interface PublicationMetadata {
   externalUrl?: string;
 }
 
+export type CanvasItem =
+  | { id: string; kind: 'text'; x: number; y: number; w: number; text: string }
+  | {
+      id: string;
+      kind: 'image';
+      x: number;
+      y: number;
+      w: number;
+      assetId: string;
+      alt?: string;
+    };
+
+/**
+ * Vùng dựng tự do: chữ và ảnh đặt theo phần trăm trong một khung có tỉ lệ cố định.
+ * Toạ độ theo % nên co giãn theo bề rộng trang thay vì lệch như đặt bằng pixel.
+ */
+export interface CanvasBlock {
+  type: 'canvas';
+  /** Tỉ lệ cao/rộng của khung, mặc định 0.62. */
+  ratio?: number;
+  items: CanvasItem[];
+}
+
 export type ContentBlock =
   | { type: 'paragraph'; text: string }
   | { type: 'heading'; level: 2 | 3; text: string }
   | { type: 'list'; ordered: boolean; items: string[] }
   | { type: 'quote'; text: string; attribution?: string }
-  | { type: 'image'; assetId: string; caption?: string }
+  | {
+      type: 'image';
+      assetId: string;
+      caption?: string;
+      alt?: string;
+      width?: number;
+      height?: number;
+      shape?: 'wide' | 'square' | 'circle';
+    }
+  | CanvasBlock
   | { type: 'table'; headers: string[]; rows: string[][] }
   | {
       type: 'linkGroup';

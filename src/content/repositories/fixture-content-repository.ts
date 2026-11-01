@@ -1,4 +1,5 @@
 import { isPublishableEvidence } from '../evidence';
+import { translate } from '@/lib/i18n/language';
 import { allContentFixtures } from '../fixtures';
 import { contentRecordSchema } from '../schema';
 import type {
@@ -163,7 +164,8 @@ export class FixtureContentRepository implements ContentRepository {
       includeSearch && normalizedQuery
         ? scopedRecords.filter((record) =>
             normalize(
-              [record.title, record.summary, ...record.tags].join(' '),
+              [record.title, record.summary, ...record.tags]
+                .flatMap((text) => [text, translate(text, 'en')]).join(' '),
             ).includes(normalizedQuery),
           )
         : scopedRecords;

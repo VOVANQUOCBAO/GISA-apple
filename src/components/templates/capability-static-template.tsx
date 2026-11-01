@@ -7,6 +7,7 @@ import type { PageDefinition } from '@/content/pages';
 import type { ContentBlock } from '@/content/types';
 import { toAnchorId } from '@/lib/anchor-id';
 import { bindPhrases } from '@/lib/vietnamese-text';
+import { LocalizedText } from '@/lib/i18n/language-provider';
 
 import { ContentBlocks } from './content-blocks';
 import { InnerPageHero, profileForPath, SectionSubnav } from './inner-page-chrome';
@@ -123,6 +124,16 @@ function normalizeBlocks(blocks: ContentBlock[]): ContentBlock[] {
           ...link,
           label: normalizeVisibleText(link.label),
         })),
+      };
+    }
+    if (block.type === 'canvas') {
+      return {
+        ...block,
+        items: block.items.map((item) =>
+          item.kind === 'text'
+            ? { ...item, text: normalizeVisibleText(item.text) }
+            : { ...item, alt: item.alt ? normalizeVisibleText(item.alt) : undefined },
+        ),
       };
     }
     return { ...block, title: normalizeVisibleText(block.title) };
@@ -265,7 +276,7 @@ function TrainingPathway({ list, links }: { links: LinkGroupBlock; list: ListBlo
               <h3>{bindPhrases(heading.replace(/\.$/, ''))}</h3>
               {descriptionParts.length > 0 ? <p>{bindPhrases(descriptionParts.join('. '))}</p> : null}
               <span className={styles.pathwayCta}>
-                Khám phá lộ trình
+                {bindPhrases('Khám phá lộ trình')}
                 <Icon name="arrow" size={20} weight="bold" />
               </span>
             </Link>
@@ -332,10 +343,10 @@ function TrainingChapter({
     >
       <div className={styles.chapterMasthead}>
         <div className={styles.chapterHeadingCopy}>
-          <p className={styles.chapterKicker}>
+            <p className={styles.chapterKicker} data-copy="label">
             <span aria-hidden="true"><Icon name={icon} size={30} weight="duotone" /></span>
             <span className={styles.chapterSequence}>
-              Chương {String(index + 1).padStart(2, '0')}
+              {bindPhrases('Chương')} {String(index + 1).padStart(2, '0')}
               <small>/ {String(chapterCount).padStart(2, '0')}</small>
             </span>
           </p>
@@ -343,7 +354,9 @@ function TrainingChapter({
           {mastheadLead ? (
             <p className={styles.chapterHeadingLead}>{bindPhrases(mastheadLead.text)}</p>
           ) : chapterMeasure ? (
-            <p className={styles.chapterMeasure}>{chapterMeasure}</p>
+            <p className={styles.chapterMeasure} data-copy="label">
+              {hasCurriculum ? subtopics.length : chapterList?.items.length} {bindPhrases(hasCurriculum ? 'nhóm nội dung' : 'nội dung trọng tâm')}
+            </p>
           ) : null}
         </div>
         <figure className={styles.chapterVisual}>
@@ -427,10 +440,10 @@ function ApplicationChapter({
     >
       <header className={`${styles.applicationChapterHeader} ${styles.chapterMasthead}`}>
         <div className={styles.applicationChapterCopy}>
-          <p className={styles.chapterKicker}>
+          <p className={styles.chapterKicker} data-copy="label">
             <span aria-hidden="true"><Icon name={icon} size={30} weight="duotone" /></span>
             <span className={styles.chapterSequence}>
-              Chương {String(index + 1).padStart(2, '0')}
+              {bindPhrases('Chương')} {String(index + 1).padStart(2, '0')}
               <small>/ {String(chapterCount).padStart(2, '0')}</small>
             </span>
           </p>
@@ -440,7 +453,7 @@ function ApplicationChapter({
               <ContentBlocks blocks={introduction} />
             </div>
           ) : subtopics.length > 0 ? (
-            <p className={styles.chapterMeasure}>{subtopics.length} nhóm nội dung</p>
+            <p className={styles.chapterMeasure} data-copy="label">{subtopics.length} {bindPhrases('nhóm nội dung')}</p>
           ) : null}
         </div>
         <figure className={styles.chapterVisual}>
@@ -475,16 +488,16 @@ function ApplicationBody({ chapters, introduction }: ReturnType<typeof splitChap
         {introduction.length > 0 ? <ContentBlocks blocks={introduction} /> : null}
         <dl className={styles.applicationLens}>
           <div>
-            <dt><span aria-hidden="true"><Icon name="compass" size={24} weight="duotone" /></span>Bối cảnh</dt>
-            <dd>Nhìn rõ nhu cầu và điều kiện thực tế.</dd>
+            <dt><span aria-hidden="true"><Icon name="compass" size={24} weight="duotone" /></span><LocalizedText text="Bối cảnh">Bối cảnh</LocalizedText></dt>
+            <dd data-copy="body">{bindPhrases('Nhìn rõ nhu cầu và điều kiện thực tế.')}</dd>
           </div>
           <div>
-            <dt><span aria-hidden="true"><Icon name="lightbulb" size={24} weight="duotone" /></span>Cách tiếp cận</dt>
-            <dd>Kết nối tri thức với công cụ triển khai.</dd>
+            <dt><span aria-hidden="true"><Icon name="lightbulb" size={24} weight="duotone" /></span><LocalizedText text="Cách tiếp cận">Cách tiếp cận</LocalizedText></dt>
+            <dd data-copy="body">{bindPhrases('Kết nối tri thức với công cụ triển khai.')}</dd>
           </div>
           <div>
-            <dt><span aria-hidden="true"><Icon name="chart" size={24} weight="duotone" /></span>Giá trị</dt>
-            <dd>Theo dõi thay đổi trong tổ chức và cộng đồng.</dd>
+            <dt><span aria-hidden="true"><Icon name="chart" size={24} weight="duotone" /></span><LocalizedText text="Giá trị">Giá trị</LocalizedText></dt>
+            <dd data-copy="body">{bindPhrases('Theo dõi thay đổi trong tổ chức và cộng đồng.')}</dd>
           </div>
         </dl>
       </div>

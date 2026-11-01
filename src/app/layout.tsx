@@ -14,6 +14,7 @@ import '@fontsource/source-serif-4/vietnamese-700.css';
 
 import { SiteFooter } from '@/components/site/site-footer';
 import { SiteHeader } from '@/components/site/site-header';
+import { SiteEditButton } from '@/components/admin/site-edit-button';
 import { ScrollMotionDirector } from '@/components/motion/scroll-motion-director';
 import { SiteIntro } from '@/components/motion/site-intro';
 
@@ -60,6 +61,8 @@ export default async function RootLayout({
           <PageViewTransition name="page-content">{children}</PageViewTransition>
         ) : children}
         <SiteFooter />
+        {/* Chỉ bật khi chạy local: đi tới trang nào cũng thấy nút sửa bài đó. */}
+        {process.env.NEXT_PUBLIC_ADMIN_LOCAL === '1' ? <SiteEditButton /> : null}
         </LanguageProvider>
       </body>
     </html>

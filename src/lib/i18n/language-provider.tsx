@@ -21,6 +21,12 @@ export function useLanguage() {
   return useContext(LanguageContext);
 }
 
+/** For plain string attributes and composed labels in client components. */
+export function useTranslation() {
+  const language = useLanguage();
+  return (text: string) => translate(text, language);
+}
+
 export function LocalizedText({ text, children, as: Tag, copy }: { text: string; children: ReactNode; as?: 'strong' | 'span'; copy?: 'body' }) {
   const language = useLanguage();
   const pathname = usePathname() ?? '/';

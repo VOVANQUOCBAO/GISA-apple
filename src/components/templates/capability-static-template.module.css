@@ -1585,7 +1585,7 @@
 }
 
 .pageContainer[data-capability='training'] .chapterVisual {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   border-radius: 1.2rem;
   box-shadow: none;
   margin: 0;

@@ -28,6 +28,43 @@ describe('SEO metadata and indexing policy', () => {
     expect(metadata.openGraph).not.toHaveProperty('images');
   });
 
+  test('adds an absolute social image and article metadata when provided', () => {
+    const metadata = buildMetadata({
+      authors: ['Ban Truyền thông GISA'],
+      description: 'Mô tả bài viết.',
+      image: {
+        alt: 'Ảnh hội thảo',
+        height: 630,
+        src: '/media/cover/a.png',
+        width: 1200,
+      },
+      modifiedTime: '2026-10-28',
+      path: '/tin-tuc/bai-viet',
+      publishedTime: '2026-10-27',
+      title: 'Bài viết',
+      type: 'article',
+    });
+
+    expect(metadata.openGraph).toMatchObject({
+      authors: ['Ban Truyền thông GISA'],
+      images: [
+        {
+          alt: 'Ảnh hội thảo',
+          height: 630,
+          url: 'https://gisa.edu.vn/media/cover/a.png',
+          width: 1200,
+        },
+      ],
+      modifiedTime: '2026-10-28',
+      publishedTime: '2026-10-27',
+      type: 'article',
+    });
+    expect(metadata.twitter).toMatchObject({
+      card: 'summary_large_image',
+      images: ['https://gisa.edu.vn/media/cover/a.png'],
+    });
+  });
+
   test('blocks crawling outside production and allows it in production', () => {
     vi.stubEnv('VERCEL_ENV', 'preview');
     expect(robots().rules).toMatchObject({ disallow: '/', userAgent: '*' });

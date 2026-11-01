@@ -12,7 +12,8 @@ import {
   useCurrentFrame,
 } from 'remotion';
 
-import { bindPhrases } from '@/lib/vietnamese-text';
+import { useLanguage } from '@/lib/i18n/language-provider';
+import type { Language } from '@/lib/i18n/language';
 
 import styles from './site-intro.module.css';
 
@@ -30,9 +31,10 @@ type IntroPhase = 'detecting' | 'playing' | 'exiting' | 'done';
 
 type SiteIntroCompositionProps = {
   variant: IntroVariant;
+  language: Language;
 };
 
-function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
+function SiteIntroComposition({ variant, language }: SiteIntroCompositionProps) {
   const frame = useCurrentFrame();
   const mobile = variant === 'mobile';
   const entrance = Easing.bezier(0.16, 1, 0.3, 1);
@@ -42,6 +44,9 @@ function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
   const englishLines = mobile
     ? ['Global Institute for', 'Sustainable Development and', 'Advanced Management']
     : ['Global Institute for Sustainable Development and Advanced Management'];
+  const primaryLines = language === 'en'
+    ? (mobile ? ['Global Institute for', 'Sustainable Development', 'and Advanced Management'] : ['Global Institute for Sustainable', 'Development and Advanced Management'])
+    : vietnameseLines;
 
   return (
     <AbsoluteFill
@@ -128,13 +133,13 @@ function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
           <div
             style={{
               fontFamily: '"Source Serif 4", Cambria, Georgia, serif',
-              fontSize: mobile ? 20 : 48,
+              fontSize: mobile ? (language === 'en' ? 17 : 20) : (language === 'en' ? 40 : 48),
               fontWeight: 600,
               letterSpacing: mobile ? '-0.15px' : '-0.65px',
               lineHeight: mobile ? 1.28 : 1.2,
             }}
           >
-            {vietnameseLines.map((line, index) => {
+            {primaryLines.map((line, index) => {
               const lineStart = 18 + (index * 5);
 
               return (
@@ -160,13 +165,13 @@ function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  {bindPhrases(line)}{index < vietnameseLines.length - 1 ? ' ' : null}
+                  {line}{index < primaryLines.length - 1 ? ' ' : null}
                 </span>
               );
             })}
           </div>
 
-          <div
+          {language === 'vi' ? <div
             style={{
               color: '#4d6577',
               fontSize: mobile ? 13 : 26,
@@ -205,7 +210,7 @@ function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
                 </span>
               );
             })}
-          </div>
+          </div> : null}
         </div>
       </div>
     </AbsoluteFill>
@@ -213,6 +218,7 @@ function SiteIntroComposition({ variant }: SiteIntroCompositionProps) {
 }
 
 export function SiteIntro() {
+  const language = useLanguage();
   const pathname = usePathname();
   const shouldPlay = pathname === '/';
   const playerRef = useRef<PlayerRef>(null);
@@ -340,7 +346,7 @@ export function SiteIntro() {
           durationInFrames={DURATION_IN_FRAMES}
           fps={FPS}
           initiallyMuted
-          inputProps={{ variant }}
+          inputProps={{ variant, language }}
           loop={false}
           moveToBeginningWhenEnded={false}
           numberOfSharedAudioTags={0}

@@ -1,4 +1,5 @@
 import { contentRecordSchema } from '../schema';
+import { translate } from '@/lib/i18n/language';
 import type {
   Collection,
   ContentBlock,
@@ -180,7 +181,7 @@ export class SanityNewsRepository implements ContentRepository {
     const all = [...posts, ...existing.items].filter((item) =>
       (!query.collection || item.collection === query.collection) &&
       matches(item, query.scope ?? {}) && matches(item, query.filters) &&
-      (!search || !query.query || `${item.title} ${item.summary}`.toLocaleLowerCase('vi').includes(query.query.toLocaleLowerCase('vi'))),
+      (!search || !query.query || [item.title, item.summary, translate(item.title, 'en'), translate(item.summary, 'en')].join(' ').toLocaleLowerCase('vi').includes(query.query.toLocaleLowerCase('vi'))),
     ).sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? '') || a.title.localeCompare(b.title, 'vi'));
     const pageSize = Math.max(1, Math.floor(query.pageSize));
     const pageCount = Math.max(1, Math.ceil(all.length / pageSize));

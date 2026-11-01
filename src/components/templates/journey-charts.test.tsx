@@ -3,12 +3,22 @@ import userEvent from '@testing-library/user-event';
 import { describe, expect, test } from 'vitest';
 
 import type { JourneyChartName } from '@/content/journey';
+import { expertFixtures } from '@/content/fixtures/experts';
+import { partnerFixtures } from '@/content/fixtures/partners';
+import { projectFixtures } from '@/content/fixtures/projects';
+import { mangLuoiBlocks } from '@/content/static-blocks/mang-luoi';
+import { verifiedNetworkClusters } from '@/content/verified-metrics';
 
 import { JourneyChart } from './journey-charts';
 
+const fundLinkBlock = mangLuoiBlocks['/mang-luoi/quy-nha-tai-tro'].find(
+  (block) => block.type === 'linkGroup',
+);
+const fundLinks = fundLinkBlock?.type === 'linkGroup' ? fundLinkBlock.links : [];
+
 const expectedLinkCounts: Record<JourneyChartName, number> = {
   impact: 8,
-  network: 83,
+  network: expertFixtures.length + partnerFixtures.length + projectFixtures.length + fundLinks.length,
   research: 15,
   strategy: 7,
   training: 55,
@@ -60,10 +70,36 @@ describe('JourneyChart entity links', () => {
     const { container } = render(<JourneyChart name="network" />);
     const hrefs = [...container.querySelectorAll('svg a[href]')].map((link) => link.getAttribute('href'));
 
-    expect(hrefs.filter((href) => href?.startsWith('/chuyen-gia/'))).toHaveLength(20);
-    expect(hrefs.filter((href) => href?.startsWith('/mang-luoi/doi-tac/'))).toHaveLength(48);
-    expect(hrefs.filter((href) => href?.startsWith('/nghien-cuu/du-an/'))).toHaveLength(4);
-    expect(hrefs.filter((href) => href?.startsWith('http'))).toHaveLength(11);
+    expect(hrefs.filter((href) => href?.startsWith('/chuyen-gia/'))).toHaveLength(expertFixtures.length);
+    expect(hrefs.filter((href) => href?.startsWith('/mang-luoi/doi-tac/'))).toHaveLength(partnerFixtures.length);
+    expect(hrefs.filter((href) => href?.startsWith('/nghien-cuu/du-an/'))).toHaveLength(projectFixtures.length);
+    expect(hrefs.filter((href) => href?.startsWith('http'))).toHaveLength(fundLinks.length);
+
+    const realUrls = new Set([
+      ...expertFixtures.map((record) => record.path),
+      ...partnerFixtures.map((record) => record.path),
+      ...projectFixtures.map((record) => record.path),
+      ...fundLinks.map((link) => link.href),
+    ]);
+    expect(hrefs.every((href) => href !== null && realUrls.has(href))).toBe(true);
+  });
+
+  test('network retains unfilled expert slots as noninteractive placeholders', () => {
+    const { container } = render(<JourneyChart name="network" />);
+    const slots = container.querySelectorAll('[data-network-expert-slot]');
+    const placeholders = [...container.querySelectorAll('[data-expert-placeholder]')];
+
+    expect(slots).toHaveLength(verifiedNetworkClusters[0].memberCount);
+    expect(placeholders).toHaveLength(verifiedNetworkClusters[0].memberCount - expertFixtures.length);
+    placeholders.forEach((placeholder) => {
+      expect(placeholder.tagName.toLowerCase()).toBe('g');
+      expect(placeholder).toHaveAttribute('aria-hidden', 'true');
+      expect(placeholder).not.toHaveAttribute('href');
+      expect(placeholder).not.toHaveAttribute('tabindex');
+      expect(placeholder.querySelector('a, [href], [tabindex], [role="button"]')).toBeNull();
+      expect(placeholder.querySelectorAll('circle')).toHaveLength(4);
+      expect(placeholder.querySelector('path')).not.toBeNull();
+    });
   });
 
   test('training renders the exact 15/8/8/8/10 course distribution', () => {

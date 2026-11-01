@@ -8,6 +8,7 @@ export default defineConfig([
   globalIgnores([
     '.next/**',
     '.tools/**',
+    '.codex-runtime/**',
     'coverage/**',
     'node_modules/**',
     'playwright-report/**',

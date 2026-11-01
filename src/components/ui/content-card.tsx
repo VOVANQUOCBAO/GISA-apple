@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Icon, type IconName } from '@/components/ui/icon';
 import type { ContentSummary } from '@/content/types';
 import { bindPhrases } from '@/lib/vietnamese-text';
+import { LocalizedDate } from '@/lib/i18n/localized-date';
 
 import styles from './ui.module.css';
 
@@ -46,12 +47,10 @@ export function ContentCard({ item, headingLevel = 2 }: ContentCardProps) {
           <small>{bindPhrases(item.tags[0] ?? presentation.label)}</small>
         </span>
       )}
-      <p className={styles.contentCardKicker}>{bindPhrases(presentation.label)}</p>
+      <p className={styles.contentCardKicker} data-copy="label">{bindPhrases(presentation.label)}</p>
       {item.publishedAt ? (
         <time dateTime={item.publishedAt}>
-          {new Intl.DateTimeFormat('vi-VN', { dateStyle: 'long' }).format(
-            new Date(`${item.publishedAt}T00:00:00Z`),
-          )}
+          <LocalizedDate value={item.publishedAt} />
         </time>
       ) : null}
       <Heading>

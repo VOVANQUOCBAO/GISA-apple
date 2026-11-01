@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Icon, type IconName } from '@/components/ui/icon';
 import { Illustration, type IllustrationName } from '@/components/ui/illustration';
 import { bindPhrases } from '@/lib/vietnamese-text';
+import { translate } from '@/lib/i18n/language';
+import { useLanguage } from '@/lib/i18n/language-provider';
 
 import {
   audience,
@@ -43,6 +45,7 @@ function initials(name: string): string {
 }
 
 export function LandingClient() {
+  const language = useLanguage();
   const [activeStage, setActiveStage] = useState(stages[0].id);
   const [activeOutcome, setActiveOutcome] = useState<OutcomeKey>('individual');
   const [stuck, setStuck] = useState(false);
@@ -84,21 +87,19 @@ export function LandingClient() {
         </div>
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>{bindPhrases(hero.eyebrow)}</p>
+            <p className={styles.eyebrow} data-copy="label">{bindPhrases(hero.eyebrow)}</p>
             <h1 className={styles.heroTitle}>
               {hero.titleLines.map((line) => (
-                <span key={line}>{line}</span>
+                <span key={line}>{bindPhrases(line)}</span>
               ))}
-              <em>{hero.titleAccent}</em>
+              <em>{bindPhrases(hero.titleAccent)}</em>
             </h1>
-            <p className={styles.heroTagline}>{bindPhrases(hero.tagline)}</p>
-            <p className={styles.heroLead}>{bindPhrases(hero.lead)}</p>
+            <p className={styles.heroTagline} data-copy="body">{bindPhrases(hero.tagline)}</p>
+            <p className={styles.heroLead} data-copy="body">{bindPhrases(hero.lead)}</p>
             <div className={styles.heroButtons}>
-              <Link className={styles.primaryButton} href={REGISTER_HREF}>
-                Đăng ký khóa học <Icon name="arrow" size={19} />
+              <Link className={styles.primaryButton} href={REGISTER_HREF} data-copy="label">{bindPhrases(" Đăng ký khóa học ")}<Icon name="arrow" size={19} />
               </Link>
-              <Link className={styles.secondaryButton} href="#chuong-trinh">
-                Xem chương trình <Icon name="arrow" size={19} />
+              <Link className={styles.secondaryButton} href="#chuong-trinh" data-copy="label">{bindPhrases(" Xem chương trình ")}<Icon name="arrow" size={19} />
               </Link>
             </div>
           </div>
@@ -106,7 +107,7 @@ export function LandingClient() {
       </section>
 
       {/* ------------------------------------------------------ fact strip */}
-      <section aria-label="Thông tin nhanh về chương trình" className={styles.factStrip}>
+      <section aria-label={translate('Thông tin nhanh về chương trình', language)} className={styles.factStrip}>
         <dl className={styles.factInner}>
           {facts.map((fact) => (
             <div key={fact.label}>
@@ -114,8 +115,8 @@ export function LandingClient() {
                 <Icon name={fact.icon as IconName} size={22} />
               </span>
               <div>
-                <dt>{fact.label}</dt>
-                <dd>{bindPhrases(fact.value)}</dd>
+                <dt data-copy="label">{bindPhrases(fact.label)}</dt>
+                <dd data-copy="label">{bindPhrases(fact.value)}</dd>
               </div>
             </div>
           ))}
@@ -126,11 +127,11 @@ export function LandingClient() {
       <section className={styles.section} id="van-de">
         <div className={styles.container}>
           <div className={styles.sectionHead}>
-            <p className={`${styles.eyebrow} ${styles.eyebrowOrange}`}>Bạn có đang gặp?</p>
+            <p className={`${styles.eyebrow} ${styles.eyebrowOrange}`} data-copy="label">{bindPhrases("Bạn có đang gặp?")}</p>
             <h2 className={styles.sectionTitle}>
               {bindPhrases('KHÔNG PHẢI THIẾU KHÁCH — LÀ THIẾU HIỂU KHÁCH')}
             </h2>
-            <p className={styles.sectionLead}>
+            <p className={styles.sectionLead} data-copy="body">
               {bindPhrases(
                 'Doanh nghiệp có thể sở hữu nhiều dữ liệu, mạng lưới rộng, đội ngũ bán hàng đông và marketing liên tục — nhưng vẫn khó chuyển sự quan tâm thành quyết định mua.',
               )}
@@ -140,11 +141,11 @@ export function LandingClient() {
             {pains.map((pain) => (
               <li key={pain}>
                 <Icon name="megaphone" size={20} />
-                <span>{bindPhrases(pain)}</span>
+                <span data-copy="body">{bindPhrases(pain)}</span>
               </li>
             ))}
           </ul>
-          <p className={styles.painFoot}>
+          <p className={styles.painFoot} data-copy="body">
             {bindPhrases(
               'Những vấn đề này không nằm ở kỹ thuật chốt đơn, mà ở con người: hành vi, nhu cầu, niềm tin, giá trị và trải nghiệm khách hàng.',
             )}
@@ -156,9 +157,9 @@ export function LandingClient() {
       <section className={`${styles.section} ${styles.sectionAlt}`} id="nen-tang">
         <div className={styles.container}>
           <div className={styles.sectionHead}>
-            <p className={styles.eyebrow}>Ba nền tảng của chương trình</p>
+            <p className={styles.eyebrow} data-copy="label">{bindPhrases("Ba nền tảng của chương trình")}</p>
             <h2 className={styles.sectionTitle}>{bindPhrases('KHOA HỌC HÀNH VI GẶP TƯ DUY THIẾT KẾ')}</h2>
-            <p className={styles.sectionLead}>
+            <p className={styles.sectionLead} data-copy="body">
               {bindPhrases(
                 'Chương trình giúp người học chuyển từ tư duy bán sản phẩm sang tư duy kiến tạo giá trị; từ thuyết phục sang thấu hiểu và hỗ trợ khách hàng ra quyết định.',
               )}
@@ -174,9 +175,9 @@ export function LandingClient() {
                 <span className={styles.foundationIcon}>
                   <Illustration name={item.art as IllustrationName} size={52} />
                 </span>
-                <h3>{item.name}</h3>
-                <p>{bindPhrases(item.vi)}</p>
-                <p>{bindPhrases(item.text)}</p>
+                <h3>{bindPhrases(item.name)}</h3>
+                <p data-copy="label">{bindPhrases(item.vi)}</p>
+                <p data-copy="body">{bindPhrases(item.text)}</p>
               </article>
             ))}
           </div>
@@ -186,9 +187,9 @@ export function LandingClient() {
       {/* --------------------------------------------------------- journey */}
       <section className={styles.journeySection} id="hanh-trinh">
         <div className={styles.journeyPanel}>
-          <p className={styles.eyebrow}>Mô hình kết quả</p>
+          <p className={styles.eyebrow} data-copy="label">{bindPhrases("Mô hình kết quả")}</p>
           <h2>{bindPhrases('KHÔNG DỪNG Ở MỘT ĐƠN HÀNG')}</h2>
-          <p>
+          <p data-copy="body">
             {bindPhrases(
               'Bán hàng bền vững là thiết kế cả một hành trình — từ lúc khách hàng biết đến, tin tưởng, mua, sử dụng, cho tới khi họ chủ động lan tỏa giá trị.',
             )}
@@ -197,8 +198,8 @@ export function LandingClient() {
             {journey.map((step, index) => (
               <li key={step.en}>
                 <span className={styles.journeyStep}>{String(index + 1).padStart(2, '0')}</span>
-                <strong>{step.en}</strong>
-                <small>{bindPhrases(step.vi)}</small>
+                <strong data-copy="label">{step.en}</strong>
+                <small data-copy="label">{bindPhrases(step.vi)}</small>
               </li>
             ))}
           </ol>
@@ -209,18 +210,18 @@ export function LandingClient() {
       <section className={styles.section} id="chuong-trinh">
         <div className={styles.container}>
           <div className={styles.sectionHead}>
-            <p className={styles.eyebrow}>Cấu trúc 6 giai đoạn</p>
+            <p className={styles.eyebrow} data-copy="label">{bindPhrases("Cấu trúc 6 giai đoạn")}</p>
             <h2 className={styles.sectionTitle}>
               {bindPhrases('EMPATHIZE — DEFINE — IDEATE — PROTOTYPE — TEST — IMPLEMENT')}
             </h2>
-            <p className={styles.sectionLead}>
+            <p className={styles.sectionLead} data-copy="body">
               {bindPhrases(
                 'Mỗi giai đoạn không chỉ là một phần kiến thức, mà là một bước trong quá trình giải quyết bài toán kinh doanh thực tế của chính người học.',
               )}
             </p>
           </div>
           <div className={styles.stageLayout}>
-            <div aria-label="Sáu giai đoạn của chương trình" className={styles.stageNav} role="tablist">
+            <div aria-label={translate('Sáu giai đoạn của chương trình', language)} className={styles.stageNav} role="tablist">
               {stages.map((item) => (
                 <button
                   aria-controls="stage-panel"
@@ -233,7 +234,7 @@ export function LandingClient() {
                   type="button"
                 >
                   <span>{item.index}</span>
-                  <span>{item.name}</span>
+                  <span>{bindPhrases(item.name)}</span>
                 </button>
               ))}
             </div>
@@ -246,33 +247,32 @@ export function LandingClient() {
               tabIndex={0}
             >
               <div className={styles.stagePanelHead}>
-                <p>
-                  Giai đoạn {stage.index} — {stage.name}
+                <p data-copy="label">{bindPhrases(" Giai đoạn ")}{stage.index} — {bindPhrases(stage.name)}
                 </p>
                 <h3>{bindPhrases(stage.vi)}</h3>
               </div>
               <div className={styles.stageColumns}>
                 <div>
-                  <h4>Nội dung trọng tâm</h4>
+                  <h4>{bindPhrases("Nội dung trọng tâm")}</h4>
                   <ul>
                     {stage.contents.map((line) => (
-                      <li key={line}>{bindPhrases(line)}</li>
+                      <li key={line} data-copy="body">{bindPhrases(line)}</li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h4>Câu hỏi trọng tâm</h4>
+                  <h4>{bindPhrases("Câu hỏi trọng tâm")}</h4>
                   <ul className={styles.stageQuestions}>
                     {stage.questions.map((line) => (
-                      <li key={line}>{bindPhrases(line)}</li>
+                      <li key={line} data-copy="body">{bindPhrases(line)}</li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h4>Đầu ra dự kiến</h4>
+                  <h4>{bindPhrases("Đầu ra dự kiến")}</h4>
                   <ul className={styles.stageOutputs}>
                     {stage.outputs.map((line) => (
-                      <li key={line}>{bindPhrases(line)}</li>
+                      <li key={line} data-copy="body">{bindPhrases(line)}</li>
                     ))}
                   </ul>
                 </div>
@@ -287,9 +287,9 @@ export function LandingClient() {
         <div className={styles.container}>
           <div className={styles.methodLayout}>
             <div>
-              <p className={`${styles.eyebrow} ${styles.eyebrowOrange}`}>Phương pháp 30 — 30 — 40</p>
+              <p className={`${styles.eyebrow} ${styles.eyebrowOrange}`} data-copy="label">{bindPhrases("Phương pháp 30 — 30 — 40")}</p>
               <h2 className={styles.sectionTitle}>{bindPhrases('HỌC ĐỂ LÀM ĐƯỢC, KHÔNG ĐỂ BIẾT THÊM')}</h2>
-              <p className={styles.sectionLead}>
+              <p className={styles.sectionLead} data-copy="body">
                 {bindPhrases(
                   'Chương trình không đặt trọng tâm vào việc truyền đạt thật nhiều mô hình, mà hướng đến việc giúp người học dùng kiến thức để giải quyết một vấn đề thực tế của mình.',
                 )}
@@ -303,13 +303,13 @@ export function LandingClient() {
                   style={{ '--accent': item.color, '--share': `${item.share}%` } as React.CSSProperties}
                 >
                   <div className={styles.methodBarTop}>
-                    <strong>{bindPhrases(item.title)}</strong>
+                    <strong data-copy="label">{bindPhrases(item.title)}</strong>
                     <span>{item.share}%</span>
                   </div>
                   <div className={styles.methodTrack}>
                     <i />
                   </div>
-                  <p>{bindPhrases(item.text)}</p>
+                  <p data-copy="body">{bindPhrases(item.text)}</p>
                 </div>
               ))}
             </div>
@@ -321,9 +321,9 @@ export function LandingClient() {
       <section className={styles.section} id="dau-ra">
         <div className={styles.container}>
           <div className={styles.sectionHead}>
-            <p className={styles.eyebrow}>Sản phẩm đầu ra</p>
+            <p className={styles.eyebrow} data-copy="label">{bindPhrases("Sản phẩm đầu ra")}</p>
             <h2 className={styles.sectionTitle}>{bindPhrases('12 SẢN PHẨM ỨNG DỤNG MANG VỀ')}</h2>
-            <p className={styles.sectionLead}>
+            <p className={styles.sectionLead} data-copy="body">
               {bindPhrases(
                 'Kết thúc chương trình, mỗi học viên hoặc nhóm hoàn thành một bộ sản phẩm có thể đưa thẳng vào công việc.',
               )}
@@ -333,7 +333,7 @@ export function LandingClient() {
             {deliverables.map((item, index) => (
               <li key={item}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
-                <span>{bindPhrases(item)}</span>
+                <span data-copy="body">{bindPhrases(item)}</span>
               </li>
             ))}
           </ul>
@@ -344,10 +344,10 @@ export function LandingClient() {
       <section className={`${styles.section} ${styles.sectionAlt}`} id="gia-tri">
         <div className={styles.container}>
           <div className={styles.sectionHead}>
-            <p className={styles.eyebrow}>Giá trị và kết quả</p>
+            <p className={styles.eyebrow} data-copy="label">{bindPhrases("Giá trị và kết quả")}</p>
             <h2 className={styles.sectionTitle}>{bindPhrases('TỪ CONTACT ĐẾN VALUE ADVOCATE')}</h2>
           </div>
-          <div aria-label="Nhóm giá trị" className={styles.tabs} role="tablist">
+          <div aria-label={translate('Nhóm giá trị', language)} className={styles.tabs} role="tablist">
             {outcomeTabs.map((tab) => (
               <button
                 aria-controls="outcome-panel"
@@ -372,7 +372,7 @@ export function LandingClient() {
             {outcomes[activeOutcome].map((item) => (
               <li key={item}>
                 <Icon name="check" size={19} />
-                <span>{bindPhrases(item)}</span>
+                <span data-copy="body">{bindPhrases(item)}</span>
               </li>
             ))}
           </ul>
@@ -386,8 +386,8 @@ export function LandingClient() {
             <Icon name="leaf" size={40} />
           </span>
           <div>
-            <blockquote>Influence for Value — Not Manipulation for Conversion</blockquote>
-            <p>
+            <blockquote data-copy="body">Influence for Value — Not Manipulation for Conversion</blockquote>
+            <p data-copy="body">
               {bindPhrases(
                 'Các nguyên lý khoa học hành vi được sử dụng để giúp khách hàng hiểu rõ lựa chọn, giảm cảm nhận rủi ro và ra quyết định phù hợp. Chương trình không cổ súy việc dùng thiên kiến hành vi để gây áp lực, tạo hiểu lầm hoặc thúc đẩy khách hàng mua những thứ không phù hợp.',
               )}
@@ -400,7 +400,7 @@ export function LandingClient() {
       <section className={styles.section} id="doi-tuong">
         <div className={styles.container}>
           <div className={styles.sectionHead}>
-            <p className={styles.eyebrow}>Dành cho ai</p>
+            <p className={styles.eyebrow} data-copy="label">{bindPhrases("Dành cho ai")}</p>
             <h2 className={styles.sectionTitle}>{bindPhrases('ĐỐI TƯỢNG THAM GIA & HÌNH THỨC HỌC')}</h2>
           </div>
           <div className={styles.audienceLayout}>
@@ -408,7 +408,7 @@ export function LandingClient() {
               <h3 className={styles.subHead}>{bindPhrases('Chương trình phù hợp với')}</h3>
               <ul className={styles.audienceList}>
                 {audience.map((item) => (
-                  <li key={item}>{bindPhrases(item)}</li>
+                  <li key={item} data-copy="body">{bindPhrases(item)}</li>
                 ))}
               </ul>
             </div>
@@ -416,7 +416,7 @@ export function LandingClient() {
               <h3 className={styles.subHead}>{bindPhrases('Hình thức học tập')}</h3>
               <ul className={styles.formatList}>
                 {learningFormats.map((item) => (
-                  <li key={item}>{bindPhrases(item)}</li>
+                  <li key={item} data-copy="body">{bindPhrases(item)}</li>
                 ))}
               </ul>
               <div className={styles.instructorGrid} style={{ gridTemplateColumns: '1fr', marginTop: '2rem' }}>
@@ -426,9 +426,9 @@ export function LandingClient() {
                       {initials(person.name)}
                     </span>
                     <div>
-                      <h3>{person.name}</h3>
-                      <p>{bindPhrases(person.title)}</p>
-                      <small>{bindPhrases(person.org)}</small>
+                      <h3>{bindPhrases(person.name)}</h3>
+                      <p data-copy="label">{bindPhrases(person.title)}</p>
+                      <small data-copy="label">{bindPhrases(person.org)}</small>
                     </div>
                   </article>
                 ))}
@@ -442,9 +442,9 @@ export function LandingClient() {
       <section className={`${styles.section} ${styles.sectionAlt}`} id="hoc-phi">
         <div className={styles.container}>
           <div className={styles.sectionHead}>
-            <p className={`${styles.eyebrow} ${styles.eyebrowOrange}`}>Khai giảng & học phí</p>
+            <p className={`${styles.eyebrow} ${styles.eyebrowOrange}`} data-copy="label">{bindPhrases("Khai giảng & học phí")}</p>
             <h2 className={styles.sectionTitle}>{bindPhrases('CHỌN KHÓA PHÙ HỢP VỚI LỊCH CỦA BẠN')}</h2>
-            <p className={styles.sectionLead}>
+            <p className={styles.sectionLead} data-copy="body">
               {bindPhrases('Mỗi khóa giới hạn sĩ số để bảo đảm thời lượng coaching cho từng dự án.')}
             </p>
           </div>
@@ -456,25 +456,25 @@ export function LandingClient() {
                 key={cohort.code}
               >
                 <div className={styles.cohortTop}>
-                  <h3>{cohort.code}</h3>
-                  {cohort.highlight && <span className={styles.cohortTag}>Sắp khai giảng</span>}
+                  <h3>{bindPhrases(cohort.code)}</h3>
+                  {cohort.highlight && <span className={styles.cohortTag}>{bindPhrases("Sắp khai giảng")}</span>}
                 </div>
                 <dl className={styles.cohortFacts}>
                   <div>
-                    <dt>Khai giảng</dt>
-                    <dd>{cohort.start}</dd>
+                    <dt data-copy="label">{bindPhrases("Khai giảng")}</dt>
+                    <dd data-copy="label">{bindPhrases(cohort.start)}</dd>
                   </div>
                   <div>
-                    <dt>Hạn đăng ký</dt>
-                    <dd>{cohort.deadline}</dd>
+                    <dt data-copy="label">{bindPhrases("Hạn đăng ký")}</dt>
+                    <dd data-copy="label">{bindPhrases(cohort.deadline)}</dd>
                   </div>
                   <div>
-                    <dt>Lịch học</dt>
-                    <dd>{cohort.mode}</dd>
+                    <dt data-copy="label">{bindPhrases("Lịch học")}</dt>
+                    <dd data-copy="label">{bindPhrases(cohort.mode)}</dd>
                   </div>
                   <div>
-                    <dt>Chỗ ngồi</dt>
-                    <dd>{bindPhrases(cohort.seats)}</dd>
+                    <dt data-copy="label">{bindPhrases("Chỗ ngồi")}</dt>
+                    <dd data-copy="label">{bindPhrases(cohort.seats)}</dd>
                   </div>
                 </dl>
               </article>
@@ -488,21 +488,20 @@ export function LandingClient() {
                 key={plan.name}
               >
                 <h3>{bindPhrases(plan.name)}</h3>
-                <span className={styles.tuitionPrice}>{plan.price}</span>
-                <small className={styles.tuitionNote}>{bindPhrases(plan.note)}</small>
+                <span className={styles.tuitionPrice}>{bindPhrases(plan.price)}</span>
+                <small className={styles.tuitionNote} data-copy="label">{bindPhrases(plan.note)}</small>
                 <ul>
                   {plan.perks.map((perk) => (
                     <li key={perk}>
                       <Icon name="check" size={18} />
-                      <span>{bindPhrases(perk)}</span>
+                      <span data-copy="body">{bindPhrases(perk)}</span>
                     </li>
                   ))}
                 </ul>
                 <Link
                   className={plan.featured ? styles.primaryButton : styles.secondaryButton}
                   href={REGISTER_HREF}
-                >
-                  Đăng ký <Icon name="arrow" size={18} />
+                 data-copy="label">{bindPhrases(" Đăng ký ")}<Icon name="arrow" size={18} />
                 </Link>
               </article>
             ))}
@@ -517,17 +516,16 @@ export function LandingClient() {
             {/* Visible so this page cannot be shipped with placeholder quotes
                 mistaken for real customer feedback. */}
             <span className={styles.mockBadge}>
-              <Icon name="clipboard" size={14} /> Dữ liệu mẫu — chờ nội dung thật
-            </span>
+              <Icon name="clipboard" size={14} />{bindPhrases(" Dữ liệu mẫu — chờ nội dung thật ")}</span>
             <h2 className={styles.sectionTitle}>{bindPhrases('HỌC VIÊN NÓI GÌ')}</h2>
           </div>
           <div className={styles.testimonialGrid}>
             {testimonials.map((item) => (
               <article className={styles.testimonialCard} key={item.who}>
-                <blockquote>{bindPhrases(item.quote)}</blockquote>
+                <blockquote data-copy="body">{bindPhrases(item.quote)}</blockquote>
                 <footer>
-                  <strong>{item.who}</strong>
-                  <small>{bindPhrases(item.role)}</small>
+                  <strong data-copy="label">{bindPhrases(item.who)}</strong>
+                  <small data-copy="label">{bindPhrases(item.role)}</small>
                 </footer>
               </article>
             ))}
@@ -539,7 +537,7 @@ export function LandingClient() {
       <section className={`${styles.section} ${styles.sectionAlt}`} id="faq">
         <div className={styles.container}>
           <div className={styles.sectionHead}>
-            <p className={styles.eyebrow}>Câu hỏi thường gặp</p>
+            <p className={styles.eyebrow} data-copy="label">{bindPhrases("Câu hỏi thường gặp")}</p>
             <h2 className={styles.sectionTitle}>{bindPhrases('TRƯỚC KHI BẠN ĐĂNG KÝ')}</h2>
           </div>
           <div className={styles.faqList}>
@@ -549,7 +547,7 @@ export function LandingClient() {
                   <span>{bindPhrases(faq.q)}</span>
                   <Icon name="caret" size={20} />
                 </summary>
-                <p>{bindPhrases(faq.a)}</p>
+                <p data-copy="body">{bindPhrases(faq.a)}</p>
               </details>
             ))}
           </div>
@@ -561,7 +559,7 @@ export function LandingClient() {
         <div className={styles.finalCta}>
           <div>
             <h2>{bindPhrases('MANG BÀI TOÁN THẬT CỦA BẠN VÀO LỚP')}</h2>
-            <p>
+            <p data-copy="body">
               {bindPhrases(
                 'Mỗi người tham gia chọn một bài toán bán hàng, marketing hoặc phát triển khách hàng thực tế và giải quyết bài toán đó xuyên suốt sáu giai đoạn của chương trình.',
               )}
@@ -569,30 +567,28 @@ export function LandingClient() {
             <ul className={styles.finalPoints}>
               <li>
                 <Icon name="check" size={19} />
-                <span>{bindPhrases('Một dự án ứng dụng hoàn chỉnh, có thể triển khai ngay')}</span>
+                <span data-copy="body">{bindPhrases('Một dự án ứng dụng hoàn chỉnh, có thể triển khai ngay')}</span>
               </li>
               <li>
                 <Icon name="check" size={19} />
-                <span>{bindPhrases('12 sản phẩm đầu ra và kế hoạch 30–60–90 ngày')}</span>
+                <span data-copy="body">{bindPhrases('12 sản phẩm đầu ra và kế hoạch 30–60–90 ngày')}</span>
               </li>
               <li>
                 <Icon name="check" size={19} />
-                <span>{bindPhrases('Coaching trực tiếp từ giảng viên và chuyên gia GISA')}</span>
+                <span data-copy="body">{bindPhrases('Coaching trực tiếp từ giảng viên và chuyên gia GISA')}</span>
               </li>
             </ul>
           </div>
           <div className={styles.finalPanel}>
-            <p>{bindPhrases(featuredTuition.name)}</p>
-            <p className={styles.finalPrice}>{featuredTuition.price}</p>
-            <small>{bindPhrases(featuredTuition.note)}</small>
-            <small>
-              {bindPhrases(`Khai giảng ${nextCohort.start} · ${nextCohort.seats}`)}
+            <p data-copy="label">{bindPhrases(featuredTuition.name)}</p>
+            <p className={styles.finalPrice} data-copy="label">{bindPhrases(featuredTuition.price)}</p>
+            <small data-copy="label">{bindPhrases(featuredTuition.note)}</small>
+            <small data-copy="label">
+              {bindPhrases('Khai giảng')} {bindPhrases(nextCohort.start)} · {bindPhrases(nextCohort.seats)}
             </small>
-            <Link className={styles.primaryButton} href={REGISTER_HREF}>
-              Đăng ký khóa học <Icon name="arrow" size={19} />
+            <Link className={styles.primaryButton} href={REGISTER_HREF} data-copy="label">{bindPhrases(" Đăng ký khóa học ")}<Icon name="arrow" size={19} />
             </Link>
-            <Link className={styles.ghostButton} href="/lien-he">
-              Cần tư vấn thêm <Icon name="arrowUp" size={18} />
+            <Link className={styles.ghostButton} href="/lien-he" data-copy="label">{bindPhrases(" Cần tư vấn thêm ")}<Icon name="arrowUp" size={18} />
             </Link>
           </div>
         </div>
@@ -605,19 +601,14 @@ export function LandingClient() {
       >
         <div className={styles.stickyInner}>
           <div className={styles.stickyCopy}>
-            <strong>{bindPhrases('Behavioral Design Thinking for Sustainable Sales & Marketing')}</strong>
-            <small>
-              {bindPhrases(
-                `Khai giảng ${nextCohort.start} · ${featuredTuition.price} (${featuredTuition.name.toLowerCase()})`,
-              )}
+            <strong data-copy="label">{bindPhrases('Behavioral Design Thinking for Sustainable Sales & Marketing')}</strong>
+            <small data-copy="label">
+              {bindPhrases('Khai giảng')} {bindPhrases(nextCohort.start)} · {bindPhrases(featuredTuition.price)} ({bindPhrases(featuredTuition.name)})
             </small>
           </div>
           <div className={styles.stickyActions}>
-            <Link className={styles.secondaryButton} href="#chuong-trinh" tabIndex={stuck ? undefined : -1}>
-              Xem chương trình
-            </Link>
-            <Link className={styles.primaryButton} href={REGISTER_HREF} tabIndex={stuck ? undefined : -1}>
-              Đăng ký <Icon name="arrow" size={17} />
+            <Link className={styles.secondaryButton} href="#chuong-trinh" tabIndex={stuck ? undefined : -1} data-copy="label">{bindPhrases(" Xem chương trình ")}</Link>
+            <Link className={styles.primaryButton} href={REGISTER_HREF} tabIndex={stuck ? undefined : -1} data-copy="label">{bindPhrases(" Đăng ký ")}<Icon name="arrow" size={17} />
             </Link>
           </div>
         </div>

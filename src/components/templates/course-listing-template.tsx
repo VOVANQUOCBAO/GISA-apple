@@ -60,7 +60,7 @@ function CourseEntry({ item }: { item: ContentSummary }) {
   return (
     <article className={styles.courseEntry}>
       <div className={styles.courseEntryCopy}>
-        {format ? <p className={styles.courseFormat}>{bindPhrases(normalizeText(format))}</p> : null}
+        {format ? <p className={styles.courseFormat} data-copy="label">{bindPhrases(normalizeText(format))}</p> : null}
         <h3>
           <Link href={item.path}>{bindPhrases(normalizeText(item.title))}</Link>
         </h3>
@@ -69,11 +69,11 @@ function CourseEntry({ item }: { item: ContentSummary }) {
       <div className={styles.courseOutcome}>
         {objective ? (
           <>
-            <span>Trọng tâm học tập</span>
+            <span>{bindPhrases('Trọng tâm học tập')}</span>
             <p>{bindPhrases(normalizeText(objective))}</p>
           </>
         ) : (
-          <p>Thông tin mục tiêu đang được cập nhật.</p>
+          <p>{bindPhrases('Thông tin mục tiêu đang được cập nhật.')}</p>
         )}
         <span aria-hidden="true" className={styles.courseArrow}>
           <Icon name="arrow" size={20} />
@@ -120,7 +120,7 @@ export function CourseListingTemplate({
         <InnerPageHero
           description={definition.description}
           eyebrow="Hành trình học tập"
-          meta={<p aria-live="polite"><strong>{resultCount}</strong> khóa học</p>}
+          meta={<p aria-live="polite" data-copy="label"><strong>{resultCount}</strong> {bindPhrases('khóa học')}</p>}
           path={path}
           title={definition.title}
         />
@@ -128,22 +128,21 @@ export function CourseListingTemplate({
 
         <section className={styles.discovery} aria-labelledby="course-discovery-title">
           <div className={styles.discoveryCopy}>
-            <h2 id="course-discovery-title">Chọn nội dung theo mục tiêu phát triển</h2>
+            <h2 id="course-discovery-title">{bindPhrases('Chọn nội dung theo mục tiêu phát triển')}</h2>
             <p>
-              Mỗi khóa học được đặt trong một dòng chương trình, giúp người học nhìn rõ
-              trọng tâm trước khi xem chi tiết.
+              {bindPhrases('Mỗi khóa học được đặt trong một dòng chương trình, giúp người học nhìn rõ trọng tâm trước khi xem chi tiết.')}
             </p>
           </div>
           <div className={styles.discoveryAction}>
-            <ButtonLink href="/dang-ky/khoa-hoc">Xem biểu mẫu đăng ký</ButtonLink>
+            <ButtonLink href="/dang-ky/khoa-hoc">{bindPhrases('Xem biểu mẫu đăng ký')}</ButtonLink>
           </div>
         </section>
 
         {hasAvailableFilters ? (
           <section className={styles.filterStage} aria-label="Lọc danh sách khóa học">
             <div>
-              <h2>Tìm theo hình thức học</h2>
-              <p>Chọn một tiêu chí để thu hẹp danh sách hiện có.</p>
+              <h2>{bindPhrases('Tìm theo hình thức học')}</h2>
+              <p>{bindPhrases('Chọn một tiêu chí để thu hẹp danh sách hiện có.')}</p>
             </div>
             <FilterBar filters={availableFilters} path={path} query={searchParams} />
           </section>
@@ -162,7 +161,7 @@ export function CourseListingTemplate({
                   <h2 id={`program-${group.label.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase()}`}>
                     {bindPhrases(normalizeText(group.label))}
                   </h2>
-                  <p aria-live="polite">{group.items.length.toLocaleString('vi-VN')} khóa học đang hiển thị</p>
+                  <p aria-live="polite" data-copy="label">{group.items.length.toLocaleString('vi-VN')} {bindPhrases('khóa học đang hiển thị')}</p>
                 </header>
                 <ol className={styles.courseList}>
                   {group.items.map((item) => (
@@ -176,7 +175,7 @@ export function CourseListingTemplate({
           </div>
         ) : hasQuery || hasFilters ? (
           <EmptyState
-            action={<ButtonLink href={path}>Xóa bộ lọc</ButtonLink>}
+            action={<ButtonLink href={path}>{bindPhrases('Xóa bộ lọc')}</ButtonLink>}
             description="Hãy thử từ khóa khác hoặc điều chỉnh hình thức học đang chọn."
             title="Không có khóa học phù hợp"
           />

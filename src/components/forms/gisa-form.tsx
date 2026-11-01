@@ -1,5 +1,8 @@
 'use client';
 
+import { bindPhrases } from '@/lib/vietnamese-text';
+
+
 import { useEffect, useRef, useState } from 'react';
 
 import { ApiFormAdapter } from './api-form-adapter';
@@ -90,11 +93,11 @@ export function GisaForm({
           role="alert"
           tabIndex={-1}
         >
-          <h2>Vui lòng kiểm tra các trường sau</h2>
+          <h2>{bindPhrases("Vui lòng kiểm tra các trường sau")}</h2>
           <ul>
             {Object.entries(errors).map(([field, message]) => (
               <li key={field}>
-                <a href={`#${field}`}>{message}</a>
+                <a href={`#${field}`}>{bindPhrases(message ?? "")}</a>
               </li>
             ))}
           </ul>
@@ -243,20 +246,17 @@ export function GisaForm({
             name="consent"
             type="checkbox"
           />
-          <label htmlFor="consent">
-            Tôi xác nhận thông tin đã cung cấp là chính xác và đồng ý để GISA
-            tiếp nhận, phản hồi yêu cầu này.
-          </label>
+          <label htmlFor="consent">{bindPhrases(" Tôi xác nhận thông tin đã cung cấp là chính xác và đồng ý để GISA tiếp nhận, phản hồi yêu cầu này. ")}</label>
           {errors.consent ? (
             <p className={styles.fieldError} id="consent-error">
-              {errors.consent}
+              {bindPhrases(errors.consent)}
             </p>
           ) : null}
         </div>
       </div>
 
       <button className={styles.submitButton} disabled={isPending} type="submit">
-        {isPending ? 'Đang gửi…' : 'Gửi thông tin'}
+        {bindPhrases(isPending ? 'Đang gửi…' : 'Gửi thông tin')}
       </button>
 
       <div
@@ -265,7 +265,7 @@ export function GisaForm({
         data-state={result?.status}
         role={result?.status === 'error' ? 'alert' : 'status'}
       >
-        {result?.message ?? null}
+        {result?.message ? bindPhrases(result.message) : null}
       </div>
     </form>
   );

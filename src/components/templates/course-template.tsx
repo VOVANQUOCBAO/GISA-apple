@@ -75,6 +75,16 @@ function normalizeBlocks(blocks: ContentBlock[]): ContentBlock[] {
         caption: block.caption ? normalizeText(block.caption) : undefined,
       };
     }
+    if (block.type === 'canvas') {
+      return {
+        ...block,
+        items: block.items.map((item) =>
+          item.kind === 'text'
+            ? { ...item, text: normalizeText(item.text) }
+            : { ...item, alt: item.alt ? normalizeText(item.alt) : undefined },
+        ),
+      };
+    }
     return { ...block, title: normalizeText(block.title) };
   });
 }
@@ -110,8 +120,8 @@ function CourseFacts({ metadata }: { metadata: ContentRecord['metadata'] }) {
     <dl className={styles.courseFacts}>
       {facts.map(({ key, label, value }) => (
         <div key={key}>
-          <dt>{label}</dt>
-          <dd>
+          <dt>{bindPhrases(label)}</dt>
+          <dd data-copy="body">
             {bindPhrases(
               normalizeText(Array.isArray(value) ? value.join(', ') : value),
             )}
@@ -153,20 +163,20 @@ export function CourseTemplate({ record }: { record: ContentRecord }) {
         <section className={styles.decisionStage} aria-label="Thông tin trước khi đăng ký">
           <CourseFacts metadata={record.metadata} />
           <aside className={styles.registrationPanel}>
-            <h2>Tìm hiểu bước đăng ký</h2>
+            <h2>{bindPhrases('Tìm hiểu bước đăng ký')}</h2>
             <p>
-              Xem biểu mẫu để cung cấp khóa học quan tâm và thông tin liên hệ khi bạn sẵn sàng.
+              {bindPhrases('Xem biểu mẫu để cung cấp khóa học quan tâm và thông tin liên hệ khi bạn sẵn sàng.')}
             </p>
             <div className={styles.registrationActions}>
-              <ButtonLink href={registrationHref}>Đăng ký quan tâm khóa học</ButtonLink>
-              <ButtonLink href="/khoa-hoc" variant="secondary">Xem khóa học khác</ButtonLink>
+              <ButtonLink href={registrationHref}>{bindPhrases('Đăng ký quan tâm khóa học')}</ButtonLink>
+              <ButtonLink href="/khoa-hoc" variant="secondary">{bindPhrases('Xem khóa học khác')}</ButtonLink>
             </div>
           </aside>
         </section>
 
         <section className={styles.courseReading} aria-label="Nội dung khóa học">
           <aside className={styles.readingRail}>
-            <p>Nội dung khóa học</p>
+            <p data-copy="label">{bindPhrases('Nội dung khóa học')}</p>
             {chapters.length > 1 ? (
               <nav aria-label="Mục lục khóa học">
                 <ul>

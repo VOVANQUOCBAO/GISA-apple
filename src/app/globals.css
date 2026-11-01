@@ -164,26 +164,47 @@ dd {
   word-break: normal;
 }
 
-/* Giữ khoảng cách chữ tự nhiên cho nội dung dài. Căn đều hai biên khiến trình
-   duyệt kéo giãn ký tự tiếng Việt trên những dòng thiếu khoảng trắng. */
+/* Mọi đoạn văn và mô tả trong nội dung chính căn đều hai biên ở cả VI lẫn EN,
+   mọi khổ màn hình. Nhãn và câu tuyên bố căn giữa giữ căn lề của component.
+   `inter-word` chỉ giãn khoảng trắng giữa các âm tiết, không giãn ký tự, nên
+   chữ tiếng Việt có dấu không bị kéo méo; dòng cuối giữ biên trái tự nhiên. */
 main p {
   text-align: start;
   text-align-last: auto;
   text-justify: auto;
 }
 
+#main-content :is(p:not([data-copy='label']):not([data-copy='statement']), [data-copy='body']),
+footer [data-copy='body'] {
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-word;
+  /* Ngắt dòng tham lam để mỗi dòng đầy sẵn: `pretty`/`balance` cố ý chừa dòng
+     ngắn, căn đều sẽ kéo giãn khoảng trắng của dòng đó thành lỗ hổng. */
+  text-wrap: wrap;
+}
+
+/* Cụm từ tiếng Việt bị khoá `nowrap` cũng làm dòng hụt rồi bị kéo giãn; trong
+   đoạn căn đều cho chúng ngắt như chữ thường. Gạch nối vẫn đi kèm chữ sau. */
+#main-content :is(p:not([data-copy='label']):not([data-copy='statement']), [data-copy='body']) [data-vietnamese-phrase],
+footer [data-copy='body'] [data-vietnamese-phrase] {
+  white-space: normal !important;
+}
+
 /* English editorial copy has one alignment contract across every template.
-   Labels retain their component alignment; prose, statements and descriptions
-   share two clean edges with a natural final line at every viewport width. */
-html[lang='en'] #main-content :is(p:not([data-copy='label']), [data-copy='body']),
+   Labels and deliberately centred statements retain their component alignment;
+   running prose and descriptions share two clean edges at every width. */
+html[lang='en'] #main-content :is(p:not([data-copy='label']):not([data-copy='statement']), [data-copy='body']),
 html[lang='en'] footer [data-copy='body'] {
   font-family: var(--font-body);
   font-size: var(--english-copy-size, clamp(1rem, 1.1vw, 1.125rem));
   font-weight: 400;
   hyphens: auto;
   hyphenate-limit-chars: 7 3 3;
+  height: auto;
   letter-spacing: normal;
   line-height: 1.75;
+  max-height: none;
   overflow-wrap: break-word;
   text-align: justify;
   text-align-last: start;
@@ -192,6 +213,22 @@ html[lang='en'] footer [data-copy='body'] {
   white-space: normal;
   word-break: normal;
   word-spacing: normal;
+  -webkit-line-clamp: unset;
+}
+
+/* Tiếng Anh từ dài, trình duyệt không phải lúc nào cũng ngắt gạch nối được:
+   căn đều trên cột hẹp (điện thoại) hay trên tiêu đề ngắn của mục danh sách
+   sẽ khoét lỗ hổng giữa các từ. Những chỗ đó để biên phải tự nhiên. */
+html[lang='en'] #main-content :is(strong, b, span)[data-copy='body']:not([data-copy='label']),
+html[lang='en'] #main-content :is(li, a) :is(p, [data-copy='body']):not([data-copy='label']):not([data-copy='statement']) {
+  text-align: start;
+}
+
+@media (max-width: 48rem) {
+  html[lang='en'] #main-content :is(p:not([data-copy='label']):not([data-copy='statement']), [data-copy='body']),
+  html[lang='en'] footer [data-copy='body'] {
+    text-align: start;
+  }
 }
 
 html[lang='en'] #main-content [data-copy='body'] > [data-vietnamese-text] {

@@ -1,10 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 
-import PrivacyPolicyPage, { metadata } from './page';
+import PrivacyPolicyPage, { generateMetadata } from './page';
+
+vi.mock('next/headers', () => ({ cookies: async () => ({ get: () => undefined }) }));
 
 describe('PrivacyPolicyPage', () => {
-  test('names the route and explains online submission handling', () => {
+  test('names the route and explains online submission handling', async () => {
     render(<PrivacyPolicyPage />);
 
     expect(
@@ -13,6 +15,6 @@ describe('PrivacyPolicyPage', () => {
     expect(screen.getByText(/chuyển thông tin tới kênh tiếp nhận/i)).toBeVisible();
     expect(screen.getByText(/Dữ liệu được truyền qua kết nối HTTPS/i)).toBeVisible();
     expect(screen.getByText(/đề nghị kiểm tra, cập nhật hoặc xóa/i)).toBeVisible();
-    expect(metadata.title).toBe('Chính sách quyền riêng tư');
+    expect((await generateMetadata()).title).toBe('Chính sách quyền riêng tư');
   });
 });

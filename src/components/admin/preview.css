@@ -1,0 +1,693 @@
+/* Lớp phủ chỉnh sửa: đổi đường viền, con trỏ và thêm công cụ. Không đụng bố cục. */
+
+[data-bid] {
+  position: relative;
+  outline: 1px dashed transparent;
+  outline-offset: 10px;
+  border-radius: 2px;
+  transition: outline-color 140ms ease;
+}
+
+[data-bid]:hover {
+  outline-color: rgba(15, 110, 82, 0.26);
+}
+
+[data-bid][data-selected='true'] {
+  outline: 2px solid #12785c;
+  outline-offset: 10px;
+}
+
+[contenteditable='true'] {
+  cursor: text;
+}
+
+/* Bấm vào là thấy ngay một “ô” có viền — người không quen contenteditable vẫn
+   hiểu là đang sửa được. Viền đặt trên cả khối để tiêu đề nhiều dòng không bị
+   chia thành nhiều khung rời. */
+[data-bid]:focus-within,
+h1:focus-within,
+h2:focus-within,
+h3:focus-within,
+p:focus-within,
+li:focus-within,
+figcaption:focus-within {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 2px #12785c,
+    0 10px 26px rgba(10, 40, 30, 0.14);
+}
+
+[contenteditable='true']:focus {
+  caret-color: #12785c;
+  outline: none;
+}
+
+[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: #9aa7a0;
+  font-style: italic;
+  pointer-events: none;
+}
+
+figure[data-bid] img {
+  cursor: pointer;
+}
+
+/* Chữ nhấn: một màu duy nhất theo bảng màu GISA, không cho chọn màu tự do. */
+[data-accent='true'] {
+  color: #0f6f52;
+  font-weight: 600;
+}
+
+.gisa-readonly-note {
+  margin-top: 24px;
+  padding: 14px 16px;
+  border: 1px dashed #c9d3cd;
+  border-radius: 12px;
+  color: #52625a;
+  font-size: 14px;
+}
+
+/* Vùng dựng tự do trong chế độ soạn: khung nét đứt, tay nắm kéo và góc thu nhỏ. */
+.gisa-canvas {
+  position: relative;
+  width: 100%;
+  margin-block: 1.6rem;
+  border: 1px dashed rgba(18, 120, 92, 0.55);
+  border-radius: 12px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(18, 120, 92, 0.03),
+    rgba(18, 120, 92, 0.03) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  container-type: inline-size;
+}
+
+.gisa-canvas[data-active='true'] {
+  border-color: #12785c;
+  box-shadow: inset 0 0 0 1px rgba(18, 120, 92, 0.25);
+}
+
+.gisa-canvas[data-dragging='true'] {
+  user-select: none;
+}
+
+.gisa-canvas-tools {
+  position: absolute;
+  top: -42px;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  gap: 6px;
+}
+
+.gisa-canvas-tools button {
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: #12785c;
+  color: #fff;
+  font: 600 12.5px/1 'Source Sans 3', system-ui, sans-serif;
+  box-shadow: 0 8px 20px rgba(10, 40, 30, 0.22);
+  cursor: pointer;
+}
+
+.gisa-canvas-tools button:disabled {
+  opacity: 0.6;
+}
+
+.gisa-canvas-item {
+  position: absolute;
+  cursor: grab;
+  touch-action: none;
+}
+
+.gisa-canvas-item:active {
+  cursor: grabbing;
+}
+
+.gisa-canvas-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.gisa-canvas-item p {
+  margin: 0;
+  color: #17211d;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(13px, 2.4cqw, 40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  cursor: text;
+}
+
+.gisa-canvas-handle {
+  position: absolute;
+  right: -9px;
+  bottom: -9px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #12785c;
+  box-shadow: 0 2px 8px rgba(10, 40, 30, 0.3);
+  cursor: nwse-resize;
+  touch-action: none;
+}
+
+.gisa-canvas-remove {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #c2453f;
+  color: #fff;
+  font: 700 12px/1 'Source Sans 3', system-ui, sans-serif;
+  cursor: pointer;
+}
+
+/* Thanh công cụ dưới: trạng thái lưu và các hành động chính. */
+
+.gisa-toolbar {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: calc(100vw - 32px);
+  padding: 8px 8px 8px 14px;
+  border-radius: 18px;
+  background: rgba(12, 20, 18, 0.94);
+  color: #f2f6f4;
+  font: 500 13px/1.2 'Source Sans 3', system-ui, sans-serif;
+  box-shadow: 0 20px 48px rgba(8, 20, 16, 0.32);
+  transform: translateX(-50%);
+}
+
+.gisa-toolbar-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 10px;
+  white-space: nowrap;
+  color: #c3d2cc;
+}
+
+.gisa-toolbar-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4fd1a5;
+}
+
+.gisa-toolbar-dot[data-state='saving'] {
+  background: #f0c05a;
+}
+
+.gisa-toolbar-dot[data-state='error'] {
+  background: #ef6b6b;
+}
+
+.gisa-toolbar button,
+.gisa-drawer button,
+.gisa-modal button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.gisa-toolbar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.09);
+  color: inherit;
+  white-space: nowrap;
+  transition: background 120ms ease;
+}
+
+.gisa-toolbar button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.gisa-toolbar button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.gisa-toolbar button[data-variant='primary'] {
+  background: #12785c;
+  color: #fff;
+}
+
+.gisa-toolbar button[data-variant='primary']:hover {
+  background: #0f654e;
+}
+
+.gisa-toolbar button[data-variant='danger']:hover {
+  background: rgba(239, 107, 107, 0.28);
+}
+
+.gisa-menu {
+  position: fixed;
+  left: 50%;
+  bottom: 84px;
+  z-index: 71;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  width: min(460px, calc(100vw - 32px));
+  padding: 10px;
+  border-radius: 16px;
+  background: rgba(12, 20, 18, 0.97);
+  color: #f2f6f4;
+  box-shadow: 0 20px 48px rgba(8, 20, 16, 0.3);
+  transform: translateX(-50%);
+}
+
+.gisa-menu button {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 11px;
+  background: transparent;
+  color: inherit;
+  font: 500 13px/1.2 'Source Sans 3', system-ui, sans-serif;
+  text-align: left;
+}
+
+.gisa-menu button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.gisa-menu small {
+  display: block;
+  margin-top: 3px;
+  color: #8fa39b;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* Bảng nổi ngay trên ảnh vừa bấm: đổi ảnh và chọn dáng khung. */
+.gisa-image-panel {
+  position: fixed;
+  z-index: 80;
+  width: 236px;
+  padding: 10px;
+  border: 1px solid #e2e8e2;
+  border-radius: 12px;
+  background: #fff;
+  color: #17211d;
+  font: 500 13px/1.35 'Source Sans 3', system-ui, sans-serif;
+  box-shadow: 0 18px 40px rgba(10, 30, 20, 0.22);
+}
+
+.gisa-image-panel > button {
+  width: 100%;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: #12785c;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+}
+
+.gisa-shapes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin: 8px 0 6px;
+}
+
+.gisa-shapes button {
+  padding: 7px 4px;
+  border: 1px solid #dfe6df;
+  border-radius: 8px;
+  background: #fff;
+  color: #3f4f47;
+  font: inherit;
+  font-size: 12px;
+}
+
+.gisa-shapes button[data-active='true'] {
+  border-color: #12785c;
+  background: #e6f1ec;
+  color: #0f6f52;
+  font-weight: 600;
+}
+
+.gisa-image-panel small {
+  color: #7b8981;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Hộp công cụ bên phải: thay cho bảng SEO luôn bật. */
+.gisa-drawer-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 22px;
+  z-index: 76;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: #17211d;
+  font: 600 13px/1 'Source Sans 3', system-ui, sans-serif;
+  box-shadow: 0 12px 30px rgba(10, 30, 20, 0.18);
+}
+
+.gisa-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 75;
+  display: flex;
+  flex-direction: column;
+  width: 336px;
+  max-width: calc(100vw - 48px);
+  background: #fff;
+  border-left: 1px solid #e2e8e2;
+  box-shadow: -18px 0 40px rgba(10, 30, 20, 0.12);
+  font: 400 13px/1.45 'Source Sans 3', system-ui, sans-serif;
+  color: #17211d;
+  overflow-y: auto;
+}
+
+.gisa-drawer-head {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #eef2ee;
+  background: #fff;
+}
+
+.gisa-drawer-head strong {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.gisa-drawer-head button {
+  padding: 6px 10px;
+  border: 1px solid #e2e8e2;
+  border-radius: 8px;
+  background: #fff;
+  color: #4a5a52;
+  font-size: 12px;
+}
+
+.gisa-section {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0f3ef;
+}
+
+.gisa-section h3 {
+  margin: 0 0 10px;
+  color: #6b7a72;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gisa-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.gisa-row:last-child {
+  margin-bottom: 0;
+}
+
+.gisa-btn {
+  padding: 8px 11px;
+  border: 1px solid #dfe6df;
+  border-radius: 9px;
+  background: #fff;
+  color: #24312b;
+  font-size: 12.5px;
+}
+
+.gisa-btn:hover {
+  background: #f4f7f4;
+}
+
+.gisa-btn[data-active='true'] {
+  border-color: #12785c;
+  background: #e6f1ec;
+  color: #0f6f52;
+  font-weight: 600;
+}
+
+.gisa-btn[data-strong='true'] {
+  font-weight: 700;
+}
+
+.gisa-btn[data-italic='true'] {
+  font-style: italic;
+}
+
+.gisa-field {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.gisa-field span {
+  display: block;
+  margin-bottom: 4px;
+  color: #6b7a72;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.gisa-field input,
+.gisa-field textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #dfe6df;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 12.5px;
+  color: #17211d;
+  background: #fff;
+}
+
+.gisa-field small {
+  display: block;
+  margin-top: 3px;
+  color: #8a978f;
+  font-size: 11px;
+}
+
+.gisa-hint {
+  margin: 0;
+  color: #7b8981;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.gisa-danger {
+  border-color: #f0c9c6;
+  color: #a13b35;
+}
+
+/* Hộp thoại kiểm tra SEO. */
+.gisa-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(10, 20, 16, 0.42);
+}
+
+.gisa-modal {
+  width: min(560px, 100%);
+  max-height: min(80vh, 720px);
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 18px;
+  background: #fff;
+  color: #17211d;
+  font: 400 13.5px/1.5 'Source Sans 3', system-ui, sans-serif;
+  box-shadow: 0 30px 80px rgba(8, 24, 16, 0.35);
+}
+
+.gisa-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.gisa-modal-head h2 {
+  margin: 0;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.gisa-score {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  background: #f4f7f4;
+}
+
+.gisa-score strong {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.gisa-score[data-tone='good'] {
+  background: #e8f4ee;
+}
+
+.gisa-score[data-tone='ok'] {
+  background: #fdf4e3;
+}
+
+.gisa-score[data-tone='weak'] {
+  background: #fbeae8;
+}
+
+.gisa-check-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gisa-check-list li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f0f3ef;
+}
+
+.gisa-check-list li:last-child {
+  border-bottom: 0;
+}
+
+.gisa-check-list .gisa-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.gisa-mark[data-status='pass'] {
+  background: #15805f;
+}
+
+.gisa-mark[data-status='warn'] {
+  background: #c99326;
+}
+
+.gisa-mark[data-status='fail'] {
+  background: #c2453f;
+}
+
+.gisa-check-list small {
+  display: block;
+  margin-top: 2px;
+  color: #7a8780;
+  font-size: 11.5px;
+}
+
+.gisa-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.gisa-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 84px;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: #17211d;
+  color: #f2f6f4;
+  font: 500 13px/1.3 'Source Sans 3', system-ui, sans-serif;
+  box-shadow: 0 18px 40px rgba(8, 24, 16, 0.3);
+  transform: translateX(-50%);
+}
+
+.gisa-toast[data-tone='error'] {
+  background: #7a1f1f;
+}
+
+.gisa-toast a {
+  color: #7fe0bf;
+}
+
+@media (max-width: 700px) {
+  .gisa-toolbar {
+    bottom: 12px;
+    gap: 4px;
+    padding: 6px;
+    border-radius: 14px;
+  }
+
+  .gisa-toolbar-label {
+    display: none;
+  }
+
+  .gisa-toolbar button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .gisa-menu {
+    bottom: 70px;
+    grid-template-columns: 1fr;
+  }
+
+  .gisa-image-panel {
+    width: min(236px, calc(100vw - 24px));
+  }
+
+  .gisa-drawer {
+    width: 100%;
+  }
+}

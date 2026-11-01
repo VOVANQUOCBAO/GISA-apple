@@ -50,14 +50,29 @@ function buildArticle(record: ContentRecord): StructuredDataEntry | null {
     return null;
   }
 
+  const author =
+    typeof record.metadata.author === 'string'
+      ? record.metadata.author.trim()
+      : '';
+  const updatedAt =
+    typeof record.metadata.updatedAt === 'string'
+      ? record.metadata.updatedAt
+      : '';
+  const section =
+    typeof record.metadata.topic === 'string' ? record.metadata.topic : '';
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     datePublished: record.publishedAt,
+    ...(updatedAt ? { dateModified: updatedAt } : {}),
     description: record.summary,
     headline: record.title,
     inLanguage: record.locale,
     mainEntityOfPage: absoluteUrl(record.path),
+    ...(author ? { author: { '@type': 'Person', name: author } } : {}),
+    ...(record.image ? { image: absoluteUrl(record.image.src) } : {}),
+    ...(section ? { articleSection: section } : {}),
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,

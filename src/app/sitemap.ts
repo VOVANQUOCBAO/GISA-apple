@@ -5,6 +5,8 @@ import { PAGE_REGISTRY } from '@/content/pages';
 import { OLD_ROUTE_REDIRECTS } from '@/content/redirects';
 import { getContentRepository } from '@/content/repositories';
 
+export const revalidate = 60;
+
 const excludedPrefixes = ['/dang-ky/', '/lien-he', '/tim-kiem'];
 
 function isPublicRegistryPath(path: string): boolean {
